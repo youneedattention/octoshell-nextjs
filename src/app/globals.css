@@ -10,7 +10,18 @@ body {
   color: #111;
 }
 
-/* ── Google Maps autocomplete dropdown ── */
+/* ── Browser autofill — keep dark background ────────────────────────── */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #111111 inset !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.9) !important;
+  caret-color: rgba(255, 255, 255, 0.9);
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* ── Google Maps autocomplete dropdown ─────────────────────────────── */
 .pac-container {
   z-index: 9999 !important;
   background: #1c1c1c;
@@ -42,7 +53,7 @@ body {
   display: none;
 }
 
-/* ── Stepper number input – hide browser spin arrows ── */
+/* ── Stepper number input — hide browser spin arrows ───────────────── */
 .stepper-input::-webkit-outer-spin-button,
 .stepper-input::-webkit-inner-spin-button {
   -webkit-appearance: none;

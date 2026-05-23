@@ -206,7 +206,7 @@ export default function LawPage() {
   return (
     <main>
       {/* ── Hero / Title bar ────────────────────────────────────── */}
-      <div className="relative bg-[#0c0c0c] pt-28 sm:pt-32 pb-14 sm:pb-16">
+      <div className="relative bg-[#0c0c0c] pt-[90px] sm:pt-28 pb-10 sm:pb-14">
         <Header />
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <p className="text-[#c9a84c] text-[9px] sm:text-[10px] tracking-[0.45em] mb-4 uppercase">

@@ -8,7 +8,7 @@ interface BookingPayload {
   people: number;
   bags: number;
   vehicle: string;
-  driverMsg: string;
+  driverMsgs: string[];
   name: string;
   email: string;
   phone: string;
@@ -33,7 +33,7 @@ function buildHtml(b: BookingPayload): string {
     ? ` <span style="display:inline-flex;align-items:center;gap:4px;background:#e7f8ef;border-radius:3px;padding:2px 7px;font-size:11px;color:#25D366;font-weight:600;">WhatsApp ✓</span>`
     : "";
   const phone = b.phone ? `${b.phone}${wa}` : "—";
-  const driver = b.driverMsg || "—";
+  const driver = b.driverMsgs?.length ? b.driverMsgs.join("、") : "—";
   const vehicle = (VEHICLE_LABEL[b.vehicle] ?? b.vehicle) || "指定なし";
 
   const rows = [

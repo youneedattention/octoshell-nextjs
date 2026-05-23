@@ -99,7 +99,7 @@ export default function Home() {
       </section>
 
       {/* ══════════════════ PRICES ══════════════════ */}
-      <section id="prices" className="scroll-mt-16 py-14 sm:py-20 px-4 sm:px-6 bg-white">
+      <section id="prices" className="scroll-mt-[70px] sm:scroll-mt-20 py-14 sm:py-20 px-4 sm:px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10 sm:mb-14">
             <h2 className="text-xl sm:text-2xl font-bold tracking-[0.3em] text-gray-900">
@@ -120,7 +120,7 @@ export default function Home() {
       </section>
 
       {/* ══════════════════ TAILORED ══════════════════ */}
-      <section id="about" className="scroll-mt-16 py-16 sm:py-24 px-4 sm:px-6 bg-white">
+      <section id="about" className="scroll-mt-[70px] sm:scroll-mt-20 py-16 sm:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-xl mx-auto text-center">
           <h2 className="text-xl sm:text-2xl font-bold tracking-[0.3em] text-gray-900">
             {t.tailored_title[lang]}
@@ -141,7 +141,7 @@ export default function Home() {
       </section>
 
       {/* ══════════════════ OUR SERVICES ══════════════════ */}
-      <section id="services" className="scroll-mt-16 py-14 sm:py-20 px-4 sm:px-6 bg-[#111111]">
+      <section id="services" className="scroll-mt-[70px] sm:scroll-mt-20 py-14 sm:py-20 px-4 sm:px-6 bg-[#111111]">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10 sm:mb-14">
             <h2 className="text-xl sm:text-2xl font-bold tracking-[0.3em] text-white">
@@ -217,9 +217,9 @@ function PriceCard({
   const { lang: _l } = useLang(); // already passed as prop, but hook is fine
   return (
     <div className="flex flex-col border border-gray-200">
-      <div className="bg-gray-50 flex items-center justify-center py-7 px-4">
+      <div className="bg-white flex items-center justify-center py-7 px-4">
         <Image src={img} alt={name} width={320} height={180}
-          className="object-contain max-h-40 w-auto" />
+          className="object-contain max-h-40 w-auto mix-blend-multiply" />
       </div>
       <div className="flex flex-col flex-1 px-5 sm:px-7 py-5 sm:py-6">
         <h3 className="text-sm font-bold tracking-[0.2em] text-center mb-4 text-gray-900">
