@@ -321,7 +321,7 @@ export default function BookPage() {
                   value={date} onChange={setDate} required
                   inputLang={lang === "en" ? "en-US" : lang === "ja" ? "ja" : "zh-TW"} />
                 <PickerField id="book-time" label={t.book_time[lang]} type="time"
-                  value={time} onChange={setTime} required step={10} />
+                  value={time} onChange={setTime} required step={600} />
               </div>
             </div>
 
