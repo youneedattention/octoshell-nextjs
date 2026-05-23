@@ -99,7 +99,7 @@ export default function Home() {
       </section>
 
       {/* ══════════════════ PRICES ══════════════════ */}
-      <section id="prices" className="py-14 sm:py-20 px-4 sm:px-6 bg-white">
+      <section id="prices" className="scroll-mt-16 py-14 sm:py-20 px-4 sm:px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10 sm:mb-14">
             <h2 className="text-xl sm:text-2xl font-bold tracking-[0.3em] text-gray-900">
@@ -120,7 +120,7 @@ export default function Home() {
       </section>
 
       {/* ══════════════════ TAILORED ══════════════════ */}
-      <section id="about" className="py-16 sm:py-24 px-4 sm:px-6 bg-white">
+      <section id="about" className="scroll-mt-16 py-16 sm:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-xl mx-auto text-center">
           <h2 className="text-xl sm:text-2xl font-bold tracking-[0.3em] text-gray-900">
             {t.tailored_title[lang]}
@@ -141,7 +141,7 @@ export default function Home() {
       </section>
 
       {/* ══════════════════ OUR SERVICES ══════════════════ */}
-      <section id="services" className="py-14 sm:py-20 px-4 sm:px-6 bg-[#111111]">
+      <section id="services" className="scroll-mt-16 py-14 sm:py-20 px-4 sm:px-6 bg-[#111111]">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10 sm:mb-14">
             <h2 className="text-xl sm:text-2xl font-bold tracking-[0.3em] text-white">
@@ -167,12 +167,15 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pb-7 border-b border-white/10">
             <Image src={LOGO} alt="Octoshell" width={50} height={50} className="object-contain" />
             <nav className="flex flex-wrap justify-center gap-8 sm:gap-10">
-              {(["nav_home", "nav_services", "nav_about"] as const).map((key) => (
-                <Link key={key} href="#"
-                  className="text-white/60 text-[11px] tracking-[0.2em] hover:text-white transition-colors">
-                  {t[key][lang]}
-                </Link>
-              ))}
+              {(["nav_home", "nav_services", "nav_about"] as const).map((key) => {
+                const href = key === "nav_home" ? "/" : key === "nav_services" ? "/#services" : "/#about";
+                return (
+                  <Link key={key} href={href}
+                    className="text-white/60 text-[11px] tracking-[0.2em] hover:text-white transition-colors">
+                    {t[key][lang]}
+                  </Link>
+                );
+              })}
             </nav>
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-5">
@@ -233,7 +236,7 @@ function PriceCard({
           </tbody>
         </table>
         <p className="text-[11px] text-gray-400 mt-3">{t.price_note[lang]}</p>
-        <Link href="#"
+        <Link href="/book"
           className="block w-full mt-4 bg-[#1a2340] text-white text-center text-[11px] tracking-[0.18em] py-3 hover:bg-[#0f1829] transition-colors">
           {t.book_car[lang]}
         </Link>
