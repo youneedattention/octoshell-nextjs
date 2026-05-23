@@ -70,9 +70,9 @@ function FieldWrap({ label, required, htmlFor, children }: {
   );
 }
 
-function PickerField({ id, label, type, value, onChange, required, step }: {
+function PickerField({ id, label, type, value, onChange, required, step, inputLang }: {
   id: string; label: string; type: "date" | "time";
-  value: string; onChange: (v: string) => void; required?: boolean; step?: number;
+  value: string; onChange: (v: string) => void; required?: boolean; step?: number; inputLang?: string;
 }) {
   const ref = useRef<HTMLInputElement>(null);
   const open = () => {
@@ -86,7 +86,7 @@ function PickerField({ id, label, type, value, onChange, required, step }: {
         className="text-[10px] tracking-[0.28em] text-white/45 uppercase cursor-pointer select-none">
         {label}{required && <span className="ml-1 text-[#c9a84c]">*</span>}
       </label>
-      <input ref={ref} id={id} type={type} required={required} step={step}
+      <input ref={ref} id={id} type={type} required={required} step={step} lang={inputLang}
         value={value} onChange={e => onChange(e.target.value)} onClick={open}
         className="w-full bg-transparent border-b border-white/20 focus:border-[#c9a84c] text-white
                    text-[13px] tracking-wide py-3 outline-none transition-colors [color-scheme:dark] cursor-pointer" />
@@ -318,9 +318,10 @@ export default function BookPage() {
               <SectionLabel label={t.book_sec_sched[lang]} />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-7">
                 <PickerField id="book-date" label={t.book_date[lang]} type="date"
-                  value={date} onChange={setDate} required />
+                  value={date} onChange={setDate} required
+                  inputLang={lang === "en" ? "en-US" : lang === "ja" ? "ja" : "zh-TW"} />
                 <PickerField id="book-time" label={t.book_time[lang]} type="time"
-                  value={time} onChange={setTime} required step={600} />
+                  value={time} onChange={setTime} required step={10} />
               </div>
             </div>
 
@@ -470,35 +471,6 @@ export default function BookPage() {
               </p>
             )}
 
-            {/* ── In-form submit (desktop, visible at end) ── */}
-            <div className="pt-2 flex items-center justify-between gap-4 sm:flex">
-              <p className="text-white/20 text-[11px] tracking-widest hidden sm:block">
-                <span className="text-[#c9a84c]">*</span> {t.book_required[lang]}
-              </p>
-              <button type="submit" disabled={status === "loading"}
-                className="group relative hidden sm:inline-flex items-center gap-3 overflow-hidden
-                           border border-[#c9a84c]/60 text-white text-[11px] tracking-[0.28em]
-                           px-10 py-4 transition-all duration-300
-                           hover:border-[#c9a84c] hover:text-[#0c0c0c]
-                           disabled:opacity-50 disabled:cursor-not-allowed">
-                <span className="absolute inset-0 -translate-x-full group-hover:translate-x-0
-                                 bg-[#c9a84c] transition-transform duration-300 ease-in-out" />
-                {status === "loading" ? (
-                  <svg className="relative w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3"/>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
-                  </svg>
-                ) : (
-                  <>
-                    <span className="relative">{t.book_submit[lang]}</span>
-                    <svg className="relative w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
-                      fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                    </svg>
-                  </>
-                )}
-              </button>
-            </div>
 
           </form>
         </div>

@@ -53,8 +53,8 @@ export default function Header() {
             <Image
               src={LOGO}
               alt="Octoshell"
-              width={69}
-              height={69}
+              width={75}
+              height={75}
               className="object-contain drop-shadow-lg"
             />
           </Link>
