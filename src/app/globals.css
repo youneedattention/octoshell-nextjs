@@ -9,3 +9,45 @@ body {
   background: #fff;
   color: #111;
 }
+
+/* ── Google Maps autocomplete dropdown ── */
+.pac-container {
+  z-index: 9999 !important;
+  background: #1c1c1c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  margin-top: 4px;
+  font-family: var(--font-montserrat), Arial, sans-serif;
+}
+.pac-item {
+  padding: 10px 16px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+}
+.pac-item:hover,
+.pac-item-selected {
+  background: rgba(255, 255, 255, 0.06);
+}
+.pac-item-query {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+}
+.pac-matched {
+  color: #c9a84c;
+}
+.pac-icon {
+  display: none;
+}
+
+/* ── Stepper number input – hide browser spin arrows ── */
+.stepper-input::-webkit-outer-spin-button,
+.stepper-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.stepper-input {
+  -moz-appearance: textfield;
+}
