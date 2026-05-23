@@ -80,16 +80,52 @@ function PickerField({ id, label, type, value, onChange, required, step, inputLa
     try { (ref.current as HTMLInputElement & { showPicker?: () => void })?.showPicker?.(); }
     catch { /* fallback */ }
   };
+
+  /* Localised date string — computed only for date+locale combination */
+  const localDate = type === "date" && value && inputLang
+    ? (() => {
+        try {
+          const [y, m, d] = value.split("-").map(Number);
+          return new Intl.DateTimeFormat(inputLang, {
+            year: "numeric", month: "long", day: "numeric",
+          }).format(new Date(y, m - 1, d));
+        } catch { return value; }
+      })()
+    : null;
+
+  const isLocalisedDate = type === "date" && !!inputLang;
+
   return (
     <div className="flex flex-col gap-1.5">
       <label htmlFor={id} onClick={e => { e.preventDefault(); open(); }}
         className="text-[10px] tracking-[0.28em] text-white/45 uppercase cursor-pointer select-none">
         {label}{required && <span className="ml-1 text-[#c9a84c]">*</span>}
       </label>
-      <input ref={ref} id={id} type={type} required={required} step={step} lang={inputLang}
-        value={value} onChange={e => onChange(e.target.value)} onClick={open}
-        className="w-full bg-transparent border-b border-white/20 focus:border-[#c9a84c] text-white
-                   text-[13px] tracking-wide py-3 outline-none transition-colors [color-scheme:dark] cursor-pointer" />
+
+      {isLocalisedDate ? (
+        /* Date — styled display + transparent native input overlay so the OS picker still opens */
+        <div className="relative cursor-pointer group" onClick={open}>
+          <div className="w-full border-b border-white/20 group-hover:border-[#c9a84c]/50
+                          text-[13px] py-3 transition-colors select-none pointer-events-none">
+            {localDate
+              ? <span className="text-white tracking-wide">{localDate}</span>
+              : <span className="text-white/30">—</span>}
+          </div>
+          {/* Transparent overlay — the real native date picker; opacity:0 keeps it clickable */}
+          <input
+            ref={ref} id={id} type="date" required={required}
+            value={value} onChange={e => onChange(e.target.value)}
+            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+            style={{ fontSize: "16px" /* prevent iOS auto-zoom */ }}
+          />
+        </div>
+      ) : (
+        /* Time — native input directly */
+        <input ref={ref} id={id} type={type} required={required} step={step}
+          value={value} onChange={e => onChange(e.target.value)} onClick={open}
+          className="w-full bg-transparent border-b border-white/20 focus:border-[#c9a84c] text-white
+                     text-[13px] tracking-wide py-3 outline-none transition-colors [color-scheme:dark] cursor-pointer" />
+      )}
     </div>
   );
 }
