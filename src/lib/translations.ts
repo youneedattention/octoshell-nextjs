@@ -100,6 +100,36 @@ export const t: Record<string, T> = {
   book_required:    { en: "Required",                   ja: "必須",                      zh: "必填" },
   book_back:        { en: "← Back",                     ja: "← 戻る",                    zh: "← 返回" },
 
+  /* ── Book — vehicle ─────────────────────────────── */
+  book_sec_vehicle: { en: "Vehicle Preference",         ja: "車種指定",                   zh: "車型選擇" },
+  book_veh_any:     { en: "No Preference",              ja: "指定なし",                   zh: "不指定" },
+  book_veh_alphard: { en: "Alphard Class",              ja: "アルファードクラス",          zh: "Alphard 車型" },
+  book_veh_hiace:   { en: "HiAce Class",                ja: "ハイエースクラス",            zh: "HiAce 車型" },
+  book_veh_cap6:    { en: "Max 6 passengers",           ja: "最大ご乗車人数：6名",         zh: "最多乘坐 6 人" },
+  book_veh_cap9:    { en: "Max 9 passengers",           ja: "最大ご乗車人数：9名",         zh: "最多乘坐 9 人" },
+  book_veh_ex_a:    { en: "4 pax · 4 suitcases",        ja: "ご乗客4名・スーツケース4個",  zh: "4名乘客・4件行李" },
+  book_veh_ex_h:    { en: "6 pax · 6 suitcases",        ja: "ご乗客6名・スーツケース6個",  zh: "6名乘客・6件行李" },
+
+  /* ── Book — driver instructions ─────────────────── */
+  book_sec_driver:  { en: "Message for Driver",         ja: "ドライバーへの伝達事項",      zh: "司機備注" },
+  book_drv_note:    {
+    en: "This will be shared directly with your driver after booking is confirmed. It does not affect driver or vehicle assignment.",
+    ja: "この内容は配車確定後にドライバーへ直接共有されます。ドライバーや車両の選定には影響しません。",
+    zh: "此內容將在預訂確認後直接與司機分享，不影響司機或車輛的安排。",
+  },
+  book_drv_none:    { en: "None",                       ja: "なし",                       zh: "無" },
+  book_drv_hw:      { en: "Highway use OK",             ja: "高速利用OK",                 zh: "可走高速公路" },
+  book_drv_gentle:  { en: "Please drive gently",        ja: "ゆっくり丁寧な運転をお願いしたい", zh: "請溫和駕駛" },
+  book_drv_quiet:   { en: "Minimal conversation",       ja: "会話は最小限にしてほしい",    zh: "盡量減少交談" },
+  book_drv_other:   { en: "Other",                      ja: "その他",                     zh: "其他" },
+
+  /* ── Book — emergency contact ───────────────────── */
+  book_sec_sos:     { en: "Emergency Contact",          ja: "緊急連絡先",                 zh: "緊急聯絡人" },
+  book_phone:       { en: "Phone Number",               ja: "電話番号",                   zh: "電話號碼" },
+  book_phone_ph:    { en: "e.g. 090-1234-5678",         ja: "例）090-1234-5678",           zh: "例：090-1234-5678" },
+  book_whatsapp:    { en: "Also on WhatsApp",           ja: "WhatsApp 使用可能",           zh: "同時使用 WhatsApp" },
+  book_optional:    { en: "Optional",                   ja: "任意",                       zh: "選填" },
+
   /* ── Law page ───────────────────────────────── */
   law_badge:  { en: "LEGAL",          ja: "法的情報",          zh: "法定事項" },
   law_title:  { en: "Legal Notice",   ja: "特定商取引法に基づく表記", zh: "法定事項記載" },
