@@ -179,13 +179,19 @@ export default function Home() {
             <p className="text-white/30 text-[11px] text-center sm:text-left">
               {t.copyright[lang]}
             </p>
-            <div className="flex gap-5">
-              {(["footer_terms", "footer_privacy", "footer_cookies"] as const).map((key) => (
-                <Link key={key} href="#"
-                  className="text-white/30 text-[11px] hover:text-white/60 transition-colors">
-                  {t[key][lang]}
-                </Link>
-              ))}
+            <div className="flex flex-wrap justify-center sm:justify-end gap-5">
+              <Link href="#"
+                className="text-white/30 text-[11px] hover:text-white/60 transition-colors">
+                {t.footer_terms[lang]}
+              </Link>
+              <Link href="#"
+                className="text-white/30 text-[11px] hover:text-white/60 transition-colors">
+                {t.footer_privacy[lang]}
+              </Link>
+              <Link href="/law"
+                className="text-white/30 text-[11px] hover:text-white/60 transition-colors">
+                {t.footer_law[lang]}
+              </Link>
             </div>
           </div>
         </div>

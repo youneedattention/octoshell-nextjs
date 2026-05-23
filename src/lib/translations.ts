@@ -73,7 +73,12 @@ export const t: Record<string, T> = {
     ja: "© Copyright 2024 Octoshell.  全著作権所有",
     zh: "© Copyright 2024 Octoshell.  版權所有",
   },
-  footer_terms:   { en: "Terms",   ja: "利用規約",   zh: "使用條款" },
-  footer_privacy: { en: "Privacy", ja: "プライバシー", zh: "隱私政策" },
-  footer_cookies: { en: "Cookies", ja: "クッキー",   zh: "Cookie" },
+  footer_terms:   { en: "Terms",         ja: "利用規約",              zh: "使用條款" },
+  footer_privacy: { en: "Privacy",       ja: "プライバシーポリシー",   zh: "隱私政策" },
+  footer_law:     { en: "Legal Notice",  ja: "特定商取引法に基づく表記", zh: "法定事項記載" },
+
+  /* ── Law page ───────────────────────────────── */
+  law_badge:  { en: "LEGAL",          ja: "法的情報",          zh: "法定事項" },
+  law_title:  { en: "Legal Notice",   ja: "特定商取引法に基づく表記", zh: "法定事項記載" },
+  law_back:   { en: "← Back to Home", ja: "← ホームへ戻る",    zh: "← 返回首頁" },
 };
