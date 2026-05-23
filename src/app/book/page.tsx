@@ -70,9 +70,9 @@ function FieldWrap({ label, required, htmlFor, children }: {
   );
 }
 
-function PickerField({ id, label, type, value, onChange, required }: {
+function PickerField({ id, label, type, value, onChange, required, step }: {
   id: string; label: string; type: "date" | "time";
-  value: string; onChange: (v: string) => void; required?: boolean;
+  value: string; onChange: (v: string) => void; required?: boolean; step?: number;
 }) {
   const ref = useRef<HTMLInputElement>(null);
   const open = () => {
@@ -86,7 +86,7 @@ function PickerField({ id, label, type, value, onChange, required }: {
         className="text-[10px] tracking-[0.28em] text-white/45 uppercase cursor-pointer select-none">
         {label}{required && <span className="ml-1 text-[#c9a84c]">*</span>}
       </label>
-      <input ref={ref} id={id} type={type} required={required}
+      <input ref={ref} id={id} type={type} required={required} step={step}
         value={value} onChange={e => onChange(e.target.value)} onClick={open}
         className="w-full bg-transparent border-b border-white/20 focus:border-[#c9a84c] text-white
                    text-[13px] tracking-wide py-3 outline-none transition-colors [color-scheme:dark] cursor-pointer" />
@@ -157,7 +157,7 @@ function VehicleCard({ v, nameLabel, capLabel, exLabel, selected, onSelect, lang
       <div className="bg-[#0e0e0e] px-3 py-3 flex-1">
         <div className="flex items-start justify-between gap-1">
           <span className="text-white text-[12px] sm:text-[13px] font-semibold leading-tight">{nameLabel}</span>
-          <span className={`text-[11px] font-mono shrink-0 ${v.price === "+¥0" ? "text-white/30" : "text-[#c9a84c]"}`}>
+          <span className={`text-[15px] sm:text-[16px] font-mono font-bold shrink-0 ${v.price === "+¥0" ? "text-white/30" : "text-[#c9a84c]"}`}>
             {v.price}
           </span>
         </div>
@@ -188,6 +188,7 @@ export default function BookPage() {
   const [bags,        setBags]        = useState(1);
   const [vehicle,     setVehicle]     = useState<VehicleKey>("none");
   const [driverMsgs,  setDriverMsgs]  = useState<string[]>([]);
+  const [driverOtherText, setDriverOtherText] = useState("");
   const [name,        setName]        = useState("");
   const [email,       setEmail]       = useState("");
   const [dialCode,    setDialCode]    = useState("81");
@@ -196,8 +197,10 @@ export default function BookPage() {
   const [status,      setStatus]      = useState<Status>("idle");
   const [errMsg,      setErrMsg]      = useState("");
 
-  const toggleDriver = (val: string) =>
+  const toggleDriver = (val: string) => {
     setDriverMsgs(prev => prev.includes(val) ? prev.filter(v => v !== val) : [...prev, val]);
+    if (val === "その他") setDriverOtherText("");
+  };
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -208,7 +211,12 @@ export default function BookPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           from, to, date, time, people, bags,
-          vehicle, driverMsgs,
+          vehicle,
+          driverMsgs: driverMsgs.map(v =>
+            v === "その他" && driverOtherText.trim()
+              ? `その他：${driverOtherText.trim()}`
+              : v
+          ),
           name, email,
           phone: phone ? `+${dialCode} ${phone}` : "",
           hasWhatsapp: !!phone && hasWhatsapp,
@@ -246,7 +254,7 @@ export default function BookPage() {
           </p>
           <button onClick={() => {
             setStatus("idle"); setFrom(""); setTo(""); setDate(""); setTime("");
-            setName(""); setEmail(""); setPhone(""); setVehicle("none"); setDriverMsgs([]);
+            setName(""); setEmail(""); setPhone(""); setVehicle("none"); setDriverMsgs([]); setDriverOtherText("");
           }} className="mt-10 text-[11px] tracking-[0.25em] text-white/35 hover:text-[#c9a84c] transition-colors uppercase">
             {lang === "ja" ? "← 新しいリクエスト" : lang === "zh" ? "← 新增請求" : "← New Request"}
           </button>
@@ -312,7 +320,7 @@ export default function BookPage() {
                 <PickerField id="book-date" label={t.book_date[lang]} type="date"
                   value={date} onChange={setDate} required />
                 <PickerField id="book-time" label={t.book_time[lang]} type="time"
-                  value={time} onChange={setTime} required />
+                  value={time} onChange={setTime} required step={600} />
               </div>
             </div>
 
@@ -328,7 +336,7 @@ export default function BookPage() {
                 </div>
                 <div className="flex flex-col gap-3">
                   <span className="text-[10px] tracking-[0.28em] text-white/45 uppercase">
-                    {t.book_bags[lang]}
+                    {t.book_bags[lang]}<span className="ml-1 text-[#c9a84c]">*</span>
                   </span>
                   <Stepper value={bags} onChange={setBags} min={0} max={14} />
                 </div>
@@ -383,6 +391,20 @@ export default function BookPage() {
                   );
                 })}
               </div>
+
+              {/* Other — free-text input */}
+              {driverMsgs.includes("その他") && (
+                <div className="mt-3">
+                  <input
+                    type="text"
+                    placeholder={t.book_drv_other_ph[lang]}
+                    value={driverOtherText}
+                    onChange={e => setDriverOtherText(e.target.value)}
+                    className={inputCls}
+                    autoFocus
+                  />
+                </div>
+              )}
             </div>
 
             {/* ═══ 6. CONTACT ═══ */}

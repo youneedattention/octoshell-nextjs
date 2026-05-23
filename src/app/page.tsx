@@ -230,7 +230,7 @@ function PriceCard({
             {rows.map(([routeKey, price]) => (
               <tr key={routeKey} className="border-b border-gray-100 last:border-0">
                 <td className="py-2 pr-3 text-gray-600 text-[13px]">{t[routeKey][lang]}</td>
-                <td className="py-2 text-right font-semibold text-gray-900 whitespace-nowrap text-[13px]">{price}</td>
+                <td className="py-2 text-right font-bold text-gray-900 whitespace-nowrap text-[15px] sm:text-[16px] tracking-tight">{price}</td>
               </tr>
             ))}
           </tbody>

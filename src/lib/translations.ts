@@ -122,6 +122,7 @@ export const t: Record<string, T> = {
   book_drv_gentle:  { en: "Please drive gently",        ja: "ゆっくり丁寧な運転をお願いしたい", zh: "請溫和駕駛" },
   book_drv_quiet:   { en: "Minimal conversation",       ja: "会話は最小限にしてほしい",    zh: "盡量減少交談" },
   book_drv_other:   { en: "Other",                      ja: "その他",                     zh: "其他" },
+  book_drv_other_ph: { en: "Please describe…",           ja: "詳しくご記入ください…",       zh: "請自由填寫…" },
 
   /* ── Book — emergency contact ───────────────────── */
   book_sec_sos:     { en: "Emergency Contact",          ja: "緊急連絡先",                 zh: "緊急聯絡人" },

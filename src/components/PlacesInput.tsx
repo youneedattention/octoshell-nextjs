@@ -120,10 +120,11 @@ async function reverseGeocode(lat: number, lng: number): Promise<string> {
 
 /* ── i18n strings ───────────────────────────────────────────────────── */
 type Lang = "en" | "ja" | "zh";
-const LOC_LABEL:  Record<Lang, string> = { en: "Use current location", ja: "現在地を使用",   zh: "使用目前位置" };
-const LOC_BUSY:   Record<Lang, string> = { en: "Locating…",            ja: "取得中…",        zh: "定位中…"     };
-const LOC_DENIED: Record<Lang, string> = { en: "Location denied",      ja: "位置情報が拒否されました", zh: "位置存取被拒" };
-const SEARCHING:  Record<Lang, string> = { en: "Searching…",           ja: "検索中…",        zh: "搜尋中…"     };
+const LOC_LABEL:   Record<Lang, string> = { en: "Use current location",  ja: "現在地を使用",           zh: "使用目前位置"   };
+const LOC_BUSY:    Record<Lang, string> = { en: "Locating…",             ja: "取得中…",               zh: "定位中…"       };
+const LOC_DENIED:  Record<Lang, string> = { en: "Location denied",       ja: "位置情報へのアクセスが拒否されました", zh: "位置存取被拒"   };
+const LOC_UNAVAIL: Record<Lang, string> = { en: "Location unavailable",  ja: "現在地を取得できません",  zh: "無法取得目前位置" };
+const SEARCHING:   Record<Lang, string> = { en: "Searching…",            ja: "検索中…",               zh: "搜尋中…"       };
 
 /* ── Props ──────────────────────────────────────────────────────────── */
 interface Props {
@@ -142,7 +143,7 @@ export default function PlacesInput({ id, placeholder, value, onChange, required
   const [open, setOpen]         = useState(false);
   const [busy, setBusy]         = useState(false);
   const [locating, setLocating] = useState(false);
-  const [locState, setLocState] = useState<"idle" | "locating" | "denied">("idle");
+  const [locState, setLocState] = useState<"idle" | "locating" | "denied" | "unavailable">("idle");
   const [googleOn, setGoogleOn] = useState(false);
   const debTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -197,27 +198,35 @@ export default function PlacesInput({ id, placeholder, value, onChange, required
     setSugs([]); setOpen(false);
   }, [onChange]);
 
-  /* Get current location */
+  /* Get current location — tries high-accuracy first, retries with low-accuracy on timeout */
   const locate = useCallback(() => {
     if (!navigator?.geolocation) return;
     setLocState("locating");
     setLocating(true);
-    navigator.geolocation.getCurrentPosition(
-      async ({ coords }) => {
-        try {
-          const addr = await reverseGeocode(coords.latitude, coords.longitude);
-          onChange(addr);
-          if (inputRef.current) inputRef.current.value = addr;
-          setLocState("idle");
-        } finally { setLocating(false); }
-      },
-      () => {
-        setLocating(false);
-        setLocState("denied");
-        setTimeout(() => setLocState("idle"), 3500);
-      },
-      { enableHighAccuracy: true, timeout: 12000 }
-    );
+
+    const attempt = (highAccuracy: boolean) => {
+      navigator.geolocation.getCurrentPosition(
+        async ({ coords }) => {
+          try {
+            const addr = await reverseGeocode(coords.latitude, coords.longitude);
+            onChange(addr);
+            if (inputRef.current) inputRef.current.value = addr;
+            setLocState("idle");
+          } finally { setLocating(false); }
+        },
+        (err) => {
+          // Timeout on high-accuracy → silently retry with network-based (faster)
+          if (err.code === 3 && highAccuracy) { attempt(false); return; }
+          setLocating(false);
+          // code 1 = PERMISSION_DENIED, codes 2/3 = unavailable / timeout
+          setLocState(err.code === 1 ? "denied" : "unavailable");
+          setTimeout(() => setLocState("idle"), 4000);
+        },
+        { enableHighAccuracy: highAccuracy, timeout: highAccuracy ? 8000 : 15000, maximumAge: 60000 }
+      );
+    };
+
+    attempt(true);
   }, [onChange]);
 
   /* ── Render ── */
@@ -281,11 +290,11 @@ export default function PlacesInput({ id, placeholder, value, onChange, required
         type="button"
         onClick={locate}
         disabled={locating}
-        className="mt-2 flex items-center gap-1.5 text-[10px] tracking-[0.18em]
+        className={`mt-2 flex items-center gap-1.5 text-[10px] tracking-[0.18em]
                    transition-colors disabled:cursor-wait
-                   text-white/30 hover:text-[#c9a84c]
-                   data-[state=denied]:text-red-400"
-        data-state={locState}
+                   ${locState === "denied"      ? "text-red-400"
+                   : locState === "unavailable" ? "text-amber-400"
+                   : "text-white/30 hover:text-[#c9a84c]"}`}
       >
         {/* icon */}
         {locating ? (
@@ -305,8 +314,9 @@ export default function PlacesInput({ id, placeholder, value, onChange, required
           </svg>
         )}
         <span>
-          {locState === "denied"   ? LOC_DENIED[lang]
-           : locState === "locating" ? LOC_BUSY[lang]
+          {locState === "denied"      ? LOC_DENIED[lang]
+           : locState === "unavailable" ? LOC_UNAVAIL[lang]
+           : locState === "locating"  ? LOC_BUSY[lang]
            : LOC_LABEL[lang]}
         </span>
       </button>
