@@ -6,6 +6,16 @@ export const t: Record<string, T> = {
   /* ── Navigation ─────────────────────────────── */
   nav_home:     { en: "Home",      ja: "ホーム",      zh: "首頁" },
   nav_services: { en: "Services",  ja: "サービス",    zh: "服務" },
+
+  /* ── Services nav dropdown (8 items) ─────────────────────────── */
+  nav_svc_1: { en: "By the Hour",          ja: "時間制貸切ハイヤー",    zh: "時段包車服務" },
+  nav_svc_2: { en: "Airport Transfers",    ja: "空港定額送迎",          zh: "機場定額接送" },
+  nav_svc_3: { en: "One Way",              ja: "片道ポイント送迎",       zh: "單程穿梭" },
+  nav_svc_4: { en: "Events & MICE",        ja: "MICE & エグゼクティブ",  zh: "頂級盛會" },
+  nav_svc_5: { en: "Bespoke Sightseeing",  ja: "テーラーメイド観光",     zh: "深度定制觀光" },
+  nav_svc_6: { en: "Golf",                 ja: "ゴルフ送迎",            zh: "尊榮高爾夫" },
+  nav_svc_7: { en: "Ceremonial",           ja: "冠婚葬祭",              zh: "典禮迎送" },
+  nav_svc_8: { en: "Driver Dispatch",      ja: "プロ乗務員派遣",        zh: "司機派遣" },
   nav_about:       { en: "About",        ja: "会社情報",        zh: "關於" },
   nav_about_story: { en: "How It Works", ja: "Octoshellについて", zh: "品牌故事" },
   nav_about_faq:   { en: "FAQ",          ja: "よくある質問",      zh: "常見問題" },
