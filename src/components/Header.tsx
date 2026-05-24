@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLang } from "@/context/LangContext";
@@ -12,7 +12,7 @@ const LOGO =
 const LANGS: { code: Lang; label: string }[] = [
   { code: "en", label: "EN" },
   { code: "ja", label: "日" },
-  { code: "zh", label: "繁" },
+  { code: "zh", label: "中" },
 ];
 
 const SVC_ITEMS: { key: keyof typeof t; anchor: string; icon: React.ReactNode }[] = [
@@ -59,6 +59,14 @@ export default function Header() {
   const [servicesMobileOpen,setServicesMobileOpen]= useState(false);
   const dropTimer    = useRef<ReturnType<typeof setTimeout> | null>(null);
   const svcDropTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll(); // check immediately on mount
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const openDrop  = () => {
     if (dropTimer.current) clearTimeout(dropTimer.current);
@@ -83,10 +91,13 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-black/72 border-b border-white/[0.07]">
+    <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300
+      ${scrolled
+        ? "backdrop-blur-xl bg-black/75 border-b border-white/[0.07]"
+        : "bg-transparent border-b border-transparent"}`}>
 
       {/* ── Main row ── */}
-      <div className="flex items-center justify-between px-4 sm:px-8 lg:px-16 h-[70px] sm:h-20">
+      <div className="flex items-center justify-between px-6 sm:px-12 lg:px-20 h-[84px] sm:h-[96px]">
 
         {/* LEFT — lang circles */}
         <div className="flex items-center gap-1.5 shrink-0">
@@ -211,7 +222,8 @@ export default function Header() {
                   <Link href="/about#faq" onClick={() => setAboutDrop(false)}
                     className="flex items-center gap-3 px-5 py-3.5
                                text-[10px] tracking-[0.25em] uppercase text-white/50
-                               hover:text-[#c9a84c] hover:bg-white/[0.035] transition-all duration-150">
+                               hover:text-[#c9a84c] hover:bg-white/[0.035] transition-all duration-150
+                               border-b border-white/[0.05]">
                     {/* question mark icon */}
                     <svg className="w-3.5 h-3.5 shrink-0 text-[#c9a84c]/50" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
                       <circle cx="12" cy="12" r="9" />
@@ -219,6 +231,17 @@ export default function Header() {
                       <path strokeLinecap="round" d="M12 17h.01" />
                     </svg>
                     {t.nav_about_faq[lang]}
+                  </Link>
+
+                  <Link href="/about#contact" onClick={() => setAboutDrop(false)}
+                    className="flex items-center gap-3 px-5 py-3.5
+                               text-[10px] tracking-[0.25em] uppercase text-white/50
+                               hover:text-[#c9a84c] hover:bg-white/[0.035] transition-all duration-150">
+                    {/* mail icon */}
+                    <svg className="w-3.5 h-3.5 shrink-0 text-[#c9a84c]/50" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                    </svg>
+                    {t.nav_about_contact[lang]}
                   </Link>
                 </div>
               )}
@@ -312,6 +335,10 @@ export default function Header() {
                   <Link href="/about#faq" onClick={closeAll}
                     className="text-white/45 text-[11px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors">
                     {t.nav_about_faq[lang]}
+                  </Link>
+                  <Link href="/about#contact" onClick={closeAll}
+                    className="text-white/45 text-[11px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors">
+                    {t.nav_about_contact[lang]}
                   </Link>
                 </div>
               )}

@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import SiteFooter from "@/components/SiteFooter";
 import { useLang } from "@/context/LangContext";
 import type { Lang } from "@/lib/translations";
+import React from "react";
 
 /* ── Vehicle images ─────────────────────────────────────────────────── */
 const ALPHARD_IMG = "https://octoshell.jp/wp-content/uploads/2024/09/toyotaalphard.png";
@@ -16,10 +17,10 @@ const HIACE_IMG   = "https://octoshell.jp/wp-content/uploads/2024/09/toyatahiace
 ══════════════════════════════════════════════════════════════════════ */
 
 /* ── Hero ───────────────────────────────────────────────────────────── */
-const HERO: Record<Lang, { badge: string; title: string; sub: string; link_story: string; link_faq: string }> = {
-  ja: { badge: "会社情報", title: "Octoshellについて", sub: "日本プライベートチャウファーサービス", link_story: "Octoshellについて", link_faq: "よくある質問" },
-  en: { badge: "About Us", title: "The Octoshell Story", sub: "Japan Private Chauffeur Service",     link_story: "How It Works", link_faq: "FAQ" },
-  zh: { badge: "關於我們", title: "品牌故事",          sub: "日本專屬司機服務",                     link_story: "品牌故事",    link_faq: "常見問題" },
+const HERO: Record<Lang, { badge: string; title: string; sub: string; link_story: string; link_faq: string; link_contact: string }> = {
+  ja: { badge: "会社情報", title: "Octoshellについて", sub: "日本プライベートチャウファーサービス", link_story: "Octoshellについて", link_faq: "よくある質問", link_contact: "お問い合わせ" },
+  en: { badge: "About Us", title: "The Octoshell Story", sub: "Japan Private Chauffeur Service",     link_story: "How It Works", link_faq: "FAQ",           link_contact: "Contact Us" },
+  zh: { badge: "關於我們", title: "品牌故事",          sub: "日本專屬司機服務",                     link_story: "品牌故事",    link_faq: "常見問題",        link_contact: "聯絡我們" },
 };
 
 /* ── Section 1: Brand story ─────────────────────────────────────────── */
@@ -345,14 +346,16 @@ function FaqRow({ item, open, onToggle }: { item: FaqItem; open: boolean; onTogg
 ══════════════════════════════════════════════════════════════════════ */
 export default function AboutPage() {
   const { lang } = useLang();
-  const [openKey, setOpenKey] = useState<string | null>(null);
+  const [openKey,    setOpenKey]    = useState<string | null>(null);
+  const [showForm,   setShowForm]   = useState(false);
+  const [submitDone, setSubmitDone] = useState(false);
   const toggle = (key: string) => setOpenKey(prev => (prev === key ? null : key));
 
   return (
     <main className="min-h-screen bg-[#0c0c0c]">
 
       {/* ── Compact hero ───────────────────────────────────────────── */}
-      <div className="relative bg-[#0c0c0c] pt-[82px] sm:pt-24 pb-10 sm:pb-14 overflow-hidden">
+      <div className="relative bg-[#0c0c0c] pt-[88px] sm:pt-[100px] pb-10 sm:pb-14 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 opacity-[0.025]"
           style={{ backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)", backgroundSize: "60px 60px" }} />
         <div className="pointer-events-none absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.06]"
@@ -381,6 +384,11 @@ export default function AboutPage() {
               className="flex items-center gap-2.5 text-white/45 text-[12px] tracking-[0.22em] uppercase hover:text-[#c9a84c] transition-colors">
               <span className="w-4 h-px bg-current" />
               {HERO[lang].link_faq}
+            </Link>
+            <Link href="#contact"
+              className="flex items-center gap-2.5 text-white/45 text-[12px] tracking-[0.22em] uppercase hover:text-[#c9a84c] transition-colors">
+              <span className="w-4 h-px bg-current" />
+              {HERO[lang].link_contact}
             </Link>
           </div>
         </div>
@@ -570,26 +578,51 @@ export default function AboutPage() {
             ))}
           </div>
 
-          {/* CTA block */}
-          <div className="mt-16 sm:mt-22 border border-white/[0.07] p-9 sm:p-12 text-center">
+          {/* ── Contact Us section ── */}
+          <div id="contact" className="scroll-mt-20 mt-16 sm:mt-20 border border-white/[0.07] p-9 sm:p-12 text-center">
             <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/40 to-transparent mb-9" />
-            {/* was [11px] → [13px] */}
             <p className="text-white/40 text-[13px] tracking-[0.25em] uppercase mb-3">
               {lang === "ja" ? "もっと詳しく知りたい方は" : lang === "zh" ? "有其他疑問？" : "Still have questions?"}
             </p>
-            {/* was [14px]/[15px] → [17px]/[18px] */}
             <p className="text-white text-[17px] sm:text-[18px] tracking-[0.06em] mb-7 leading-relaxed">
               {lang === "ja"
-                ? "お気軽にご予約フォームからお問い合わせください。"
+                ? "お気軽にご連絡ください。担当者より折り返しご連絡いたします。"
                 : lang === "zh"
-                ? "歡迎透過預訂表單與我們聯繫。"
-                : "Reach out through our booking form and we'll be happy to help."}
+                ? "歡迎與我們聯繫，我們將於24小時內回覆您。"
+                : "We'd love to hear from you. Our team will respond within 24 hours."}
             </p>
-            {/* was [11px] → [13px] */}
-            <Link href="/book"
-              className="inline-flex items-center gap-3 bg-[#c9a84c] text-black text-[13px] font-bold tracking-[0.25em] uppercase px-9 py-4 hover:bg-white transition-all duration-200">
-              {lang === "ja" ? "ご予約・お問い合わせ" : lang === "zh" ? "預訂 / 聯絡我們" : "Book / Contact Us"}
-            </Link>
+
+            {!showForm && !submitDone && (
+              <button
+                onClick={() => setShowForm(true)}
+                className="inline-flex items-center gap-3 bg-[#c9a84c] text-black text-[13px] font-bold tracking-[0.25em] uppercase px-9 py-4 hover:bg-white transition-all duration-200"
+              >
+                {lang === "ja" ? "お問い合わせ" : lang === "zh" ? "聯絡我們" : "Contact Us"}
+              </button>
+            )}
+
+            {showForm && !submitDone && (
+              <ContactForm
+                lang={lang}
+                onSuccess={() => { setShowForm(false); setSubmitDone(true); }}
+                onCancel={() => setShowForm(false)}
+              />
+            )}
+
+            {submitDone && (
+              <div className="text-center">
+                <p className="text-[#c9a84c] text-[16px] sm:text-[18px] tracking-[0.08em] mb-3 font-light">
+                  {lang === "ja" ? "送信が完了しました" : lang === "zh" ? "訊息已成功送出" : "Message Sent"}
+                </p>
+                <p className="text-white/50 text-[13px] sm:text-[14px] tracking-[0.05em] leading-relaxed">
+                  {lang === "ja"
+                    ? "担当者より折り返しご連絡いたします。"
+                    : lang === "zh"
+                    ? "我們的團隊將盡快與您聯繫。"
+                    : "Our team will be in touch with you shortly."}
+                </p>
+              </div>
+            )}
           </div>
 
         </div>
@@ -597,5 +630,159 @@ export default function AboutPage() {
 
       <SiteFooter />
     </main>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   ContactForm component
+══════════════════════════════════════════════════════════════════════ */
+const SUBJECTS: Record<Lang, string[]> = {
+  ja: ["一般のお問い合わせ", "ご予約・見積もり", "法人・長期契約", "その他"],
+  en: ["General Inquiry", "Booking & Quote Request", "Corporate Contract", "Other"],
+  zh: ["一般詢問", "預訂及報價", "企業長期合作", "其他"],
+};
+
+const CLABEL: Record<string, Record<Lang, string>> = {
+  subject:  { ja: "お問い合わせ種別",      en: "Inquiry Type",           zh: "詢問類型" },
+  name:     { ja: "お名前 *",              en: "Your Name *",            zh: "您的姓名 *" },
+  email:    { ja: "メールアドレス *",       en: "Email Address *",        zh: "電子郵件 *" },
+  phone:    { ja: "電話番号（任意）",       en: "Phone Number (optional)", zh: "電話號碼（選填）" },
+  message:  { ja: "ご連絡内容・ご質問 *",   en: "Your Message *",         zh: "詢問內容 *" },
+  send:     { ja: "送信する",              en: "Send Message",           zh: "發送訊息" },
+  sending:  { ja: "送信中…",              en: "Sending…",               zh: "傳送中…" },
+  cancel:   { ja: "キャンセル",            en: "Cancel",                 zh: "取消" },
+};
+
+function ContactForm({
+  lang,
+  onSuccess,
+  onCancel,
+}: {
+  lang: Lang;
+  onSuccess: () => void;
+  onCancel: () => void;
+}) {
+  const [name,    setName]    = useState("");
+  const [email,   setEmail]   = useState("");
+  const [phone,   setPhone]   = useState("");
+  const [subject, setSubject] = useState(SUBJECTS[lang][0]);
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error,   setError]   = useState("");
+
+  // reset subject when lang switches
+  React.useEffect(() => { setSubject(SUBJECTS[lang][0]); }, [lang]);
+
+  const inputCls =
+    "w-full bg-[#0c0c0c] border border-white/15 text-white text-[13px] sm:text-[14px] px-4 py-3 " +
+    "focus:outline-none focus:border-[#c9a84c]/60 transition-colors placeholder:text-white/20";
+  const labelCls =
+    "text-white/40 text-[11px] tracking-[0.2em] uppercase mb-1.5 block text-left";
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, phone, subject, message, lang }),
+      });
+      const data = (await res.json()) as { ok: boolean; error?: string; dev?: boolean };
+      if (data.ok) {
+        onSuccess();
+      } else {
+        setError(data.error ?? "An error occurred. Please try again.");
+      }
+    } catch {
+      setError("Network error. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="mt-8 text-left max-w-lg mx-auto space-y-5">
+
+      {/* Subject */}
+      <div>
+        <label className={labelCls}>{CLABEL.subject[lang]}</label>
+        <div className="relative">
+          <select
+            value={subject}
+            onChange={e => setSubject(e.target.value)}
+            className={inputCls + " appearance-none cursor-pointer pr-9"}
+          >
+            {SUBJECTS[lang].map(s => <option key={s} value={s}>{s}</option>)}
+          </select>
+          <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white/30"
+            fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
+          </svg>
+        </div>
+      </div>
+
+      {/* Name + Email */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label className={labelCls}>{CLABEL.name[lang]}</label>
+          <input
+            type="text" required
+            value={name} onChange={e => setName(e.target.value)}
+            className={inputCls}
+          />
+        </div>
+        <div>
+          <label className={labelCls}>{CLABEL.email[lang]}</label>
+          <input
+            type="email" required
+            value={email} onChange={e => setEmail(e.target.value)}
+            className={inputCls}
+          />
+        </div>
+      </div>
+
+      {/* Phone */}
+      <div>
+        <label className={labelCls}>{CLABEL.phone[lang]}</label>
+        <input
+          type="tel"
+          value={phone} onChange={e => setPhone(e.target.value)}
+          className={inputCls}
+        />
+      </div>
+
+      {/* Message */}
+      <div>
+        <label className={labelCls}>{CLABEL.message[lang]}</label>
+        <textarea
+          required rows={5}
+          value={message} onChange={e => setMessage(e.target.value)}
+          className={inputCls + " resize-none"}
+        />
+      </div>
+
+      {error && (
+        <p className="text-red-400 text-[12px] tracking-[0.05em]">{error}</p>
+      )}
+
+      <div className="flex flex-col sm:flex-row gap-3">
+        <button
+          type="submit" disabled={loading}
+          className="flex-1 bg-[#c9a84c] text-black text-[12px] font-bold tracking-[0.3em] uppercase py-4
+                     hover:bg-white transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {loading ? CLABEL.sending[lang] : CLABEL.send[lang]}
+        </button>
+        <button
+          type="button" onClick={onCancel} disabled={loading}
+          className="sm:w-auto px-6 py-4 border border-white/20 text-white/40 text-[12px] tracking-[0.2em] uppercase
+                     hover:border-white/40 hover:text-white/70 transition-all duration-200"
+        >
+          {CLABEL.cancel[lang]}
+        </button>
+      </div>
+    </form>
   );
 }

@@ -18,7 +18,8 @@ export const t: Record<string, T> = {
   nav_svc_8: { en: "Driver Dispatch",      ja: "プロ乗務員派遣",        zh: "司機派遣" },
   nav_about:       { en: "About",        ja: "会社情報",        zh: "關於" },
   nav_about_story: { en: "How It Works", ja: "Octoshellについて", zh: "品牌故事" },
-  nav_about_faq:   { en: "FAQ",          ja: "よくある質問",      zh: "常見問題" },
+  nav_about_faq:     { en: "FAQ",          ja: "よくある質問",      zh: "常見問題" },
+  nav_about_contact: { en: "Contact Us",  ja: "お問い合わせ",      zh: "聯絡我們" },
   nav_book:     { en: "BOOK / Reserve", ja: "BOOK / 予約", zh: "BOOK / 預約" },
 
   /* ── Hero ───────────────────────────────────── */

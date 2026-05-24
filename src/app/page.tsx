@@ -119,48 +119,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══════════════════ TAILORED ══════════════════ */}
-      <section id="about" className="scroll-mt-[70px] sm:scroll-mt-20 py-16 sm:py-24 px-4 sm:px-6 bg-white">
-        <div className="max-w-xl mx-auto text-center">
-          <h2 className="text-xl sm:text-2xl font-bold tracking-[0.3em] text-gray-900">
-            {t.tailored_title[lang]}
-          </h2>
-          <p className="mt-3 text-[10px] sm:text-[11px] tracking-[0.25em] text-gray-400 uppercase">
-            {t.tailored_sub[lang]}
-          </p>
-          <div className="w-8 h-px bg-gray-300 mx-auto mt-6 mb-6" />
-          <Link href="#"
-            className="inline-block border border-gray-800 text-gray-900 text-[11px] tracking-[0.22em] px-8 py-3 rounded-full hover:bg-gray-900 hover:text-white transition-colors mb-8">
-            {t.our_company[lang]}
-          </Link>
-          <p className="text-[13px] text-gray-600 leading-[1.9] text-center">
-            <strong>{t.tailored_bold[lang]}</strong>
-            {"，" + t.tailored_body[lang].replace(/^[^,，]+[,，]\s*/, "")}
-          </p>
-        </div>
-      </section>
-
-      {/* ══════════════════ OUR SERVICES ══════════════════ */}
-      <section id="services" className="scroll-mt-[70px] sm:scroll-mt-20 py-14 sm:py-20 px-4 sm:px-6 bg-[#111111]">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-10 sm:mb-14">
-            <h2 className="text-xl sm:text-2xl font-bold tracking-[0.3em] text-white">
-              {t.services_title[lang]}
-            </h2>
-            <p className="mt-3 text-[10px] sm:text-[11px] tracking-[0.25em] text-white/50 uppercase">
-              {t.services_sub[lang]}
-            </p>
-            <div className="w-8 h-px bg-[#c9a84c] mx-auto mt-6" />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-            <ServiceCard tag={t.svc1_tag[lang]} title={t.svc1_title[lang]} body={t.svc1_body[lang]} img={SVC1} />
-            <ServiceCard tag={t.svc2_tag[lang]} title={t.svc2_title[lang]} body={t.svc2_body[lang]} img={SVC2} />
-            <ServiceCard tag={t.svc3_tag[lang]} title={t.svc3_title[lang]} body={t.svc3_body[lang]} img={SVC3} />
-          </div>
-        </div>
-      </section>
-
       {/* ══════════════════ FOOTER ══════════════════ */}
       <footer className="bg-[#0a0a0a] pt-10 sm:pt-12 pb-7 sm:pb-8 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
