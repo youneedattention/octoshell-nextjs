@@ -1,5 +1,5 @@
 "use client";
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import Header from "@/components/Header";
 import SiteFooter from "@/components/SiteFooter";
 import PlacesInput from "@/components/PlacesInput";
@@ -108,67 +108,252 @@ function FieldWrap({ icon, label, required, htmlFor, children }: {
   );
 }
 
-function PickerField({ id, icon, label, type, value, onChange, required, step, inputLang }: {
-  id: string; icon?: React.ReactNode; label: string; type: "date" | "time";
-  value: string; onChange: (v: string) => void; required?: boolean; step?: number; inputLang?: string;
+/* ── Calendar constants ─────────────────────────────────────────────── */
+const CAL_MONTHS: Record<string, string[]> = {
+  "en-US": ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+  "ja":    ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],
+  "zh-TW": ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],
+};
+const CAL_DOW: Record<string, string[]> = {
+  "en-US": ["Mo","Tu","We","Th","Fr","Sa","Su"],
+  "ja":    ["月","火","水","木","金","土","日"],
+  "zh-TW": ["一","二","三","四","五","六","日"],
+};
+const TIME_HOURS = Array.from({ length: 24 }, (_, i) => String(i).padStart(2, "0"));
+const TIME_MINS  = ["00", "10", "20", "30", "40", "50"];
+
+/* ── Custom date picker ─────────────────────────────────────────────── */
+function DatePickerField({ id, icon, label, required, value, onChange, inputLang }: {
+  id: string; icon?: React.ReactNode; label: string; required?: boolean;
+  value: string; onChange: (v: string) => void; inputLang: string;
 }) {
-  const ref = useRef<HTMLInputElement>(null);
-  const open = () => {
-    ref.current?.focus();
-    try { (ref.current as HTMLInputElement & { showPicker?: () => void })?.showPicker?.(); }
-    catch { /* fallback */ }
+  const today = new Date();
+  const selY = value ? parseInt(value.slice(0, 4), 10) : 0;
+  const selM = value ? parseInt(value.slice(5, 7), 10) - 1 : -1;
+  const selD = value ? parseInt(value.slice(8, 10), 10) : 0;
+
+  const [open,      setOpen]      = useState(false);
+  const [viewYear,  setViewYear]  = useState(selY || today.getFullYear());
+  const [viewMonth, setViewMonth] = useState(selM >= 0 ? selM : today.getMonth());
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (value) {
+      setViewYear(parseInt(value.slice(0, 4), 10));
+      setViewMonth(parseInt(value.slice(5, 7), 10) - 1);
+    }
+  }, [value]);
+
+  useEffect(() => {
+    if (!open) return;
+    const h = (e: MouseEvent) => {
+      if (panelRef.current && !panelRef.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", h);
+    return () => document.removeEventListener("mousedown", h);
+  }, [open]);
+
+  /* build cells */
+  type Cell = { day: number; dateStr: string | null; thisMonth: boolean };
+  const daysInMonth    = new Date(viewYear, viewMonth + 1, 0).getDate();
+  const firstDow       = new Date(viewYear, viewMonth, 1).getDay();
+  const startOffset    = (firstDow + 6) % 7;
+  const daysInPrevMonth = new Date(viewYear, viewMonth, 0).getDate();
+  const cells: Cell[]  = [];
+
+  for (let i = startOffset - 1; i >= 0; i--)
+    cells.push({ day: daysInPrevMonth - i, dateStr: null, thisMonth: false });
+  for (let d = 1; d <= daysInMonth; d++) {
+    const mo = viewMonth + 1;
+    cells.push({
+      day: d,
+      dateStr: `${viewYear}-${String(mo).padStart(2,"0")}-${String(d).padStart(2,"0")}`,
+      thisMonth: true,
+    });
+  }
+  let nd = 1;
+  while (cells.length < 35 || cells.length % 7 !== 0) cells.push({ day: nd++, dateStr: null, thisMonth: false });
+
+  const displayDate = value ? (() => {
+    try {
+      const [y, m, d] = value.split("-").map(Number);
+      return new Intl.DateTimeFormat(inputLang, { year:"numeric", month:"long", day:"numeric" })
+        .format(new Date(y, m - 1, d));
+    } catch { return value; }
+  })() : null;
+
+  const yearRange  = Array.from({ length: 5 }, (_, i) => today.getFullYear() + i);
+  const monthNames = CAL_MONTHS[inputLang] ?? CAL_MONTHS["en-US"];
+  const dowHdrs    = CAL_DOW[inputLang]    ?? CAL_DOW["en-US"];
+
+  const shiftMonth = (delta: number) => {
+    const d = new Date(viewYear, viewMonth + delta, 1);
+    setViewYear(d.getFullYear()); setViewMonth(d.getMonth());
   };
 
-  const localDate = type === "date" && value && inputLang
-    ? (() => {
-        try {
-          const [y, m, d] = value.split("-").map(Number);
-          return new Intl.DateTimeFormat(inputLang, {
-            year: "numeric", month: "long", day: "numeric",
-          }).format(new Date(y, m - 1, d));
-        } catch { return value; }
-      })()
-    : null;
-
-  const isLocalisedDate = type === "date" && !!inputLang;
-
   return (
-    <div className="flex flex-col gap-1.5">
-      <label htmlFor={id} onClick={e => { e.preventDefault(); open(); }} className="cursor-pointer select-none">
+    <div ref={panelRef} className="relative flex flex-col gap-1.5">
+      <label htmlFor={id} onClick={e => { e.preventDefault(); setOpen(o => !o); }} className="cursor-pointer select-none">
         <FieldLabel icon={icon} label={label} required={required} />
       </label>
 
-      {isLocalisedDate ? (
-        <div className="relative cursor-pointer group" onClick={open}>
-          <div className="w-full border-b border-white/20 group-hover:border-[#c9a84c]/50
-                          text-[13px] py-3 transition-colors select-none pointer-events-none">
-            {localDate
-              ? <span className="text-white tracking-wide">{localDate}</span>
-              : <span className="text-white/30">—</span>}
+      <button type="button" id={id} onClick={() => setOpen(o => !o)}
+        className="w-full border-b border-white/20 hover:border-[#c9a84c]/50 text-[13px] py-3 text-left transition-colors">
+        {displayDate
+          ? <span className="text-white tracking-wide">{displayDate}</span>
+          : <span className="text-white/30">—</span>}
+      </button>
+
+      {open && (
+        <div className="absolute top-full left-0 z-[60] mt-1 bg-[#141414] border border-white/[0.12]
+                        shadow-[0_8px_32px_rgba(0,0,0,0.75)] w-[272px] overflow-hidden">
+          <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/50 to-transparent" />
+          <div className="p-3">
+
+            {/* Month / Year row */}
+            <div className="flex items-center gap-1 mb-3">
+              <button type="button" onClick={() => shiftMonth(-1)}
+                className="w-7 h-7 flex items-center justify-center text-white/40 hover:text-[#c9a84c] text-lg transition-colors shrink-0">‹</button>
+              <div className="flex-1 flex items-center justify-center gap-1.5">
+                <select value={viewMonth} onChange={e => setViewMonth(Number(e.target.value))}
+                  className="bg-[#1c1c1c] border border-white/[0.10] text-white text-[12px] py-1 px-1.5
+                             outline-none cursor-pointer hover:border-[#c9a84c]/50 transition-colors">
+                  {monthNames.map((mn, i) => <option key={i} value={i} className="bg-[#1c1c1c]">{mn}</option>)}
+                </select>
+                <select value={viewYear} onChange={e => setViewYear(Number(e.target.value))}
+                  className="bg-[#1c1c1c] border border-white/[0.10] text-white text-[12px] py-1 px-1.5
+                             outline-none cursor-pointer hover:border-[#c9a84c]/50 transition-colors">
+                  {yearRange.map(y => <option key={y} value={y} className="bg-[#1c1c1c]">{y}</option>)}
+                </select>
+              </div>
+              <button type="button" onClick={() => shiftMonth(1)}
+                className="w-7 h-7 flex items-center justify-center text-white/40 hover:text-[#c9a84c] text-lg transition-colors shrink-0">›</button>
+            </div>
+
+            {/* Day-of-week headers */}
+            <div className="grid grid-cols-7 mb-0.5">
+              {dowHdrs.map((d, i) => (
+                <div key={i} className={`text-center text-[10px] py-0.5 ${i >= 5 ? "text-[#c9a84c]/50" : "text-white/25"}`}>{d}</div>
+              ))}
+            </div>
+
+            {/* Day cells */}
+            <div className="grid grid-cols-7 gap-y-0.5">
+              {cells.map((cell, i) => {
+                const isSel = cell.thisMonth && selY === viewYear && selM === viewMonth && selD === cell.day;
+                const isToday = cell.thisMonth && today.getFullYear() === viewYear && today.getMonth() === viewMonth && today.getDate() === cell.day;
+                const isWknd = i % 7 >= 5;
+                return (
+                  <button key={i} type="button"
+                    disabled={!cell.thisMonth}
+                    onClick={() => { if (cell.dateStr) { onChange(cell.dateStr); setOpen(false); } }}
+                    className={[
+                      "w-full aspect-square flex items-center justify-center text-[12px] transition-all duration-100",
+                      !cell.thisMonth   ? "text-white/[0.12] pointer-events-none" : "",
+                      cell.thisMonth && !isSel ? `cursor-pointer ${isWknd ? "text-[#c9a84c]/70" : "text-white/70"} hover:bg-[#c9a84c]/20 hover:text-white` : "",
+                      isSel             ? "bg-[#c9a84c] text-black font-bold" : "",
+                      isToday && !isSel ? "ring-1 ring-inset ring-[#c9a84c]/50" : "",
+                    ].filter(Boolean).join(" ")}>
+                    {cell.day}
+                  </button>
+                );
+              })}
+            </div>
           </div>
-          <input
-            ref={ref} id={id} type="date" required={required}
-            value={value}
-            onChange={e => {
-              onChange(e.target.value);
-              /* Auto-dismiss picker once full date is entered (YYYY-MM-DD = 10 chars) */
-              if (e.target.value.length === 10) setTimeout(() => ref.current?.blur(), 80);
-            }}
-            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-            style={{ fontSize: "16px" }}
-          />
         </div>
-      ) : (
-        <input ref={ref} id={id} type={type} required={required} step={step}
-          value={value}
-          onChange={e => {
-            onChange(e.target.value);
-            /* Auto-dismiss once HH:MM is complete (5 chars) */
-            if (type === "time" && e.target.value.length === 5) setTimeout(() => ref.current?.blur(), 80);
-          }}
-          onClick={open}
-          className="w-full bg-transparent border-b border-white/20 focus:border-[#c9a84c] text-white
-                     text-[13px] tracking-wide py-3 outline-none transition-colors [color-scheme:dark] cursor-pointer" />
+      )}
+    </div>
+  );
+}
+
+/* ── Custom time picker ─────────────────────────────────────────────── */
+function TimePickerField({ id, icon, label, required, value, onChange }: {
+  id: string; icon?: React.ReactNode; label: string; required?: boolean;
+  value: string; onChange: (v: string) => void;
+}) {
+  const [open,     setOpen]     = useState(false);
+  const [pendingH, setPendingH] = useState("");
+  const panelRef   = useRef<HTMLDivElement>(null);
+  const hourColRef = useRef<HTMLDivElement>(null);
+
+  const selH = value ? value.slice(0, 2) : "";
+  const selM = value ? value.slice(3, 5) : "";
+
+  /* sync pendingH when panel opens */
+  useEffect(() => { if (open) setPendingH(selH); }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  /* scroll hour list to selected hour */
+  useEffect(() => {
+    if (open && hourColRef.current) {
+      const h = parseInt(pendingH || selH || "0", 10);
+      hourColRef.current.scrollTop = h * 36;
+    }
+  }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  /* click outside */
+  useEffect(() => {
+    if (!open) return;
+    const h = (e: MouseEvent) => {
+      if (panelRef.current && !panelRef.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", h);
+    return () => document.removeEventListener("mousedown", h);
+  }, [open]);
+
+  const activeH = pendingH || selH;
+
+  return (
+    <div ref={panelRef} className="relative flex flex-col gap-1.5">
+      <label htmlFor={id} onClick={e => { e.preventDefault(); setOpen(o => !o); }} className="cursor-pointer select-none">
+        <FieldLabel icon={icon} label={label} required={required} />
+      </label>
+
+      <button type="button" id={id} onClick={() => setOpen(o => !o)}
+        className="w-full border-b border-white/20 hover:border-[#c9a84c]/50 text-[13px] py-3 text-left transition-colors">
+        {value
+          ? <span className="text-white tracking-wider">{value}</span>
+          : <span className="text-white/30">—</span>}
+      </button>
+
+      {open && (
+        <div className="absolute top-full left-0 z-[60] mt-1 bg-[#141414] border border-white/[0.12]
+                        shadow-[0_8px_32px_rgba(0,0,0,0.75)] overflow-hidden">
+          <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/50 to-transparent" />
+          <div className="flex">
+
+            {/* Hour column — scrollable */}
+            <div ref={hourColRef}
+              className="w-14 h-[216px] overflow-y-auto overscroll-contain"
+              style={{ scrollbarWidth: "none" }}>
+              {TIME_HOURS.map(h => (
+                <button key={h} type="button"
+                  onClick={() => setPendingH(h)}
+                  className={[
+                    "w-full h-9 flex items-center justify-center text-[13px] transition-colors",
+                    activeH === h ? "bg-[#c9a84c] text-black font-bold" : "text-white/60 hover:bg-white/[0.06] hover:text-white",
+                  ].join(" ")}>
+                  {h}
+                </button>
+              ))}
+            </div>
+
+            <div className="w-px bg-white/[0.08]" />
+
+            {/* Minute column — fixed 6 items */}
+            <div className="w-14">
+              {TIME_MINS.map(m => (
+                <button key={m} type="button"
+                  onClick={() => { onChange(`${activeH || "00"}:${m}`); setOpen(false); }}
+                  className={[
+                    "w-full h-9 flex items-center justify-center text-[13px] transition-colors",
+                    selM === m && selH === activeH ? "bg-[#c9a84c] text-black font-bold" : "text-white/60 hover:bg-white/[0.06] hover:text-white",
+                  ].join(" ")}>
+                  {m}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
@@ -287,6 +472,17 @@ export default function BookPage() {
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
+    /* Custom validation for date/time pickers */
+    if (!date) {
+      setStatus("error");
+      setErrMsg(lang === "ja" ? "出発日を選択してください" : lang === "zh" ? "請選擇出發日期" : "Please select a pickup date");
+      return;
+    }
+    if (!time) {
+      setStatus("error");
+      setErrMsg(lang === "ja" ? "出発時刻を選択してください" : lang === "zh" ? "請選擇出發時間" : "Please select a pickup time");
+      return;
+    }
     setStatus("loading"); setErrMsg("");
     try {
       const res = await fetch("/api/book", {
@@ -365,7 +561,7 @@ export default function BookPage() {
     <main className="min-h-screen bg-[#0c0c0c]">
 
       {/* ── Compact hero ── */}
-      <div className="relative bg-[#0c0c0c] pt-[82px] sm:pt-24 pb-5 sm:pb-7 overflow-hidden">
+      <div className="relative bg-[#0c0c0c] pt-[88px] sm:pt-[100px] pb-5 sm:pb-7 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 opacity-[0.025]"
           style={{ backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)", backgroundSize: "60px 60px" }} />
         <Header />
@@ -433,10 +629,10 @@ export default function BookPage() {
             <div>
               <SectionLabel label={t.book_sec_sched[lang]} />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-7">
-                <PickerField id="book-date" icon={<IconCalendar />} label={t.book_date[lang]} type="date"
+                <DatePickerField id="book-date" icon={<IconCalendar />} label={t.book_date[lang]}
                   value={date} onChange={setDate} required inputLang={inputLang} />
-                <PickerField id="book-time" icon={<IconClock />} label={t.book_time[lang]} type="time"
-                  value={time} onChange={setTime} required step={600} />
+                <TimePickerField id="book-time" icon={<IconClock />} label={t.book_time[lang]}
+                  value={time} onChange={setTime} required />
 
                 {/* Duration — Hourly only */}
                 {mode === "hour" && (
@@ -493,10 +689,10 @@ export default function BookPage() {
                     </button>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-7">
-                    <PickerField id="book-return-date" icon={<IconCalendar />} label={t.book_return_date[lang]} type="date"
+                    <DatePickerField id="book-return-date" icon={<IconCalendar />} label={t.book_return_date[lang]}
                       value={returnDate} onChange={setReturnDate} inputLang={inputLang} />
-                    <PickerField id="book-return-time" icon={<IconClock />} label={t.book_return_time[lang]} type="time"
-                      value={returnTime} onChange={setReturnTime} step={600} />
+                    <TimePickerField id="book-return-time" icon={<IconClock />} label={t.book_return_time[lang]}
+                      value={returnTime} onChange={setReturnTime} />
                   </div>
                 </div>
               )}

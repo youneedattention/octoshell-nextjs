@@ -397,7 +397,7 @@ export default function AboutPage() {
       {/* ══════════════════════════════════════════════════════════════
           STORY SECTION
       ══════════════════════════════════════════════════════════════ */}
-      <section id="story" className="scroll-mt-20 bg-[#111111] py-16 sm:py-24 px-4 sm:px-6">
+      <section id="story" className="scroll-mt-24 bg-[#111111] py-16 sm:py-24 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
 
           <SectionLabel label={lang === "ja" ? "ブランドストーリー" : lang === "zh" ? "品牌故事" : "Our Story"} />
@@ -541,7 +541,7 @@ export default function AboutPage() {
       {/* ══════════════════════════════════════════════════════════════
           FAQ SECTION
       ══════════════════════════════════════════════════════════════ */}
-      <section id="faq" className="scroll-mt-20 bg-[#0c0c0c] py-16 sm:py-24 px-4 sm:px-6">
+      <section id="faq" className="scroll-mt-24 bg-[#0c0c0c] py-16 sm:py-24 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
 
           <SectionLabel label={lang === "ja" ? "よくある質問" : lang === "zh" ? "常見問題" : "FAQ"} />
@@ -579,7 +579,7 @@ export default function AboutPage() {
           </div>
 
           {/* ── Contact Us section ── */}
-          <div id="contact" className="scroll-mt-20 mt-16 sm:mt-20 border border-white/[0.07] p-9 sm:p-12 text-center">
+          <div id="contact" className="scroll-mt-24 mt-16 sm:mt-20 border border-white/[0.07] p-9 sm:p-12 text-center">
             <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/40 to-transparent mb-9" />
             <p className="text-white/40 text-[13px] tracking-[0.25em] uppercase mb-3">
               {lang === "ja" ? "もっと詳しく知りたい方は" : lang === "zh" ? "有其他疑問？" : "Still have questions?"}

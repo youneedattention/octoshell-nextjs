@@ -221,7 +221,7 @@ export default function ServicesPage() {
       />
 
       {/* ── Compact hero ───────────────────────────────────────── */}
-      <div className="relative bg-[#0c0c0c] pt-[82px] sm:pt-24 pb-10 sm:pb-14 overflow-hidden">
+      <div className="relative bg-[#0c0c0c] pt-[88px] sm:pt-[100px] pb-10 sm:pb-14 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 opacity-[0.025]"
           style={{ backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)", backgroundSize: "60px 60px" }} />
         <div className="pointer-events-none absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.05]"
@@ -261,7 +261,7 @@ export default function ServicesPage() {
           <section
             key={svc.id}
             id={svc.id}
-            className={`scroll-mt-20 ${bg} py-16 sm:py-22 px-4 sm:px-6`}
+            className={`scroll-mt-24 ${bg} py-16 sm:py-22 px-4 sm:px-6`}
           >
             {/* top gold rule */}
             <div className="max-w-5xl mx-auto">
