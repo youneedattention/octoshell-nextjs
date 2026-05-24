@@ -116,6 +116,18 @@ const FAQ: Record<Lang, FaqGroup[]> = {
           q: "荷物のみを先行して運んでもらうことはできますか。",
           a: "はい、可能です。弊社では高ルゴルフツアーやトレッキング（登山）ツアーを数多く承っております。お客様をまずゴルフ場や登山口にお送りした後、お荷物（ゴルフバッグや大型バックパック等）のみをそのまま車両でお預かりし、先回りでご宿泊先のホテルへ運搬・搬入することが可能です。ただし、完全な無人の貨物輸送は法律上お受けできませんので、原則としてツアーご契約者様のお荷物に限らせていただきます。",
         },
+        {
+          q: "乗務員はスーツ・ネクタイ姿で対応してもらえますか？",
+          a: "はい、弊社の乗務員は常にスーツとネクタイを着用し、最高水準のフォーマルな身だしなみでハイヤーならではの洗練されたお迎えをいたします。",
+        },
+        {
+          q: "乗務員はお客様のプライバシーと機密を守ってくれますか？",
+          a: "はい、お客様のプライバシーと機密保持は最優先事項です。乗務員は厳格な守秘義務を遵守しており、車内でのご会話や情報が外部に漏れることは一切ございません。安心してご利用ください。",
+        },
+        {
+          q: "車内でスマートフォンの充電はできますか？",
+          a: "はい、可能です。車両にはUSBポートが装備されており、iPhoneおよびAndroid端末に対応した充電ケーブルを無料でご用意しております。",
+        },
       ],
     },
     {
@@ -130,8 +142,8 @@ const FAQ: Record<Lang, FaqGroup[]> = {
           a: "いいえ、すべて無料（0円）でご提供しております。チャイルドシート（ジュニアシート）の手配、および空港到着ロビーでのネームボード掲示（ミート＆グリート）をご希望の際は、車両手配の都合上、お早めにオペレーターまでお申し出ください。",
         },
         {
-          q: "支払手段と車内決済について。",
-          a: "原則として、事前にクレジットカードをご登録いただき、運行終了後に Stripe システムを通じて決済させていただきます。車内での現金・カードの手渡し決済には対応しておりません。カードをお持ちでない法人様等に関しましては、事前銀行振込による対応も可能ですのでご相談ください。",
+          q: "支払手段は何ですか？車内でドライバーに直接支払うことはできますか？",
+          a: "車内での現金決済に対応しているほか、運行前にクレジットカードをご登録いただければ、運行終了後に弊社のオンラインStripeシステムを通じて自動的に決済を完了させることも可能です。クレジットカードをお持ちでない法人のお客様は、事前の銀行振込をお申し出ください。",
         },
         {
           q: "領収書は発行されますか。",
@@ -169,6 +181,18 @@ const FAQ: Record<Lang, FaqGroup[]> = {
           q: "Can you transport our luggage separately during our tour?",
           a: "Yes, absolutely. We frequently manage customized Golf Tours and Hiking/Trekking groups. We can drop you off at the golf course or trailhead and transport your luggage (golf bags, heavy backpacks, etc.) directly to your designated hotel ahead of your arrival. Please note that for legal compliance, we only transport luggage belonging to contracted passengers of our tours; standalone commercial cargo shipping is not permitted.",
         },
+        {
+          q: "Will my chauffeur be smart and wear a suit and tie?",
+          a: "Yes, our chauffeurs are always smartly dressed in a formal suit and tie, maintaining the highest standards of professional appearance.",
+        },
+        {
+          q: "Do the chauffeurs maintain the privacy and confidentiality of their passengers?",
+          a: "Yes. Your privacy and confidentiality are our top priorities. Our chauffeurs adhere to the strictest standards; your private conversations and information will be kept strictly secure at all times.",
+        },
+        {
+          q: "Can I charge my phone in the vehicle?",
+          a: "Yes. Most of our vehicles are equipped with USB ports and we offer complimentary charging cables compatible with both iPhone and Android devices.",
+        },
       ],
     },
     {
@@ -183,8 +207,8 @@ const FAQ: Record<Lang, FaqGroup[]> = {
           a: "No, both services are 100% Complimentary (Free of Charge). If you require a child/junior safety seat or a personalized name-board greeting at the arrival lobby, please notify our team in advance so we can guarantee availability.",
         },
         {
-          q: "What are the payment methods? Can I pay inside the car?",
-          a: "All payments are processed securely online via our Stripe gateway using your pre-registered credit card after the service is completed. In-car payments are not accepted. For corporate clients who cannot use credit cards, upfront bank transfers (Furikomi) can be arranged.",
+          q: "What are the payment methods? Can I pay the chauffeur directly inside the vehicle?",
+          a: "We accept cash payments inside the vehicle, or you can pre-register your credit card before the trip for automatic billing via our online Stripe system upon completion. Corporate clients without credit cards may also apply for upfront bank transfers.",
         },
         {
           q: "Will I receive a receipt?",
@@ -222,6 +246,18 @@ const FAQ: Record<Lang, FaqGroup[]> = {
           q: "团队行程中，车辆可以帮我们单独将行李运送到酒店吗？",
           a: "可以，这正是我们高尔夫球团和徒步登山团的核心特色服务。我们可以先将您送至高尔夫球场或登山起点，随后由专属车辆将您的行李（如高尔夫球包、重型登山包等）先行送往您今晚入住的酒店并办理寄存，让您全程轻松出行。需要注意的是，基于日本法规，我们仅提供本团签约客人的随行行李分流运送，不接受无乘客随行的纯商业货运。",
         },
+        {
+          q: "司机会穿着正式、系领带吗？",
+          a: "是的，我们的司机始终穿着正式的西装并佩戴领带，保持最高标准的专业仪表。",
+        },
+        {
+          q: "司机会保护乘客的隐私和保密性吗？",
+          a: "是的。保护您的隐私和机密是我们的重中之重。我们的司机遵循最严格的保密标准，确保您的私密对话和行程信息在任何时候都绝对安全。",
+        },
+        {
+          q: "可以在车内给手机充电吗？",
+          a: "可以。我们的车辆均配有USB接口，并免费提供兼容 iPhone 和 Android 设备的车载充电线。",
+        },
       ],
     },
     {
@@ -237,7 +273,7 @@ const FAQ: Record<Lang, FaqGroup[]> = {
         },
         {
           q: "支付方式是什么？可以在车内直接付款给司机吗？",
-          a: "抱歉，我们不支持车内现金或刷卡结账。原则上所有行程均需在行程前绑定信用卡，行程结束后通过我们的 Stripe 线上系统自动完成扣款。如企业法人客户确无信用卡，可申请提前进行银行转账。",
+          a: "我们支持车内现金结账，也可以在行程前绑定信用卡，行程结束后通过我们的 Stripe 线上系统自动完成扣款。如企业法人客户确无信用卡，可申请提前进行银行转账。",
         },
         {
           q: "行程结束后是否有发票/收据？",

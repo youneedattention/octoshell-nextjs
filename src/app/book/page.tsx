@@ -9,7 +9,7 @@ import { useLang } from "@/context/LangContext";
 import { t } from "@/lib/translations";
 
 /* ── Duration options ────────────────────────────────────────────────── */
-const DURATIONS = ["2", "3", "4", "5", "6", "7", "8", "10", "12"];
+const DURATIONS = ["4", "5", "6", "7", "8", "10", "12"];
 
 /* ── Driver-instruction multi-select options ─────────────────────────  */
 const DRIVER_OPTS = [
@@ -456,46 +456,48 @@ export default function BookPage() {
                     </select>
                   </div>
                 )}
-              </div>
 
-              {/* ADD RETURN — Transfer only */}
-              {mode === "transfer" && (
-                <div className="mt-6">
-                  {!addReturn ? (
+                {/* ADD RETURN (collapsed) — same grid cell, same height as Duration */}
+                {mode === "transfer" && !addReturn && (
+                  <div className="flex flex-col gap-1.5">
+                    {/* invisible spacer matching FieldLabel height so button aligns with Duration select */}
+                    <div aria-hidden className="h-[22px]" />
                     <button type="button" onClick={() => setAddReturn(true)}
-                      className="flex items-center gap-2.5 text-[11px] sm:text-[12px] tracking-[0.22em]
+                      className="flex items-center gap-2.5 w-full text-[11px] sm:text-[12px] tracking-[0.22em]
                                  text-[#c9a84c]/70 hover:text-[#c9a84c] transition-all duration-200 uppercase
-                                 border border-dashed border-[#c9a84c]/25 hover:border-[#c9a84c]/60 px-5 py-3">
+                                 border-b border-dashed border-[#c9a84c]/30 hover:border-[#c9a84c]/70 py-3">
                       <span className="text-[18px] leading-none font-extralight">+</span>
                       {t.book_add_return[lang]}
                     </button>
-                  ) : (
-                    <div className="border border-[#c9a84c]/25 p-4 sm:p-5">
-                      {/* Header row with label + visible cancel button */}
-                      <div className="flex items-center justify-between mb-5">
-                        <p className="text-[#c9a84c] text-[10px] sm:text-[11px] tracking-[0.3em] uppercase font-semibold">
-                          {t.book_add_return[lang]}
-                        </p>
-                        <button
-                          type="button"
-                          onClick={() => { setAddReturn(false); setReturnDate(""); setReturnTime(""); }}
-                          className="flex items-center gap-1.5 text-[10px] sm:text-[11px] tracking-[0.15em]
-                                     text-white/50 hover:text-red-400 border border-white/15 hover:border-red-400/60
-                                     px-3 py-1.5 transition-all duration-200 uppercase">
-                          <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-                          </svg>
-                          {lang === "ja" ? "削除" : lang === "zh" ? "刪除" : "Remove"}
-                        </button>
-                      </div>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-7">
-                        <PickerField id="book-return-date" icon={<IconCalendar />} label={t.book_return_date[lang]} type="date"
-                          value={returnDate} onChange={setReturnDate} inputLang={inputLang} />
-                        <PickerField id="book-return-time" icon={<IconClock />} label={t.book_return_time[lang]} type="time"
-                          value={returnTime} onChange={setReturnTime} step={600} />
-                      </div>
-                    </div>
-                  )}
+                  </div>
+                )}
+              </div>
+
+              {/* ADD RETURN expanded panel — full width below grid */}
+              {mode === "transfer" && addReturn && (
+                <div className="mt-7 border border-[#c9a84c]/25 p-4 sm:p-5">
+                  <div className="flex items-center justify-between mb-5">
+                    <p className="text-[#c9a84c] text-[10px] sm:text-[11px] tracking-[0.3em] uppercase font-semibold">
+                      {t.book_add_return[lang]}
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => { setAddReturn(false); setReturnDate(""); setReturnTime(""); }}
+                      className="flex items-center gap-1.5 text-[10px] sm:text-[11px] tracking-[0.15em]
+                                 text-white/50 hover:text-red-400 border border-white/15 hover:border-red-400/60
+                                 px-3 py-1.5 transition-all duration-200 uppercase">
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                      </svg>
+                      {lang === "ja" ? "削除" : lang === "zh" ? "刪除" : "Remove"}
+                    </button>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-7">
+                    <PickerField id="book-return-date" icon={<IconCalendar />} label={t.book_return_date[lang]} type="date"
+                      value={returnDate} onChange={setReturnDate} inputLang={inputLang} />
+                    <PickerField id="book-return-time" icon={<IconClock />} label={t.book_return_time[lang]} type="time"
+                      value={returnTime} onChange={setReturnTime} step={600} />
+                  </div>
                 </div>
               )}
             </div>
