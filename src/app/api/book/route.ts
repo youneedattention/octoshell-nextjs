@@ -1,25 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
 
 interface BookingPayload {
+  mode: string;
   from: string;
   to: string;
   date: string;
   time: string;
+  addReturn?: boolean;
+  returnDate?: string;
+  returnTime?: string;
+  duration?: string;
+  flightNum?: string;
   people: number;
   bags: number;
-  vehicle: string;
   driverMsgs: string[];
   name: string;
   email: string;
   phone: string;
   hasWhatsapp: boolean;
 }
-
-const VEHICLE_LABEL: Record<string, string> = {
-  none:    "指定なし / No Preference",
-  alphard: "アルファードクラス (+¥500)",
-  hiace:   "ハイエースクラス (+¥4,500)",
-};
 
 function row(label: string, value: string, even: boolean, bold = false) {
   return `<tr style="background:${even ? "#f8f6f3" : "#fff"};">
@@ -32,23 +31,45 @@ function buildHtml(b: BookingPayload): string {
   const wa = b.hasWhatsapp && b.phone
     ? ` <span style="display:inline-flex;align-items:center;gap:4px;background:#e7f8ef;border-radius:3px;padding:2px 7px;font-size:11px;color:#25D366;font-weight:600;">WhatsApp ✓</span>`
     : "";
-  const phone = b.phone ? `${b.phone}${wa}` : "—";
+  const phone  = b.phone ? `${b.phone}${wa}` : "—";
   const driver = b.driverMsgs?.length ? b.driverMsgs.join("、") : "—";
-  const vehicle = (VEHICLE_LABEL[b.vehicle] ?? b.vehicle) || "指定なし";
+  const modeLabel = b.mode === "hour"
+    ? "By the Hour ／ 時間チャーター"
+    : "Transfer ／ 送迎";
 
-  const rows = [
-    row("出発地 / From",             b.from,   true),
-    row("目的地 / To",               b.to,     false),
-    row("日付 / Date",               b.date,   true),
-    row("出発時刻 / Time",           b.time,   false),
-    row("乗客数 / Passengers",       String(b.people), true),
-    row("スーツケース / Suitcases",   String(b.bags),   false),
-    row("車種 / Vehicle",            vehicle,  true),
-    row("ドライバーへの伝達 / Driver", driver,   false),
-    row("お名前 / Name",             b.name,   true,  true),
-    row("メール / Email",            b.email,  false),
-    row("緊急電話 / Emergency",      phone,    true),
-  ].join("");
+  const rows: string[] = [];
+  let idx = 0;
+  const r = (label: string, value: string, bold = false) => {
+    rows.push(row(label, value, idx++ % 2 === 0, bold));
+  };
+
+  r("サービス / Mode",           modeLabel);
+  r("出発地 / From",              b.from);
+
+  if (b.mode === "transfer") {
+    r("目的地 / To",              b.to || "—");
+  } else {
+    r("利用時間 / Duration",       b.duration ? `${b.duration} hours` : "—");
+  }
+
+  r("日付 / Date",                b.date);
+  r("出発時刻 / Time",            b.time);
+
+  if (b.mode === "transfer" && b.addReturn) {
+    r("帰路日付 / Return Date",    b.returnDate || "—");
+    r("帰路時刻 / Return Time",    b.returnTime || "—");
+  }
+
+  if (b.flightNum) {
+    r("フライト / Flight No.",     b.flightNum);
+  }
+
+  r("乗客数 / Passengers",        String(b.people));
+  r("スーツケース / Suitcases",    String(b.bags));
+  r("ドライバーへの伝達 / Driver",  driver);
+  r("お名前 / Name",              b.name, true);
+  r("メール / Email",             b.email);
+  r("緊急電話 / Emergency",       phone);
 
   return `<!DOCTYPE html>
 <html lang="ja"><head><meta charset="utf-8"></head>
@@ -64,7 +85,7 @@ function buildHtml(b: BookingPayload): string {
     </h1>
   </div>
 
-  <table style="width:100%;border-collapse:collapse;">${rows}</table>
+  <table style="width:100%;border-collapse:collapse;">${rows.join("")}</table>
 
   <div style="padding:18px 32px;border-top:1px solid #e2ddd8;">
     <p style="margin:0;font-size:11px;color:#aaa;">
@@ -81,7 +102,7 @@ export async function POST(req: NextRequest) {
   try { body = await req.json(); }
   catch { return NextResponse.json({ ok: false, error: "Invalid JSON" }, { status: 400 }); }
 
-  for (const f of ["from", "to", "date", "time", "name", "email"] as const) {
+  for (const f of ["from", "date", "time", "name", "email"] as const) {
     if (!body[f]) return NextResponse.json({ ok: false, error: `Missing: ${f}` }, { status: 422 });
   }
 

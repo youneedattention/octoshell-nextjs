@@ -121,8 +121,31 @@ export const t: Record<string, T> = {
   book_drv_hw:      { en: "Highway use OK",             ja: "高速利用OK",                 zh: "可走高速公路" },
   book_drv_gentle:  { en: "Please drive gently",        ja: "ゆっくり丁寧な運転をお願いしたい", zh: "請溫和駕駛" },
   book_drv_quiet:   { en: "Minimal conversation",       ja: "会話は最小限にしてほしい",    zh: "盡量減少交談" },
+  book_drv_meet:    { en: "Meet & Greet",               ja: "ミートアンドグリート",        zh: "接機迎賓服務" },
+  book_drv_baby:    { en: "Baby Seat",                  ja: "ベビーシート",                zh: "嬰兒座椅" },
   book_drv_other:   { en: "Other",                      ja: "その他",                     zh: "其他" },
   book_drv_other_ph: { en: "Please describe…",           ja: "詳しくご記入ください…",       zh: "請自由填寫…" },
+
+  /* ── Book — mode tabs ───────────────────────────────── */
+  book_tab_transfer: { en: "Transfer",                  ja: "送迎",                       zh: "點對點接送" },
+  book_tab_hour:     { en: "By the Hour",               ja: "時間チャーター",              zh: "按小時包車" },
+
+  /* ── Book — return / duration ───────────────────────── */
+  book_add_return:   { en: "ADD RETURN",                ja: "帰路を追加",                 zh: "加回程" },
+  book_return_date:  { en: "Return Date",               ja: "帰路日付",                   zh: "回程日期" },
+  book_return_time:  { en: "Return Time",               ja: "帰路出発時刻",               zh: "回程時間" },
+  book_duration:     { en: "Duration",                  ja: "利用時間",                   zh: "使用時數" },
+  book_dur_h:        { en: "hours",                     ja: "時間",                       zh: "小時" },
+
+  /* ── Book — flight tracking ─────────────────────────── */
+  book_sec_flight:   { en: "Flight Tracking",           ja: "フライトトラッキング",        zh: "航班追蹤" },
+  book_flight_num:   { en: "Flight Number",             ja: "フライト番号",               zh: "航班號碼" },
+  book_flight_ph:    { en: "e.g. JL316, NH217…",        ja: "例）JL316、NH217…",          zh: "例：JL316、NH217…" },
+  book_flight_note:  {
+    en: "We monitor your flight in real time. If you land late, your chauffeur adjusts automatically — no extra cost, no stress. Even better: we include 90 mins of free waiting time after landing so you can take it easy.",
+    ja: "フライトをリアルタイムで追跡します。到着が遅れても、チャウファーが自動で調整―追加費用なし、ストレスなし。さらに、着陸後90分間の無料待機サービスが含まれているので、ゆっくりお過ごしいただけます。",
+    zh: "我們即時追蹤您的航班。若您延誤降落，司機將自動調整—無需額外費用，毫無壓力。更貼心的是，我們提供降落後90分鐘免費等候時間，讓您從容不迫。",
+  },
 
   /* ── Book — emergency contact ───────────────────── */
   book_sec_sos:     { en: "Emergency Contact",          ja: "緊急連絡先",                 zh: "緊急聯絡人" },

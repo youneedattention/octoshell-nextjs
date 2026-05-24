@@ -1,6 +1,5 @@
 "use client";
 import { FormEvent, useRef, useState } from "react";
-import Image from "next/image";
 import Header from "@/components/Header";
 import SiteFooter from "@/components/SiteFooter";
 import PlacesInput from "@/components/PlacesInput";
@@ -9,37 +8,18 @@ import Link from "next/link";
 import { useLang } from "@/context/LangContext";
 import { t } from "@/lib/translations";
 
-/* ── Assets ─────────────────────────────────────────────────────────── */
-const ALPHARD = "https://octoshell.jp/wp-content/uploads/2024/09/toyotaalphard.png";
-const HIACE   = "https://octoshell.jp/wp-content/uploads/2024/09/toyatahiace.png";
+/* ── Duration options ────────────────────────────────────────────────── */
+const DURATIONS = ["2", "3", "4", "5", "6", "7", "8", "10", "12"];
 
 /* ── Driver-instruction multi-select options ─────────────────────────  */
 const DRIVER_OPTS = [
-  { value: "高速利用OK",                      key: "book_drv_hw"     },
-  { value: "ゆっくり丁寧な運転をお願いしたい", key: "book_drv_gentle" },
-  { value: "会話は最小限にしてほしい",         key: "book_drv_quiet"  },
-  { value: "その他",                          key: "book_drv_other"  },
+  { value: "ミートアンドグリート",              key: "book_drv_meet"   },
+  { value: "高速利用OK",                       key: "book_drv_hw"     },
+  { value: "ゆっくり丁寧な運転をお願いしたい",  key: "book_drv_gentle" },
+  { value: "会話は最小限にしてほしい",          key: "book_drv_quiet"  },
+  { value: "ベビーシート",                     key: "book_drv_baby"   },
+  { value: "その他",                           key: "book_drv_other"  },
 ] as const;
-
-/* ── Vehicle data ────────────────────────────────────────────────────── */
-type VehicleKey = "none" | "alphard" | "hiace";
-interface VehicleDef {
-  key: VehicleKey;
-  price: string;
-  capKey: string | null;
-  exKey:  string | null;
-  img:    string | null;
-}
-const VEHICLES: VehicleDef[] = [
-  { key: "none",    price: "+¥0",     capKey: null,            exKey: null,          img: null    },
-  { key: "alphard", price: "+¥500",   capKey: "book_veh_cap6", exKey: "book_veh_ex_a", img: ALPHARD },
-  { key: "hiace",   price: "+¥4,500", capKey: "book_veh_cap9", exKey: "book_veh_ex_h", img: HIACE   },
-];
-const VEHICLE_NAME: Record<VehicleKey, string> = {
-  none:    "book_veh_any",
-  alphard: "book_veh_alphard",
-  hiace:   "book_veh_hiace",
-};
 
 /* ══════════════════════════════════════════════════════════════════════
    Sub-components
@@ -49,7 +29,7 @@ function SectionLabel({ label }: { label: string }) {
   return (
     <div className="flex items-center gap-3 mb-5 sm:mb-7">
       <span className="w-5 h-px bg-[#c9a84c]" />
-      <p className="text-[#c9a84c] text-[9px] tracking-[0.45em] uppercase">{label}</p>
+      <p className="text-[#c9a84c] text-[11px] sm:text-[12px] tracking-[0.4em] uppercase font-semibold">{label}</p>
       <span className="flex-1 h-px bg-white/[0.07]" />
     </div>
   );
@@ -61,7 +41,7 @@ function FieldWrap({ label, required, htmlFor, children }: {
   return (
     <div className="flex flex-col gap-1.5">
       <label htmlFor={htmlFor}
-        className="text-[10px] tracking-[0.28em] text-white/45 uppercase">
+        className="text-[11px] sm:text-[12px] tracking-[0.28em] text-white/45 uppercase">
         {label}
         {required && <span className="ml-1 text-[#c9a84c]">*</span>}
       </label>
@@ -81,7 +61,6 @@ function PickerField({ id, label, type, value, onChange, required, step, inputLa
     catch { /* fallback */ }
   };
 
-  /* Localised date string — computed only for date+locale combination */
   const localDate = type === "date" && value && inputLang
     ? (() => {
         try {
@@ -98,12 +77,11 @@ function PickerField({ id, label, type, value, onChange, required, step, inputLa
   return (
     <div className="flex flex-col gap-1.5">
       <label htmlFor={id} onClick={e => { e.preventDefault(); open(); }}
-        className="text-[10px] tracking-[0.28em] text-white/45 uppercase cursor-pointer select-none">
+        className="text-[11px] sm:text-[12px] tracking-[0.28em] text-white/45 uppercase cursor-pointer select-none">
         {label}{required && <span className="ml-1 text-[#c9a84c]">*</span>}
       </label>
 
       {isLocalisedDate ? (
-        /* Date — styled display + transparent native input overlay so the OS picker still opens */
         <div className="relative cursor-pointer group" onClick={open}>
           <div className="w-full border-b border-white/20 group-hover:border-[#c9a84c]/50
                           text-[13px] py-3 transition-colors select-none pointer-events-none">
@@ -111,16 +89,14 @@ function PickerField({ id, label, type, value, onChange, required, step, inputLa
               ? <span className="text-white tracking-wide">{localDate}</span>
               : <span className="text-white/30">—</span>}
           </div>
-          {/* Transparent overlay — the real native date picker; opacity:0 keeps it clickable */}
           <input
             ref={ref} id={id} type="date" required={required}
             value={value} onChange={e => onChange(e.target.value)}
             className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-            style={{ fontSize: "16px" /* prevent iOS auto-zoom */ }}
+            style={{ fontSize: "16px" }}
           />
         </div>
       ) : (
-        /* Time — native input directly */
         <input ref={ref} id={id} type={type} required={required} step={step}
           value={value} onChange={e => onChange(e.target.value)} onClick={open}
           className="w-full bg-transparent border-b border-white/20 focus:border-[#c9a84c] text-white
@@ -155,55 +131,6 @@ function Stepper({ value, onChange, min = 0, max = 14 }: {
   );
 }
 
-/* ── Vehicle card ── */
-function VehicleCard({ v, nameLabel, capLabel, exLabel, selected, onSelect, lang }: {
-  v: VehicleDef; nameLabel: string; capLabel: string | null; exLabel: string | null;
-  selected: boolean; onSelect: () => void; lang: "en"|"ja"|"zh";
-}) {
-  return (
-    <label htmlFor={`veh-${v.key}`}
-      className={`relative cursor-pointer flex flex-col border transition-all duration-200
-        ${selected ? "border-[#c9a84c]" : "border-white/10 hover:border-white/25"}`}>
-      <input type="radio" id={`veh-${v.key}`} name="vehicle"
-        className="sr-only" checked={selected} onChange={onSelect} readOnly />
-
-      {selected && (
-        <div className="absolute top-2 right-2 z-10 w-5 h-5 rounded-full bg-[#c9a84c] flex items-center justify-center">
-          <svg className="w-3 h-3 text-black" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-          </svg>
-        </div>
-      )}
-
-      {/* Image area — white bg so mix-blend-multiply removes white from PNG */}
-      <div className="bg-white flex items-center justify-center h-28 sm:h-32 overflow-hidden">
-        {v.img ? (
-          <Image src={v.img} alt={nameLabel} width={200} height={100}
-            className="object-contain max-h-[90%] w-auto mix-blend-multiply" />
-        ) : (
-          <svg className="w-12 h-12 text-black/[0.07]" fill="none" stroke="currentColor"
-            strokeWidth={0.8} viewBox="0 0 64 40">
-            <path d="M8 28 L14 14 Q16 10 20 10 L44 10 Q48 10 50 14 L56 28 Q60 29 60 33 L60 36 Q60 38 58 38 L52 38 Q50 38 50 36 L50 33 L14 33 L14 36 Q14 38 12 38 L6 38 Q4 38 4 36 L4 33 Q4 29 8 28 Z" />
-            <circle cx="18" cy="33" r="5" />
-            <circle cx="46" cy="33" r="5" />
-          </svg>
-        )}
-      </div>
-
-      <div className="bg-[#0e0e0e] px-3 py-3 flex-1">
-        <div className="flex items-start justify-between gap-1">
-          <span className="text-white text-[12px] sm:text-[13px] font-semibold leading-tight">{nameLabel}</span>
-          <span className={`text-[15px] sm:text-[16px] font-mono font-bold shrink-0 ${v.price === "+¥0" ? "text-white/30" : "text-[#c9a84c]"}`}>
-            {v.price}
-          </span>
-        </div>
-        {capLabel && <p className="text-white/40 text-[10px] mt-1.5 leading-snug">{capLabel}</p>}
-        {exLabel && <p className="text-white/25 text-[10px] mt-0.5">【{lang === "ja" ? "例" : "e.g."}】{exLabel}</p>}
-      </div>
-    </label>
-  );
-}
-
 /* ══════════════════════════════════════════════════════════════════════
    Page
 ══════════════════════════════════════════════════════════════════════ */
@@ -212,24 +139,46 @@ const inputCls =
   "text-white text-[13px] tracking-wide py-3 outline-none transition-colors placeholder:text-white/30";
 
 type Status = "idle" | "loading" | "success" | "error";
+type Mode   = "transfer" | "hour";
 
 export default function BookPage() {
   const { lang } = useLang();
+  const inputLang = lang === "en" ? "en-US" : lang === "ja" ? "ja" : "zh-TW";
 
+  /* Mode */
+  const [mode,        setMode]        = useState<Mode>("transfer");
+
+  /* Route */
   const [from,        setFrom]        = useState("");
   const [to,          setTo]          = useState("");
+
+  /* Schedule */
   const [date,        setDate]        = useState("");
   const [time,        setTime]        = useState("");
+  const [addReturn,   setAddReturn]   = useState(false);
+  const [returnDate,  setReturnDate]  = useState("");
+  const [returnTime,  setReturnTime]  = useState("");
+  const [duration,    setDuration]    = useState("");
+
+  /* Flight */
+  const [flightNum,   setFlightNum]   = useState("");
+
+  /* Passengers */
   const [people,      setPeople]      = useState(1);
   const [bags,        setBags]        = useState(1);
-  const [vehicle,     setVehicle]     = useState<VehicleKey>("none");
+
+  /* Driver */
   const [driverMsgs,  setDriverMsgs]  = useState<string[]>([]);
   const [driverOtherText, setDriverOtherText] = useState("");
+
+  /* Contact */
   const [name,        setName]        = useState("");
   const [email,       setEmail]       = useState("");
   const [dialCode,    setDialCode]    = useState("81");
   const [phone,       setPhone]       = useState("");
   const [hasWhatsapp, setHasWhatsapp] = useState(false);
+
+  /* Form */
   const [status,      setStatus]      = useState<Status>("idle");
   const [errMsg,      setErrMsg]      = useState("");
 
@@ -246,14 +195,25 @@ export default function BookPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          from, to, date, time, people, bags,
-          vehicle,
+          mode,
+          from,
+          to: mode === "transfer" ? to : "",
+          date,
+          time,
+          addReturn: mode === "transfer" ? addReturn : false,
+          returnDate: addReturn ? returnDate : "",
+          returnTime: addReturn ? returnTime : "",
+          duration: mode === "hour" ? duration : "",
+          flightNum,
+          people,
+          bags,
           driverMsgs: driverMsgs.map(v =>
             v === "その他" && driverOtherText.trim()
               ? `その他：${driverOtherText.trim()}`
               : v
           ),
-          name, email,
+          name,
+          email,
           phone: phone ? `+${dialCode} ${phone}` : "",
           hasWhatsapp: !!phone && hasWhatsapp,
         }),
@@ -290,7 +250,9 @@ export default function BookPage() {
           </p>
           <button onClick={() => {
             setStatus("idle"); setFrom(""); setTo(""); setDate(""); setTime("");
-            setName(""); setEmail(""); setPhone(""); setVehicle("none"); setDriverMsgs([]); setDriverOtherText("");
+            setAddReturn(false); setReturnDate(""); setReturnTime(""); setDuration("");
+            setFlightNum(""); setName(""); setEmail(""); setPhone("");
+            setDriverMsgs([]); setDriverOtherText("");
           }} className="mt-10 text-[11px] tracking-[0.25em] text-white/35 hover:text-[#c9a84c] transition-colors uppercase">
             {lang === "ja" ? "← 新しいリクエスト" : lang === "zh" ? "← 新增請求" : "← New Request"}
           </button>
@@ -322,8 +284,8 @@ export default function BookPage() {
         </div>
       </div>
 
-      {/* ── Form ── */}
-      <div className="bg-[#111111] pt-8 sm:pt-10 pb-28 px-4 sm:px-6">
+      {/* ── Form area ── */}
+      <div className="bg-[#111111] pt-8 sm:pt-10 pb-36 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
 
           <Link href="/"
@@ -332,20 +294,35 @@ export default function BookPage() {
             {t.book_back[lang]}
           </Link>
 
+          {/* ── Mode Tabs ── */}
+          <div className="flex mb-8 sm:mb-10 border border-white/10 overflow-hidden">
+            {(["transfer", "hour"] as const).map((m) => (
+              <button key={m} type="button" onClick={() => setMode(m)}
+                className={`flex-1 py-3.5 text-[11px] sm:text-[12px] tracking-[0.28em] uppercase transition-all duration-200
+                  ${mode === m
+                    ? "bg-[#c9a84c] text-[#0c0c0c] font-bold"
+                    : "text-white/40 hover:text-white/70 hover:bg-white/[0.04]"}`}>
+                {m === "transfer" ? t.book_tab_transfer[lang] : t.book_tab_hour[lang]}
+              </button>
+            ))}
+          </div>
+
           <form id="book-form" onSubmit={handleSubmit} className="space-y-10 sm:space-y-12">
 
             {/* ═══ 1. ROUTE ═══ */}
             <div>
               <SectionLabel label={t.book_sec_route[lang]} />
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-7">
+              <div className={`grid grid-cols-1 ${mode === "transfer" ? "sm:grid-cols-2" : ""} gap-x-8 gap-y-7`}>
                 <FieldWrap label={t.book_from[lang]} required htmlFor="book-from">
                   <PlacesInput id="book-from" placeholder={t.book_from_ph[lang]}
                     value={from} onChange={setFrom} required />
                 </FieldWrap>
-                <FieldWrap label={t.book_to[lang]} required htmlFor="book-to">
-                  <PlacesInput id="book-to" placeholder={t.book_to_ph[lang]}
-                    value={to} onChange={setTo} required />
-                </FieldWrap>
+                {mode === "transfer" && (
+                  <FieldWrap label={t.book_to[lang]} required htmlFor="book-to">
+                    <PlacesInput id="book-to" placeholder={t.book_to_ph[lang]}
+                      value={to} onChange={setTo} required />
+                  </FieldWrap>
+                )}
               </div>
             </div>
 
@@ -354,25 +331,96 @@ export default function BookPage() {
               <SectionLabel label={t.book_sec_sched[lang]} />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-7">
                 <PickerField id="book-date" label={t.book_date[lang]} type="date"
-                  value={date} onChange={setDate} required
-                  inputLang={lang === "en" ? "en-US" : lang === "ja" ? "ja" : "zh-TW"} />
+                  value={date} onChange={setDate} required inputLang={inputLang} />
                 <PickerField id="book-time" label={t.book_time[lang]} type="time"
                   value={time} onChange={setTime} required step={600} />
+
+                {/* Duration — By the Hour only */}
+                {mode === "hour" && (
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="book-duration"
+                      className="text-[11px] sm:text-[12px] tracking-[0.28em] text-white/45 uppercase">
+                      {t.book_duration[lang]}<span className="ml-1 text-[#c9a84c]">*</span>
+                    </label>
+                    <select id="book-duration" required={mode === "hour"}
+                      value={duration} onChange={e => setDuration(e.target.value)}
+                      className="w-full bg-[#111111] border-b border-white/20 focus:border-[#c9a84c]
+                                 text-white text-[13px] tracking-wide py-3 outline-none transition-colors
+                                 [color-scheme:dark] cursor-pointer">
+                      <option value="" disabled>—</option>
+                      {DURATIONS.map(d => (
+                        <option key={d} value={d}>{d} {t.book_dur_h[lang]}</option>
+                      ))}
+                    </select>
+                  </div>
+                )}
               </div>
+
+              {/* ADD RETURN — Transfer only */}
+              {mode === "transfer" && (
+                <div className="mt-6">
+                  {!addReturn ? (
+                    <button type="button" onClick={() => setAddReturn(true)}
+                      className="flex items-center gap-2.5 text-[11px] sm:text-[12px] tracking-[0.22em]
+                                 text-[#c9a84c]/70 hover:text-[#c9a84c] transition-all duration-200 uppercase
+                                 border border-dashed border-[#c9a84c]/25 hover:border-[#c9a84c]/55 px-5 py-3">
+                      <span className="text-[18px] leading-none font-extralight">+</span>
+                      {t.book_add_return[lang]}
+                    </button>
+                  ) : (
+                    <div className="border border-[#c9a84c]/20 p-4 sm:p-5 relative">
+                      <button type="button"
+                        onClick={() => { setAddReturn(false); setReturnDate(""); setReturnTime(""); }}
+                        className="absolute top-3 right-4 text-white/30 hover:text-white/70 transition-colors text-xl leading-none">
+                        ×
+                      </button>
+                      <p className="text-[#c9a84c] text-[10px] sm:text-[11px] tracking-[0.3em] uppercase mb-5">
+                        {t.book_add_return[lang]}
+                      </p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-7">
+                        <PickerField id="book-return-date" label={t.book_return_date[lang]} type="date"
+                          value={returnDate} onChange={setReturnDate} inputLang={inputLang} />
+                        <PickerField id="book-return-time" label={t.book_return_time[lang]} type="time"
+                          value={returnTime} onChange={setReturnTime} step={600} />
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
 
-            {/* ═══ 3. PASSENGERS ═══ */}
+            {/* ═══ 3. FLIGHT TRACKING (Transfer only, optional) ═══ */}
+            {mode === "transfer" && (
+              <div>
+                <SectionLabel label={t.book_sec_flight[lang]} />
+                <div className="flex flex-col gap-5">
+                  <FieldWrap label={t.book_flight_num[lang]} htmlFor="book-flight">
+                    <input id="book-flight" type="text"
+                      placeholder={t.book_flight_ph[lang]}
+                      value={flightNum}
+                      onChange={e => setFlightNum(e.target.value.toUpperCase())}
+                      className={inputCls} />
+                  </FieldWrap>
+                  <p className="text-[11px] sm:text-[12px] text-white/35 italic leading-[1.9]
+                                border-l-2 border-[#c9a84c]/45 pl-4">
+                    {t.book_flight_note[lang]}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* ═══ 4. PASSENGERS & LUGGAGE ═══ */}
             <div>
               <SectionLabel label={t.book_sec_pax[lang]} />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-8">
                 <div className="flex flex-col gap-3">
-                  <span className="text-[10px] tracking-[0.28em] text-white/45 uppercase">
+                  <span className="text-[11px] sm:text-[12px] tracking-[0.28em] text-white/45 uppercase">
                     {t.book_people[lang]}<span className="ml-1 text-[#c9a84c]">*</span>
                   </span>
                   <Stepper value={people} onChange={setPeople} min={1} max={9} />
                 </div>
                 <div className="flex flex-col gap-3">
-                  <span className="text-[10px] tracking-[0.28em] text-white/45 uppercase">
+                  <span className="text-[11px] sm:text-[12px] tracking-[0.28em] text-white/45 uppercase">
                     {t.book_bags[lang]}<span className="ml-1 text-[#c9a84c]">*</span>
                   </span>
                   <Stepper value={bags} onChange={setBags} min={0} max={14} />
@@ -380,27 +428,10 @@ export default function BookPage() {
               </div>
             </div>
 
-            {/* ═══ 4. VEHICLE ═══ */}
-            <div>
-              <SectionLabel label={t.book_sec_vehicle[lang]} />
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {VEHICLES.map(v => (
-                  <VehicleCard key={v.key} v={v}
-                    nameLabel={t[VEHICLE_NAME[v.key]][lang]}
-                    capLabel={v.capKey ? t[v.capKey][lang] : null}
-                    exLabel={v.exKey  ? t[v.exKey][lang]  : null}
-                    selected={vehicle === v.key}
-                    onSelect={() => setVehicle(v.key)}
-                    lang={lang}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* ═══ 5. DRIVER INSTRUCTIONS (multi-select checkboxes) ═══ */}
+            {/* ═══ 5. MESSAGE FOR DRIVER ═══ */}
             <div>
               <SectionLabel label={t.book_sec_driver[lang]} />
-              <p className="text-[11px] text-white/25 leading-[1.85] mb-5 border-l-2 border-[#c9a84c]/20 pl-3">
+              <p className="text-[11px] sm:text-[12px] text-white/25 leading-[1.85] mb-5 border-l-2 border-[#c9a84c]/20 pl-3">
                 {t.book_drv_note[lang]}
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -410,7 +441,6 @@ export default function BookPage() {
                     <label key={o.value}
                       onClick={() => toggleDriver(o.value)}
                       className="flex items-center gap-3 cursor-pointer group py-2.5 px-3 border border-white/[0.06] hover:border-white/20 transition-colors">
-                      {/* Checkbox */}
                       <div className={`w-4 h-4 border shrink-0 flex items-center justify-center transition-colors
                         ${checked ? "bg-[#c9a84c] border-[#c9a84c]" : "border-white/25 group-hover:border-white/50"}`}>
                         {checked && (
@@ -420,7 +450,7 @@ export default function BookPage() {
                           </svg>
                         )}
                       </div>
-                      <span className={`text-[12px] tracking-wide transition-colors leading-snug
+                      <span className={`text-[12px] sm:text-[13px] tracking-wide transition-colors leading-snug
                         ${checked ? "text-white" : "text-white/50 group-hover:text-white/70"}`}>
                         {t[o.key][lang]}
                       </span>
@@ -444,7 +474,7 @@ export default function BookPage() {
               )}
             </div>
 
-            {/* ═══ 6. CONTACT ═══ */}
+            {/* ═══ 6. CONTACT INFORMATION ═══ */}
             <div>
               <SectionLabel label={t.book_sec_contact[lang]} />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-7">
@@ -507,29 +537,28 @@ export default function BookPage() {
               </p>
             )}
 
-
           </form>
         </div>
       </div>
 
-      {/* ══ STICKY BOTTOM CTA — always visible ══════════════════════════
-          On mobile: full-width gold bar
-          On desktop: pill aligned right inside max-w container           */}
+      {/* ══ STICKY BOTTOM CTA — frosted glass, bold ══ */}
       <div className="fixed bottom-0 inset-x-0 z-40
-                      bg-[#0a0a0a]/95 backdrop-blur-xl border-t border-white/[0.08]
+                      bg-black/55 backdrop-blur-2xl border-t border-white/[0.10]
+                      shadow-[0_-20px_60px_rgba(0,0,0,0.55)]
                       px-4 py-3 sm:px-6 sm:py-4">
         <div className="max-w-3xl mx-auto flex items-center justify-between gap-3">
-          <p className="text-white/25 text-[10px] tracking-widest hidden sm:block">
-            <span className="text-[#c9a84c]">*</span> {t.book_required[lang]}
+          <p className="text-white/30 text-[11px] sm:text-[12px] tracking-widest hidden sm:block font-medium">
+            <span className="text-[#c9a84c] font-bold">*</span> {t.book_required[lang]}
           </p>
           <button
             type="submit"
             form="book-form"
             disabled={status === "loading"}
             className="group w-full sm:w-auto flex items-center justify-center gap-2.5
-                       bg-[#c9a84c] text-[#0c0c0c] text-[11px] tracking-[0.3em] font-bold
-                       px-8 py-3 sm:py-3.5 transition-all duration-200
-                       hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed"
+                       bg-[#c9a84c] text-[#0c0c0c] text-[12px] sm:text-[13px] tracking-[0.3em] font-black
+                       px-8 py-3.5 sm:py-4 transition-all duration-200
+                       hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed
+                       shadow-[0_4px_20px_rgba(201,168,76,0.35)] hover:shadow-[0_4px_28px_rgba(201,168,76,0.5)]"
           >
             {status === "loading" ? (
               <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -540,7 +569,7 @@ export default function BookPage() {
               <>
                 <span>{t.book_submit[lang]}</span>
                 <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"
-                  fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                 </svg>
               </>
