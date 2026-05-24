@@ -174,11 +174,11 @@ export default function PlacesInput({ id, placeholder, value, onChange, required
     });
   }, [googleOn, onChange]);
 
-  /* Handle typing → Mapbox / Nominatim search */
+  /* Handle typing → always propagate value (ensures free-text works even with no suggestion) */
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const v = e.target.value;
-    onChange(v);
-    if (googleOn) return;
+    onChange(v); // always update parent — free-text submits even without picking a suggestion
+    if (googleOn) return; // Google autocomplete handles suggestions; Mapbox/Nominatim not needed
     if (debTimer.current) clearTimeout(debTimer.current);
     if (v.trim().length < 2) { setSugs([]); setOpen(false); return; }
     debTimer.current = setTimeout(async () => {
@@ -198,11 +198,31 @@ export default function PlacesInput({ id, placeholder, value, onChange, required
     setSugs([]); setOpen(false);
   }, [onChange]);
 
-  /* Get current location — tries high-accuracy first, retries with low-accuracy on timeout */
+  /* IP-based fallback geocode when GPS permission is denied */
+  const ipLocate = useCallback(async () => {
+    try {
+      const r = await fetch("https://ipapi.co/json/");
+      const d = await r.json() as { latitude?: number; longitude?: number };
+      if (d.latitude && d.longitude) {
+        const addr = await reverseGeocode(d.latitude, d.longitude);
+        onChange(addr);
+        if (inputRef.current) inputRef.current.value = addr;
+        return true;
+      }
+    } catch { /* silent */ }
+    return false;
+  }, [onChange]);
+
+  /* Get current location — tries GPS high-accuracy, retries low-accuracy, falls back to IP */
   const locate = useCallback(() => {
-    if (!navigator?.geolocation) return;
     setLocState("locating");
     setLocating(true);
+
+    /* If geolocation API is unavailable, go straight to IP fallback */
+    if (!navigator?.geolocation) {
+      ipLocate().finally(() => { setLocating(false); setLocState("idle"); });
+      return;
+    }
 
     const attempt = (highAccuracy: boolean) => {
       navigator.geolocation.getCurrentPosition(
@@ -214,12 +234,19 @@ export default function PlacesInput({ id, placeholder, value, onChange, required
             setLocState("idle");
           } finally { setLocating(false); }
         },
-        (err) => {
-          // Timeout on high-accuracy → silently retry with network-based (faster)
+        async (err) => {
+          /* Timeout on high-accuracy → silently retry with network-only (faster) */
           if (err.code === 3 && highAccuracy) { attempt(false); return; }
+          /* Permission denied → try IP-based approximate location as fallback */
+          if (err.code === 1) {
+            const ok = await ipLocate();
+            setLocating(false);
+            setLocState(ok ? "idle" : "denied");
+            if (!ok) setTimeout(() => setLocState("idle"), 4000);
+            return;
+          }
           setLocating(false);
-          // code 1 = PERMISSION_DENIED, codes 2/3 = unavailable / timeout
-          setLocState(err.code === 1 ? "denied" : "unavailable");
+          setLocState("unavailable");
           setTimeout(() => setLocState("idle"), 4000);
         },
         { enableHighAccuracy: highAccuracy, timeout: highAccuracy ? 8000 : 15000, maximumAge: 60000 }
@@ -227,7 +254,7 @@ export default function PlacesInput({ id, placeholder, value, onChange, required
     };
 
     attempt(true);
-  }, [onChange]);
+  }, [onChange, ipLocate]);
 
   /* ── Render ── */
   const base =

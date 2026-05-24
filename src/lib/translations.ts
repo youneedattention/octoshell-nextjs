@@ -87,8 +87,8 @@ export const t: Record<string, T> = {
   book_from_ph:     { en: "Pickup location (airport, hotel, address…)", ja: "乗車場所（空港・ホテル・住所など）", zh: "接載地點（機場、酒店、地址…）" },
   book_to_ph:       { en: "Drop-off location (airport, hotel, address…)", ja: "降車場所（空港・ホテル・住所など）", zh: "目的地（機場、酒店、地址…）" },
   book_sec_sched:   { en: "Schedule",                   ja: "日程",                      zh: "日程" },
-  book_date:        { en: "Date",                       ja: "日付",                      zh: "日期" },
-  book_time:        { en: "Departure Time",             ja: "出発時刻",                  zh: "出發時間" },
+  book_date:        { en: "Pickup Date",                 ja: "乗車日",                    zh: "上車日期" },
+  book_time:        { en: "Pickup Time",                ja: "乗車時刻",                  zh: "上車時間" },
   book_sec_pax:     { en: "Passengers & Luggage",       ja: "乗客・荷物",                zh: "乘客與行李" },
   book_people:      { en: "Passengers",                 ja: "乗車人数",                  zh: "乘客人數" },
   book_bags:        { en: "Suitcases",                  ja: "スーツケース",              zh: "行李箱" },
@@ -128,7 +128,7 @@ export const t: Record<string, T> = {
 
   /* ── Book — mode tabs ───────────────────────────────── */
   book_tab_transfer: { en: "Transfer",                  ja: "送迎",                       zh: "點對點接送" },
-  book_tab_hour:     { en: "By the Hour",               ja: "時間チャーター",              zh: "按小時包車" },
+  book_tab_hour:     { en: "Hourly",                    ja: "時間チャーター",              zh: "按小時包車" },
 
   /* ── Book — return / duration ───────────────────────── */
   book_add_return:   { en: "ADD RETURN",                ja: "帰路を追加",                 zh: "加回程" },
@@ -136,6 +136,11 @@ export const t: Record<string, T> = {
   book_return_time:  { en: "Return Time",               ja: "帰路出発時刻",               zh: "回程時間" },
   book_duration:     { en: "Duration",                  ja: "利用時間",                   zh: "使用時數" },
   book_dur_h:        { en: "hours",                     ja: "時間",                       zh: "小時" },
+
+  /* ── Book — booking details (accordion) ────────────── */
+  book_sec_details:       { en: "Booking Details",      ja: "予約詳細",                   zh: "預訂詳情" },
+  book_add_flight_label:  { en: "Add Flight Number",    ja: "フライト番号を追加",          zh: "新增航班號碼" },
+  book_add_notes_label:   { en: "Add Notes for the Driver", ja: "ドライバーへのメモを追加", zh: "新增司機備注" },
 
   /* ── Book — flight tracking ─────────────────────────── */
   book_sec_flight:   { en: "Flight Tracking",           ja: "フライトトラッキング",        zh: "航班追蹤" },
