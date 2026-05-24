@@ -109,7 +109,7 @@ export default function Header() {
               className={`w-9 h-9 rounded-full text-[11px] font-bold border transition-all duration-200
                 ${lang === code
                   ? "bg-white text-black border-white shadow-[0_0_0_2px_rgba(255,255,255,0.25)]"
-                  : "bg-transparent text-white/80 border-white/40 hover:border-white hover:bg-white/10"
+                  : "bg-transparent text-white/80 border-white/40 hover:border-[#c9a84c] hover:bg-[#c9a84c]/10"
                 }`}
             >
               {label}
@@ -128,7 +128,9 @@ export default function Header() {
 
             {/* HOME */}
             <Link href="/"
-              className="text-white/80 text-[12px] lg:text-[13px] tracking-[0.22em] hover:text-white transition-colors whitespace-nowrap">
+              className="text-white/80 text-[12px] lg:text-[13px] tracking-[0.22em]
+                         hover:text-[#c9a84c] transition-all duration-200 whitespace-nowrap
+                         pb-[3px] border-b border-transparent hover:border-[#c9a84c]/55">
               {t.nav_home[lang]}
             </Link>
 
@@ -136,11 +138,12 @@ export default function Header() {
             <div className="relative" onMouseEnter={openSvcDrop} onMouseLeave={closeSvcDrop}>
               <Link href="/services"
                 className={`flex items-center gap-1 text-[12px] lg:text-[13px] tracking-[0.22em]
-                            hover:text-white transition-colors whitespace-nowrap
-                            ${servicesDrop ? "text-white" : "text-white/80"}`}>
+                            hover:text-[#c9a84c] transition-all duration-200 whitespace-nowrap
+                            pb-[3px] border-b border-transparent hover:border-[#c9a84c]/55
+                            ${servicesDrop ? "text-[#c9a84c] border-[#c9a84c]/55" : "text-white/80"}`}>
                 {t.nav_services[lang]}
                 <svg
-                  className={`w-2.5 h-2.5 opacity-40 transition-transform duration-200 ${servicesDrop ? "rotate-180 opacity-70" : ""}`}
+                  className={`w-2.5 h-2.5 transition-all duration-200 ${servicesDrop ? "rotate-180 opacity-70" : "opacity-40"}`}
                   fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
                 </svg>
@@ -184,11 +187,12 @@ export default function Header() {
             <div className="relative" onMouseEnter={openDrop} onMouseLeave={closeDrop}>
               <Link href="/about"
                 className={`flex items-center gap-1 text-[12px] lg:text-[13px] tracking-[0.22em]
-                            hover:text-white transition-colors whitespace-nowrap
-                            ${aboutDrop ? "text-white" : "text-white/80"}`}>
+                            hover:text-[#c9a84c] transition-all duration-200 whitespace-nowrap
+                            pb-[3px] border-b border-transparent hover:border-[#c9a84c]/55
+                            ${aboutDrop ? "text-[#c9a84c] border-[#c9a84c]/55" : "text-white/80"}`}>
                 {t.nav_about[lang]}
                 <svg
-                  className={`w-2.5 h-2.5 opacity-40 transition-transform duration-200 ${aboutDrop ? "rotate-180 opacity-70" : ""}`}
+                  className={`w-2.5 h-2.5 transition-all duration-200 ${aboutDrop ? "rotate-180 opacity-70" : "opacity-40"}`}
                   fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
                 </svg>
@@ -259,8 +263,18 @@ export default function Header() {
           </Link>
           {/* Desktop BOOK */}
           <Link href="/book"
-            className="hidden sm:inline-flex items-center border border-white/80 text-white text-[11px] lg:text-[12px] tracking-[0.18em] px-6 lg:px-8 py-2 sm:py-2.5 rounded-full hover:bg-white hover:text-black transition-all duration-200 whitespace-nowrap">
-            {t.nav_book[lang]}
+            className="hidden sm:inline-flex items-center justify-center relative overflow-hidden group
+                       border border-white/80 hover:border-[#c9a84c] text-white
+                       text-[11px] lg:text-[12px] tracking-[0.18em]
+                       px-6 lg:px-8 py-2 sm:py-2.5 rounded-full
+                       hover:bg-[#c9a84c] hover:text-black transition-all duration-200 whitespace-nowrap">
+            <span className="transition-all duration-200 group-hover:opacity-0 group-hover:-translate-y-2 inline-block">
+              {t.nav_book[lang]}
+            </span>
+            <span className="absolute transition-all duration-200 opacity-0 translate-y-2
+                             group-hover:opacity-100 group-hover:translate-y-0 font-bold tracking-[0.2em]">
+              {lang === "ja" ? "今すぐ予約" : lang === "zh" ? "立即預訂" : "Book Now"}
+            </span>
           </Link>
           {/* Hamburger */}
           <button onClick={() => setMenuOpen(!menuOpen)}
