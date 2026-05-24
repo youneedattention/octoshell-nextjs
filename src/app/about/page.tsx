@@ -12,78 +12,83 @@ const ALPHARD_IMG = "https://octoshell.jp/wp-content/uploads/2024/09/toyotaalpha
 const HIACE_IMG   = "https://octoshell.jp/wp-content/uploads/2024/09/toyatahiace.png";
 
 /* ══════════════════════════════════════════════════════════════════════
-   Trilingual content
+   EXACT USER-PROVIDED COPY — strictly verbatim, three languages
 ══════════════════════════════════════════════════════════════════════ */
 
-/* ── Page hero ──────────────────────────────────────────────────────── */
+/* ── Hero ───────────────────────────────────────────────────────────── */
 const HERO: Record<Lang, { badge: string; title: string; sub: string; link_story: string; link_faq: string }> = {
-  ja: { badge: "会社情報", title: "Octoshellについて", sub: "日本プライベートチャウファーサービス", link_story: "ブランドストーリー", link_faq: "よくある質問" },
-  en: { badge: "About Us", title: "The Octoshell Story", sub: "Japan Private Chauffeur Service", link_story: "How It Works", link_faq: "FAQ" },
-  zh: { badge: "關於我們", title: "品牌故事", sub: "日本專屬司機服務", link_story: "品牌故事", link_faq: "常見問題" },
+  ja: { badge: "会社情報", title: "Octoshellについて", sub: "日本プライベートチャウファーサービス", link_story: "Octoshellについて", link_faq: "よくある質問" },
+  en: { badge: "About Us", title: "The Octoshell Story", sub: "Japan Private Chauffeur Service",     link_story: "How It Works", link_faq: "FAQ" },
+  zh: { badge: "關於我們", title: "品牌故事",          sub: "日本專屬司機服務",                     link_story: "品牌故事",    link_faq: "常見問題" },
 };
 
-/* ── Brand story ────────────────────────────────────────────────────── */
-const STORY: Record<Lang, { sectionBadge: string; title: string; p1: string; p2: string; imgNote: string }> = {
-  ja: {
-    sectionBadge: "ブランドストーリー",
-    title: "移動の常識を変える",
-    p1: "貝八方（Octoshell）は日本・東京を拠点に、ラグジュアリーなプライベート送迎サービスとして誕生しました。創業の想いはシンプルです。「移動そのものを、旅の一部にしたい」——ただそれだけです。",
-    p2: "始まりは、名門の高級温泉旅館とのご縁でした。その宿が大切にする、余白のある時間、静かで丁寧なもてなし——私たちはその哲学を、車内という空間に再現しようと決意しました。今日、Octoshellのチャウファーは単なるドライバーではありません。あなたの旅を静かに、確実に支える存在です。",
-    imgNote: "推奨写真：黒いアルファードのリアドアを開ける、白手袋の正装チャウファー。東京の景色または伝統的な門を背景に。ゴールデンアワー、シネマティックな浅い被写界深度。縦位置（3:4）、最小720×960px。",
-  },
-  en: {
-    sectionBadge: "Our Story",
-    title: "Changing the Way You Travel",
-    p1: "Octoshell was founded in Tokyo, Japan, with a simple but powerful belief: the journey itself should be as extraordinary as the destination. Born from a passion for elevated hospitality, we set out to redefine what private transportation could be.",
-    p2: "What started as a refined vision rooted in Japan's finest ryokan culture — where every detail is considered, every moment unhurried — has grown into Tokyo's most trusted luxury chauffeur service. Our chauffeurs are not merely drivers; they are the quiet guardians of your journey.",
-    imgNote: "Suggested photo: Chauffeur in formal dark suit & white gloves, opening the rear door of a black Alphard. Golden hour light. Tokyo skyline or a traditional gate in the background. Cinematic shallow depth of field. Portrait orientation (3:4 ratio), min 720 × 960 px.",
-  },
-  zh: {
-    sectionBadge: "品牌故事",
-    title: "顛覆傳統出行的遊戲規則",
-    p1: "貝八方（Octoshell）於日本東京創立，懷抱一個簡單卻深遠的信念：旅途本身，應該與目的地一樣令人難忘。我們從對極致款待的熱忱出發，重新定義私人接送服務的可能性。",
-    p2: "誕生之初，這只是一個源自日本頂級旅館文化的精緻願景——每一個細節都用心考量，每一刻都從容不迫。如今，Octoshell 已成為東京最值得信賴的豪華司機服務。我們的司機不僅是駕駛，更是您旅途中默默守護的存在。",
-    imgNote: "建議圖片：穿著正式深色西裝、戴白手套的司機，正在為黑色 Alphard 打開後車門。黃金時刻光線。背景為東京天際線或傳統鳥居。電影感淺景深。縱向（3:4比例），最小 720×960px。",
-  },
+/* ── Section 1: Brand story ─────────────────────────────────────────── */
+const STORY_TITLE: Record<Lang, string> = {
+  ja: "移動の常識を変える",
+  en: "Changing the Travel Game",
+  zh: "顛覆傳統出行的遊戲規則",
+};
+const STORY_P1: Record<Lang, string> = {
+  ja: "貝八方 (Octoshell) は日本・東京で誕生しました。「貝」は遠い古より尊い富の象徴であり、「八方」は四面八方、すなわち世界中から集まる人々を意味します。私たちは、世界八方からお越しになるすべてのお客様を、かけがえのない「宝」としてお迎えするという信念のもと、プロフェッショナルなハイヤーサービスを展開しています。",
+  en: 'Octoshell was founded in Tokyo, Japan. In ancient times, shells were a symbol of precious wealth, while "八方" represents the eight directions of the world. Our brand philosophy is rooted in welcoming every guest arriving from all corners of the globe as our most precious treasure.',
+  zh: "貝八方 (Octoshell) 於日本東京創立。「貝」在遠古時代是珍稀財富的象徵；「八方」則寓意源自四面八方。我們的品牌初衷，便是將來自世界八方的每一位客戶，都奉為我們無可替代的至寶，並提供最頂級的專車款待。",
+};
+const STORY_P2: Record<Lang, string> = {
+  ja: "始まりは、名門の高級温泉旅館「修善寺 離れ宿 鬼の栖」における高水準の送迎を行うという、洗練されたひとつの構想でした。しかし今日、Octoshell は日本国内の独立した緑ナンバーの合規旅客運送資格を持つ、国際的なプロフェッショナル車隊・移動サービスプラットフォームへと変貌を遂げました。私たちのチームとプロの運転手ネットワークは、大東京圏内にとどまらず、日本全国のあらゆる場所に広がっています。",
+  en: 'What started as a refined vision dedicated to providing high-standard transfers for the prestigious hot-spring inn "Shuzenji Hanareyado Oni no Sumika" has grown into a global mobility platform. Today, Octoshell operates with a fully independent Japanese licensed transportation status with green-plate compliance. Our professional team and chauffeur network extend far beyond the Greater Tokyo Area, reaching every corner of Japan.',
+  zh: "誕生之初，這只是一個專注於頂級精品溫泉旅館——「修善寺 離れ宿 鬼の栖」高標準接駁的精緻構想；而今天，Octoshell 已然蛻變為一家擁有獨立日本綠牌合規客運資質的國際化專業車隊與出行服務平台。我們的團隊與專業司機網絡不僅覆蓋大東京地區，更已觸及日本的每個角落。",
 };
 
-/* ── How It Works — 4 steps ─────────────────────────────────────────── */
-type Step = { num: string; title: string; body: string };
-const STEPS: Record<Lang, Step[]> = {
+/* ── Section 2: 4 core services ─────────────────────────────────────── */
+const SVC_SECTION_TITLE: Record<Lang, string> = {
+  ja: "タイムベースで選べる移動プラン",
+  en: "Time-Based & Scenario-Driven Mobility Solutions",
+  zh: "按時段與場景定制的出行方案",
+};
+const SVC_SECTION_LEAD: Record<Lang, string> = {
+  ja: "Octoshell は、「時間枠・利用目的別」の4大カテゴリーで、日本全国の一流の移動体験を提供します。",
+  en: "Octoshell structures its premium transport services into four clear categories based on duration and usage, ensuring frictionless booking and travel planning worldwide.",
+  zh: "Octoshell 依據「時間週期與使用大類」將高端運力整合為四大結構化服務，便於智能系統與搜尋引擎精準抓取，為您提供無縫的日本全境出行檢索：",
+};
+type Service = { title: string; body: string };
+const SERVICES: Record<Lang, Service[]> = {
   ja: [
-    { num: "01", title: "ご予約", body: "ウェブフォームで簡単お申し込み。ルート・日時・人数をご入力いただくだけで、担当者が迅速にお見積りをご提案します。" },
-    { num: "02", title: "確認・調整", body: "担当者がお客様と直接ご連絡を取り、旅程の詳細を確認・最終調整します。特別なご要望もお気軽にどうぞ。" },
-    { num: "03", title: "当日のお迎え", body: "指定の場所・時刻にチャウファーがお迎えします。空港でのサインボードでのお出迎えも可能。ゆったりとお乗りください。" },
-    { num: "04", title: "安心のアフターケア", body: "ご乗車後もフィードバックを受け付けています。次回の旅もより良いものにするために、常にサービスを改善しています。" },
+    { title: "空港定額送迎",           body: "東京市内から各空港（羽田・成田）への送迎を安心の定額運賃でご利用いただけます。リアルタイムのフライト追跡、1時間無料待機、到着ロビーでの挙牌お出迎えサービスを含み、日本到着時の不安を解消します。" },
+    { title: "都市間プライベートシャトル", body: "私密性の高い長距離の点対点移動。新幹線や国内線の航空便に代わる、ビジネスエリートやプレミアム自由旅行客のための完全プライベート空間です。大東京圏から日本各地への観光利用やおもてなしに最適です。" },
+    { title: "時間制貸切ハイヤー & VIP送迎", body: "選びぬかれた宝のトップドライバーがアテンドいたします。複数スポットを巡るビジネス訪問、高級ショッピング、VIPのお客様の送迎など、時間単位で運転手が終日待機し、安心の品質でお迎えいたします。" },
+    { title: "プロ乗務員派遣",          body: "お客様が保有する車両の運転・管理をプロのドライバーが代行いたします。車両管理の負担を軽減し、最高峰の安全運行をお約束します。" },
   ],
   en: [
-    { num: "01", title: "Book Online", body: "Submit your request via our booking form in minutes. Enter your route, date, and passenger count — we respond with a personalised quote swiftly." },
-    { num: "02", title: "Confirm & Customise", body: "Our team contacts you directly to review your itinerary and finalise every detail. Special requests? Simply let us know — we are here to make it happen." },
-    { num: "03", title: "Meet Your Chauffeur", body: "On the day, your uniformed chauffeur arrives at your specified location, on time, every time. Name-board greetings available at all major airports." },
-    { num: "04", title: "Journey & Beyond", body: "Your comfort is our priority throughout. After the ride, we welcome feedback and continuously refine our service so every trip is better than the last." },
+    { title: "Fixed-Rate Airport Transfers",  body: "Seamless, flat-rate airport transfers between Tokyo downtown and airports (Haneda/Narita). Features include real-time flight tracking, 1 hour of free waiting time, and a personalized meet-and-greet service at Arrivals for a worry-free landing." },
+    { title: "City-to-City Long-Distance",    body: "Private, long-distance point-to-point journeys designed for sightseeing or business hospitality. This premium service directly replaces regional flights or Shinkansen trains, offering absolute privacy for business elite and discerning leisure travelers from Greater Tokyo to any destination in Japan." },
+    { title: "Hourly Bookings & VIP Attend",  body: "Attended by our handpicked, elite top drivers. Ideal for multi-stop corporate meetings, luxury shopping, or high-profile VIP transport. A dedicated chauffeur remains on standby for your dynamic itinerary." },
+    { title: "Professional Driver Dispatch",  body: "Expert dispatch services where our professional drivers manage and operate your own vehicles, delivering unparalleled safety, compliance, and peace of mind." },
   ],
   zh: [
-    { num: "01", title: "線上預訂", body: "透過預訂表單快速提交需求，填寫路線、日期和人數，我們將迅速為您提供個人化報價。" },
-    { num: "02", title: "確認與客製化", body: "我們的團隊會直接與您聯繫，確認行程細節並完成最終安排。有任何特殊需求，請隨時告知，我們竭誠為您實現。" },
-    { num: "03", title: "司機接送", body: "當天，您的專屬司機將準時出現在指定地點，著整齊制服，於各大機場提供舉牌接機服務。" },
-    { num: "04", title: "旅途全程守護", body: "全程以您的舒適為優先。旅程結束後歡迎您的回饋，我們持續優化服務，讓每一次出行都更加美好。" },
+    { title: "機場定額接送",         body: "提供東京市內往返各大機場（羽田/成田）的固定費率接送服務。包含即時航班動態追蹤、1小時免費等待以及接機大廳專屬舉牌迎賓，解除您抵日首站的一切焦慮。" },
+    { title: "城際定制穿梭與觀光",   body: "私密、長途的高端點對點行程，專為商務款待或深度度假設計。完美替代日本新幹線或區域內航空，專為極重隱私的商務精英與高端自由行賓客打造，由大東京地區出發，直達日本境內任何目的地。" },
+    { title: "時段包車與 VIP 尊榮迎送", body: "由我們百裡挑一的頂尖優秀司機全程為您提供專屬侍從服務。完美適配多站點商務拜訪、高端購物、奢華政要接待或重大活動，司機全程在場待命。" },
+    { title: "專業乘務員派遣",       body: "派遣專業司機為客戶的自有車輛進行駕駛與資產管理。有效降低企業管理成本，確保出行達到最高級別的安全與合規標準。" },
   ],
 };
 
-/* ── Vehicles ───────────────────────────────────────────────────────── */
-type Vehicle = { name: string; tag: string; cap: string; bags: string; desc: string };
+/* ── Section 3: Vehicles ────────────────────────────────────────────── */
+const VEH_SECTION_BADGE: Record<Lang, string> = {
+  ja: "車種クラス", en: "Vehicle Classes", zh: "車隊級別",
+};
+type Vehicle = { name: string; body: string };
 const VEHICLES: Record<Lang, Vehicle[]> = {
   ja: [
-    { name: "アルファードクラス", tag: "ALPHARD", cap: "最大6名", bags: "スーツケース6個まで", desc: "VIPおよびファミリー旅行に最適。広々とした静粛な室内と最上のリクライニングシートで、日本の旅を最高の形でお楽しみください。" },
-    { name: "ハイエースクラス",   tag: "HiACE",   cap: "最大9名", bags: "スーツケース9個まで", desc: "グループ・法人のご移動に。大人数・大荷物にも余裕で対応するキャビンと、快適な乗り心地をご提供します。" },
+    { name: "ビジネス・プレミアム — トヨタ アルファード", body: "Octoshell の絶対的エース。最上級の快適性を誇り、家族旅行、大荷物の旅行客、または VIP 接待に最適です。" },
+    { name: "グランド・グループ — トヨタ ハイエース",    body: "大人数のグループ、チームビジネス、またはさらに多くの荷物を伴う移動に、広々とした清潔で洗練された空間を提供します。" },
   ],
   en: [
-    { name: "Alphard Class", tag: "ALPHARD", cap: "Up to 6 passengers", bags: "Up to 6 suitcases", desc: "The choice of VIPs and discerning families. An expansive, whisper-quiet cabin with premium reclining seats — the finest way to experience Japan." },
-    { name: "HiAce Class",   tag: "HiACE",   cap: "Up to 9 passengers", bags: "Up to 9 suitcases", desc: "Ideal for groups and corporate travel. Generous capacity for both passengers and luggage, combined with a smooth and supremely comfortable ride." },
+    { name: "Business Van — Toyota Alphard", body: "The crown jewel of Octoshell. Offers executive luxury and supreme comfort, perfect for families, international travelers with luggage, or VIP guests." },
+    { name: "Group Luxury — Toyota Hiace",   body: "Engineered for larger groups, corporate teams, or heavy luggage, maintaining a pristine, spacious environment for long-distance travel." },
   ],
   zh: [
-    { name: "Alphard 車型", tag: "ALPHARD", cap: "最多6名乘客", bags: "最多6件行李", desc: "VIP 及精緻家庭旅行的首選。寬敞靜謐的車廂與豪華可調座椅，以最優雅的方式體驗日本之旅。" },
-    { name: "HiAce 車型",   tag: "HiACE",   cap: "最多9名乘客", bags: "最多9件行李", desc: "最適合團體及商務出行。充裕的乘客與行李空間，配合順暢舒適的駕乘體驗，讓大型旅行無憂無慮。" },
+    { name: "商務尊享廂型車 — 豐田埃爾法", body: "Octoshell 的主力王牌車型。具備頂級的舒適度與奢華座艙，極其適合家庭度假、攜帶大件行李的國際旅客或 VIP 貴賓接待。" },
+    { name: "豪華大容量客車 — 豐田海獅",   body: "專為多人團體、商務團隊或超大行李載運設計，始終保持一塵不染的高標空間與舒適體驗。" },
   ],
 };
 
@@ -93,115 +98,205 @@ type FaqGroup = { group: string; items: FaqItem[] };
 const FAQ: Record<Lang, FaqGroup[]> = {
   ja: [
     {
-      group: "ご予約・料金",
+      group: "🚗 車両・車内規則について",
       items: [
-        { q: "どのように予約できますか？", a: "ウェブサイトの予約フォームからお申し込みいただけます。ご入力後、担当者より24時間以内にご連絡いたします。" },
-        { q: "料金はどのように決まりますか？", a: "距離・車種・ご利用時間をもとに算出します。高速道路料金・駐車場代はすべて含まれます。追加費用は発生しません。" },
-        { q: "キャンセルポリシーはどうなっていますか？", a: "ご乗車72時間前まではキャンセル無料です。それ以降はキャンセル料が発生する場合があります。詳細はお問い合わせください。" },
-        { q: "支払い方法を教えてください。", a: "現金・クレジットカード・銀行振込に対応しています。お支払いは乗車日またはご請求書にて承ります。" },
+        {
+          q: "どのような車が配車されますか。",
+          a: "弊社では、最高級ミニバンの「トヨタ・アルファード（最大6名様）」および大型ビジネスバンの「トヨタ・ハイエース（最大9名様）」の2車種を専門に手配しております。セダンタイプ等の配車はございません。",
+        },
+        {
+          q: "車内での喫煙や飲食はできますか。",
+          a: "全車両完全禁煙（電子タバコ含む）とさせていただいております。お食事に関しては、臭いの残らない軽食やペットボトル等の蓋付きの飲料（ミネラルウォーター等）に限り、車内でお召し上がりいただけます。",
+        },
+        {
+          q: "ペット同伴での利用はできますか。",
+          a: "はい、可能です。ペットと同乗される際は、必ず予めケージ（クレート）に入れていただきますようお願い申し上げます。ケージをお持ちでない場合、ご乗車をお断りする場合がございます。",
+        },
+        {
+          q: "荷物のみを先行して運んでもらうことはできますか。",
+          a: "はい、可能です。弊社では高ルゴルフツアーやトレッキング（登山）ツアーを数多く承っております。お客様をまずゴルフ場や登山口にお送りした後、お荷物（ゴルフバッグや大型バックパック等）のみをそのまま車両でお預かりし、先回りでご宿泊先のホテルへ運搬・搬入することが可能です。ただし、完全な無人の貨物輸送は法律上お受けできませんので、原則としてツアーご契約者様のお荷物に限らせていただきます。",
+        },
       ],
     },
     {
-      group: "当日のサービス",
+      group: "💴 料金・お支払いについて",
       items: [
-        { q: "空港でのお迎えはどのように行われますか？", a: "チャウファーがお客様のお名前を記載したサインボードをお持ちして、到着ロビーにてお待ちしております。フライトが遅れた場合も、リアルタイムで追跡し自動で調整します。着陸後90分間の無料待機時間が含まれます。" },
-        { q: "チャイルドシートは利用できますか？", a: "はい。ご予約の際にベビーシートオプションをご選択ください。事前のご連絡が必要です。" },
-        { q: "英語でのコミュニケーションは可能ですか？", a: "はい。当社のチャウファーは英語でのコミュニケーションに対応しております。中国語（広東語・普通話）対応のドライバーもご相談ください。" },
-        { q: "乗車中の飲食は可能ですか？", a: "ソフトドリンクの持ち込みは歓迎します。強い臭いを発する飲食物はお控えいただくようお願いしています。" },
+        {
+          q: "待機料金（飛行機の遅延等）は発生しますか。",
+          a: "弊社では、ご指定の乗車時刻（または航空機着陸時刻）から90分間までの待機料金は無料とさせていただいております。90分を超過した場合、以下の通り30分毎に超過待機料金が発生いたします（30分未満は30分に切り上げ）。\nアルファード： 30分毎に 2,500円（税込）\nハイエース： 30分毎に 3,000円（税込）",
+        },
+        {
+          q: "チャイルドシートや空港ミートアップ（ネームボード）は有料ですか。",
+          a: "いいえ、すべて無料（0円）でご提供しております。チャイルドシート（ジュニアシート）の手配、および空港到着ロビーでのネームボード掲示（ミート＆グリート）をご希望の際は、車両手配の都合上、お早めにオペレーターまでお申し出ください。",
+        },
+        {
+          q: "支払手段と車内決済について。",
+          a: "原則として、事前にクレジットカードをご登録いただき、運行終了後に Stripe システムを通じて決済させていただきます。車内での現金・カードの手渡し決済には対応しておりません。カードをお持ちでない法人様等に関しましては、事前銀行振込による対応も可能ですのでご相談ください。",
+        },
+        {
+          q: "領収書は発行されますか。",
+          a: "はい、サービス利用終了後、Stripe システムよりご登録のメールアドレス宛てへ電子領収書（PDF）を自動送付いたします。",
+        },
       ],
     },
     {
-      group: "車両・荷物",
+      group: "❌ キャンセルポリシー",
       items: [
-        { q: "車内は清潔で安全ですか？", a: "すべての車両は乗車前に徹底的に清掃・点検を実施しています。最高の環境をご提供できるよう、常に万全の状態を保っています。" },
+        {
+          q: "取消料（キャンセル料）はいつから発生しますか。",
+          a: "ご予約確定後のキャンセルにつきましては、特定商取引法に基づく表記に則り、以下の通りキャンセル料を申し受けます。\n配車日の48時間前まで： 無料（全額返金）\n配車日の24時間前〜48時間前まで： お見積り金額の 50%\n配車日の24時間以内、または無断キャンセル： お見積り金額の 100%\n※航空便の欠航など不可抗力による場合は、速やかにお知らせいただくことでキャンセル料は免除となります。",
+        },
       ],
     },
   ],
   en: [
     {
-      group: "Booking & Pricing",
+      group: "🚗 Vehicles & In-Car Rules",
       items: [
-        { q: "How do I make a booking?", a: "Simply fill in our online booking form. A member of our team will respond within 24 hours with a personalised quote and confirmation." },
-        { q: "How is the price calculated?", a: "Pricing is based on distance, vehicle type, and duration. All highway tolls and parking fees are included — no hidden charges, ever." },
-        { q: "What is your cancellation policy?", a: "Cancellations made 72 hours or more before the trip are free of charge. For cancellations within 72 hours, a fee may apply. Please contact us for full details." },
-        { q: "What payment methods do you accept?", a: "We accept cash, major credit cards, and bank transfer. Payment can be made on the day of the trip or via invoice." },
+        {
+          q: "What kind of vehicles will be deployed?",
+          a: "We specialize exclusively in luxury fleet management, deploying premium Toyota Alphard (Max 6 passengers) and spacious Toyota Hiace (Max 9 passengers). We do not deploy standard sedans.",
+        },
+        {
+          q: "Is smoking, eating, or drinking allowed inside the vehicle?",
+          a: "All vehicles are strictly Non-Smoking (including e-cigarettes and vapes). For refreshments, only bottled water/capped beverages and light, odorless snacks are permitted inside the car.",
+        },
+        {
+          q: "Can I travel with my pets?",
+          a: "Yes, pets are welcome but must be kept inside a secure pet carrier/crate throughout the journey. Passengers without a proper carrier may be refused boarding.",
+        },
+        {
+          q: "Can you transport our luggage separately during our tour?",
+          a: "Yes, absolutely. We frequently manage customized Golf Tours and Hiking/Trekking groups. We can drop you off at the golf course or trailhead and transport your luggage (golf bags, heavy backpacks, etc.) directly to your designated hotel ahead of your arrival. Please note that for legal compliance, we only transport luggage belonging to contracted passengers of our tours; standalone commercial cargo shipping is not permitted.",
+        },
       ],
     },
     {
-      group: "On the Day",
+      group: "💴 Rates & Payments",
       items: [
-        { q: "How does airport pick-up work?", a: "Your chauffeur will be waiting in the arrivals hall with a personalised name board. We monitor all flights in real time — if your flight is delayed, your chauffeur adjusts automatically. 90 minutes of free waiting time is included after landing." },
-        { q: "Can I request a baby seat?", a: "Yes. Please select the Baby Seat option when booking, or let us know in advance and we will arrange it for you." },
-        { q: "Can I communicate with the driver in English?", a: "Absolutely. All our chauffeurs are comfortable communicating in English. Mandarin and Cantonese-speaking drivers are also available upon request." },
-        { q: "Can I eat or drink in the vehicle?", a: "Soft drinks and light snacks are welcome. We kindly ask that you avoid foods with strong odours to keep the cabin fresh for all passengers." },
+        {
+          q: "Do you charge for waiting time (e.g., flight delays)?",
+          a: "We offer a generous 90-minute complimentary waiting period starting from your scheduled pickup time (or actual flight landing time). If the delay exceeds 90 minutes, an extended waiting fee will apply for every 30 minutes (rounded up to the nearest 30-minute block):\nToyota Alphard: JPY 2,500 (incl. tax) per 30 mins\nToyota Hiace: JPY 3,000 (incl. tax) per 30 mins",
+        },
+        {
+          q: "Are child seats and Airport Meet & Greet services extra?",
+          a: "No, both services are 100% Complimentary (Free of Charge). If you require a child/junior safety seat or a personalized name-board greeting at the arrival lobby, please notify our team in advance so we can guarantee availability.",
+        },
+        {
+          q: "What are the payment methods? Can I pay inside the car?",
+          a: "All payments are processed securely online via our Stripe gateway using your pre-registered credit card after the service is completed. In-car payments are not accepted. For corporate clients who cannot use credit cards, upfront bank transfers (Furikomi) can be arranged.",
+        },
+        {
+          q: "Will I receive a receipt?",
+          a: "Yes, a digital formal receipt (PDF) will be automatically dispatched to your registered email address via Stripe immediately after your trip concludes.",
+        },
       ],
     },
     {
-      group: "Vehicles & Luggage",
+      group: "❌ Cancellation Policy",
       items: [
-        { q: "Are the vehicles clean and well-maintained?", a: "Every vehicle is thoroughly cleaned and inspected before each trip. We maintain the highest standards of cleanliness and safety so you always step into a pristine cabin." },
+        {
+          q: "What is your cancellation policy?",
+          a: "Cancellations are governed by our official Legal Notice under the Specified Commercial Transactions Act:\nUp to 48 hours before pickup: Free of charge (100% Refund)\nBetween 24 to 48 hours before pickup: 50% of the estimated quote\nWithin 24 hours or No-Show: 100% of the estimated quote\nNote: Cancellation fees are waived if your flight is officially canceled by the airline, provided you notify us immediately.",
+        },
       ],
     },
   ],
   zh: [
     {
-      group: "預訂與費用",
+      group: "🚗 车辆及车内守则",
       items: [
-        { q: "如何進行預訂？", a: "只需填寫線上預訂表單，我們的團隊將在24小時內回覆您，提供個人化報價及確認資訊。" },
-        { q: "費用是如何計算的？", a: "費用根據距離、車型及使用時間計算，已包含所有高速公路過路費及停車費，絕無任何隱藏收費。" },
-        { q: "取消政策是什麼？", a: "在出發72小時前取消可免費退款。72小時內取消可能會產生取消費用，詳情請與我們聯繫。" },
-        { q: "接受哪些付款方式？", a: "我們接受現金、主要信用卡及銀行轉帳，可於出行當天付款或透過發票付款。" },
+        {
+          q: "预订后会派发什么样的车辆？",
+          a: "本公司专注于高端礼宾包车服务，旗下车队仅由豪华商务车 丰田埃尔法（Alphard，最大载客6人） 及大容量商旅车 丰田海狮（Hiace，最大载客9人） 组成。我们不提供普通轿车车型。",
+        },
+        {
+          q: "车内可以吸烟或饮食吗？",
+          a: "专属车厢内全面禁烟（包括电子烟）。为了保证乘车舒适度，车内仅允许饮用瓶装水或带盖饮料，并允许食用无刺激性气味的轻食点心。",
+        },
+        {
+          q: "可以携带宠物一同乘车吗？",
+          a: "可以。为了保障行车安全，携带宠物乘车时请务必提前将其放入宠物航空箱或便携笼内。若未携带合规宠物笼，司机有权拒绝其上车，敬请谅解。",
+        },
+        {
+          q: "团队行程中，车辆可以帮我们单独将行李运送到酒店吗？",
+          a: "可以，这正是我们高尔夫球团和徒步登山团的核心特色服务。我们可以先将您送至高尔夫球场或登山起点，随后由专属车辆将您的行李（如高尔夫球包、重型登山包等）先行送往您今晚入住的酒店并办理寄存，让您全程轻松出行。需要注意的是，基于日本法规，我们仅提供本团签约客人的随行行李分流运送，不接受无乘客随行的纯商业货运。",
+        },
       ],
     },
     {
-      group: "當天服務",
+      group: "💴 费用与支付相关",
       items: [
-        { q: "機場接送是如何運作的？", a: "您的專屬司機將在抵達大廳舉牌等候。我們會即時監控所有航班——若您的航班延誤，司機將自動調整。降落後包含90分鐘免費等候時間。" },
-        { q: "可以要求嬰兒座椅嗎？", a: "可以。請在預訂時選擇嬰兒座椅選項，或提前通知我們，我們將為您安排。" },
-        { q: "可以用中文與司機溝通嗎？", a: "當然可以。我們備有普通話及廣東話司機，請在預訂時提出需求，我們將盡力安排。" },
-        { q: "車內可以飲食嗎？", a: "歡迎攜帶軟性飲料及輕食。請避免氣味濃烈的食物，以保持車廂環境整潔舒適。" },
+        {
+          q: "司机接机等待会产生超时费吗？（如航班延误）",
+          a: "本公司提供极具诚意的 90分钟免费等待服务（自您预约的接机时间或航班实际落地时间起算）。若超时超过90分钟，将按每30分钟为单位收取超时等待费（不足30分钟按30分钟计）：\n丰田埃尔法 (Alphard)： 每30分钟加收 2,500 日元（含税）\n丰田海狮 (Hiace)： 每30分钟加收 3,000 日元（含税）",
+        },
+        {
+          q: "儿童安全座椅和机场举牌接机（Meet & Greet）怎么收费？",
+          a: "完全免费（0日元）。我们免费提供儿童安全座椅/婴儿座椅，并免费提供到达大厅举牌接机服务。为了便于提前调度，请在预订时尽早向客服提出申请。",
+        },
+        {
+          q: "支付方式是什么？可以在车内直接付款给司机吗？",
+          a: "抱歉，我们不支持车内现金或刷卡结账。原则上所有行程均需在行程前绑定信用卡，行程结束后通过我们的 Stripe 线上系统自动完成扣款。如企业法人客户确无信用卡，可申请提前进行银行转账。",
+        },
+        {
+          q: "行程结束后是否有发票/收据？",
+          a: "有。在您的行程结束扣款完成后，Stripe 系统会自动将合规的电子收据（PDF格式领収書）发送至您注册的电子邮箱。",
+        },
       ],
     },
     {
-      group: "車輛與行李",
+      group: "❌ 取消政策",
       items: [
-        { q: "車輛是否乾淨且定期保養？", a: "每輛車在每次出行前都會進行徹底清潔和檢查，我們嚴格維持最高的清潔及安全標準，讓您每次踏入車廂都煥然一新。" },
+        {
+          q: "取消订单如何收费？",
+          a: "订单取消政策严格遵循日本《特定商业交易法》公示条款执行：\n用车时间前 48 小时以上取消： 免费（全额退款）\n用车时间前 24 至 48 小时内取消： 收取预计行程总额的 50%\n用车时间前 24 小时内取消或无故未到（No-Show）： 收取预计行程总额的 100%\n注：如因台风、航班突发欠航等不可抗力导致无法出行，在您提供航司凭证并及时通知我们的前提下，将免收取消手续费。",
+        },
       ],
     },
   ],
 };
 
-/* ── Section label ──────────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════════════════
+   Sub-components  (all sizes ×1.2 vs original)
+══════════════════════════════════════════════════════════════════════ */
+
+/* Section label — was [10px]/[11px], now [12px]/[13px] */
 function SectionLabel({ label }: { label: string }) {
   return (
-    <div className="flex items-center gap-3 mb-6 sm:mb-8">
-      <span className="w-5 h-px bg-[#c9a84c]" />
-      <p className="text-[#c9a84c] text-[10px] sm:text-[11px] tracking-[0.45em] uppercase font-semibold">{label}</p>
+    <div className="flex items-center gap-3 mb-7 sm:mb-9">
+      {/* line was w-5, now w-6 */}
+      <span className="w-6 h-px bg-[#c9a84c]" />
+      <p className="text-[#c9a84c] text-[12px] sm:text-[13px] tracking-[0.45em] uppercase font-semibold">{label}</p>
     </div>
   );
 }
 
-/* ── FAQ accordion item ─────────────────────────────────────────────── */
+/* FAQ row — was [12px]/[13px] Q text, now [14px]/[16px] */
 function FaqRow({ item, open, onToggle }: { item: FaqItem; open: boolean; onToggle: () => void }) {
   return (
     <div className={`border-b border-white/[0.07] transition-colors duration-200 ${open ? "border-[#c9a84c]/20" : ""}`}>
       <button
         onClick={onToggle}
-        className="w-full flex items-start justify-between gap-4 py-4 sm:py-5 text-left group"
+        className="w-full flex items-start justify-between gap-5 py-5 sm:py-6 text-left group"
       >
-        <span className={`text-[12px] sm:text-[13px] tracking-[0.06em] leading-relaxed transition-colors duration-200 ${open ? "text-white" : "text-white/65 group-hover:text-white/90"}`}>
+        {/* Q text: was [12px]/[13px] → [14px]/[16px] */}
+        <span className={`text-[14px] sm:text-[16px] tracking-[0.05em] leading-relaxed transition-colors duration-200 ${open ? "text-white" : "text-white/65 group-hover:text-white/90"}`}>
           {item.q}
         </span>
-        <span className={`shrink-0 w-5 h-5 flex items-center justify-center rounded-full border transition-all duration-200 mt-0.5
+        {/* icon circle: was w-5 h-5, now w-6 h-6 */}
+        <span className={`shrink-0 w-6 h-6 flex items-center justify-center rounded-full border transition-all duration-200 mt-0.5
           ${open ? "border-[#c9a84c]/60 text-[#c9a84c]" : "border-white/20 text-white/30 group-hover:border-white/40"}`}>
-          <svg className={`w-2.5 h-2.5 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          {/* chevron: was w-2.5 h-2.5, now w-3 h-3 */}
+          <svg className={`w-3 h-3 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
             fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
           </svg>
         </span>
       </button>
       {open && (
-        <p className="pb-5 text-[12px] sm:text-[13px] text-white/50 leading-relaxed tracking-[0.03em] pr-8">
+        /* A text: was [12px]/[13px] → [14px]/[15px]; whitespace-pre-line for \n line breaks */
+        <p className="pb-6 text-[14px] sm:text-[15px] text-white/50 leading-relaxed tracking-[0.03em] pr-9 whitespace-pre-line">
           {item.a}
         </p>
       )}
@@ -215,176 +310,178 @@ function FaqRow({ item, open, onToggle }: { item: FaqItem; open: boolean; onTogg
 export default function AboutPage() {
   const { lang } = useLang();
   const [openKey, setOpenKey] = useState<string | null>(null);
-
   const toggle = (key: string) => setOpenKey(prev => (prev === key ? null : key));
 
   return (
     <main className="min-h-screen bg-[#0c0c0c]">
 
       {/* ── Compact hero ───────────────────────────────────────────── */}
-      <div className="relative bg-[#0c0c0c] pt-[82px] sm:pt-24 pb-8 sm:pb-12 overflow-hidden">
-        {/* subtle grid texture */}
+      <div className="relative bg-[#0c0c0c] pt-[82px] sm:pt-24 pb-10 sm:pb-14 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 opacity-[0.025]"
           style={{ backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)", backgroundSize: "60px 60px" }} />
-
-        {/* radial glow top-right */}
         <div className="pointer-events-none absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.06]"
           style={{ background: "radial-gradient(circle, #c9a84c 0%, transparent 70%)" }} />
 
         <Header />
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
-          <p className="text-[#c9a84c] text-[9px] tracking-[0.45em] mb-2 uppercase">{HERO[lang].badge}</p>
-          <h1 className="text-white text-xl sm:text-2xl lg:text-3xl font-light tracking-[0.12em] sm:tracking-[0.16em] leading-tight">
+          {/* badge: was [9px] → [11px] */}
+          <p className="text-[#c9a84c] text-[11px] tracking-[0.45em] mb-2.5 uppercase">{HERO[lang].badge}</p>
+          {/* title: was text-xl/2xl/3xl → text-2xl/3xl/4xl */}
+          <h1 className="text-white text-2xl sm:text-3xl lg:text-4xl font-light tracking-[0.12em] sm:tracking-[0.16em] leading-tight">
             {HERO[lang].title}
           </h1>
-          <p className="mt-1.5 text-white/35 text-[10px] tracking-[0.28em] uppercase">{HERO[lang].sub}</p>
+          {/* sub: was [10px] → [12px] */}
+          <p className="mt-2 text-white/35 text-[12px] tracking-[0.28em] uppercase">{HERO[lang].sub}</p>
 
-          {/* anchor links */}
-          <div className="flex items-center gap-6 mt-6 sm:mt-7">
+          {/* anchor links: was [10px] → [12px]; line was w-3.5 → w-4 */}
+          <div className="flex items-center gap-7 mt-7 sm:mt-9">
             <Link href="#story"
-              className="flex items-center gap-2 text-white/45 text-[10px] tracking-[0.22em] uppercase hover:text-[#c9a84c] transition-colors">
-              <span className="w-3.5 h-px bg-current" />
+              className="flex items-center gap-2.5 text-white/45 text-[12px] tracking-[0.22em] uppercase hover:text-[#c9a84c] transition-colors">
+              <span className="w-4 h-px bg-current" />
               {HERO[lang].link_story}
             </Link>
             <Link href="#faq"
-              className="flex items-center gap-2 text-white/45 text-[10px] tracking-[0.22em] uppercase hover:text-[#c9a84c] transition-colors">
-              <span className="w-3.5 h-px bg-current" />
+              className="flex items-center gap-2.5 text-white/45 text-[12px] tracking-[0.22em] uppercase hover:text-[#c9a84c] transition-colors">
+              <span className="w-4 h-px bg-current" />
               {HERO[lang].link_faq}
             </Link>
           </div>
         </div>
       </div>
 
-      {/* ─────────────────────────────────────────────────────────── */}
-      {/* ── STORY section ─────────────────────────────────────────── */}
-      {/* ─────────────────────────────────────────────────────────── */}
+      {/* ══════════════════════════════════════════════════════════════
+          STORY SECTION
+      ══════════════════════════════════════════════════════════════ */}
       <section id="story" className="scroll-mt-20 bg-[#111111] py-16 sm:py-24 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
 
-          <SectionLabel label={STORY[lang].sectionBadge} />
+          <SectionLabel label={lang === "ja" ? "ブランドストーリー" : lang === "zh" ? "品牌故事" : "Our Story"} />
 
           {/* Story text + image placeholder */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_310px] gap-10 lg:gap-16 items-start">
 
-            {/* Text */}
+            {/* Text column */}
             <div>
-              <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl font-light tracking-[0.08em] leading-snug mb-6 sm:mb-8">
-                {STORY[lang].title}
+              {/* H2: was text-2xl/3xl/4xl → text-3xl/4xl/5xl */}
+              <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl font-light tracking-[0.07em] leading-snug mb-7 sm:mb-9">
+                {STORY_TITLE[lang]}
               </h2>
-              <p className="text-white/60 text-[13px] sm:text-[14px] leading-[1.9] tracking-[0.04em] mb-5">
-                {STORY[lang].p1}
+              {/* body: was [13px]/[14px] → [15px]/[17px] */}
+              <p className="text-white/60 text-[15px] sm:text-[17px] leading-[1.9] tracking-[0.03em] mb-6">
+                {STORY_P1[lang]}
               </p>
-              <p className="text-white/60 text-[13px] sm:text-[14px] leading-[1.9] tracking-[0.04em]">
-                {STORY[lang].p2}
+              <p className="text-white/60 text-[15px] sm:text-[17px] leading-[1.9] tracking-[0.03em]">
+                {STORY_P2[lang]}
               </p>
 
-              <div className="mt-8 sm:mt-10">
+              <div className="mt-9 sm:mt-12">
+                {/* CTA: was [11px] → [13px] */}
                 <Link href="/book"
-                  className="inline-flex items-center gap-3 border border-[#c9a84c]/50 text-[#c9a84c] text-[11px] tracking-[0.25em] uppercase px-7 py-3 hover:bg-[#c9a84c] hover:text-black transition-all duration-200">
+                  className="inline-flex items-center gap-3 border border-[#c9a84c]/50 text-[#c9a84c] text-[13px] tracking-[0.25em] uppercase px-8 py-3.5 hover:bg-[#c9a84c] hover:text-black transition-all duration-200">
                   {lang === "ja" ? "ご予約はこちら" : lang === "zh" ? "立即預訂" : "Book Now"}
                 </Link>
               </div>
             </div>
 
             {/* Image placeholder — portrait 3:4 */}
-            <div className="relative w-full max-w-[300px] mx-auto lg:mx-0">
-              <div className="aspect-[3/4] bg-[#1a1a1a] border border-white/[0.07] flex flex-col items-center justify-center gap-3 overflow-hidden">
-                {/* decorative corner lines */}
-                <div className="absolute top-3 left-3 w-6 h-6 border-t border-l border-[#c9a84c]/40" />
-                <div className="absolute top-3 right-3 w-6 h-6 border-t border-r border-[#c9a84c]/40" />
-                <div className="absolute bottom-3 left-3 w-6 h-6 border-b border-l border-[#c9a84c]/40" />
-                <div className="absolute bottom-3 right-3 w-6 h-6 border-b border-r border-[#c9a84c]/40" />
-
-                {/* camera icon */}
-                <svg className="w-8 h-8 text-white/15" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+            <div className="relative w-full max-w-[310px] mx-auto lg:mx-0">
+              <div className="aspect-[3/4] bg-[#1a1a1a] border border-white/[0.07] flex flex-col items-center justify-center gap-4 overflow-hidden">
+                {/* corner lines */}
+                <div className="absolute top-3 left-3 w-7 h-7 border-t border-l border-[#c9a84c]/40" />
+                <div className="absolute top-3 right-3 w-7 h-7 border-t border-r border-[#c9a84c]/40" />
+                <div className="absolute bottom-3 left-3 w-7 h-7 border-b border-l border-[#c9a84c]/40" />
+                <div className="absolute bottom-3 right-3 w-7 h-7 border-b border-r border-[#c9a84c]/40" />
+                {/* camera icon: was w-8/h-8 → w-10/h-10 */}
+                <svg className="w-10 h-10 text-white/15" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
                   <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z" />
                 </svg>
-
-                <p className="text-white/20 text-[9px] tracking-[0.2em] uppercase text-center px-6 leading-relaxed">
+                {/* label: was [9px] → [11px] */}
+                <p className="text-white/20 text-[11px] tracking-[0.2em] uppercase text-center px-6 leading-relaxed">
                   {lang === "ja" ? "写真をここに挿入" : lang === "zh" ? "在此插入圖片" : "Insert photo here"}
                 </p>
-                <p className="text-white/12 text-[8px] tracking-[0.12em] text-center px-6 leading-relaxed mt-1">
+                <p className="text-white/15 text-[10px] tracking-[0.12em] text-center px-6 leading-relaxed">
                   720 × 960 px · 3:4
                 </p>
               </div>
-
-              {/* caption below placeholder */}
-              <p className="mt-3 text-white/20 text-[9px] tracking-[0.15em] leading-relaxed text-center lg:text-left">
-                {STORY[lang].imgNote}
+              {/* caption: was [9px] → [11px] */}
+              <p className="mt-3 text-white/20 text-[11px] tracking-[0.12em] leading-relaxed text-center lg:text-left">
+                {lang === "ja"
+                  ? "推奨：黒いアルファードのドアを開ける白手袋チャウファー。東京/伝統的な門を背景に、ゴールデンアワー撮影。縦位置 3:4・最小720×960px"
+                  : lang === "zh"
+                  ? "建議：戴白手套的司機為黑色 Alphard 開門。背景為東京天際線或傳統鳥居。黃金時刻·縱向3:4·最小720×960px"
+                  : "Suggested: Chauffeur in dark suit & white gloves opening black Alphard door. Tokyo skyline or traditional gate. Golden hour · Portrait 3:4 · min 720×960px"}
               </p>
             </div>
           </div>
 
-          {/* ── How It Works — 4 steps ─────────────────────────────── */}
+          {/* ════════════════════════════════════════════════════════
+              Section 2: 4 Core Services
+          ════════════════════════════════════════════════════════ */}
           <div className="mt-20 sm:mt-28">
-            <SectionLabel label={lang === "ja" ? "ご利用の流れ" : lang === "zh" ? "服務流程" : "How It Works"} />
+            <SectionLabel label={lang === "ja" ? "4つのコアサービス" : lang === "zh" ? "四大核心服務" : "Four Core Services"} />
+
+            {/* sub-section heading: was [14px]/[15px] → [17px]/[18px] */}
+            <h3 className="text-white text-[17px] sm:text-[18px] font-light tracking-[0.1em] mb-3">
+              {SVC_SECTION_TITLE[lang]}
+            </h3>
+            {/* lead: was [13px]/[14px] → [15px]/[17px] */}
+            <p className="text-white/45 text-[15px] sm:text-[17px] leading-relaxed tracking-[0.03em] mb-10 sm:mb-12">
+              {SVC_SECTION_LEAD[lang]}
+            </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/[0.06]">
-              {STEPS[lang].map((step) => (
-                <div key={step.num} className="bg-[#111111] p-7 sm:p-9 group hover:bg-[#161616] transition-colors duration-200">
-                  <p className="text-[#c9a84c]/40 text-[36px] font-bold tracking-tight leading-none mb-4 font-mono
-                                group-hover:text-[#c9a84c]/60 transition-colors duration-200">
-                    {step.num}
+              {SERVICES[lang].map((svc, i) => (
+                <div key={i} className="bg-[#111111] p-7 sm:p-10 group hover:bg-[#161616] transition-colors duration-200">
+                  {/* number: was [36px] → [43px] */}
+                  <p className="text-[#c9a84c]/35 text-[43px] font-bold tracking-tight leading-none mb-5 font-mono
+                                group-hover:text-[#c9a84c]/55 transition-colors duration-200">
+                    {String(i + 1).padStart(2, "0")}
                   </p>
-                  <h3 className="text-white text-[14px] sm:text-[15px] font-medium tracking-[0.1em] mb-3">
-                    {step.title}
-                  </h3>
-                  <p className="text-white/45 text-[12px] sm:text-[13px] leading-[1.85] tracking-[0.03em]">
-                    {step.body}
+                  {/* service title: was [14px]/[15px] → [17px]/[18px] */}
+                  <h4 className="text-white text-[17px] sm:text-[18px] font-medium tracking-[0.08em] mb-3.5 leading-snug">
+                    {svc.title}
+                  </h4>
+                  {/* service body: was [12px]/[13px] → [14px]/[16px] */}
+                  <p className="text-white/45 text-[14px] sm:text-[16px] leading-[1.85] tracking-[0.03em]">
+                    {svc.body}
                   </p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* ── Vehicles ──────────────────────────────────────────── */}
+          {/* ════════════════════════════════════════════════════════
+              Section 3: Vehicles
+          ════════════════════════════════════════════════════════ */}
           <div className="mt-20 sm:mt-28">
-            <SectionLabel label={lang === "ja" ? "車両ラインアップ" : lang === "zh" ? "車隊介紹" : "Our Fleet"} />
+            <SectionLabel label={VEH_SECTION_BADGE[lang]} />
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-7">
               {VEHICLES[lang].map((veh, i) => (
-                <div key={veh.tag}
+                <div key={i}
                   className="relative bg-[#0f0f0f] border border-white/[0.07] overflow-hidden group hover:border-white/[0.14] transition-all duration-300">
-
-                  {/* gold top accent */}
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/50 to-transparent" />
 
                   {/* vehicle image */}
-                  <div className="bg-white mx-6 mt-6 mb-0 h-[160px] sm:h-[190px] flex items-center justify-center overflow-hidden">
+                  <div className="bg-white mx-6 mt-7 mb-0 h-[170px] sm:h-[200px] flex items-center justify-center overflow-hidden">
                     <Image
                       src={i === 0 ? ALPHARD_IMG : HIACE_IMG}
                       alt={veh.name}
-                      width={340}
-                      height={200}
+                      width={360}
+                      height={210}
                       className="object-contain mix-blend-multiply w-full h-full p-2"
                     />
                   </div>
 
-                  {/* info */}
-                  <div className="px-6 py-5">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-white text-[13px] sm:text-[14px] font-medium tracking-[0.12em]">{veh.name}</h3>
-                      <span className="text-[#c9a84c] text-[9px] tracking-[0.25em] border border-[#c9a84c]/30 px-2 py-0.5">
-                        {veh.tag}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-4 mb-3">
-                      <span className="flex items-center gap-1.5 text-white/40 text-[11px] tracking-[0.08em]">
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                        </svg>
-                        {veh.cap}
-                      </span>
-                      <span className="flex items-center gap-1.5 text-white/40 text-[11px] tracking-[0.08em]">
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
-                        </svg>
-                        {veh.bags}
-                      </span>
-                    </div>
-                    <p className="text-white/40 text-[12px] leading-[1.75] tracking-[0.03em]">{veh.desc}</p>
+                  <div className="px-6 py-6">
+                    {/* vehicle name: was [13px]/[14px] → [16px]/[17px] */}
+                    <h3 className="text-white text-[16px] sm:text-[17px] font-medium tracking-[0.1em] mb-3 leading-snug">
+                      {veh.name}
+                    </h3>
+                    {/* vehicle body: was [12px] → [14px] */}
+                    <p className="text-white/40 text-[14px] leading-[1.8] tracking-[0.03em]">{veh.body}</p>
                   </div>
                 </div>
               ))}
@@ -397,25 +494,26 @@ export default function AboutPage() {
       {/* ── Gold divider ────────────────────────────────────────────── */}
       <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/35 to-transparent" />
 
-      {/* ─────────────────────────────────────────────────────────── */}
-      {/* ── FAQ section ───────────────────────────────────────────── */}
-      {/* ─────────────────────────────────────────────────────────── */}
+      {/* ══════════════════════════════════════════════════════════════
+          FAQ SECTION
+      ══════════════════════════════════════════════════════════════ */}
       <section id="faq" className="scroll-mt-20 bg-[#0c0c0c] py-16 sm:py-24 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
 
           <SectionLabel label={lang === "ja" ? "よくある質問" : lang === "zh" ? "常見問題" : "FAQ"} />
 
-          <h2 className="text-white text-2xl sm:text-3xl font-light tracking-[0.1em] mb-10 sm:mb-14">
+          {/* FAQ title: was text-2xl/3xl → text-3xl/4xl */}
+          <h2 className="text-white text-3xl sm:text-4xl font-light tracking-[0.1em] mb-11 sm:mb-16">
             {lang === "ja" ? "よくあるご質問" : lang === "zh" ? "常見問題" : "Frequently Asked Questions"}
           </h2>
 
-          <div className="space-y-10 sm:space-y-12">
+          <div className="space-y-11 sm:space-y-14">
             {FAQ[lang].map((group) => (
               <div key={group.group}>
-                {/* group heading */}
-                <div className="flex items-center gap-3 mb-1">
-                  <span className="w-3 h-px bg-[#c9a84c]/50" />
-                  <p className="text-[#c9a84c]/70 text-[10px] tracking-[0.35em] uppercase font-semibold">
+                {/* group heading: was [10px] → [12px]; line was w-3 → w-4 */}
+                <div className="flex items-center gap-3.5 mb-1">
+                  <span className="w-4 h-px bg-[#c9a84c]/50" />
+                  <p className="text-[#c9a84c]/70 text-[12px] tracking-[0.35em] uppercase font-semibold">
                     {group.group}
                   </p>
                 </div>
@@ -436,21 +534,24 @@ export default function AboutPage() {
             ))}
           </div>
 
-          {/* CTA below FAQ */}
-          <div className="mt-14 sm:mt-20 border border-white/[0.07] p-8 sm:p-10 text-center">
-            <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/40 to-transparent mb-8" />
-            <p className="text-white/40 text-[11px] tracking-[0.25em] uppercase mb-3">
+          {/* CTA block */}
+          <div className="mt-16 sm:mt-22 border border-white/[0.07] p-9 sm:p-12 text-center">
+            <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/40 to-transparent mb-9" />
+            {/* was [11px] → [13px] */}
+            <p className="text-white/40 text-[13px] tracking-[0.25em] uppercase mb-3">
               {lang === "ja" ? "もっと詳しく知りたい方は" : lang === "zh" ? "有其他疑問？" : "Still have questions?"}
             </p>
-            <p className="text-white text-[14px] sm:text-[15px] tracking-[0.06em] mb-6 leading-relaxed">
+            {/* was [14px]/[15px] → [17px]/[18px] */}
+            <p className="text-white text-[17px] sm:text-[18px] tracking-[0.06em] mb-7 leading-relaxed">
               {lang === "ja"
                 ? "お気軽にご予約フォームからお問い合わせください。"
                 : lang === "zh"
                 ? "歡迎透過預訂表單與我們聯繫。"
                 : "Reach out through our booking form and we'll be happy to help."}
             </p>
+            {/* was [11px] → [13px] */}
             <Link href="/book"
-              className="inline-flex items-center gap-3 bg-[#c9a84c] text-black text-[11px] font-bold tracking-[0.25em] uppercase px-8 py-3.5 hover:bg-white transition-all duration-200">
+              className="inline-flex items-center gap-3 bg-[#c9a84c] text-black text-[13px] font-bold tracking-[0.25em] uppercase px-9 py-4 hover:bg-white transition-all duration-200">
               {lang === "ja" ? "ご予約・お問い合わせ" : lang === "zh" ? "預訂 / 聯絡我們" : "Book / Contact Us"}
             </Link>
           </div>
