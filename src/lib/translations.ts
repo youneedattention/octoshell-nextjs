@@ -6,7 +6,9 @@ export const t: Record<string, T> = {
   /* ── Navigation ─────────────────────────────── */
   nav_home:     { en: "Home",      ja: "ホーム",      zh: "首頁" },
   nav_services: { en: "Services",  ja: "サービス",    zh: "服務" },
-  nav_about:    { en: "About us",  ja: "私たちについて", zh: "關於我們" },
+  nav_about:       { en: "About",        ja: "会社情報",        zh: "關於" },
+  nav_about_story: { en: "How It Works", ja: "Octoshellについて", zh: "品牌故事" },
+  nav_about_faq:   { en: "FAQ",          ja: "よくある質問",      zh: "常見問題" },
   nav_book:     { en: "BOOK / Reserve", ja: "BOOK / 予約", zh: "BOOK / 預約" },
 
   /* ── Hero ───────────────────────────────────── */

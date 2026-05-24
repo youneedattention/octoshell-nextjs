@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 @theme inline {
   --font-sans: var(--font-montserrat);
   --color-gold: #c9a84c;
