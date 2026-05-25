@@ -103,7 +103,7 @@ const FAQ: Record<Lang, FaqGroup[]> = {
       items: [
         {
           q: "どのような車が配車されますか。",
-          a: "弊社では、最高級ミニバンの「トヨタ・アルファード（最大6名様）」および大型ビジネスバンの「トヨタ・ハイエース（最大9名様）」の2車種を専門に手配しております。セダンタイプ等の配車はございません。",
+          a: "弊社では、最高級ミニバンの「トヨタ・アルファード（最大5名様）」および大型ビジネスバンの「トヨタ・ハイエース（最大9名様）」の2車種を専門に手配しております。セダンタイプ等の配車はございません。",
         },
         {
           q: "車内での喫煙や飲食はできますか。",
@@ -127,7 +127,7 @@ const FAQ: Record<Lang, FaqGroup[]> = {
         },
         {
           q: "車内でスマートフォンの充電はできますか？",
-          a: "はい、可能です。車両にはUSBポートが装備されており、iPhoneおよびAndroid端末に対応した充電ケーブルを無料でご用意しております。",
+          a: "はい、可能です。車両には充電用ポートが装備されており、アイフォンおよびアンドロイド端末に対応した充電ケーブルを無料でご用意しております。",
         },
       ],
     },
@@ -136,7 +136,11 @@ const FAQ: Record<Lang, FaqGroup[]> = {
       items: [
         {
           q: "待機料金（飛行機の遅延等）は発生しますか。",
-          a: "弊社では、ご指定の乗車時刻（または航空機着陸時刻）から90分間までの待機料金は無料とさせていただいております。90分を超過した場合、以下の通り30分毎に超過待機料金が発生いたします（30分未満は30分に切り上げ）。\nアルファード： 30分毎に 2,500円（税込）\nハイエース： 30分毎に 3,000円（税込）",
+          a: "担当乗務員がお客様の航空便の運航状況を追跡し、実際の着陸時間に合わせてお迎え時間を調整いたします。実際の着陸時刻から90分を超過して待機が発生した場合、以下の通り30分毎に超過待機料金が発生いたします（30分未満は30分に切り上げ）。\nアルファード： 30分毎に 2,500円（税込）\nハイエース： 30分毎に 3,000円（税込）",
+        },
+        {
+          q: "万が一、運行中にルートの変更や利用時間の延長が必要になった場合はどうすればよいですか？",
+          a: "速やかに乗務員にお申し付けください。乗務員がすぐに配車センターと連絡を取り、追加料金を確認いたします。弊社のハイヤーサービスは完全予約制で運行しているため、当日の予約状況によっては突発的な変更や延長のご要望にお応えできない場合もございますので、予めご了承ください。",
         },
         {
           q: "チャイルドシートや空港ミートアップ（ネームボード）は有料ですか。",
@@ -144,11 +148,11 @@ const FAQ: Record<Lang, FaqGroup[]> = {
         },
         {
           q: "支払手段は何ですか？車内でドライバーに直接支払うことはできますか？",
-          a: "車内での現金決済に対応しているほか、運行前にクレジットカードをご登録いただければ、運行終了後に弊社のオンラインStripeシステムを通じて自動的に決済を完了させることも可能です。クレジットカードをお持ちでない法人のお客様は、事前の銀行振込をお申し出ください。",
+          a: "車内での現金決済に対応しているほか、運行前にクレジットカードをご登録いただければ、運行終了後に弊社のオンライン決済システム（ストライプ）を通じて自動的に決済を完了させることも可能です。クレジットカードをお持ちでない法人のお客様は、事前の銀行振込をお申し出ください。",
         },
         {
           q: "領収書は発行されますか。",
-          a: "はい、サービス利用終了後、Stripe システムよりご登録のメールアドレス宛てへ電子領収書（PDF）を自動送付いたします。",
+          a: "はい、クレジットカード決済のお客様には、サービス利用終了後、決済システムよりご登録のメールアドレス宛てへ電子領収書（電子媒体の書面）を自動送付いたします。現金決済のお客様には、ご希望に応じて電子媒体の領収書または請求書を発行いたします。",
         },
       ],
     },
@@ -168,7 +172,7 @@ const FAQ: Record<Lang, FaqGroup[]> = {
       items: [
         {
           q: "What kind of vehicles will be deployed?",
-          a: "We specialize exclusively in luxury fleet management, deploying premium Toyota Alphard (Max 6 passengers) and spacious Toyota Hiace (Max 9 passengers). We do not deploy standard sedans.",
+          a: "We specialize exclusively in luxury fleet management, deploying premium Toyota Alphard (Max 5 passengers) and spacious Toyota Hiace (Max 9 passengers). We do not deploy standard sedans.",
         },
         {
           q: "Is smoking, eating, or drinking allowed inside the vehicle?",
@@ -201,7 +205,11 @@ const FAQ: Record<Lang, FaqGroup[]> = {
       items: [
         {
           q: "Do you charge for waiting time (e.g., flight delays)?",
-          a: "We offer a generous 90-minute complimentary waiting period starting from your scheduled pickup time (or actual flight landing time). If the delay exceeds 90 minutes, an extended waiting fee will apply for every 30 minutes (rounded up to the nearest 30-minute block):\nToyota Alphard: JPY 2,500 (incl. tax) per 30 mins\nToyota Hiace: JPY 3,000 (incl. tax) per 30 mins",
+          a: "Our chauffeur will follow up your flight info and adjust the pick up time accordingly. If the waiting time exceeds 90 minutes after the actual landing time, an extended waiting fee will apply for every 30 minutes (rounded up to the nearest 30-minute block):\nToyota Alphard: JPY 2,500 (incl. tax) per 30 mins\nToyota Hiace: JPY 3,000 (incl. tax) per 30 mins",
+        },
+        {
+          q: "What if a passenger needs to change the route or extend the service time spontaneously?",
+          a: "Please communicate with the chauffeur immediately, and they will contact the Dispatch Center to confirm the additional charges. Since our services are pre-scheduled, please understand that we may not be able to accommodate all last-minute requests.",
         },
         {
           q: "Are child seats and Airport Meet & Greet services extra?",
@@ -213,7 +221,7 @@ const FAQ: Record<Lang, FaqGroup[]> = {
         },
         {
           q: "Will I receive a receipt?",
-          a: "Yes, a digital formal receipt (PDF) will be automatically dispatched to your registered email address via Stripe immediately after your trip concludes.",
+          a: "Yes, for credit card payments, a digital formal receipt (PDF) will be automatically dispatched to your registered email address via Stripe immediately after your trip concludes. For cash payments, we will provide a PDF receipt or invoice upon request.",
         },
       ],
     },
@@ -229,56 +237,60 @@ const FAQ: Record<Lang, FaqGroup[]> = {
   ],
   zh: [
     {
-      group: "🚗 车辆及车内守则",
+      group: "🚗 車輛及車內守則",
       items: [
         {
-          q: "预订后会派发什么样的车辆？",
-          a: "本公司专注于高端礼宾包车服务，旗下车队仅由豪华商务车 丰田埃尔法（Alphard，最大载客6人） 及大容量商旅车 丰田海狮（Hiace，最大载客9人） 组成。我们不提供普通轿车车型。",
+          q: "預訂後會派發什麼樣的車輛？",
+          a: "本公司專注於高端禮賓包車服務，旗下車隊僅由豪華商務車 「豐田埃爾法（最大載客5人）」 及大容量商旅車 「豐田海獅（最大載客9人）」 組成。我們不提供普通轎車車型。",
         },
         {
-          q: "车内可以吸烟或饮食吗？",
-          a: "专属车厢内全面禁烟（包括电子烟）。为了保证乘车舒适度，车内仅允许饮用瓶装水或带盖饮料，并允许食用无刺激性气味的轻食点心。",
+          q: "車內可以吸煙或飲食嗎？",
+          a: "專屬車廂內全面禁煙（包括電子煙）。為了保證乘車舒適度，車內僅允許飲用瓶裝水或帶蓋飲料，並允許食用無刺激性氣味的輕食點心。",
         },
         {
-          q: "可以携带宠物一同乘车吗？",
-          a: "可以。为了保障行车安全，携带宠物乘车时请务必提前将其放入宠物航空箱或便携笼内。若未携带合规宠物笼，司机有权拒绝其上车，敬请谅解。",
+          q: "可以攜帶寵物一同乘車嗎？",
+          a: "可以。為了保障行車安全，攜帶寵物乘車時請務必提前將其放入寵物航空箱或便攜籠內。若未攜帶合規寵物籠，司機有權拒絕其上車，敬請諒解。",
         },
         {
-          q: "团队行程中，车辆可以帮我们单独将行李运送到酒店吗？",
-          a: "可以，这正是我们高尔夫球团和徒步登山团的核心特色服务。我们可以先将您送至高尔夫球场或登山起点，随后由专属车辆将您的行李（如高尔夫球包、重型登山包等）先行送往您今晚入住的酒店并办理寄存，让您全程轻松出行。需要注意的是，基于日本法规，我们仅提供本团签约客人的随行行李分流运送，不接受无乘客随行的纯商业货运。",
+          q: "團隊行程中，車輛可以幫我們單獨將行李運送到酒店嗎？",
+          a: "可以，這正是我們高爾夫球團和徒步登山團的核心特色服務。我們可以先將您送至高爾夫球場或登山起點，隨後由專屬車輛將您的行李（如高爾夫球包、重型登山包等）先行送往您今晚入住的酒店並辦理寄存，讓您全程輕鬆出行。需要注意的是，基於日本法規，我們僅提供本團簽約客人的隨行行李分流運送，不接受無乘客隨行的純商業貨運。",
         },
         {
-          q: "司机会穿着正式、系领带吗？",
-          a: "是的，我们的司机始终穿着正式的西装并佩戴领带，保持最高标准的专业仪表。",
+          q: "司機會穿著正式、配戴領帶嗎？",
+          a: "是的，我們的司機始終穿著正式的西裝並配戴領帶，保持最高標準的專業儀表。",
         },
         {
-          q: "司机会保护乘客的隐私和保密性吗？",
-          a: "是的。保护您的隐私和机密是我们的重中之重。我们的司机遵循最严格的保密标准，确保您的私密对话和行程信息在任何时候都绝对安全。",
+          q: "司機會保護乘客的隱私和保密性嗎？",
+          a: "是的。保護您的隱私和機密是我們的重中之重。我們的司機遵循最嚴格的保密標準，確保您的私密對話和行程信息在任何時候都絕對安全。",
         },
         {
-          q: "可以在车内给手机充电吗？",
-          a: "可以。我们的车辆均配有USB接口，并免费提供兼容 iPhone 和 Android 设备的车载充电线。",
+          q: "可以在車內給手機充電嗎？",
+          a: "可以。我們的車輛均配有充電接口，並免費提供兼容蘋果和安卓設備的車載充電線。",
         },
       ],
     },
     {
-      group: "💴 费用与支付相关",
+      group: "💴 費用與支付相關",
       items: [
         {
-          q: "司机接机等待会产生超时费吗？（如航班延误）",
-          a: "本公司提供极具诚意的 90分钟免费等待服务（自您预约的接机时间或航班实际落地时间起算）。若超时超过90分钟，将按每30分钟为单位收取超时等待费（不足30分钟按30分钟计）：\n丰田埃尔法 (Alphard)： 每30分钟加收 2,500 日元（含税）\n丰田海狮 (Hiace)： 每30分钟加收 3,000 日元（含税）",
+          q: "司機接機等待會產生超時費嗎？（如航班延誤）",
+          a: "擔當司機會主動追蹤您的航班動態，並根據航班實際落地時間靈活調整接機時間。若在航班實際著陸後，等待時間超過90分鐘，將按每30分鐘為單位收取超時等待費（不足30分鐘按30分鐘計）：\n豐田埃爾法： 每30分鐘加收 2,500 日元（含稅）\n豐田海獅： 每30分鐘加收 3,000 日元（含稅）",
         },
         {
-          q: "儿童安全座椅和机场举牌接机（Meet & Greet）怎么收费？",
-          a: "完全免费（0日元）。我们免费提供儿童安全座椅/婴儿座椅，并免费提供到达大厅举牌接机服务。为了便于提前调度，请在预订时尽早向客服提出申请。",
+          q: "萬一乘客在行程中臨時需要修改路線或增加用車時間怎麼辦？",
+          a: "請立即與司機溝通，司機會馬上與調度中心取得聯繫並確認追加費用。由於我們的包車服務均為提前排單預約制，請諒解當天的實際預約情況可能會有無法滿足您臨時需求的情況發生。",
         },
         {
-          q: "支付方式是什么？可以在车内直接付款给司机吗？",
-          a: "我们支持车内现金结账，也可以在行程前绑定信用卡，行程结束后通过我们的 Stripe 线上系统自动完成扣款。如企业法人客户确无信用卡，可申请提前进行银行转账。",
+          q: "兒童安全座椅和機場舉牌接機怎麼收費？",
+          a: "完全免費（0日元）。我們免費提供兒童安全座椅/嬰兒座椅，並免費提供到達大廳舉牌接機服務。為了便利提前調度，請在預訂時儘早向客服提出申請。",
         },
         {
-          q: "行程结束后是否有发票/收据？",
-          a: "有。在您的行程结束扣款完成后，Stripe 系统会自动将合规的电子收据（PDF格式领収書）发送至您注册的电子邮箱。",
+          q: "支付方式是什麼？可以在車內直接付款給司機嗎？",
+          a: "我們支持車內現金結帳，也可以在行程前綁定信用卡，行程結束後通過我們的線上支付系統（藍條支付）自動完成扣款。如企業法人客戶確無信用卡，可申請提前進行銀行轉帳。",
+        },
+        {
+          q: "行程結束後是否有發票或收據？",
+          a: "有。使用信用卡支付的客戶，在行程結束扣款完成後，系統會自動將合規的電子收據（格式為PDF電子領收書）發送至您註冊的電子郵箱。使用現金結帳的客戶，我們將根據您的需求，在行程結束後提供電子收據或請款單。",
         },
       ],
     },
@@ -286,8 +298,8 @@ const FAQ: Record<Lang, FaqGroup[]> = {
       group: "❌ 取消政策",
       items: [
         {
-          q: "取消订单如何收费？",
-          a: "订单取消政策严格遵循日本《特定商业交易法》公示条款执行：\n用车时间前 48 小时以上取消： 免费（全额退款）\n用车时间前 24 至 48 小时内取消： 收取预计行程总额的 50%\n用车时间前 24 小时内取消或无故未到（No-Show）： 收取预计行程总额的 100%\n注：如因台风、航班突发欠航等不可抗力导致无法出行，在您提供航司凭证并及时通知我们的前提下，将免收取消手续费。",
+          q: "取消訂單如何收費？",
+          a: "訂單取消政策嚴格遵循日本《特定商業交易法》公示條款執行：\n用車時間前 48 小時以上取消： 免費（全額退款）\n用車時間前 24 至 48 小時內取消： 收取預計行程總額的 50%\n用車時間前 24 小時內取消或無故未到： 收取預計行程總額的 100%\n註：如因颱風、航班突發欠航等不可抗力導致無法出行，在您提供航司憑證並及時通知我們的前提下，將免收取消手續費。",
         },
       ],
     },
