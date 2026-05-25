@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import SiteFooter from "@/components/SiteFooter";
@@ -64,6 +65,8 @@ type ServiceItem = {
   body: Record<Lang, string>;
   /** Short instruction for the site owner — which photo to insert */
   imgNote: string;
+  /** Real image URL — when set, renders an <Image> instead of the placeholder */
+  img?: string;
 };
 
 const SERVICES: ServiceItem[] = [
@@ -86,6 +89,7 @@ const SERVICES: ServiceItem[] = [
       zh: "往返於東京市內與羽田、成田機場的高端定額送迎服務，為您的商旅或度假開啟優雅序幕。結合即時航班動態追蹤，專屬司機將在接機大廳手持您的專屬姓名牌溫馨迎候，貼心打理行李並引導您步入尊榮座艙。",
     },
     imgNote: "Uniformed chauffeur in formal dark suit, holding a printed personalized name board in a bright, modern arrivals hall at Haneda or Narita. Confident posture, natural light. Landscape 3:2 · min 1440×960px.",
+    img: "https://octoshell.jp/wp-content/uploads/2024/09/service1.png",
   },
   {
     id: "oneway", num: "03",
@@ -288,7 +292,13 @@ export default function ServicesPage() {
 
                 {/* IMAGE side */}
                 <div className="w-full">
-                  <ImgPlaceholder note={svc.imgNote} num={svc.num} />
+                  {svc.img ? (
+                    <div className="relative aspect-[3/2] overflow-hidden">
+                      <Image src={svc.img} alt={svc.title["en"]} fill className="object-cover" />
+                    </div>
+                  ) : (
+                    <ImgPlaceholder note={svc.imgNote} num={svc.num} />
+                  )}
                 </div>
 
               </div>

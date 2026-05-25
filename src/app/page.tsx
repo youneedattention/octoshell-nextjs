@@ -37,10 +37,10 @@ const TikTokIcon = () => (
 );
 
 const SOCIALS = [
-  { label: "Instagram", icon: <InstagramIcon /> },
-  { label: "Facebook",  icon: <FacebookIcon /> },
-  { label: "YouTube",   icon: <YouTubeIcon /> },
-  { label: "TikTok",    icon: <TikTokIcon /> },
+  { label: "Instagram", href: "https://www.instagram.com/octoshell_japan/", icon: <InstagramIcon /> },
+  { label: "Facebook",  href: "#", icon: <FacebookIcon /> },
+  { label: "YouTube",   href: "#", icon: <YouTubeIcon /> },
+  { label: "TikTok",    href: "#", icon: <TikTokIcon /> },
 ];
 
 /* ── Pricing data (route key → price) ─────────────────────────────── */
@@ -88,8 +88,10 @@ export default function Home() {
           </p>
           {/* Social icons */}
           <div className="flex gap-2 sm:gap-3 mt-5 sm:mt-7 ml-[18px] sm:ml-[28px]">
-            {SOCIALS.map(({ label, icon }) => (
-              <Link key={label} href="#" aria-label={label}
+            {SOCIALS.map(({ label, href, icon }) => (
+              <Link key={label} href={href} aria-label={label}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                 className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-white/70 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors">
                 {icon}
               </Link>
@@ -175,7 +177,7 @@ function PriceCard({
   const { lang: _l } = useLang(); // already passed as prop, but hook is fine
   return (
     <div className="flex flex-col border border-gray-200">
-      <div className="bg-white flex items-center justify-center py-7 px-4">
+      <div className="bg-white flex items-center justify-center h-[200px] px-4">
         <Image src={img} alt={name} width={320} height={180}
           className="object-contain max-h-40 w-auto mix-blend-multiply" />
       </div>
