@@ -34,7 +34,7 @@ export default function SiteFooter() {
             <Link href="#" className="text-white/30 text-[11px] hover:text-white/60 transition-colors">
               {t.footer_terms[lang]}
             </Link>
-            <Link href="#" className="text-white/30 text-[11px] hover:text-white/60 transition-colors">
+            <Link href="/privacy" className="text-white/30 text-[11px] hover:text-white/60 transition-colors">
               {t.footer_privacy[lang]}
             </Link>
             <Link href="/law" className="text-white/30 text-[11px] hover:text-white/60 transition-colors">

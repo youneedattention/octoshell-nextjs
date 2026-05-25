@@ -147,7 +147,7 @@ export default function Home() {
                 className="text-white/30 text-[11px] hover:text-white/60 transition-colors">
                 {t.footer_terms[lang]}
               </Link>
-              <Link href="#"
+              <Link href="/privacy"
                 className="text-white/30 text-[11px] hover:text-white/60 transition-colors">
                 {t.footer_privacy[lang]}
               </Link>
