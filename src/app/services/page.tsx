@@ -144,6 +144,7 @@ const SERVICES: ServiceItem[] = [
       zh: "專為高爾夫愛好者量身打造的頂級球場往返接送方案。寬敞的專車空間可輕鬆容納多套高爾夫球具與大件行李，從清晨出發到揮桿後的疲憊返程，全程由專業司機為您的尊貴俱樂部生活保駕護航。",
     },
     imgNote: "Chauffeur loading a premium golf bag into the open trunk of a black Toyota Hiace on a lush green fairway, early morning mist and sunrise light. Elegant and sporty. Landscape 3:2 · min 1440×960px.",
+    img: "/GOLF.png",
   },
   {
     id: "outdoor", num: "08",
