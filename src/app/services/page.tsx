@@ -103,6 +103,7 @@ const SERVICES: ServiceItem[] = [
       zh: "簡單純粹的特定地點到特定地點單程尊享接送。作為替代區域內航空或新幹線的私密出行方案，我們為當代高端自由行賓客與商務精英提供無縫銜接的移動空間，在旅途中獨享靜謐與從容。",
     },
     imgNote: "Black Toyota Alphard on an empty expressway at blue-hour dusk, silhouette of Tokyo skyline or Mt Fuji in background. Long-exposure, cinematic look, sense of effortless speed. Landscape 3:2 · min 1440×960px.",
+    img: "/oneway.png",
   },
   {
     id: "photo", num: "04",
