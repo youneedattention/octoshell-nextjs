@@ -140,7 +140,11 @@ const FAQ: Record<Lang, FaqGroup[]> = {
         },
         {
           q: "万が一、運行中にルートの変更や利用時間の延長が必要になった場合はどうすればよいですか？",
-          a: "速やかに乗務員にお申し付けください。乗務員がすぐに配車センターと連絡を取り、追加料金を確認いたします。弊社のハイヤーサービスは完全予約制で運行しているため、当日の予約状況によっては突発的な変更や延長のご要望にお応えできない場合もございますので、予めご了承ください。",
+          a: "速やかに乗務員にお申し付けください。乗務員がすぐに配車センターと連絡を取り、追加料金を確認いたします。突発的なルート変更や時間延長によって新たに発生した高速道路料金、有料道路料金、回送通行料、駐車場料金、乗務員宿泊費、および時間延長割増料金は最終決済時に合算されます。弊社のハイヤーサービスは完全予約制で運行しているため、当日の予約状況によっては突発的な変更や延長のご要望にお応えできない場合もございますので、予めご了承ください。",
+        },
+        {
+          q: "高速道路料金、有料道路料金、駐車場料金、乗務員宿泊費などは別料金ですか？",
+          a: "いいえ、弊社の提示する当初のお見積り金額はすべて込みの総額料金（包干価格）です。あらかじめご提出いただいた行程を運行するために必要な高速道路料金、有料道路料金、回送通行料、駐車場料金、および乗務員の宿泊費用（遠方・泊まりがけの場合）はすべて基本料金に含まれております。運行開始後に急なルート変更のご要望がない限り、追加費用は一切発生いたしません。",
         },
         {
           q: "チャイルドシートや空港ミートアップ（ネームボード）は有料ですか。",
@@ -209,7 +213,11 @@ const FAQ: Record<Lang, FaqGroup[]> = {
         },
         {
           q: "What if a passenger needs to change the route or extend the service time spontaneously?",
-          a: "Please communicate with the chauffeur immediately, and they will contact the Dispatch Center to confirm the additional charges. Since our services are pre-scheduled, please understand that we may not be able to accommodate all last-minute requests.",
+          a: "Please communicate with the chauffeur immediately, and they will contact the Dispatch Center to confirm the additional charges. New highway tolls, parking fees, deadhead tolls, chauffeur accommodation expenses, and hourly extension surcharges incurred due to spontaneous route/time changes will be added to your final bill. Since our services are pre-scheduled, please understand that we may not be able to accommodate all last-minute requests.",
+        },
+        {
+          q: "Are highway tolls, parking fees, and chauffeur accommodation included in the price?",
+          a: "Yes. Our initial quotes are strictly all-inclusive. All standard highway tolls, parking fees, deadhead tolls, and chauffeur overnight accommodation expenses required for your scheduled itinerary are fully included in the total price. No hidden fees will be added unless you request route modifications during the journey.",
         },
         {
           q: "Are child seats and Airport Meet & Greet services extra?",
@@ -278,7 +286,11 @@ const FAQ: Record<Lang, FaqGroup[]> = {
         },
         {
           q: "萬一乘客在行程中臨時需要修改路線或增加用車時間怎麼辦？",
-          a: "請立即與司機溝通，司機會馬上與調度中心取得聯繫並確認追加費用。由於我們的包車服務均為提前排單預約制，請諒解當天的實際預約情況可能會有無法滿足您臨時需求的情況發生。",
+          a: "請立即與司機溝通，司機會馬上與調度中心取得聯繫並確認追加費用。因乘客臨時變更路線或超時而全新產生的高速公路費、收費道路費、回送通行費、停車場費、司機住宿費以及時間延長溢價費用，將據實累加至您的最終賬單中。由於我們的包車服務均為提前排單預約制，請諒解當天的實際預約情況可能會有無法滿足您臨時需求的情況發生。",
+        },
+        {
+          q: "高速公路費、收費道路費、停車場費、司機住宿費等需要另外支付嗎？",
+          a: "不需要。本公司所提供的初始估價均採包乾制。凡是為了運行您預定行程所必需的高速公路費、收費道路費、回送通行費、停車場費以及司機隨行住宿費（限遠途及跨夜行程），均已完整包含在總價中。除非您在出車後臨時變更行程，否則絕無任何隱形或追加費用。",
         },
         {
           q: "兒童安全座椅和機場舉牌接機怎麼收費？",
