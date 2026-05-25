@@ -21,7 +21,7 @@ interface Section { label: string; blocks: CB[]; }
    Page-level strings
 ══════════════════════════════════════════════════════════════════════ */
 const PAGE_TITLE: Record<Lang, string> = {
-  en: "Legal Notice (Specified Commercial Transactions Act)",
+  en: "Specified Commercial Transactions Act",
   ja: "特定商取引法に基づく表記",
   zh: "特定商業交易法公示",
 };

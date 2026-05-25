@@ -173,7 +173,7 @@ export const t: Record<string, T> = {
   book_optional:    { en: "Optional",                   ja: "任意",                       zh: "選填" },
 
   /* ── Law page ───────────────────────────────── */
-  law_badge:  { en: "LEGAL",          ja: "法的情報",          zh: "法定事項" },
+  law_badge:  { en: "LEGAL NOTICE",   ja: "法的情報",          zh: "法定事項" },
   law_title:  { en: "Legal Notice",   ja: "特定商取引法に基づく表記", zh: "法定事項記載" },
   law_back:   { en: "← Back to Home", ja: "← ホームへ戻る",    zh: "← 返回首頁" },
 };
