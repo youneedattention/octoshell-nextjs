@@ -84,7 +84,7 @@ export async function POST(req: NextRequest) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: "Octoshell Inquiry <onboarding@resend.dev>",
+      from: "Octoshell Inquiry <noreply@octoshell.jp>",
       to: [toEmail],
       reply_to: body.email,
       subject: `【お問い合わせ】${body.subject} — ${body.name}`,

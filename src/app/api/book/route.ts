@@ -118,7 +118,7 @@ export async function POST(req: NextRequest) {
     method: "POST",
     headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
     body: JSON.stringify({
-      from: "Octoshell Booking <onboarding@resend.dev>",
+      from: "Octoshell Booking <noreply@octoshell.jp>",
       to: [toEmail],
       reply_to: body.email,
       subject: `【予約リクエスト】${body.name}  ${body.date}`,
