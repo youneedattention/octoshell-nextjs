@@ -123,6 +123,7 @@ const SERVICES: ServiceItem[] = [
       zh: "專為大東京區域的奢華酒店、高端民宿及各類大型展會場地提供定制化包車解決方案。針對國際會議、商務展覽或私人晚宴，我們透過高標準的車隊調度管理，確保每位貴賓都能享受極具影響力的盛大登場。",
     },
     imgNote: "Row of 3–4 black luxury minivans perfectly aligned at a grand Tokyo hotel entrance at night. Subtle warm entrance lighting, red-carpet suggestion, sense of organised prestige. Landscape 3:2 · min 1440×960px.",
+    img: "/events-mice.jpg",
   },
   {
     id: "sightseeing", num: "06",
