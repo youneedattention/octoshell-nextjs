@@ -92,7 +92,7 @@ const SERVICES: ServiceItem[] = [
       zh: "無論是東京市內的數小時高端購物，還是全天候的商務視察，我們靈活的時段包車服務都能完美契合您的節奏。專屬司機全程待命，讓您的出行行程擁有絕對的掌控權與靈活性。",
     },
     imgNote: "Interior of a luxury Toyota Alphard: rich cream leather seats, soft ambient gold lighting, bokeh city lights through tinted rear window. Cinematic, intimate mood. Landscape 3:2 · min 1440×960px.",
-    img: "/events-mice1.jpg",
+    img: "/By_the_Hour.png",
   },
   {
     id: "oneway", num: "03",
