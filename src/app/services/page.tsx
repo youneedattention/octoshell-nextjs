@@ -30,8 +30,8 @@ const SCHEMA = {
       { "@type": "Offer", "position": 4, "itemOffered": { "@type": "Service", "name": "Events & MICE Transportation",  "alternateName": ["エグゼクティブ・イベント & 国際会議送迎", "頂級盛會與大型活動"], "description": "Bespoke multi-vehicle fleet coordination for international conferences, exhibitions, and private galas.", "serviceType": "Event & MICE Transportation", "areaServed": "Greater Tokyo Area, Japan" } },
       { "@type": "Offer", "position": 5, "itemOffered": { "@type": "Service", "name": "Bespoke Sightseeing Tour",      "alternateName": ["テーラーメイド観光ハイヤー", "深度定制觀光"],   "description": "Tailor-made sightseeing chauffeur tours from Tokyo to Mount Fuji, Hakone, and historic hot-spring inns.", "serviceType": "Sightseeing Chauffeur Tour",  "areaServed": "Japan" } },
       { "@type": "Offer", "position": 6, "itemOffered": { "@type": "Service", "name": "Golf Transportation",           "alternateName": ["ゴルフ＆エグゼクティブ送迎", "尊榮高爾夫接送"],  "description": "Dedicated golf club transfers with ample space for clubs across the Kanto region.", "serviceType": "Golf Club Transfer",         "areaServed": "Kanto Region, Japan" } },
-      { "@type": "Offer", "position": 7, "itemOffered": { "@type": "Service", "name": "Ceremonial Transportation",     "alternateName": ["冠婚葬祭・セレモニー送迎", "冠婚葬祭與典禮迎送"], "description": "Dignified chauffeur services for weddings, funerals, and important family milestones.", "serviceType": "Ceremonial Chauffeur Service", "areaServed": "Greater Tokyo Area, Japan" } },
-      { "@type": "Offer", "position": 8, "itemOffered": { "@type": "Service", "name": "Executive Driver Dispatch",     "alternateName": ["プロ乗務員派遣 ＆ 車両管理", "行政司機派遣與車隊代管"], "description": "Elite professional chauffeurs dispatched to manage and operate client-owned corporate vehicles.", "serviceType": "Corporate Driver Dispatch",  "areaServed": "Japan" } },
+      { "@type": "Offer", "position": 7, "itemOffered": { "@type": "Service", "name": "Outdoor & Premium Hiking Chauffeur", "alternateName": ["アウトドア ＆ プレミアム登山ハイヤー", "戶外極致與尊榮登山接送"], "description": "Dedicated transport to Japan's mountain trailheads with ample space for trekking gear; flexible for early-morning, late-night, and post-hike onsen transfers.", "serviceType": "Outdoor & Hiking Chauffeur", "areaServed": "Japan" } },
+      { "@type": "Offer", "position": 8, "itemOffered": { "@type": "Service", "name": "Ceremonial Transportation",     "alternateName": ["冠婚葬祭・セレモニー送迎", "冠婚葬祭與典禮迎送"], "description": "Dignified chauffeur services for weddings, funerals, and important family milestones.", "serviceType": "Ceremonial Chauffeur Service", "areaServed": "Greater Tokyo Area, Japan" } },
     ],
   },
 };
@@ -54,8 +54,8 @@ const CHIPS: { id: string; label: Record<Lang, string> }[] = [
   { id: "events",      label: { ja: "MICE",        en: "Events & MICE", zh: "頂級盛會" } },
   { id: "sightseeing", label: { ja: "観光",        en: "Sightseeing",   zh: "定制觀光" } },
   { id: "golf",        label: { ja: "ゴルフ",      en: "Golf",          zh: "高爾夫" } },
+  { id: "outdoor",     label: { ja: "登山",        en: "Outdoor",       zh: "登山接送" } },
   { id: "ceremony",    label: { ja: "冠婚葬祭",    en: "Ceremonial",    zh: "典禮" } },
-  { id: "dispatch",    label: { ja: "乗務員派遣",  en: "Dispatch",      zh: "司機派遣" } },
 ];
 
 type ServiceItem = {
@@ -132,7 +132,17 @@ const SERVICES: ServiceItem[] = [
     imgNote: "Chauffeur loading a premium golf bag into the open trunk of a black Toyota Hiace on a lush green fairway, early morning mist and sunrise light. Elegant and sporty. Landscape 3:2 · min 1440×960px.",
   },
   {
-    id: "ceremony", num: "07",
+    id: "outdoor", num: "07",
+    title: { ja: "アウトドア ＆ プレミアム登山ハイヤー", en: "Outdoor & Premium Hiking Chauffeur", zh: "戶外極致與尊榮登山接送" },
+    body: {
+      ja: "日本の雄大な大自然や名峰へ挑むアクティブなゲストのための、特別な送迎プランです。登山口への快適なアクセスはもちろん、トレッキングギアや本格的な登山装備もゆとりを持って積載可能です。早朝や深夜の出発、下山後の温泉地への移動まで柔軟に対応し、プレミアムなアウトドア体験を安全かつ贅沢にサポートいたします。",
+      en: "A dedicated transport solution designed for active guests exploring Japan's majestic landscapes and renowned mountain peaks. We provide seamless access to remote trailheads with ample space to securely store trekking gear and heavy mountaineering equipment. Catering to early morning departures, midnight schedules, or direct post-hike transfers to hot-spring resorts, we ensure a safe, luxurious, and completely stress-free outdoor adventure.",
+      zh: "專為前往日本壯麗大自然與名峰發起挑戰的活躍賓客所設計的專屬出行方案。我們不僅提供前往各處登山口的舒適便捷接駁，寬敞的座艙更可輕鬆容納所有專業遠足裝備與重型登山行李。無論是清晨或深夜的整裝出發，還是下山後直接前往溫泉度假村放鬆，我們都將全程提供安全且奢華的保障，讓您的戶外探索旅程更顯尊貴。",
+    },
+    imgNote: "Black Toyota Hiace parked at a misty mountain trailhead at dawn in the Japanese Alps, lush green forest and peak silhouette in background. Sense of adventure and premium readiness. Landscape 3:2 · min 1440×960px.",
+  },
+  {
+    id: "ceremony", num: "08",
     title: { ja: "冠婚葬祭・セレモニー送迎", en: "Ceremonial Services", zh: "冠婚葬祭與典禮迎送" },
     body: {
       ja: "人生の特別な節目や、厳かなセレモニーにおける送迎を承ります。安全運行の徹底はもちろん、極めて細やかで品格ある接遇により、大切なご親族や人生の先輩への敬意を表したおもてなしをお約束いたします。",
@@ -140,16 +150,6 @@ const SERVICES: ServiceItem[] = [
       zh: "在婚禮、葬禮等人生重要而莊嚴的時刻，我們以最高級別的安全運行與細緻入微的禮儀接待，為您款待生命中最重要的人物，用無可挑剔的品格彰顯家族與企業的體面。",
     },
     imgNote: "Black Alphard with subtle white floral ornament or white ribbon, parked outside a traditional Japanese ceremonial hall or shrine gate. Soft diffused overcast light, dignified and quiet atmosphere. Landscape 3:2 · min 1440×960px.",
-  },
-  {
-    id: "dispatch", num: "08",
-    title: { ja: "プロ乗務員派遣 ＆ 車両管理", en: "Executive Driver Dispatch", zh: "行政司機派遣與車隊代管" },
-    body: {
-      ja: "採用段階から厳格な教育と訓練を重ねたエグゼクティブ・プロドライバーを、お客様の保有車両へ派遣いたします。高度な運転技術と秘書並みのホスピタリティにより、企業の役員車両や要人の移動を日常的にサポートします。",
-      en: "We deploy elite, rigorously trained professional drivers to operate and manage your own corporate or private vehicles. Combining defensive driving mastery with corporate-level discretion, this service offers seamless mobility asset management.",
-      zh: "自招募階段即接受嚴格培訓與考核的頂尖行政司機，可直接派遣至客戶的自有車輛進行駕駛與日常管理。將專業的商務侍從禮儀與資產安全管理完美融合，專為企業高管及家族辦公室打造。",
-    },
-    imgNote: "Professional male chauffeur in a tailored dark suit, standing at parade rest beside a luxury black saloon or Alphard, holding white gloves. Sharp city or corporate building backdrop, shallow depth of field. Portrait or landscape 3:2 · min 1440×960px.",
   },
 ];
 
