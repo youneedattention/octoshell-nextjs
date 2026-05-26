@@ -81,7 +81,7 @@ const SERVICES: ServiceItem[] = [
       zh: "往返於東京市內與羽田、成田機場的高端定額送迎服務，為您的商旅或度假開啟優雅序幕。結合即時航班動態追蹤，專屬司機將在接機大廳手持您的專屬姓名牌溫馨迎候，貼心打理行李並引導您步入尊榮座艙。",
     },
     imgNote: "Uniformed chauffeur in formal dark suit, holding a printed personalized name board in a bright, modern arrivals hall at Haneda or Narita. Confident posture, natural light. Landscape 3:2 · min 1440×960px.",
-    img: "/airport.png",
+    img: "/airport.webp",
   },
   {
     id: "hourly", num: "02",
@@ -92,7 +92,7 @@ const SERVICES: ServiceItem[] = [
       zh: "無論是東京市內的數小時高端購物，還是全天候的商務視察，我們靈活的時段包車服務都能完美契合您的節奏。專屬司機全程待命，讓您的出行行程擁有絕對的掌控權與靈活性。",
     },
     imgNote: "Interior of a luxury Toyota Alphard: rich cream leather seats, soft ambient gold lighting, bokeh city lights through tinted rear window. Cinematic, intimate mood. Landscape 3:2 · min 1440×960px.",
-    img: "/By_the_Hour.png",
+    img: "/By_the_Hour.webp",
   },
   {
     id: "oneway", num: "03",
@@ -103,7 +103,7 @@ const SERVICES: ServiceItem[] = [
       zh: "簡單純粹的特定地點到特定地點單程尊享接送。作為替代區域內航空或新幹線的私密出行方案，我們為當代高端自由行賓客與商務精英提供無縫銜接的移動空間，在旅途中獨享靜謐與從容。",
     },
     imgNote: "Black Toyota Alphard on an empty expressway at blue-hour dusk, silhouette of Tokyo skyline or Mt Fuji in background. Long-exposure, cinematic look, sense of effortless speed. Landscape 3:2 · min 1440×960px.",
-    img: "/oneway.png",
+    img: "/oneway.webp",
   },
   {
     id: "photo", num: "04",
@@ -114,7 +114,7 @@ const SERVICES: ServiceItem[] = [
       zh: "穿梭於澀谷的霓虹、淺草的古樸、東京鐵塔的絕美夜色，乃至大黑PA與大東京近郊的朝聖之旅，我們為您的珍貴旅拍打造一座「隨行移動化妝間」。免去身著華麗盛裝或精緻和服時擠地鐵的狼狽，更無需在街頭焦慮地等待未知車輛，我們的頂級豐田埃爾法將直接化身為您與攝影師的專屬私密行宮。在這座經過深層清潔、與世隔絕的靜謐車廂內，您可以極其優雅地更換華服、從容補妝、安放沉重的攝影器材。這不再是一場疲憊的外景拍攝，而是一次豪車隨行、獨享明星般矚目與尊寵的全天候奢華巡遊，讓鏡頭捕捉到的每一幀畫面，都散發著令人屏息的極致誘惑。",
     },
     imgNote: "Woman in elegant kimono or luxury couture seated inside a pristine Alphard cabin, golden bokeh city lights outside tinted window. Cinematic, intimate, editorial mood. Landscape 3:2 · min 1440×960px.",
-    img: "/kimono.png",
+    img: "/kimono.webp",
   },
   {
     id: "events", num: "05",
@@ -125,7 +125,7 @@ const SERVICES: ServiceItem[] = [
       zh: "專為大東京區域的奢華酒店、高端民宿及各類大型展會場地提供定制化包車解決方案。針對國際會議、商務展覽或私人晚宴，我們透過高標準的車隊調度管理，確保每位貴賓都能享受極具影響力的盛大登場。",
     },
     imgNote: "Row of 3–4 black luxury minivans perfectly aligned at a grand Tokyo hotel entrance at night. Subtle warm entrance lighting, red-carpet suggestion, sense of organised prestige. Landscape 3:2 · min 1440×960px.",
-    img: "/events-mice.jpg",
+    img: "/events-mice.webp",
   },
   {
     id: "sightseeing", num: "06",
@@ -136,7 +136,7 @@ const SERVICES: ServiceItem[] = [
       zh: "從東京市內的經典巡禮，到前往富士山、箱根頂級溫泉旅館的長途度假，我們的專業車隊將帶您深度領略日本之美。亦可為外籍貴賓指派通過日本國家口譯導遊考試的資深乘務員，提供頂級的跨文化款待。",
     },
     imgNote: "Black Alphard parked before a classic red torii gate or autumn-leaf mountain temple path, golden-hour light. Sense of discovery and serenity. No people needed — let the landscape speak. Landscape 3:2 · min 1440×960px.",
-    img: "/Sightseeing.jpg",
+    img: "/Sightseeing.webp",
   },
   {
     id: "golf", num: "07",
@@ -147,7 +147,7 @@ const SERVICES: ServiceItem[] = [
       zh: "專為高爾夫愛好者量身打造的頂級球場往返接送方案。寬敞的專車空間可輕鬆容納多套高爾夫球具與大件行李，從清晨出發到揮桿後的疲憊返程，全程由專業司機為您的尊貴俱樂部生活保駕護航。",
     },
     imgNote: "Chauffeur loading a premium golf bag into the open trunk of a black Toyota Hiace on a lush green fairway, early morning mist and sunrise light. Elegant and sporty. Landscape 3:2 · min 1440×960px.",
-    img: "/GOLF.png",
+    img: "/GOLF.webp",
   },
   {
     id: "outdoor", num: "08",
@@ -158,7 +158,7 @@ const SERVICES: ServiceItem[] = [
       zh: "專為前往日本壯麗大自然與名峰發起挑戰的活躍賓客所設計的專屬出行方案。我們不僅提供前往各處登山口的舒適便捷接駁，寬敞的座艙更可輕鬆容納所有專業遠足裝備與重型登山行李。無論是清晨或深夜的整裝出發，還是下山後直接前往溫泉度假村放鬆，我們都將全程提供安全且奢華的保障，讓您的戶外探索旅程更顯尊貴。",
     },
     imgNote: "Black Toyota Hiace parked at a misty mountain trailhead at dawn in the Japanese Alps, lush green forest and peak silhouette in background. Sense of adventure and premium readiness. Landscape 3:2 · min 1440×960px.",
-    img: "/HIKING.png",
+    img: "/HIKING.webp",
   },
   {
     id: "ceremony", num: "09",
@@ -169,7 +169,7 @@ const SERVICES: ServiceItem[] = [
       zh: "在婚禮、葬禮等人生重要而莊嚴的時刻，我們以最高級別的安全運行與細緻入微的禮儀接待，為您款待生命中最重要的人物，用無可挑剔的品格彰顯家族與企業的體面。",
     },
     imgNote: "Black Alphard with subtle white floral ornament or white ribbon, parked outside a traditional Japanese ceremonial hall or shrine gate. Soft diffused overcast light, dignified and quiet atmosphere. Landscape 3:2 · min 1440×960px.",
-    img: "/ceremony.png",
+    img: "/ceremony.webp",
   },
 ];
 
