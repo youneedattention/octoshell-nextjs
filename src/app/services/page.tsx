@@ -13,13 +13,23 @@ import type { Lang } from "@/lib/translations";
 ══════════════════════════════════════════════════════════════════════ */
 const SCHEMA = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Octoshell Japan",
-  "alternateName": "貝八方",
-  "description": "Japan's premier luxury private chauffeur and hire car service, operating across the Greater Tokyo Area and nationwide.",
-  "url": "https://octoshell-nextjs.vercel.app",
-  "sameAs": ["https://octoshell.jp"],
-  "areaServed": { "@type": "Country", "name": "Japan" },
+  "@type": "Service",
+  "name": "Octoshell Japan — Private Chauffeur Services",
+  "alternateName": ["貝八方 ハイヤーサービス", "Octoshell Japan Chauffeur"],
+  "description": "Japan's premier luxury private chauffeur and hire car service. 9 service categories covering airport transfers, hourly hire, sightseeing tours, golf, MICE events, outdoor excursions, and ceremonial transportation across Greater Tokyo and all of Japan.",
+  "url": "https://octoshell.jp/services",
+  "provider": {
+    "@type": "Organization",
+    "@id": "https://octoshell.jp/#organization",
+    "name": "Octoshell Co., Ltd.",
+    "telephone": "+81-47-382-5728",
+    "email": "info@octoshell.jp",
+  },
+  "areaServed": [
+    { "@type": "Country", "name": "Japan" },
+    { "@type": "City", "name": "Tokyo" },
+    { "@type": "AdministrativeArea", "name": "Greater Tokyo Area" },
+  ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Octoshell Premium Chauffeur Services",
