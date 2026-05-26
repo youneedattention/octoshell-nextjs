@@ -136,6 +136,7 @@ const SERVICES: ServiceItem[] = [
       zh: "從東京市內的經典巡禮，到前往富士山、箱根頂級溫泉旅館的長途度假，我們的專業車隊將帶您深度領略日本之美。亦可為外籍貴賓指派通過日本國家口譯導遊考試的資深乘務員，提供頂級的跨文化款待。",
     },
     imgNote: "Black Alphard parked before a classic red torii gate or autumn-leaf mountain temple path, golden-hour light. Sense of discovery and serenity. No people needed — let the landscape speak. Landscape 3:2 · min 1440×960px.",
+    img: "/Sightseeing.jpg",
   },
   {
     id: "golf", num: "07",
