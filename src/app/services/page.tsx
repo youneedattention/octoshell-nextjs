@@ -313,8 +313,8 @@ export default function ServicesPage() {
                 {/* IMAGE side */}
                 <div className="w-full">
                   {svc.img ? (
-                    <div className="relative aspect-[3/2] overflow-hidden">
-                      <Image src={svc.img} alt={svc.title["en"]} fill className="object-cover" />
+                    <div className="relative aspect-[3/2] overflow-hidden group">
+                      <Image src={svc.img} alt={svc.title["en"]} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                     </div>
                   ) : (
                     <ImgPlaceholder note={svc.imgNote} num={svc.num} />
