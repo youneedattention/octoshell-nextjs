@@ -336,19 +336,18 @@ function SectionLabel({ label }: { label: string }) {
 /* FAQ row — was [12px]/[13px] Q text, now [14px]/[16px] */
 function FaqRow({ item, open, onToggle }: { item: FaqItem; open: boolean; onToggle: () => void }) {
   return (
-    <div className={`border-b border-white/[0.07] transition-colors duration-200 ${open ? "border-[#c9a84c]/20" : ""}`}>
+    <div className={`border-b border-[var(--c-rule)] transition-colors duration-200 ${open ? "border-[#c9a84c]/20" : ""}`}>
       <button
         onClick={onToggle}
         className="w-full flex items-start justify-between gap-5 py-5 sm:py-6 text-left group"
       >
-        {/* Q text: was [12px]/[13px] → [14px]/[16px] */}
-        <span className={`text-[14px] sm:text-[16px] tracking-[0.05em] leading-relaxed transition-colors duration-200 ${open ? "text-white" : "text-white/65 group-hover:text-white/90"}`}>
+        {/* Q text */}
+        <span className={`text-[14px] sm:text-[16px] tracking-[0.05em] leading-relaxed transition-colors duration-200 ${open ? "text-[var(--c-ink)]" : "text-[var(--c-ink-2)] group-hover:text-[var(--c-ink)]"}`}>
           {item.q}
         </span>
-        {/* icon circle: was w-5 h-5, now w-6 h-6 */}
+        {/* icon circle */}
         <span className={`shrink-0 w-6 h-6 flex items-center justify-center rounded-full border transition-all duration-200 mt-0.5
-          ${open ? "border-[#c9a84c]/60 text-[#c9a84c]" : "border-white/20 text-white/30 group-hover:border-white/40"}`}>
-          {/* chevron: was w-2.5 h-2.5, now w-3 h-3 */}
+          ${open ? "border-[#c9a84c]/60 text-[#c9a84c]" : "border-[var(--c-rule)] text-[var(--c-ink-3)] group-hover:border-[var(--c-ink-2)]"}`}>
           <svg className={`w-3 h-3 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
             fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
@@ -356,8 +355,7 @@ function FaqRow({ item, open, onToggle }: { item: FaqItem; open: boolean; onTogg
         </span>
       </button>
       {open && (
-        /* A text: was [12px]/[13px] → [14px]/[15px]; whitespace-pre-line for \n line breaks */
-        <p className="pb-6 text-[14px] sm:text-[15px] text-white/50 leading-relaxed tracking-[0.03em] pr-9 whitespace-pre-line">
+        <p className="pb-6 text-[14px] sm:text-[15px] text-[var(--c-ink-2)] leading-relaxed tracking-[0.03em] pr-9 whitespace-pre-line">
           {item.a}
         </p>
       )}
@@ -421,7 +419,7 @@ export default function AboutPage() {
       {/* ══════════════════════════════════════════════════════════════
           STORY SECTION
       ══════════════════════════════════════════════════════════════ */}
-      <section id="story" className="scroll-mt-24 bg-[#111111] py-16 sm:py-24 px-4 sm:px-6">
+      <section id="story" className="scroll-mt-24 bg-[var(--c-body)] py-16 sm:py-24 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
 
           <SectionLabel label={lang === "ja" ? "ブランドストーリー" : lang === "zh" ? "品牌故事" : "Our Story"} />
@@ -432,14 +430,13 @@ export default function AboutPage() {
             {/* Text column */}
             <div>
               {/* H2: was text-2xl/3xl/4xl → text-3xl/4xl/5xl */}
-              <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl font-light tracking-[0.07em] leading-snug mb-7 sm:mb-9">
+              <h2 className="text-[var(--c-ink)] text-3xl sm:text-4xl lg:text-5xl font-light tracking-[0.07em] leading-snug mb-7 sm:mb-9">
                 {STORY_TITLE[lang]}
               </h2>
-              {/* body: was [13px]/[14px] → [15px]/[17px] */}
-              <p className="text-white/60 text-[15px] sm:text-[17px] leading-[1.9] tracking-[0.03em] mb-6">
+              <p className="text-[var(--c-ink-2)] text-[15px] sm:text-[17px] leading-[1.9] tracking-[0.03em] mb-6">
                 {STORY_P1[lang]}
               </p>
-              <p className="text-white/60 text-[15px] sm:text-[17px] leading-[1.9] tracking-[0.03em]">
+              <p className="text-[var(--c-ink-2)] text-[15px] sm:text-[17px] leading-[1.9] tracking-[0.03em]">
                 {STORY_P2[lang]}
               </p>
 
@@ -491,28 +488,24 @@ export default function AboutPage() {
             <SectionLabel label={lang === "ja" ? "4つのコアサービス" : lang === "zh" ? "四大核心服務" : "Four Core Services"} />
 
             {/* sub-section heading: was [14px]/[15px] → [17px]/[18px] */}
-            <h3 className="text-white text-[17px] sm:text-[18px] font-light tracking-[0.1em] mb-3">
+            <h3 className="text-[var(--c-ink)] text-[17px] sm:text-[18px] font-light tracking-[0.1em] mb-3">
               {SVC_SECTION_TITLE[lang]}
             </h3>
-            {/* lead: was [13px]/[14px] → [15px]/[17px] */}
-            <p className="text-white/45 text-[15px] sm:text-[17px] leading-relaxed tracking-[0.03em] mb-10 sm:mb-12">
+            <p className="text-[var(--c-ink-2)] text-[15px] sm:text-[17px] leading-relaxed tracking-[0.03em] mb-10 sm:mb-12">
               {SVC_SECTION_LEAD[lang]}
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/[0.06]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-[var(--c-rule)]">
               {SERVICES[lang].map((svc, i) => (
-                <div key={i} className="bg-[#111111] p-7 sm:p-10 group hover:bg-[#161616] transition-colors duration-200">
-                  {/* number: was [36px] → [43px] */}
+                <div key={i} className="bg-[var(--c-card)] p-7 sm:p-10 group hover:bg-[var(--c-body)] transition-colors duration-200">
                   <p className="text-[#c9a84c]/35 text-[43px] font-bold tracking-tight leading-none mb-5 font-mono
                                 group-hover:text-[#c9a84c]/55 transition-colors duration-200">
                     {String(i + 1).padStart(2, "0")}
                   </p>
-                  {/* service title: was [14px]/[15px] → [17px]/[18px] */}
-                  <h4 className="text-white text-[17px] sm:text-[18px] font-medium tracking-[0.08em] mb-3.5 leading-snug">
+                  <h4 className="text-[var(--c-ink)] text-[17px] sm:text-[18px] font-medium tracking-[0.08em] mb-3.5 leading-snug">
                     {svc.title}
                   </h4>
-                  {/* service body: was [12px]/[13px] → [14px]/[16px] */}
-                  <p className="text-white/45 text-[14px] sm:text-[16px] leading-[1.85] tracking-[0.03em]">
+                  <p className="text-[var(--c-ink-2)] text-[14px] sm:text-[16px] leading-[1.85] tracking-[0.03em]">
                     {svc.body}
                   </p>
                 </div>
@@ -529,10 +522,10 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-7">
               {VEHICLES[lang].map((veh, i) => (
                 <div key={i}
-                  className="relative bg-[#0f0f0f] border border-white/[0.07] overflow-hidden group hover:border-white/[0.14] transition-all duration-300">
+                  className="relative bg-[var(--c-card)] border border-[var(--c-rule)] overflow-hidden group hover:border-[#c9a84c]/30 transition-all duration-300">
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/50 to-transparent" />
 
-                  {/* vehicle image */}
+                  {/* vehicle image — keep white bg so mix-blend-multiply works */}
                   <div className="bg-white mx-6 mt-7 mb-0 h-[170px] sm:h-[200px] flex items-center justify-center overflow-hidden">
                     <Image
                       src={i === 0 ? ALPHARD_IMG : HIACE_IMG}
@@ -544,12 +537,10 @@ export default function AboutPage() {
                   </div>
 
                   <div className="px-6 py-6">
-                    {/* vehicle name: was [13px]/[14px] → [16px]/[17px] */}
-                    <h3 className="text-white text-[16px] sm:text-[17px] font-medium tracking-[0.1em] mb-3 leading-snug">
+                    <h3 className="text-[var(--c-ink)] text-[16px] sm:text-[17px] font-medium tracking-[0.1em] mb-3 leading-snug">
                       {veh.name}
                     </h3>
-                    {/* vehicle body: was [12px] → [14px] */}
-                    <p className="text-white/40 text-[14px] leading-[1.8] tracking-[0.03em]">{veh.body}</p>
+                    <p className="text-[var(--c-ink-2)] text-[14px] leading-[1.8] tracking-[0.03em]">{veh.body}</p>
                   </div>
                 </div>
               ))}
@@ -565,7 +556,7 @@ export default function AboutPage() {
       {/* ══════════════════════════════════════════════════════════════
           FAQ SECTION
       ══════════════════════════════════════════════════════════════ */}
-      <section id="faq" className="scroll-mt-24 bg-[#0c0c0c] py-16 sm:py-24 px-4 sm:px-6">
+      <section id="faq" className="scroll-mt-24 bg-[var(--c-body)] py-16 sm:py-24 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
 
           <SectionLabel label={lang === "ja" ? "よくある質問" : lang === "zh" ? "常見問題" : "FAQ"} />
@@ -585,7 +576,7 @@ export default function AboutPage() {
                     {group.group}
                   </p>
                 </div>
-                <div className="border-t border-white/[0.07] mt-3">
+                <div className="border-t border-[var(--c-rule)] mt-3">
                   {group.items.map((item, idx) => {
                     const key = `${group.group}-${idx}`;
                     return (
@@ -603,12 +594,12 @@ export default function AboutPage() {
           </div>
 
           {/* ── Contact Us section ── */}
-          <div id="contact" className="scroll-mt-24 mt-16 sm:mt-20 border border-white/[0.07] p-9 sm:p-12 text-center">
+          <div id="contact" className="scroll-mt-24 mt-16 sm:mt-20 border border-[var(--c-rule)] p-9 sm:p-12 text-center">
             <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/40 to-transparent mb-9" />
-            <p className="text-white/40 text-[13px] tracking-[0.25em] uppercase mb-3">
+            <p className="text-[var(--c-ink-3)] text-[13px] tracking-[0.25em] uppercase mb-3">
               {lang === "ja" ? "もっと詳しく知りたい方は" : lang === "zh" ? "有其他疑問？" : "Still have questions?"}
             </p>
-            <p className="text-white text-[17px] sm:text-[18px] tracking-[0.06em] mb-7 leading-relaxed">
+            <p className="text-[var(--c-ink)] text-[17px] sm:text-[18px] tracking-[0.06em] mb-7 leading-relaxed">
               {lang === "ja"
                 ? "お気軽にご連絡ください。担当者より折り返しご連絡いたします。"
                 : lang === "zh"
@@ -638,7 +629,7 @@ export default function AboutPage() {
                 <p className="text-[#c9a84c] text-[16px] sm:text-[18px] tracking-[0.08em] mb-3 font-light">
                   {lang === "ja" ? "送信が完了しました" : lang === "zh" ? "訊息已成功送出" : "Message Sent"}
                 </p>
-                <p className="text-white/50 text-[13px] sm:text-[14px] tracking-[0.05em] leading-relaxed">
+                <p className="text-[var(--c-ink-2)] text-[13px] sm:text-[14px] tracking-[0.05em] leading-relaxed">
                   {lang === "ja"
                     ? "担当者より折り返しご連絡いたします。"
                     : lang === "zh"

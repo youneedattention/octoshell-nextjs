@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLang } from "@/context/LangContext";
+import { useTheme } from "@/context/ThemeContext";
 import { t } from "@/lib/translations";
 import type { Lang } from "@/lib/translations";
 
@@ -52,6 +53,7 @@ const SVC_ITEMS: { key: keyof typeof t; anchor: string; icon: React.ReactNode }[
 
 export default function Header() {
   const { lang, setLang } = useLang();
+  const { theme, toggle: toggleTheme } = useTheme();
   const [menuOpen,          setMenuOpen]          = useState(false);
   const [aboutDrop,         setAboutDrop]         = useState(false);
   const [aboutMobileOpen,   setAboutMobileOpen]   = useState(false);
@@ -99,7 +101,7 @@ export default function Header() {
       {/* ── Main row ── */}
       <div className="flex items-center justify-between px-6 sm:px-12 lg:px-20 h-[84px] sm:h-[96px]">
 
-        {/* LEFT — lang circles */}
+        {/* LEFT — lang circles + theme toggle */}
         <div className="flex items-center gap-1.5 shrink-0">
           {LANGS.map(({ code, label }) => (
             <button
@@ -115,6 +117,28 @@ export default function Header() {
               {label}
             </button>
           ))}
+
+          {/* ── Light / Dark toggle ── */}
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle light / dark theme"
+            className="w-9 h-9 rounded-full border border-white/40 bg-transparent
+                       text-white/70 hover:border-[#c9a84c] hover:text-[#c9a84c]
+                       flex items-center justify-center transition-all duration-200"
+          >
+            {theme === "dark" ? (
+              /* Sun — click to go light */
+              <svg className="w-[15px] h-[15px]" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="4"/>
+                <path strokeLinecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+              </svg>
+            ) : (
+              /* Moon — click to go dark */
+              <svg className="w-[14px] h-[14px]" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              </svg>
+            )}
+          </button>
         </div>
 
         {/* CENTER — Logo + desktop nav */}

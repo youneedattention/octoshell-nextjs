@@ -186,7 +186,7 @@ function BlockContent({ block }: { block: PBlock }) {
   switch (block.type) {
     case "text":
       return (
-        <p className="text-[#1a1a1a] text-[13px] leading-[1.9] tracking-wide">
+        <p className="text-[var(--c-ink)] text-[13px] leading-[1.9] tracking-wide">
           {block.value}
         </p>
       );
@@ -194,7 +194,7 @@ function BlockContent({ block }: { block: PBlock }) {
       return (
         <ul className="space-y-2.5">
           {block.items.map((item, i) => (
-            <li key={i} className="flex gap-3 text-[13px] text-[#1a1a1a] leading-[1.8]">
+            <li key={i} className="flex gap-3 text-[13px] text-[var(--c-ink)] leading-[1.8]">
               <span className="mt-[7px] shrink-0 w-1 h-1 rounded-full bg-[#c9a84c]" />
               <span>{item}</span>
             </li>
@@ -204,10 +204,10 @@ function BlockContent({ block }: { block: PBlock }) {
     case "note":
       return (
         <div className="border-l-2 border-[#c9a84c]/40 pl-4 space-y-2">
-          <p className="text-[12px] font-semibold text-[#444] leading-[1.85] tracking-[0.02em]">
+          <p className="text-[12px] font-semibold text-[var(--c-ink-2)] leading-[1.85] tracking-[0.02em]">
             {block.label}
           </p>
-          <p className="text-[12px] text-[#666] leading-[1.9] italic">
+          <p className="text-[12px] text-[var(--c-ink-2)] leading-[1.9] italic">
             {block.body}
           </p>
         </div>
@@ -240,34 +240,34 @@ export default function PrivacyPage() {
       </div>
 
       {/* ── Content ───────────────────────────────────────────── */}
-      <div className="bg-[#f8f6f3] py-14 sm:py-20 px-4 sm:px-6">
+      <div className="bg-[var(--c-body)] py-14 sm:py-20 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
 
           {/* Back link */}
           <Link
             href="/"
             className="inline-flex items-center gap-2 text-[11px] tracking-widest
-                       text-[#888] hover:text-[#c9a84c] transition-colors mb-12 sm:mb-16"
+                       text-[var(--c-ink-3)] hover:text-[#c9a84c] transition-colors mb-12 sm:mb-16"
           >
             {t.law_back[lang]}
           </Link>
 
           {/* Intro paragraph */}
           <div className="mb-12 sm:mb-16 border-l-2 border-[#c9a84c]/50 pl-5">
-            <p className="text-[#333] text-[13px] sm:text-[14px] leading-[1.9] tracking-wide">
+            <p className="text-[var(--c-ink)] text-[13px] sm:text-[14px] leading-[1.9] tracking-wide">
               {INTRO[lang]}
             </p>
           </div>
 
           {/* Sections */}
-          <div className="divide-y divide-[#e2ddd8]">
+          <div className="divide-y divide-[var(--c-rule)]">
             {sections.map(({ heading, blocks }) => (
               <div key={heading} className="py-9 sm:py-11">
 
                 {/* Section heading */}
                 <div className="flex items-center gap-3 mb-5 sm:mb-6">
                   <span className="shrink-0 w-px h-4 bg-[#c9a84c]" />
-                  <h2 className="text-[12px] sm:text-[13px] font-semibold tracking-[0.12em] text-[#333] uppercase">
+                  <h2 className="text-[12px] sm:text-[13px] font-semibold tracking-[0.12em] text-[var(--c-ink)] uppercase">
                     {heading}
                   </h2>
                 </div>
@@ -284,7 +284,7 @@ export default function PrivacyPage() {
           </div>
 
           {/* Last-updated note */}
-          <p className="mt-14 sm:mt-20 text-center text-[11px] text-[#aaa] tracking-wider">
+          <p className="mt-14 sm:mt-20 text-center text-[11px] text-[var(--c-ink-4)] tracking-wider">
             {PAGE_UPDATED[lang]}
           </p>
 

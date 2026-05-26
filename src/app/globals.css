@@ -9,9 +9,37 @@ html {
   --color-gold: #c9a84c;
 }
 
+/* ── Theme colour tokens ─────────────────────────────────────────────── */
+:root {
+  --c-body:  #f8f6f3;   /* page / section background  */
+  --c-card:  #ffffff;   /* elevated card surface       */
+  --c-ink:   #1a1a1a;   /* primary text                */
+  --c-ink-2: #555555;   /* secondary text              */
+  --c-ink-3: #888888;   /* tertiary / muted            */
+  --c-ink-4: #aaaaaa;   /* ghost / caption             */
+  --c-rule:  #e2ddd8;   /* dividers & borders          */
+}
+
+html.dark {
+  --c-body:  #111111;
+  --c-card:  #1a1a1a;
+  --c-ink:   #e8e8e8;
+  --c-ink-2: #9a9a9a;
+  --c-ink-3: #666666;
+  --c-ink-4: #3a3a3a;
+  --c-rule:  #2a2a2a;
+}
+
+/* Smooth theme transition — exclude image transforms to avoid fighting hover-zoom */
+*:not(img):not(svg):not([class*="transition"]) {
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.25s;
+  transition-timing-function: ease;
+}
+
 body {
-  background: #fff;
-  color: #111;
+  background: var(--c-body);
+  color: var(--c-ink);
 }
 
 /* ── Browser autofill — keep dark background ────────────────────────── */

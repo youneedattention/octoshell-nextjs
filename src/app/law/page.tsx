@@ -307,7 +307,7 @@ function BlockContent({ block }: { block: CB }) {
 
     case "text":
       return (
-        <p className="text-[#1a1a1a] text-[13px] leading-[1.9] tracking-wide">
+        <p className="text-[var(--c-ink)] text-[13px] leading-[1.9] tracking-wide">
           {block.value}
         </p>
       );
@@ -316,7 +316,7 @@ function BlockContent({ block }: { block: CB }) {
       return (
         <ul className="space-y-2.5">
           {block.items.map((item, i) => (
-            <li key={i} className="flex gap-3 text-[13px] text-[#1a1a1a] leading-[1.8]">
+            <li key={i} className="flex gap-3 text-[13px] text-[var(--c-ink)] leading-[1.8]">
               <span className="mt-[7px] shrink-0 w-1 h-1 rounded-full bg-[#c9a84c]" />
               <span>{item}</span>
             </li>
@@ -330,12 +330,12 @@ function BlockContent({ block }: { block: CB }) {
           {block.pairs.map(([term, def], i) => (
             <div key={i} className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-x-5 gap-y-0.5">
               {term && (
-                <dt className="text-[11px] font-semibold tracking-[0.08em] text-[#555]
+                <dt className="text-[11px] font-semibold tracking-[0.08em] text-[var(--c-ink-2)]
                                whitespace-nowrap pt-[3px] min-w-[7rem]">
                   {term}
                 </dt>
               )}
-              <dd className={`text-[13px] text-[#1a1a1a] leading-[1.85] ${!term ? "col-span-full" : ""}`}>
+              <dd className={`text-[13px] text-[var(--c-ink)] leading-[1.85] ${!term ? "col-span-full" : ""}`}>
                 {def}
               </dd>
             </div>
@@ -349,11 +349,11 @@ function BlockContent({ block }: { block: CB }) {
           {block.pairs.map(([term, def], i) => (
             <div key={i} className="flex flex-col gap-1">
               {term && (
-                <dt className="text-[11px] font-semibold tracking-[0.08em] text-[#555]">
+                <dt className="text-[11px] font-semibold tracking-[0.08em] text-[var(--c-ink-2)]">
                   {term}
                 </dt>
               )}
-              <dd className="text-[13px] text-[#1a1a1a] leading-[1.85]">
+              <dd className="text-[13px] text-[var(--c-ink)] leading-[1.85]">
                 {def}
               </dd>
             </div>
@@ -364,7 +364,7 @@ function BlockContent({ block }: { block: CB }) {
     case "note":
       return (
         <div className="border-l-2 border-[#c9a84c]/40 pl-4">
-          <p className="text-[12px] text-[#666] leading-[1.9] italic">
+          <p className="text-[12px] text-[var(--c-ink-2)] leading-[1.9] italic">
             {block.value}
           </p>
         </div>
@@ -398,20 +398,20 @@ export default function LawPage() {
       </div>
 
       {/* ── Content ───────────────────────────────────────────── */}
-      <div className="bg-[#f8f6f3] py-14 sm:py-20 px-4 sm:px-6">
+      <div className="bg-[var(--c-body)] py-14 sm:py-20 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
 
           {/* Back link */}
           <Link
             href="/"
             className="inline-flex items-center gap-2 text-[11px] tracking-widest
-                       text-[#888] hover:text-[#c9a84c] transition-colors mb-12 sm:mb-16"
+                       text-[var(--c-ink-3)] hover:text-[#c9a84c] transition-colors mb-12 sm:mb-16"
           >
             {t.law_back[lang]}
           </Link>
 
           {/* Section table */}
-          <div className="divide-y divide-[#e2ddd8]">
+          <div className="divide-y divide-[var(--c-rule)]">
             {sections.map(({ label, blocks }) => (
               <div
                 key={label}
@@ -421,7 +421,7 @@ export default function LawPage() {
                 {/* Label column */}
                 <div className="flex items-start gap-2.5 sm:pt-[2px]">
                   <span className="mt-[5px] shrink-0 w-px h-3 bg-[#c9a84c]" />
-                  <p className="text-[11px] font-semibold tracking-[0.12em] text-[#444]
+                  <p className="text-[11px] font-semibold tracking-[0.12em] text-[var(--c-ink-2)]
                                 leading-[1.75] whitespace-pre-line">
                     {label}
                   </p>
@@ -438,7 +438,7 @@ export default function LawPage() {
           </div>
 
           {/* Last-updated note */}
-          <p className="mt-14 sm:mt-20 text-center text-[11px] text-[#aaa] tracking-wider">
+          <p className="mt-14 sm:mt-20 text-center text-[11px] text-[var(--c-ink-4)] tracking-wider">
             {PAGE_UPDATED[lang]}
           </p>
 

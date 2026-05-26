@@ -101,13 +101,13 @@ export default function Home() {
       </section>
 
       {/* ══════════════════ PRICES ══════════════════ */}
-      <section id="prices" className="scroll-mt-[88px] sm:scroll-mt-24 py-14 sm:py-20 px-4 sm:px-6 bg-white">
+      <section id="prices" className="scroll-mt-[88px] sm:scroll-mt-24 py-14 sm:py-20 px-4 sm:px-6 bg-[var(--c-body)]">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10 sm:mb-14">
-            <h2 className="text-xl sm:text-2xl font-bold tracking-[0.3em] text-gray-900">
+            <h2 className="text-xl sm:text-2xl font-bold tracking-[0.3em] text-[var(--c-ink)]">
               {t.prices_title[lang]}
             </h2>
-            <p className="mt-3 text-[10px] sm:text-[11px] tracking-[0.25em] text-gray-400 uppercase">
+            <p className="mt-3 text-[10px] sm:text-[11px] tracking-[0.25em] text-[var(--c-ink-3)] uppercase">
               {t.prices_sub[lang]}
             </p>
           </div>
@@ -176,26 +176,26 @@ function PriceCard({
 }) {
   const { lang: _l } = useLang(); // already passed as prop, but hook is fine
   return (
-    <div className="flex flex-col border border-gray-200">
+    <div className="flex flex-col border border-[var(--c-rule)]">
       <div className="bg-white flex items-center justify-center h-[200px] px-4">
         <Image src={img} alt={name} width={320} height={180}
           className="object-contain max-h-40 w-auto mix-blend-multiply" />
       </div>
-      <div className="flex flex-col flex-1 px-5 sm:px-7 py-5 sm:py-6">
-        <h3 className="text-sm font-bold tracking-[0.2em] text-center mb-4 text-gray-900">
+      <div className="flex flex-col flex-1 px-5 sm:px-7 py-5 sm:py-6 bg-[var(--c-card)]">
+        <h3 className="text-sm font-bold tracking-[0.2em] text-center mb-4 text-[var(--c-ink)]">
           {name}
         </h3>
         <table className="w-full text-sm flex-1">
           <tbody>
             {rows.map(([routeKey, price]) => (
-              <tr key={routeKey} className="border-b border-gray-100 last:border-0">
-                <td className="py-2 pr-3 text-gray-600 text-[13px]">{t[routeKey][lang]}</td>
-                <td className="py-2 text-right font-bold text-gray-900 whitespace-nowrap text-[15px] sm:text-[16px] tracking-tight">{price}</td>
+              <tr key={routeKey} className="border-b border-[var(--c-rule)] last:border-0">
+                <td className="py-2 pr-3 text-[var(--c-ink-2)] text-[13px]">{t[routeKey][lang]}</td>
+                <td className="py-2 text-right font-bold text-[var(--c-ink)] whitespace-nowrap text-[15px] sm:text-[16px] tracking-tight">{price}</td>
               </tr>
             ))}
           </tbody>
         </table>
-        <p className="text-[11px] text-gray-400 mt-3">{t.price_note[lang]}</p>
+        <p className="text-[11px] text-[var(--c-ink-3)] mt-3">{t.price_note[lang]}</p>
         <Link href="/book"
           className="block w-full mt-4 bg-[#1a2340] text-white text-center text-[11px] tracking-[0.18em] py-3 hover:bg-[#0f1829] transition-colors">
           {t.book_car[lang]}

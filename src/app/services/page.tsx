@@ -279,7 +279,7 @@ export default function ServicesPage() {
       ═══════════════════════════════════════════════════════════ */}
       {SERVICES.map((svc, i) => {
         const isEven = i % 2 === 0;   /* even idx → text left, image right */
-        const bg     = isEven ? "bg-[#111111]" : "bg-[#0d0d0d]";
+        const bg     = isEven ? "bg-[var(--c-body)]" : "bg-[var(--c-card)]";
 
         return (
           <section
@@ -296,10 +296,10 @@ export default function ServicesPage() {
                 {/* TEXT side */}
                 <div>
                   <SectionLabel label={`${svc.num} — ${lang === "ja" ? "サービス" : lang === "zh" ? "服務" : "Service"}`} />
-                  <h2 className="text-white text-2xl sm:text-3xl lg:text-[2rem] font-light tracking-[0.08em] leading-snug mb-5">
+                  <h2 className="text-[var(--c-ink)] text-2xl sm:text-3xl lg:text-[2rem] font-light tracking-[0.08em] leading-snug mb-5">
                     {svc.title[lang]}
                   </h2>
-                  <p className="text-white/55 text-[15px] sm:text-[16px] leading-[1.9] tracking-[0.03em] mb-8">
+                  <p className="text-[var(--c-ink-2)] text-[15px] sm:text-[16px] leading-[1.9] tracking-[0.03em] mb-8">
                     {svc.body[lang]}
                   </p>
                   <Link href="/book"

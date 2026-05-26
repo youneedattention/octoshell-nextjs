@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import { LangProvider } from "@/context/LangContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -20,7 +21,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${montserrat.variable} h-full`}>
       <body className="min-h-full antialiased">
-        <LangProvider>{children}</LangProvider>
+        <ThemeProvider>
+          <LangProvider>{children}</LangProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
