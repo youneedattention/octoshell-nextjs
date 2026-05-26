@@ -10,10 +10,11 @@ import type { Lang } from "@/lib/translations";
    Content types
 ══════════════════════════════════════════════════════════════════════ */
 type CB =
-  | { type: "text";  value: string }
-  | { type: "list";  items: string[] }
-  | { type: "dl";    pairs: [string, string][] }
-  | { type: "note";  value: string };
+  | { type: "text";       value: string }
+  | { type: "list";       items: string[] }
+  | { type: "dl";         pairs: [string, string][] }
+  | { type: "dl-stacked"; pairs: [string, string][] }
+  | { type: "note";       value: string };
 
 interface Section { label: string; blocks: CB[]; }
 
@@ -116,7 +117,7 @@ const SECTIONS: Record<Lang, Section[]> = {
     },
     {
       label: "許認可証等の表示",
-      blocks: [{ type: "dl", pairs: [
+      blocks: [{ type: "dl-stacked", pairs: [
         ["一般乗用旅客自動車運送事業（ハイヤー）", "関自旅二第 1248 号（関東運輸局長認可）"],
         ["運賃及び料金認可",                       "関自旅二第 388 号 / 期限変更通知 関自旅二第 773 号"],
       ]}],
@@ -203,7 +204,7 @@ const SECTIONS: Record<Lang, Section[]> = {
     },
     {
       label: "Official Licenses & Registrations",
-      blocks: [{ type: "dl", pairs: [
+      blocks: [{ type: "dl-stacked", pairs: [
         ["Chartered Executive Chauffeur Service License", "KAN-JI-RYO-NI No. 1248 (Approved by Kanto Transport Bureau)"],
         ["Official Tariff and Fare Approval",            "KAN-JI-RYO-NI No. 388 / Amendment Notice KAN-JI-RYO-NI No. 773"],
       ]}],
@@ -290,7 +291,7 @@ const SECTIONS: Record<Lang, Section[]> = {
     },
     {
       label: "特許資質及許可公示",
-      blocks: [{ type: "dl", pairs: [
+      blocks: [{ type: "dl-stacked", pairs: [
         ["一般乘用旅客汽車運送事業許可（高級包車）", "關自旅二第 1248 號（關東運輸局長認可）"],
         ["運價及費用核准認可",                       "關自旅二第 388 號 / 期限變更通知 關自旅二第 773 號"],
       ]}],
@@ -335,6 +336,24 @@ function BlockContent({ block }: { block: CB }) {
                 </dt>
               )}
               <dd className={`text-[13px] text-[#1a1a1a] leading-[1.85] ${!term ? "col-span-full" : ""}`}>
+                {def}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      );
+
+    case "dl-stacked":
+      return (
+        <dl className="space-y-5">
+          {block.pairs.map(([term, def], i) => (
+            <div key={i} className="flex flex-col gap-1">
+              {term && (
+                <dt className="text-[11px] font-semibold tracking-[0.08em] text-[#555]">
+                  {term}
+                </dt>
+              )}
+              <dd className="text-[13px] text-[#1a1a1a] leading-[1.85]">
                 {def}
               </dd>
             </div>
