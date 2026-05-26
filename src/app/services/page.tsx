@@ -81,7 +81,7 @@ const SERVICES: ServiceItem[] = [
       zh: "往返於東京市內與羽田、成田機場的高端定額送迎服務，為您的商旅或度假開啟優雅序幕。結合即時航班動態追蹤，專屬司機將在接機大廳手持您的專屬姓名牌溫馨迎候，貼心打理行李並引導您步入尊榮座艙。",
     },
     imgNote: "Uniformed chauffeur in formal dark suit, holding a printed personalized name board in a bright, modern arrivals hall at Haneda or Narita. Confident posture, natural light. Landscape 3:2 · min 1440×960px.",
-    img: "https://octoshell.jp/wp-content/uploads/2024/09/service1.png",
+    img: "/airport.png",
   },
   {
     id: "hourly", num: "02",
