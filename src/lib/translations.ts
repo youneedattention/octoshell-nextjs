@@ -29,9 +29,9 @@ export const t: Record<string, T> = {
 
   /* ── Prices ─────────────────────────────────── */
   prices_title: { en: "PRICES",    ja: "料金",     zh: "價格" },
-  prices_sub:   { en: "Includes Parking & Highway Expenses", ja: "駐車場・高速道路料金込み", zh: "包含停車及高速公路費用" },
+  prices_sub:   { en: "Includes Parking & Highway Expenses", ja: "駐車場・高速道路料金込み", zh: "以下價格以日元（JPY）計算，含停車及高速公路費用" },
   book_car:     { en: "BOOK THIS CAR",      ja: "この車を予約する",   zh: "預訂此車" },
-  price_note:   { en: "*10 hours per day. Prices may differ on holidays.", ja: "*1日10時間。祝祭日は料金が異なる場合があります。", zh: "*每日10小時，假日價格可能有所不同。" },
+  price_note:   { en: "*10 hours per day. Prices may differ on holidays.", ja: "*1日10時間。祝祭日は料金が異なる場合があります。", zh: "*每日10小時，假日價格可能有所不同。所有金額為日元（JPY），非人民幣。" },
 
   /* Route names */
   route_haneda:   { en: "Haneda Airport – Tokyo",       ja: "羽田空港 – 東京",          zh: "羽田機場 – 東京" },

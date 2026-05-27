@@ -84,12 +84,12 @@ const ROUTES: Record<RouteSlug, RouteData> = {
     sub: {
       en: "Tokyo ↔ Narita · Flat Rate ¥25,000 · All-Inclusive",
       ja: "東京 ↔ 成田 · 定額 ¥25,000 · 全込み",
-      zh: "東京 ↔ 成田 · 定額 ¥25,000 · 全包服務",
+      zh: "東京 ↔ 成田 · 定額 ¥25,000日元 · 全包",
     },
     price: {
       en: "From ¥25,000",
       ja: "¥25,000〜",
-      zh: "¥25,000 起",
+      zh: "¥25,000 日元起",
     },
     intro: {
       en: "Begin or end your Japan journey with absolute ease. Octoshell's Narita Airport private transfer service connects Tokyo city directly to Narita International Airport (NRT) at a guaranteed flat rate of ¥25,000 — no surge pricing, no hidden fees.",
@@ -259,12 +259,12 @@ const ROUTES: Record<RouteSlug, RouteData> = {
     sub: {
       en: "Tokyo ↔ Haneda · Flat Rate ¥20,000 · All-Inclusive",
       ja: "東京 ↔ 羽田 · 定額 ¥20,000 · 全込み",
-      zh: "東京 ↔ 羽田 · 定額 ¥20,000 · 全包服務",
+      zh: "東京 ↔ 羽田 · 定額 ¥20,000日元 · 全包",
     },
     price: {
       en: "From ¥20,000",
       ja: "¥20,000〜",
-      zh: "¥20,000 起",
+      zh: "¥20,000 日元起",
     },
     intro: {
       en: "Haneda Airport sits just 15–20 km from central Tokyo, making it the capital's most convenient gateway. Octoshell's private Haneda transfer service brings the full luxury chauffeur experience to this short but premium journey — flat rate ¥20,000, all tolls included.",
@@ -422,12 +422,12 @@ const ROUTES: Record<RouteSlug, RouteData> = {
     sub: {
       en: "Tokyo ↔ Hakone · Flat Rate ¥70,000 · All-Inclusive",
       ja: "東京 ↔ 箱根 · 定額 ¥70,000 · 全込み",
-      zh: "東京 ↔ 箱根 · 定額 ¥70,000 · 全包",
+      zh: "東京 ↔ 箱根 · 定額 ¥70,000日元 · 全包",
     },
     price: {
       en: "From ¥70,000",
       ja: "¥70,000〜",
-      zh: "¥70,000 起",
+      zh: "¥70,000 日元起",
     },
     intro: {
       en: "Hakone is Japan's most celebrated hot-spring and mountain destination — yet getting there on public transport means transfers, timed timetables, and crowds. Octoshell's private Tokyo-to-Hakone transfer takes you door-to-door in a luxury Toyota Alphard at a flat ¥70,000, highway and parking included.",
@@ -585,12 +585,12 @@ const ROUTES: Record<RouteSlug, RouteData> = {
     sub: {
       en: "Tokyo ↔ Mt Fuji · Flat Rate ¥68,000 · All-Inclusive",
       ja: "東京 ↔ 富士山 · 定額 ¥68,000 · 全込み",
-      zh: "東京 ↔ 富士山 · 定額 ¥68,000 · 全包",
+      zh: "東京 ↔ 富士山 · 定額 ¥68,000日元 · 全包",
     },
     price: {
       en: "From ¥68,000",
       ja: "¥68,000〜",
-      zh: "¥68,000 起",
+      zh: "¥68,000 日元起",
     },
     intro: {
       en: "Mount Fuji is Japan's most iconic landmark — and visiting it on your own terms, by private chauffeur, is the most flexible and rewarding way to experience the mountain. Octoshell's flat-rate ¥68,000 Tokyo–Fuji transfer covers the full journey, door to door, with no hidden fees.",
@@ -736,12 +736,12 @@ const ROUTES: Record<RouteSlug, RouteData> = {
     sub: {
       en: "Tokyo ↔ Kanto Golf Clubs · Flat Rate ¥50,000 · All-Inclusive",
       ja: "東京 ↔ 関東ゴルフ場 · 定額 ¥50,000 · 全込み",
-      zh: "東京 ↔ 關東高爾夫球場 · 定額 ¥50,000 · 全包",
+      zh: "東京 ↔ 關東高爾夫球場 · 定額 ¥50,000日元 · 全包",
     },
     price: {
       en: "From ¥50,000",
       ja: "¥50,000〜",
-      zh: "¥50,000 起",
+      zh: "¥50,000 日元起",
     },
     intro: {
       en: "Japan's premier golf courses are scattered across the Kanto region, often 60–120 minutes from Tokyo by car. Octoshell's dedicated golf transfer service connects you and your clubs to any Kanto golf course — flat rate ¥50,000, space for all bags guaranteed.",
@@ -887,12 +887,12 @@ const ROUTES: Record<RouteSlug, RouteData> = {
     sub: {
       en: "Tokyo City · 10 Hours ¥43,000 · All-Inclusive",
       ja: "東京市内 · 10時間 ¥43,000 · 全込み",
-      zh: "東京市內 · 10小時 ¥43,000 · 全包",
+      zh: "東京市內 · 10小時 ¥43,000日元 · 全包",
     },
     price: {
       en: "From ¥43,000",
       ja: "¥43,000〜",
-      zh: "¥43,000 起",
+      zh: "¥43,000 日元起",
     },
     intro: {
       en: "When your Tokyo schedule demands complete flexibility — multiple stops, last-minute changes, or a full day of business — Octoshell's hourly hire service provides a dedicated Toyota Alphard and chauffeur for your exclusive use. 10 hours from ¥43,000, all tolls included.",
