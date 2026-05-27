@@ -93,6 +93,13 @@ a, button, nav, [role="menu"], [role="menuitem"] {
   touch-action: manipulation;  /* Android: remove 300ms delay + context-menu  */
 }
 
+/* Prevent image save/open callout on long-press */
+img {
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
 /* ── Stepper number input — hide browser spin arrows ───────────────── */
 .stepper-input::-webkit-outer-spin-button,
 .stepper-input::-webkit-inner-spin-button {

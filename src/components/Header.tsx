@@ -167,13 +167,14 @@ export default function Header({ alwaysFrosted = false }: { alwaysFrosted?: bool
                       py-2.5 sm:py-0 sm:h-[96px]">
 
         {/* ── MOBILE LEFT: large logo ───────────────────────────── */}
-        <Link href="/" className="sm:hidden shrink-0">
+        <Link href="/" className="sm:hidden shrink-0 transition-transform duration-200 active:scale-110">
           <Image
             src={LOGO}
             alt="Octoshell"
             width={95}
             height={95}
-            className="object-contain drop-shadow-lg"
+            draggable={false}
+            className="object-contain drop-shadow-lg pointer-events-none select-none"
           />
         </Link>
 
