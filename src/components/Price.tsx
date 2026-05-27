@@ -25,7 +25,7 @@ export function CurrencyNote({ lang }: { lang: Lang }) {
   const { currency } = useCurrency();
   if (currency === "JPY") return null;
   return (
-    <p className="text-white/30 text-[11px] leading-relaxed mt-3 italic">
+    <p className="text-white/30 text-[13px] leading-relaxed mt-3 italic">
       {NOTE[lang].replace("[C]", currency)}
     </p>
   );

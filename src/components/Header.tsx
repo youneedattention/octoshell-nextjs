@@ -198,7 +198,7 @@ export default function Header() {
                 ))}
                 {currency !== "JPY" && (
                   <div className="px-3.5 py-2.5 border-t border-white/[0.05]">
-                    <p className="text-[9px] text-white/25 leading-relaxed">
+                    <p className="text-[11px] text-white/25 leading-relaxed">
                       {lang === "ja"
                         ? "※参考値。決済はJPY建て。外貨手数料あり"
                         : lang === "zh"
@@ -473,7 +473,7 @@ export default function Header() {
                 ))}
               </div>
               {currency !== "JPY" && (
-                <p className="mt-2 text-[9px] text-white/25 leading-relaxed italic">
+                <p className="mt-2 text-[11px] text-white/25 leading-relaxed italic">
                   {lang === "ja"
                     ? "※参考値。決済はJPY建て。外貨手数料あり"
                     : lang === "zh"
