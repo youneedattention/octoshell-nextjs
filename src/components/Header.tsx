@@ -156,7 +156,7 @@ export default function Header() {
   return (
     <header ref={headerRef} className={`fixed top-0 inset-x-0 z-50 transition-all duration-300
       ${scrolled
-        ? "backdrop-blur-xl bg-black/75 border-b border-white/[0.07]"
+        ? "backdrop-blur-xl bg-black/55 sm:bg-black/75 border-b border-white/[0.07]"
         : "bg-transparent border-b border-transparent"}`}>
 
       {/* ══════════════════════════════════════════════════════════════
