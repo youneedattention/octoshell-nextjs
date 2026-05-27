@@ -85,10 +85,12 @@ input:-webkit-autofill:active {
   display: none;
 }
 
-/* ── Prevent long-press popup on interactive elements (mobile) ───────── */
-a, button {
-  -webkit-touch-callout: none; /* iOS Safari: suppress callout on long-press */
-  touch-action: manipulation;  /* Android: remove 300ms delay + reduce context-menu */
+/* ── Prevent long-press popup / text selection on interactive elements ── */
+a, button, nav, [role="menu"], [role="menuitem"] {
+  -webkit-touch-callout: none; /* iOS Safari: suppress callout on long-press  */
+  -webkit-user-select: none;   /* Safari: prevent text selection              */
+  user-select: none;           /* Standard: prevent text selection            */
+  touch-action: manipulation;  /* Android: remove 300ms delay + context-menu  */
 }
 
 /* ── Stepper number input — hide browser spin arrows ───────────────── */
