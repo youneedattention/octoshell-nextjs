@@ -19,16 +19,20 @@ const LANGS: { code: Lang; label: string }[] = [
 
 const SVC_ITEMS: { key: keyof typeof t; anchor: string; icon: React.ReactNode }[] = [
   {
-    key: "nav_svc_1", anchor: "#hourly",
-    icon: <svg className="w-3.5 h-3.5 shrink-0 text-[#c9a84c]/50" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path strokeLinecap="round" strokeLinejoin="round" d="M12 7v5l3 3"/></svg>,
-  },
-  {
     key: "nav_svc_2", anchor: "#airport",
     icon: <svg className="w-3.5 h-3.5 shrink-0 text-[#c9a84c]/50" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>,
   },
   {
+    key: "nav_svc_1", anchor: "#hourly",
+    icon: <svg className="w-3.5 h-3.5 shrink-0 text-[#c9a84c]/50" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path strokeLinecap="round" strokeLinejoin="round" d="M12 7v5l3 3"/></svg>,
+  },
+  {
     key: "nav_svc_3", anchor: "#oneway",
     icon: <svg className="w-3.5 h-3.5 shrink-0 text-[#c9a84c]/50" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6-6m6 6l-6 6"/></svg>,
+  },
+  {
+    key: "nav_svc_9", anchor: "#photo",
+    icon: <svg className="w-3.5 h-3.5 shrink-0 text-[#c9a84c]/50" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316ZM16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Z"/></svg>,
   },
   {
     key: "nav_svc_4", anchor: "#events",
@@ -43,12 +47,12 @@ const SVC_ITEMS: { key: keyof typeof t; anchor: string; icon: React.ReactNode }[
     icon: <svg className="w-3.5 h-3.5 shrink-0 text-[#c9a84c]/50" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-.5 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1zM15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>,
   },
   {
-    key: "nav_svc_7", anchor: "#ceremony",
-    icon: <svg className="w-3.5 h-3.5 shrink-0 text-[#c9a84c]/50" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>,
+    key: "nav_svc_10", anchor: "#outdoor",
+    icon: <svg className="w-3.5 h-3.5 shrink-0 text-[#c9a84c]/50" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>,
   },
   {
-    key: "nav_svc_8", anchor: "#dispatch",
-    icon: <svg className="w-3.5 h-3.5 shrink-0 text-[#c9a84c]/50" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>,
+    key: "nav_svc_7", anchor: "#ceremony",
+    icon: <svg className="w-3.5 h-3.5 shrink-0 text-[#c9a84c]/50" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>,
   },
 ];
 
@@ -310,7 +314,7 @@ export default function Header() {
                                    text-[10px] tracking-[0.22em] uppercase text-white/50
                                    hover:text-[#c9a84c] hover:bg-white/[0.035] transition-all duration-150
                                    ${idx % 2 === 0 ? "border-r border-white/[0.05]" : ""}
-                                   ${idx < 6 ? "border-b border-white/[0.05]" : ""}`}
+                                   ${idx < SVC_ITEMS.length - 2 ? "border-b border-white/[0.05]" : ""}`}
                       >
                         {item.icon}
                         {t[item.key][lang]}
