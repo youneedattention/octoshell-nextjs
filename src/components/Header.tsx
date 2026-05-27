@@ -70,7 +70,7 @@ function ThemeIcon({ theme }: { theme: string }) {
   );
 }
 
-export default function Header({ alwaysFrosted = false }: { alwaysFrosted?: boolean }) {
+export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50" }: { alwaysFrosted?: boolean; frostedBg?: string }) {
   const { lang, setLang } = useLang();
   const { theme, toggle: toggleTheme } = useTheme();
   const { currency, setCurrency } = useCurrency();
@@ -156,7 +156,7 @@ export default function Header({ alwaysFrosted = false }: { alwaysFrosted?: bool
   return (
     <header ref={headerRef} className={`fixed top-0 inset-x-0 z-50 transition-all duration-300
       ${scrolled || alwaysFrosted
-        ? "backdrop-blur-xl bg-black/50 border-b border-white/[0.07]"
+        ? `backdrop-blur-xl ${frostedBg} border-b border-white/[0.07]`
         : "bg-transparent border-b border-transparent"}`}>
 
       {/* ══════════════════════════════════════════════════════════════
@@ -416,8 +416,9 @@ export default function Header({ alwaysFrosted = false }: { alwaysFrosted?: bool
           <div className="sm:hidden flex flex-col items-center gap-2">
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="text-white touch-manipulation p-1"
+              className="text-white touch-manipulation p-1 transition-transform duration-150 active:scale-110"
               aria-label="Toggle menu"
+              onContextMenu={(e) => e.preventDefault()}
             >
               <svg className="w-[30px] h-[30px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {menuOpen
@@ -431,8 +432,9 @@ export default function Header({ alwaysFrosted = false }: { alwaysFrosted?: bool
               <button
                 onClick={() => setLangOpen((o) => !o)}
                 aria-label="Select language"
+                onContextMenu={(e) => e.preventDefault()}
                 className={`w-[38px] h-[38px] rounded-full text-[11px] font-bold border transition-all duration-200
-                  flex items-center justify-center
+                  flex items-center justify-center active:scale-110
                   ${langOpen
                     ? "bg-white text-black border-white"
                     : "bg-transparent text-white/90 border-white/50 hover:border-[#c9a84c] hover:text-[#c9a84c]"
@@ -469,8 +471,9 @@ export default function Header({ alwaysFrosted = false }: { alwaysFrosted?: bool
               <button
                 onClick={() => setMobileCurOpen((o) => !o)}
                 aria-label="Select currency"
+                onContextMenu={(e) => e.preventDefault()}
                 className={`w-[38px] h-[38px] rounded-full text-[9px] font-bold border transition-all duration-200
-                  flex items-center justify-center tracking-wider
+                  flex items-center justify-center tracking-wider active:scale-110
                   ${mobileCurOpen
                     ? "bg-white text-black border-white"
                     : "bg-transparent text-white/90 border-white/50 hover:border-[#c9a84c] hover:text-[#c9a84c]"
