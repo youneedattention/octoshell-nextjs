@@ -377,7 +377,7 @@ export default function AboutPage() {
     <main className="min-h-screen bg-[#0c0c0c]">
 
       {/* ── Compact hero ───────────────────────────────────────────── */}
-      <div className="relative bg-[#0c0c0c] pt-[88px] sm:pt-[100px] pb-10 sm:pb-14 overflow-hidden">
+      <div className="relative bg-[#0c0c0c] pt-[124px] sm:pt-[100px] pb-10 sm:pb-14 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 opacity-[0.025]"
           style={{ backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)", backgroundSize: "60px 60px" }} />
         <div className="pointer-events-none absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.06]"
