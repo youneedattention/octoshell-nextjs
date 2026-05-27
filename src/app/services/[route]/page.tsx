@@ -274,7 +274,7 @@ export default function ServiceRoutePage({
                            text-[12px] sm:text-[13px] font-black tracking-[0.3em] uppercase
                            px-8 py-3.5 sm:py-4 hover:bg-white transition-all duration-200
                            shadow-[0_4px_20px_rgba(201,168,76,0.35)] hover:shadow-[0_4px_28px_rgba(201,168,76,0.5)]
-                           active:scale-110 active:shadow-[0_8px_36px_rgba(201,168,76,0.7)]
+                           active:scale-110 active:bg-white active:shadow-[0_8px_36px_rgba(201,168,76,0.7)]
                            sm:active:scale-100 sm:active:shadow-[0_4px_28px_rgba(201,168,76,0.5)]"
               >
                 {data.cta[l]}
@@ -391,7 +391,7 @@ export default function ServiceRoutePage({
                          text-[12px] sm:text-[13px] font-black tracking-[0.3em] uppercase
                          px-10 py-4 hover:bg-white transition-all duration-200
                          shadow-[0_4px_20px_rgba(201,168,76,0.35)] hover:shadow-[0_4px_28px_rgba(201,168,76,0.5)]
-                         active:scale-110 active:shadow-[0_8px_36px_rgba(201,168,76,0.7)]
+                         active:scale-110 active:bg-white active:shadow-[0_8px_36px_rgba(201,168,76,0.7)]
                          sm:active:scale-100 sm:active:shadow-[0_4px_28px_rgba(201,168,76,0.5)]"
             >
               {data.cta[l]}

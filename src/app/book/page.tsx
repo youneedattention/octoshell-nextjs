@@ -872,7 +872,7 @@ export default function BookPage() {
                        px-8 py-3.5 sm:py-4 transition-all duration-200
                        hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed
                        shadow-[0_4px_20px_rgba(201,168,76,0.35)] hover:shadow-[0_4px_28px_rgba(201,168,76,0.5)]
-                       active:scale-110 active:shadow-[0_8px_36px_rgba(201,168,76,0.7)]
+                       active:scale-110 active:bg-white active:shadow-[0_8px_36px_rgba(201,168,76,0.7)]
                        sm:active:scale-100 sm:active:shadow-[0_4px_28px_rgba(201,168,76,0.5)]"
           >
             {status === "loading" ? (

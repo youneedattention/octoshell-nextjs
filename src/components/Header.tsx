@@ -614,7 +614,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               draggable={false}
               onContextMenu={(e) => e.preventDefault()}
               className="mt-3 inline-flex justify-center bg-[#c9a84c] text-black text-[14px] font-bold tracking-[0.18em] px-6 py-2.5 rounded-full hover:bg-white transition-all duration-200
-                         active:scale-110 active:shadow-[0_8px_36px_rgba(201,168,76,0.7)]">
+                         active:scale-110 active:bg-white active:shadow-[0_8px_36px_rgba(201,168,76,0.7)]">
               {t.nav_book[lang]}
             </Link>
 

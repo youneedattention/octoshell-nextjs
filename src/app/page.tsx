@@ -201,7 +201,7 @@ function PriceCard({
                      px-8 py-3 transition-all duration-200
                      hover:bg-white
                      shadow-[0_4px_20px_rgba(201,168,76,0.35)] hover:shadow-[0_4px_28px_rgba(201,168,76,0.5)]
-                     active:scale-110 active:shadow-[0_8px_36px_rgba(201,168,76,0.7)]
+                     active:scale-110 active:bg-white active:shadow-[0_8px_36px_rgba(201,168,76,0.7)]
                      sm:active:scale-100 sm:active:shadow-[0_4px_28px_rgba(201,168,76,0.5)]">
           {t.book_car[lang]}
           <svg className="w-3 h-3 transition-transform group-hover:translate-x-0.5"
