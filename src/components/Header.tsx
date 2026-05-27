@@ -79,9 +79,11 @@ export default function Header() {
   const dropTimer    = useRef<ReturnType<typeof setTimeout> | null>(null);
   const svcDropTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const curRef       = useRef<HTMLDivElement>(null);
-  const langRef      = useRef<HTMLDivElement>(null);
-  const [langOpen,   setLangOpen]   = useState(false);
-  const [scrolled,   setScrolled]   = useState(false);
+  const langRef         = useRef<HTMLDivElement>(null);
+  const mobileCurRef    = useRef<HTMLDivElement>(null);
+  const [langOpen,      setLangOpen]         = useState(false);
+  const [mobileCurOpen, setMobileCurOpen]    = useState(false);
+  const [scrolled,      setScrolled]         = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -113,6 +115,18 @@ export default function Header() {
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, [langOpen]);
+
+  /* Close mobile currency dropdown on outside click */
+  useEffect(() => {
+    if (!mobileCurOpen) return;
+    const handler = (e: MouseEvent) => {
+      if (mobileCurRef.current && !mobileCurRef.current.contains(e.target as Node)) {
+        setMobileCurOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [mobileCurOpen]);
 
   const openDrop    = () => { if (dropTimer.current)    clearTimeout(dropTimer.current);    setAboutDrop(true);    };
   const closeDrop   = () => { dropTimer.current    = setTimeout(() => setAboutDrop(false),    200); };
@@ -428,6 +442,56 @@ export default function Header() {
                 </div>
               )}
             </div>
+
+            {/* Mobile currency selector */}
+            <div ref={mobileCurRef} className="relative">
+              <button
+                onClick={() => setMobileCurOpen((o) => !o)}
+                aria-label="Select currency"
+                className={`w-[30px] h-[30px] rounded-full text-[7.5px] font-bold border transition-all duration-200
+                  flex items-center justify-center tracking-wider
+                  ${mobileCurOpen
+                    ? "bg-white text-black border-white"
+                    : "bg-transparent text-white/90 border-white/50 hover:border-[#c9a84c] hover:text-[#c9a84c]"
+                  }`}
+              >
+                {currency}
+              </button>
+
+              {mobileCurOpen && (
+                <div className="absolute right-0 top-full mt-1.5
+                                bg-[#0a0a0a]/96 backdrop-blur-xl
+                                border border-white/[0.09]
+                                shadow-[0_8px_32px_rgba(0,0,0,0.7)]
+                                overflow-hidden z-50 w-[88px]">
+                  <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
+                  {CURRENCIES.map((c) => (
+                    <button
+                      key={c.code}
+                      onClick={() => { setCurrency(c.code); setMobileCurOpen(false); }}
+                      className={`w-full flex items-center gap-1.5 px-2.5 py-2
+                                  text-[9px] tracking-wider transition-colors
+                                  ${currency === c.code
+                                    ? "text-[#c9a84c] bg-white/[0.04]"
+                                    : "text-white/50 hover:text-[#c9a84c] hover:bg-white/[0.035]"}`}
+                    >
+                      <span>{c.flag}</span>
+                      <span>{c.code}</span>
+                    </button>
+                  ))}
+                  {currency !== "JPY" && (
+                    <div className="px-2.5 py-2 border-t border-white/[0.05]">
+                      <p className="text-[8px] text-white/25 leading-relaxed">
+                        {lang === "ja" ? "※参考値。JPY建て決済"
+                          : lang === "zh" ? "※僅供參考，JPY結算"
+                          : "* Ref. only. Settled in JPY."}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
           </div>
 
         </div>
