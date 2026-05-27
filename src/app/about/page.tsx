@@ -443,12 +443,14 @@ export default function AboutPage() {
               <div className="mt-9 sm:mt-12">
                 {/* CTA: was [11px] → [13px] */}
                 <Link href="/book"
+                  draggable={false}
+                  onContextMenu={(e) => e.preventDefault()}
                   className="group inline-flex items-center justify-center gap-2.5
                              bg-[#c9a84c] text-[#0c0c0c] text-[12px] sm:text-[13px] tracking-[0.3em] font-black
                              px-8 py-3.5 sm:py-4 transition-all duration-200
                              hover:bg-white
                              shadow-[0_4px_20px_rgba(201,168,76,0.35)] hover:shadow-[0_4px_28px_rgba(201,168,76,0.5)]
-                             active:scale-[1.05] active:shadow-[0_8px_36px_rgba(201,168,76,0.7)]
+                             active:scale-110 active:shadow-[0_8px_36px_rgba(201,168,76,0.7)]
                              sm:active:scale-100 sm:active:shadow-[0_4px_28px_rgba(201,168,76,0.5)]">
                   {lang === "ja" ? "ご予約はこちら" : lang === "zh" ? "立即預訂" : "Book Now"}
                   <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"
