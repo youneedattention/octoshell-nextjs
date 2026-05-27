@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@theme inline {
+  --font-sans: var(--font-montserrat);
+  --color-gold: #c9a84c;
+}
+
+/* ── Theme colour tokens ─────────────────────────────────────────────── */
+:root {
+  --c-body:  #f8f6f3;   /* page / section background  */
+  --c-card:  #ffffff;   /* elevated card surface       */
+  --c-ink:   #1a1a1a;   /* primary text                */
+  --c-ink-2: #555555;   /* secondary text              */
+  --c-ink-3: #888888;   /* tertiary / muted            */
+  --c-ink-4: #aaaaaa;   /* ghost / caption             */
+  --c-rule:  #e2ddd8;   /* dividers & borders          */
+}
+
+html.dark {
+  --c-body:  #111111;
+  --c-card:  #1a1a1a;
+  --c-ink:   #e8e8e8;
+  --c-ink-2: #9a9a9a;
+  --c-ink-3: #666666;
+  --c-ink-4: #3a3a3a;
+  --c-rule:  #2a2a2a;
+}
+
+/* Smooth theme transition — exclude image transforms to avoid fighting hover-zoom */
+*:not(img):not(svg):not([class*="transition"]) {
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.25s;
+  transition-timing-function: ease;
+}
+
+body {
+  background: var(--c-body);
+  color: var(--c-ink);
+}
+
+/* ── Browser autofill — keep dark background ────────────────────────── */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #111111 inset !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.9) !important;
+  caret-color: rgba(255, 255, 255, 0.9);
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* ── Google Maps autocomplete dropdown ─────────────────────────────── */
+.pac-container {
+  z-index: 9999 !important;
+  background: #1c1c1c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  margin-top: 4px;
+  font-family: var(--font-montserrat), Arial, sans-serif;
+}
+.pac-item {
+  padding: 10px 16px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+}
+.pac-item:hover,
+.pac-item-selected {
+  background: rgba(255, 255, 255, 0.06);
+}
+.pac-item-query {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+}
+.pac-matched {
+  color: #c9a84c;
+}
+.pac-icon {
+  display: none;
+}
+
+/* ── Stepper number input — hide browser spin arrows ───────────────── */
+.stepper-input::-webkit-outer-spin-button,
+.stepper-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.stepper-input {
+  -moz-appearance: textfield;
+}
