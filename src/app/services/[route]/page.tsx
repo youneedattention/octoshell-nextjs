@@ -45,6 +45,29 @@ function CheckIcon() {
   );
 }
 
+/* ── Parse [text](href) → <Link> inside FAQ answers ─────────────────── */
+function parseAnswer(text: string): React.ReactNode {
+  const pattern = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const parts: React.ReactNode[] = [];
+  let last = 0;
+  let m: RegExpExecArray | null;
+  while ((m = pattern.exec(text)) !== null) {
+    if (m.index > last) parts.push(text.slice(last, m.index));
+    parts.push(
+      <Link
+        key={m.index}
+        href={m[2]}
+        className="text-[#c9a84c] hover:text-white underline underline-offset-2 transition-colors"
+      >
+        {m[1]}
+      </Link>
+    );
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return parts.length ? <>{parts}</> : text;
+}
+
 /* ── FAQ accordion item ──────────────────────────────────────────────── */
 function FaqItem({
   q,
@@ -78,7 +101,7 @@ function FaqItem({
         </svg>
       </summary>
       <p className="mt-4 text-white/50 text-[13px] sm:text-[14px] leading-[1.85] tracking-[0.02em] pl-9">
-        {a}
+        {parseAnswer(a)}
       </p>
     </details>
   );

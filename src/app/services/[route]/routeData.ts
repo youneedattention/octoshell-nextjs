@@ -219,9 +219,9 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           zh: "成田機場接送需要提前多久預訂？",
         },
         a: {
-          en: "We recommend booking at least 24 hours in advance to guarantee vehicle availability. Last-minute requests (under 12 hours) are accommodated subject to availability — please contact us directly.",
-          ja: "車両の確保のため、24時間前までのご予約をお勧めします。12時間未満の直前予約は空き状況次第で対応可能ですので、お気軽にお問い合わせください。",
-          zh: "建議至少提前24小時預訂以確保車輛供應。12小時內的臨時預訂視車輛空缺情況而定，請直接聯繫我們確認。",
+          en: "We recommend booking at least 24 hours in advance to guarantee vehicle availability. Last-minute requests (under 12 hours) are accommodated subject to availability — please [contact us directly](/book).",
+          ja: "車両の確保のため、24時間前までのご予約をお勧めします。12時間未満の直前予約は空き状況次第で対応可能ですので、[お気軽にお問い合わせください](/book)。",
+          zh: "建議至少提前24小時預訂以確保車輛供應。12小時內的臨時預訂視車輛空缺情況而定，請[直接聯繫我們](/book)確認。",
         },
       },
     ],
@@ -358,9 +358,9 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           zh: "羽田還是成田更適合前往東京市中心酒店？",
         },
         a: {
-          en: "Haneda is significantly closer to central Tokyo (15–20 km vs 60–75 km for Narita), resulting in shorter transfer times and a lower flat rate of ¥20,000 vs ¥25,000. For city hotels, Haneda is almost always preferable.",
-          ja: "羽田は都心から15〜20kmと、成田（60〜75km）と比べて大幅に近く、移動時間も短くなります。定額料金も¥20,000と成田の¥25,000より安く、都内ホテルへのアクセスには羽田をお勧めします。",
-          zh: "羽田距東京市中心僅15至20公里，遠比成田（60至75公里）更近，接送時間更短，定額費用也更低（¥20,000對比¥25,000）。前往市中心酒店，羽田幾乎都是更優選擇。",
+          en: "Haneda is significantly closer to central Tokyo (15–20 km vs 60–75 km for Narita), resulting in shorter transfer times and a lower flat rate of ¥20,000 vs ¥25,000 for the [Narita Airport transfer](/services/narita-airport-transfer). For city hotels, Haneda is almost always preferable.",
+          ja: "羽田は都心から15〜20kmと、成田（60〜75km）と比べて大幅に近く、移動時間も短くなります。定額料金も¥20,000と[成田空港送迎](/services/narita-airport-transfer)の¥25,000より安く、都内ホテルへのアクセスには羽田をお勧めします。",
+          zh: "羽田距東京市中心僅15至20公里，遠比成田（60至75公里）更近，接送時間更短，定額費用也更低（¥20,000對比[成田機場接送](/services/narita-airport-transfer)的¥25,000）。前往市中心酒店，羽田幾乎都是更優選擇。",
         },
       },
       {
@@ -545,9 +545,9 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           zh: "箱根接送包含回程嗎？",
         },
         a: {
-          en: "The ¥70,000 flat rate covers a single journey (one way). The return journey from Hakone to Tokyo is the same ¥70,000 and can be booked separately or as a round trip.",
-          ja: "¥70,000の定額は片道1回の料金です。箱根から東京への帰路も同じ¥70,000で、個別または往復セットでご予約いただけます。",
-          zh: "¥70,000定額為單程費用。從箱根返回東京的回程同為¥70,000，可單獨預訂或與去程一起預訂來回。",
+          en: "The ¥70,000 flat rate covers a single journey (one way). The return journey from Hakone to Tokyo is the same ¥70,000 and can be [booked separately](/book) or as a round trip.",
+          ja: "¥70,000の定額は片道1回の料金です。箱根から東京への帰路も同じ¥70,000で、[個別または往復セット](/book)でご予約いただけます。",
+          zh: "¥70,000定額為單程費用。從箱根返回東京的回程同為¥70,000，可[單獨預訂](/book)或與去程一起預訂來回。",
         },
       },
     ],
@@ -672,9 +672,9 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           zh: "我登富士山時司機會等待嗎？",
         },
         a: {
-          en: "Yes. For full-day climbing trips, the chauffeur can be engaged on an hourly hire basis after the initial transfer. Please mention this when booking so we can prepare the appropriate vehicle and schedule.",
-          ja: "はい。終日の登山の場合、最初の送迎後はチャウファーを時間制チャーターでご利用いただけます。ご予約時にその旨をお伝えいただければ、適切な車両・スケジュールをご用意します。",
-          zh: "可以。對於全天登山行程，初始接送後可按小時包車方式讓司機繼續候命。預訂時請告知，以便我們安排適合的車輛和時間表。",
+          en: "Yes. For full-day climbing trips, the chauffeur can be engaged on an [hourly hire](/services/tokyo-by-the-hour) basis after the initial transfer. Please mention this when booking so we can prepare the appropriate vehicle and schedule.",
+          ja: "はい。終日の登山の場合、最初の送迎後はチャウファーを[時間制チャーター](/services/tokyo-by-the-hour)でご利用いただけます。ご予約時にその旨をお伝えいただければ、適切な車両・スケジュールをご用意します。",
+          zh: "可以。對於全天登山行程，初始接送後可按[小時包車](/services/tokyo-by-the-hour)方式讓司機繼續候命。預訂時請告知，以便我們安排適合的車輛和時間表。",
         },
       },
       {
@@ -847,9 +847,9 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           zh: "可以預訂配合早晨開球時間的接送嗎？",
         },
         a: {
-          en: "Yes. Octoshell operates 24/7 with no surcharge for early-morning or late-night departures. Simply specify your tee time when booking and we will work backwards to calculate the optimal pickup time from your hotel.",
-          ja: "はい。年中無休・24時間対応で、早朝・深夜の出発でも割増なしです。ご予約時にティータイムをお知らせいただければ、最適なピックアップ時刻を逆算してご案内します。",
-          zh: "可以。Octoshell全天候運營，早晨或深夜出發均不附加費用。預訂時請告知您的開球時間，我們將計算最合適的接送時間。",
+          en: "Yes. Octoshell operates 24/7 with no surcharge for early-morning or late-night departures. Simply [specify your tee time when booking](/book) and we will work backwards to calculate the optimal pickup time from your hotel.",
+          ja: "はい。年中無休・24時間対応で、早朝・深夜の出発でも割増なしです。[ご予約時](/book)にティータイムをお知らせいただければ、最適なピックアップ時刻を逆算してご案内します。",
+          zh: "可以。Octoshell全天候運營，早晨或深夜出發均不附加費用。[預訂時](/book)請告知您的開球時間，我們將計算最合適的接送時間。",
         },
       },
     ],
@@ -998,9 +998,9 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           zh: "時段包車適合東京的企業商務會議嗎？",
         },
         a: {
-          en: "Yes. Many of our corporate clients use the hourly hire for investor roadshows, client meetings across multiple Tokyo business districts (Marunouchi, Roppongi, Shibuya), and ministerial or government office visits. Invoicing and account billing are available.",
-          ja: "はい。法人のお客様には、投資家ロードショー、複数のビジネス地区（丸の内・六本木・渋谷）での商談、省庁・官公庁訪問などにご利用いただいています。インボイス・法人アカウント請求にも対応しています。",
-          zh: "非常適合。我們許多企業客戶使用時段包車服務進行投資者路演、跨多個東京商業區（丸之內、六本木、澀谷）的客戶拜訪，以及省廳或政府辦公室訪問。支持開具發票及法人賬戶結算。",
+          en: "Yes. Many of our corporate clients use the hourly hire for investor roadshows, client meetings across multiple Tokyo business districts (Marunouchi, Roppongi, Shibuya), and ministerial or government office visits. [Invoicing and account billing](/book) are available.",
+          ja: "はい。法人のお客様には、投資家ロードショー、複数のビジネス地区（丸の内・六本木・渋谷）での商談、省庁・官公庁訪問などにご利用いただいています。[インボイス・法人アカウント請求](/book)にも対応しています。",
+          zh: "非常適合。我們許多企業客戶使用時段包車服務進行投資者路演、跨多個東京商業區（丸之內、六本木、澀谷）的客戶拜訪，以及省廳或政府辦公室訪問。支持[開具發票及法人賬戶結算](/book)。",
         },
       },
       {
