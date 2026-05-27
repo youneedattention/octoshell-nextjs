@@ -167,7 +167,8 @@ export default function Header({ alwaysFrosted = false }: { alwaysFrosted?: bool
                       py-2.5 sm:py-0 sm:h-[96px]">
 
         {/* ── MOBILE LEFT: large logo ───────────────────────────── */}
-        <Link href="/" className="sm:hidden shrink-0 transition-transform duration-200 active:scale-110">
+        <Link href="/" className="sm:hidden shrink-0 transition-transform duration-200 active:scale-110"
+          onContextMenu={(e) => e.preventDefault()}>
           <Image
             src={LOGO}
             alt="Octoshell"
@@ -266,8 +267,8 @@ export default function Header({ alwaysFrosted = false }: { alwaysFrosted?: bool
 
         {/* ── DESKTOP CENTER: logo + nav (absolute) ────────────── */}
         <div className="hidden sm:flex flex-col items-center absolute left-1/2 -translate-x-1/2">
-          <Link href="/">
-            <Image src={LOGO} alt="Octoshell" width={75} height={75} className="object-contain drop-shadow-lg" />
+          <Link href="/" onContextMenu={(e) => e.preventDefault()}>
+            <Image src={LOGO} alt="Octoshell" width={75} height={75} draggable={false} className="object-contain drop-shadow-lg pointer-events-none select-none" />
           </Link>
 
           <nav className="flex items-center gap-8 lg:gap-12 mt-0.5">
