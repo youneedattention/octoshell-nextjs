@@ -669,20 +669,6 @@ export default function BookPage() {
                 )}
               </div>
 
-              {/* Note — hourly does not cover airport transfers */}
-              {mode === "hour" && (
-                <div className="mt-4 flex items-start gap-2 text-[11px] sm:text-[12px] text-[#c9a84c]/55 tracking-[0.05em] leading-relaxed">
-                  <span className="shrink-0">※</span>
-                  <span>
-                    {lang === "ja"
-                      ? "本サービスは空港送迎には対応しておりません。空港へのご送迎は「空港送迎」プランをご利用ください。"
-                      : lang === "zh"
-                      ? "此服務不涵蓋機場接送業務。如需機場接送，請選擇「機場接送」方案。"
-                      : "This service does not cover airport transfers. For airport pickups or drop-offs, please select the Airport Transfer option."}
-                  </span>
-                </div>
-              )}
-
               {/* ADD RETURN expanded panel — full width below grid */}
               {mode === "transfer" && addReturn && (
                 <div className="mt-7 border border-[#c9a84c]/25 p-4 sm:p-5">
