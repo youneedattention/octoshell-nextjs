@@ -194,8 +194,16 @@ function PriceCard({
         </table>
         <p className="text-[11px] text-[var(--c-ink-3)] mt-3">{t.price_note[lang]}</p>
         <Link href="/book"
-          className="block w-full mt-4 bg-[#1a2340] text-white text-center text-[11px] tracking-[0.18em] py-3 hover:bg-[#0f1829] transition-colors">
+          className="group mt-4 w-full flex items-center justify-center gap-2.5
+                     bg-[#c9a84c] text-[#0c0c0c] text-[11px] sm:text-[12px] tracking-[0.3em] font-black
+                     px-8 py-3 transition-all duration-200
+                     hover:bg-white
+                     shadow-[0_4px_20px_rgba(201,168,76,0.35)] hover:shadow-[0_4px_28px_rgba(201,168,76,0.5)]">
           {t.book_car[lang]}
+          <svg className="w-3 h-3 transition-transform group-hover:translate-x-0.5"
+            fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
         </Link>
       </div>
     </div>

@@ -268,11 +268,16 @@ export default function ServiceRoutePage({
               </p>
               <Link
                 href="/book"
-                className="inline-flex items-center gap-3 bg-[#c9a84c] text-black
-                           text-[12px] font-bold tracking-[0.28em] uppercase
-                           px-8 py-3.5 hover:bg-white transition-all duration-200"
+                className="group inline-flex items-center gap-2.5 bg-[#c9a84c] text-[#0c0c0c]
+                           text-[12px] sm:text-[13px] font-black tracking-[0.3em] uppercase
+                           px-8 py-3.5 sm:py-4 hover:bg-white transition-all duration-200
+                           shadow-[0_4px_20px_rgba(201,168,76,0.35)] hover:shadow-[0_4px_28px_rgba(201,168,76,0.5)]"
               >
                 {data.cta[l]}
+                <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"
+                  fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
               </Link>
             </div>
 
@@ -376,11 +381,16 @@ export default function ServiceRoutePage({
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/book"
-              className="inline-flex items-center gap-3 bg-[#c9a84c] text-black
-                         text-[12px] sm:text-[13px] font-bold tracking-[0.28em] uppercase
-                         px-10 py-4 hover:bg-white transition-all duration-200"
+              className="group inline-flex items-center gap-2.5 bg-[#c9a84c] text-[#0c0c0c]
+                         text-[12px] sm:text-[13px] font-black tracking-[0.3em] uppercase
+                         px-10 py-4 hover:bg-white transition-all duration-200
+                         shadow-[0_4px_20px_rgba(201,168,76,0.35)] hover:shadow-[0_4px_28px_rgba(201,168,76,0.5)]"
             >
               {data.cta[l]}
+              <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"
+                fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
             </Link>
             <Link
               href="/services"
