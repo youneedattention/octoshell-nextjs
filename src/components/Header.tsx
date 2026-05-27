@@ -598,35 +598,6 @@ export default function Header() {
               )}
             </div>
 
-            {/* Currency selector */}
-            <div className="mt-1">
-              <p className="text-white/25 text-[9px] tracking-[0.3em] uppercase mb-2">
-                {lang === "ja" ? "通貨" : lang === "zh" ? "貨幣" : "Currency"}
-              </p>
-              <div className="flex flex-wrap gap-1.5">
-                {CURRENCIES.map((c) => (
-                  <button
-                    key={c.code}
-                    onClick={() => setCurrency(c.code)}
-                    className={`text-[9px] tracking-[0.15em] border px-2 py-1 transition-colors
-                      ${currency === c.code
-                        ? "border-[#c9a84c] text-[#c9a84c]"
-                        : "border-white/20 text-white/40 hover:border-white/40"}`}
-                  >
-                    {c.flag} {c.code}
-                  </button>
-                ))}
-              </div>
-              {currency !== "JPY" && (
-                <p className="mt-2 text-[11px] text-white/25 leading-relaxed italic">
-                  {lang === "ja"
-                    ? "※参考値。決済はJPY建て。外貨手数料あり"
-                    : lang === "zh"
-                    ? "※僅供參考。結算以JPY為準，外幣手續費另計"
-                    : "* Reference only. Payment settled in JPY."}
-                </p>
-              )}
-            </div>
 
             {/* BOOK */}
             <Link href="/book" onClick={closeAll}
