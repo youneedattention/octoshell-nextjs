@@ -444,13 +444,13 @@ export default function Header({ alwaysFrosted = false }: { alwaysFrosted?: bool
                                 bg-[#0a0a0a]/96 backdrop-blur-xl
                                 border border-white/[0.09]
                                 shadow-[0_8px_32px_rgba(0,0,0,0.7)]
-                                overflow-hidden z-50 w-[52px]">
+                                overflow-hidden z-50 w-[64px]">
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
                   {LANGS.map(({ code, label }) => (
                     <button
                       key={code}
                       onClick={() => { setLang(code); setLangOpen(false); }}
-                      className={`w-full py-2 text-[10px] font-bold tracking-wider transition-colors
+                      className={`w-full py-2.5 text-[13px] font-bold tracking-wider transition-colors
                         ${lang === code
                           ? "text-[#c9a84c] bg-white/[0.04]"
                           : "text-white/50 hover:text-[#c9a84c] hover:bg-white/[0.035]"}`}
@@ -482,14 +482,14 @@ export default function Header({ alwaysFrosted = false }: { alwaysFrosted?: bool
                                 bg-[#0a0a0a]/96 backdrop-blur-xl
                                 border border-white/[0.09]
                                 shadow-[0_8px_32px_rgba(0,0,0,0.7)]
-                                overflow-hidden z-50 w-[88px]">
+                                overflow-hidden z-50 w-[112px]">
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
                   {CURRENCIES.map((c) => (
                     <button
                       key={c.code}
                       onClick={() => { setCurrency(c.code); setMobileCurOpen(false); }}
-                      className={`w-full flex items-center gap-1.5 px-2.5 py-2
-                                  text-[9px] tracking-wider transition-colors
+                      className={`w-full flex items-center gap-1.5 px-2.5 py-2.5
+                                  text-[12px] tracking-wider transition-colors
                                   ${currency === c.code
                                     ? "text-[#c9a84c] bg-white/[0.04]"
                                     : "text-white/50 hover:text-[#c9a84c] hover:bg-white/[0.035]"}`}
@@ -500,7 +500,7 @@ export default function Header({ alwaysFrosted = false }: { alwaysFrosted?: bool
                   ))}
                   {currency !== "JPY" && (
                     <div className="px-2.5 py-2 border-t border-white/[0.05]">
-                      <p className="text-[8px] text-white/25 leading-relaxed">
+                      <p className="text-[10px] text-white/25 leading-relaxed">
                         {lang === "ja" ? "※参考値。JPY建て決済"
                           : lang === "zh" ? "※僅供參考，JPY結算"
                           : "* Ref. only. Settled in JPY."}
@@ -538,7 +538,7 @@ export default function Header({ alwaysFrosted = false }: { alwaysFrosted?: bool
           <nav className="flex flex-col gap-4 px-6 pb-6 pt-2">
 
             <Link href="/" onClick={closeAll}
-              className="text-white/80 text-[13px] tracking-[0.2em] hover:text-white transition-colors">
+              className="text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors">
               {t.nav_home[lang]}
             </Link>
 
@@ -546,7 +546,7 @@ export default function Header({ alwaysFrosted = false }: { alwaysFrosted?: bool
             <div>
               <button
                 onClick={() => setServicesMobileOpen(o => !o)}
-                className="flex items-center justify-between w-full text-white/80 text-[13px] tracking-[0.2em] hover:text-white transition-colors"
+                className="flex items-center justify-between w-full text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors"
               >
                 <span>{t.nav_services[lang]}</span>
                 <svg className={`w-3.5 h-3.5 text-white/30 transition-transform duration-200 ${servicesMobileOpen ? "rotate-180" : ""}`}
@@ -562,7 +562,7 @@ export default function Header({ alwaysFrosted = false }: { alwaysFrosted?: bool
                       key={item.anchor}
                       href={`/services${item.anchor}`}
                       onClick={closeAll}
-                      className="text-white/45 text-[11px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors"
+                      className="text-white/45 text-[14px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors"
                     >
                       {t[item.key][lang]}
                     </Link>
@@ -575,7 +575,7 @@ export default function Header({ alwaysFrosted = false }: { alwaysFrosted?: bool
             <div>
               <button
                 onClick={() => setAboutMobileOpen(o => !o)}
-                className="flex items-center justify-between w-full text-white/80 text-[13px] tracking-[0.2em] hover:text-white transition-colors"
+                className="flex items-center justify-between w-full text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors"
               >
                 <span>{t.nav_about[lang]}</span>
                 <svg className={`w-3.5 h-3.5 text-white/30 transition-transform duration-200 ${aboutMobileOpen ? "rotate-180" : ""}`}
@@ -587,15 +587,15 @@ export default function Header({ alwaysFrosted = false }: { alwaysFrosted?: bool
               {aboutMobileOpen && (
                 <div className="mt-3 ml-1 pl-4 border-l border-[#c9a84c]/25 flex flex-col gap-3">
                   <Link href="/about#story" onClick={closeAll}
-                    className="text-white/45 text-[11px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors">
+                    className="text-white/45 text-[14px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors">
                     {t.nav_about_story[lang]}
                   </Link>
                   <Link href="/about#faq" onClick={closeAll}
-                    className="text-white/45 text-[11px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors">
+                    className="text-white/45 text-[14px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors">
                     {t.nav_about_faq[lang]}
                   </Link>
                   <Link href="/about#contact" onClick={closeAll}
-                    className="text-white/45 text-[11px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors">
+                    className="text-white/45 text-[14px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors">
                     {t.nav_about_contact[lang]}
                   </Link>
                 </div>
@@ -605,7 +605,7 @@ export default function Header({ alwaysFrosted = false }: { alwaysFrosted?: bool
 
             {/* BOOK */}
             <Link href="/book" onClick={closeAll}
-              className="mt-3 inline-flex justify-center bg-[#c9a84c] text-black text-[11px] font-bold tracking-[0.18em] px-6 py-2.5 rounded-full hover:bg-white transition-all duration-200
+              className="mt-3 inline-flex justify-center bg-[#c9a84c] text-black text-[14px] font-bold tracking-[0.18em] px-6 py-2.5 rounded-full hover:bg-white transition-all duration-200
                          active:scale-[1.05] active:shadow-[0_8px_36px_rgba(201,168,76,0.7)]">
               {t.nav_book[lang]}
             </Link>
