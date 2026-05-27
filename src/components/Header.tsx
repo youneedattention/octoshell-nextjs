@@ -79,6 +79,7 @@ export default function Header() {
   const dropTimer    = useRef<ReturnType<typeof setTimeout> | null>(null);
   const svcDropTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const curRef       = useRef<HTMLDivElement>(null);
+  const headerRef       = useRef<HTMLElement>(null);
   const langRef         = useRef<HTMLDivElement>(null);
   const mobileCurRef    = useRef<HTMLDivElement>(null);
   const [langOpen,      setLangOpen]         = useState(false);
@@ -128,6 +129,20 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handler);
   }, [mobileCurOpen]);
 
+  /* Close mobile drawer when clicking outside the header */
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handler = (e: MouseEvent) => {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+        setAboutMobileOpen(false);
+        setServicesMobileOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [menuOpen]);
+
   const openDrop    = () => { if (dropTimer.current)    clearTimeout(dropTimer.current);    setAboutDrop(true);    };
   const closeDrop   = () => { dropTimer.current    = setTimeout(() => setAboutDrop(false),    200); };
   const openSvcDrop = () => { if (svcDropTimer.current) clearTimeout(svcDropTimer.current); setServicesDrop(true); };
@@ -135,7 +150,7 @@ export default function Header() {
   const closeAll    = () => { setMenuOpen(false); setAboutMobileOpen(false); setServicesMobileOpen(false); };
 
   return (
-    <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300
+    <header ref={headerRef} className={`fixed top-0 inset-x-0 z-50 transition-all duration-300
       ${scrolled
         ? "backdrop-blur-xl bg-black/75 border-b border-white/[0.07]"
         : "bg-transparent border-b border-transparent"}`}>
