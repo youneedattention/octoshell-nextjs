@@ -79,6 +79,8 @@ export default function Header() {
   const dropTimer    = useRef<ReturnType<typeof setTimeout> | null>(null);
   const svcDropTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const curRef       = useRef<HTMLDivElement>(null);
+  const langRef      = useRef<HTMLDivElement>(null);
+  const [langOpen,   setLangOpen]   = useState(false);
   const [scrolled,   setScrolled]   = useState(false);
 
   useEffect(() => {
@@ -99,6 +101,18 @@ export default function Header() {
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, [currencyOpen]);
+
+  /* Close mobile lang dropdown on outside click */
+  useEffect(() => {
+    if (!langOpen) return;
+    const handler = (e: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setLangOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [langOpen]);
 
   const openDrop    = () => { if (dropTimer.current)    clearTimeout(dropTimer.current);    setAboutDrop(true);    };
   const closeDrop   = () => { dropTimer.current    = setTimeout(() => setAboutDrop(false),    200); };
@@ -363,7 +377,7 @@ export default function Header() {
             </span>
           </Link>
 
-          {/* Mobile: stacked column — hamburger on top, lang circles below */}
+          {/* Mobile: stacked column — hamburger on top, single lang selector below */}
           <div className="sm:hidden flex flex-col items-center gap-1.5">
             <button
               onClick={() => setMenuOpen(!menuOpen)}
@@ -376,20 +390,44 @@ export default function Header() {
                   : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />}
               </svg>
             </button>
-            {LANGS.map(({ code, label }) => (
+
+            {/* Single lang button with dropdown */}
+            <div ref={langRef} className="relative">
               <button
-                key={code}
-                onClick={() => setLang(code)}
-                aria-label={`Switch to ${label}`}
-                className={`w-[23px] h-[23px] rounded-full text-[8.5px] font-bold border transition-all duration-200
-                  ${lang === code
-                    ? "bg-white text-black border-white shadow-[0_0_0_2px_rgba(255,255,255,0.25)]"
-                    : "bg-transparent text-white/80 border-white/40 hover:border-[#c9a84c] hover:bg-[#c9a84c]/10"
+                onClick={() => setLangOpen((o) => !o)}
+                aria-label="Select language"
+                className={`w-[30px] h-[30px] rounded-full text-[9px] font-bold border transition-all duration-200
+                  flex items-center justify-center
+                  ${langOpen
+                    ? "bg-white text-black border-white"
+                    : "bg-transparent text-white/90 border-white/50 hover:border-[#c9a84c] hover:text-[#c9a84c]"
                   }`}
               >
-                {label}
+                {lang === "en" ? "EN" : lang === "ja" ? "日" : "中"}
               </button>
-            ))}
+
+              {langOpen && (
+                <div className="absolute right-0 top-full mt-1.5
+                                bg-[#0a0a0a]/96 backdrop-blur-xl
+                                border border-white/[0.09]
+                                shadow-[0_8px_32px_rgba(0,0,0,0.7)]
+                                overflow-hidden z-50 w-[52px]">
+                  <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
+                  {LANGS.map(({ code, label }) => (
+                    <button
+                      key={code}
+                      onClick={() => { setLang(code); setLangOpen(false); }}
+                      className={`w-full py-2 text-[10px] font-bold tracking-wider transition-colors
+                        ${lang === code
+                          ? "text-[#c9a84c] bg-white/[0.04]"
+                          : "text-white/50 hover:text-[#c9a84c] hover:bg-white/[0.035]"}`}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
 
         </div>
