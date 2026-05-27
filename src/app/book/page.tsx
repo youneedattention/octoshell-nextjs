@@ -522,7 +522,7 @@ export default function BookPage() {
   if (status === "success") {
     return (
       <main className="min-h-screen bg-[#0c0c0c] flex flex-col">
-        <Header />
+        <Header alwaysFrosted />
         <div className="flex-1 flex flex-col items-center justify-center px-4 py-28 text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full border border-[#c9a84c]/40 mb-8">
             <svg className="w-7 h-7 text-[#c9a84c]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
@@ -561,10 +561,10 @@ export default function BookPage() {
     <main className="min-h-screen bg-[#0c0c0c]">
 
       {/* ── Compact hero ── */}
-      <div className="relative bg-[#0c0c0c] pt-[88px] sm:pt-[100px] pb-5 sm:pb-7 overflow-hidden">
+      <div className="relative bg-[#0c0c0c] pt-[124px] sm:pt-[100px] pb-5 sm:pb-7 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 opacity-[0.025]"
           style={{ backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)", backgroundSize: "60px 60px" }} />
-        <Header />
+        <Header alwaysFrosted />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
           <p className="text-[#c9a84c] text-[9px] tracking-[0.45em] mb-2 uppercase">{t.book_badge[lang]}</p>
           <h1 className="text-white text-xl sm:text-2xl lg:text-3xl font-light tracking-[0.12em] sm:tracking-[0.16em] leading-tight">

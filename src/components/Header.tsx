@@ -70,7 +70,7 @@ function ThemeIcon({ theme }: { theme: string }) {
   );
 }
 
-export default function Header() {
+export default function Header({ alwaysFrosted = false }: { alwaysFrosted?: boolean }) {
   const { lang, setLang } = useLang();
   const { theme, toggle: toggleTheme } = useTheme();
   const { currency, setCurrency } = useCurrency();
@@ -155,7 +155,7 @@ export default function Header() {
 
   return (
     <header ref={headerRef} className={`fixed top-0 inset-x-0 z-50 transition-all duration-300
-      ${scrolled
+      ${scrolled || alwaysFrosted
         ? "backdrop-blur-xl bg-black/50 border-b border-white/[0.07]"
         : "bg-transparent border-b border-transparent"}`}>
 
