@@ -196,6 +196,17 @@ export default function Header() {
                     )}
                   </button>
                 ))}
+                {currency !== "JPY" && (
+                  <div className="px-3.5 py-2.5 border-t border-white/[0.05]">
+                    <p className="text-[9px] text-white/25 leading-relaxed">
+                      {lang === "ja"
+                        ? "※参考値。決済はJPY建て。外貨手数料あり"
+                        : lang === "zh"
+                        ? "※僅供參考。結算以JPY為準，外幣手續費另計"
+                        : "* Reference only. Payment settled in JPY."}
+                    </p>
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -461,6 +472,15 @@ export default function Header() {
                   </button>
                 ))}
               </div>
+              {currency !== "JPY" && (
+                <p className="mt-2 text-[9px] text-white/25 leading-relaxed italic">
+                  {lang === "ja"
+                    ? "※参考値。決済はJPY建て。外貨手数料あり"
+                    : lang === "zh"
+                    ? "※僅供參考。結算以JPY為準，外幣手續費另計"
+                    : "* Reference only. Payment settled in JPY."}
+                </p>
+              )}
             </div>
 
             <Link href="/book" onClick={closeAll}

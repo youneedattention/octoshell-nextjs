@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
-import Price from "@/components/Price";
+import Price, { CurrencyNote } from "@/components/Price";
 import { useLang } from "@/context/LangContext";
 import { t } from "@/lib/translations";
 
@@ -113,6 +113,7 @@ export default function Home() {
             {/* Hiace card */}
             <PriceCard name="TOYOTA HIACE"   img={HIACE}   rows={HIACE_ROWS}   lang={lang} />
           </div>
+          <CurrencyNote lang={lang} />
         </div>
       </section>
 

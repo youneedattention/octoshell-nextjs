@@ -5,7 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import SiteFooter from "@/components/SiteFooter";
-import Price from "@/components/Price";
+import Price, { CurrencyNote } from "@/components/Price";
 import { useLang } from "@/context/LangContext";
 import { getRouteData } from "./routeData";
 import type { Lang } from "@/lib/translations";
@@ -233,6 +233,7 @@ export default function ServiceRoutePage({
               {l === "ja" ? "全込み" : l === "zh" ? "全包" : "All-Inclusive"}
             </span>
           </div>
+          <CurrencyNote lang={l} />
         </div>
 
         {/* ── Hero image ── */}
