@@ -87,10 +87,11 @@ input:-webkit-autofill:active {
 
 /* ── Prevent long-press popup / text selection on interactive elements ── */
 a, button, nav, [role="menu"], [role="menuitem"] {
-  -webkit-touch-callout: none; /* iOS Safari: suppress callout on long-press  */
-  -webkit-user-select: none;   /* Safari: prevent text selection              */
-  user-select: none;           /* Standard: prevent text selection            */
-  touch-action: manipulation;  /* Android: remove 300ms delay + context-menu  */
+  -webkit-touch-callout: none;    /* iOS Safari: suppress callout on long-press  */
+  -webkit-user-select: none;      /* Safari: prevent text selection              */
+  user-select: none;              /* Standard: prevent text selection            */
+  touch-action: manipulation;     /* Android: remove 300ms delay + context-menu  */
+  -webkit-tap-highlight-color: transparent; /* remove black tap-highlight box   */
 }
 
 /* Prevent image save/open callout on long-press */
