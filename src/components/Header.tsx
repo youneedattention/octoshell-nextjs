@@ -156,7 +156,7 @@ export default function Header() {
   return (
     <header ref={headerRef} className={`fixed top-0 inset-x-0 z-50 transition-all duration-300
       ${scrolled
-        ? "backdrop-blur-xl bg-black/55 sm:bg-black/75 border-b border-white/[0.07]"
+        ? "backdrop-blur-xl bg-black/50 border-b border-white/[0.07]"
         : "bg-transparent border-b border-transparent"}`}>
 
       {/* ══════════════════════════════════════════════════════════════
@@ -520,7 +520,7 @@ export default function Header() {
           MOBILE DRAWER
       ══════════════════════════════════════════════════════════════ */}
       {menuOpen && (
-        <div className="sm:hidden bg-black/95 backdrop-blur-lg border-t border-white/[0.07]">
+        <div className="sm:hidden bg-black/75 backdrop-blur-xl border-t border-white/[0.07]">
 
           {/* Theme toggle — top-right corner of drawer */}
           <div className="flex justify-end px-6 pt-4 pb-1">
