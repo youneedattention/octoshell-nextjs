@@ -52,20 +52,34 @@ const SVC_ITEMS: { key: keyof typeof t; anchor: string; icon: React.ReactNode }[
   },
 ];
 
+/* ── Reusable theme toggle icon ─────────────────────────────────────── */
+function ThemeIcon({ theme }: { theme: string }) {
+  return theme === "dark" ? (
+    <svg className="w-[15px] h-[15px]" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="4"/>
+      <path strokeLinecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+    </svg>
+  ) : (
+    <svg className="w-[14px] h-[14px]" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+  );
+}
+
 export default function Header() {
   const { lang, setLang } = useLang();
   const { theme, toggle: toggleTheme } = useTheme();
   const { currency, setCurrency } = useCurrency();
-  const [menuOpen,          setMenuOpen]          = useState(false);
-  const [aboutDrop,         setAboutDrop]         = useState(false);
-  const [aboutMobileOpen,   setAboutMobileOpen]   = useState(false);
-  const [servicesDrop,      setServicesDrop]      = useState(false);
-  const [servicesMobileOpen,setServicesMobileOpen]= useState(false);
-  const [currencyOpen,      setCurrencyOpen]      = useState(false);
+  const [menuOpen,           setMenuOpen]           = useState(false);
+  const [aboutDrop,          setAboutDrop]          = useState(false);
+  const [aboutMobileOpen,    setAboutMobileOpen]    = useState(false);
+  const [servicesDrop,       setServicesDrop]       = useState(false);
+  const [servicesMobileOpen, setServicesMobileOpen] = useState(false);
+  const [currencyOpen,       setCurrencyOpen]       = useState(false);
   const dropTimer    = useRef<ReturnType<typeof setTimeout> | null>(null);
   const svcDropTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const curRef       = useRef<HTMLDivElement>(null);
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled,   setScrolled]   = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -86,27 +100,11 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handler);
   }, [currencyOpen]);
 
-  const openDrop  = () => {
-    if (dropTimer.current) clearTimeout(dropTimer.current);
-    setAboutDrop(true);
-  };
-  const closeDrop = () => {
-    dropTimer.current = setTimeout(() => setAboutDrop(false), 200);
-  };
-
-  const openSvcDrop  = () => {
-    if (svcDropTimer.current) clearTimeout(svcDropTimer.current);
-    setServicesDrop(true);
-  };
-  const closeSvcDrop = () => {
-    svcDropTimer.current = setTimeout(() => setServicesDrop(false), 200);
-  };
-
-  const closeAll  = () => {
-    setMenuOpen(false);
-    setAboutMobileOpen(false);
-    setServicesMobileOpen(false);
-  };
+  const openDrop    = () => { if (dropTimer.current)    clearTimeout(dropTimer.current);    setAboutDrop(true);    };
+  const closeDrop   = () => { dropTimer.current    = setTimeout(() => setAboutDrop(false),    200); };
+  const openSvcDrop = () => { if (svcDropTimer.current) clearTimeout(svcDropTimer.current); setServicesDrop(true); };
+  const closeSvcDrop= () => { svcDropTimer.current = setTimeout(() => setServicesDrop(false), 200); };
+  const closeAll    = () => { setMenuOpen(false); setAboutMobileOpen(false); setServicesMobileOpen(false); };
 
   return (
     <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300
@@ -114,11 +112,26 @@ export default function Header() {
         ? "backdrop-blur-xl bg-black/75 border-b border-white/[0.07]"
         : "bg-transparent border-b border-transparent"}`}>
 
-      {/* ── Main row ── */}
-      <div className="flex items-center justify-between px-6 sm:px-12 lg:px-20 h-[84px] sm:h-[96px]">
+      {/* ══════════════════════════════════════════════════════════════
+          MAIN ROW
+      ══════════════════════════════════════════════════════════════ */}
+      <div className="flex items-center justify-between
+                      px-5 sm:px-12 lg:px-20
+                      py-2.5 sm:py-0 sm:h-[96px]">
 
-        {/* LEFT — lang circles + theme toggle + currency */}
-        <div className="flex items-center gap-1.5 shrink-0">
+        {/* ── MOBILE LEFT: large logo ───────────────────────────── */}
+        <Link href="/" className="sm:hidden shrink-0">
+          <Image
+            src={LOGO}
+            alt="Octoshell"
+            width={92}
+            height={92}
+            className="object-contain drop-shadow-lg"
+          />
+        </Link>
+
+        {/* ── DESKTOP LEFT: lang + theme + currency ────────────── */}
+        <div className="hidden sm:flex items-center gap-1.5 shrink-0">
           {LANGS.map(({ code, label }) => (
             <button
               key={code}
@@ -134,7 +147,7 @@ export default function Header() {
             </button>
           ))}
 
-          {/* ── Light / Dark toggle ── */}
+          {/* Theme toggle */}
           <button
             onClick={toggleTheme}
             aria-label="Toggle light / dark theme"
@@ -142,20 +155,11 @@ export default function Header() {
                        text-white/70 hover:border-[#c9a84c] hover:text-[#c9a84c]
                        flex items-center justify-center transition-all duration-200"
           >
-            {theme === "dark" ? (
-              <svg className="w-[15px] h-[15px]" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="4"/>
-                <path strokeLinecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
-              </svg>
-            ) : (
-              <svg className="w-[14px] h-[14px]" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-              </svg>
-            )}
+            <ThemeIcon theme={theme} />
           </button>
 
-          {/* ── Currency selector (desktop only) ── */}
-          <div ref={curRef} className="relative hidden sm:block">
+          {/* Currency selector */}
+          <div ref={curRef} className="relative">
             <button
               onClick={() => setCurrencyOpen((o) => !o)}
               aria-label="Select currency"
@@ -212,14 +216,13 @@ export default function Header() {
           </div>
         </div>
 
-        {/* CENTER — Logo + desktop nav */}
-        <div className="flex flex-col items-center absolute left-1/2 -translate-x-1/2">
+        {/* ── DESKTOP CENTER: logo + nav (absolute) ────────────── */}
+        <div className="hidden sm:flex flex-col items-center absolute left-1/2 -translate-x-1/2">
           <Link href="/">
             <Image src={LOGO} alt="Octoshell" width={75} height={75} className="object-contain drop-shadow-lg" />
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden sm:flex items-center gap-8 lg:gap-12 mt-0.5">
+          <nav className="flex items-center gap-8 lg:gap-12 mt-0.5">
 
             {/* HOME */}
             <Link href="/"
@@ -229,7 +232,7 @@ export default function Header() {
               {t.nav_home[lang]}
             </Link>
 
-            {/* SERVICES — hover dropdown */}
+            {/* SERVICES */}
             <div className="relative" onMouseEnter={openSvcDrop} onMouseLeave={closeSvcDrop}>
               <Link href="/services"
                 className={`flex items-center gap-1 text-[12px] lg:text-[13px] tracking-[0.22em]
@@ -244,7 +247,6 @@ export default function Header() {
                 </svg>
               </Link>
 
-              {/* Services dropdown panel */}
               {servicesDrop && (
                 <div
                   className="absolute top-full left-1/2 -translate-x-1/2 mt-3.5 w-[420px]
@@ -254,9 +256,7 @@ export default function Header() {
                   onMouseEnter={openSvcDrop}
                   onMouseLeave={closeSvcDrop}
                 >
-                  {/* Gold top accent */}
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
-
                   <div className="grid grid-cols-2 p-1">
                     {SVC_ITEMS.map((item, idx) => (
                       <Link
@@ -278,7 +278,7 @@ export default function Header() {
               )}
             </div>
 
-            {/* ABOUT — hover dropdown */}
+            {/* ABOUT */}
             <div className="relative" onMouseEnter={openDrop} onMouseLeave={closeDrop}>
               <Link href="/about"
                 className={`flex items-center gap-1 text-[12px] lg:text-[13px] tracking-[0.22em]
@@ -293,7 +293,6 @@ export default function Header() {
                 </svg>
               </Link>
 
-              {/* Dropdown panel */}
               {aboutDrop && (
                 <div
                   className="absolute top-full left-1/2 -translate-x-1/2 mt-3.5 w-52
@@ -303,7 +302,6 @@ export default function Header() {
                   onMouseEnter={openDrop}
                   onMouseLeave={closeDrop}
                 >
-                  {/* Gold top accent */}
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
 
                   <Link href="/about#story" onClick={() => setAboutDrop(false)}
@@ -311,7 +309,6 @@ export default function Header() {
                                text-[10px] tracking-[0.25em] uppercase text-white/50
                                hover:text-[#c9a84c] hover:bg-white/[0.035] transition-all duration-150
                                border-b border-white/[0.05]">
-                    {/* clock icon */}
                     <svg className="w-3.5 h-3.5 shrink-0 text-[#c9a84c]/50" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
                       <circle cx="12" cy="12" r="9" /><path strokeLinecap="round" strokeLinejoin="round" d="M12 7v5l3 3" />
                     </svg>
@@ -323,7 +320,6 @@ export default function Header() {
                                text-[10px] tracking-[0.25em] uppercase text-white/50
                                hover:text-[#c9a84c] hover:bg-white/[0.035] transition-all duration-150
                                border-b border-white/[0.05]">
-                    {/* question mark icon */}
                     <svg className="w-3.5 h-3.5 shrink-0 text-[#c9a84c]/50" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
                       <circle cx="12" cy="12" r="9" />
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
@@ -336,7 +332,6 @@ export default function Header() {
                     className="flex items-center gap-3 px-5 py-3.5
                                text-[10px] tracking-[0.25em] uppercase text-white/50
                                hover:text-[#c9a84c] hover:bg-white/[0.035] transition-all duration-150">
-                    {/* mail icon */}
                     <svg className="w-3.5 h-3.5 shrink-0 text-[#c9a84c]/50" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
                     </svg>
@@ -349,13 +344,9 @@ export default function Header() {
           </nav>
         </div>
 
-        {/* RIGHT — BOOK pill + hamburger */}
+        {/* ── RIGHT: Desktop BOOK | Mobile: hamburger + lang stack ── */}
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-          {/* Mobile BOOK */}
-          <Link href="/book"
-            className="sm:hidden inline-flex items-center bg-[#c9a84c] text-black text-[9px] font-bold tracking-[0.15em] px-3.5 py-1.5 rounded-full whitespace-nowrap">
-            BOOK
-          </Link>
+
           {/* Desktop BOOK */}
           <Link href="/book"
             className="hidden sm:inline-flex items-center justify-center relative overflow-hidden group
@@ -371,22 +362,59 @@ export default function Header() {
               {lang === "ja" ? "今すぐ予約" : lang === "zh" ? "立即預訂" : "Book Now"}
             </span>
           </Link>
-          {/* Hamburger */}
-          <button onClick={() => setMenuOpen(!menuOpen)}
-            className="sm:hidden text-white p-1 touch-manipulation" aria-label="Toggle menu">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {menuOpen
-                ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
-                : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />}
-            </svg>
-          </button>
+
+          {/* Mobile: stacked column — hamburger on top, lang circles below */}
+          <div className="sm:hidden flex flex-col items-center gap-1.5">
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="text-white touch-manipulation p-1"
+              aria-label="Toggle menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {menuOpen
+                  ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+                  : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />}
+              </svg>
+            </button>
+            {LANGS.map(({ code, label }) => (
+              <button
+                key={code}
+                onClick={() => setLang(code)}
+                aria-label={`Switch to ${label}`}
+                className={`w-[23px] h-[23px] rounded-full text-[8.5px] font-bold border transition-all duration-200
+                  ${lang === code
+                    ? "bg-white text-black border-white shadow-[0_0_0_2px_rgba(255,255,255,0.25)]"
+                    : "bg-transparent text-white/80 border-white/40 hover:border-[#c9a84c] hover:bg-[#c9a84c]/10"
+                  }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+
         </div>
       </div>
 
-      {/* ── Mobile drawer ── */}
+      {/* ══════════════════════════════════════════════════════════════
+          MOBILE DRAWER
+      ══════════════════════════════════════════════════════════════ */}
       {menuOpen && (
-        <div className="sm:hidden bg-black/95 backdrop-blur-lg border-t border-white/[0.07] py-5 px-6">
-          <nav className="flex flex-col gap-4">
+        <div className="sm:hidden bg-black/95 backdrop-blur-lg border-t border-white/[0.07]">
+
+          {/* Theme toggle — top-right corner of drawer */}
+          <div className="flex justify-end px-6 pt-4 pb-1">
+            <button
+              onClick={toggleTheme}
+              aria-label="Toggle light / dark theme"
+              className="w-9 h-9 rounded-full border border-white/40 bg-transparent
+                         text-white/70 hover:border-[#c9a84c] hover:text-[#c9a84c]
+                         flex items-center justify-center transition-all duration-200"
+            >
+              <ThemeIcon theme={theme} />
+            </button>
+          </div>
+
+          <nav className="flex flex-col gap-4 px-6 pb-6 pt-2">
 
             <Link href="/" onClick={closeAll}
               className="text-white/80 text-[13px] tracking-[0.2em] hover:text-white transition-colors">
@@ -453,7 +481,7 @@ export default function Header() {
               )}
             </div>
 
-            {/* Currency selector — mobile drawer */}
+            {/* Currency selector */}
             <div className="mt-1">
               <p className="text-white/25 text-[9px] tracking-[0.3em] uppercase mb-2">
                 {lang === "ja" ? "通貨" : lang === "zh" ? "貨幣" : "Currency"}
@@ -483,6 +511,7 @@ export default function Header() {
               )}
             </div>
 
+            {/* BOOK */}
             <Link href="/book" onClick={closeAll}
               className="mt-3 inline-flex justify-center bg-[#c9a84c] text-black text-[11px] font-bold tracking-[0.18em] px-6 py-2.5 rounded-full hover:bg-white transition-all duration-200">
               {t.nav_book[lang]}
