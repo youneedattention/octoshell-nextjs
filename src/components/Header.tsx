@@ -167,7 +167,8 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                       py-2.5 sm:py-0 sm:h-[96px]">
 
         {/* ── MOBILE LEFT: large logo ───────────────────────────── */}
-        <Link href="/" className="sm:hidden shrink-0 transition-transform duration-200 active:scale-110"
+        <Link href="/" draggable={false}
+          className="sm:hidden shrink-0 transition-transform duration-200 active:scale-110"
           onContextMenu={(e) => e.preventDefault()}>
           <Image
             src={LOGO}
