@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
+import Price from "@/components/Price";
 import { useLang } from "@/context/LangContext";
 import { t } from "@/lib/translations";
 
@@ -38,17 +39,17 @@ const SOCIALS = [
 ];
 
 /* ── Pricing data (route key → price) ─────────────────────────────── */
-const ALPHARD_ROWS: [string, string][] = [
-  ["route_haneda", "¥20,000"], ["route_narita", "¥25,000"],
-  ["route_city",   "¥43,000"], ["route_fuji",   "¥68,000"],
-  ["route_kanagawa","¥70,000"],["route_hakone", "¥70,000"],
-  ["route_izu",    "¥70,000"], ["route_golf",   "¥50,000"],
+const ALPHARD_ROWS: [string, number][] = [
+  ["route_haneda", 20000], ["route_narita", 25000],
+  ["route_city",   43000], ["route_fuji",   68000],
+  ["route_kanagawa",70000],["route_hakone", 70000],
+  ["route_izu",    70000], ["route_golf",   50000],
 ];
-const HIACE_ROWS: [string, string][] = [
-  ["route_haneda", "¥22,000"], ["route_narita", "¥28,000"],
-  ["route_city",   "¥50,000"], ["route_fuji",   "¥72,000"],
-  ["route_kanagawa","¥80,000"],["route_hakone", "¥80,000"],
-  ["route_izu",    "¥80,000"], ["route_golf",   "¥60,000"],
+const HIACE_ROWS: [string, number][] = [
+  ["route_haneda", 22000], ["route_narita", 28000],
+  ["route_city",   50000], ["route_fuji",   72000],
+  ["route_kanagawa",80000],["route_hakone", 80000],
+  ["route_izu",    80000], ["route_golf",   60000],
 ];
 
 /* ── Page ──────────────────────────────────────────────────────────── */
@@ -165,10 +166,9 @@ function PriceCard({
 }: {
   name: string;
   img: string;
-  rows: [string, string][];
+  rows: [string, number][];
   lang: Lang;
 }) {
-  const { lang: _l } = useLang(); // already passed as prop, but hook is fine
   return (
     <div className="flex flex-col border border-[var(--c-rule)]">
       <div className="bg-white flex items-center justify-center h-[200px] px-4">
@@ -181,10 +181,12 @@ function PriceCard({
         </h3>
         <table className="w-full text-sm flex-1">
           <tbody>
-            {rows.map(([routeKey, price]) => (
+            {rows.map(([routeKey, yen]) => (
               <tr key={routeKey} className="border-b border-[var(--c-rule)] last:border-0">
                 <td className="py-2 pr-3 text-[var(--c-ink-2)] text-[13px]">{t[routeKey][lang]}</td>
-                <td className="py-2 text-right font-bold text-[var(--c-ink)] whitespace-nowrap text-[15px] sm:text-[16px] tracking-tight">{price}</td>
+                <td className="py-2 text-right font-bold text-[var(--c-ink)] whitespace-nowrap text-[15px] sm:text-[16px] tracking-tight">
+                  <Price yen={yen} />
+                </td>
               </tr>
             ))}
           </tbody>

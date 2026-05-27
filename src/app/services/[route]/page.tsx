@@ -5,6 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import SiteFooter from "@/components/SiteFooter";
+import Price from "@/components/Price";
 import { useLang } from "@/context/LangContext";
 import { getRouteData } from "./routeData";
 import type { Lang } from "@/lib/translations";
@@ -224,7 +225,9 @@ export default function ServiceRoutePage({
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 14.25l6-6m4.5-3.493V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0c1.1.128 1.907 1.077 1.907 2.185Z" />
             </svg>
             <span className="text-[#c9a84c] text-[13px] tracking-[0.25em] font-semibold uppercase">
-              {data.price[l]}
+              {l === "en" ? "From " : ""}
+              <Price yen={data.schemaPrice} />
+              {l === "ja" ? "〜" : l === "zh" ? " 起" : ""}
             </span>
             <span className="text-white/20 text-[10px] tracking-widest uppercase">
               {l === "ja" ? "全込み" : l === "zh" ? "全包" : "All-Inclusive"}

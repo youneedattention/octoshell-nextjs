@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLang } from "@/context/LangContext";
 import { useTheme } from "@/context/ThemeContext";
+import { useCurrency, CURRENCIES } from "@/context/CurrencyContext";
 import { t } from "@/lib/translations";
 import type { Lang } from "@/lib/translations";
 
@@ -54,21 +55,36 @@ const SVC_ITEMS: { key: keyof typeof t; anchor: string; icon: React.ReactNode }[
 export default function Header() {
   const { lang, setLang } = useLang();
   const { theme, toggle: toggleTheme } = useTheme();
+  const { currency, setCurrency } = useCurrency();
   const [menuOpen,          setMenuOpen]          = useState(false);
   const [aboutDrop,         setAboutDrop]         = useState(false);
   const [aboutMobileOpen,   setAboutMobileOpen]   = useState(false);
   const [servicesDrop,      setServicesDrop]      = useState(false);
   const [servicesMobileOpen,setServicesMobileOpen]= useState(false);
+  const [currencyOpen,      setCurrencyOpen]      = useState(false);
   const dropTimer    = useRef<ReturnType<typeof setTimeout> | null>(null);
   const svcDropTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const curRef       = useRef<HTMLDivElement>(null);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
-    onScroll(); // check immediately on mount
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  /* Close currency dropdown on outside click */
+  useEffect(() => {
+    if (!currencyOpen) return;
+    const handler = (e: MouseEvent) => {
+      if (curRef.current && !curRef.current.contains(e.target as Node)) {
+        setCurrencyOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [currencyOpen]);
 
   const openDrop  = () => {
     if (dropTimer.current) clearTimeout(dropTimer.current);
@@ -101,7 +117,7 @@ export default function Header() {
       {/* ── Main row ── */}
       <div className="flex items-center justify-between px-6 sm:px-12 lg:px-20 h-[84px] sm:h-[96px]">
 
-        {/* LEFT — lang circles + theme toggle */}
+        {/* LEFT — lang circles + theme toggle + currency */}
         <div className="flex items-center gap-1.5 shrink-0">
           {LANGS.map(({ code, label }) => (
             <button
@@ -127,18 +143,62 @@ export default function Header() {
                        flex items-center justify-center transition-all duration-200"
           >
             {theme === "dark" ? (
-              /* Sun — click to go light */
               <svg className="w-[15px] h-[15px]" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="4"/>
                 <path strokeLinecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
               </svg>
             ) : (
-              /* Moon — click to go dark */
               <svg className="w-[14px] h-[14px]" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
               </svg>
             )}
           </button>
+
+          {/* ── Currency selector (desktop only) ── */}
+          <div ref={curRef} className="relative hidden sm:block">
+            <button
+              onClick={() => setCurrencyOpen((o) => !o)}
+              aria-label="Select currency"
+              className={`h-9 px-2.5 rounded-full text-[10px] font-bold border transition-all duration-200
+                          flex items-center gap-1 tracking-widest
+                          ${currencyOpen
+                            ? "border-[#c9a84c] text-[#c9a84c]"
+                            : "border-white/40 text-white/80 hover:border-[#c9a84c] hover:text-[#c9a84c]"}`}
+            >
+              {currency}
+              <svg className="w-2 h-2 opacity-50" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
+              </svg>
+            </button>
+
+            {currencyOpen && (
+              <div className="absolute top-full left-0 mt-2 w-[130px]
+                              bg-[#0a0a0a]/96 backdrop-blur-xl
+                              border border-white/[0.09] shadow-[0_12px_40px_rgba(0,0,0,0.6)]
+                              overflow-hidden z-50">
+                <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
+                {CURRENCIES.map((c) => (
+                  <button
+                    key={c.code}
+                    onClick={() => { setCurrency(c.code); setCurrencyOpen(false); }}
+                    className={`w-full flex items-center gap-2.5 px-3.5 py-2.5
+                                text-[10px] tracking-[0.2em] transition-colors
+                                ${currency === c.code
+                                  ? "text-[#c9a84c] bg-white/[0.04]"
+                                  : "text-white/50 hover:text-[#c9a84c] hover:bg-white/[0.035]"}`}
+                  >
+                    <span>{c.flag}</span>
+                    <span>{c.label}</span>
+                    {currency === c.code && (
+                      <svg className="w-2.5 h-2.5 ml-auto text-[#c9a84c]/60" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                      </svg>
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* CENTER — Logo + desktop nav */}
@@ -380,6 +440,27 @@ export default function Header() {
                   </Link>
                 </div>
               )}
+            </div>
+
+            {/* Currency selector — mobile drawer */}
+            <div className="mt-1">
+              <p className="text-white/25 text-[9px] tracking-[0.3em] uppercase mb-2">
+                {lang === "ja" ? "通貨" : lang === "zh" ? "貨幣" : "Currency"}
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {CURRENCIES.map((c) => (
+                  <button
+                    key={c.code}
+                    onClick={() => setCurrency(c.code)}
+                    className={`text-[9px] tracking-[0.15em] border px-2 py-1 transition-colors
+                      ${currency === c.code
+                        ? "border-[#c9a84c] text-[#c9a84c]"
+                        : "border-white/20 text-white/40 hover:border-white/40"}`}
+                  >
+                    {c.flag} {c.code}
+                  </button>
+                ))}
+              </div>
             </div>
 
             <Link href="/book" onClick={closeAll}

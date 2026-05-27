@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import { LangProvider } from "@/context/LangContext";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { CurrencyProvider } from "@/context/CurrencyContext";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
@@ -263,7 +264,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="min-h-full antialiased">
         <ThemeProvider>
-          <LangProvider>{children}</LangProvider>
+          <CurrencyProvider>
+            <LangProvider>{children}</LangProvider>
+          </CurrencyProvider>
         </ThemeProvider>
         <Analytics />
       </body>
