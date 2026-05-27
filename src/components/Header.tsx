@@ -411,13 +411,13 @@ export default function Header({ alwaysFrosted = false }: { alwaysFrosted?: bool
           </Link>
 
           {/* Mobile: stacked column — hamburger on top, single lang selector below */}
-          <div className="sm:hidden flex flex-col items-center gap-1.5">
+          <div className="sm:hidden flex flex-col items-center gap-2">
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="text-white touch-manipulation p-1"
               aria-label="Toggle menu"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-[30px] h-[30px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {menuOpen
                   ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
                   : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />}
@@ -429,7 +429,7 @@ export default function Header({ alwaysFrosted = false }: { alwaysFrosted?: bool
               <button
                 onClick={() => setLangOpen((o) => !o)}
                 aria-label="Select language"
-                className={`w-[30px] h-[30px] rounded-full text-[9px] font-bold border transition-all duration-200
+                className={`w-[38px] h-[38px] rounded-full text-[11px] font-bold border transition-all duration-200
                   flex items-center justify-center
                   ${langOpen
                     ? "bg-white text-black border-white"
@@ -467,7 +467,7 @@ export default function Header({ alwaysFrosted = false }: { alwaysFrosted?: bool
               <button
                 onClick={() => setMobileCurOpen((o) => !o)}
                 aria-label="Select currency"
-                className={`w-[30px] h-[30px] rounded-full text-[7.5px] font-bold border transition-all duration-200
+                className={`w-[38px] h-[38px] rounded-full text-[9px] font-bold border transition-all duration-200
                   flex items-center justify-center tracking-wider
                   ${mobileCurOpen
                     ? "bg-white text-black border-white"
