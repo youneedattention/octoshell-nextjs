@@ -870,7 +870,9 @@ export default function BookPage() {
                        bg-[#c9a84c] text-[#0c0c0c] text-[12px] sm:text-[13px] tracking-[0.3em] font-black
                        px-8 py-3.5 sm:py-4 transition-all duration-200
                        hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed
-                       shadow-[0_4px_20px_rgba(201,168,76,0.35)] hover:shadow-[0_4px_28px_rgba(201,168,76,0.5)]"
+                       shadow-[0_4px_20px_rgba(201,168,76,0.35)] hover:shadow-[0_4px_28px_rgba(201,168,76,0.5)]
+                       active:scale-[1.05] active:shadow-[0_8px_36px_rgba(201,168,76,0.7)]
+                       sm:active:scale-100 sm:active:shadow-[0_4px_28px_rgba(201,168,76,0.5)]"
           >
             {status === "loading" ? (
               <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">

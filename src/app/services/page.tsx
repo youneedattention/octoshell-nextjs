@@ -318,7 +318,9 @@ export default function ServicesPage() {
                                text-[12px] tracking-[0.3em] font-black
                                px-7 py-3 sm:py-3.5 transition-all duration-200
                                hover:bg-white
-                               shadow-[0_4px_20px_rgba(201,168,76,0.35)] hover:shadow-[0_4px_28px_rgba(201,168,76,0.5)]">
+                               shadow-[0_4px_20px_rgba(201,168,76,0.35)] hover:shadow-[0_4px_28px_rgba(201,168,76,0.5)]
+                               active:scale-[1.05] active:shadow-[0_8px_36px_rgba(201,168,76,0.7)]
+                               sm:active:scale-100 sm:active:shadow-[0_4px_28px_rgba(201,168,76,0.5)]">
                     {lang === "ja" ? "このサービスを予約" : lang === "zh" ? "預訂此服務" : "Book This Service"}
                     <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"
                       fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
@@ -367,7 +369,9 @@ export default function ServicesPage() {
             className="group inline-flex items-center gap-2.5 bg-[#c9a84c] text-[#0c0c0c]
                        text-[12px] sm:text-[13px] font-black tracking-[0.3em] uppercase
                        px-10 py-4 hover:bg-white transition-all duration-200
-                       shadow-[0_4px_20px_rgba(201,168,76,0.35)] hover:shadow-[0_4px_28px_rgba(201,168,76,0.5)]">
+                       shadow-[0_4px_20px_rgba(201,168,76,0.35)] hover:shadow-[0_4px_28px_rgba(201,168,76,0.5)]
+                       active:scale-[1.05] active:shadow-[0_8px_36px_rgba(201,168,76,0.7)]
+                       sm:active:scale-100 sm:active:shadow-[0_4px_28px_rgba(201,168,76,0.5)]">
             {CTA[lang].btn}
             <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"
               fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">

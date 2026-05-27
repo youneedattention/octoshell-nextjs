@@ -198,7 +198,9 @@ function PriceCard({
                      bg-[#c9a84c] text-[#0c0c0c] text-[11px] sm:text-[12px] tracking-[0.3em] font-black
                      px-8 py-3 transition-all duration-200
                      hover:bg-white
-                     shadow-[0_4px_20px_rgba(201,168,76,0.35)] hover:shadow-[0_4px_28px_rgba(201,168,76,0.5)]">
+                     shadow-[0_4px_20px_rgba(201,168,76,0.35)] hover:shadow-[0_4px_28px_rgba(201,168,76,0.5)]
+                     active:scale-[1.05] active:shadow-[0_8px_36px_rgba(201,168,76,0.7)]
+                     sm:active:scale-100 sm:active:shadow-[0_4px_28px_rgba(201,168,76,0.5)]">
           {t.book_car[lang]}
           <svg className="w-3 h-3 transition-transform group-hover:translate-x-0.5"
             fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
