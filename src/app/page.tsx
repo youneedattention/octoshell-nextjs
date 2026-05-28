@@ -7,7 +7,7 @@ import { useLang } from "@/context/LangContext";
 import { t } from "@/lib/translations";
 
 /* ── Asset URLs ────────────────────────────────────────────────────── */
-const LOGO    = "https://octoshell.jp/wp-content/uploads/2024/09/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240910223903.png";
+const LOGO    = "/logo.png";
 const HERO_BG = "https://octoshell.jp/wp-content/uploads/2024/10/Home2.png";
 const ALPHARD = "https://octoshell.jp/wp-content/uploads/2024/09/toyotaalphard.png";
 const HIACE   = "https://octoshell.jp/wp-content/uploads/2024/09/toyatahiace.png";
