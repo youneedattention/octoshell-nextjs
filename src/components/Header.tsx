@@ -8,8 +8,7 @@ import { useCurrency, CURRENCIES } from "@/context/CurrencyContext";
 import { t } from "@/lib/translations";
 import type { Lang } from "@/lib/translations";
 
-const LOGO =
-  "https://octoshell.jp/wp-content/uploads/2024/09/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240910223903.png";
+const LOGO = "/logo.png";
 
 const LANGS: { code: Lang; label: string }[] = [
   { code: "en", label: "EN" },
