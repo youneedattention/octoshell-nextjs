@@ -4,6 +4,7 @@ import { LangProvider } from "@/context/LangContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { CurrencyProvider } from "@/context/CurrencyContext";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -269,6 +270,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </CurrencyProvider>
         </ThemeProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
