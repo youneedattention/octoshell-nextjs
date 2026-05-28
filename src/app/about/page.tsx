@@ -9,8 +9,8 @@ import type { Lang } from "@/lib/translations";
 import React from "react";
 
 /* ── Vehicle images ─────────────────────────────────────────────────── */
-const ALPHARD_IMG = "https://octoshell.jp/wp-content/uploads/2024/09/toyotaalphard.png";
-const HIACE_IMG   = "https://octoshell.jp/wp-content/uploads/2024/09/toyatahiace.png";
+const ALPHARD_IMG = "/images/alphard.png";
+const HIACE_IMG   = "/images/hiace.png";
 
 /* ══════════════════════════════════════════════════════════════════════
    EXACT USER-PROVIDED COPY — strictly verbatim, three languages
