@@ -171,12 +171,12 @@ function PriceCard({
   lang: Lang;
 }) {
   return (
-    <div className="flex flex-col border border-[var(--c-rule)]">
-      <div className="bg-white flex items-center justify-center h-[200px] px-4">
+    <div className="flex flex-col">
+      <div className="flex items-center justify-center h-[200px] px-4">
         <Image src={img} alt={name} width={320} height={180}
-          className="object-contain max-h-40 w-auto mix-blend-multiply" />
+          className="object-contain max-h-40 w-auto" />
       </div>
-      <div className="flex flex-col flex-1 px-5 sm:px-7 py-5 sm:py-6 bg-[var(--c-card)]">
+      <div className="flex flex-col flex-1 px-5 sm:px-7 py-5 sm:py-6">
         <h3 className="text-sm font-bold tracking-[0.2em] text-center mb-4 text-[var(--c-ink)]">
           {name}
         </h3>
