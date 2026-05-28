@@ -4,8 +4,7 @@ import Link from "next/link";
 import { useLang } from "@/context/LangContext";
 import { t } from "@/lib/translations";
 
-const LOGO =
-  "https://octoshell.jp/wp-content/uploads/2024/09/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240910223903.png";
+const LOGO = "/logo.png";
 
 export default function SiteFooter() {
   const { lang } = useLang();
