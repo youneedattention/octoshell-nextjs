@@ -119,7 +119,7 @@ const ORG_SCHEMA = {
       "url": BASE,
       "logo": {
         "@type": "ImageObject",
-        "url": "https://octoshell.jp/wp-content/uploads/2024/09/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240910223903.png",
+        "url": `${BASE}/icon.png`,
         "width": 512,
         "height": 512,
       },
