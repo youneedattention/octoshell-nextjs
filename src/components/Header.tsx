@@ -506,7 +506,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                                     ? "text-[#c9a84c] bg-white/[0.04]"
                                     : "text-white/50 hover:text-[#c9a84c] hover:bg-white/[0.035]"}`}
                     >
-  
+                      <span className="text-[13px] leading-none">{c.flag}</span>
                       <span className="text-[10px] font-bold tracking-[0.18em] w-7 shrink-0">{c.code}</span>
                       <span className={`text-[10px] tracking-[0.06em] ${currency === c.code ? "text-white/50" : "text-white/25"}`}>{c.name}</span>
                     </button>
