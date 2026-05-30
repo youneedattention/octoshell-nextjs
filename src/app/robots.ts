@@ -6,7 +6,17 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/"],
+        disallow: [
+          "/api/",
+          "/wp-admin/",
+          "/wp-content/",
+          "/wp-includes/",
+          "/wp-login.php",
+          "/wp-cron.php",
+          "/xmlrpc.php",
+          "/comments/",
+          "/*.php",
+        ],
       },
     ],
     sitemap: "https://octoshell.jp/sitemap.xml",
