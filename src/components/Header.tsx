@@ -234,15 +234,21 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                   <button
                     key={c.code}
                     onClick={() => { setCurrency(c.code); setCurrencyOpen(false); }}
-                    className={`w-full flex items-center gap-3 px-4 py-2.5
-                                transition-colors
-                                ${currency === c.code
-                                  ? "text-[#c9a84c] bg-white/[0.04]"
-                                  : "text-white/50 hover:text-[#c9a84c] hover:bg-white/[0.035]"}`}
+                    className={`group w-full flex items-center px-4 py-2.5 transition-colors duration-200
+                                ${currency === c.code ? "bg-white/[0.04]" : "hover:bg-white/[0.025]"}`}
                   >
-                    <span className="text-[13px] leading-none">{c.flag}</span>
-                    <span className="text-[10px] font-bold tracking-[0.18em] w-8 shrink-0">{c.code}</span>
-                    <span className={`text-[10px] tracking-[0.06em] ${currency === c.code ? "text-white/50" : "text-white/25"}`}>{c.name}</span>
+                    <div className="flex items-center gap-3 transition-transform duration-200 origin-left group-hover:scale-[1.06]">
+                      <span className={`text-[10px] font-bold tracking-[0.18em] w-8 shrink-0 transition-colors duration-200
+                                        group-hover:text-[#c9a84c]
+                                        ${currency === c.code ? "text-[#c9a84c]" : "text-white/55"}`}>
+                        {c.code}
+                      </span>
+                      <span className={`text-[10px] tracking-[0.06em] transition-colors duration-200
+                                        group-hover:text-[#c9a84c]/60
+                                        ${currency === c.code ? "text-white/45" : "text-white/22"}`}>
+                        {c.name}
+                      </span>
+                    </div>
                     {currency === c.code && (
                       <svg className="w-2.5 h-2.5 ml-auto shrink-0 text-[#c9a84c]/60" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
@@ -500,7 +506,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                                     ? "text-[#c9a84c] bg-white/[0.04]"
                                     : "text-white/50 hover:text-[#c9a84c] hover:bg-white/[0.035]"}`}
                     >
-                      <span className="text-[13px] leading-none">{c.flag}</span>
+  
                       <span className="text-[10px] font-bold tracking-[0.18em] w-7 shrink-0">{c.code}</span>
                       <span className={`text-[10px] tracking-[0.06em] ${currency === c.code ? "text-white/50" : "text-white/25"}`}>{c.name}</span>
                     </button>
