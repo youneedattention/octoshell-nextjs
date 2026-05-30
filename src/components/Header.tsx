@@ -508,7 +508,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                     >
                       <span className="text-[13px] leading-none">{c.flag}</span>
                       <span className="text-[10px] font-bold tracking-[0.18em] w-7 shrink-0">{c.code}</span>
-                      <span className={`text-[10px] tracking-[0.06em] ${currency === c.code ? "text-white/50" : "text-white/25"}`}>{c.name}</span>
+                      <span className={`text-[10px] tracking-[0.06em] ${currency === c.code ? "text-[#c9a84c]/70" : "text-white/25"}`}>{c.name}</span>
                     </button>
                   ))}
                   {currency !== "JPY" && (
