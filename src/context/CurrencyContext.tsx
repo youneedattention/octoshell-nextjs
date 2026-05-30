@@ -8,19 +8,20 @@ export interface CurrencyMeta {
   code: Currency;
   symbol: string;
   label: string;
+  name: string;
   flag: string;
 }
 
 export const CURRENCIES: CurrencyMeta[] = [
-  { code: "JPY", symbol: "¥",   label: "JPY", flag: "🇯🇵" },
-  { code: "USD", symbol: "$",   label: "USD", flag: "🇺🇸" },
-  { code: "CNY", symbol: "CN¥", label: "CNY", flag: "🇨🇳" },
-  { code: "TWD", symbol: "NT$", label: "TWD", flag: "🇹🇼" },
-  { code: "HKD", symbol: "HK$", label: "HKD", flag: "🇭🇰" },
-  { code: "SGD", symbol: "S$",  label: "SGD", flag: "🇸🇬" },
-  { code: "AUD", symbol: "A$",  label: "AUD", flag: "🇦🇺" },
-  { code: "EUR", symbol: "€",   label: "EUR", flag: "🇪🇺" },
-  { code: "GBP", symbol: "£",   label: "GBP", flag: "🇬🇧" },
+  { code: "JPY", symbol: "¥",   label: "JPY", name: "Japanese Yen",      flag: "🇯🇵" },
+  { code: "USD", symbol: "$",   label: "USD", name: "US Dollar",          flag: "🇺🇸" },
+  { code: "CNY", symbol: "CN¥", label: "CNY", name: "Chinese Yuan",       flag: "🇨🇳" },
+  { code: "TWD", symbol: "NT$", label: "TWD", name: "Taiwan Dollar",      flag: "🇹🇼" },
+  { code: "HKD", symbol: "HK$", label: "HKD", name: "Hong Kong Dollar",   flag: "🇭🇰" },
+  { code: "SGD", symbol: "S$",  label: "SGD", name: "Singapore Dollar",   flag: "🇸🇬" },
+  { code: "AUD", symbol: "A$",  label: "AUD", name: "Australian Dollar",  flag: "🇦🇺" },
+  { code: "EUR", symbol: "€",   label: "EUR", name: "Euro",               flag: "🇪🇺" },
+  { code: "GBP", symbol: "£",   label: "GBP", name: "British Pound",      flag: "🇬🇧" },
 ];
 
 /** Conservative fallback rates (JPY base) — used if API is unreachable */

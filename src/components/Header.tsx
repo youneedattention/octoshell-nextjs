@@ -225,7 +225,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
             </button>
 
             {currencyOpen && (
-              <div className="absolute top-full left-0 mt-2 w-[130px]
+              <div className="absolute top-full left-0 mt-2 w-[216px]
                               bg-[#0a0a0a]/96 backdrop-blur-xl
                               border border-white/[0.09] shadow-[0_12px_40px_rgba(0,0,0,0.6)]
                               overflow-hidden z-50">
@@ -234,16 +234,17 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                   <button
                     key={c.code}
                     onClick={() => { setCurrency(c.code); setCurrencyOpen(false); }}
-                    className={`w-full flex items-center gap-2.5 px-3.5 py-2.5
-                                text-[10px] tracking-[0.2em] transition-colors
+                    className={`w-full flex items-center gap-3 px-4 py-2.5
+                                transition-colors
                                 ${currency === c.code
                                   ? "text-[#c9a84c] bg-white/[0.04]"
                                   : "text-white/50 hover:text-[#c9a84c] hover:bg-white/[0.035]"}`}
                   >
-                    <span>{c.flag}</span>
-                    <span>{c.label}</span>
+                    <span className="text-[13px] leading-none">{c.flag}</span>
+                    <span className="text-[10px] font-bold tracking-[0.18em] w-8 shrink-0">{c.code}</span>
+                    <span className={`text-[10px] tracking-[0.06em] ${currency === c.code ? "text-white/50" : "text-white/25"}`}>{c.name}</span>
                     {currency === c.code && (
-                      <svg className="w-2.5 h-2.5 ml-auto text-[#c9a84c]/60" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                      <svg className="w-2.5 h-2.5 ml-auto shrink-0 text-[#c9a84c]/60" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                       </svg>
                     )}
@@ -487,20 +488,21 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                                 bg-[#0a0a0a]/96 backdrop-blur-xl
                                 border border-white/[0.09]
                                 shadow-[0_8px_32px_rgba(0,0,0,0.7)]
-                                overflow-hidden z-50 w-[112px]">
+                                overflow-hidden z-50 w-[200px]">
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
                   {CURRENCIES.map((c) => (
                     <button
                       key={c.code}
                       onClick={() => { setCurrency(c.code); setMobileCurOpen(false); }}
-                      className={`w-full flex items-center gap-1.5 px-2.5 py-2.5
-                                  text-[12px] tracking-wider transition-colors
+                      className={`w-full flex items-center gap-2.5 px-3.5 py-2.5
+                                  transition-colors
                                   ${currency === c.code
                                     ? "text-[#c9a84c] bg-white/[0.04]"
                                     : "text-white/50 hover:text-[#c9a84c] hover:bg-white/[0.035]"}`}
                     >
-                      <span>{c.flag}</span>
-                      <span>{c.code}</span>
+                      <span className="text-[13px] leading-none">{c.flag}</span>
+                      <span className="text-[10px] font-bold tracking-[0.18em] w-7 shrink-0">{c.code}</span>
+                      <span className={`text-[10px] tracking-[0.06em] ${currency === c.code ? "text-white/50" : "text-white/25"}`}>{c.name}</span>
                     </button>
                   ))}
                   {currency !== "JPY" && (
