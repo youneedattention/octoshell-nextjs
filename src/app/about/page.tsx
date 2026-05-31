@@ -9,8 +9,8 @@ import type { Lang } from "@/lib/translations";
 import React from "react";
 
 /* ── Vehicle images ─────────────────────────────────────────────────── */
-const ALPHARD_IMG = "/images/alphard.png";
-const HIACE_IMG   = "/images/hiace.png";
+const ALPHARD_IMG = "/alphard.png";
+const HIACE_IMG   = "/hiace.png";
 
 /* ══════════════════════════════════════════════════════════════════════
    EXACT USER-PROVIDED COPY — strictly verbatim, three languages

@@ -90,7 +90,7 @@ function buildHtml(b: BookingPayload): string {
   <div style="padding:18px 32px;border-top:1px solid #e2ddd8;">
     <p style="margin:0;font-size:11px;color:#aaa;">
       Reply-To: <a href="mailto:${b.email}" style="color:#c9a84c;">${b.email}</a><br>
-      Submitted via <a href="https://octoshell-nextjs.vercel.app/book" style="color:#c9a84c;">octoshell-nextjs.vercel.app/book</a>
+      Submitted via <a href="${process.env.NEXT_PUBLIC_SITE_URL ?? "https://octoshell.jp"}/book" style="color:#c9a84c;">${(process.env.NEXT_PUBLIC_SITE_URL ?? "https://octoshell.jp").replace("https://", "")}/book</a>
     </p>
   </div>
 </div>
