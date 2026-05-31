@@ -111,7 +111,7 @@ const RATINGS = [
   { label: { en: "Punctuality",     ja: "時間厳守",     zh: "準時率"   }, score: 5.0, Icon: IconPunctuality },
   { label: { en: "Hospitality",     ja: "おもてなし",   zh: "服務態度" }, score: 4.9, Icon: IconHospitality },
   { label: { en: "Driving Comfort", ja: "乗り心地",     zh: "乘坐舒適" }, score: 4.9, Icon: IconDriving     },
-  { label: { en: "Value",           ja: "コスパ",       zh: "性價比"   }, score: 4.8, Icon: IconValue       },
+  { label: { en: "Value",           ja: "価格",         zh: "性價比"   }, score: 4.8, Icon: IconValue       },
 ];
 
 /* ── Service type lookup (matches /services page IDs) ───────────────── */
