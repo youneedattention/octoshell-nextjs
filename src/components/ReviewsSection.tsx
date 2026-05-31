@@ -59,13 +59,20 @@ const HOW_CONTENT = {
 /* ── Icons ─────────────────────────────────────────────────────────── */
 const IconCleanliness = () => (
   <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-    <path d="M7 21h8a1 1 0 001-1v-7H6v7a1 1 0 001 1z"/>
-    <path d="M9 13V9.5"/>
-    <rect x="7.5" y="6.5" width="4" height="3" rx="0.5"/>
-    <path d="M11.5 8h2.5l1.5-2.5"/>
-    <circle cx="16.5" cy="4.5" r=".4" fill="currentColor" stroke="none"/>
-    <circle cx="17.8" cy="5.8" r=".4" fill="currentColor" stroke="none"/>
-    <circle cx="17.5" cy="3.5" r=".4" fill="currentColor" stroke="none"/>
+    {/* Bottle body */}
+    <path d="M4 10h8v10a1 1 0 01-1 1H5a1 1 0 01-1-1V10z"/>
+    {/* Neck */}
+    <path d="M7 10V7"/>
+    {/* Pump cap */}
+    <rect x="5.5" y="5" width="5" height="2" rx="0.75"/>
+    {/* Nozzle arm */}
+    <path d="M10.5 6h4.5"/>
+    {/* Trigger — curves from nozzle tip down to bottle shoulder */}
+    <path d="M15 6 Q16.5 8 12 10"/>
+    {/* Spray lines */}
+    <path d="M17 3.5 l1.5-1"/>
+    <path d="M17.5 5.5 h2"/>
+    <path d="M17 7.5 l1.5 1"/>
   </svg>
 );
 const IconPunctuality = () => (
