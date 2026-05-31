@@ -58,7 +58,7 @@ const HOW_CONTENT = {
 
 /* ── Icons ─────────────────────────────────────────────────────────── */
 const IconCleanliness = () => (
-  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
     {/* Bottle body */}
     <rect x="3" y="9" width="10" height="12" rx="1.5"/>
     {/* Inner label rectangle */}
@@ -78,13 +78,13 @@ const IconCleanliness = () => (
   </svg>
 );
 const IconPunctuality = () => (
-  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
     <circle cx="12" cy="12" r="9"/>
     <path d="M12 7v5l3.5 3.5"/>
   </svg>
 );
 const IconHospitality = () => (
-  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
     <circle cx="12" cy="12" r="9"/>
     <path d="M8.5 14s1 2 3.5 2 3.5-2 3.5-2"/>
     <circle cx="9" cy="10" r=".6" fill="currentColor" stroke="none"/>
@@ -92,14 +92,14 @@ const IconHospitality = () => (
   </svg>
 );
 const IconDriving = () => (
-  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
     <circle cx="12" cy="12" r="9"/>
     <circle cx="12" cy="12" r="2.5"/>
     <path d="M12 3v6.5M5 9.5h6.5M12.5 9.5H19"/>
   </svg>
 );
 const IconValue = () => (
-  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
     <path d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.613.226l5.383-6.115a2.25 2.25 0 00-.226-2.613L12.16 3.659A2.25 2.25 0 0010.568 3H9.568z"/>
     <circle cx="6.5" cy="6.5" r=".75" fill="currentColor" stroke="none"/>
   </svg>
@@ -247,15 +247,15 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
 
         {/* ── Rating row ── */}
         <div className="w-full overflow-x-auto mb-10">
-          <div className="flex min-w-[640px]">
+          <div className="flex min-w-[900px]">
 
             {/* Overall rating */}
-            <div className="w-40 shrink-0 py-6 pr-6 border-r border-[var(--c-rule)]">
-              <p className="text-[11px] tracking-[0.1em] text-[var(--c-ink-2)] mb-4">{ui.overall}</p>
-              <div className="space-y-[7px]">
+            <div className="w-52 shrink-0 py-6 pr-6 border-r border-[var(--c-rule)]">
+              <p className="text-[24px] tracking-[0.04em] text-[var(--c-ink-2)] mb-5">{ui.overall}</p>
+              <div className="space-y-[9px]">
                 {STAR_DIST.map(({ stars, count }) => (
                   <div key={stars} className="flex items-center gap-2">
-                    <span className="text-[10px] text-[var(--c-ink-3)] w-2 shrink-0 text-right">{stars}</span>
+                    <span className="text-[24px] text-[var(--c-ink-3)] w-6 shrink-0 text-right">{stars}</span>
                     <div className="w-24 h-[3px] bg-[var(--c-rule)] rounded-full overflow-hidden">
                       <div
                         className="h-full bg-[var(--c-ink)] rounded-full"
@@ -271,9 +271,9 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
             {RATINGS.map(({ label, score, Icon }, i) => (
               <div
                 key={label.en}
-                className={`flex-1 py-6 px-5 flex flex-col gap-2.5 ${i < RATINGS.length - 1 ? "border-r border-[var(--c-rule)]" : ""}`}
+                className={`flex-1 py-6 px-5 flex flex-col gap-3 min-w-[140px] ${i < RATINGS.length - 1 ? "border-r border-[var(--c-rule)]" : ""}`}
               >
-                <p className="text-[11px] tracking-[0.06em] text-[var(--c-ink-2)] whitespace-nowrap">{label[lang]}</p>
+                <p className="text-[24px] tracking-[0.02em] text-[var(--c-ink-2)]">{label[lang]}</p>
                 <p className="text-[24px] font-semibold text-[var(--c-ink)] leading-none">{score.toFixed(1)}</p>
                 <Icon />
               </div>
@@ -325,14 +325,14 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
                   <Avatar name={r.name} />
                   <div>
                     <div className="flex items-center gap-2">
-                      <p className="text-[13px] font-semibold text-[var(--c-ink)]">{r.name}</p>
+                      <p className="text-[24px] font-semibold text-[var(--c-ink)]">{r.name}</p>
                       {"role" in r && r.role && (
-                        <span className="text-[9px] tracking-[0.1em] px-2 py-0.5 rounded-full border border-[var(--c-ink-3)]/40 text-[var(--c-ink-3)] font-medium">
+                        <span className="text-[11px] tracking-[0.1em] px-2 py-0.5 rounded-full border border-[var(--c-ink-3)]/40 text-[var(--c-ink-3)] font-medium">
                           {(r.role as Record<string,string>)[lang]}
                         </span>
                       )}
                     </div>
-                    <p className="text-[11px] text-[var(--c-ink-3)]">{r.location}</p>
+                    <p className="text-[24px] text-[var(--c-ink-3)]">{r.location}</p>
                   </div>
                 </div>
 
@@ -340,27 +340,27 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
                 <div className="flex items-center gap-2 flex-wrap">
                   <Stars />
                   <span className="text-[var(--c-rule)] text-xs">·</span>
-                  <span className="text-[10px] tracking-[0.08em] text-[var(--c-ink-3)]">{fmtDate(r.dateISO, lang)}</span>
-                  {r.duration && <><span className="text-[var(--c-rule)] text-xs">·</span><span className="text-[10px] tracking-[0.08em] text-[var(--c-ink-3)]">{(r.duration as Record<string,string>)[lang]}</span></>}
-                  {"trip" in r && r.trip && <><span className="text-[var(--c-rule)] text-xs">·</span><span className="text-[10px] tracking-[0.06em] text-[var(--c-ink-3)]">{r.trip as string}</span></>}
+                  <span className="text-[24px] tracking-[0.04em] text-[var(--c-ink-3)]">{fmtDate(r.dateISO, lang)}</span>
+                  {r.duration && <><span className="text-[var(--c-rule)]">·</span><span className="text-[24px] tracking-[0.04em] text-[var(--c-ink-3)]">{(r.duration as Record<string,string>)[lang]}</span></>}
+                  {"trip" in r && r.trip && <><span className="text-[var(--c-rule)]">·</span><span className="text-[24px] tracking-[0.03em] text-[var(--c-ink-3)]">{r.trip as string}</span></>}
                 </div>
 
                 {/* Service + travelType badges */}
                 <div className="flex flex-wrap gap-1.5">
                   {r.travelType && (
-                    <span className="text-[9px] tracking-[0.1em] px-2.5 py-1 rounded-full border border-[var(--c-ink-3)]/30 text-[var(--c-ink-2)] font-semibold">
+                    <span className="text-[13px] tracking-[0.08em] px-3 py-1 rounded-full border border-[var(--c-ink-3)]/30 text-[var(--c-ink-2)] font-semibold">
                       {(r.travelType as Record<string,string>)[lang]}
                     </span>
                   )}
                   {r.serviceIds.map(id => (
-                    <span key={id} className="text-[9px] tracking-[0.1em] px-2.5 py-1 rounded-full border border-[#c9a84c]/30 text-[#c9a84c]/80">
+                    <span key={id} className="text-[13px] tracking-[0.08em] px-3 py-1 rounded-full border border-[#c9a84c]/30 text-[#c9a84c]/80">
                       {SERVICE_TYPES[id]?.[lang]}
                     </span>
                   ))}
                 </div>
 
                 <div>
-                  <p className="text-[13px] text-[var(--c-ink-2)] leading-relaxed">
+                  <p className="text-[24px] text-[var(--c-ink-2)] leading-relaxed">
                     {truncated ? r.text.slice(0, LIMIT) + "…" : r.text}
                   </p>
                   {r.text.length > LIMIT && (
