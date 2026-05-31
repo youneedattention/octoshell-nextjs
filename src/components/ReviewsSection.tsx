@@ -167,7 +167,7 @@ export default function ReviewsSection() {
 
         {/* ── Rating row ── */}
         <div className="w-full overflow-x-auto mb-10">
-          <div className="flex border-t border-b border-[var(--c-rule)] min-w-[640px]">
+          <div className="flex min-w-[640px]">
 
             {/* Overall rating */}
             <div className="w-40 shrink-0 py-6 pr-6 border-r border-[var(--c-rule)]">
