@@ -146,7 +146,7 @@ const REVIEWS = [
     location: "United States",
     dateISO: "2025-04",
     serviceIds: ["airport", "sightseeing"],
-    trip: "Narita → Tokyo",
+    trip: "Narita → Tokyo",          // directional route — keep
     text: "Ryu san was a very nice driver. Well-dressed and polite, and drove very smoothly.",
     tags: ["Well-dressed", "Polite", "Smooth Ride"],
   },
@@ -155,9 +155,9 @@ const REVIEWS = [
     location: "United States",
     dateISO: "2025-05",
     serviceIds: ["sightseeing", "port"],
-    trip: "Tokyo Sightseeing",
-    duration: { en: "3 days", ja: "3日間", zh: "3天" },
-    travelType: { en: "Family", ja: "ご家族", zh: "家庭出遊" },
+    // no trip — service badges already convey the nature
+    duration:   { en: "3 days",  ja: "3日間",  zh: "3天"   },
+    travelType: { en: "Family",  ja: "ご家族", zh: "家庭出遊" },
     text: "Mr. Wang was also very courteous and cooperative. It was a great help throughout the day.",
     tags: ["Courteous", "Cooperative"],
   },
@@ -311,26 +311,40 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
             return (
               <div key={i} className="flex flex-col gap-4 py-8 px-1 sm:px-6 border-b border-[var(--c-rule)]">
 
+                {/* Name + role */}
                 <div className="flex items-center gap-3">
                   <Avatar name={r.name} />
                   <div>
                     <p className="text-[13px] font-semibold text-[var(--c-ink)]">{r.name}</p>
-                    <p className="text-[11px] text-[var(--c-ink-3)]">{r.location}</p>
+                    <p className="text-[11px] text-[var(--c-ink-3)]">
+                      {"role" in r && r.role
+                        ? `${(r.role as Record<string,string>)[lang]} · ${r.location}`
+                        : r.location}
+                    </p>
                   </div>
                 </div>
 
+                {/* Stars · date · duration · route */}
                 <div className="flex items-center gap-2 flex-wrap">
                   <Stars />
                   <span className="text-[var(--c-rule)] text-xs">·</span>
                   <span className="text-[10px] tracking-[0.08em] text-[var(--c-ink-3)]">{fmtDate(r.dateISO, lang)}</span>
-                  {r.duration   && <><span className="text-[var(--c-rule)] text-xs">·</span><span className="text-[10px] tracking-[0.08em] text-[var(--c-ink-3)]">{r.duration[lang as keyof typeof r.duration]}</span></>}
-                  {r.travelType && <><span className="text-[var(--c-rule)] text-xs">·</span><span className="text-[10px] tracking-[0.08em] text-[var(--c-ink-3)]">{r.travelType[lang as keyof typeof r.travelType]}</span></>}
-                  <span className="text-[var(--c-rule)] text-xs">·</span>
-                  <span className="text-[10px] tracking-[0.08em] text-[#c9a84c]/70">
-                    {r.serviceIds.map(id => SERVICE_TYPES[id]?.[lang]).filter(Boolean).join(" · ")}
-                  </span>
-                  <span className="text-[var(--c-rule)] text-xs">·</span>
-                  <span className="text-[10px] tracking-[0.06em] text-[var(--c-ink-3)]">{r.trip}</span>
+                  {r.duration && <><span className="text-[var(--c-rule)] text-xs">·</span><span className="text-[10px] tracking-[0.08em] text-[var(--c-ink-3)]">{(r.duration as Record<string,string>)[lang]}</span></>}
+                  {"trip" in r && r.trip && <><span className="text-[var(--c-rule)] text-xs">·</span><span className="text-[10px] tracking-[0.06em] text-[var(--c-ink-3)]">{r.trip as string}</span></>}
+                </div>
+
+                {/* Service + travelType badges */}
+                <div className="flex flex-wrap gap-1.5">
+                  {r.travelType && (
+                    <span className="text-[9px] tracking-[0.1em] px-2.5 py-1 rounded-full border border-[var(--c-ink-3)]/30 text-[var(--c-ink-2)] font-semibold">
+                      {(r.travelType as Record<string,string>)[lang]}
+                    </span>
+                  )}
+                  {r.serviceIds.map(id => (
+                    <span key={id} className="text-[9px] tracking-[0.1em] px-2.5 py-1 rounded-full border border-[#c9a84c]/30 text-[#c9a84c]/80">
+                      {SERVICE_TYPES[id]?.[lang]}
+                    </span>
+                  ))}
                 </div>
 
                 <div>
