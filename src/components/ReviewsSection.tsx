@@ -222,7 +222,7 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
         {/* ── Score header ── */}
         <p className="text-[10px] tracking-[0.4em] text-[#c9a84c] uppercase mb-6">{ui.section}</p>
         <div className="flex flex-col items-center gap-2 mb-10">
-          <div className="flex items-center gap-1 sm:gap-2">
+          <div className="flex items-center gap-0">
             <Image src="/laurel-left.png"  alt="" width={103} height={140} className="object-contain opacity-90 dark:opacity-70 pointer-events-none select-none" aria-hidden draggable={false} />
             <span className="text-[72px] sm:text-[96px] font-bold leading-none tracking-tight text-[var(--c-ink)]">4.9</span>
             <Image src="/laurel-right.png" alt="" width={103} height={140} className="object-contain opacity-90 dark:opacity-70 pointer-events-none select-none" aria-hidden draggable={false} />
