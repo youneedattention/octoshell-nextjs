@@ -60,19 +60,21 @@ const HOW_CONTENT = {
 const IconCleanliness = () => (
   <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
     {/* Bottle body */}
-    <path d="M4 10h8v10a1 1 0 01-1 1H5a1 1 0 01-1-1V10z"/>
+    <rect x="3" y="9" width="10" height="12" rx="1.5"/>
+    {/* Inner label rectangle */}
+    <rect x="5" y="12" width="6" height="6" rx="0.75"/>
     {/* Neck */}
-    <path d="M7 10V7"/>
-    {/* Pump cap */}
-    <rect x="5.5" y="5" width="5" height="2" rx="0.75"/>
+    <path d="M7.5 9V7"/>
+    {/* Pump cap bar */}
+    <path d="M5.5 7h5"/>
     {/* Nozzle arm */}
-    <path d="M10.5 6h4.5"/>
-    {/* Trigger — curves from nozzle tip down to bottle shoulder */}
-    <path d="M15 6 Q16.5 8 12 10"/>
-    {/* Spray lines */}
-    <path d="M17 3.5 l1.5-1"/>
-    <path d="M17.5 5.5 h2"/>
-    <path d="M17 7.5 l1.5 1"/>
+    <path d="M10.5 7h4"/>
+    {/* Trigger — arc from nozzle end back to bottle shoulder */}
+    <path d="M14.5 7 C15.5 8 15 9.5 13 9"/>
+    {/* Spray dots — diagonal upper-right */}
+    <circle cx="16.5" cy="4.5" r=".55" fill="currentColor" stroke="none"/>
+    <circle cx="18.5" cy="5.5" r=".55" fill="currentColor" stroke="none"/>
+    <circle cx="17.5" cy="7"   r=".55" fill="currentColor" stroke="none"/>
   </svg>
 );
 const IconPunctuality = () => (
@@ -105,7 +107,7 @@ const IconValue = () => (
 
 /* ── Data ───────────────────────────────────────────────────────────── */
 const RATINGS = [
-  { label: { en: "Cleanliness",     ja: "清潔感",       zh: "整潔度"   }, score: 5.0, Icon: IconCleanliness },
+  { label: { en: "Cleanliness",     ja: "清潔さ",       zh: "整潔度"   }, score: 5.0, Icon: IconCleanliness },
   { label: { en: "Punctuality",     ja: "時間厳守",     zh: "準時率"   }, score: 5.0, Icon: IconPunctuality },
   { label: { en: "Hospitality",     ja: "おもてなし",   zh: "服務態度" }, score: 4.9, Icon: IconHospitality },
   { label: { en: "Driving Comfort", ja: "乗り心地",     zh: "乘坐舒適" }, score: 4.9, Icon: IconDriving     },
