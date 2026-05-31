@@ -2,6 +2,37 @@
 import { useState } from "react";
 import { useLang } from "@/context/LangContext";
 
+/* ── UI strings ────────────────────────────────────────────────────── */
+const UI = {
+  en: {
+    section:      "Client Reviews",
+    badge:        "Top Rated Service",
+    verified:     (n: number) => `${n} verified reviews`,
+    overall:      "Overall rating",
+    showMore:     "Show more",
+    showLess:     "Show less",
+    clear:        "Clear",
+  },
+  ja: {
+    section:      "クライアントレビュー",
+    badge:        "高評価サービス",
+    verified:     (n: number) => `${n}件の認証済みレビュー`,
+    overall:      "総合評価",
+    showMore:     "続きを読む",
+    showLess:     "閉じる",
+    clear:        "クリア",
+  },
+  zh: {
+    section:      "客戶評價",
+    badge:        "頂級服務",
+    verified:     (n: number) => `${n} 則已驗證評價`,
+    overall:      "總體評分",
+    showMore:     "顯示更多",
+    showLess:     "收起",
+    clear:        "清除",
+  },
+};
+
 /* ── Trilingual modal content ───────────────────────────────────────── */
 const HOW_CONTENT = {
   en: {
@@ -141,19 +172,20 @@ export default function ReviewsSection() {
   const total    = REVIEWS.length;
   const filtered = activeTag ? REVIEWS.filter((r) => r.tags.includes(activeTag)) : REVIEWS;
   const hw       = HOW_CONTENT[lang];
+  const ui       = UI[lang];
 
   return (
     <section className="py-16 sm:py-24 px-4 sm:px-6 bg-[var(--c-body)]">
       <div className="max-w-5xl mx-auto flex flex-col items-center">
 
         {/* ── Score header ── */}
-        <p className="text-[10px] tracking-[0.4em] text-[#c9a84c] uppercase mb-5">Client Reviews</p>
+        <p className="text-[10px] tracking-[0.4em] text-[#c9a84c] uppercase mb-5">{ui.section}</p>
         <div className="flex items-center gap-5 mb-3">
           <span className="text-[72px] sm:text-[88px] font-bold leading-none tracking-tight text-[var(--c-ink)]">4.9</span>
           <div className="flex flex-col gap-2">
             <Stars />
-            <p className="text-[12px] tracking-[0.15em] text-[var(--c-ink-2)] font-semibold">Top Rated Service</p>
-            <p className="text-[10px] tracking-[0.08em] text-[var(--c-ink-3)]">{total} verified reviews</p>
+            <p className="text-[12px] tracking-[0.15em] text-[var(--c-ink-2)] font-semibold">{ui.badge}</p>
+            <p className="text-[10px] tracking-[0.08em] text-[var(--c-ink-3)]">{ui.verified(total)}</p>
           </div>
         </div>
 
@@ -171,7 +203,7 @@ export default function ReviewsSection() {
 
             {/* Overall rating */}
             <div className="w-40 shrink-0 py-6 pr-6 border-r border-[var(--c-rule)]">
-              <p className="text-[11px] tracking-[0.1em] text-[var(--c-ink-2)] mb-4">Overall rating</p>
+              <p className="text-[11px] tracking-[0.1em] text-[var(--c-ink-2)] mb-4">{ui.overall}</p>
               <div className="space-y-[7px]">
                 {STAR_DIST.map(({ stars, count }) => (
                   <div key={stars} className="flex items-center gap-2">
@@ -226,7 +258,7 @@ export default function ReviewsSection() {
               onClick={() => setActiveTag(null)}
               className="px-4 py-3 rounded-3xl text-[11px] border border-[var(--c-rule)] text-[var(--c-ink-3)] hover:border-[var(--c-ink-3)] bg-[var(--c-card)] transition-colors"
             >
-              ✕
+              {ui.clear} ✕
             </button>
           )}
         </div>
@@ -269,7 +301,7 @@ export default function ReviewsSection() {
                       })}
                       className="mt-1.5 text-[12px] font-semibold text-[var(--c-ink)] underline underline-offset-2 hover:text-[#c9a84c] transition-colors"
                     >
-                      {isExpanded ? "Show less" : "Show more"}
+                      {isExpanded ? ui.showLess : ui.showMore}
                     </button>
                   )}
                 </div>
