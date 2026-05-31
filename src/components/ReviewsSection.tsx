@@ -1,47 +1,76 @@
 "use client";
 import { useState } from "react";
+import { useLang } from "@/context/LangContext";
+
+/* ── "How reviews work" modal content ──────────────────────────────── */
+const HOW_CONTENT = {
+  en: {
+    title: "How reviews work",
+    p1: "Reviews from verified clients help travelers choose the right private chauffeur service for their journey in Japan. By default, reviews are sorted by most recent.",
+    p2: "Only clients with a confirmed and completed Octoshell booking are invited to leave a review. All submissions are verified against booking records to ensure authenticity.",
+    p3: "The Top Rated Service badge requires a minimum of 5 verified reviews. Ratings are calculated as an average across all verified bookings and are updated on an ongoing basis.",
+  },
+  ja: {
+    title: "レビューの仕組み",
+    p1: "認証済みのお客様によるレビューは、日本でのご旅行に最適なプライベートシェーファーサービスを選ぶ際の参考になります。デフォルトでは新着順に表示されます。",
+    p2: "予約が確認・完了したOctoshellのお客様のみ、レビューの投稿をご案内します。すべての投稿は予約記録と照合し、信頼性を確保しています。",
+    p3: "「トップレイテッドサービス」バッジの取得には、5件以上の認証済みレビューが必要です。評価はすべての認証済み予約の平均値として算出され、随時更新されます。",
+  },
+  zh: {
+    title: "評價說明",
+    p1: "已驗證客戶的評價有助於旅行者在日本選擇合適的私人司機服務。評價預設按最新日期排序。",
+    p2: "僅完成確認訂單的 Octoshell 客戶才會收到評價邀請，所有評價均與預訂記錄核實，以確保真實性。",
+    p3: "獲得「頂級服務」標章需至少 5 則已驗證評價。評分為所有已驗證預訂的平均值，並持續更新。",
+  },
+};
 
 /* ── Icons ─────────────────────────────────────────────────────────── */
 const IconCleanliness = () => (
-  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.4} viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z"/>
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+    <path d="M7 21h8a1 1 0 001-1v-7H6v7a1 1 0 001 1z"/>
+    <path d="M9 13V9.5"/>
+    <rect x="7.5" y="6.5" width="4" height="3" rx="0.5"/>
+    <path d="M11.5 8h2.5l1.5-2.5"/>
+    <circle cx="16.5" cy="4.5" r=".4" fill="currentColor" stroke="none"/>
+    <circle cx="17.8" cy="5.8" r=".4" fill="currentColor" stroke="none"/>
+    <circle cx="17.5" cy="3.5" r=".4" fill="currentColor" stroke="none"/>
   </svg>
 );
 const IconPunctuality = () => (
-  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.4} viewBox="0 0 24 24">
-    <circle cx="12" cy="12" r="9" strokeLinecap="round"/>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M12 7v5l3.5 3.5"/>
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="9"/>
+    <path d="M12 7v5l3.5 3.5"/>
   </svg>
 );
 const IconHospitality = () => (
-  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.4} viewBox="0 0 24 24">
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
     <circle cx="12" cy="12" r="9"/>
-    <path strokeLinecap="round" d="M8.5 14s1 2 3.5 2 3.5-2 3.5-2"/>
-    <path strokeLinecap="round" strokeWidth={2} d="M9 10h.01M15 10h.01"/>
+    <path d="M8.5 14s1 2 3.5 2 3.5-2 3.5-2"/>
+    <circle cx="9" cy="10" r=".6" fill="currentColor" stroke="none"/>
+    <circle cx="15" cy="10" r=".6" fill="currentColor" stroke="none"/>
   </svg>
 );
 const IconDriving = () => (
-  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.4} viewBox="0 0 24 24">
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
     <circle cx="12" cy="12" r="9"/>
-    <circle cx="12" cy="12" r="3"/>
-    <path strokeLinecap="round" d="M12 3v6M4.22 9h5.52M14.26 9h5.52"/>
+    <circle cx="12" cy="12" r="2.5"/>
+    <path d="M12 3v6.5M5 9.5h6.5M12.5 9.5H19"/>
   </svg>
 );
 const IconValue = () => (
-  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.4} viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.613.226l5.383-6.115a2.25 2.25 0 00-.226-2.613L12.16 3.659A2.25 2.25 0 0010.568 3H9.568z"/>
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+    <path d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.613.226l5.383-6.115a2.25 2.25 0 00-.226-2.613L12.16 3.659A2.25 2.25 0 0010.568 3H9.568z"/>
     <circle cx="6.5" cy="6.5" r=".75" fill="currentColor" stroke="none"/>
   </svg>
 );
 
 /* ── Data ───────────────────────────────────────────────────────────── */
 const RATINGS = [
-  { label: "Vehicle Cleanliness", score: 5.0, Icon: IconCleanliness },
-  { label: "Punctuality",         score: 5.0, Icon: IconPunctuality },
-  { label: "Hospitality",         score: 4.9, Icon: IconHospitality },
-  { label: "Driving Comfort",     score: 4.9, Icon: IconDriving     },
-  { label: "Value",               score: 4.8, Icon: IconValue       },
+  { label: "Cleanliness",     score: 5.0, Icon: IconCleanliness },
+  { label: "Punctuality",     score: 5.0, Icon: IconPunctuality },
+  { label: "Hospitality",     score: 4.9, Icon: IconHospitality },
+  { label: "Driving Comfort", score: 4.9, Icon: IconDriving     },
+  { label: "Value",           score: 4.8, Icon: IconValue       },
 ];
 
 const REVIEWS = [
@@ -87,7 +116,7 @@ function Stars() {
     <span className="flex gap-0.5">
       {Array.from({ length: 5 }).map((_, i) => (
         <svg key={i} className="w-3 h-3 text-[#c9a84c]" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
         </svg>
       ))}
     </span>
@@ -97,80 +126,78 @@ function Stars() {
 function Avatar({ name }: { name: string }) {
   return (
     <div className="w-10 h-10 rounded-full bg-[#c9a84c]/12 border border-[#c9a84c]/25 flex items-center justify-center shrink-0">
-      <span className="text-[13px] font-bold text-[#c9a84c]">{name.charAt(0).toUpperCase()}</span>
+      <span className="text-[13px] font-bold text-[#c9a84c]">{name.charAt(0)}</span>
     </div>
   );
 }
 
-/* ── Main component ─────────────────────────────────────────────────── */
+/* ── Main ───────────────────────────────────────────────────────────── */
 export default function ReviewsSection() {
-  const [activeTag,      setActiveTag]      = useState<string | null>(null);
-  const [expanded,       setExpanded]       = useState<Set<number>>(new Set());
-  const [howOpen,        setHowOpen]        = useState(false);
+  const { lang } = useLang();
+  const [activeTag, setActiveTag] = useState<string | null>(null);
+  const [expanded,  setExpanded]  = useState<Set<number>>(new Set());
+  const [howOpen,   setHowOpen]   = useState(false);
 
   const total    = REVIEWS.length;
   const filtered = activeTag ? REVIEWS.filter((r) => r.tags.includes(activeTag)) : REVIEWS;
+  const hw       = HOW_CONTENT[lang];
 
   return (
     <section className="py-16 sm:py-24 px-4 sm:px-6 bg-[var(--c-body)]">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-5xl mx-auto flex flex-col items-center">
 
-        {/* ── Top score ── */}
-        <div className="text-center mb-6">
-          <p className="text-[10px] tracking-[0.4em] text-[#c9a84c] uppercase mb-5">Client Reviews</p>
-          <div className="flex items-center justify-center gap-4 mb-3">
-            <span className="text-[64px] sm:text-[80px] font-bold leading-none tracking-tight text-[var(--c-ink)]">4.9</span>
-            <div className="flex flex-col items-start gap-2">
-              <Stars />
-              <p className="text-[11px] tracking-[0.15em] text-[var(--c-ink-2)] font-semibold">Top Rated Service</p>
-              <p className="text-[10px] tracking-[0.08em] text-[var(--c-ink-3)]">{total} verified reviews</p>
-            </div>
+        {/* ── Score header ── */}
+        <p className="text-[10px] tracking-[0.4em] text-[#c9a84c] uppercase mb-5">Client Reviews</p>
+        <div className="flex items-center gap-5 mb-3">
+          <span className="text-[72px] sm:text-[88px] font-bold leading-none tracking-tight text-[var(--c-ink)]">4.9</span>
+          <div className="flex flex-col gap-2">
+            <Stars />
+            <p className="text-[12px] tracking-[0.15em] text-[var(--c-ink-2)] font-semibold">Top Rated Service</p>
+            <p className="text-[10px] tracking-[0.08em] text-[var(--c-ink-3)]">{total} verified reviews</p>
           </div>
-
-          {/* How reviews work */}
-          <button
-            onClick={() => setHowOpen((o) => !o)}
-            className="text-[11px] text-[var(--c-ink-3)] underline underline-offset-2 hover:text-[var(--c-ink-2)] transition-colors tracking-[0.05em]"
-          >
-            How reviews work
-          </button>
-          {howOpen && (
-            <div className="mt-4 mx-auto max-w-xl text-left bg-white/[0.03] border border-white/[0.07] p-5 text-[12px] text-[var(--c-ink-3)] leading-relaxed space-y-3 tracking-[0.03em]">
-              <p className="font-semibold text-[var(--c-ink-2)] text-[13px]">How reviews work</p>
-              <p>Reviews from verified clients help travelers choose the right private chauffeur service for their journey in Japan. By default, reviews are sorted by most recent.</p>
-              <p>Only clients with a confirmed and completed Octoshell booking are invited to leave a review. All submissions are verified against booking records to ensure authenticity.</p>
-              <p>The Top Rated Service badge requires a minimum of 5 verified reviews. Ratings are calculated as an average across all verified bookings and are updated on an ongoing basis.</p>
-            </div>
-          )}
         </div>
 
-        {/* ── Rating row (Airbnb style) ── */}
-        <div className="mt-10 mb-10 overflow-x-auto">
-          <div className="flex min-w-max sm:min-w-0 border-t border-b border-white/[0.07] divide-x divide-white/[0.07]">
+        {/* How reviews work trigger */}
+        <button
+          onClick={() => setHowOpen(true)}
+          className="mb-10 text-[11px] text-[var(--c-ink-3)] underline underline-offset-2 hover:text-[var(--c-ink-2)] transition-colors tracking-[0.05em]"
+        >
+          {hw.title}
+        </button>
 
-            {/* Overall rating bars */}
+        {/* ── Rating row ── */}
+        <div className="w-full overflow-x-auto mb-10">
+          <div className="flex min-w-max mx-auto border-t border-b border-white/[0.07] divide-x divide-white/[0.07]">
+
+            {/* Overall */}
             <div className="pr-8 py-6 shrink-0">
               <p className="text-[11px] tracking-[0.1em] text-[var(--c-ink-2)] mb-4">Overall rating</p>
-              <div className="space-y-1.5">
+              <div className="space-y-2">
                 {STAR_DIST.map(({ stars, count }) => (
                   <div key={stars} className="flex items-center gap-2">
-                    <span className="text-[10px] text-[var(--c-ink-3)] w-2 shrink-0">{stars}</span>
-                    <div className="w-24 h-[3px] bg-white/[0.06] rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-[var(--c-ink)] rounded-full"
-                        style={{ width: total ? `${(count / total) * 100}%` : "0%" }}
-                      />
-                    </div>
+                    <span className="text-[10px] text-[var(--c-ink-3)] w-2 shrink-0 text-right">{stars}</span>
+                    {count > 0 ? (
+                      <div className="w-28 h-[3px] bg-white/[0.06] rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-[var(--c-ink)] rounded-full"
+                          style={{ width: `${(count / total) * 100}%` }}
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-28 flex items-center">
+                        <div className="w-full border-t border-dashed border-white/15" />
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Category columns */}
+            {/* Categories */}
             {RATINGS.map(({ label, score, Icon }) => (
-              <div key={label} className="px-7 py-6 flex flex-col gap-2 shrink-0">
+              <div key={label} className="px-7 py-6 flex flex-col gap-2.5 shrink-0">
                 <p className="text-[11px] tracking-[0.08em] text-[var(--c-ink-2)] whitespace-nowrap">{label}</p>
-                <p className="text-[22px] font-semibold text-[var(--c-ink)] leading-none">{score.toFixed(1)}</p>
+                <p className="text-[24px] font-semibold text-[var(--c-ink)] leading-none">{score.toFixed(1)}</p>
                 <Icon />
               </div>
             ))}
@@ -178,7 +205,7 @@ export default function ReviewsSection() {
         </div>
 
         {/* ── Tags ── */}
-        <div className="flex flex-wrap gap-2 mb-10">
+        <div className="flex flex-wrap justify-center gap-2.5 mb-10 w-full">
           {ALL_TAGS.map((tag) => {
             const count  = REVIEWS.filter((r) => r.tags.includes(tag)).length;
             const active = activeTag === tag;
@@ -186,55 +213,51 @@ export default function ReviewsSection() {
               <button
                 key={tag}
                 onClick={() => setActiveTag(active ? null : tag)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-[11px] tracking-[0.08em]
+                className={`flex items-center gap-2 px-5 py-2.5 text-[11px] tracking-[0.12em]
                             border transition-all duration-200
                             ${active
-                              ? "border-[#c9a84c] text-[#c9a84c] bg-[#c9a84c]/8"
-                              : "border-white/15 text-[var(--c-ink-2)] hover:border-[#c9a84c]/50 hover:text-[#c9a84c]"}`}
+                              ? "border-[#c9a84c] text-[#c9a84c] bg-[#c9a84c]/6"
+                              : "border-white/20 text-[var(--c-ink-2)] hover:border-[#c9a84c]/60 hover:text-[#c9a84c]"}`}
               >
                 {tag}
-                <span className={`text-[10px] ${active ? "text-[#c9a84c]/60" : "text-white/25"}`}>{count}</span>
+                <span className={`text-[10px] font-light ${active ? "text-[#c9a84c]/50" : "text-white/25"}`}>{count}</span>
               </button>
             );
           })}
           {activeTag && (
             <button
               onClick={() => setActiveTag(null)}
-              className="px-3 py-2 text-[11px] text-white/30 hover:text-white/60 transition-colors"
+              className="px-3 py-2.5 text-[11px] text-white/30 hover:text-white/60 transition-colors tracking-wider"
             >
-              Clear ×
+              ✕
             </button>
           )}
         </div>
 
         {/* ── Review cards ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-0 border-t border-white/[0.07]">
           {filtered.map((r, i) => {
             const isExpanded = expanded.has(i);
             const LIMIT      = 120;
             const truncated  = r.text.length > LIMIT && !isExpanded;
             return (
-              <div key={i} className="flex flex-col gap-4 py-6 border-b border-white/[0.07]">
-
-                {/* Header */}
+              <div key={i} className="flex flex-col gap-4 py-8 px-1 sm:px-6 border-b border-white/[0.07]">
                 <div className="flex items-center gap-3">
                   <Avatar name={r.name} />
                   <div>
-                    <p className="text-[13px] font-semibold text-[var(--c-ink)] tracking-wide">{r.name}</p>
+                    <p className="text-[13px] font-semibold text-[var(--c-ink)]">{r.name}</p>
                     <p className="text-[11px] text-[var(--c-ink-3)]">{r.location}</p>
                   </div>
                 </div>
 
-                {/* Meta */}
                 <div className="flex items-center gap-2 flex-wrap">
                   <Stars />
-                  <span className="text-white/20">·</span>
+                  <span className="text-white/20 text-xs">·</span>
                   <span className="text-[10px] tracking-[0.08em] text-[var(--c-ink-3)]">{r.date}</span>
-                  <span className="text-white/20">·</span>
+                  <span className="text-white/20 text-xs">·</span>
                   <span className="text-[10px] tracking-[0.06em] text-[var(--c-ink-3)]">{r.trip}</span>
                 </div>
 
-                {/* Text */}
                 <div>
                   <p className="text-[13px] text-[var(--c-ink-2)] leading-relaxed">
                     {truncated ? r.text.slice(0, LIMIT) + "…" : r.text}
@@ -253,12 +276,11 @@ export default function ReviewsSection() {
                   )}
                 </div>
 
-                {/* Tag badges */}
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-2">
                   {r.tags.map((tag) => (
                     <span
                       key={tag}
-                      className={`text-[10px] px-2.5 py-1 rounded-full border tracking-[0.06em]
+                      className={`text-[10px] px-3 py-1 tracking-[0.08em] border
                                   ${activeTag === tag
                                     ? "border-[#c9a84c]/40 text-[#c9a84c]/70"
                                     : "border-white/10 text-white/28"}`}
@@ -267,13 +289,42 @@ export default function ReviewsSection() {
                     </span>
                   ))}
                 </div>
-
               </div>
             );
           })}
         </div>
 
       </div>
+
+      {/* ── Modal ── */}
+      {howOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+          onClick={() => setHowOpen(false)}
+        >
+          <div
+            className="relative max-w-lg w-full bg-[#0f0f0f] border border-white/10 p-8 shadow-[0_24px_80px_rgba(0,0,0,0.8)]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setHowOpen(false)}
+              className="absolute top-5 right-5 w-7 h-7 flex items-center justify-center text-white/40 hover:text-white transition-colors"
+              aria-label="Close"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+            </button>
+
+            <h3 className="text-[15px] font-semibold text-[var(--c-ink)] tracking-[0.1em] mb-6">{hw.title}</h3>
+            <div className="space-y-4 text-[13px] text-[var(--c-ink-3)] leading-relaxed">
+              <p>{hw.p1}</p>
+              <p>{hw.p2}</p>
+              <p>{hw.p3}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
