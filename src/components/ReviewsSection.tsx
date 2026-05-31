@@ -345,20 +345,6 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
                   )}
                 </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {r.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className={`text-[10px] px-3 py-1 rounded-full border tracking-[0.06em]
-                                  ${activeTag === tag
-                                    ? "border-[#c9a84c]/40 text-[#c9a84c]/70"
-                                    : "border-[var(--c-rule)] text-[var(--c-ink-3)]"}`}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
               </div>
             );
           })}
