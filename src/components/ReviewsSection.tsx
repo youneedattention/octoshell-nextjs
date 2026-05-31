@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { useLang } from "@/context/LangContext";
 
 /* ── UI strings ────────────────────────────────────────────────────── */
@@ -216,10 +217,14 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
       <div className="max-w-5xl mx-auto flex flex-col items-center">
 
         {/* ── Score header ── */}
-        <p className="text-[10px] tracking-[0.4em] text-[#c9a84c] uppercase mb-5">{ui.section}</p>
+        <p className="text-[10px] tracking-[0.4em] text-[#c9a84c] uppercase mb-6">{ui.section}</p>
         <div className="flex flex-col items-center gap-2 mb-10">
-          <span className="text-[72px] sm:text-[88px] font-bold leading-none tracking-tight text-[var(--c-ink)]">4.9</span>
-          <p className="text-[12px] tracking-[0.15em] text-[var(--c-ink-2)] font-semibold">{ui.badge}</p>
+          <div className="flex items-center gap-4 sm:gap-6">
+            <Image src="/laurel-left.png"  alt="" width={103} height={140} className="object-contain opacity-90 dark:opacity-70" aria-hidden />
+            <span className="text-[72px] sm:text-[96px] font-bold leading-none tracking-tight text-[var(--c-ink)]">4.9</span>
+            <Image src="/laurel-right.png" alt="" width={103} height={140} className="object-contain opacity-90 dark:opacity-70" aria-hidden />
+          </div>
+          <p className="text-[12px] tracking-[0.15em] text-[var(--c-ink-2)] font-semibold mt-1">{ui.badge}</p>
           <button
             onClick={() => setHowOpen(true)}
             className="text-[11px] text-[var(--c-ink-3)] underline underline-offset-2 hover:text-[var(--c-ink-2)] transition-colors tracking-[0.05em]"
