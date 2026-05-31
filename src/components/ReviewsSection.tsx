@@ -148,7 +148,6 @@ const REVIEWS = [
     role:     { en: "Guide", ja: "ガイド", zh: "導遊" },
     dateISO: "2025-05",
     serviceIds: ["sightseeing", "port"],
-    duration:   { en: "3 days",      ja: "3日間",    zh: "3天"     },
     travelType: { en: "Family Trip", ja: "ファミリー", zh: "家庭出遊" },
     text: "Mr. Wang was very courteous and cooperative. It was a great help throughout the day.",
     tags: ["Courteous", "Cooperative"],
@@ -330,13 +329,8 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
                   {"trip" in r && r.trip && <><span className="text-[var(--c-rule)]">·</span><span style={{ fontSize: 14, fontWeight: 400, lineHeight: "18px", color: "var(--c-ink-3)" }}>{r.trip as string}</span></>}
                 </div>
 
-                {/* Service + duration badges */}
+                {/* Service badges */}
                 <div className="flex flex-wrap gap-1.5">
-                  {r.duration && (
-                    <span className="text-[13px] tracking-[0.08em] px-3 py-1 rounded-full border border-[var(--c-ink-3)]/30 text-[var(--c-ink-2)] font-semibold">
-                      {(r.duration as Record<string,string>)[lang]}
-                    </span>
-                  )}
                   {r.serviceIds.map(id => (
                     <span key={id} className="text-[13px] tracking-[0.08em] px-3 py-1 rounded-full border border-[#c9a84c]/30 text-[#c9a84c]/80">
                       {SERVICE_TYPES[id]?.[lang]}
