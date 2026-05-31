@@ -151,14 +151,14 @@ const REVIEWS = [
     tags: ["Well-dressed", "Polite", "Smooth Ride"],
   },
   {
-    name: "Stacy & Luis Family",
-    location: "United States",
+    name: "Kaiko Hatakeyama",
+    location: "Japan",
+    role:     { en: "Guide", ja: "ガイド", zh: "導遊" },
     dateISO: "2025-05",
     serviceIds: ["sightseeing", "port"],
-    // no trip — service badges already convey the nature
-    duration:   { en: "3 days",  ja: "3日間",  zh: "3天"   },
-    travelType: { en: "Family",  ja: "ご家族", zh: "家庭出遊" },
-    text: "Mr. Wang was also very courteous and cooperative. It was a great help throughout the day.",
+    duration:   { en: "3 days",      ja: "3日間",    zh: "3天"     },
+    travelType: { en: "Family Trip", ja: "ファミリー", zh: "家庭出遊" },
+    text: "Mr. Wang was very courteous and cooperative. It was a great help throughout the day.",
     tags: ["Courteous", "Cooperative"],
   },
   {
@@ -311,16 +311,19 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
             return (
               <div key={i} className="flex flex-col gap-4 py-8 px-1 sm:px-6 border-b border-[var(--c-rule)]">
 
-                {/* Name + role */}
+                {/* Name + [Guide] badge + location */}
                 <div className="flex items-center gap-3">
                   <Avatar name={r.name} />
                   <div>
-                    <p className="text-[13px] font-semibold text-[var(--c-ink)]">{r.name}</p>
-                    <p className="text-[11px] text-[var(--c-ink-3)]">
-                      {"role" in r && r.role
-                        ? `${(r.role as Record<string,string>)[lang]} · ${r.location}`
-                        : r.location}
-                    </p>
+                    <div className="flex items-center gap-2">
+                      <p className="text-[13px] font-semibold text-[var(--c-ink)]">{r.name}</p>
+                      {"role" in r && r.role && (
+                        <span className="text-[9px] tracking-[0.1em] px-2 py-0.5 rounded-full border border-[var(--c-ink-3)]/40 text-[var(--c-ink-3)] font-medium">
+                          {(r.role as Record<string,string>)[lang]}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-[11px] text-[var(--c-ink-3)]">{r.location}</p>
                   </div>
                 </div>
 
