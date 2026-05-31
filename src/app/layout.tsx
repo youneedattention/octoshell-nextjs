@@ -199,6 +199,36 @@ const ORG_SCHEMA = {
         },
         "identifier": "KAN-JI-RYO-NI No. 1248",
       },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "3",
+        "bestRating": "5",
+        "worstRating": "1",
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "J. K." },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "Ryu san was a very nice driver. Well-dressed and polite, and drove very smoothly.",
+          "datePublished": "2025-05",
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Michael Smith" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "Mr. Wang was also very courteous and cooperative. It was a great help throughout the day.",
+          "datePublished": "2025-04",
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Evelyn" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "Driver Du-san is so wonderful. He responded to every request. I was very happy to work with him.",
+          "datePublished": "2025-03",
+        },
+      ],
       "offers": [
         {
           "@type": "Offer",

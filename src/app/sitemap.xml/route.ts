@@ -19,6 +19,7 @@ export async function GET() {
     { loc: BASE,                    priority: "1.0",  changefreq: "monthly" },
     { loc: `${BASE}/services`,      priority: "0.95", changefreq: "monthly" },
     { loc: `${BASE}/book`,          priority: "0.95", changefreq: "monthly" },
+    { loc: `${BASE}/reviews`,       priority: "0.85", changefreq: "monthly" },
     ...LANDING_ROUTES.map((route) => ({
       loc:         `${BASE}/services/${route}`,
       priority:    "0.9",

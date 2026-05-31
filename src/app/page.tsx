@@ -118,7 +118,7 @@ export default function Home() {
         </div>
       </section>
 
-      <ReviewsSection />
+      <ReviewsSection showViewAll />
 
       {/* ══════════════════ FOOTER ══════════════════ */}
       <footer className="bg-[#0a0a0a] pt-10 sm:pt-12 pb-7 sm:pb-8 px-4 sm:px-6">

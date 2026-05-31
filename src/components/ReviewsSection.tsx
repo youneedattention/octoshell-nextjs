@@ -104,11 +104,32 @@ const RATINGS = [
   { label: { en: "Value",           ja: "コスパ",       zh: "性價比"   }, score: 4.8, Icon: IconValue       },
 ];
 
+const MONTH: Record<string, Record<string, string>> = {
+  "01": { en: "Jan", ja: "1月",  zh: "1月"  },
+  "02": { en: "Feb", ja: "2月",  zh: "2月"  },
+  "03": { en: "Mar", ja: "3月",  zh: "3月"  },
+  "04": { en: "Apr", ja: "4月",  zh: "4月"  },
+  "05": { en: "May", ja: "5月",  zh: "5月"  },
+  "06": { en: "Jun", ja: "6月",  zh: "6月"  },
+  "07": { en: "Jul", ja: "7月",  zh: "7月"  },
+  "08": { en: "Aug", ja: "8月",  zh: "8月"  },
+  "09": { en: "Sep", ja: "9月",  zh: "9月"  },
+  "10": { en: "Oct", ja: "10月", zh: "10月" },
+  "11": { en: "Nov", ja: "11月", zh: "11月" },
+  "12": { en: "Dec", ja: "12月", zh: "12月" },
+};
+
+function fmtDate(iso: string, lang: string): string {
+  const [y, m] = iso.split("-");
+  const mo = MONTH[m]?.[lang] ?? m;
+  return lang === "en" ? `${mo} ${y}` : `${y}年${mo}`;
+}
+
 const REVIEWS = [
   {
     name: "J. K.",
     location: "United Kingdom",
-    date: "May 2025",
+    dateISO: "2025-05",
     trip: "Narita → Tokyo",
     text: "Ryu san was a very nice driver. Well-dressed and polite, and drove very smoothly.",
     tags: ["Well-dressed", "Polite", "Smooth Ride"],
@@ -116,7 +137,7 @@ const REVIEWS = [
   {
     name: "Michael Smith",
     location: "United States",
-    date: "April 2025",
+    dateISO: "2025-04",
     trip: "Haneda → Tokyo",
     text: "Mr. Wang was also very courteous and cooperative. It was a great help throughout the day.",
     tags: ["Courteous", "Cooperative"],
@@ -124,7 +145,7 @@ const REVIEWS = [
   {
     name: "Evelyn",
     location: "Australia",
-    date: "March 2025",
+    dateISO: "2025-03",
     trip: "Shuzenji → Haneda",
     text: "Driver Du-san is so wonderful. He responded to every request. I was very happy to work with him.",
     tags: ["Wonderful"],
@@ -163,7 +184,7 @@ function Avatar({ name }: { name: string }) {
 }
 
 /* ── Main ───────────────────────────────────────────────────────────── */
-export default function ReviewsSection() {
+export default function ReviewsSection({ showViewAll = false }: { showViewAll?: boolean }) {
   const { lang } = useLang();
   const [activeTag, setActiveTag] = useState<string | null>(null);
   const [expanded,  setExpanded]  = useState<Set<number>>(new Set());
@@ -283,7 +304,7 @@ export default function ReviewsSection() {
                 <div className="flex items-center gap-2 flex-wrap">
                   <Stars />
                   <span className="text-[var(--c-rule)] text-xs">·</span>
-                  <span className="text-[10px] tracking-[0.08em] text-[var(--c-ink-3)]">{r.date}</span>
+                  <span className="text-[10px] tracking-[0.08em] text-[var(--c-ink-3)]">{fmtDate(r.dateISO, lang)}</span>
                   <span className="text-[var(--c-rule)] text-xs">·</span>
                   <span className="text-[10px] tracking-[0.06em] text-[var(--c-ink-3)]">{r.trip}</span>
                 </div>
@@ -324,6 +345,21 @@ export default function ReviewsSection() {
             );
           })}
         </div>
+
+        {/* View all reviews link — shown only on homepage */}
+        {showViewAll && (
+          <div className="mt-10 text-center">
+            <a
+              href="/reviews"
+              className="inline-flex items-center gap-2 text-[12px] tracking-[0.15em] text-[var(--c-ink-2)] border border-[var(--c-rule)] px-8 py-3 hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors duration-200"
+            >
+              {lang === "ja" ? "すべてのレビューを見る" : lang === "zh" ? "查看所有評價" : "View All Reviews"}
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6-6m6 6l-6 6"/>
+              </svg>
+            </a>
+          </div>
+        )}
 
       </div>
 
