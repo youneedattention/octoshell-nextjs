@@ -234,11 +234,11 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
 
             {/* Overall rating */}
             <div className="w-52 shrink-0 py-6 pr-6 border-r border-[var(--c-rule)]">
-              <p style={{ fontSize: 12, fontWeight: 500, lineHeight: "16px", color: "#222222" }} className="mb-5">{ui.overall}</p>
+              <p style={{ fontSize: 12, fontWeight: 500, lineHeight: "16px", color: "var(--c-ink)" }} className="mb-5">{ui.overall}</p>
               <div className="space-y-[9px]">
                 {STAR_DIST.map(({ stars, count }) => (
                   <div key={stars} className="flex items-center gap-2">
-                    <span style={{ fontSize: 10, fontWeight: 400, lineHeight: "12px", color: "#6A6A6A" }} className="w-6 shrink-0 text-right">{stars}</span>
+                    <span style={{ fontSize: 10, fontWeight: 400, lineHeight: "12px", color: "var(--c-ink)" }} className="w-6 shrink-0 text-right">{stars}</span>
                     <div style={{ width: 91, height: 4, borderRadius: 2, background: "#DDDDDD", overflow: "hidden" }}>
                       <div
                         style={{ height: "100%", background: "#222222", borderRadius: 2, width: total ? `${(count / total) * 100}%` : "0%" }}
@@ -255,8 +255,8 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
                 key={label.en}
                 className={`flex-1 py-6 px-5 flex flex-col gap-3 min-w-[140px] ${i < RATINGS.length - 1 ? "border-r border-[var(--c-rule)]" : ""}`}
               >
-                <p style={{ fontSize: 12, fontWeight: 500, lineHeight: "16px", color: "#222222" }}>{label[lang]}</p>
-                <p style={{ fontSize: 12, fontWeight: 500, lineHeight: "16px", color: "#222222" }}>{score.toFixed(1)}</p>
+                <p style={{ fontSize: 12, fontWeight: 500, lineHeight: "16px", color: "var(--c-ink)" }}>{label[lang]}</p>
+                <p style={{ fontSize: 12, fontWeight: 500, lineHeight: "16px", color: "var(--c-ink)" }}>{score.toFixed(1)}</p>
                 <Icon />
               </div>
             ))}
