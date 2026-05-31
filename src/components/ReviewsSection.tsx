@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useLang } from "@/context/LangContext";
 
-/* ── "How reviews work" modal content ──────────────────────────────── */
+/* ── Trilingual modal content ───────────────────────────────────────── */
 const HOW_CONTENT = {
   en: {
     title: "How reviews work",
@@ -157,7 +157,7 @@ export default function ReviewsSection() {
           </div>
         </div>
 
-        {/* How reviews work trigger */}
+        {/* How reviews work */}
         <button
           onClick={() => setHowOpen(true)}
           className="mb-10 text-[11px] text-[var(--c-ink-3)] underline underline-offset-2 hover:text-[var(--c-ink-2)] transition-colors tracking-[0.05em]"
@@ -167,36 +167,33 @@ export default function ReviewsSection() {
 
         {/* ── Rating row ── */}
         <div className="w-full overflow-x-auto mb-10">
-          <div className="flex min-w-max mx-auto border-t border-b border-white/[0.07] divide-x divide-white/[0.07]">
+          <div className="flex border-t border-b border-[var(--c-rule)] min-w-[640px]">
 
-            {/* Overall */}
-            <div className="pr-8 py-6 shrink-0">
+            {/* Overall rating */}
+            <div className="w-40 shrink-0 py-6 pr-6 border-r border-[var(--c-rule)]">
               <p className="text-[11px] tracking-[0.1em] text-[var(--c-ink-2)] mb-4">Overall rating</p>
-              <div className="space-y-2">
+              <div className="space-y-[7px]">
                 {STAR_DIST.map(({ stars, count }) => (
                   <div key={stars} className="flex items-center gap-2">
                     <span className="text-[10px] text-[var(--c-ink-3)] w-2 shrink-0 text-right">{stars}</span>
-                    {count > 0 ? (
-                      <div className="w-28 h-[3px] bg-white/[0.06] rounded-full overflow-hidden">
-                        <div
-                          className="h-full bg-[var(--c-ink)] rounded-full"
-                          style={{ width: `${(count / total) * 100}%` }}
-                        />
-                      </div>
-                    ) : (
-                      <div className="w-28 flex items-center">
-                        <div className="w-full border-t border-dashed border-white/15" />
-                      </div>
-                    )}
+                    <div className="w-24 h-[3px] bg-[var(--c-rule)] rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-[var(--c-ink)] rounded-full"
+                        style={{ width: total ? `${(count / total) * 100}%` : "0%" }}
+                      />
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Categories */}
-            {RATINGS.map(({ label, score, Icon }) => (
-              <div key={label} className="px-7 py-6 flex flex-col gap-2.5 shrink-0">
-                <p className="text-[11px] tracking-[0.08em] text-[var(--c-ink-2)] whitespace-nowrap">{label}</p>
+            {/* 5 category columns — equal flex */}
+            {RATINGS.map(({ label, score, Icon }, i) => (
+              <div
+                key={label}
+                className={`flex-1 py-6 px-5 flex flex-col gap-2.5 ${i < RATINGS.length - 1 ? "border-r border-[var(--c-rule)]" : ""}`}
+              >
+                <p className="text-[11px] tracking-[0.06em] text-[var(--c-ink-2)] whitespace-nowrap">{label}</p>
                 <p className="text-[24px] font-semibold text-[var(--c-ink)] leading-none">{score.toFixed(1)}</p>
                 <Icon />
               </div>
@@ -204,8 +201,8 @@ export default function ReviewsSection() {
           </div>
         </div>
 
-        {/* ── Tags ── */}
-        <div className="flex flex-wrap justify-center gap-2.5 mb-10 w-full">
+        {/* ── Tags (Airbnb chip style) ── */}
+        <div className="flex flex-wrap justify-center gap-3 mb-10 w-full">
           {ALL_TAGS.map((tag) => {
             const count  = REVIEWS.filter((r) => r.tags.includes(tag)).length;
             const active = activeTag === tag;
@@ -213,21 +210,21 @@ export default function ReviewsSection() {
               <button
                 key={tag}
                 onClick={() => setActiveTag(active ? null : tag)}
-                className={`flex items-center gap-2 px-5 py-2.5 text-[11px] tracking-[0.12em]
-                            border transition-all duration-200
+                className={`flex items-center gap-2 px-5 py-3 rounded-3xl text-[12px] tracking-[0.06em]
+                            border transition-all duration-200 bg-[var(--c-card)]
                             ${active
-                              ? "border-[#c9a84c] text-[#c9a84c] bg-[#c9a84c]/6"
-                              : "border-white/20 text-[var(--c-ink-2)] hover:border-[#c9a84c]/60 hover:text-[#c9a84c]"}`}
+                              ? "border-[#c9a84c] text-[#c9a84c] shadow-[0_0_0_1px_#c9a84c]"
+                              : "border-[var(--c-rule)] text-[var(--c-ink-2)] hover:border-[var(--c-ink-3)]"}`}
               >
                 {tag}
-                <span className={`text-[10px] font-light ${active ? "text-[#c9a84c]/50" : "text-white/25"}`}>{count}</span>
+                <span className={`text-[10px] font-light ${active ? "text-[#c9a84c]/60" : "text-[var(--c-ink-4)]"}`}>{count}</span>
               </button>
             );
           })}
           {activeTag && (
             <button
               onClick={() => setActiveTag(null)}
-              className="px-3 py-2.5 text-[11px] text-white/30 hover:text-white/60 transition-colors tracking-wider"
+              className="px-4 py-3 rounded-3xl text-[11px] border border-[var(--c-rule)] text-[var(--c-ink-3)] hover:border-[var(--c-ink-3)] bg-[var(--c-card)] transition-colors"
             >
               ✕
             </button>
@@ -235,13 +232,14 @@ export default function ReviewsSection() {
         </div>
 
         {/* ── Review cards ── */}
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-0 border-t border-white/[0.07]">
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 border-t border-[var(--c-rule)]">
           {filtered.map((r, i) => {
             const isExpanded = expanded.has(i);
             const LIMIT      = 120;
             const truncated  = r.text.length > LIMIT && !isExpanded;
             return (
-              <div key={i} className="flex flex-col gap-4 py-8 px-1 sm:px-6 border-b border-white/[0.07]">
+              <div key={i} className="flex flex-col gap-4 py-8 px-1 sm:px-6 border-b border-[var(--c-rule)]">
+
                 <div className="flex items-center gap-3">
                   <Avatar name={r.name} />
                   <div>
@@ -252,9 +250,9 @@ export default function ReviewsSection() {
 
                 <div className="flex items-center gap-2 flex-wrap">
                   <Stars />
-                  <span className="text-white/20 text-xs">·</span>
+                  <span className="text-[var(--c-rule)] text-xs">·</span>
                   <span className="text-[10px] tracking-[0.08em] text-[var(--c-ink-3)]">{r.date}</span>
-                  <span className="text-white/20 text-xs">·</span>
+                  <span className="text-[var(--c-rule)] text-xs">·</span>
                   <span className="text-[10px] tracking-[0.06em] text-[var(--c-ink-3)]">{r.trip}</span>
                 </div>
 
@@ -280,15 +278,16 @@ export default function ReviewsSection() {
                   {r.tags.map((tag) => (
                     <span
                       key={tag}
-                      className={`text-[10px] px-3 py-1 tracking-[0.08em] border
+                      className={`text-[10px] px-3 py-1 rounded-full border tracking-[0.06em]
                                   ${activeTag === tag
                                     ? "border-[#c9a84c]/40 text-[#c9a84c]/70"
-                                    : "border-white/10 text-white/28"}`}
+                                    : "border-[var(--c-rule)] text-[var(--c-ink-3)]"}`}
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
+
               </div>
             );
           })}
@@ -296,28 +295,27 @@ export default function ReviewsSection() {
 
       </div>
 
-      {/* ── Modal ── */}
+      {/* ── Modal (theme-aware) ── */}
       {howOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
           onClick={() => setHowOpen(false)}
         >
           <div
-            className="relative max-w-lg w-full bg-[#0f0f0f] border border-white/10 p-8 shadow-[0_24px_80px_rgba(0,0,0,0.8)]"
+            className="relative max-w-lg w-full bg-[var(--c-card)] border border-[var(--c-rule)] p-8 shadow-[0_24px_80px_rgba(0,0,0,0.3)]"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setHowOpen(false)}
-              className="absolute top-5 right-5 w-7 h-7 flex items-center justify-center text-white/40 hover:text-white transition-colors"
+              className="absolute top-5 right-5 w-7 h-7 flex items-center justify-center text-[var(--c-ink-3)] hover:text-[var(--c-ink)] transition-colors"
               aria-label="Close"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" d="M6 18L18 6M6 6l12 12"/>
               </svg>
             </button>
-
-            <h3 className="text-[15px] font-semibold text-[var(--c-ink)] tracking-[0.1em] mb-6">{hw.title}</h3>
-            <div className="space-y-4 text-[13px] text-[var(--c-ink-3)] leading-relaxed">
+            <h3 className="text-[15px] font-semibold text-[var(--c-ink)] tracking-[0.08em] mb-6">{hw.title}</h3>
+            <div className="space-y-4 text-[13px] text-[var(--c-ink-2)] leading-relaxed">
               <p>{hw.p1}</p>
               <p>{hw.p2}</p>
               <p>{hw.p3}</p>
