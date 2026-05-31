@@ -58,24 +58,7 @@ const HOW_CONTENT = {
 
 /* ── Icons ─────────────────────────────────────────────────────────── */
 const IconCleanliness = () => (
-  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-    {/* Bottle body — tall rounded rect, left-center */}
-    <rect x="2" y="8.5" width="10.5" height="14" rx="2"/>
-    {/* Label rectangle on bottle */}
-    <rect x="4" y="12" width="6.5" height="8" rx="1.25"/>
-    {/* Neck — vertical from bottle top up to pump head */}
-    <path d="M7.25 8.5V6.5"/>
-    {/* Pump head — horizontal bar */}
-    <path d="M5.25 6.5h6.25"/>
-    {/* Nozzle arm — extends right from pump head */}
-    <path d="M11.5 6h4.5"/>
-    {/* Trigger — curves from nozzle tip down-left back to bottle shoulder */}
-    <path d="M15.5 6 C17.5 7.5 16.5 10.5 13 9"/>
-    {/* Spray droplets — 3 circles in diagonal fan from nozzle tip */}
-    <circle cx="17"   cy="3.75" r=".72" fill="currentColor" stroke="none"/>
-    <circle cx="19.2" cy="5"    r=".72" fill="currentColor" stroke="none"/>
-    <circle cx="18"   cy="7.25" r=".72" fill="currentColor" stroke="none"/>
-  </svg>
+  <Image src="/icon-spray.svg" alt="" width={32} height={32} className="dark:invert" />
 );
 const IconPunctuality = () => (
   <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
