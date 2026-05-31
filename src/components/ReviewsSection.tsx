@@ -107,15 +107,16 @@ const RATINGS = [
 
 /* ── Service type lookup (matches /services page IDs) ───────────────── */
 const SERVICE_TYPES: Record<string, Record<string, string>> = {
-  airport:     { en: "Airport Transfer",    ja: "空港送迎",      zh: "機場接送"   },
-  hourly:      { en: "By the Hour",         ja: "時間制貸切",    zh: "時段包車"   },
-  oneway:      { en: "One Way",             ja: "片道送迎",      zh: "單程穿梭"   },
-  photo:       { en: "Photo Tour",          ja: "旅拍",          zh: "旅拍接送"   },
-  events:      { en: "Events & MICE",       ja: "MICE",          zh: "頂級盛會"   },
-  sightseeing: { en: "Bespoke Sightseeing", ja: "テーラーメイド観光", zh: "定制觀光" },
-  golf:        { en: "Golf Transfer",       ja: "ゴルフ送迎",    zh: "高爾夫接送" },
-  outdoor:     { en: "Outdoor",             ja: "アウトドア送迎", zh: "戶外接送"  },
-  ceremony:    { en: "Ceremonial",          ja: "冠婚葬祭",      zh: "典禮接送"   },
+  airport:     { en: "Airport Transfer",    ja: "空港送迎",          zh: "機場接送"   },
+  hourly:      { en: "By the Hour",         ja: "時間制貸切",        zh: "時段包車"   },
+  oneway:      { en: "One Way",             ja: "片道送迎",          zh: "單程穿梭"   },
+  photo:       { en: "Photo Tour",          ja: "旅拍",              zh: "旅拍接送"   },
+  events:      { en: "Events & MICE",       ja: "MICE",              zh: "頂級盛會"   },
+  sightseeing: { en: "Bespoke Sightseeing", ja: "テーラーメイド観光", zh: "定制觀光"  },
+  golf:        { en: "Golf Transfer",       ja: "ゴルフ送迎",        zh: "高爾夫接送" },
+  outdoor:     { en: "Outdoor",             ja: "アウトドア送迎",    zh: "戶外接送"   },
+  ceremony:    { en: "Ceremonial",          ja: "冠婚葬祭",          zh: "典禮接送"   },
+  port:        { en: "Port Transfer",       ja: "港湾送迎",          zh: "港口接送"   },
 };
 
 const MONTH: Record<string, Record<string, string>> = {
@@ -150,11 +151,13 @@ const REVIEWS = [
     tags: ["Well-dressed", "Polite", "Smooth Ride"],
   },
   {
-    name: "Michael Smith",
+    name: "Stacy & Luis Family",
     location: "United States",
-    dateISO: "2025-04",
-    serviceIds: ["airport"],
-    trip: "Haneda → Tokyo",
+    dateISO: "2025-05",
+    serviceIds: ["sightseeing", "port"],
+    trip: "Tokyo Sightseeing",
+    duration: { en: "3 days", ja: "3日間", zh: "3天" },
+    travelType: { en: "Family", ja: "ご家族", zh: "家庭出遊" },
     text: "Mr. Wang was also very courteous and cooperative. It was a great help throughout the day.",
     tags: ["Courteous", "Cooperative"],
   },
@@ -320,6 +323,8 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
                   <Stars />
                   <span className="text-[var(--c-rule)] text-xs">·</span>
                   <span className="text-[10px] tracking-[0.08em] text-[var(--c-ink-3)]">{fmtDate(r.dateISO, lang)}</span>
+                  {r.duration   && <><span className="text-[var(--c-rule)] text-xs">·</span><span className="text-[10px] tracking-[0.08em] text-[var(--c-ink-3)]">{r.duration[lang as keyof typeof r.duration]}</span></>}
+                  {r.travelType && <><span className="text-[var(--c-rule)] text-xs">·</span><span className="text-[10px] tracking-[0.08em] text-[var(--c-ink-3)]">{r.travelType[lang as keyof typeof r.travelType]}</span></>}
                   <span className="text-[var(--c-rule)] text-xs">·</span>
                   <span className="text-[10px] tracking-[0.08em] text-[#c9a84c]/70">
                     {r.serviceIds.map(id => SERVICE_TYPES[id]?.[lang]).filter(Boolean).join(" · ")}
