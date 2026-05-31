@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useLang } from "@/context/LangContext";
 import { useTheme } from "@/context/ThemeContext";
 import { useCurrency, CURRENCIES } from "@/context/CurrencyContext";
@@ -70,6 +71,8 @@ function ThemeIcon({ theme }: { theme: string }) {
 }
 
 export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50" }: { alwaysFrosted?: boolean; frostedBg?: string }) {
+  const pathname = usePathname();
+  const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
   const { lang, setLang } = useLang();
   const { theme, toggle: toggleTheme } = useTheme();
   const { currency, setCurrency } = useCurrency();
@@ -282,6 +285,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
 
             {/* HOME */}
             <Link href="/"
+              onClick={pathname === "/" ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
               className="text-white/80 text-[12px] lg:text-[13px] tracking-[0.22em]
                          hover:text-[#c9a84c] transition-all duration-200 whitespace-nowrap
                          pb-[3px] border-b border-transparent hover:border-[#c9a84c]/55">
@@ -291,6 +295,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
             {/* SERVICES */}
             <div className="relative" onMouseEnter={openSvcDrop} onMouseLeave={closeSvcDrop}>
               <Link href="/services"
+                onClick={pathname === "/services" ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
                 className={`flex items-center gap-1 text-[12px] lg:text-[13px] tracking-[0.22em]
                             hover:text-[#c9a84c] transition-all duration-200 whitespace-nowrap
                             pb-[3px] border-b border-transparent hover:border-[#c9a84c]/55
@@ -337,6 +342,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
             {/* ABOUT */}
             <div className="relative" onMouseEnter={openDrop} onMouseLeave={closeDrop}>
               <Link href="/about"
+                onClick={pathname === "/about" ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
                 className={`flex items-center gap-1 text-[12px] lg:text-[13px] tracking-[0.22em]
                             hover:text-[#c9a84c] transition-all duration-200 whitespace-nowrap
                             pb-[3px] border-b border-transparent hover:border-[#c9a84c]/55
@@ -405,6 +411,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
 
           {/* Desktop BOOK */}
           <Link href="/book"
+            onClick={pathname === "/book" ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
             className="hidden sm:inline-flex items-center justify-center relative overflow-hidden group
                        border border-white/80 hover:border-[#c9a84c] text-white
                        text-[11px] lg:text-[12px] tracking-[0.18em]
@@ -550,7 +557,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
 
           <nav className="flex flex-col gap-4 px-6 pb-6 pt-2">
 
-            <Link href="/" onClick={closeAll}
+            <Link href="/" onClick={pathname === "/" ? (e) => { e.preventDefault(); closeAll(); scrollTop(); } : closeAll}
               className="text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors">
               {t.nav_home[lang]}
             </Link>
@@ -558,7 +565,10 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
             {/* SERVICES — expandable mobile */}
             <div>
               <button
-                onClick={() => setServicesMobileOpen(o => !o)}
+                onClick={() => {
+                  if (pathname === "/services") { closeAll(); scrollTop(); }
+                  else setServicesMobileOpen(o => !o);
+                }}
                 className="flex items-center justify-between w-full text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors"
               >
                 <span>{t.nav_services[lang]}</span>
@@ -587,7 +597,10 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
             {/* ABOUT — expandable */}
             <div>
               <button
-                onClick={() => setAboutMobileOpen(o => !o)}
+                onClick={() => {
+                  if (pathname === "/about") { closeAll(); scrollTop(); }
+                  else setAboutMobileOpen(o => !o);
+                }}
                 className="flex items-center justify-between w-full text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors"
               >
                 <span>{t.nav_about[lang]}</span>
@@ -617,7 +630,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
 
 
             {/* BOOK */}
-            <Link href="/book" onClick={closeAll}
+            <Link href="/book" onClick={pathname === "/book" ? (e) => { e.preventDefault(); closeAll(); scrollTop(); } : closeAll}
               draggable={false}
               onContextMenu={(e) => e.preventDefault()}
               className="mt-3 inline-flex justify-center bg-[#c9a84c] text-black text-[14px] font-bold tracking-[0.18em] px-6 py-2.5 rounded-full hover:bg-white transition-all duration-200
