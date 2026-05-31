@@ -277,7 +277,7 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
                 border: active ? "0.74px solid #c9a84c" : "0.74px solid #DDDDDD",
                 background: "transparent", display: "flex", alignItems: "center", gap: 8,
                 fontSize: 12, fontWeight: 500, lineHeight: "16px",
-                color: active ? "#c9a84c" : "#222222",
+                color: active ? "#c9a84c" : "var(--c-ink)",
                 boxShadow: active ? "0 0 0 1px #c9a84c" : undefined,
                 transition: "all 0.2s",
               }}
