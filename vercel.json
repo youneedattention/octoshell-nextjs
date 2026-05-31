@@ -3,8 +3,7 @@
   "buildCommand": "next build",
   "devCommand": "next dev",
   "installCommand": "npm install",
-  "regions": ["nrt1"],
-  "headers": [
+"headers": [
     {
       "source": "/(.*)",
       "headers": [
