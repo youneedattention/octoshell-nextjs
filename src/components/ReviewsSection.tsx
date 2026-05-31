@@ -321,20 +321,20 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
                   </div>
                 </div>
 
-                {/* Stars · date · duration · route */}
+                {/* Stars · date · travelType · route */}
                 <div className="flex items-center gap-2 flex-wrap">
                   <Stars />
                   <span className="text-[var(--c-rule)] text-xs">·</span>
                   <span style={{ fontSize: 14, fontWeight: 400, lineHeight: "18px", color: "var(--c-ink-3)" }}>{fmtDate(r.dateISO, lang)}</span>
-                  {r.duration && <><span className="text-[var(--c-rule)]">·</span><span style={{ fontSize: 14, fontWeight: 400, lineHeight: "18px", color: "var(--c-ink-3)" }}>{(r.duration as Record<string,string>)[lang]}</span></>}
+                  {r.travelType && <><span className="text-[var(--c-rule)]">·</span><span style={{ fontSize: 14, fontWeight: 400, lineHeight: "18px", color: "var(--c-ink-3)" }}>{(r.travelType as Record<string,string>)[lang]}</span></>}
                   {"trip" in r && r.trip && <><span className="text-[var(--c-rule)]">·</span><span style={{ fontSize: 14, fontWeight: 400, lineHeight: "18px", color: "var(--c-ink-3)" }}>{r.trip as string}</span></>}
                 </div>
 
-                {/* Service + travelType badges */}
+                {/* Service + duration badges */}
                 <div className="flex flex-wrap gap-1.5">
-                  {r.travelType && (
+                  {r.duration && (
                     <span className="text-[13px] tracking-[0.08em] px-3 py-1 rounded-full border border-[var(--c-ink-3)]/30 text-[var(--c-ink-2)] font-semibold">
-                      {(r.travelType as Record<string,string>)[lang]}
+                      {(r.duration as Record<string,string>)[lang]}
                     </span>
                   )}
                   {r.serviceIds.map(id => (
