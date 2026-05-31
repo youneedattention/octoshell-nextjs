@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Price, { CurrencyNote } from "@/components/Price";
+import ReviewsSection from "@/components/ReviewsSection";
 import { useLang } from "@/context/LangContext";
 import { t } from "@/lib/translations";
 
@@ -116,6 +117,8 @@ export default function Home() {
           <CurrencyNote lang={lang} />
         </div>
       </section>
+
+      <ReviewsSection />
 
       {/* ══════════════════ FOOTER ══════════════════ */}
       <footer className="bg-[#0a0a0a] pt-10 sm:pt-12 pb-7 sm:pb-8 px-4 sm:px-6">
