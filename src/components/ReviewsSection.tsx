@@ -162,12 +162,22 @@ const REVIEWS = [
     text: "Driver Du-san is so wonderful. He responded to every request. I was very happy to work with him.",
     tags: ["Wonderful"],
   },
+  {
+    name: "Shiraiwa Yukiko",
+    location: "Japan",
+    role: { en: "Guide", ja: "ガイド", zh: "導遊" },
+    dateISO: "2025-09",
+    serviceIds: ["sightseeing"],
+    travelType: { en: "3-Day Trip", ja: "3日間", zh: "3天行程" },
+    text: "Driver Du-san is so wonderful. He responded to every request. I was very happy to work with him.",
+    tags: ["Wonderful", "Cooperative"],
+  },
 ];
 
 const ALL_TAGS = ["Well-dressed", "Polite", "Smooth Ride", "Courteous", "Cooperative", "Wonderful"];
 
 const STAR_DIST = [
-  { stars: 5, count: 3 },
+  { stars: 5, count: 4 },
   { stars: 4, count: 0 },
   { stars: 3, count: 0 },
   { stars: 2, count: 0 },
