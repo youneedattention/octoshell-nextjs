@@ -104,6 +104,19 @@ const RATINGS = [
   { label: { en: "Value",           ja: "コスパ",       zh: "性價比"   }, score: 4.8, Icon: IconValue       },
 ];
 
+/* ── Service type lookup (matches /services page IDs) ───────────────── */
+const SERVICE_TYPES: Record<string, Record<string, string>> = {
+  airport:     { en: "Airport Transfer",    ja: "空港送迎",      zh: "機場接送"   },
+  hourly:      { en: "By the Hour",         ja: "時間制貸切",    zh: "時段包車"   },
+  oneway:      { en: "One Way",             ja: "片道送迎",      zh: "單程穿梭"   },
+  photo:       { en: "Photo Tour",          ja: "旅拍",          zh: "旅拍接送"   },
+  events:      { en: "Events & MICE",       ja: "MICE",          zh: "頂級盛會"   },
+  sightseeing: { en: "Bespoke Sightseeing", ja: "テーラーメイド観光", zh: "定制觀光" },
+  golf:        { en: "Golf Transfer",       ja: "ゴルフ送迎",    zh: "高爾夫接送" },
+  outdoor:     { en: "Outdoor",             ja: "アウトドア送迎", zh: "戶外接送"  },
+  ceremony:    { en: "Ceremonial",          ja: "冠婚葬祭",      zh: "典禮接送"   },
+};
+
 const MONTH: Record<string, Record<string, string>> = {
   "01": { en: "Jan", ja: "1月",  zh: "1月"  },
   "02": { en: "Feb", ja: "2月",  zh: "2月"  },
@@ -130,6 +143,7 @@ const REVIEWS = [
     name: "J. K.",
     location: "United Kingdom",
     dateISO: "2025-05",
+    serviceId: "airport",
     trip: "Narita → Tokyo",
     text: "Ryu san was a very nice driver. Well-dressed and polite, and drove very smoothly.",
     tags: ["Well-dressed", "Polite", "Smooth Ride"],
@@ -138,6 +152,7 @@ const REVIEWS = [
     name: "Michael Smith",
     location: "United States",
     dateISO: "2025-04",
+    serviceId: "airport",
     trip: "Haneda → Tokyo",
     text: "Mr. Wang was also very courteous and cooperative. It was a great help throughout the day.",
     tags: ["Courteous", "Cooperative"],
@@ -146,6 +161,7 @@ const REVIEWS = [
     name: "Evelyn",
     location: "Australia",
     dateISO: "2025-03",
+    serviceId: "airport",
     trip: "Shuzenji → Haneda",
     text: "Driver Du-san is so wonderful. He responded to every request. I was very happy to work with him.",
     tags: ["Wonderful"],
@@ -305,6 +321,8 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
                   <Stars />
                   <span className="text-[var(--c-rule)] text-xs">·</span>
                   <span className="text-[10px] tracking-[0.08em] text-[var(--c-ink-3)]">{fmtDate(r.dateISO, lang)}</span>
+                  <span className="text-[var(--c-rule)] text-xs">·</span>
+                  <span className="text-[10px] tracking-[0.08em] text-[#c9a84c]/70">{SERVICE_TYPES[r.serviceId]?.[lang]}</span>
                   <span className="text-[var(--c-rule)] text-xs">·</span>
                   <span className="text-[10px] tracking-[0.06em] text-[var(--c-ink-3)]">{r.trip}</span>
                 </div>
