@@ -58,7 +58,7 @@ const HOW_CONTENT = {
 
 /* ── Icons ─────────────────────────────────────────────────────────── */
 const IconCleanliness = () => (
-  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
     {/* Bottle body */}
     <rect x="3" y="9" width="10" height="12" rx="1.5"/>
     {/* Inner label rectangle */}
@@ -78,13 +78,13 @@ const IconCleanliness = () => (
   </svg>
 );
 const IconPunctuality = () => (
-  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
     <circle cx="12" cy="12" r="9"/>
     <path d="M12 7v5l3.5 3.5"/>
   </svg>
 );
 const IconHospitality = () => (
-  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
     <circle cx="12" cy="12" r="9"/>
     <path d="M8.5 14s1 2 3.5 2 3.5-2 3.5-2"/>
     <circle cx="9" cy="10" r=".6" fill="currentColor" stroke="none"/>
@@ -92,14 +92,14 @@ const IconHospitality = () => (
   </svg>
 );
 const IconDriving = () => (
-  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
     <circle cx="12" cy="12" r="9"/>
     <circle cx="12" cy="12" r="2.5"/>
     <path d="M12 3v6.5M5 9.5h6.5M12.5 9.5H19"/>
   </svg>
 );
 const IconValue = () => (
-  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
     <path d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.613.226l5.383-6.115a2.25 2.25 0 00-.226-2.613L12.16 3.659A2.25 2.25 0 0010.568 3H9.568z"/>
     <circle cx="6.5" cy="6.5" r=".75" fill="currentColor" stroke="none"/>
   </svg>
@@ -196,7 +196,7 @@ function Stars() {
   return (
     <span className="flex gap-0.5">
       {Array.from({ length: 5 }).map((_, i) => (
-        <svg key={i} className="w-3 h-3 text-[#c9a84c]" fill="currentColor" viewBox="0 0 24 24">
+        <svg key={i} className="w-[9px] h-[9px] text-[#c9a84c]" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
         </svg>
       ))}
@@ -318,8 +318,7 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 border-t border-[var(--c-rule)]">
           {filtered.map((r, i) => {
             const isExpanded = expanded.has(i);
-            const LIMIT      = 120;
-            const truncated  = r.text.length > LIMIT && !isExpanded;
+            const LIMIT      = 160;
             return (
               <div key={i} className="flex flex-col gap-4 py-8 px-1 sm:px-6 border-b border-[var(--c-rule)]">
 
@@ -328,14 +327,14 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
                   <Avatar name={r.name} />
                   <div>
                     <div className="flex items-center gap-2">
-                      <p className="text-[24px] font-semibold text-[var(--c-ink)]">{r.name}</p>
+                      <p style={{ fontSize: 16, fontWeight: 500, lineHeight: "20px", color: "var(--c-ink)" }}>{r.name}</p>
                       {"role" in r && r.role && (
                         <span className="text-[11px] tracking-[0.1em] px-2 py-0.5 rounded-full border border-[var(--c-ink-3)]/40 text-[var(--c-ink-3)] font-medium">
                           {(r.role as Record<string,string>)[lang]}
                         </span>
                       )}
                     </div>
-                    <p className="text-[24px] text-[var(--c-ink-3)]">{r.location}</p>
+                    <p style={{ fontSize: 14, fontWeight: 400, lineHeight: "18px", color: "var(--c-ink-3)" }}>{r.location}</p>
                   </div>
                 </div>
 
@@ -343,9 +342,9 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
                 <div className="flex items-center gap-2 flex-wrap">
                   <Stars />
                   <span className="text-[var(--c-rule)] text-xs">·</span>
-                  <span className="text-[24px] tracking-[0.04em] text-[var(--c-ink-3)]">{fmtDate(r.dateISO, lang)}</span>
-                  {r.duration && <><span className="text-[var(--c-rule)]">·</span><span className="text-[24px] tracking-[0.04em] text-[var(--c-ink-3)]">{(r.duration as Record<string,string>)[lang]}</span></>}
-                  {"trip" in r && r.trip && <><span className="text-[var(--c-rule)]">·</span><span className="text-[24px] tracking-[0.03em] text-[var(--c-ink-3)]">{r.trip as string}</span></>}
+                  <span style={{ fontSize: 14, fontWeight: 400, lineHeight: "18px", color: "var(--c-ink-3)" }}>{fmtDate(r.dateISO, lang)}</span>
+                  {r.duration && <><span className="text-[var(--c-rule)]">·</span><span style={{ fontSize: 14, fontWeight: 400, lineHeight: "18px", color: "var(--c-ink-3)" }}>{(r.duration as Record<string,string>)[lang]}</span></>}
+                  {"trip" in r && r.trip && <><span className="text-[var(--c-rule)]">·</span><span style={{ fontSize: 14, fontWeight: 400, lineHeight: "18px", color: "var(--c-ink-3)" }}>{r.trip as string}</span></>}
                 </div>
 
                 {/* Service + travelType badges */}
@@ -363,8 +362,18 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
                 </div>
 
                 <div>
-                  <p className="text-[24px] text-[var(--c-ink-2)] leading-relaxed">
-                    {truncated ? r.text.slice(0, LIMIT) + "…" : r.text}
+                  <p
+                    style={{
+                      fontSize: 16, fontWeight: 400, lineHeight: "24px", color: "var(--c-ink-2)",
+                      ...(!isExpanded ? {
+                        display: "-webkit-box",
+                        WebkitLineClamp: 3,
+                        WebkitBoxOrient: "vertical" as const,
+                        overflow: "hidden",
+                      } : {}),
+                    }}
+                  >
+                    {r.text}
                   </p>
                   {r.text.length > LIMIT && (
                     <button
@@ -373,7 +382,8 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
                         next.has(i) ? next.delete(i) : next.add(i);
                         return next;
                       })}
-                      className="mt-1.5 text-[12px] font-semibold text-[var(--c-ink)] underline underline-offset-2 hover:text-[#c9a84c] transition-colors"
+                      style={{ fontSize: 16, fontWeight: 500, lineHeight: "20px", textDecoration: "underline", marginTop: 6 }}
+                      className="text-[var(--c-ink)] hover:text-[#c9a84c] transition-colors block"
                     >
                       {isExpanded ? ui.showLess : ui.showMore}
                     </button>
