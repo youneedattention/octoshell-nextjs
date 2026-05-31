@@ -164,8 +164,9 @@ export default function Home() {
             {/* Quotes */}
             <div className="flex flex-col gap-7">
               {[
-                { quote: "Placeholder — your review here.", name: "J. K.", country: "United Kingdom", route: "Narita → Tokyo" },
-                { quote: "Placeholder — your review here.", name: "M. T.", country: "Australia",       route: "Tokyo → Hakone" },
+                { quote: "Ryu san was a very nice driver. Well-dressed and polite, and drove very smoothly.", name: "J. K.", country: "United Kingdom", route: "Narita → Tokyo" },
+                { quote: "Mr. Wang was also very courteous and cooperative. It was a great help throughout the day.", name: "Michael Smith", country: "United States", route: "Haneda → Tokyo" },
+                { quote: "Driver Du-san is so wonderful. He responded to every request. I was very happy to work with him.", name: "Evelyn", country: "Australia", route: "Shuzenji → Haneda" },
               ].map((r, i) => (
                 <div key={i} className="relative pl-5 border-l border-[#c9a84c]/25">
                   <svg className="absolute -top-1 -left-px w-3 h-3 text-[#c9a84c]/40" fill="currentColor" viewBox="0 0 24 24">
@@ -173,9 +174,7 @@ export default function Home() {
                   </svg>
                   <p className="text-[13px] sm:text-[14px] text-[var(--c-ink-2)] leading-relaxed mb-3 italic">{r.quote}</p>
                   <p className="text-[10px] tracking-[0.15em] text-[var(--c-ink-3)]">
-                    — {r.name}, {r.country}
-                    <span className="mx-2 opacity-30">·</span>
-                    {r.route}
+                    — {r.name}, {r.country}<span className="mx-2 opacity-30">·</span>{r.route}
                   </p>
                 </div>
               ))}
