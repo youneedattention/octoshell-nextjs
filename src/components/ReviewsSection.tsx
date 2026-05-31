@@ -217,22 +217,16 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
 
         {/* ── Score header ── */}
         <p className="text-[10px] tracking-[0.4em] text-[#c9a84c] uppercase mb-5">{ui.section}</p>
-        <div className="flex items-center gap-5 mb-3">
+        <div className="flex flex-col items-center gap-2 mb-10">
           <span className="text-[72px] sm:text-[88px] font-bold leading-none tracking-tight text-[var(--c-ink)]">4.9</span>
-          <div className="flex flex-col gap-2">
-            <Stars />
-            <p className="text-[12px] tracking-[0.15em] text-[var(--c-ink-2)] font-semibold">{ui.badge}</p>
-            <p className="text-[10px] tracking-[0.08em] text-[var(--c-ink-3)]">{ui.verified(total)}</p>
-          </div>
+          <p className="text-[12px] tracking-[0.15em] text-[var(--c-ink-2)] font-semibold">{ui.badge}</p>
+          <button
+            onClick={() => setHowOpen(true)}
+            className="text-[11px] text-[var(--c-ink-3)] underline underline-offset-2 hover:text-[var(--c-ink-2)] transition-colors tracking-[0.05em]"
+          >
+            {hw.title}
+          </button>
         </div>
-
-        {/* How reviews work */}
-        <button
-          onClick={() => setHowOpen(true)}
-          className="mb-10 text-[11px] text-[var(--c-ink-3)] underline underline-offset-2 hover:text-[var(--c-ink-2)] transition-colors tracking-[0.05em]"
-        >
-          {hw.title}
-        </button>
 
         {/* ── Rating row ── */}
         <div className="w-full overflow-x-auto mb-10">
