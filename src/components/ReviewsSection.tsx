@@ -58,7 +58,7 @@ const HOW_CONTENT = {
 
 /* ── Icons ─────────────────────────────────────────────────────────── */
 const IconCleanliness = () => (
-  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
     {/* Bottle body */}
     <rect x="3" y="9" width="10" height="12" rx="1.5"/>
     {/* Inner label rectangle */}
@@ -78,13 +78,13 @@ const IconCleanliness = () => (
   </svg>
 );
 const IconPunctuality = () => (
-  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
     <circle cx="12" cy="12" r="9"/>
     <path d="M12 7v5l3.5 3.5"/>
   </svg>
 );
 const IconHospitality = () => (
-  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
     <circle cx="12" cy="12" r="9"/>
     <path d="M8.5 14s1 2 3.5 2 3.5-2 3.5-2"/>
     <circle cx="9" cy="10" r=".6" fill="currentColor" stroke="none"/>
@@ -92,14 +92,14 @@ const IconHospitality = () => (
   </svg>
 );
 const IconDriving = () => (
-  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
     <circle cx="12" cy="12" r="9"/>
     <circle cx="12" cy="12" r="2.5"/>
     <path d="M12 3v6.5M5 9.5h6.5M12.5 9.5H19"/>
   </svg>
 );
 const IconValue = () => (
-  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
     <path d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.613.226l5.383-6.115a2.25 2.25 0 00-.226-2.613L12.16 3.659A2.25 2.25 0 0010.568 3H9.568z"/>
     <circle cx="6.5" cy="6.5" r=".75" fill="currentColor" stroke="none"/>
   </svg>
@@ -239,7 +239,7 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
           <p className="text-[12px] tracking-[0.15em] text-[var(--c-ink-2)] font-semibold mt-1">{ui.badge}</p>
           <button
             onClick={() => setHowOpen(true)}
-            className="text-[11px] text-[var(--c-ink-3)] underline underline-offset-2 hover:text-[var(--c-ink-2)] transition-colors tracking-[0.05em]"
+            style={{ fontSize: 14, fontWeight: 400, lineHeight: "18px", color: "#6C6C6C", textDecoration: "underline", textUnderlineOffset: 2 }}
           >
             {hw.title}
           </button>
@@ -251,15 +251,14 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
 
             {/* Overall rating */}
             <div className="w-52 shrink-0 py-6 pr-6 border-r border-[var(--c-rule)]">
-              <p className="text-[24px] tracking-[0.04em] text-[var(--c-ink-2)] mb-5">{ui.overall}</p>
+              <p style={{ fontSize: 12, fontWeight: 500, lineHeight: "16px", color: "#222222" }} className="mb-5">{ui.overall}</p>
               <div className="space-y-[9px]">
                 {STAR_DIST.map(({ stars, count }) => (
                   <div key={stars} className="flex items-center gap-2">
-                    <span className="text-[24px] text-[var(--c-ink-3)] w-6 shrink-0 text-right">{stars}</span>
-                    <div className="w-24 h-[3px] bg-[var(--c-rule)] rounded-full overflow-hidden">
+                    <span style={{ fontSize: 10, fontWeight: 400, lineHeight: "12px", color: "#6A6A6A" }} className="w-6 shrink-0 text-right">{stars}</span>
+                    <div style={{ width: 91, height: 4, borderRadius: 2, background: "#DDDDDD", overflow: "hidden" }}>
                       <div
-                        className="h-full bg-[var(--c-ink)] rounded-full"
-                        style={{ width: total ? `${(count / total) * 100}%` : "0%" }}
+                        style={{ height: "100%", background: "#222222", borderRadius: 2, width: total ? `${(count / total) * 100}%` : "0%" }}
                       />
                     </div>
                   </div>
@@ -273,8 +272,8 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
                 key={label.en}
                 className={`flex-1 py-6 px-5 flex flex-col gap-3 min-w-[140px] ${i < RATINGS.length - 1 ? "border-r border-[var(--c-rule)]" : ""}`}
               >
-                <p className="text-[24px] tracking-[0.02em] text-[var(--c-ink-2)]">{label[lang]}</p>
-                <p className="text-[24px] font-semibold text-[var(--c-ink)] leading-none">{score.toFixed(1)}</p>
+                <p style={{ fontSize: 12, fontWeight: 500, lineHeight: "16px", color: "#222222" }}>{label[lang]}</p>
+                <p style={{ fontSize: 12, fontWeight: 500, lineHeight: "16px", color: "#222222" }}>{score.toFixed(1)}</p>
                 <Icon />
               </div>
             ))}
@@ -290,14 +289,18 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
               <button
                 key={tag}
                 onClick={() => setActiveTag(active ? null : tag)}
-                className={`flex items-center gap-2 px-5 py-3 rounded-3xl text-[12px] tracking-[0.06em]
-                            border transition-all duration-200 bg-[var(--c-card)]
-                            ${active
-                              ? "border-[#c9a84c] text-[#c9a84c] shadow-[0_0_0_1px_#c9a84c]"
-                              : "border-[var(--c-rule)] text-[var(--c-ink-2)] hover:border-[var(--c-ink-3)]"}`}
+                style={{
+                height: 48, borderRadius: 16, padding: "12px 18px 12px 14px",
+                border: active ? "0.74px solid #c9a84c" : "0.74px solid #DDDDDD",
+                background: "transparent", display: "flex", alignItems: "center", gap: 8,
+                fontSize: 12, fontWeight: 500, lineHeight: "16px",
+                color: active ? "#c9a84c" : "#222222",
+                boxShadow: active ? "0 0 0 1px #c9a84c" : undefined,
+                transition: "all 0.2s",
+              }}
               >
                 {tag}
-                <span className={`text-[10px] font-light ${active ? "text-[#c9a84c]/60" : "text-[var(--c-ink-4)]"}`}>{count}</span>
+                <span style={{ fontSize: 10, fontWeight: 300, color: active ? "rgba(201,168,76,0.6)" : "#aaaaaa" }}>{count}</span>
               </button>
             );
           })}
