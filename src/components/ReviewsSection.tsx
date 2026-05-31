@@ -97,11 +97,11 @@ const IconValue = () => (
 
 /* ── Data ───────────────────────────────────────────────────────────── */
 const RATINGS = [
-  { label: "Cleanliness",     score: 5.0, Icon: IconCleanliness },
-  { label: "Punctuality",     score: 5.0, Icon: IconPunctuality },
-  { label: "Hospitality",     score: 4.9, Icon: IconHospitality },
-  { label: "Driving Comfort", score: 4.9, Icon: IconDriving     },
-  { label: "Value",           score: 4.8, Icon: IconValue       },
+  { label: { en: "Cleanliness",     ja: "清潔感",       zh: "整潔度"   }, score: 5.0, Icon: IconCleanliness },
+  { label: { en: "Punctuality",     ja: "時間厳守",     zh: "準時率"   }, score: 5.0, Icon: IconPunctuality },
+  { label: { en: "Hospitality",     ja: "おもてなし",   zh: "服務態度" }, score: 4.9, Icon: IconHospitality },
+  { label: { en: "Driving Comfort", ja: "乗り心地",     zh: "乘坐舒適" }, score: 4.9, Icon: IconDriving     },
+  { label: { en: "Value",           ja: "コスパ",       zh: "性價比"   }, score: 4.8, Icon: IconValue       },
 ];
 
 const REVIEWS = [
@@ -222,10 +222,10 @@ export default function ReviewsSection() {
             {/* 5 category columns — equal flex */}
             {RATINGS.map(({ label, score, Icon }, i) => (
               <div
-                key={label}
+                key={label.en}
                 className={`flex-1 py-6 px-5 flex flex-col gap-2.5 ${i < RATINGS.length - 1 ? "border-r border-[var(--c-rule)]" : ""}`}
               >
-                <p className="text-[11px] tracking-[0.06em] text-[var(--c-ink-2)] whitespace-nowrap">{label}</p>
+                <p className="text-[11px] tracking-[0.06em] text-[var(--c-ink-2)] whitespace-nowrap">{label[lang]}</p>
                 <p className="text-[24px] font-semibold text-[var(--c-ink)] leading-none">{score.toFixed(1)}</p>
                 <Icon />
               </div>
