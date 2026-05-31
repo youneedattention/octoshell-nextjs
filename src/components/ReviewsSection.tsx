@@ -58,7 +58,8 @@ const HOW_CONTENT = {
 
 /* ── Icons ─────────────────────────────────────────────────────────── */
 const IconCleanliness = () => (
-  <Image src="/icon-spray.svg" alt="" width={32} height={32} className="dark:invert" />
+  <Image src="/icon-spray.svg" alt="" width={32} height={32} className="dark:invert"
+    draggable={false} onContextMenu={(e) => e.preventDefault()} />
 );
 const IconPunctuality = () => (
   <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
