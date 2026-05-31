@@ -80,7 +80,7 @@ const REVIEWS = [
     date: "May 2025",
     trip: "Narita → Tokyo",
     text: "Ryu san was a very nice driver. Well-dressed and polite, and drove very smoothly.",
-    tags: ["Professional", "Well-dressed", "Smooth Ride"],
+    tags: ["Well-dressed", "Polite", "Smooth Ride"],
   },
   {
     name: "Michael Smith",
@@ -88,7 +88,7 @@ const REVIEWS = [
     date: "April 2025",
     trip: "Haneda → Tokyo",
     text: "Mr. Wang was also very courteous and cooperative. It was a great help throughout the day.",
-    tags: ["Professional", "Attentive", "Friendly"],
+    tags: ["Courteous", "Cooperative"],
   },
   {
     name: "Evelyn",
@@ -96,11 +96,11 @@ const REVIEWS = [
     date: "March 2025",
     trip: "Shuzenji → Haneda",
     text: "Driver Du-san is so wonderful. He responded to every request. I was very happy to work with him.",
-    tags: ["Professional", "Attentive", "Friendly"],
+    tags: ["Wonderful"],
   },
 ];
 
-const ALL_TAGS = ["Professional", "Well-dressed", "Smooth Ride", "Attentive", "Friendly"];
+const ALL_TAGS = ["Well-dressed", "Polite", "Smooth Ride", "Courteous", "Cooperative", "Wonderful"];
 
 const STAR_DIST = [
   { stars: 5, count: 3 },
