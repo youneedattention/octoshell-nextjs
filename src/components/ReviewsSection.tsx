@@ -141,10 +141,10 @@ function fmtDate(iso: string, lang: string): string {
 
 const REVIEWS = [
   {
-    name: "J. K.",
-    location: "United Kingdom",
-    dateISO: "2025-05",
-    serviceId: "airport",
+    name: "David Paul",
+    location: "United States",
+    dateISO: "2025-04",
+    serviceIds: ["airport", "sightseeing"],
     trip: "Narita → Tokyo",
     text: "Ryu san was a very nice driver. Well-dressed and polite, and drove very smoothly.",
     tags: ["Well-dressed", "Polite", "Smooth Ride"],
@@ -153,7 +153,7 @@ const REVIEWS = [
     name: "Michael Smith",
     location: "United States",
     dateISO: "2025-04",
-    serviceId: "airport",
+    serviceIds: ["airport"],
     trip: "Haneda → Tokyo",
     text: "Mr. Wang was also very courteous and cooperative. It was a great help throughout the day.",
     tags: ["Courteous", "Cooperative"],
@@ -162,7 +162,7 @@ const REVIEWS = [
     name: "Evelyn",
     location: "Australia",
     dateISO: "2025-03",
-    serviceId: "airport",
+    serviceIds: ["airport"],
     trip: "Shuzenji → Haneda",
     text: "Driver Du-san is so wonderful. He responded to every request. I was very happy to work with him.",
     tags: ["Wonderful"],
@@ -321,7 +321,9 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
                   <span className="text-[var(--c-rule)] text-xs">·</span>
                   <span className="text-[10px] tracking-[0.08em] text-[var(--c-ink-3)]">{fmtDate(r.dateISO, lang)}</span>
                   <span className="text-[var(--c-rule)] text-xs">·</span>
-                  <span className="text-[10px] tracking-[0.08em] text-[#c9a84c]/70">{SERVICE_TYPES[r.serviceId]?.[lang]}</span>
+                  <span className="text-[10px] tracking-[0.08em] text-[#c9a84c]/70">
+                    {r.serviceIds.map(id => SERVICE_TYPES[id]?.[lang]).filter(Boolean).join(" · ")}
+                  </span>
                   <span className="text-[var(--c-rule)] text-xs">·</span>
                   <span className="text-[10px] tracking-[0.06em] text-[var(--c-ink-3)]">{r.trip}</span>
                 </div>
