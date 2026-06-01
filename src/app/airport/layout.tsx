@@ -34,7 +34,7 @@ export const metadata: Metadata = {
       "Flat-rate private transfers. Haneda from ¥20,000 · Narita from ¥25,000. Flight tracked, Meet & Greet included.",
   },
   alternates: {
-    canonical: "https://tokyoairporttransfer.com",
+    canonical: "https://tokyoairporttransfer.com/airport",
     languages: {
       "en-US": "https://tokyoairporttransfer.com",
       "ja-JP": "https://octoshell.jp/services/airport",
