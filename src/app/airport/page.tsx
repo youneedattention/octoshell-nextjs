@@ -421,7 +421,7 @@ export default function AirportPage() {
               <div key={v.name} className="border border-[var(--c-rule)] overflow-hidden group hover:border-[#c9a84c]/30 transition-colors duration-300">
                 <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/50 to-transparent" />
                 <div className="bg-white h-[160px] sm:h-[180px] flex items-center justify-center px-6">
-                  <Image src={i === 0 ? "/images/alphard.png" : "/images/hiace.png"} alt={v.name}
+                  <Image src={i === 0 ? "/images/alphard.webp" : "/images/hiace.webp"} alt={v.name}
                     width={340} height={200} priority className="object-contain mix-blend-multiply w-full h-full p-2" />
                 </div>
                 <div className="p-5 sm:p-6">
