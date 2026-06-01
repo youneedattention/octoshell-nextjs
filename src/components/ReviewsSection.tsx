@@ -363,7 +363,7 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
             const isExpanded = expanded.has(i);
             const LIMIT      = 160;
             return (
-              <div key={i} className="flex flex-col gap-4 py-8 px-1 sm:px-6 border-b border-[var(--c-rule)]">
+              <div key={i} className="flex flex-col gap-4 py-8 px-4 sm:px-6 border-b border-[var(--c-rule)]">
 
                 {/* Name + [Guide] badge + location */}
                 <div className="flex items-center gap-3">
