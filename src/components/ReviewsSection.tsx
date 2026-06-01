@@ -192,12 +192,21 @@ const REVIEWS = [
     text: "The driver, Mr. Zhang is a good speaker of English, which is also good for the guests. I think he is quite a good driver.",
     tags: ["Polite", "Courteous"],
   },
+  {
+    name: "Lily Wu",
+    location: "United States",
+    dateISO: "2026-04",
+    serviceIds: ["airport"],
+    travelType: { en: "9-Day Trip", ja: "9日間", zh: "9天行程" },
+    text: "On a very positive note, my family absolutely loved Mr. Wang, our driver. They couldn't stop gushing about how polite, helpful, and kind he was throughout the trip — they basically wanted to take him home with them lol.",
+    tags: ["Polite", "Wonderful"],
+  },
 ];
 
 const ALL_TAGS = ["Well-dressed", "Polite", "Smooth Ride", "Courteous", "Cooperative", "Wonderful"];
 
 const STAR_DIST = [
-  { stars: 5, count: 6 },
+  { stars: 5, count: 7 },
   { stars: 4, count: 0 },
   { stars: 3, count: 0 },
   { stars: 2, count: 0 },
