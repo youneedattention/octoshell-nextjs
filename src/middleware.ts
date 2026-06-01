@@ -9,7 +9,7 @@ export function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
 
     /* Paths to let through on tokyoairporttransfer.com */
-    const allowed = ["/airport", "/book", "/api", "/reviews", "/about"];
+    const allowed = ["/airport", "/book", "/api", "/reviews", "/about", "/sitemap.xml", "/robots.txt"];
     if (allowed.some((p) => pathname.startsWith(p))) {
       return NextResponse.next();
     }

@@ -29,6 +29,18 @@ const SCHEMA_SERVICE = {
         { "@type": "Airport", "name": "Haneda Airport", "iataCode": "HND" },
         { "@type": "Airport", "name": "Narita International Airport", "iataCode": "NRT" },
       ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.97",
+        "bestRating": "5",
+        "worstRating": "1",
+        "reviewCount": "9"
+      },
+      "review": [
+        { "@type": "Review", "author": { "@type": "Person", "name": "Lily Wu" }, "datePublished": "2026-04", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "My family absolutely loved Mr. Wang, our driver. They couldn't stop gushing about how polite, helpful, and kind he was throughout the trip." },
+        { "@type": "Review", "author": { "@type": "Person", "name": "Ikuko Ushio" }, "datePublished": "2026-03", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Mr Du Kun was the best driver I've ever worked with. Hope to work with him as one team soon again." },
+        { "@type": "Review", "author": { "@type": "Person", "name": "David Paul" }, "datePublished": "2025-04", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Ryu san was a very nice driver. Well-dressed and polite, and drove very smoothly." },
+      ],
     },
     {
       "@type": "Service",
