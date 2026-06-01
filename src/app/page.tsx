@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
@@ -7,16 +7,16 @@ import ReviewsSection from "@/components/ReviewsSection";
 import { useLang } from "@/context/LangContext";
 import { t } from "@/lib/translations";
 
-/* ── Asset URLs ────────────────────────────────────────────────────── */
+/* 鈹€鈹€ Asset URLs 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
 const LOGO    = "/logo.png";
 const HERO_BG = "https://octoshell.jp/wp-content/uploads/2024/10/Home2.png";
-const ALPHARD = "/alphard.png";
-const HIACE   = "/hiace.png";
+const ALPHARD = "/alphard.webp";
+const HIACE   = "/hiace.webp";
 const SVC1    = "https://octoshell.jp/wp-content/uploads/2024/09/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240910002336-1024x679.jpg";
 const SVC2    = "https://octoshell.jp/wp-content/uploads/2024/09/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240910002341-1024x679.jpg";
 const SVC3    = "https://octoshell.jp/wp-content/uploads/2024/09/left.png";
 
-/* ── Social icons ──────────────────────────────────────────────────── */
+/* 鈹€鈹€ Social icons 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
 const InstagramIcon = () => (
   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
@@ -39,7 +39,7 @@ const SOCIALS = [
   { label: "LinkedIn",  href: "https://www.linkedin.com/company/octoshell", icon: <LinkedInIcon /> },
 ];
 
-/* ── Pricing data (route key → price) ─────────────────────────────── */
+/* 鈹€鈹€ Pricing data (route key 鈫?price) 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
 const ALPHARD_ROWS: [string, number][] = [
   ["route_haneda", 20000], ["route_narita", 25000],
   ["route_city",   43000], ["route_fuji",   68000],
@@ -53,14 +53,14 @@ const HIACE_ROWS: [string, number][] = [
   ["route_izu",    80000], ["route_golf",   60000],
 ];
 
-/* ── Page ──────────────────────────────────────────────────────────── */
+/* 鈹€鈹€ Page 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
 export default function Home() {
   const { lang } = useLang();
 
   return (
     <main className="overflow-x-hidden">
 
-      {/* ══════════════════ HERO ══════════════════ */}
+      {/* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲 HERO 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲 */}
       <section className="relative h-[100svh] min-h-[560px]">
         <Image src={HERO_BG} alt="Octoshell Japan Chauffeur Service" fill
           className="object-cover object-center" priority />
@@ -96,7 +96,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══════════════════ PRICES ══════════════════ */}
+      {/* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲 PRICES 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲 */}
       <section id="prices" className="scroll-mt-[88px] sm:scroll-mt-24 py-14 sm:py-20 px-4 sm:px-6 bg-[var(--c-body)]">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10 sm:mb-14">
@@ -120,7 +120,7 @@ export default function Home() {
 
       <ReviewsSection showViewAll />
 
-      {/* ══════════════════ FOOTER ══════════════════ */}
+      {/* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲 FOOTER 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲 */}
       <footer className="bg-[#0a0a0a] pt-10 sm:pt-12 pb-7 sm:pb-8 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pb-7 border-b border-white/10">
@@ -162,7 +162,7 @@ export default function Home() {
   );
 }
 
-/* ── PriceCard ─────────────────────────────────────────────────────── */
+/* 鈹€鈹€ PriceCard 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
 import type { Lang } from "@/lib/translations";
 
 function PriceCard({
@@ -217,7 +217,7 @@ function PriceCard({
   );
 }
 
-/* ── ServiceCard ───────────────────────────────────────────────────── */
+/* 鈹€鈹€ ServiceCard 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
 function ServiceCard({ tag, title, body, img }: {
   tag: string; title: string; body: string; img: string;
 }) {
