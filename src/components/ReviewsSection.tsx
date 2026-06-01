@@ -173,12 +173,22 @@ const REVIEWS = [
     text: "This driver is very professional, had hospitality and guests were very happy with him.",
     tags: ["Courteous", "Wonderful"],
   },
+  {
+    name: "Ikuko Ushio",
+    location: "Japan",
+    role: { en: "Guide", ja: "ガイド", zh: "導遊" },
+    dateISO: "2026-03",
+    serviceIds: ["airport", "sightseeing"],
+    travelType: { en: "5-Day Trip", ja: "5日間", zh: "5天行程" },
+    text: "Blessed with good customers and the driver, I enjoyed guiding everyday. Mr. and Mrs Das took plenty of nice photos of Mt. Fuji and cherry blossoms. As for driver, Mr Du Kun, was the best driver I've ever worked with. Hope to work with him as one team soon again.",
+    tags: ["Wonderful", "Cooperative"],
+  },
 ];
 
 const ALL_TAGS = ["Well-dressed", "Polite", "Smooth Ride", "Courteous", "Cooperative", "Wonderful"];
 
 const STAR_DIST = [
-  { stars: 5, count: 4 },
+  { stars: 5, count: 5 },
   { stars: 4, count: 0 },
   { stars: 3, count: 0 },
   { stars: 2, count: 0 },
