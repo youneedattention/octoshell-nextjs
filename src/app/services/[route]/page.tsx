@@ -266,6 +266,19 @@ export default function ServiceRoutePage({
               <p className="text-[var(--c-ink-2)] text-[15px] sm:text-[16px] leading-[1.9] tracking-[0.03em] mb-8">
                 {data.intro[l]}
               </p>
+
+              {/* Backlink to tokyoairporttransfer.com — airport routes only */}
+              {(data.slug === "haneda-airport-transfer" || data.slug === "narita-airport-transfer") && (
+                <p className="text-[var(--c-ink-3)] text-[13px] leading-relaxed mb-8">
+                  {l === "ja"
+                    ? <>空港送迎の詳細・料金比較は <a href="https://tokyoairporttransfer.com/airport" target="_blank" rel="noopener noreferrer" className="text-[#c9a84c] hover:underline">tokyoairporttransfer.com</a> でもご確認いただけます。</>
+                    : l === "zh"
+                    ? <>機場接送詳情與價格比較，亦可參閱 <a href="https://tokyoairporttransfer.com/airport" target="_blank" rel="noopener noreferrer" className="text-[#c9a84c] hover:underline">tokyoairporttransfer.com</a>。</>
+                    : <>Full pricing and details are also available at <a href="https://tokyoairporttransfer.com/airport" target="_blank" rel="noopener noreferrer" className="text-[#c9a84c] hover:underline">tokyoairporttransfer.com</a>.</>
+                  }
+                </p>
+              )}
+
               <Link
                 href="/book"
                 draggable={false}
