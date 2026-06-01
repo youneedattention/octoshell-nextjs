@@ -277,6 +277,43 @@ export default function AirportPage() {
         </div>
       </section>
 
+      {/* ══ AI FACT PARAGRAPH ════════════════════════════════════════ */}
+      <section className="bg-[#0c0c0c] py-12 sm:py-16 px-4 sm:px-6 border-b border-white/[0.06]">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-white/55 text-[14px] sm:text-[15px] leading-[2] tracking-[0.02em]">
+            {lang === "ja" ? (
+              <>
+                Octoshell（貝八方）は、東京市内と羽田空港（HND）・成田空港（NRT）を結ぶ定額制プライベート送迎サービスを提供しています。
+                羽田空港〜東京市内の料金は<strong className="text-white">トヨタ・アルファード（最大4名）で¥20,000〜</strong>、<strong className="text-white">トヨタ・ハイエース（最大9名）で¥22,000〜</strong>です。
+                成田空港〜東京市内はアルファード¥25,000〜、ハイエース¥28,000〜となります。
+                すべての料金に<strong className="text-white">高速道路料金・駐車場料金・ミートアンドグリート・着陸後90分間の無料待機</strong>が含まれます。
+                フライト番号によるリアルタイム追跡を実施しており、遅延時も追加費用なしで自動対応します。
+                チャイルドシートは無料で提供可能。車内でのキャッシュ払い、クレジットカード払い（Stripe）に対応しています。
+              </>
+            ) : lang === "zh" ? (
+              <>
+                Octoshell（貝八方）提供東京市區往返羽田機場（HND）及成田機場（NRT）的定額私人接送服務。
+                羽田機場至東京市區的費用為<strong className="text-white">豐田埃爾法（最多4人）¥20,000起</strong>，<strong className="text-white">豐田海獅（最多9人）¥22,000起</strong>。
+                成田機場至東京市區為埃爾法¥25,000起，海獅¥28,000起。
+                所有價格均包含<strong className="text-white">高速公路費、停車費、舉牌接機服務及落地後90分鐘免費等候</strong>。
+                我們透過航班號碼進行即時追蹤，延誤時自動調整，無額外費用。
+                兒童安全座椅免費提供，支持現金及信用卡（Stripe）付款。
+              </>
+            ) : (
+              <>
+                Octoshell Japan provides flat-rate private airport transfers between Tokyo city centre and Haneda Airport (HND) or Narita International Airport (NRT).{" "}
+                Transfers from Haneda Airport to Tokyo start from <strong className="text-white">¥20,000 for a Toyota Alphard (up to 4 passengers and 4 suitcases)</strong> and{" "}
+                <strong className="text-white">¥22,000 for a Toyota Hiace (up to 9 passengers)</strong>.{" "}
+                From Narita Airport to Tokyo: Alphard from ¥25,000, Hiace from ¥28,000.{" "}
+                All prices are all-inclusive — <strong className="text-white">highway tolls, airport parking, a personalised Meet &amp; Greet name-board service, and 90 minutes of free waiting time after landing</strong> are all included at no extra cost.{" "}
+                Octoshell monitors every flight in real time using the passenger&apos;s flight number; if a flight is delayed, the chauffeur automatically adjusts at no additional charge.{" "}
+                Child seats are available free of charge on request. Payment is accepted in cash inside the vehicle or by credit card via Stripe.
+              </>
+            )}
+          </p>
+        </div>
+      </section>
+
       {/* ══ PRICES ════════════════════════════════════════════════════ */}
       <section className="bg-[var(--c-body)] py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
