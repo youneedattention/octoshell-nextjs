@@ -139,6 +139,7 @@ interface Props {
 export default function PlacesInput({ id, placeholder, value, onChange, required }: Props) {
   const { lang } = useLang();
   const inputRef   = useRef<HTMLInputElement>(null);
+  const wrapRef    = useRef<HTMLDivElement>(null);
   const [sugs, setSugs]         = useState<Sug[]>([]);
   const [open, setOpen]         = useState(false);
   const [busy, setBusy]         = useState(false);
@@ -146,6 +147,18 @@ export default function PlacesInput({ id, placeholder, value, onChange, required
   const [locState, setLocState] = useState<"idle" | "locating" | "denied" | "unavailable">("idle");
   const [googleOn, setGoogleOn] = useState(false);
   const debTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  /* Close dropdown on click outside */
+  useEffect(() => {
+    if (!open) return;
+    const handler = (e: MouseEvent) => {
+      if (wrapRef.current && !wrapRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [open]);
 
   /* Sync external value → DOM (handles form reset / pre-fill) */
   useEffect(() => {
@@ -263,7 +276,7 @@ export default function PlacesInput({ id, placeholder, value, onChange, required
     "placeholder:text-white/30";
 
   return (
-    <div className="relative">
+    <div className="relative" ref={wrapRef}>
       {/* ── Text input ── */}
       <input
         ref={inputRef}
@@ -274,7 +287,6 @@ export default function PlacesInput({ id, placeholder, value, onChange, required
         required={required}
         onChange={handleChange}
         onFocus={() => sugs.length > 0 && setOpen(true)}
-        onBlur={() => setTimeout(() => setOpen(false), 180)}
         autoComplete="off"
         className={base}
       />
