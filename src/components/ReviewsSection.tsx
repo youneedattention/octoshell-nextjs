@@ -358,12 +358,13 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
         </div>
 
         {/* ── Review cards ── */}
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 border-t border-[var(--c-rule)]">
+        <div className="w-full border-t border-[var(--c-rule)]">
+        <div className="flex overflow-x-auto sm:grid sm:grid-cols-2 sm:overflow-x-visible scrollbar-hide">
           {filtered.map((r, i) => {
             const isExpanded = expanded.has(i);
             const LIMIT      = 160;
             return (
-              <div key={i} className="flex flex-col gap-4 py-8 px-4 sm:px-6 border-b border-[var(--c-rule)]">
+              <div key={i} className="shrink-0 w-[85vw] sm:w-auto flex flex-col gap-4 py-8 px-4 sm:px-6 border-r border-[var(--c-rule)] last:border-r-0 sm:border-r-0 sm:border-b sm:border-[var(--c-rule)]">
 
                 {/* Name + [Guide] badge + location */}
                 <div className="flex items-center gap-3">
@@ -431,6 +432,7 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
               </div>
             );
           })}
+        </div>
         </div>
 
         {/* View all reviews link — shown only on homepage */}
