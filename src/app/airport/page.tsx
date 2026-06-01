@@ -240,18 +240,18 @@ export default function AirportPage() {
           <h1 className="text-white text-3xl sm:text-4xl lg:text-5xl font-light tracking-[0.08em] leading-tight whitespace-pre-line mb-4">
             {HERO_H1[lang]}
           </h1>
-          <p className="text-white/40 text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-8">{HERO_SUB[lang]}</p>
+          <p className="text-white/60 text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-8">{HERO_SUB[lang]}</p>
 
           {/* Price badge */}
           <div className="inline-flex items-center gap-3 border border-[#c9a84c]/30 px-5 py-3 mb-8">
             <svg className="w-3.5 h-3.5 text-[#c9a84c]/70" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 14.25l6-6m4.5-3.493V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0c1.1.128 1.907 1.077 1.907 2.185Z" />
             </svg>
-            <span className="text-white/40 text-[11px] tracking-widest uppercase">{HERO_FROM[lang]}</span>
+            <span className="text-white/60 text-[11px] tracking-widest uppercase">{HERO_FROM[lang]}</span>
             <span className="text-[#c9a84c] text-[18px] sm:text-[22px] font-bold tracking-tight">
               <Price yen={20000} />
             </span>
-            <span className="text-white/20 text-[10px] tracking-widest uppercase">
+            <span className="text-white/55 text-[10px] tracking-widest uppercase">
               {lang === "ja" ? "全込み" : lang === "zh" ? "全包" : "All-incl."}
             </span>
           </div>
@@ -269,7 +269,7 @@ export default function AirportPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
               </svg>
             </Link>
-            <Link href="https://octoshell.jp" className="inline-flex items-center justify-center gap-2 text-white/30 text-[11px] tracking-[0.2em] uppercase hover:text-white/60 transition-colors sm:ml-2">
+            <Link href="https://octoshell.jp" className="inline-flex items-center justify-center gap-2 text-white/55 text-[11px] tracking-[0.2em] uppercase hover:text-white transition-colors sm:ml-2">
               octoshell.jp →
             </Link>
           </div>
@@ -283,7 +283,7 @@ export default function AirportPage() {
             <div key={item.title} className="flex flex-col gap-3">
               <span className="text-2xl">{item.icon}</span>
               <p className="text-white text-[14px] font-semibold tracking-[0.06em]">{item.title}</p>
-              <p className="text-white/45 text-[13px] leading-[1.8]">{item.body}</p>
+              <p className="text-white/70 text-[13px] leading-[1.8]">{item.body}</p>
             </div>
           ))}
         </div>
@@ -388,7 +388,7 @@ export default function AirportPage() {
               <div key={step.num} className="flex flex-col gap-4">
                 <p className="text-[56px] font-bold text-[#c9a84c]/15 leading-none font-mono tracking-tight">{step.num}</p>
                 <p className="text-white text-[15px] font-semibold tracking-[0.05em]">{step.title}</p>
-                <p className="text-white/45 text-[13px] leading-[1.8]">{step.body}</p>
+                <p className="text-white/70 text-[13px] leading-[1.8]">{step.body}</p>
               </div>
             ))}
           </div>
@@ -474,7 +474,7 @@ export default function AirportPage() {
             {lang === "ja" ? "ご予約・お問い合わせ" : lang === "zh" ? "預訂與查詢" : "Book & Enquire"}
           </p>
           <h2 className="text-white text-2xl sm:text-3xl font-light tracking-[0.1em] mb-4">{CTA_TITLE[lang]}</h2>
-          <p className="text-white/35 text-[13px] leading-relaxed mb-10">{CTA_SUB[lang]}</p>
+          <p className="text-white/60 text-[13px] leading-relaxed mb-10">{CTA_SUB[lang]}</p>
           <Link href="/book" draggable={false} onContextMenu={(e) => e.preventDefault()}
             className="group inline-flex items-center gap-2.5 bg-[#c9a84c] text-[#0c0c0c]
                        text-[13px] font-black tracking-[0.3em] px-12 py-4
