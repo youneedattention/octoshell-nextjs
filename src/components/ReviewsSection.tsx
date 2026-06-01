@@ -210,12 +210,22 @@ const REVIEWS = [
     text: "He was a good driver because he was very nice to our guests. I am sure all the drivers of his company (貝八方) are very good since they are in a suit with a tie and behave gentle to guests.",
     tags: ["Well-dressed", "Polite"],
   },
+  {
+    name: "Yumi Takase",
+    location: "Japan",
+    role: { en: "Guide", ja: "ガイド", zh: "導遊" },
+    dateISO: "2026-05",
+    serviceIds: ["airport", "sightseeing"],
+    travelType: { en: "3-Day Trip", ja: "3日間", zh: "3天行程" },
+    text: "Driver Wang is very good!! Kind and safe driving, speaks English a little but good pronunciation!!",
+    tags: ["Polite", "Smooth Ride"],
+  },
 ];
 
 const ALL_TAGS = ["Well-dressed", "Polite", "Smooth Ride", "Courteous", "Cooperative", "Wonderful"];
 
 const STAR_DIST = [
-  { stars: 5, count: 8 },
+  { stars: 5, count: 9 },
   { stars: 4, count: 0 },
   { stars: 3, count: 0 },
   { stars: 2, count: 0 },
