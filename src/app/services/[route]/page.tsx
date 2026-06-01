@@ -253,7 +253,7 @@ export default function ServiceRoutePage({
       {/* ══════════════════════════════════════════════════
           INTRO + HIGHLIGHTS
       ══════════════════════════════════════════════════ */}
-      <section className="bg-[var(--c-body)] py-16 sm:py-20 px-4 sm:px-6">
+      <section className="bg-[#111111] py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
           <GoldRule />
 
@@ -263,13 +263,13 @@ export default function ServiceRoutePage({
               <SectionLabel
                 label={l === "ja" ? "サービス概要" : l === "zh" ? "服務概覽" : "Overview"}
               />
-              <p className="text-[var(--c-ink)] text-[15px] sm:text-[16px] leading-[1.9] tracking-[0.03em] mb-8">
+              <p className="text-white/75 text-[15px] sm:text-[16px] leading-[1.9] tracking-[0.03em] mb-8">
                 {data.intro[l]}
               </p>
 
               {/* Backlink to tokyoairporttransfer.com — airport routes only */}
               {(data.slug === "haneda-airport-transfer" || data.slug === "narita-airport-transfer") && (
-                <p className="text-[var(--c-ink)] text-[15px] sm:text-[16px] leading-[1.9] tracking-[0.03em] mb-8">
+                <p className="text-white/75 text-[15px] sm:text-[16px] leading-[1.9] tracking-[0.03em] mb-8">
                   {l === "ja"
                     ? <>空港送迎の詳細・料金比較は <a href="https://tokyoairporttransfer.com/airport" target="_blank" rel="noopener noreferrer" className="text-[#c9a84c] hover:underline">tokyoairporttransfer.com</a> でもご確認いただけます。</>
                     : l === "zh"
