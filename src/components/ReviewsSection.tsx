@@ -261,7 +261,9 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
   const [howOpen,   setHowOpen]   = useState(false);
 
   const total    = REVIEWS.length;
-  const filtered = activeTag ? REVIEWS.filter((r) => r.tags.includes(activeTag)) : REVIEWS;
+  const sorted   = [...REVIEWS].sort((a, b) => b.dateISO.localeCompare(a.dateISO));
+  const base     = showViewAll ? sorted.slice(0, 6) : sorted;
+  const filtered = activeTag ? base.filter((r) => r.tags.includes(activeTag)) : base;
   const hw       = HOW_CONTENT[lang];
   const ui       = UI[lang];
 
