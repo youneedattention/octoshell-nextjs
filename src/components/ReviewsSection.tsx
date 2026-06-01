@@ -201,12 +201,21 @@ const REVIEWS = [
     text: "On a very positive note, my family absolutely loved Mr. Wang, our driver. They couldn't stop gushing about how polite, helpful, and kind he was throughout the trip — they basically wanted to take him home with them lol.",
     tags: ["Polite", "Wonderful"],
   },
+  {
+    name: "Jodi Sue Hanh",
+    location: "United States",
+    dateISO: "2026-05",
+    serviceIds: ["airport"],
+    travelType: { en: "12-Day Trip", ja: "12日間", zh: "12天行程" },
+    text: "He was a good driver because he was very nice to our guests. I am sure all the drivers of his company (貝八方) are very good since they are in a suit with a tie and behave gentle to guests.",
+    tags: ["Well-dressed", "Polite"],
+  },
 ];
 
 const ALL_TAGS = ["Well-dressed", "Polite", "Smooth Ride", "Courteous", "Cooperative", "Wonderful"];
 
 const STAR_DIST = [
-  { stars: 5, count: 7 },
+  { stars: 5, count: 8 },
   { stars: 4, count: 0 },
   { stars: 3, count: 0 },
   { stars: 2, count: 0 },
