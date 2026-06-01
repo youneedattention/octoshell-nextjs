@@ -1,7 +1,8 @@
 export const dynamic = "force-static";
 export const revalidate = 86400; // regenerate every 24 h
 
-const BASE = "https://octoshell.jp";
+const BASE     = "https://octoshell.jp";
+const BASE_TAT = "https://tokyoairporttransfer.com";
 
 const LANDING_ROUTES = [
   "narita-airport-transfer",
@@ -28,6 +29,9 @@ export async function GET() {
     { loc: `${BASE}/about`,   priority: "0.8", changefreq: "monthly" },
     { loc: `${BASE}/law`,     priority: "0.3", changefreq: "yearly"  },
     { loc: `${BASE}/privacy`, priority: "0.3", changefreq: "yearly"  },
+    /* tokyoairporttransfer.com */
+    { loc: `${BASE_TAT}`,         priority: "1.0", changefreq: "monthly" },
+    { loc: `${BASE_TAT}/airport`, priority: "1.0", changefreq: "monthly" },
   ];
 
   const xml = [
