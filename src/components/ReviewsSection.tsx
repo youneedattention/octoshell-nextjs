@@ -154,15 +154,6 @@ const REVIEWS = [
     tags: ["Courteous", "Cooperative"],
   },
   {
-    name: "Evelyn",
-    location: "Australia",
-    dateISO: "2025-03",
-    serviceIds: ["airport"],
-    trip: "Shuzenji → Haneda",
-    text: "Driver Du-san is so wonderful. He responded to every request. I was very happy to work with him.",
-    tags: ["Wonderful"],
-  },
-  {
     name: "Shiraiwa Yukiko",
     location: "Japan",
     role: { en: "Guide", ja: "ガイド", zh: "導遊" },
@@ -173,8 +164,9 @@ const REVIEWS = [
     tags: ["Wonderful", "Cooperative"],
   },
   {
-    name: "Maryetta Sciuto",
-    location: "United States",
+    name: "Neizer Naoko",
+    location: "Japan",
+    role: { en: "Guide", ja: "ガイド", zh: "導遊" },
     dateISO: "2026-02",
     serviceIds: ["sightseeing"],
     travelType: { en: "2-Day Trip", ja: "2日間", zh: "2天行程" },
@@ -186,7 +178,7 @@ const REVIEWS = [
 const ALL_TAGS = ["Well-dressed", "Polite", "Smooth Ride", "Courteous", "Cooperative", "Wonderful"];
 
 const STAR_DIST = [
-  { stars: 5, count: 5 },
+  { stars: 5, count: 4 },
   { stars: 4, count: 0 },
   { stars: 3, count: 0 },
   { stars: 2, count: 0 },
