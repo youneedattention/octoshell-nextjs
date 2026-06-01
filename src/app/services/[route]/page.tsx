@@ -263,7 +263,7 @@ export default function ServiceRoutePage({
               <SectionLabel
                 label={l === "ja" ? "サービス概要" : l === "zh" ? "服務概覽" : "Overview"}
               />
-              <p className="text-[var(--c-ink-2)] text-[15px] sm:text-[16px] leading-[1.9] tracking-[0.03em] mb-8">
+              <p className="text-[var(--c-ink)] text-[15px] sm:text-[16px] leading-[1.9] tracking-[0.03em] mb-8">
                 {data.intro[l]}
               </p>
 
