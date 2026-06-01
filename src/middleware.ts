@@ -8,12 +8,13 @@ export function middleware(request: NextRequest) {
   if (host.includes("tokyoairporttransfer.com")) {
     const { pathname } = request.nextUrl;
 
-    /* Already on /airport* → let it through */
-    if (pathname.startsWith("/airport")) {
+    /* Paths to let through on tokyoairporttransfer.com */
+    const allowed = ["/airport", "/book", "/api", "/reviews", "/about"];
+    if (allowed.some((p) => pathname.startsWith(p))) {
       return NextResponse.next();
     }
 
-    /* Everything else → redirect to dedicated airport page */
+    /* Everything else (i.e. "/") → redirect to airport landing page */
     const url = request.nextUrl.clone();
     url.pathname = "/airport";
     return NextResponse.redirect(url, { status: 301 });
