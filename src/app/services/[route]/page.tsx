@@ -331,7 +331,7 @@ export default function ServiceRoutePage({
             {data.body[l].map((para, i) => (
               <p
                 key={i}
-                className="text-white/55 text-[14px] sm:text-[15px] leading-[1.95] tracking-[0.02em]"
+                className="text-[var(--c-ink-2)] text-[14px] sm:text-[15px] leading-[1.95] tracking-[0.02em]"
               >
                 {para}
               </p>
