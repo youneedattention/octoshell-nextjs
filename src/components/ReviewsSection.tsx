@@ -275,9 +275,9 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
         <p className="text-[10px] tracking-[0.4em] text-[#c9a84c] uppercase mb-6">{ui.section}</p>
         <div className="flex flex-col items-center gap-2 mb-10">
           <div className="flex items-center gap-0">
-            <Image src="/laurel-left.png"  alt="" width={103} height={140} className="object-contain opacity-90 dark:opacity-70 pointer-events-none select-none" aria-hidden draggable={false} />
-            <span style={{ fontSize: 100, fontWeight: 500, lineHeight: "100px", letterSpacing: -2 }} className="text-[#222222] dark:text-[#c9a84c]">4.97</span>
-            <Image src="/laurel-right.png" alt="" width={103} height={140} className="object-contain opacity-90 dark:opacity-70 pointer-events-none select-none" aria-hidden draggable={false} />
+            <Image src="/laurel-left.png"  alt="" width={103} height={140} className="object-contain opacity-90 dark:opacity-70 pointer-events-none select-none w-[70px] h-[100px] sm:w-[103px] sm:h-[140px]" aria-hidden draggable={false} />
+            <span style={{ letterSpacing: -2, fontWeight: 500, lineHeight: 1 }} className="text-[80px] sm:text-[100px] text-[#222222] dark:text-[#c9a84c]">4.97</span>
+            <Image src="/laurel-right.png" alt="" width={103} height={140} className="object-contain opacity-90 dark:opacity-70 pointer-events-none select-none w-[70px] h-[100px] sm:w-[103px] sm:h-[140px]" aria-hidden draggable={false} />
           </div>
           <p className="text-[12px] tracking-[0.15em] text-[var(--c-ink-2)] font-semibold mt-1">{ui.badge}</p>
           <button
