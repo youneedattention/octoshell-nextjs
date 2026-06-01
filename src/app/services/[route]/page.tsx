@@ -343,7 +343,7 @@ export default function ServiceRoutePage({
       {/* ══════════════════════════════════════════════════
           FAQ
       ══════════════════════════════════════════════════ */}
-      <section className="bg-[var(--c-body)] py-16 sm:py-20 px-4 sm:px-6">
+      <section className="bg-[#0c0c0c] py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
           <GoldRule />
           <SectionLabel
