@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(BASE),
 
   title: {
-    default: "Octoshell Japan | Private Chauffeur & Luxury Transfer Service",
+    default: "Octoshell Japan | Private Chauffeur and Luxury Transfer Service",
     template: "%s | Octoshell Japan",
   },
 
@@ -64,9 +64,9 @@ export const metadata: Metadata = {
     alternateLocale: ["ja_JP", "zh_TW"],
     url: BASE,
     siteName: "Octoshell Japan",
-    title: "Octoshell Japan | Private Chauffeur & Luxury Transfer Service",
+    title: "Octoshell Japan | Private Chauffeur and Luxury Transfer Service",
     description:
-      "Japan's premier private chauffeur service. Airport transfers, hourly hire, sightseeing, golf, and MICE transportation. Toyota Alphard & Hiace fleet. Serving Tokyo and all of Japan.",
+      "Japan's premier private chauffeur service. Airport transfers, hourly hire, sightseeing, golf, and MICE transportation. Toyota Alphard and Hiace fleet. Serving Tokyo and all of Japan.",
     images: [
       {
         url: OG_IMAGE,
@@ -79,9 +79,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Octoshell Japan | Private Chauffeur & Luxury Transfer",
+    title: "Octoshell Japan | Private Chauffeur and Luxury Transfer",
     description:
-      "Japan's premier private chauffeur. Airport transfers, hourly hire & bespoke tours across Tokyo and Japan.",
+      "Japan's premier private chauffeur. Airport transfers, hourly hire and bespoke tours across Tokyo and Japan.",
     images: [OG_IMAGE],
   },
 
