@@ -110,9 +110,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {/* Alphard card */}
-            <PriceCard name="TOYOTA ALPHARD" img={ALPHARD} rows={ALPHARD_ROWS} lang={lang} />
+            <PriceCard name="Toyota Alphard · Luxury MPV" img={ALPHARD} rows={ALPHARD_ROWS} lang={lang} />
             {/* Hiace card */}
-            <PriceCard name="TOYOTA HIACE"   img={HIACE}   rows={HIACE_ROWS}   lang={lang} />
+            <PriceCard name="Toyota Hiace · Premium Van"  img={HIACE}   rows={HIACE_ROWS}   lang={lang} />
           </div>
           <CurrencyNote lang={lang} />
         </div>
