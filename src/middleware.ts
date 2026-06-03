@@ -4,6 +4,13 @@ import type { NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
   const host = request.headers.get("host") ?? "";
 
+  /* ── Block Vercel preview domain from Google ── */
+  if (host.includes("vercel.app")) {
+    const response = NextResponse.next();
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return response;
+  }
+
   /* ── tokyoairporttransfer.com → airport landing page ── */
   if (host.includes("tokyoairporttransfer.com")) {
     const { pathname } = request.nextUrl;
