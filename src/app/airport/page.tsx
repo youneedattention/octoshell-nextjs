@@ -50,6 +50,13 @@ const SCHEMA_SERVICE = {
       "serviceType": "Airport Chauffeur Transfer",
       "provider": { "@id": "https://octoshell.jp/#organization" },
       "areaServed": "Tokyo, Kanagawa, Japan",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.97",
+        "reviewCount": "9",
+        "bestRating": "5",
+        "worstRating": "1",
+      },
       "offers": [
         { "@type": "Offer", "name": "Haneda Airport ↔ Tokyo (Alphard)", "price": "20000", "priceCurrency": "JPY", "availability": "https://schema.org/InStock", "url": "https://tokyoairporttransfer.com" },
         { "@type": "Offer", "name": "Narita Airport ↔ Tokyo (Alphard)", "price": "25000", "priceCurrency": "JPY", "availability": "https://schema.org/InStock", "url": "https://tokyoairporttransfer.com" },

@@ -201,8 +201,8 @@ const ORG_SCHEMA = {
       },
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "3",
+        "ratingValue": "4.97",
+        "reviewCount": "9",
         "bestRating": "5",
         "worstRating": "1",
       },
