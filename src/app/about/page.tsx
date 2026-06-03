@@ -484,7 +484,7 @@ const EXTRA_ITEMS: { g: 0|1|2|3|4|5; q: Record<Lang,string>; a: Record<Lang,stri
     },
   },
   {
-    g: 5,
+    g: 1,
     q: { en: "Is tipping required?", ja: "チップは必要ですか？", zh: "需要給小費嗎？" },
     a: {
       en: "No. Tipping is not customary in Japan and is never expected by our chauffeurs. A kind word or an online review is the best way to show your appreciation.",
