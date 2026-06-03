@@ -176,11 +176,11 @@ const FAQ: Record<Lang, FaqGroup[]> = {
       items: [
         {
           q: "What kind of vehicles will be deployed?",
-          a: "We specialize exclusively in luxury fleet management, deploying premium Toyota Alphard (Max 5 passengers) and spacious Toyota Hiace (Max 9 passengers). We do not deploy standard sedans.",
+          a: "Toyota Alphard (up to 5 passengers) or Toyota Hiace (up to 9 passengers). No standard sedans.",
         },
         {
           q: "Is smoking, eating, or drinking allowed inside the vehicle?",
-          a: "All vehicles are strictly Non-Smoking (including e-cigarettes and vapes). For refreshments, only bottled water/capped beverages and light, odorless snacks are permitted inside the car.",
+          a: "No smoking (including e-cigarettes). Drinks in sealed bottles are fine. Light snacks with no strong smell are OK.",
         },
         {
           q: "Can I travel with my pets?",
@@ -188,19 +188,19 @@ const FAQ: Record<Lang, FaqGroup[]> = {
         },
         {
           q: "Can you transport our luggage separately during our tour?",
-          a: "Yes, absolutely. We frequently manage customized Golf Tours and Hiking/Trekking groups. We can drop you off at the golf course or trailhead and transport your luggage (golf bags, heavy backpacks, etc.) directly to your designated hotel ahead of your arrival. Please note that for legal compliance, we only transport luggage belonging to contracted passengers of our tours; standalone commercial cargo shipping is not permitted.",
+          a: "Yes. We drop you off at your activity (golf course, hiking trail, etc.) and deliver your bags to your hotel ahead of you. Note: we can only carry luggage for passengers booked on our service — not standalone cargo.",
         },
         {
-          q: "Will my chauffeur be smart and wear a suit and tie?",
-          a: "Yes, our chauffeurs are always smartly dressed in a formal suit and tie, maintaining the highest standards of professional appearance.",
+          q: "Will my chauffeur wear a suit and tie?",
+          a: "Yes. Every chauffeur wears a formal suit and tie for every trip.",
         },
         {
-          q: "Do the chauffeurs maintain the privacy and confidentiality of their passengers?",
-          a: "Yes. Your privacy and confidentiality are our top priorities. Our chauffeurs adhere to the strictest standards; your private conversations and information will be kept strictly secure at all times.",
+          q: "Do the chauffeurs keep conversations private?",
+          a: "Yes. Everything said in the car stays in the car. Our chauffeurs never share passenger information.",
         },
         {
           q: "Can I charge my phone in the vehicle?",
-          a: "Yes. Most of our vehicles are equipped with USB ports and we offer complimentary charging cables compatible with both iPhone and Android devices.",
+          a: "Yes. USB ports are available, and free charging cables for iPhone and Android are provided.",
         },
       ],
     },
@@ -217,19 +217,19 @@ const FAQ: Record<Lang, FaqGroup[]> = {
         },
         {
           q: "Are tolls, parking, fuel, and all fees included in the price?",
-          a: "Yes. One price covers everything — tolls, parking, fuel, and the driver's accommodation on overnight trips. No hidden fees. The only extra charges that can arise are if you ask to change the route after the trip has started.",
+          a: "Yes. One price covers everything — tolls, parking, fuel, and overnight accommodation for the driver. No hidden fees. Route changes after the trip starts may add costs.",
         },
         {
           q: "Are child seats and Airport Meet & Greet services extra?",
-          a: "No, both services are 100% Complimentary (Free of Charge). If you require a child/junior safety seat or a personalized name-board greeting at the arrival lobby, please notify our team in advance so we can guarantee availability.",
+          a: "Both are free. Please request them when booking so we can prepare in advance.",
         },
         {
-          q: "What are the payment methods? Can I pay the chauffeur directly inside the vehicle?",
-          a: "We accept cash payments inside the vehicle, or you can pre-register your credit card before the trip for automatic billing via our online Stripe system upon completion. Corporate clients without credit cards may also apply for upfront bank transfers.",
+          q: "How can I pay?",
+          a: "Three options: cash in the car, credit card (charged automatically after the trip via Stripe), or bank transfer for corporate clients.",
         },
         {
           q: "Will I receive a receipt?",
-          a: "Yes, for credit card payments, a digital formal receipt (PDF) will be automatically dispatched to your registered email address via Stripe immediately after your trip concludes. For cash payments, we will provide a PDF receipt or invoice upon request.",
+          a: "Yes. Credit card: PDF receipt sent to your email automatically after the trip. Cash: receipt available on request.",
         },
       ],
     },
