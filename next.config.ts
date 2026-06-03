@@ -17,6 +17,7 @@ const nextConfig: NextConfig = {
       { source: "/wp-login.php",     destination: "/", permanent: true },
       { source: "/xmlrpc.php",       destination: "/", permanent: true },
       { source: "/comments/feed",    destination: "/", permanent: true },
+      { source: "/vehicles",          destination: "/fleet", permanent: true },
     ];
   },
 };

@@ -719,7 +719,7 @@ export default function AboutPage() {
                   </div>
                 ))}
               </div>
-              <Link href="/vehicles" draggable={false} onContextMenu={(e) => e.preventDefault()}
+              <Link href="/fleet" draggable={false} onContextMenu={(e) => e.preventDefault()}
                 className="group shrink-0 inline-flex items-center gap-2.5 border border-[#c9a84c]/50 text-[#c9a84c]
                            text-[11px] font-bold tracking-[0.3em] uppercase px-7 py-3.5
                            hover:bg-[#c9a84c] hover:text-[#0c0c0c] transition-all duration-200">
