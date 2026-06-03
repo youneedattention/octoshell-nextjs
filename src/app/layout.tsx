@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import { RATING_VALUE_STR, REVIEW_COUNT } from "@/lib/reviews";
 import { LangProvider } from "@/context/LangContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { CurrencyProvider } from "@/context/CurrencyContext";
@@ -201,8 +202,8 @@ const ORG_SCHEMA = {
       },
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "4.97",
-        "reviewCount": "9",
+        "ratingValue": RATING_VALUE_STR,
+        "reviewCount": String(REVIEW_COUNT),
         "bestRating": "5",
         "worstRating": "1",
       },

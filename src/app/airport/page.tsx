@@ -7,6 +7,7 @@ import SiteFooter from "@/components/SiteFooter";
 import Price, { CurrencyNote } from "@/components/Price";
 import { useLang } from "@/context/LangContext";
 import type { Lang } from "@/lib/translations";
+import { RATING_VALUE_STR, REVIEW_COUNT } from "@/lib/reviews";
 
 /* ══════════════════════════════════════════════════════════════════════
    JSON-LD — Service + FAQPage + LocalBusiness
@@ -52,8 +53,8 @@ const SCHEMA_SERVICE = {
       "areaServed": "Tokyo, Kanagawa, Japan",
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "4.97",
-        "reviewCount": "9",
+        "ratingValue": RATING_VALUE_STR,
+        "reviewCount": String(REVIEW_COUNT),
         "bestRating": "5",
         "worstRating": "1",
       },

@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useLang } from "@/context/LangContext";
+import { REVIEWS, RATING_VALUE_STR } from "@/lib/reviews";
 
 /* ── UI strings ────────────────────────────────────────────────────── */
 const UI = {
@@ -133,104 +134,13 @@ function fmtDate(iso: string, lang: string): string {
   return lang === "en" ? `${mo} ${y}` : `${y}年${mo}`;
 }
 
-const REVIEWS = [
-  {
-    name: "David Paul",
-    location: "United States",
-    dateISO: "2025-04",
-    serviceIds: ["airport", "sightseeing"],
-    trip: "Narita → Tokyo",          // directional route — keep
-    text: "Ryu san was a very nice driver. Well-dressed and polite, and drove very smoothly.",
-    tags: ["Well-dressed", "Polite", "Smooth Ride"],
-  },
-  {
-    name: "Kaiko Hatakeyama",
-    location: "Japan",
-    role:     { en: "Guide", ja: "ガイド", zh: "導遊" },
-    dateISO: "2025-05",
-    serviceIds: ["sightseeing", "port"],
-    travelType: { en: "Family Trip", ja: "ファミリー", zh: "家庭出遊" },
-    text: "Mr. Wang was very courteous and cooperative. It was a great help throughout the day.",
-    tags: ["Courteous", "Cooperative"],
-  },
-  {
-    name: "Shiraiwa Yukiko",
-    location: "Japan",
-    role: { en: "Guide", ja: "ガイド", zh: "導遊" },
-    dateISO: "2025-09",
-    serviceIds: ["sightseeing"],
-    travelType: { en: "3-Day Trip", ja: "3日間", zh: "3天行程" },
-    text: "Driver Du-san is so wonderful. He responded to every request. I was very happy to work with him.",
-    tags: ["Wonderful", "Cooperative"],
-  },
-  {
-    name: "Neizer Naoko",
-    location: "Japan",
-    role: { en: "Guide", ja: "ガイド", zh: "導遊" },
-    dateISO: "2026-02",
-    serviceIds: ["sightseeing"],
-    travelType: { en: "2-Day Trip", ja: "2日間", zh: "2天行程" },
-    text: "This driver is very professional, had hospitality and guests were very happy with him.",
-    tags: ["Courteous", "Wonderful"],
-  },
-  {
-    name: "Ikuko Ushio",
-    location: "Japan",
-    role: { en: "Guide", ja: "ガイド", zh: "導遊" },
-    dateISO: "2026-03",
-    serviceIds: ["airport", "sightseeing"],
-    travelType: { en: "5-Day Trip", ja: "5日間", zh: "5天行程" },
-    text: "Blessed with good customers and the driver, I enjoyed guiding everyday. Mr. and Mrs Das took plenty of nice photos of Mt. Fuji and cherry blossoms. As for driver, Mr Du Kun, was the best driver I've ever worked with. Hope to work with him as one team soon again.",
-    tags: ["Wonderful", "Cooperative"],
-  },
-  {
-    name: "Josephine Caruso",
-    location: "United States",
-    dateISO: "2026-03",
-    serviceIds: ["airport", "sightseeing"],
-    travelType: { en: "7-Day Trip", ja: "7日間", zh: "7天行程" },
-    text: "The driver, Mr. Zhang is a good speaker of English, which is also good for the guests. I think he is quite a good driver.",
-    tags: ["Polite", "Courteous"],
-  },
-  {
-    name: "Lily Wu",
-    location: "United States",
-    dateISO: "2026-04",
-    serviceIds: ["airport", "sightseeing"],
-    travelType: { en: "9-Day Trip", ja: "9日間", zh: "9天行程" },
-    text: "On a very positive note, my family absolutely loved Mr. Wang, our driver. They couldn't stop gushing about how polite, helpful, and kind he was throughout the trip — they basically wanted to take him home with them lol.",
-    tags: ["Polite", "Wonderful"],
-  },
-  {
-    name: "Jodi Sue Hanh",
-    location: "United States",
-    dateISO: "2026-05",
-    serviceIds: ["airport", "sightseeing"],
-    travelType: { en: "12-Day Trip", ja: "12日間", zh: "12天行程" },
-    text: "He was a good driver because he was very nice to our guests. I am sure all the drivers of his company (貝八方) are very good since they are in a suit with a tie and behave gentle to guests.",
-    tags: ["Well-dressed", "Polite"],
-  },
-  {
-    name: "Yumi Takase",
-    location: "Japan",
-    role: { en: "Guide", ja: "ガイド", zh: "導遊" },
-    dateISO: "2026-05",
-    serviceIds: ["airport", "sightseeing"],
-    travelType: { en: "3-Day Trip", ja: "3日間", zh: "3天行程" },
-    text: "Driver Wang is very good!! Kind and safe driving, speaks English a little but good pronunciation!!",
-    tags: ["Polite", "Smooth Ride"],
-  },
-];
-
 const ALL_TAGS = ["Well-dressed", "Polite", "Smooth Ride", "Courteous", "Cooperative", "Wonderful"];
 
-const STAR_DIST = [
-  { stars: 5, count: 9 },
-  { stars: 4, count: 0 },
-  { stars: 3, count: 0 },
-  { stars: 2, count: 0 },
-  { stars: 1, count: 0 },
-];
+/* Auto-computed from REVIEWS — no manual update needed */
+const STAR_DIST = [5, 4, 3, 2, 1].map((stars) => ({
+  stars,
+  count: REVIEWS.filter((r) => (r.rating ?? 5) === stars).length,
+}));
 
 /* ── Sub-components ─────────────────────────────────────────────────── */
 function Stars() {
@@ -276,7 +186,7 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
         <div className="flex flex-col items-center gap-2 mb-10">
           <div className="flex items-center gap-0">
             <Image src="/laurel-left.png"  alt="" width={103} height={140} className="object-contain opacity-90 dark:opacity-70 pointer-events-none select-none w-[70px] h-[100px] sm:w-[103px] sm:h-[140px]" aria-hidden draggable={false} />
-            <span style={{ letterSpacing: -2, fontWeight: 500, lineHeight: 1 }} className="text-[80px] sm:text-[100px] text-[#222222] dark:text-[#c9a84c]">4.97</span>
+            <span style={{ letterSpacing: -2, fontWeight: 500, lineHeight: 1 }} className="text-[80px] sm:text-[100px] text-[#222222] dark:text-[#c9a84c]">{RATING_VALUE_STR}</span>
             <Image src="/laurel-right.png" alt="" width={103} height={140} className="object-contain opacity-90 dark:opacity-70 pointer-events-none select-none w-[70px] h-[100px] sm:w-[103px] sm:h-[140px]" aria-hidden draggable={false} />
           </div>
           <p className="text-[12px] tracking-[0.15em] text-[var(--c-ink-2)] font-semibold mt-1">{ui.badge}</p>
