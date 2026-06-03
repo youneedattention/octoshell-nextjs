@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description:
     "Verified client reviews for Octoshell Japan private chauffeur service. Rated 4.9/5 for cleanliness, punctuality, hospitality, driving comfort and value.",
   alternates: { canonical: `${BASE}/reviews` },
+  robots: { index: true, follow: true, noimageindex: true },
   openGraph: {
     title: "Client Reviews | Octoshell Japan",
     description: "See what our clients say about Octoshell Japan private chauffeur service.",
