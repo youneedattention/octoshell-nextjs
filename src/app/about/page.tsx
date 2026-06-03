@@ -80,16 +80,16 @@ const VEH_SECTION_BADGE: Record<Lang, string> = {
 type Vehicle = { name: string; body: string };
 const VEHICLES: Record<Lang, Vehicle[]> = {
   ja: [
-    { name: "ビジネス・プレミアム — トヨタ アルファード", body: "Octoshell の絶対的エース。最上級の快適性を誇り、家族旅行、大荷物の旅行客、または VIP 接待に最適です。" },
-    { name: "グランド・グループ — トヨタ ハイエース",    body: "大人数のグループ、チームビジネス、またはさらに多くの荷物を伴う移動に、広々とした清潔で洗練された空間を提供します。" },
+    { name: "ラグジュアリーMPV — Toyota Alphard", body: "空港送迎、ビジネス出張、プライベート観光に最適です。" },
+    { name: "プレミアムバン — Toyota Hiace",      body: "ファミリー、小グループ、法人輸送に最適です。" },
   ],
   en: [
-    { name: "Business Van — Toyota Alphard", body: "The crown jewel of Octoshell. Offers executive luxury and supreme comfort, perfect for families, international travelers with luggage, or VIP guests." },
-    { name: "Group Luxury — Toyota Hiace",   body: "Engineered for larger groups, corporate teams, or heavy luggage, maintaining a pristine, spacious environment for long-distance travel." },
+    { name: "Luxury MPV — Toyota Alphard", body: "Perfect for airport transfers, business travel and private sightseeing tours in Japan." },
+    { name: "Premium Van — Toyota Hiace",  body: "Ideal for families, small groups and corporate transportation." },
   ],
   zh: [
-    { name: "商務尊享廂型車 — 豐田埃爾法", body: "Octoshell 的主力王牌車型。具備頂級的舒適度與奢華座艙，極其適合家庭度假、攜帶大件行李的國際旅客或 VIP 貴賓接待。" },
-    { name: "豪華大容量客車 — 豐田海獅",   body: "專為多人團體、商務團隊或超大行李載運設計，始終保持一塵不染的高標空間與舒適體驗。" },
+    { name: "豪華MPV — Toyota Alphard", body: "完美適用於機場接送、商務出行及日本私人觀光遊覽。" },
+    { name: "優質廂型車 — Toyota Hiace", body: "適合家庭出行、小型團體及企業接送。" },
   ],
 };
 

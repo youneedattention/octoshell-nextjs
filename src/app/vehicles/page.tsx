@@ -17,7 +17,7 @@ const SCHEMA = {
       "name": "Toyota Alphard",
       "brand": { "@type": "Brand", "name": "Toyota" },
       "vehicleSeatingCapacity": 6,
-      "description": "Premium executive minivan. Up to 6 passengers. Standard config: 4 passengers + 4 large suitcases. Light config (1–3 pax): up to 10 large suitcases. Dimensions: 4,945mm × 1,850mm × 1,895mm.",
+      "description": "Luxury MPV. Perfect for airport transfers, business travel and private sightseeing tours in Japan. Up to 6 passengers. Standard config: 4 passengers + 4 large suitcases. Dimensions: 4,945mm × 1,850mm × 1,895mm.",
       "offers": {
         "@type": "Offer",
         "price": "20000",
@@ -29,10 +29,10 @@ const SCHEMA = {
     },
     {
       "@type": "Car",
-      "name": "Toyota Hiace Grand Cabin",
+      "name": "Toyota Hiace",
       "brand": { "@type": "Brand", "name": "Toyota" },
       "vehicleSeatingCapacity": 9,
-      "description": "Luxury large-capacity van. Up to 9 passengers and 15 large suitcases. Ideal for groups, golf bags, ski equipment, and strollers. Dimensions: 5,380mm × 1,880mm × 2,285mm.",
+      "description": "Premium Van. Ideal for families, small groups and corporate transportation. Up to 9 passengers and 15 large suitcases. Dimensions: 5,380mm × 1,880mm × 2,285mm.",
       "offers": {
         "@type": "Offer",
         "price": "22000",
@@ -116,11 +116,11 @@ const VEHICLES: VehicleData[] = [
   {
     id: "alphard",
     name: "Toyota Alphard",
-    badge: { en: "Executive Minivan", ja: "エグゼクティブミニバン", zh: "商務廂型車" },
+    badge: { en: "Luxury MPV", ja: "ラグジュアリーMPV", zh: "豪華MPV" },
     tagline: {
-      en: "Japan's most prestigious private hire vehicle. Whisper-quiet cabin, plush leather, and enough space for luggage-heavy travellers or VIP guests.",
-      ja: "日本最高峰のプレミアムミニバン。静粛な車内と上質なレザーシートで、大荷物のご旅行者やVIPゲストにも最適です。",
-      zh: "日本最頂級的私人包車。靜謐的車廂、豪華皮革座椅，無論是攜帶大量行李的旅客還是VIP貴賓均適用。",
+      en: "Perfect for airport transfers, business travel and private sightseeing tours in Japan.",
+      ja: "空港送迎、ビジネス出張、プライベート観光に最適です。",
+      zh: "完美適用於機場接送、商務出行及日本私人觀光遊覽。",
     },
     img: "/images/alphard.webp",
     dims: { l: "4,945 mm", w: "1,850 mm", h: "1,895 mm" },
@@ -145,12 +145,12 @@ const VEHICLES: VehicleData[] = [
   },
   {
     id: "hiace",
-    name: "Toyota Hiace Grand Cabin",
-    badge: { en: "Group Luxury Van", ja: "グループラグジュアリーバン", zh: "豪華大容量客車" },
+    name: "Toyota Hiace",
+    badge: { en: "Premium Van", ja: "プレミアムバン", zh: "優質廂型車" },
     tagline: {
-      en: "Maximum capacity without sacrificing comfort. The go-to choice for large families, tour groups, and travellers with oversized equipment.",
-      ja: "快適性を犠牲にせず最大限の積載量を実現。大家族・ツアーグループ・大型機材をお持ちの方に最適です。",
-      zh: "最大容量不犧牲舒適度。大家庭、旅遊團及攜帶超大型器材的旅客的首選。",
+      en: "Ideal for families, small groups and corporate transportation.",
+      ja: "ファミリー、小グループ、法人輸送に最適です。",
+      zh: "適合家庭出行、小型團體及企業接送。",
     },
     img: "/images/hiace.webp",
     dims: { l: "5,380 mm", w: "1,880 mm", h: "2,285 mm" },
