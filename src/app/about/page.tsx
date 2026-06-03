@@ -8,9 +8,6 @@ import { useLang } from "@/context/LangContext";
 import type { Lang } from "@/lib/translations";
 import React from "react";
 
-/* ── Vehicle images ─────────────────────────────────────────────────── */
-const ALPHARD_IMG = "https://octoshell.jp/wp-content/uploads/2024/09/toyotaalphard.png";
-const HIACE_IMG   = "https://octoshell.jp/wp-content/uploads/2024/09/toyatahiace.png";
 
 /* ══════════════════════════════════════════════════════════════════════
    EXACT USER-PROVIDED COPY — strictly verbatim, three languages
@@ -73,24 +70,9 @@ const SERVICES: Record<Lang, Service[]> = {
   ],
 };
 
-/* ── Section 3: Vehicles ────────────────────────────────────────────── */
+/* ── Section 3: Fleet ───────────────────────────────────────────────── */
 const VEH_SECTION_BADGE: Record<Lang, string> = {
   ja: "車種クラス", en: "Vehicle Classes", zh: "車隊級別",
-};
-type Vehicle = { name: string; body: string };
-const VEHICLES: Record<Lang, Vehicle[]> = {
-  ja: [
-    { name: "ラグジュアリーMPV — Toyota Alphard", body: "空港送迎、ビジネス出張、プライベート観光に最適です。" },
-    { name: "プレミアムバン — Toyota Hiace",      body: "ファミリー、小グループ、法人輸送に最適です。" },
-  ],
-  en: [
-    { name: "Luxury MPV — Toyota Alphard", body: "Perfect for airport transfers, business travel and private sightseeing tours in Japan." },
-    { name: "Premium Van — Toyota Hiace",  body: "Ideal for families, small groups and corporate transportation." },
-  ],
-  zh: [
-    { name: "豪華MPV — Toyota Alphard", body: "完美適用於機場接送、商務出行及日本私人觀光遊覽。" },
-    { name: "優質廂型車 — Toyota Hiace", body: "適合家庭出行、小型團體及企業接送。" },
-  ],
 };
 
 /* ── FAQ ────────────────────────────────────────────────────────────── */
@@ -720,36 +702,32 @@ export default function AboutPage() {
           </div>
 
           {/* ════════════════════════════════════════════════════════
-              Section 3: Vehicles
+              Section 3: Fleet CTA
           ════════════════════════════════════════════════════════ */}
           <div className="mt-20 sm:mt-28">
             <SectionLabel label={VEH_SECTION_BADGE[lang]} />
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-7">
-              {VEHICLES[lang].map((veh, i) => (
-                <div key={i}
-                  className="relative bg-[var(--c-card)] border border-[var(--c-rule)] overflow-hidden group hover:border-[#c9a84c]/30 transition-all duration-300">
-                  <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/50 to-transparent" />
-
-                  {/* vehicle image — keep white bg so mix-blend-multiply works */}
-                  <div className="bg-white mx-6 mt-7 mb-0 h-[170px] sm:h-[200px] flex items-center justify-center overflow-hidden">
-                    <Image
-                      src={i === 0 ? ALPHARD_IMG : HIACE_IMG}
-                      alt={veh.name}
-                      width={360}
-                      height={210}
-                      className="object-contain mix-blend-multiply w-full h-full p-2"
-                    />
+            <div className="border border-[var(--c-rule)] p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+              <div className="space-y-4">
+                {[
+                  { name: "Toyota Alphard", badge: "Luxury MPV" },
+                  { name: "Toyota Hiace",   badge: "Premium Van" },
+                ].map((v) => (
+                  <div key={v.name}>
+                    <p className="text-[var(--c-ink)] text-[15px] font-medium tracking-[0.1em]">{v.name}</p>
+                    <p className="text-[10px] tracking-[0.35em] uppercase text-[#c9a84c]/70 font-medium mt-0.5">{v.badge}</p>
                   </div>
-
-                  <div className="px-6 py-6">
-                    <h3 className="text-[var(--c-ink)] text-[16px] sm:text-[17px] font-medium tracking-[0.1em] mb-3 leading-snug">
-                      {veh.name}
-                    </h3>
-                    <p className="text-[var(--c-ink-2)] text-[14px] leading-[1.8] tracking-[0.03em]">{veh.body}</p>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
+              <Link href="/vehicles" draggable={false} onContextMenu={(e) => e.preventDefault()}
+                className="group shrink-0 inline-flex items-center gap-2.5 border border-[#c9a84c]/50 text-[#c9a84c]
+                           text-[11px] font-bold tracking-[0.3em] uppercase px-7 py-3.5
+                           hover:bg-[#c9a84c] hover:text-[#0c0c0c] transition-all duration-200">
+                {lang === "ja" ? "車種詳細を見る" : lang === "zh" ? "查看車型詳情" : "Explore Our Fleet"}
+                <svg className="w-3 h-3 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
+              </Link>
             </div>
           </div>
 

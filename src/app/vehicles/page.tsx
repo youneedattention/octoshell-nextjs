@@ -302,11 +302,11 @@ export default function VehiclesPage() {
               {/* Title row */}
               <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 sm:mb-14">
                 <div>
-                  <SectionLabel label={v.badge[lang]} />
                   <h2 className="text-[var(--c-ink)] text-2xl sm:text-3xl lg:text-[2rem] font-light tracking-[0.08em]">
                     {v.name}
                   </h2>
-                  <p className="mt-3 text-[var(--c-ink-2)] text-[15px] leading-[1.8] max-w-xl">{v.tagline[lang]}</p>
+                  <p className="mt-1 text-[10px] tracking-[0.35em] uppercase text-[#c9a84c]/70 font-medium">{v.badge[lang]}</p>
+                  <p className="mt-4 text-[var(--c-ink-2)] text-[15px] leading-[1.8] max-w-xl">{v.tagline[lang]}</p>
                 </div>
                 <Link href="/book" draggable={false} onContextMenu={(e) => e.preventDefault()}
                   className="group shrink-0 inline-flex items-center gap-2.5 bg-[#c9a84c] text-[#0c0c0c]

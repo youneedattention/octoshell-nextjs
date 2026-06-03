@@ -109,10 +109,8 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-            {/* Alphard card */}
-            <PriceCard name="Toyota Alphard · Luxury MPV" img={ALPHARD} rows={ALPHARD_ROWS} lang={lang} />
-            {/* Hiace card */}
-            <PriceCard name="Toyota Hiace · Premium Van"  img={HIACE}   rows={HIACE_ROWS}   lang={lang} />
+            <PriceCard name="Toyota Alphard" badge="Luxury MPV"  img={ALPHARD} rows={ALPHARD_ROWS} lang={lang} />
+            <PriceCard name="Toyota Hiace"   badge="Premium Van" img={HIACE}   rows={HIACE_ROWS}   lang={lang} />
           </div>
           <CurrencyNote lang={lang} />
         </div>
@@ -166,9 +164,10 @@ export default function Home() {
 import type { Lang } from "@/lib/translations";
 
 function PriceCard({
-  name, img, rows, lang,
+  name, badge, img, rows, lang,
 }: {
   name: string;
+  badge: string;
   img: string;
   rows: [string, number][];
   lang: Lang;
@@ -180,9 +179,10 @@ function PriceCard({
           className="object-contain max-h-60 w-auto" />
       </div>
       <div className="flex flex-col flex-1 px-5 sm:px-7 py-5 sm:py-6">
-        <h3 className="text-sm font-bold tracking-[0.2em] text-center mb-4 text-[var(--c-ink)]">
-          {name}
-        </h3>
+        <div className="text-center mb-4">
+          <h3 className="text-sm font-bold tracking-[0.2em] text-[var(--c-ink)]">{name}</h3>
+          <p className="mt-0.5 text-[10px] tracking-[0.35em] uppercase text-[#c9a84c]/70 font-medium">{badge}</p>
+        </div>
         <table className="w-full text-sm flex-1">
           <tbody>
             {rows.map(([routeKey, yen]) => (
