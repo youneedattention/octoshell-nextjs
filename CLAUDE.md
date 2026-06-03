@@ -3,6 +3,9 @@
 ## Project
 Next.js 16 + TypeScript + Tailwind CSS 4. Private chauffeur service website for Japan market.
 Live: https://octoshell.jp | Staging: https://octoshell-nextjs.vercel.app
+GitHub: https://github.com/youneedattention/octoshell-nextjs
+Local: C:\Users\Admin\Vibe coding\octoshell-nextjs
+Git remote: origin → master
 
 ## Directory Structure
 ```
