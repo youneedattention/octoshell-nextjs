@@ -234,6 +234,58 @@ const FAQS: { q: Copy; a: Copy }[] = [
   },
 ];
 
+const CMP_TITLE: Copy = { en: "PRIVATE TRANSFER vs. OTHER OPTIONS", ja: "プライベート送迎 vs. 他の交通手段", zh: "專車接送 vs. 其他交通方式" };
+const CMP_ROWS: { feature: Copy; private: Copy; train: Copy; taxi: Copy; bus: Copy }[] = [
+  {
+    feature: { en: "Door-to-door service",        ja: "ドアツードアサービス",   zh: "門對門服務" },
+    private: { en: "✓ Yes",                        ja: "✓ あり",               zh: "✓ 是" },
+    train:   { en: "✗ Station only",               ja: "✗ 駅のみ",             zh: "✗ 僅限車站" },
+    taxi:    { en: "✓ Yes",                        ja: "✓ あり",               zh: "✓ 是" },
+    bus:     { en: "✗ Fixed stops",                ja: "✗ 固定停留所のみ",     zh: "✗ 固定站點" },
+  },
+  {
+    feature: { en: "Fixed all-inclusive price",    ja: "定額・追加費用なし",    zh: "定額全包價格" },
+    private: { en: "✓ Always",                     ja: "✓ 常に定額",           zh: "✓ 固定定額" },
+    train:   { en: "✓ Fixed fare",                 ja: "✓ 定額",              zh: "✓ 定額" },
+    taxi:    { en: "✗ Metered + tolls",            ja: "✗ メーター＋高速代",   zh: "✗ 計費+過路費" },
+    bus:     { en: "✓ Fixed fare",                 ja: "✓ 定額",              zh: "✓ 定額" },
+  },
+  {
+    feature: { en: "Luggage handling",             ja: "荷物サポート",          zh: "行李協助" },
+    private: { en: "✓ Full assistance",            ja: "✓ 全面サポート",       zh: "✓ 全程協助" },
+    train:   { en: "✗ Self-carry",                 ja: "✗ 自己搬送",           zh: "✗ 自行搬運" },
+    taxi:    { en: "△ Limited",                    ja: "△ 限定的",             zh: "△ 有限協助" },
+    bus:     { en: "✗ Self-carry",                 ja: "✗ 自己搬送",           zh: "✗ 自行搬運" },
+  },
+  {
+    feature: { en: "Flight delay — no extra cost", ja: "フライト遅延・追加費用なし", zh: "航班延誤無額外費用" },
+    private: { en: "✓ Free 90-min wait",           ja: "✓ 90分無料待機",       zh: "✓ 免費等候90分鐘" },
+    train:   { en: "✓ Not affected",               ja: "✓ 影響なし",           zh: "✓ 不受影響" },
+    taxi:    { en: "✗ Meter keeps running",        ja: "✗ メーターが進む",     zh: "✗ 計費持續" },
+    bus:     { en: "✗ Fixed schedule",             ja: "✗ 時刻表どおり",       zh: "✗ 固定班次" },
+  },
+  {
+    feature: { en: "Group / large luggage",        ja: "グループ・大型荷物",    zh: "團體/大型行李" },
+    private: { en: "✓ Up to 9 pax",               ja: "✓ 最大9名",            zh: "✓ 最多9人" },
+    train:   { en: "✗ Cramped",                    ja: "✗ 狭い",               zh: "✗ 空間有限" },
+    taxi:    { en: "✗ Max 4 pax",                  ja: "✗ 最大4名",            zh: "✗ 最多4人" },
+    bus:     { en: "△ Limited storage",            ja: "△ 荷物スペース限定",   zh: "△ 行李空間有限" },
+  },
+  {
+    feature: { en: "Privacy",                      ja: "プライバシー",          zh: "私密性" },
+    private: { en: "✓ Vehicle is yours only",      ja: "✓ 完全貸切",           zh: "✓ 專屬包車" },
+    train:   { en: "✗ Public",                     ja: "✗ 公共交通",           zh: "✗ 公共交通" },
+    taxi:    { en: "✓ Private",                    ja: "✓ プライベート",       zh: "✓ 私密" },
+    bus:     { en: "✗ Shared with others",         ja: "✗ 相乗り",             zh: "✗ 與人共乘" },
+  },
+];
+const CMP_HEADS: { key: "private" | "train" | "taxi" | "bus"; label: Copy }[] = [
+  { key: "private", label: { en: "Octoshell Private", ja: "Octoshell 専車", zh: "Octoshell 專車" } },
+  { key: "train",   label: { en: "Narita Express / Keikyu", ja: "成田エクスプレス / 京急", zh: "成田特快 / 京急" } },
+  { key: "taxi",    label: { en: "Street Taxi", ja: "流しタクシー", zh: "街頭計程車" } },
+  { key: "bus",     label: { en: "Limousine Bus", ja: "リムジンバス", zh: "利木津巴士" } },
+];
+
 const CTA_TITLE: Copy = { en: "Ready to Book Your Transfer?", ja: "送迎をご予約ください", zh: "準備好預訂您的接送了嗎？" };
 const CTA_SUB: Copy   = { en: "Instant quote · No credit card required to enquire · Reply within 2 hours", ja: "即時見積 · お問合せはクレジットカード不要 · 2時間以内にご返信", zh: "即時報價 · 詢問無需信用卡 · 2小時內回覆" };
 const CTA_BTN: Copy   = { en: "Book Now", ja: "今すぐ予約", zh: "立即預訂" };
@@ -440,6 +492,41 @@ export default function AirportPage() {
                 <p className="text-white/70 text-[13px] leading-[1.8]">{step.body}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══ COMPARISON TABLE ══════════════════════════════════════════ */}
+      <section className="bg-[var(--c-card)] py-16 sm:py-20 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <GoldRule />
+          <SectionLabel label={CMP_TITLE[lang]} />
+          <div className="overflow-x-auto -mx-4 sm:mx-0">
+            <table className="w-full min-w-[600px] text-[12px] sm:text-[13px]">
+              <thead>
+                <tr>
+                  <th className="pb-4 pr-4 text-left text-[var(--c-ink-3)] font-medium w-[32%]" />
+                  {CMP_HEADS.map((h) => (
+                    <th key={h.key} className={`pb-4 px-3 text-center font-bold tracking-[0.1em] ${h.key === "private" ? "text-[#c9a84c]" : "text-[var(--c-ink-3)]"}`}>
+                      {h.label[lang]}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {CMP_ROWS.map((row, i) => (
+                  <tr key={i} className="border-t border-[var(--c-rule)]">
+                    <td className="py-3.5 pr-4 text-[var(--c-ink-2)] leading-snug">{row.feature[lang]}</td>
+                    {CMP_HEADS.map((h) => (
+                      <td key={h.key} className={`py-3.5 px-3 text-center leading-snug
+                        ${h.key === "private" ? "text-[#c9a84c] font-semibold bg-[#c9a84c]/[0.04]" : "text-[var(--c-ink-3)]"}`}>
+                        {row[h.key][lang]}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
