@@ -209,11 +209,11 @@ const FAQ: Record<Lang, FaqGroup[]> = {
       items: [
         {
           q: "Do you charge for waiting time (e.g., flight delays)?",
-          a: "Our chauffeur will follow up your flight info and adjust the pick up time accordingly. If the waiting time exceeds 90 minutes after the actual landing time, an extended waiting fee will apply for every 30 minutes (rounded up to the nearest 30-minute block):\nToyota Alphard: JPY 2,500 (incl. tax) per 30 mins\nToyota Hiace: JPY 3,000 (incl. tax) per 30 mins",
+          a: "The first 90 minutes after landing are free. After that: Alphard ¥2,500 / Hiace ¥3,000 per 30 minutes. Flight delays are always free — you only pay if the wait is caused by personal activities.",
         },
         {
-          q: "What if a passenger needs to change the route or extend the service time spontaneously?",
-          a: "Please communicate with the chauffeur immediately, and they will contact the Dispatch Center to confirm the additional charges. New highway tolls, parking fees, deadhead tolls, chauffeur accommodation expenses, and hourly extension surcharges incurred due to spontaneous route/time changes will be added to your final bill. Since our services are pre-scheduled, please understand that we may not be able to accommodate all last-minute requests.",
+          q: "Can I change the route or add time during the trip?",
+          a: "Tell your chauffeur right away — extra charges will apply, and same-day changes may not always be possible.",
         },
         {
           q: "Are tolls, parking, fuel, and all fees included in the price?",
@@ -386,9 +386,9 @@ const EXTRA_ITEMS: { g: 0|1|2|3|4|5; q: Record<Lang,string>; a: Record<Lang,stri
     g: 3,
     q: { en: "Do you offer hourly charter?", ja: "時間制貸切はできますか？", zh: "可以按小時包車嗎？" },
     a: {
-      en: "Yes. Minimum 3 hours. Ideal for multi-stop shopping, corporate meetings, and sightseeing. Book in advance — same-day availability is not guaranteed.",
-      ja: "はい。最低3時間からご利用いただけます。複数スポット巡りのショッピング・企業訪問・観光に最適です。事前予約推奨。当日ご予約はご対応できない場合があります。",
-      zh: "是的。最少3小時起。適合多站購物、商務拜訪及觀光。建議提前預訂，當天預約未必有車。",
+      en: "Yes. Minimum 4 hours. Ideal for shopping, corporate meetings, and sightseeing. Book in advance — same-day bookings are not guaranteed.",
+      ja: "はい。最低4時間からご利用いただけます。ショッピング・企業訪問・観光に最適です。事前予約推奨。当日ご予約はご対応できない場合があります。",
+      zh: "是的。最少4小時起。適合購物、商務拜訪及觀光。建議提前預訂，當天預約未必有車。",
     },
   },
   /* ── At the Airport ── */
@@ -423,9 +423,9 @@ const EXTRA_ITEMS: { g: 0|1|2|3|4|5; q: Record<Lang,string>; a: Record<Lang,stri
     g: 4,
     q: { en: "How long will the driver wait after landing?", ja: "着陸後どのくらい待ってもらえますか？", zh: "落地後司機會等多久？" },
     a: {
-      en: "90 minutes from your actual touchdown — free of charge. This covers customs, immigration, and baggage claim. Beyond 90 minutes for personal reasons: Alphard ¥2,500 / Hiace ¥3,000 per 30 minutes. Waiting caused by flight delays is always free.",
-      ja: "実際の着陸時刻から90分間は無料でお待ちします。入国審査・手荷物受け取りに十分な時間です。個人的な理由で90分を超えた場合：アルファード ¥2,500・ハイエース ¥3,000（30分毎）。フライト遅延による超過は常に無料です。",
-      zh: "實際落地後90分鐘免費等候，足以完成通關及取行李。若因個人原因超過90分鐘：埃爾法 ¥2,500・海獅 ¥3,000（每30分鐘）。因航班延誤所致的等候永遠免費。",
+      en: "Your chauffeur waits in the arrivals hall until you appear. We track your flight in real time, so they know exactly when you land. You have 90 minutes after touchdown to clear customs and collect your bags — take your time.",
+      ja: "乗務員は到着ロビーでお客様が現れるまでお待ちしております。フライトをリアルタイムで追跡しているため、着陸時間は把握済みです。通関・手荷物受け取りには着陸後90分間ゆっくりお使いください。",
+      zh: "司機在到達大廳等您出現。我們即時追蹤您的航班，因此完全掌握您的落地時間。落地後有90分鐘讓您完成通關及取行李，請從容不迫。",
     },
   },
   {
