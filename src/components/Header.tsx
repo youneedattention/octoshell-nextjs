@@ -339,6 +339,15 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               )}
             </div>
 
+            {/* FLEET */}
+            <Link href="/vehicles"
+              onClick={pathname === "/vehicles" ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
+              className="text-white/80 text-[12px] lg:text-[13px] tracking-[0.22em]
+                         hover:text-[#c9a84c] transition-all duration-200 whitespace-nowrap
+                         pb-[3px] border-b border-transparent hover:border-[#c9a84c]/55">
+              {t.nav_fleet[lang]}
+            </Link>
+
             {/* ABOUT */}
             <div className="relative" onMouseEnter={openDrop} onMouseLeave={closeDrop}>
               <Link href="/about"
@@ -593,6 +602,12 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                 </div>
               )}
             </div>
+
+            {/* FLEET */}
+            <Link href="/vehicles" onClick={pathname === "/vehicles" ? (e) => { e.preventDefault(); closeAll(); scrollTop(); } : closeAll}
+              className="text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors">
+              {t.nav_fleet[lang]}
+            </Link>
 
             {/* ABOUT — expandable */}
             <div>
