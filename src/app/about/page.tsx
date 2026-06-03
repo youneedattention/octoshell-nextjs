@@ -768,7 +768,7 @@ export default function AboutPage() {
           <SectionLabel label={lang === "ja" ? "よくある質問" : lang === "zh" ? "常見問題" : "FAQ"} />
 
           {/* FAQ title: was text-2xl/3xl → text-3xl/4xl */}
-          <h2 className="text-white text-3xl sm:text-4xl font-light tracking-[0.1em] mb-11 sm:mb-16">
+          <h2 className="text-[var(--c-ink)] text-3xl sm:text-4xl font-light tracking-[0.1em] mb-11 sm:mb-16">
             {lang === "ja" ? "よくあるご質問" : lang === "zh" ? "常見問題" : "Frequently Asked Questions"}
           </h2>
 
