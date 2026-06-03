@@ -322,7 +322,35 @@ const FAQ: Record<Lang, FaqGroup[]> = {
    Sub-components  (all sizes 脳1.2 vs original)
 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲 */
 
-/* Section label 鈥?was [10px]/[11px], now [12px]/[13px] */
+/* ── New 6-group category names ─────────────────────────────────────── */
+const GROUP_NAMES: Record<Lang, [string, string, string, string, string, string]> = {
+  en: ["About Us", "Prices & Fees", "Cars & Luggage", "Booking & Cancellation", "At the Airport", "Special Requests"],
+  ja: ["私たちについて", "料金・費用", "車両・手荷物", "予約・キャンセル", "空港当日", "特別リクエスト"],
+  zh: ["關於我們", "費用與收費", "車輛與行李", "預訂與取消", "在機場", "特殊需求"],
+};
+
+function buildRegroupedFAQ(faq: Record<Lang, FaqGroup[]>): Record<Lang, FaqGroup[]> {
+  const result = {} as Record<Lang, FaqGroup[]>;
+  (["en", "ja", "zh"] as Lang[]).forEach((lang) => {
+    const veh = faq[lang][0].items;
+    const pay = faq[lang][1].items;
+    const can = faq[lang][2].items;
+    const n   = GROUP_NAMES[lang];
+    result[lang] = [
+      { group: n[0], items: [veh[4], veh[5]] },
+      { group: n[1], items: [pay[2], pay[3], pay[4], pay[5]] },
+      { group: n[2], items: [veh[0], veh[1], veh[6]] },
+      { group: n[3], items: [can[0], pay[1]] },
+      { group: n[4], items: [pay[0]] },
+      { group: n[5], items: [veh[2], veh[3]] },
+    ];
+  });
+  return result;
+}
+
+const FAQ_GROUPED = buildRegroupedFAQ(FAQ);
+
+/* Section label — was [10px]/[11px], now [12px]/[13px] */
 function SectionLabel({ label }: { label: string }) {
   return (
     <div className="flex items-center gap-3 mb-7 sm:mb-9">
@@ -579,7 +607,7 @@ export default function AboutPage() {
           </h2>
 
           <div className="space-y-11 sm:space-y-14">
-            {FAQ[lang].map((group) => (
+            {FAQ_GROUPED[lang].map((group) => (
               <div key={group.group}>
                 {/* group heading: was [10px] 鈫?[12px]; line was w-3 鈫?w-4 */}
                 <div className="flex items-center gap-3.5 mb-1">
