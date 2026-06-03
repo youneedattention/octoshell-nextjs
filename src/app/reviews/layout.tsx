@@ -20,13 +20,6 @@ const REVIEW_SCHEMA = {
   "@type": "LocalBusiness",
   "@id": `${BASE}/#localbusiness`,
   "name": "Octoshell Co., Ltd.",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "3",
-    "bestRating": "5",
-    "worstRating": "1",
-  },
   "review": [
     {
       "@type": "Review",
