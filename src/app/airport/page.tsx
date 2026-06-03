@@ -191,6 +191,47 @@ const FAQS: { q: Copy; a: Copy }[] = [
     q: { en: "Can I pay cash inside the car?", ja: "車内で現金払いはできますか？", zh: "可以在車內現金付款嗎？" },
     a: { en: "Yes. Cash payment inside the vehicle is accepted. You can also register a credit card before your trip for automatic billing via Stripe. Corporate clients may request a bank transfer.", ja: "はい、対応しています。クレジットカードをご登録いただければ、運行後にStripeで自動決済も可能です。法人のお客様は事前振込も承ります。", zh: "可以。支持車內現金結帳。亦可提前綁定信用卡，行程結束後透過Stripe自動扣款。企業客戶可申請銀行轉帳。" },
   },
+  /* ── Add / edit Q&As below freely ── */
+  {
+    q: { en: "Do your drivers speak English?", ja: "乗務員は英語を話せますか？", zh: "司機會說英語嗎？" },
+    a: { en: "Yes. All bookings are fully supported in English. Our drivers have working English for day-to-day communication. For complex conversations we use translation tools to assist.", ja: "はい。すべての予約は英語で対応しております。乗務員は日常会話程度の英語を使用できます。複雑なご要望の際は翻訳ツールを活用してサポートいたします。", zh: "是的。我們全程提供英文預訂支援。司機具備日常英語溝通能力，如有複雜需求，亦會借助翻譯工具協助。" },
+  },
+  {
+    q: { en: "Do you operate 24/7?", ja: "24時間対応していますか？", zh: "是否24小時服務？" },
+    a: { en: "Yes. We operate around the clock with no late-night or early-morning surcharge. All prices are the same regardless of departure time.", ja: "はい。24時間365日対応しており、深夜・早朝の割増料金は一切ございません。出発時間に関わらず料金は同一です。", zh: "是的。我們全年無休、24小時服務，深夜及清晨均無附加費用，價格不因時段而改變。" },
+  },
+  {
+    q: { en: "Where exactly will the driver meet me?", ja: "空港でどこで待っていてもらえますか？", zh: "司機在機場哪裡等候？" },
+    a: { en: "In the arrivals hall, after customs and baggage claim. Your chauffeur will be holding a name board with your name. Please do not exit the terminal before finding your driver.", ja: "到着ロビー（入国審査・手荷物受け取り後）にてお待ちしております。乗務員がお客様のお名前を掲げたネームプレートをお持ちしております。ドライバーを見つける前に建物の外へ出ないようご注意ください。", zh: "在到達大廳（通關及取行李後）等候。司機將手持寫有您姓名的接機牌。請在找到司機前勿離開航站樓。" },
+  },
+  {
+    q: { en: "How long does it take from Narita Airport to Tokyo?", ja: "成田空港から東京市内まで何分かかりますか？", zh: "從成田機場到東京市區需要多久？" },
+    a: { en: "Typically 50–70 minutes. Allow up to 90 minutes during peak hours or if there is an accident on the expressway.", ja: "通常50〜70分程度です。ラッシュアワー時や高速道路での事故発生時は、最大90分ほどお見込みください。", zh: "通常約50至70分鐘。尖峰時段或高速公路發生事故時，請預留最多90分鐘。" },
+  },
+  {
+    q: { en: "How long does it take from Haneda Airport to Tokyo?", ja: "羽田空港から東京市内まで何分かかりますか？", zh: "從羽田機場到東京市區需要多久？" },
+    a: { en: "Typically 30–45 minutes. Allow up to 60 minutes during heavy traffic.", ja: "通常30〜45分程度です。交通渋滞時は最大60分ほどお見込みください。", zh: "通常約30至45分鐘。交通繁忙時請預留最多60分鐘。" },
+  },
+  {
+    q: { en: "How long will the driver wait after landing?", ja: "着陸後どのくらい待ってもらえますか？", zh: "落地後司機會等多久？" },
+    a: { en: "90 minutes from your actual touchdown — free of charge. This covers customs, immigration, and baggage claim. Beyond 90 minutes for personal reasons: Alphard ¥2,500 / Hiace ¥3,000 per 30 minutes. Waiting caused by flight delays is always free.", ja: "実際の着陸時刻から90分間は無料でお待ちします。入国審査・手荷物受け取りに十分な時間です。個人的な理由で90分を超えた場合：アルファード ¥2,500・ハイエース ¥3,000（30分毎）。フライト遅延による超過は常に無料です。", zh: "實際落地後90分鐘免費等候，足以完成通關及取行李。若因個人原因超過90分鐘：埃爾法 ¥2,500・海獅 ¥3,000（每30分鐘）。因航班延誤所致的等候永遠免費。" },
+  },
+  {
+    q: { en: "Should I exchange my JR Pass at the airport?", ja: "JRパスは空港で交換すべきですか？", zh: "我應該在機場兌換JR Pass嗎？" },
+    a: { en: "We recommend exchanging at major Tokyo stations (Tokyo, Shinjuku, Shibuya) where queues are minimal. Airport counters can have 1–2 hour waits. Your driver can take you to a station counter after drop-off if needed.", ja: "東京・新宿・渋谷など都内の主要駅での交換をお勧めします。空港のカウンターは1〜2時間待ちになる場合があります。ご希望であれば、お送りの後に駅のカウンターへご案内することも可能です。", zh: "建議在東京、新宿、澀谷等主要車站兌換，等候時間極短。機場兌換窗口可能需排隊1至2小時。若有需要，司機可在送達後帶您前往車站窗口。" },
+  },
+  {
+    q: { en: "Do you accommodate wheelchair users?", ja: "車椅子の方も利用できますか？", zh: "可以乘坐輪椅嗎？" },
+    a: { en: "Yes. Please notify us at booking with the wheelchair type (foldable / electric / dimensions) so we can assign a suitable vehicle.", ja: "はい。ご予約の際に車椅子の種類（折りたたみ式・電動式・サイズ）をお知らせいただければ、適切な車両をご用意いたします。", zh: "可以。預訂時請告知輪椅類型（折疊式／電動式／尺寸），以便我們安排合適的車輛。" },
+  },
+  {
+    q: { en: "What if I leave something in the car?", ja: "車内に忘れ物をした場合は？", zh: "如果在車上遺留物品怎麼辦？" },
+    a: { en: "Contact us immediately at info@octoshell.jp. If the item is found, we will arrange return delivery. Shipping costs are at the client's expense.", ja: "速やかにinfo@octoshell.jpまでご連絡ください。お忘れ物が見つかり次第、ご返送の手配をいたします。送料はお客様のご負担となります。", zh: "請立即聯絡 info@octoshell.jp。若找到遺失物，我們將為您安排寄回。郵寄費用由客人承擔。" },
+  },
+  {
+    q: { en: "Is tipping required?", ja: "チップは必要ですか？", zh: "需要給小費嗎？" },
+    a: { en: "No. Tipping is not customary in Japan and is never expected by our chauffeurs. A kind word or an online review is the best way to show your appreciation.", ja: "不要です。チップは日本では一般的な慣習ではなく、乗務員が期待することもございません。温かいお言葉やオンラインレビューが最大の励みになります。", zh: "不需要。日本沒有給小費的習慣，我們的司機也從不期待。若您滿意服務，留下評價或一句好評是最好的回饋。" },
+  },
 ];
 
 const CTA_TITLE: Copy = { en: "Ready to Book Your Transfer?", ja: "送迎をご予約ください", zh: "準備好預訂您的接送了嗎？" };

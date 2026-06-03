@@ -329,6 +329,171 @@ const GROUP_NAMES: Record<Lang, [string, string, string, string, string, string]
   zh: ["關於我們", "費用與收費", "車輛與行李", "預訂與取消", "在機場", "特殊需求"],
 };
 
+/* ── Extra Q&As (edit here to add / modify) ─────────────────────────
+   group index:  0=About Us  1=Prices & Fees  2=Cars & Luggage
+                 3=Booking & Cancellation  4=At the Airport  5=Special Requests
+──────────────────────────────────────────────────────────────────── */
+const EXTRA_ITEMS: { g: 0|1|2|3|4|5; q: Record<Lang,string>; a: Record<Lang,string> }[] = [
+  /* ── About Us ── */
+  {
+    g: 0,
+    q: { en: "Do your drivers speak English?", ja: "乗務員は英語を話せますか？", zh: "司機會說英語嗎？" },
+    a: {
+      en: "Yes. All bookings are fully supported in English. Our drivers have working English for day-to-day communication. For complex conversations we use translation tools to assist.",
+      ja: "はい。すべての予約は英語で対応しております。乗務員は日常会話程度の英語を使用できます。複雑なご要望の際は翻訳ツールを活用してサポートいたします。",
+      zh: "是的。我們全程提供英文預訂支援。司機具備日常英語溝通能力，如有複雜需求，亦會借助翻譯工具協助。",
+    },
+  },
+  {
+    g: 0,
+    q: { en: "Do you operate 24/7?", ja: "24時間対応していますか？", zh: "是否24小時服務？" },
+    a: {
+      en: "Yes. We operate around the clock with no late-night or early-morning surcharge. All prices are the same regardless of departure time.",
+      ja: "はい。24時間365日対応しており、深夜・早朝の割増料金は一切ございません。出発時間に関わらず料金は同一です。",
+      zh: "是的。我們全年無休、24小時服務，深夜及清晨均無附加費用，價格不因時段而改變。",
+    },
+  },
+  /* ── Cars & Luggage ── */
+  {
+    g: 2,
+    q: { en: "How much luggage can I bring?", ja: "荷物はどのくらい積めますか？", zh: "可以帶多少行李？" },
+    a: {
+      en: "Alphard: up to 4 passengers and 4 large suitcases. Hiace: up to 9 passengers and 6+ large suitcases. Please declare your exact luggage count when booking. Oversized items — golf bags, strollers, ski equipment — must be mentioned in advance.",
+      ja: "アルファード：最大4名様・大型スーツケース4個。ハイエース：最大9名様・大型スーツケース6個以上。ご予約時に荷物の数を必ずお知らせください。ゴルフバッグ・ベビーカー・スキー用品などの大型荷物は必ず事前にお申し出ください。",
+      zh: "埃爾法：最多4人及4件大型行李箱。海獅：最多9人及6件以上大型行李箱。預訂時請告知確切行李數量。高爾夫球包、嬰兒車、滑雪器材等特大行李必須提前說明。",
+    },
+  },
+  {
+    g: 2,
+    q: { en: "Do you accommodate wheelchair users?", ja: "車椅子の方も利用できますか？", zh: "可以乘坐輪椅嗎？" },
+    a: {
+      en: "Yes. Please notify us at booking with the wheelchair type (foldable / electric / dimensions) so we can assign a suitable vehicle.",
+      ja: "はい。ご予約の際に車椅子の種類（折りたたみ式・電動式・サイズ）をお知らせいただければ、適切な車両をご用意いたします。",
+      zh: "可以。預訂時請告知輪椅類型（折疊式／電動式／尺寸），以便我們安排合適的車輛。",
+    },
+  },
+  /* ── Booking & Cancellation ── */
+  {
+    g: 3,
+    q: { en: "Can I request multiple stops?", ja: "複数の立ち寄り先を追加できますか？", zh: "可以安排多個停靠點嗎？" },
+    a: {
+      en: "Yes. Please list all stops in advance when booking. Additional charges may apply depending on routing.",
+      ja: "はい。ご予約時に全ての立ち寄り先をご記入ください。ルートによっては追加料金が発生する場合があります。",
+      zh: "可以。請在預訂時列明所有停靠地點。視乎路線，可能需要支付額外費用。",
+    },
+  },
+  {
+    g: 3,
+    q: { en: "Do you offer hourly charter?", ja: "時間制貸切はできますか？", zh: "可以按小時包車嗎？" },
+    a: {
+      en: "Yes. Minimum 3 hours. Ideal for multi-stop shopping, corporate meetings, and sightseeing. Book in advance — same-day availability is not guaranteed.",
+      ja: "はい。最低3時間からご利用いただけます。複数スポット巡りのショッピング・企業訪問・観光に最適です。事前予約推奨。当日ご予約はご対応できない場合があります。",
+      zh: "是的。最少3小時起。適合多站購物、商務拜訪及觀光。建議提前預訂，當天預約未必有車。",
+    },
+  },
+  /* ── At the Airport ── */
+  {
+    g: 4,
+    q: { en: "Where exactly will the driver meet me?", ja: "空港でどこで待っていてもらえますか？", zh: "司機在機場哪裡等候？" },
+    a: {
+      en: "In the arrivals hall, after customs and baggage claim. Your chauffeur will be holding a name board with your name. Please do not exit the terminal before finding your driver.",
+      ja: "到着ロビー（入国審査・手荷物受け取り後）にてお待ちしております。乗務員がお客様のお名前を掲げたネームプレートをお持ちしております。ドライバーを見つける前に建物の外へ出ないようご注意ください。",
+      zh: "在到達大廳（通關及取行李後）等候。司機將手持寫有您姓名的接機牌。請在找到司機前勿離開航站樓。",
+    },
+  },
+  {
+    g: 4,
+    q: { en: "How long does it take from Narita Airport to Tokyo?", ja: "成田空港から東京市内まで何分かかりますか？", zh: "從成田機場到東京市區需要多久？" },
+    a: {
+      en: "Typically 50–70 minutes. Allow up to 90 minutes during peak hours or if there is an accident on the expressway.",
+      ja: "通常50〜70分程度です。ラッシュアワー時や高速道路での事故発生時は、最大90分ほどお見込みください。",
+      zh: "通常約50至70分鐘。尖峰時段或高速公路發生事故時，請預留最多90分鐘。",
+    },
+  },
+  {
+    g: 4,
+    q: { en: "How long does it take from Haneda Airport to Tokyo?", ja: "羽田空港から東京市内まで何分かかりますか？", zh: "從羽田機場到東京市區需要多久？" },
+    a: {
+      en: "Typically 30–45 minutes. Allow up to 60 minutes during heavy traffic.",
+      ja: "通常30〜45分程度です。交通渋滞時は最大60分ほどお見込みください。",
+      zh: "通常約30至45分鐘。交通繁忙時請預留最多60分鐘。",
+    },
+  },
+  {
+    g: 4,
+    q: { en: "How long will the driver wait after landing?", ja: "着陸後どのくらい待ってもらえますか？", zh: "落地後司機會等多久？" },
+    a: {
+      en: "90 minutes from your actual touchdown — free of charge. This covers customs, immigration, and baggage claim. Beyond 90 minutes for personal reasons: Alphard ¥2,500 / Hiace ¥3,000 per 30 minutes. Waiting caused by flight delays is always free.",
+      ja: "実際の着陸時刻から90分間は無料でお待ちします。入国審査・手荷物受け取りに十分な時間です。個人的な理由で90分を超えた場合：アルファード ¥2,500・ハイエース ¥3,000（30分毎）。フライト遅延による超過は常に無料です。",
+      zh: "實際落地後90分鐘免費等候，足以完成通關及取行李。若因個人原因超過90分鐘：埃爾法 ¥2,500・海獅 ¥3,000（每30分鐘）。因航班延誤所致的等候永遠免費。",
+    },
+  },
+  {
+    g: 4,
+    q: { en: "Should I exchange my JR Pass at the airport?", ja: "JRパスは空港で交換すべきですか？", zh: "我應該在機場兌換JR Pass嗎？" },
+    a: {
+      en: "We recommend exchanging at major Tokyo stations (Tokyo, Shinjuku, Shibuya) where queues are minimal. Airport counters can have 1–2 hour waits. Your driver can take you to a station counter after drop-off if needed.",
+      ja: "東京・新宿・渋谷など都内の主要駅での交換をお勧めします。空港のカウンターは1〜2時間待ちになる場合があります。ご希望であれば、お送りの後に駅のカウンターへご案内することも可能です。",
+      zh: "建議在東京、新宿、澀谷等主要車站兌換，等候時間極短。機場兌換窗口可能需排隊1至2小時。若有需要，司機可在送達後帶您前往車站窗口。",
+    },
+  },
+  /* ── Special Requests ── */
+  {
+    g: 5,
+    q: { en: "Do you pick up from hotels, private residences, or Airbnb?", ja: "ホテルや個人宅・Airbnbへの送迎はできますか？", zh: "可以從酒店、民宅或Airbnb接送嗎？" },
+    a: {
+      en: "Yes. We pick up from any address in Tokyo and surrounding areas — hotels, private homes, Airbnb, offices, or any location you specify.",
+      ja: "はい。東京都内および近郊であれば、ホテル・個人宅・Airbnb・オフィス等、ご指定のいかなる場所からでも対応いたします。",
+      zh: "是的。東京市內及周邊地區任何地址均可，包括酒店、私人住宅、Airbnb、辦公室等您指定的地點。",
+    },
+  },
+  {
+    g: 5,
+    q: { en: "Do you serve Yokohama cruise terminals?", ja: "横浜のクルーズターミナルも対応していますか？", zh: "可以接送橫濱郵輪碼頭嗎？" },
+    a: {
+      en: "Yes. We serve Osanbashi Pier and Daikoku Pier. Please include your vessel name and arrival/departure time when booking.",
+      ja: "はい。大さん橋ふ頭および大黒ふ頭に対応しております。ご予約の際は船名と入出港時間をお知らせください。",
+      zh: "是的。我們服務大棧橋碼頭及大黑碼頭。預訂時請提供船名及到港/離港時間。",
+    },
+  },
+  {
+    g: 5,
+    q: { en: "Do you go to Tokyo Disney Resort?", ja: "東京ディズニーリゾートへの送迎はできますか？", zh: "可以接送東京迪士尼樂園嗎？" },
+    a: {
+      en: "Yes. Both Tokyo Disneyland and Tokyo DisneySea entrances.",
+      ja: "はい。東京ディズニーランド・東京ディズニーシーの両入口に対応しております。",
+      zh: "是的。東京迪士尼樂園及東京迪士尼海洋均可接送。",
+    },
+  },
+  {
+    g: 5,
+    q: { en: "Do you provide long-distance transfers across Japan?", ja: "日本全国への長距離送迎はできますか？", zh: "可以提供日本全國長途接送嗎？" },
+    a: {
+      en: "Yes. We operate across Japan — Mt. Fuji, Hakone, Nikko, Karuizawa, ski resorts in Nagano and Niigata, and beyond. Contact us for a quote on any destination.",
+      ja: "はい。富士山・箱根・日光・軽井沢・長野や新潟のスキーリゾートなど、日本全国に対応しております。ご希望の目的地へのお見積もりはお気軽にお問い合わせください。",
+      zh: "是的。我們覆蓋全日本，包括富士山、箱根、日光、輕井澤、長野及新潟滑雪勝地等。任何目的地均可詢價。",
+    },
+  },
+  {
+    g: 5,
+    q: { en: "What if I leave something in the car?", ja: "車内に忘れ物をした場合は？", zh: "如果在車上遺留物品怎麼辦？" },
+    a: {
+      en: "Contact us immediately at info@octoshell.jp. If the item is found, we will arrange return delivery. Shipping costs are at the client's expense.",
+      ja: "速やかにinfo@octoshell.jpまでご連絡ください。お忘れ物が見つかり次第、ご返送の手配をいたします。送料はお客様のご負担となります。",
+      zh: "請立即聯絡 info@octoshell.jp。若找到遺失物，我們將為您安排寄回。郵寄費用由客人承擔。",
+    },
+  },
+  {
+    g: 5,
+    q: { en: "Is tipping required?", ja: "チップは必要ですか？", zh: "需要給小費嗎？" },
+    a: {
+      en: "No. Tipping is not customary in Japan and is never expected by our chauffeurs. A kind word or an online review is the best way to show your appreciation.",
+      ja: "不要です。チップは日本では一般的な慣習ではなく、乗務員が期待することもございません。温かいお言葉やオンラインレビューが最大の励みになります。",
+      zh: "不需要。日本沒有給小費的習慣，我們的司機也從不期待。若您滿意服務，留下評價或一句好評是最好的回饋。",
+    },
+  },
+];
+
 function buildRegroupedFAQ(faq: Record<Lang, FaqGroup[]>): Record<Lang, FaqGroup[]> {
   const result = {} as Record<Lang, FaqGroup[]>;
   (["en", "ja", "zh"] as Lang[]).forEach((lang) => {
@@ -336,7 +501,7 @@ function buildRegroupedFAQ(faq: Record<Lang, FaqGroup[]>): Record<Lang, FaqGroup
     const pay = faq[lang][1].items;
     const can = faq[lang][2].items;
     const n   = GROUP_NAMES[lang];
-    result[lang] = [
+    const base: FaqGroup[] = [
       { group: n[0], items: [veh[4], veh[5]] },
       { group: n[1], items: [pay[2], pay[3], pay[4], pay[5]] },
       { group: n[2], items: [veh[0], veh[1], veh[6]] },
@@ -344,6 +509,11 @@ function buildRegroupedFAQ(faq: Record<Lang, FaqGroup[]>): Record<Lang, FaqGroup
       { group: n[4], items: [pay[0]] },
       { group: n[5], items: [veh[2], veh[3]] },
     ];
+    // Append extra items to their respective groups
+    EXTRA_ITEMS.forEach(({ g, q, a }) => {
+      base[g].items.push({ q: q[lang], a: a[lang] });
+    });
+    result[lang] = base;
   });
   return result;
 }
