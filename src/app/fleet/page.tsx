@@ -266,8 +266,9 @@ export default function VehiclesPage() {
           <SectionLabel label={lang === "ja" ? "車種一覧" : lang === "zh" ? "車型一覽" : "Quick Comparison"} />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {VEHICLES.map((v) => {
-              const seats = v.id === "alphard" ? 6 : 9;
-              const bags  = v.id === "alphard" ? 5 : 9;
+              const cfg = v.id === "alphard"
+                ? { recPax: 4, recBag: 4, maxPax: 6, maxBag: 2 }
+                : { recPax: 8, recBag: 6, maxPax: 9, maxBag: 6 };
               return (
                 <div key={v.id} className="flex flex-col border border-[var(--c-rule)] hover:border-[#c9a84c]/30 transition-colors duration-300">
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/50 to-transparent" />
@@ -288,17 +289,35 @@ export default function VehiclesPage() {
                   {/* Divider */}
                   <div className="h-px bg-[var(--c-rule)] mx-6 sm:mx-8" />
 
-                  {/* Bottom: icons */}
-                  <div className="flex items-center gap-6 sm:gap-8 px-6 sm:px-8 py-4">
-                    {/* Pax */}
-                    <div className="flex items-center gap-2">
-                      <Image src="/icons/seat.png" alt="Pax" width={22} height={22} className="opacity-80 invert dark:invert-0 dark:opacity-60" />
-                      <span className="text-[var(--c-ink)] text-[15px] font-semibold">{seats}</span>
+                  {/* Capacity rows */}
+                  <div className="px-6 sm:px-8 py-4 space-y-2">
+                    {/* Recommended — gold, primary */}
+                    <div className="grid grid-cols-[3.5rem_1fr_1fr] items-center gap-3">
+                      <span className="text-[9px] tracking-[0.35em] uppercase font-semibold text-[#c9a84c]">
+                        {lang === "ja" ? "推奨" : lang === "zh" ? "推薦" : "REC."}
+                      </span>
+                      <div className="flex items-center gap-1.5">
+                        <Image src="/icons/seat.png" alt="Pax" width={17} height={17} className="opacity-90 invert dark:invert-0 dark:opacity-70" />
+                        <span className="text-[var(--c-ink)] text-[14px] font-semibold">{cfg.recPax}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <Image src="/icons/suitcase.png" alt="Suitcases" width={17} height={17} className="opacity-90 invert dark:invert-0 dark:opacity-70" />
+                        <span className="text-[var(--c-ink)] text-[14px] font-semibold">{cfg.recBag}</span>
+                      </div>
                     </div>
-                    {/* Suitcases */}
-                    <div className="flex items-center gap-2">
-                      <Image src="/icons/suitcase.png" alt="Suitcases" width={22} height={22} className="opacity-80 invert dark:invert-0 dark:opacity-60" />
-                      <span className="text-[var(--c-ink)] text-[15px] font-semibold">{bags}</span>
+                    {/* Max — muted, secondary */}
+                    <div className="grid grid-cols-[3.5rem_1fr_1fr] items-center gap-3">
+                      <span className="text-[9px] tracking-[0.35em] uppercase font-semibold text-[var(--c-ink-3)]">
+                        {lang === "ja" ? "最大" : lang === "zh" ? "最多" : "MAX"}
+                      </span>
+                      <div className="flex items-center gap-1.5">
+                        <Image src="/icons/seat.png" alt="Pax" width={17} height={17} className="opacity-40 invert dark:invert-0 dark:opacity-30" />
+                        <span className="text-[var(--c-ink-3)] text-[14px] font-semibold">{cfg.maxPax}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <Image src="/icons/suitcase.png" alt="Suitcases" width={17} height={17} className="opacity-40 invert dark:invert-0 dark:opacity-30" />
+                        <span className="text-[var(--c-ink-3)] text-[14px] font-semibold">{cfg.maxBag}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
