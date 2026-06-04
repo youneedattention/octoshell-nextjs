@@ -291,20 +291,15 @@ export default function VehiclesPage() {
 
                   {/* Bottom: icons */}
                   <div className="flex items-center gap-6 sm:gap-8 px-6 sm:px-8 py-4">
-                    {/* Seats */}
+                    {/* Pax */}
                     <div className="flex items-center gap-2">
-                      <Image src="/icons/seat.png" alt="Seats" width={22} height={22} className="opacity-80 invert dark:invert-0 dark:opacity-60" />
+                      <Image src="/icons/seat.png" alt="Pax" width={22} height={22} className="opacity-80 invert dark:invert-0 dark:opacity-60" />
                       <span className="text-[var(--c-ink)] text-[15px] font-semibold">{seats}</span>
                     </div>
                     {/* Suitcases */}
                     <div className="flex items-center gap-2">
                       <Image src="/icons/suitcase.png" alt="Suitcases" width={22} height={22} className="opacity-80 invert dark:invert-0 dark:opacity-60" />
                       <span className="text-[var(--c-ink)] text-[15px] font-semibold">{bags}</span>
-                    </div>
-                    {/* Carry-on */}
-                    <div className="flex items-center gap-2">
-                      <Image src="/icons/carry-on.png" alt="Carry-on" width={22} height={22} className="opacity-80 invert dark:invert-0 dark:opacity-60" />
-                      <span className="text-[var(--c-ink)] text-[15px] font-semibold">{carryon}</span>
                     </div>
                   </div>
                 </div>
