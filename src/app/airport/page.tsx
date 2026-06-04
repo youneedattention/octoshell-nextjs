@@ -73,7 +73,7 @@ const SCHEMA_SERVICE = {
         { "@type": "Question", "name": "What happens if my flight is delayed?", "acceptedAnswer": { "@type": "Answer", "text": "Octoshell monitors your flight in real time using your flight number. Your chauffeur automatically adjusts to your actual landing time at no extra cost. 90 minutes of free waiting time is included after landing. If waiting exceeds 90 minutes, a surcharge of ¥2,500 per 30 minutes applies for Alphard, or ¥3,000 per 30 minutes for Hiace." } },
         { "@type": "Question", "name": "Is Meet & Greet included?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Your chauffeur will be waiting in the arrivals hall holding a personalised name board with your name on it. This Meet & Greet service is 100% complimentary — there is no extra charge." } },
         { "@type": "Question", "name": "Are highway tolls and parking fees included?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All prices are strictly all-inclusive (包干価格 in Japanese). Highway tolls, expressway fees, and airport parking are all included in the quoted price. No surprise charges." } },
-        { "@type": "Question", "name": "How many passengers and suitcases can the car accommodate?", "acceptedAnswer": { "@type": "Answer", "text": "The Toyota Alphard accommodates up to 4 passengers and 4 large suitcases. The Toyota Hiace accommodates up to 9 passengers and 6+ suitcases. Please mention your luggage count when booking." } },
+        { "@type": "Question", "name": "How many passengers and suitcases can the car accommodate?", "acceptedAnswer": { "@type": "Answer", "text": "Toyota Alphard (up to 6 passengers): 4–6 pax fits 3 large suitcases + 5 carry-on; 1–3 pax fits 8 large suitcases + 3 carry-on. Toyota Hiace (up to 9 passengers): 5–9 pax fits 8 large suitcases + 8 carry-on; 3–5 pax fits 12 large suitcases + 10 carry-on. Please mention your luggage count when booking." } },
         { "@type": "Question", "name": "Can I pay cash in the car?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Cash payment inside the vehicle is accepted. You can also pre-register a credit card for automatic billing via Stripe after your trip. Corporate clients may request bank transfer." } },
         { "@type": "Question", "name": "Is a child seat available?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Child and junior safety seats are provided free of charge. Please request when booking so availability can be confirmed in advance." } },
       ],
@@ -148,16 +148,16 @@ const INCL: Record<Lang, string[]> = {
 const VEH_TITLE: Copy = { en: "AVAILABLE VEHICLES", ja: "ご用意している車種", zh: "可用車型" };
 const VEH: Record<Lang, { name: string; cap: string; bag: string; body: string }[]> = {
   en: [
-    { name: "Toyota Alphard", cap: "Up to 4 passengers", bag: "4 large suitcases", body: "Japan's most prestigious executive minivan. Spacious, whisper-quiet cabin with premium leather seating. The choice for VIPs and couples." },
-    { name: "Toyota Hiace", cap: "Up to 9 passengers", bag: "6+ large suitcases", body: "Generous space for groups and families travelling with oversized luggage, golf bags, or strollers. Never sacrifice comfort for capacity." },
+    { name: "Toyota Alphard", cap: "Up to 6 passengers", bag: "4–6 pax: 3 large + 5 carry-on · 1–3 pax: 8 large + 3 carry-on", body: "Japan's most prestigious executive minivan. Spacious, whisper-quiet cabin with premium leather seating. The choice for VIPs and couples." },
+    { name: "Toyota Hiace", cap: "Up to 9 passengers", bag: "5–9 pax: 8 large + 8 carry-on · 3–5 pax: 12 large + 10 carry-on", body: "Generous space for groups and families travelling with oversized luggage, golf bags, or strollers. Never sacrifice comfort for capacity." },
   ],
   ja: [
-    { name: "トヨタ アルファード", cap: "最大4名様", bag: "大型スーツケース4個", body: "日本最高峰のプレミアムミニバン。上質なレザーシートと静粛な車内空間。VIPやカップルの方に最適です。" },
-    { name: "トヨタ ハイエース", cap: "最大9名様", bag: "大型スーツケース6個以上", body: "大人数グループや大型荷物・ゴルフバッグ・ベビーカーをお持ちのファミリーに最適。快適性と積載量を両立します。" },
+    { name: "トヨタ アルファード", cap: "最大6名様", bag: "4〜6名：大型3個＋持込5個 · 1〜3名：大型8個＋持込3個", body: "日本最高峰のプレミアムミニバン。上質なレザーシートと静粛な車内空間。VIPやカップルの方に最適です。" },
+    { name: "トヨタ ハイエース", cap: "最大9名様", bag: "5〜9名：大型8個＋持込8個 · 3〜5名：大型12個＋持込10個", body: "大人数グループや大型荷物・ゴルフバッグ・ベビーカーをお持ちのファミリーに最適。快適性と積載量を両立します。" },
   ],
   zh: [
-    { name: "豐田埃爾法", cap: "最多4名乘客", bag: "4件大型行李箱", body: "日本最頂級的商務廂型車，寬敞靜謐的車廂與高級皮革座椅，是VIP貴賓與情侶出行的首選。" },
-    { name: "豐田海獅", cap: "最多9名乘客", bag: "6件以上大型行李箱", body: "為攜帶超大行李、高爾夫球具或嬰兒車的家庭與團體量身打造，絕不因容量犧牲舒適度。" },
+    { name: "豐田埃爾法", cap: "最多6名乘客", bag: "4–6人：大型3件＋隨身5件 · 1–3人：大型8件＋隨身3件", body: "日本最頂級的商務廂型車，寬敞靜謐的車廂與高級皮革座椅，是VIP貴賓與情侶出行的首選。" },
+    { name: "豐田海獅", cap: "最多9名乘客", bag: "5–9人：大型8件＋隨身8件 · 3–5人：大型12件＋隨身10件", body: "為攜帶超大行李、高爾夫球具或嬰兒車的家庭與團體量身打造，絕不因容量犧牲舒適度。" },
   ],
 };
 
@@ -185,7 +185,7 @@ const FAQS: { q: Copy; a: Copy }[] = [
   },
   {
     q: { en: "How many passengers and suitcases fit?", ja: "何名・スーツケース何個まで乗れますか？", zh: "最多能乘坐幾人，可放幾件行李？" },
-    a: { en: "Toyota Alphard: up to 4 passengers and 4 large suitcases. Toyota Hiace: up to 9 passengers and 6+ large suitcases. Please include your luggage count in the booking form.", ja: "アルファード：最大4名・大型スーツケース4個。ハイエース：最大9名・大型スーツケース6個以上。予約フォームに荷物の数もご記入ください。", zh: "豐田埃爾法：最多4人，4件大型行李箱。豐田海獅：最多9人，6件以上大型行李箱。請在預訂表格中填寫行李數量。" },
+    a: { en: "Toyota Alphard (up to 6 pax): 4–6 pax = 3 large + 5 carry-on; 1–3 pax = 8 large + 3 carry-on. Toyota Hiace (up to 9 pax): 5–9 pax = 8 large + 8 carry-on; 3–5 pax = 12 large + 10 carry-on. Please include your luggage count in the booking form.", ja: "アルファード（最大6名）：4〜6名＝大型3個＋持込5個、1〜3名＝大型8個＋持込3個。ハイエース（最大9名）：5〜9名＝大型8個＋持込8個、3〜5名＝大型12個＋持込10個。予約フォームに荷物の数もご記入ください。", zh: "埃爾法（最多6人）：4–6人＝大型3件＋隨身5件；1–3人＝大型8件＋隨身3件。海獅（最多9人）：5–9人＝大型8件＋隨身8件；3–5人＝大型12件＋隨身10件。請在預訂表格中填寫行李數量。" },
   },
   {
     q: { en: "Can I pay cash inside the car?", ja: "車内で現金払いはできますか？", zh: "可以在車內現金付款嗎？" },

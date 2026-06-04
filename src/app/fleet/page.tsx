@@ -126,13 +126,12 @@ const VEHICLES: VehicleData[] = [
     dims: { l: "4,945 mm", w: "1,850 mm", h: "1,895 mm" },
     configs: [
       {
-        label: { en: "Standard (4–6 passengers)", ja: "標準（4〜6名）", zh: "標準（4至6人）" },
-        bags:  { en: "5 large suitcases", ja: "大型スーツケース5個", zh: "5件大型行李箱" },
+        label: { en: "4–6 passengers", ja: "4〜6名", zh: "4至6人" },
+        bags:  { en: "3 large suitcases + 5 carry-on", ja: "大型3個＋機内持込5個", zh: "3件大型＋5件隨身" },
       },
       {
-        label: { en: "Light (1–3 passengers)", ja: "少人数（1〜3名）", zh: "輕裝（1至3人）" },
-        bags:  { en: "up to 10 large suitcases", ja: "大型スーツケース最大10個", zh: "最多10件大型行李箱" },
-        note:  { en: "Ideal for heavy luggage or shopping trips", ja: "大荷物・ショッピング旅行に最適", zh: "適合大量行李或購物行程" },
+        label: { en: "1–3 passengers", ja: "1〜3名", zh: "1至3人" },
+        bags:  { en: "8 large suitcases + 3 carry-on", ja: "大型8個＋機内持込3個", zh: "8件大型＋3件隨身" },
       },
     ],
     best_for: [
@@ -156,13 +155,12 @@ const VEHICLES: VehicleData[] = [
     dims: { l: "5,380 mm", w: "1,880 mm", h: "2,285 mm" },
     configs: [
       {
-        label: { en: "Standard (7–9 passengers)", ja: "標準（7〜9名）", zh: "標準（7至9人）" },
-        bags:  { en: "9 large suitcases", ja: "大型スーツケース9個", zh: "9件大型行李箱" },
+        label: { en: "5–9 passengers", ja: "5〜9名", zh: "5至9人" },
+        bags:  { en: "8 large suitcases + 8 carry-on", ja: "大型8個＋機内持込8個", zh: "8件大型＋8件隨身" },
       },
       {
-        label: { en: "Light (1–6 passengers)", ja: "少人数（1〜6名）", zh: "輕裝（1至6人）" },
-        bags:  { en: "up to 15 large suitcases", ja: "大型スーツケース最大15個", zh: "最多15件大型行李箱" },
-        note:  { en: "Also fits ski bags, golf bags, strollers, or wheelchairs", ja: "スキーバッグ・ゴルフバッグ・ベビーカー・車椅子も積載可", zh: "亦可放置滑雪袋、高爾夫球袋、嬰兒車或輪椅" },
+        label: { en: "3–5 passengers", ja: "3〜5名", zh: "3至5人" },
+        bags:  { en: "12 large suitcases + 10 carry-on", ja: "大型12個＋機内持込10個", zh: "12件大型＋10件隨身" },
       },
     ],
     best_for: [
@@ -266,9 +264,17 @@ export default function VehiclesPage() {
           <SectionLabel label={lang === "ja" ? "車種一覧" : lang === "zh" ? "車型一覽" : "Quick Comparison"} />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {VEHICLES.map((v) => {
-              const seats   = v.id === "alphard" ? 6 : 9;
-              const bags    = v.id === "alphard" ? 5 : 9;
-              const carryon = v.id === "alphard" ? 2 : 4;
+              const isAlphard = v.id === "alphard";
+              const configs = isAlphard
+                ? [
+                    { pax: "1–3", seats: 3,  bags: 8,  carry: 3 },
+                    { pax: "4–6", seats: 6,  bags: 3,  carry: 5 },
+                  ]
+                : [
+                    { pax: "3–5", seats: 5,  bags: 12, carry: 10 },
+                    { pax: "5–9", seats: 9,  bags: 8,  carry: 8  },
+                  ];
+              const iconCls = "opacity-80 invert dark:invert-0 dark:opacity-60";
               return (
                 <div key={v.id} className="border border-[var(--c-rule)] hover:border-[#c9a84c]/30 transition-colors duration-300">
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/50 to-transparent" />
@@ -289,30 +295,29 @@ export default function VehiclesPage() {
                   {/* Divider */}
                   <div className="h-px bg-[var(--c-rule)] mx-6 sm:mx-8" />
 
-                  {/* Bottom: icons */}
-                  <div className="flex items-center gap-6 sm:gap-8 px-6 sm:px-8 py-4">
-                    {/* Seats */}
-                    <div className="flex items-center gap-2">
-                      <Image src="/icons/seat.png" alt="Seats" width={22} height={22} className="opacity-80 invert dark:invert-0 dark:opacity-60" />
-                      <span className="text-[var(--c-ink)] text-[15px] font-semibold">{seats}</span>
-                    </div>
-                    {/* Suitcases */}
-                    <div className="flex items-center gap-2">
-                      <Image src="/icons/suitcase.png" alt="Suitcases" width={22} height={22} className="opacity-80 invert dark:invert-0 dark:opacity-60" />
-                      <span className="text-[var(--c-ink)] text-[15px] font-semibold">{bags}</span>
-                    </div>
-                    {/* Carry-on */}
-                    <div className="flex items-center gap-2">
-                      <Image src="/icons/carry-on.png" alt="Carry-on" width={22} height={22} className="opacity-80 invert dark:invert-0 dark:opacity-60" />
-                      <span className="text-[var(--c-ink)] text-[15px] font-semibold">{carryon}</span>
-                    </div>
-                    <div className="ml-auto">
-                      <Link href="/book" draggable={false} onContextMenu={(e) => e.preventDefault()}
-                        className="text-[11px] tracking-[0.2em] uppercase text-[#c9a84c] border border-[#c9a84c]/40 px-4 py-2
-                                   hover:bg-[#c9a84c] hover:text-[#0c0c0c] transition-all duration-200">
-                        {BOOK_BTN[lang]}
-                      </Link>
-                    </div>
+                  {/* Two-row icon configs */}
+                  <div className="px-6 sm:px-8 py-4 space-y-3">
+                    {configs.map((cfg) => (
+                      <div key={cfg.pax} className="flex items-center gap-5">
+                        {/* Pax label */}
+                        <span className="text-[11px] tracking-[0.15em] text-[var(--c-ink-3)] w-10 shrink-0">{cfg.pax}</span>
+                        {/* Seat */}
+                        <div className="flex items-center gap-1.5">
+                          <Image src="/icons/seat.png" alt="Seats" width={18} height={18} className={iconCls} />
+                          <span className="text-[var(--c-ink)] text-[14px] font-semibold">{cfg.seats}</span>
+                        </div>
+                        {/* Suitcase */}
+                        <div className="flex items-center gap-1.5">
+                          <Image src="/icons/suitcase.png" alt="Suitcases" width={18} height={18} className={iconCls} />
+                          <span className="text-[var(--c-ink)] text-[14px] font-semibold">{cfg.bags}</span>
+                        </div>
+                        {/* Carry-on */}
+                        <div className="flex items-center gap-1.5">
+                          <Image src="/icons/carry-on.png" alt="Carry-on" width={18} height={18} className={iconCls} />
+                          <span className="text-[var(--c-ink)] text-[14px] font-semibold">{cfg.carry}</span>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               );
