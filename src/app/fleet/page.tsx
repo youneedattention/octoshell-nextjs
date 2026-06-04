@@ -266,9 +266,9 @@ export default function VehiclesPage() {
           <SectionLabel label={lang === "ja" ? "車種一覧" : lang === "zh" ? "車型一覽" : "Quick Comparison"} />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {VEHICLES.map((v) => {
-              const seats = v.id === "alphard" ? 6 : 9;
-              const bags  = v.id === "alphard" ? 5 : 9;
-              const golf  = v.id === "alphard" ? "2–3" : "4–6";
+              const seats   = v.id === "alphard" ? 6 : 9;
+              const bags    = v.id === "alphard" ? 5 : 9;
+              const carryon = v.id === "alphard" ? 2 : 4;
               return (
                 <div key={v.id} className="border border-[var(--c-rule)] hover:border-[#c9a84c]/30 transition-colors duration-300">
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/50 to-transparent" />
@@ -293,24 +293,18 @@ export default function VehiclesPage() {
                   <div className="flex items-center gap-6 sm:gap-8 px-6 sm:px-8 py-4">
                     {/* Seats */}
                     <div className="flex items-center gap-2">
-                      <svg className="w-5 h-5 text-[var(--c-ink-3)]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                      </svg>
+                      <Image src="/icons/seat.png" alt="Seats" width={22} height={22} className="opacity-60" />
                       <span className="text-[var(--c-ink)] text-[15px] font-semibold">{seats}</span>
                     </div>
                     {/* Suitcases */}
                     <div className="flex items-center gap-2">
-                      <svg className="w-5 h-5 text-[var(--c-ink-3)]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
-                      </svg>
+                      <Image src="/icons/suitcase.png" alt="Suitcases" width={22} height={22} className="opacity-60" />
                       <span className="text-[var(--c-ink)] text-[15px] font-semibold">{bags}</span>
                     </div>
-                    {/* Golf bags */}
+                    {/* Carry-on */}
                     <div className="flex items-center gap-2">
-                      <svg className="w-5 h-5 text-[var(--c-ink-3)]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007Z" />
-                      </svg>
-                      <span className="text-[var(--c-ink)] text-[15px] font-semibold">{golf}</span>
+                      <Image src="/icons/carry-on.png" alt="Carry-on" width={22} height={22} className="opacity-60" />
+                      <span className="text-[var(--c-ink)] text-[15px] font-semibold">{carryon}</span>
                     </div>
                     <div className="ml-auto">
                       <Link href="/book" draggable={false} onContextMenu={(e) => e.preventDefault()}
