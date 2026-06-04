@@ -282,7 +282,7 @@ export default function VehiclesPage() {
                     </div>
                     <div className="shrink-0 w-[140px] sm:w-[180px] h-[90px] sm:h-[110px] flex items-center justify-center">
                       <Image src={v.img} alt={v.name} width={240} height={140}
-                        className="object-contain w-full h-full" />
+                        className="object-contain object-bottom w-full h-full" />
                     </div>
                   </div>
 
@@ -348,7 +348,7 @@ export default function VehiclesPage() {
               {/* Main vehicle image */}
               <div className="overflow-hidden mb-12 flex items-center justify-center h-[200px] sm:h-[260px] px-8">
                 <Image src={v.img} alt={v.name} width={600} height={340}
-                  className="object-contain w-full h-full" />
+                  className="object-contain object-bottom w-full h-full" />
               </div>
 
               {/* Best for */}

@@ -176,7 +176,7 @@ function PriceCard({
     <div className="flex flex-col">
       <div className="flex items-center justify-center h-[300px] px-4">
         <Image src={img} alt={name} width={480} height={270}
-          className="object-contain max-h-60 w-auto" />
+          className="object-contain object-bottom max-h-60 w-auto" />
       </div>
       <div className="flex flex-col flex-1 px-5 sm:px-7 py-5 sm:py-6">
         <div className="text-center mb-4">
