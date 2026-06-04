@@ -556,9 +556,9 @@ export default function AirportPage() {
             {VEH[lang].map((v, i) => (
               <div key={v.name} className="border border-[var(--c-rule)] overflow-hidden group hover:border-[#c9a84c]/30 transition-colors duration-300">
                 <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/50 to-transparent" />
-                <div className="bg-white h-[160px] sm:h-[180px] flex items-center justify-center px-6">
-                  <Image src={i === 0 ? "/images/alphard.webp" : "/images/hiace.webp"} alt={v.name}
-                    width={340} height={200} priority className="object-contain object-bottom mix-blend-multiply w-full h-full p-2" />
+                <div className="h-[160px] sm:h-[180px] flex items-center justify-center px-6">
+                  <Image src={i === 0 ? "/images/alphard.webp" : "/hiace.webp"} alt={v.name}
+                    width={340} height={200} priority className="object-contain object-bottom w-full h-full p-2" />
                 </div>
                 <div className="p-5 sm:p-6">
                   <p className="text-[var(--c-ink)] text-[15px] font-semibold tracking-[0.08em] mb-1">{v.name}</p>

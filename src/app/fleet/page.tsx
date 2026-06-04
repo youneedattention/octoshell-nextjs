@@ -152,7 +152,7 @@ const VEHICLES: VehicleData[] = [
       ja: "ファミリー、小グループ、法人輸送に最適です。",
       zh: "適合家庭出行、小型團體及企業接送。",
     },
-    img: "/images/hiace.webp",
+    img: "/hiace.webp",
     dims: { l: "5,380 mm", w: "1,880 mm", h: "2,285 mm" },
     configs: [
       {
