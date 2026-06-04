@@ -266,9 +266,8 @@ export default function VehiclesPage() {
           <SectionLabel label={lang === "ja" ? "車種一覧" : lang === "zh" ? "車型一覽" : "Quick Comparison"} />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {VEHICLES.map((v) => {
-              const seats   = v.id === "alphard" ? 6 : 9;
-              const bags    = v.id === "alphard" ? 5 : 9;
-              const carryon = v.id === "alphard" ? 2 : 4;
+              const seats = v.id === "alphard" ? 6 : 9;
+              const bags  = v.id === "alphard" ? 5 : 9;
               return (
                 <div key={v.id} className="flex flex-col border border-[var(--c-rule)] hover:border-[#c9a84c]/30 transition-colors duration-300">
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/50 to-transparent" />
