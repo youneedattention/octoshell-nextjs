@@ -274,7 +274,7 @@ export default function VehiclesPage() {
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/50 to-transparent" />
 
                   {/* Top: text left, image right */}
-                  <div className="flex items-center gap-4 p-6 sm:p-8 flex-1">
+                  <div className="flex items-start gap-4 p-6 sm:p-8 flex-1">
                     <div className="flex-1 min-w-0">
                       <p className="text-[var(--c-ink)] text-[17px] sm:text-[19px] font-light tracking-[0.08em]">{v.name}</p>
                       <p className="text-[10px] tracking-[0.35em] uppercase text-[#c9a84c]/70 font-medium mt-0.5 mb-4">{v.badge[lang]}</p>
