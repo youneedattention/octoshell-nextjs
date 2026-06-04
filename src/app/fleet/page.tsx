@@ -122,7 +122,7 @@ const VEHICLES: VehicleData[] = [
       ja: "空港送迎、ビジネス出張、プライベート観光に最適です。",
       zh: "完美適用於機場接送、商務出行及日本私人觀光遊覽。",
     },
-    img: "/images/alphard.webp",
+    img: "/alphard.webp",
     dims: { l: "4,945 mm", w: "1,850 mm", h: "1,895 mm" },
     configs: [
       {
