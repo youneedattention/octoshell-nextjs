@@ -259,32 +259,70 @@ export default function VehiclesPage() {
         </div>
       </div>
 
-      {/* ── COMPARISON TABLE ── */}
+      {/* ── VEHICLE CARDS ── */}
       <section className="bg-[var(--c-body)] py-14 sm:py-18 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
           <GoldRule />
-          <SectionLabel label={lang === "ja" ? "車種比較" : lang === "zh" ? "車型比較" : "Quick Comparison"} />
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[480px] text-[13px] sm:text-[14px]">
-              <thead>
-                <tr>
-                  {CMP_HEADS.map((h, i) => (
-                    <th key={i} className={`pb-4 text-left font-bold tracking-[0.15em] ${i === 0 ? "text-[var(--c-ink-3)] w-1/2" : i === 1 ? "text-[var(--c-ink)] pl-6" : "text-[var(--c-ink-2)] pl-6"}`}>
-                      {h[lang]}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {CMP_ROWS.map((row, i) => (
-                  <tr key={i} className="border-t border-[var(--c-rule)]">
-                    <td className="py-3 text-[var(--c-ink-2)]">{row.label[lang]}</td>
-                    <td className="py-3 pl-6 font-semibold text-[var(--c-ink)]">{row.a[lang]}</td>
-                    <td className="py-3 pl-6 text-[var(--c-ink-2)]">{row.h[lang]}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <SectionLabel label={lang === "ja" ? "車種一覧" : lang === "zh" ? "車型一覽" : "Quick Comparison"} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {VEHICLES.map((v) => {
+              const seats = v.id === "alphard" ? 6 : 9;
+              const bags  = v.id === "alphard" ? 5 : 9;
+              const golf  = v.id === "alphard" ? "2–3" : "4–6";
+              return (
+                <div key={v.id} className="border border-[var(--c-rule)] hover:border-[#c9a84c]/30 transition-colors duration-300">
+                  <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/50 to-transparent" />
+
+                  {/* Top: text left, image right */}
+                  <div className="flex items-center gap-4 p-6 sm:p-8">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[var(--c-ink)] text-[17px] sm:text-[19px] font-light tracking-[0.08em]">{v.name}</p>
+                      <p className="text-[10px] tracking-[0.35em] uppercase text-[#c9a84c]/70 font-medium mt-0.5 mb-4">{v.badge[lang]}</p>
+                      <p className="text-[var(--c-ink-2)] text-[13px] leading-[1.8]">{v.tagline[lang]}</p>
+                    </div>
+                    <div className="shrink-0 w-[140px] sm:w-[180px] h-[90px] sm:h-[110px] flex items-center justify-center">
+                      <Image src={v.img} alt={v.name} width={240} height={140}
+                        className="object-contain w-full h-full" />
+                    </div>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="h-px bg-[var(--c-rule)] mx-6 sm:mx-8" />
+
+                  {/* Bottom: icons */}
+                  <div className="flex items-center gap-6 sm:gap-8 px-6 sm:px-8 py-4">
+                    {/* Seats */}
+                    <div className="flex items-center gap-2">
+                      <svg className="w-5 h-5 text-[var(--c-ink-3)]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                      </svg>
+                      <span className="text-[var(--c-ink)] text-[15px] font-semibold">{seats}</span>
+                    </div>
+                    {/* Suitcases */}
+                    <div className="flex items-center gap-2">
+                      <svg className="w-5 h-5 text-[var(--c-ink-3)]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
+                      </svg>
+                      <span className="text-[var(--c-ink)] text-[15px] font-semibold">{bags}</span>
+                    </div>
+                    {/* Golf bags */}
+                    <div className="flex items-center gap-2">
+                      <svg className="w-5 h-5 text-[var(--c-ink-3)]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007Z" />
+                      </svg>
+                      <span className="text-[var(--c-ink)] text-[15px] font-semibold">{golf}</span>
+                    </div>
+                    <div className="ml-auto">
+                      <Link href="/book" draggable={false} onContextMenu={(e) => e.preventDefault()}
+                        className="text-[11px] tracking-[0.2em] uppercase text-[#c9a84c] border border-[#c9a84c]/40 px-4 py-2
+                                   hover:bg-[#c9a84c] hover:text-[#0c0c0c] transition-all duration-200">
+                        {BOOK_BTN[lang]}
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
