@@ -266,10 +266,9 @@ export default function VehiclesPage() {
           <SectionLabel label={lang === "ja" ? "車種一覧" : lang === "zh" ? "車型一覽" : "Quick Comparison"} />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {VEHICLES.map((v) => {
-              const iconCls = "opacity-80 invert dark:invert-0 dark:opacity-60";
-              const rows = v.id === "alphard"
-                ? [{ pax: "1–3 pax", seats: "—", bags: "—" }, { pax: "4–6 pax", seats: "—", bags: "—" }]
-                : [{ pax: "3–5 pax", seats: "—", bags: "—" }, { pax: "5–9 pax", seats: "—", bags: "—" }];
+              const seats   = v.id === "alphard" ? 6 : 9;
+              const bags    = v.id === "alphard" ? 5 : 9;
+              const carryon = v.id === "alphard" ? 2 : 4;
               return (
                 <div key={v.id} className="border border-[var(--c-rule)] hover:border-[#c9a84c]/30 transition-colors duration-300">
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/50 to-transparent" />
@@ -290,21 +289,30 @@ export default function VehiclesPage() {
                   {/* Divider */}
                   <div className="h-px bg-[var(--c-rule)] mx-6 sm:mx-8" />
 
-                  {/* Icon rows — fixed grid so columns align across cards */}
-                  <div className="px-6 sm:px-8 py-4 space-y-2.5">
-                    {rows.map((row) => (
-                      <div key={row.pax} className="grid grid-cols-[3rem_1fr_1fr] items-center gap-2">
-                        <span className="text-[11px] tracking-[0.12em] text-[var(--c-ink-3)]">{row.pax}</span>
-                        <div className="flex items-center gap-2">
-                          <Image src="/icons/seat.png" alt="Seats" width={18} height={18} className={iconCls} />
-                          <span className="text-[var(--c-ink)] text-[14px] font-semibold">{row.seats}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Image src="/icons/suitcase.png" alt="Suitcases" width={18} height={18} className={iconCls} />
-                          <span className="text-[var(--c-ink)] text-[14px] font-semibold">{row.bags}</span>
-                        </div>
-                      </div>
-                    ))}
+                  {/* Bottom: icons */}
+                  <div className="flex items-center gap-6 sm:gap-8 px-6 sm:px-8 py-4">
+                    {/* Seats */}
+                    <div className="flex items-center gap-2">
+                      <Image src="/icons/seat.png" alt="Seats" width={22} height={22} className="opacity-80 invert dark:invert-0 dark:opacity-60" />
+                      <span className="text-[var(--c-ink)] text-[15px] font-semibold">{seats}</span>
+                    </div>
+                    {/* Suitcases */}
+                    <div className="flex items-center gap-2">
+                      <Image src="/icons/suitcase.png" alt="Suitcases" width={22} height={22} className="opacity-80 invert dark:invert-0 dark:opacity-60" />
+                      <span className="text-[var(--c-ink)] text-[15px] font-semibold">{bags}</span>
+                    </div>
+                    {/* Carry-on */}
+                    <div className="flex items-center gap-2">
+                      <Image src="/icons/carry-on.png" alt="Carry-on" width={22} height={22} className="opacity-80 invert dark:invert-0 dark:opacity-60" />
+                      <span className="text-[var(--c-ink)] text-[15px] font-semibold">{carryon}</span>
+                    </div>
+                    <div className="ml-auto">
+                      <Link href="/book" draggable={false} onContextMenu={(e) => e.preventDefault()}
+                        className="text-[11px] tracking-[0.2em] uppercase text-[#c9a84c] border border-[#c9a84c]/40 px-4 py-2
+                                   hover:bg-[#c9a84c] hover:text-[#0c0c0c] transition-all duration-200">
+                        {BOOK_BTN[lang]}
+                      </Link>
+                    </div>
                   </div>
                 </div>
               );
