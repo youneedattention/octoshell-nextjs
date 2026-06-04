@@ -194,28 +194,6 @@ const FAQS: { q: Copy; a: Copy }[] = [
 /* ══════════════════════════════════════════════════════════════════════
    Sub-components
 ══════════════════════════════════════════════════════════════════════ */
-function SeatIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-5 h-5">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-    </svg>
-  );
-}
-function BagIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-5 h-5">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
-    </svg>
-  );
-}
-function GolfIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-5 h-5">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v10.5m0 0a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm0 0V3m0 0l4 3m-4-3L8 6" />
-    </svg>
-  );
-}
-
 function GoldRule() {
   return <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/50 to-transparent mb-10 sm:mb-14" />;
 }
@@ -281,55 +259,33 @@ export default function VehiclesPage() {
         </div>
       </div>
 
-      {/* ── VEHICLE CARDS ── */}
+      {/* ── COMPARISON TABLE ── */}
       <section className="bg-[var(--c-body)] py-14 sm:py-18 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto space-y-6">
+        <div className="max-w-5xl mx-auto">
           <GoldRule />
-          <SectionLabel label={lang === "ja" ? "車種一覧" : lang === "zh" ? "車型一覧" : "Our Fleet"} />
-
-          {VEHICLES.map((v) => {
-            const specs =
-              v.id === "alphard"
-                ? [
-                    { icon: <SeatIcon />,    val: "6",   label: { en: "Passengers", ja: "乗客",       zh: "乘客" } },
-                    { icon: <BagIcon />,     val: "5",   label: { en: "Suitcases",  ja: "スーツケース", zh: "行李箱" } },
-                    { icon: <GolfIcon />,    val: "2–3", label: { en: "Golf bags",  ja: "ゴルフバッグ", zh: "球袋" } },
-                  ]
-                : [
-                    { icon: <SeatIcon />,    val: "9",    label: { en: "Passengers", ja: "乗客",       zh: "乘客" } },
-                    { icon: <BagIcon />,     val: "9",    label: { en: "Suitcases",  ja: "スーツケース", zh: "行李箱" } },
-                    { icon: <GolfIcon />,    val: "4–6",  label: { en: "Golf bags",  ja: "ゴルフバッグ", zh: "球袋" } },
-                  ];
-
-            return (
-              <div key={v.id}
-                className="grid grid-cols-1 sm:grid-cols-2 border border-[var(--c-rule)] hover:border-[#c9a84c]/30 transition-colors duration-300 overflow-hidden">
-                {/* Left: text */}
-                <div className="p-7 sm:p-10 flex flex-col justify-between gap-6">
-                  <div>
-                    <h3 className="text-[var(--c-ink)] text-xl sm:text-2xl font-light tracking-[0.08em]">{v.name}</h3>
-                    <p className="mt-1 text-[10px] tracking-[0.35em] uppercase text-[#c9a84c]/70 font-medium mb-4">{v.badge[lang]}</p>
-                    <p className="text-[var(--c-ink-2)] text-[14px] leading-[1.8]">{v.tagline[lang]}</p>
-                  </div>
-                  {/* Icon row */}
-                  <div className="flex items-center gap-6 border-t border-[var(--c-rule)] pt-5">
-                    {specs.map((s, i) => (
-                      <div key={i} className="flex items-center gap-2">
-                        <span className="text-[var(--c-ink-3)] w-5 h-5">{s.icon}</span>
-                        <span className="text-[var(--c-ink)] text-[15px] font-semibold">{s.val}</span>
-                        <span className="text-[var(--c-ink-3)] text-[11px] tracking-wide">{s.label[lang]}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                {/* Right: image */}
-                <div className="bg-[#111] flex items-center justify-center px-8 py-6 min-h-[200px]">
-                  <Image src={v.img} alt={v.name} width={480} height={280}
-                    className="object-contain w-full h-full max-h-[200px]" />
-                </div>
-              </div>
-            );
-          })}
+          <SectionLabel label={lang === "ja" ? "車種比較" : lang === "zh" ? "車型比較" : "Quick Comparison"} />
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[480px] text-[13px] sm:text-[14px]">
+              <thead>
+                <tr>
+                  {CMP_HEADS.map((h, i) => (
+                    <th key={i} className={`pb-4 text-left font-bold tracking-[0.15em] ${i === 0 ? "text-[var(--c-ink-3)] w-1/2" : i === 1 ? "text-[var(--c-ink)] pl-6" : "text-[var(--c-ink-2)] pl-6"}`}>
+                      {h[lang]}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {CMP_ROWS.map((row, i) => (
+                  <tr key={i} className="border-t border-[var(--c-rule)]">
+                    <td className="py-3 text-[var(--c-ink-2)]">{row.label[lang]}</td>
+                    <td className="py-3 pl-6 font-semibold text-[var(--c-ink)]">{row.a[lang]}</td>
+                    <td className="py-3 pl-6 text-[var(--c-ink-2)]">{row.h[lang]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
