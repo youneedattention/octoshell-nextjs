@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 import ProtectedImage from "@/components/ProtectedImage";
 import Header from "@/components/Header";
@@ -229,6 +230,7 @@ function ImgPlaceholder({ note, ratio = "3/2" }: { note: string; ratio?: string 
 ══════════════════════════════════════════════════════════════════════ */
 export default function VehiclesPage() {
   const { lang } = useLang();
+  const [hiaceShowGolf, setHiaceShowGolf] = useState(false);
 
   return (
     <main className="min-h-screen bg-[#0c0c0c]">
@@ -320,17 +322,29 @@ export default function VehiclesPage() {
                           <span className={`text-[22px] sm:text-[26px] font-semibold leading-none ${row.gold ? "text-[var(--c-ink)]" : "text-[var(--c-ink-3)]"}`}>{row.pax}</span>
                         </div>
                         {row.golf != null ? (
-                          /* Hiace: flip between suitcase and golf bag */
-                          <div className="flip-cell gap-2">
-                            <div className="face face-a flex items-center gap-2">
-                              <ProtectedImage src="/icons/suitcase.png" alt="" width={24} height={24} className={`invert dark:invert-0 ${row.gold ? "opacity-90 dark:opacity-70" : "opacity-40 dark:opacity-30"}`} />
-                              <span className={`text-[22px] sm:text-[26px] font-semibold leading-none ${row.gold ? "text-[var(--c-ink)]" : "text-[var(--c-ink-3)]"}`}>{row.bag}</span>
+                          /* Hiace: click to toggle suitcase ↔ golf bag */
+                          <button
+                            onClick={() => setHiaceShowGolf((p) => !p)}
+                            className="flex items-center gap-2 group cursor-pointer select-none"
+                            title={hiaceShowGolf
+                              ? (lang === "ja" ? "スーツケースに切替" : lang === "zh" ? "切換行李箱" : "Switch to suitcases")
+                              : (lang === "ja" ? "ゴルフバッグに切替" : lang === "zh" ? "切換高爾夫球袋" : "Switch to golf bags")}
+                          >
+                            <div className="relative w-6 h-6">
+                              <ProtectedImage src="/icons/suitcase.png" alt="" width={24} height={24}
+                                className={`absolute inset-0 invert dark:invert-0 transition-opacity duration-300 ${row.gold ? "opacity-90 dark:opacity-70" : "opacity-40 dark:opacity-30"} ${hiaceShowGolf ? "opacity-0!" : ""}`} />
+                              <ProtectedImage src="/icons/golfbag.png" alt="" width={24} height={24}
+                                className={`absolute inset-0 brightness-0 dark:invert transition-opacity duration-300 ${row.gold ? "opacity-90" : "opacity-40"} ${hiaceShowGolf ? "" : "opacity-0!"}`} />
                             </div>
-                            <div className="face face-b flex items-center gap-2">
-                              <ProtectedImage src="/icons/golfbag.png" alt="" width={24} height={24} className={`brightness-0 dark:brightness-0 dark:invert ${row.gold ? "opacity-90" : "opacity-40"}`} />
-                              <span className={`text-[22px] sm:text-[26px] font-semibold leading-none ${row.gold ? "text-[var(--c-ink)]" : "text-[var(--c-ink-3)]"}`}>{row.golf}</span>
-                            </div>
-                          </div>
+                            <span className={`text-[22px] sm:text-[26px] font-semibold leading-none transition-colors duration-300 ${row.gold ? "text-[var(--c-ink)]" : "text-[var(--c-ink-3)]"}`}>
+                              {hiaceShowGolf ? row.golf : row.bag}
+                            </span>
+                            <span className="text-[8px] tracking-widest uppercase text-[#c9a84c]/40 group-hover:text-[#c9a84c]/70 transition-colors leading-none mt-0.5">
+                              {hiaceShowGolf
+                                ? (lang === "ja" ? "golf" : lang === "zh" ? "球袋" : "golf")
+                                : (lang === "ja" ? "bags" : lang === "zh" ? "行李" : "bags")}
+                            </span>
+                          </button>
                         ) : (
                           /* Alphard: static suitcase */
                           <div className="flex items-center gap-2">
