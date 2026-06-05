@@ -339,11 +339,6 @@ export default function VehiclesPage() {
                             <span className={`text-[22px] sm:text-[26px] font-semibold leading-none transition-colors duration-300 ${row.gold ? "text-[var(--c-ink)]" : "text-[var(--c-ink-3)]"}`}>
                               {hiaceShowGolf ? row.golf : row.bag}
                             </span>
-                            <span className="text-[8px] tracking-widest uppercase text-[#c9a84c]/40 group-hover:text-[#c9a84c]/70 transition-colors leading-none mt-0.5">
-                              {hiaceShowGolf
-                                ? (lang === "ja" ? "golf" : lang === "zh" ? "球袋" : "golf")
-                                : (lang === "ja" ? "bags" : lang === "zh" ? "行李" : "bags")}
-                            </span>
                           </button>
                         ) : (
                           /* Alphard: static suitcase */
