@@ -267,83 +267,58 @@ export default function VehiclesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {VEHICLES.map((v) => {
               const cfg = v.id === "alphard"
-                ? { recPax: 4, recBag: 4, maxPax: 6, maxBag: 5, price: "¥20,000" }
-                : { recPax: 7, recBag: 9, maxPax: 9, maxBag: 15, price: "¥22,000" };
+                ? { recPax: 4, recBag: 4, maxPax: 6, maxBag: 2 }
+                : { recPax: 8, recBag: 6, maxPax: 9, maxBag: 6 };
               return (
-                <div key={v.id} className="flex flex-col border border-[var(--c-rule)] hover:border-[#c9a84c]/30 transition-colors duration-300 overflow-hidden">
+                <div key={v.id} className="flex flex-col border border-[var(--c-rule)] hover:border-[#c9a84c]/30 transition-colors duration-300">
+                  <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/50 to-transparent" />
 
-                  {/* Gold top accent */}
-                  <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
-
-                  {/* Header: name + price */}
-                  <div className="flex items-start justify-between px-6 sm:px-8 pt-6 pb-4">
-                    <div>
-                      <p className="text-[var(--c-ink)] text-[18px] sm:text-[20px] font-light tracking-[0.08em]">{v.name}</p>
-                      <p className="text-[10px] tracking-[0.35em] uppercase text-[#c9a84c]/70 font-medium mt-0.5">{v.badge[lang]}</p>
+                  {/* Top: text left, image right */}
+                  <div className="flex items-start gap-4 p-6 sm:p-8 flex-1">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[var(--c-ink)] text-[17px] sm:text-[19px] font-light tracking-[0.08em]">{v.name}</p>
+                      <p className="text-[10px] tracking-[0.35em] uppercase text-[#c9a84c]/70 font-medium mt-0.5 mb-4">{v.badge[lang]}</p>
+                      <p className="text-[var(--c-ink-2)] text-[13px] leading-[1.8]">{v.tagline[lang]}</p>
                     </div>
-                    <div className="text-right">
-                      <p className="text-[10px] tracking-[0.25em] uppercase text-[var(--c-ink-3)] mb-0.5">
-                        {lang === "ja" ? "空港送迎〜" : lang === "zh" ? "機場接送起" : "from"}
-                      </p>
-                      <p className="text-[#c9a84c] text-[18px] font-semibold tracking-tight">{cfg.price}</p>
+                    <div className="shrink-0 w-[140px] sm:w-[180px] h-[90px] sm:h-[110px] flex items-center justify-center">
+                      <Image src={v.img} alt={v.name} width={240} height={140}
+                        className="object-contain object-bottom w-full h-full" />
                     </div>
                   </div>
 
-                  {/* Vehicle image — full width, dark bg */}
-                  <div className="relative bg-[#111] mx-0 h-[160px] sm:h-[190px] flex items-center justify-center px-6">
-                    <Image src={v.img} alt={v.name} width={480} height={260}
-                      className="object-contain w-full h-full" />
-                  </div>
+                  {/* Divider */}
+                  <div className="h-px bg-[var(--c-rule)] mx-6 sm:mx-8" />
 
-                  {/* Specs grid */}
-                  <div className="grid grid-cols-2 border-t border-[var(--c-rule)]">
-                    {/* Max passengers */}
-                    <div className="flex flex-col items-center justify-center gap-1.5 py-5 border-r border-[var(--c-rule)]">
-                      <Image src="/icons/seat.png" alt="Passengers" width={20} height={20} className="opacity-60 invert dark:invert-0 dark:opacity-50" />
-                      <p className="text-[var(--c-ink)] text-[22px] font-light leading-none">{cfg.maxPax}</p>
-                      <p className="text-[9px] tracking-[0.3em] uppercase text-[var(--c-ink-3)]">
-                        {lang === "ja" ? "名まで" : lang === "zh" ? "人（最多）" : "pax max"}
-                      </p>
-                    </div>
-                    {/* Max suitcases */}
-                    <div className="flex flex-col items-center justify-center gap-1.5 py-5">
-                      <Image src="/icons/suitcase.png" alt="Suitcases" width={20} height={20} className="opacity-60 invert dark:invert-0 dark:opacity-50" />
-                      <p className="text-[var(--c-ink)] text-[22px] font-light leading-none">{cfg.maxBag}</p>
-                      <p className="text-[9px] tracking-[0.3em] uppercase text-[var(--c-ink-3)]">
-                        {lang === "ja" ? "個まで" : lang === "zh" ? "件（最多）" : "bags max"}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Recommended config bar */}
-                  <div className="flex items-center gap-3 px-6 sm:px-8 py-3.5 bg-[#c9a84c]/[0.06] border-t border-[#c9a84c]/20">
-                    <span className="text-[9px] tracking-[0.4em] uppercase font-semibold text-[#c9a84c] shrink-0">
-                      {lang === "ja" ? "推奨" : lang === "zh" ? "推薦" : "REC."}
-                    </span>
-                    <div className="h-3 w-px bg-[#c9a84c]/20" />
-                    <div className="flex items-center gap-1 text-[var(--c-ink-2)] text-[12px]">
-                      <Image src="/icons/seat.png" alt="" width={13} height={13} className="opacity-70 invert dark:invert-0 dark:opacity-50" />
-                      <span className="font-semibold text-[var(--c-ink)]">{cfg.recPax}</span>
-                      <span className="text-[var(--c-ink-3)] ml-1 mr-3">
-                        {lang === "ja" ? "名" : lang === "zh" ? "人" : "pax"}
+                  {/* Capacity rows */}
+                  <div className="px-6 sm:px-8 py-4 space-y-2">
+                    {/* Recommended — gold, primary */}
+                    <div className="grid grid-cols-[3.5rem_1fr_1fr] items-center gap-3">
+                      <span className="text-[9px] tracking-[0.35em] uppercase font-semibold text-[#c9a84c]">
+                        {lang === "ja" ? "推奨" : lang === "zh" ? "推薦" : "REC."}
                       </span>
-                      <Image src="/icons/suitcase.png" alt="" width={13} height={13} className="opacity-70 invert dark:invert-0 dark:opacity-50" />
-                      <span className="font-semibold text-[var(--c-ink)]">{cfg.recBag}</span>
-                      <span className="text-[var(--c-ink-3)] ml-1">
-                        {lang === "ja" ? "個" : lang === "zh" ? "件" : "bags"}
-                      </span>
+                      <div className="flex items-center gap-1.5">
+                        <Image src="/icons/seat.png" alt="Pax" width={17} height={17} className="opacity-90 invert dark:invert-0 dark:opacity-70" />
+                        <span className="text-[var(--c-ink)] text-[14px] font-semibold">{cfg.recPax}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <Image src="/icons/suitcase.png" alt="Suitcases" width={17} height={17} className="opacity-90 invert dark:invert-0 dark:opacity-70" />
+                        <span className="text-[var(--c-ink)] text-[14px] font-semibold">{cfg.recBag}</span>
+                      </div>
                     </div>
-                  </div>
-
-                  {/* Book CTA */}
-                  <div className="px-6 sm:px-8 py-5 border-t border-[var(--c-rule)]">
-                    <Link href={`#${v.id}`}
-                      className="group flex items-center justify-between w-full text-[11px] tracking-[0.25em] uppercase text-[var(--c-ink-2)] hover:text-[#c9a84c] transition-colors">
-                      <span>{lang === "ja" ? "詳細を見る" : lang === "zh" ? "查看詳情" : "View Details"}</span>
-                      <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                      </svg>
-                    </Link>
+                    {/* Max — muted, secondary */}
+                    <div className="grid grid-cols-[3.5rem_1fr_1fr] items-center gap-3">
+                      <span className="text-[9px] tracking-[0.35em] uppercase font-semibold text-[var(--c-ink-3)]">
+                        {lang === "ja" ? "最大" : lang === "zh" ? "最多" : "MAX"}
+                      </span>
+                      <div className="flex items-center gap-1.5">
+                        <Image src="/icons/seat.png" alt="Pax" width={17} height={17} className="opacity-40 invert dark:invert-0 dark:opacity-30" />
+                        <span className="text-[var(--c-ink-3)] text-[14px] font-semibold">{cfg.maxPax}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <Image src="/icons/suitcase.png" alt="Suitcases" width={17} height={17} className="opacity-40 invert dark:invert-0 dark:opacity-30" />
+                        <span className="text-[var(--c-ink-3)] text-[14px] font-semibold">{cfg.maxBag}</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               );
