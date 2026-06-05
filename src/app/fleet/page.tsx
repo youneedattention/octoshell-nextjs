@@ -230,7 +230,7 @@ function ImgPlaceholder({ note, ratio = "3/2" }: { note: string; ratio?: string 
 ══════════════════════════════════════════════════════════════════════ */
 export default function VehiclesPage() {
   const { lang } = useLang();
-  const [hiaceShowGolf, setHiaceShowGolf] = useState(false);
+  const [showGolf, setShowGolf] = useState<Record<string, boolean>>({});
 
   return (
     <main className="min-h-screen bg-[#0c0c0c]">
@@ -269,8 +269,9 @@ export default function VehiclesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {VEHICLES.map((v) => {
               const cfg = v.id === "alphard"
-                ? { recPax: 4, recBag: 4, maxPax: 6, maxBag: 5, recGolf: null, maxGolf: null }
+                ? { recPax: 4, recBag: 4, maxPax: 6, maxBag: 5, recGolf: 3, maxGolf: 4 }
                 : { recPax: 7, recBag: 9, maxPax: 9, maxBag: 15, recGolf: 6, maxGolf: 9 };
+              const isGolf = !!showGolf[v.id];
               return (
                 <div key={v.id} className="flex flex-col border border-[var(--c-rule)] hover:border-[#c9a84c]/30 transition-colors duration-300 overflow-hidden">
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/50 to-transparent" />
@@ -321,32 +322,20 @@ export default function VehiclesPage() {
                           <ProtectedImage src="/icons/seat.png" alt="Pax" width={24} height={24} className={`invert dark:invert-0 ${row.gold ? "opacity-90 dark:opacity-70" : "opacity-40 dark:opacity-30"}`} />
                           <span className={`text-[22px] sm:text-[26px] font-semibold leading-none ${row.gold ? "text-[var(--c-ink)]" : "text-[var(--c-ink-3)]"}`}>{row.pax}</span>
                         </div>
-                        {row.golf != null ? (
-                          /* Hiace: click to toggle suitcase ↔ golf bag */
-                          <button
-                            onClick={() => setHiaceShowGolf((p) => !p)}
-                            className="flex items-center gap-2 group cursor-pointer select-none"
-                            title={hiaceShowGolf
-                              ? (lang === "ja" ? "スーツケースに切替" : lang === "zh" ? "切換行李箱" : "Switch to suitcases")
-                              : (lang === "ja" ? "ゴルフバッグに切替" : lang === "zh" ? "切換高爾夫球袋" : "Switch to golf bags")}
-                          >
-                            <div className="relative w-6 h-6">
-                              <ProtectedImage src="/icons/suitcase.png" alt="" width={24} height={24}
-                                className={`absolute inset-0 invert dark:invert-0 transition-opacity duration-300 ${row.gold ? "opacity-90 dark:opacity-70" : "opacity-40 dark:opacity-30"} ${hiaceShowGolf ? "opacity-0!" : ""}`} />
-                              <ProtectedImage src="/icons/golfbag.png" alt="" width={24} height={24}
-                                className={`absolute inset-0 brightness-0 dark:invert transition-opacity duration-300 ${row.gold ? "opacity-90" : "opacity-40"} ${hiaceShowGolf ? "" : "opacity-0!"}`} />
-                            </div>
-                            <span className={`text-[22px] sm:text-[26px] font-semibold leading-none transition-colors duration-300 ${row.gold ? "text-[var(--c-ink)]" : "text-[var(--c-ink-3)]"}`}>
-                              {hiaceShowGolf ? row.golf : row.bag}
-                            </span>
-                          </button>
-                        ) : (
-                          /* Alphard: static suitcase */
-                          <div className="flex items-center gap-2">
-                            <ProtectedImage src="/icons/suitcase.png" alt="" width={24} height={24} className={`invert dark:invert-0 ${row.gold ? "opacity-90 dark:opacity-70" : "opacity-40 dark:opacity-30"}`} />
-                            <span className={`text-[22px] sm:text-[26px] font-semibold leading-none ${row.gold ? "text-[var(--c-ink)]" : "text-[var(--c-ink-3)]"}`}>{row.bag}</span>
+                        <button
+                          onClick={() => setShowGolf((p) => ({ ...p, [v.id]: !p[v.id] }))}
+                          className="flex items-center gap-2 cursor-pointer select-none"
+                        >
+                          <div className="relative w-6 h-6">
+                            <ProtectedImage src="/icons/suitcase.png" alt="" width={24} height={24}
+                              className={`absolute inset-0 invert dark:invert-0 transition-opacity duration-300 ${row.gold ? "opacity-90 dark:opacity-70" : "opacity-40 dark:opacity-30"} ${isGolf ? "opacity-0!" : ""}`} />
+                            <ProtectedImage src="/icons/golfbag.png" alt="" width={24} height={24}
+                              className={`absolute inset-0 brightness-0 dark:invert transition-opacity duration-300 ${row.gold ? "opacity-90" : "opacity-40"} ${isGolf ? "" : "opacity-0!"}`} />
                           </div>
-                        )}
+                          <span className={`text-[22px] sm:text-[26px] font-semibold leading-none transition-colors duration-300 ${row.gold ? "text-[var(--c-ink)]" : "text-[var(--c-ink-3)]"}`}>
+                            {isGolf ? row.golf : row.bag}
+                          </span>
+                        </button>
                       </div>
                     ))}
                   </div>
