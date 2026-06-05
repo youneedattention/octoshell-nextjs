@@ -281,7 +281,7 @@ export default function VehiclesPage() {
                       <p className="text-[var(--c-ink-2)] text-[13px] leading-[1.8]">{v.tagline[lang]}</p>
                     </div>
                     <div className="shrink-0 w-[140px] sm:w-[180px] h-[90px] sm:h-[110px] flex items-center justify-center relative select-none">
-                      <Image
+                      <ProtectedImage
                         src={`/${v.id}-top-${lang === "ja" ? "jp" : lang === "zh" ? "cn" : "en"}.png`}
                         alt="" width={240} height={140}
                         draggable={false}

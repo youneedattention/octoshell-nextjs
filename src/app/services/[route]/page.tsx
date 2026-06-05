@@ -238,7 +238,7 @@ export default function ServiceRoutePage({
 
         {/* ── Hero image ── */}
         <div className="relative w-full aspect-[16/7] sm:aspect-[16/6] overflow-hidden">
-          <Image
+          <ProtectedImage
             src={data.heroImg}
             alt={data.heroAlt}
             fill

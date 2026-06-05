@@ -172,7 +172,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
         <Link href="/" draggable={false}
           className="sm:hidden shrink-0 transition-transform duration-200 active:scale-110"
           onContextMenu={(e) => e.preventDefault()}>
-          <Image
+          <ProtectedImage
             src={LOGO}
             alt="Octoshell"
             width={95}
