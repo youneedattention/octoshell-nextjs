@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import ProtectedImage from "@/components/ProtectedImage";
 import Link from "next/link";
 import Header from "@/components/Header";
 import SiteFooter from "@/components/SiteFooter";
@@ -335,7 +335,7 @@ export default function ServicesPage() {
                 <div className="w-full">
                   {svc.img ? (
                     <div className="relative aspect-[3/2] overflow-hidden group">
-                      <Image src={svc.img} alt={svc.title["en"]} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                      <ProtectedImage src={svc.img} alt={svc.title["en"]} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                     </div>
                   ) : (
                     <ImgPlaceholder note={svc.imgNote} num={svc.num} />

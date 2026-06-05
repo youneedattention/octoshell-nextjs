@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import ProtectedImage from "@/components/ProtectedImage";
 import Link from "next/link";
 import { useState } from "react";
 import Header from "@/components/Header";

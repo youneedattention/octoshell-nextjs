@@ -1,6 +1,6 @@
 "use client";
 import { use } from "react";
-import Image from "next/image";
+import ProtectedImage from "@/components/ProtectedImage";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";

@@ -6,6 +6,18 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "octoshell.jp" },
     ],
   },
+  async headers() {
+    const imgExts = "png|jpg|jpeg|webp|gif|svg|avif|ico";
+    return [
+      {
+        source: `/:path*\\.(${imgExts})`,
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, noimageindex" },
+          { key: "Cache-Control",  value: "no-store" },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
       { source: "/ja",               destination: "/", permanent: true },

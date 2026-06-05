@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
+import ProtectedImage from "@/components/ProtectedImage";
 import Header from "@/components/Header";
 import SiteFooter from "@/components/SiteFooter";
 import { useLang } from "@/context/LangContext";
@@ -304,11 +304,11 @@ export default function VehiclesPage() {
                         {lang === "ja" ? "推奨" : lang === "zh" ? "推薦" : "REC."}
                       </span>
                       <div className="flex items-center gap-2">
-                        <Image src="/icons/seat.png" alt="Pax" width={24} height={24} className="opacity-90 invert dark:invert-0 dark:opacity-70" />
+                        <ProtectedImage src="/icons/seat.png" alt="Pax" width={24} height={24} className="opacity-90 invert dark:invert-0 dark:opacity-70" />
                         <span className="text-[var(--c-ink)] text-[22px] sm:text-[26px] font-semibold leading-none">{cfg.recPax}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Image src="/icons/suitcase.png" alt="Suitcases" width={24} height={24} className="opacity-90 invert dark:invert-0 dark:opacity-70" />
+                        <ProtectedImage src="/icons/suitcase.png" alt="Suitcases" width={24} height={24} className="opacity-90 invert dark:invert-0 dark:opacity-70" />
                         <span className="text-[var(--c-ink)] text-[22px] sm:text-[26px] font-semibold leading-none">{cfg.recBag}</span>
                       </div>
                     </div>
@@ -318,11 +318,11 @@ export default function VehiclesPage() {
                         {lang === "ja" ? "最大" : lang === "zh" ? "最多" : "MAX"}
                       </span>
                       <div className="flex items-center gap-2">
-                        <Image src="/icons/seat.png" alt="Pax" width={24} height={24} className="opacity-40 invert dark:invert-0 dark:opacity-30" />
+                        <ProtectedImage src="/icons/seat.png" alt="Pax" width={24} height={24} className="opacity-40 invert dark:invert-0 dark:opacity-30" />
                         <span className="text-[var(--c-ink-3)] text-[22px] sm:text-[26px] font-semibold leading-none">{cfg.maxPax}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Image src="/icons/suitcase.png" alt="Suitcases" width={24} height={24} className="opacity-40 invert dark:invert-0 dark:opacity-30" />
+                        <ProtectedImage src="/icons/suitcase.png" alt="Suitcases" width={24} height={24} className="opacity-40 invert dark:invert-0 dark:opacity-30" />
                         <span className="text-[var(--c-ink-3)] text-[22px] sm:text-[26px] font-semibold leading-none">{cfg.maxBag}</span>
                       </div>
                     </div>
@@ -367,7 +367,7 @@ export default function VehiclesPage() {
 
               {/* Main vehicle image */}
               <div className="overflow-hidden mb-12 flex items-center justify-center h-[200px] sm:h-[260px] px-8">
-                <Image src={v.img} alt={v.name} width={600} height={340}
+                <ProtectedImage src={v.img} alt={v.name} width={600} height={340}
                   className="object-contain object-bottom w-full h-full" />
               </div>
 

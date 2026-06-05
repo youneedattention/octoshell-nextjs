@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
+import ProtectedImage from "@/components/ProtectedImage";
 import { useState } from "react";
 import Header from "@/components/Header";
 import SiteFooter from "@/components/SiteFooter";
@@ -557,7 +557,7 @@ export default function AirportPage() {
               <div key={v.name} className="border border-[var(--c-rule)] overflow-hidden group hover:border-[#c9a84c]/30 transition-colors duration-300">
                 <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/50 to-transparent" />
                 <div className="h-[160px] sm:h-[180px] flex items-center justify-center px-6">
-                  <Image src={i === 0 ? "/alphard.webp" : "/hiace.webp"} alt={v.name}
+                  <ProtectedImage src={i === 0 ? "/alphard.webp" : "/hiace.webp"} alt={v.name}
                     width={340} height={200} priority className="object-contain object-bottom w-full h-full p-2" />
                 </div>
                 <div className="p-5 sm:p-6">

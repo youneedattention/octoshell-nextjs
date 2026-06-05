@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import ProtectedImage from "@/components/ProtectedImage";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLang } from "@/context/LangContext";
@@ -278,7 +278,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
         {/* ── DESKTOP CENTER: logo + nav (absolute) ────────────── */}
         <div className="hidden sm:flex flex-col items-center absolute left-1/2 -translate-x-1/2">
           <Link href="/" onContextMenu={(e) => e.preventDefault()}>
-            <Image src={LOGO} alt="Octoshell" width={75} height={75} draggable={false} className="object-contain drop-shadow-lg pointer-events-none select-none" />
+            <ProtectedImage src={LOGO} alt="Octoshell" width={75} height={75} draggable={false} className="object-contain drop-shadow-lg pointer-events-none select-none" />
           </Link>
 
           <nav className="flex items-center gap-8 lg:gap-12 mt-0.5">

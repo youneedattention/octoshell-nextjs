@@ -1,5 +1,5 @@
 ﻿"use client";
-import Image from "next/image";
+import ProtectedImage from "@/components/ProtectedImage";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Price, { CurrencyNote } from "@/components/Price";
@@ -62,7 +62,7 @@ export default function Home() {
 
       {/* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲 HERO 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲 */}
       <section className="relative h-[100svh] min-h-[560px]">
-        <Image src={HERO_BG} alt="Octoshell Japan Chauffeur Service" fill
+        <ProtectedImage src={HERO_BG} alt="Octoshell Japan Chauffeur Service" fill
           className="object-cover object-center" priority />
         <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/20 to-black/65" />
 
@@ -122,7 +122,7 @@ export default function Home() {
       <footer className="bg-[#0a0a0a] pt-10 sm:pt-12 pb-7 sm:pb-8 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pb-7 border-b border-white/10">
-            <Image src={LOGO} alt="Octoshell" width={50} height={50} className="object-contain" />
+            <ProtectedImage src={LOGO} alt="Octoshell" width={50} height={50} className="object-contain" />
             <nav className="flex flex-wrap justify-center gap-8 sm:gap-10">
               {(["nav_home", "nav_services", "nav_about"] as const).map((key) => {
                 const href = key === "nav_home" ? "/" : key === "nav_services" ? "/#services" : "/#about";
@@ -175,7 +175,7 @@ function PriceCard({
   return (
     <div className="flex flex-col">
       <div className="flex items-center justify-center h-[300px] px-4">
-        <Image src={img} alt={name} width={480} height={270}
+        <ProtectedImage src={img} alt={name} width={480} height={270}
           className="object-contain object-bottom max-h-60 w-auto" />
       </div>
       <div className="flex flex-col flex-1 px-5 sm:px-7 py-5 sm:py-6">
@@ -224,7 +224,7 @@ function ServiceCard({ tag, title, body, img }: {
   return (
     <div className="group flex flex-col">
       <div className="relative h-48 sm:h-52 overflow-hidden">
-        <Image src={img} alt={title} fill
+        <ProtectedImage src={img} alt={title} fill
           className="object-cover transition-transform duration-500 group-hover:scale-105" />
       </div>
       <div className="pt-4 sm:pt-5">
