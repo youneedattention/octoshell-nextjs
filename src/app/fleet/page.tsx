@@ -267,8 +267,8 @@ export default function VehiclesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {VEHICLES.map((v) => {
               const cfg = v.id === "alphard"
-                ? { recPax: 4, recBag: 4, maxPax: 6, maxBag: 5 }
-                : { recPax: 7, recBag: 9, maxPax: 9, maxBag: 15 };
+                ? { recPax: 4, recBag: 4, maxPax: 6, maxBag: 5, recGolf: null, maxGolf: null }
+                : { recPax: 7, recBag: 9, maxPax: 9, maxBag: 15, recGolf: 6, maxGolf: 9 };
               return (
                 <div key={v.id} className="flex flex-col border border-[var(--c-rule)] hover:border-[#c9a84c]/30 transition-colors duration-300 overflow-hidden">
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/50 to-transparent" />
@@ -308,8 +308,8 @@ export default function VehiclesPage() {
                   {/* Capacity rows */}
                   <div className="px-6 sm:px-8 py-5 space-y-4">
                     {[
-                      { label: lang === "ja" ? "推奨" : lang === "zh" ? "推薦" : "REC.", pax: cfg.recPax, bag: cfg.recBag, gold: true },
-                      { label: lang === "ja" ? "最大" : lang === "zh" ? "最多" : "MAX", pax: cfg.maxPax, bag: cfg.maxBag, gold: false },
+                      { label: lang === "ja" ? "推奨" : lang === "zh" ? "推薦" : "REC.", pax: cfg.recPax, bag: cfg.recBag, golf: cfg.recGolf, gold: true },
+                      { label: lang === "ja" ? "最大" : lang === "zh" ? "最多" : "MAX", pax: cfg.maxPax, bag: cfg.maxBag, golf: cfg.maxGolf, gold: false },
                     ].map((row) => (
                       <div key={row.label} className="grid grid-cols-[4rem_1fr_1fr] items-center gap-4">
                         <span className={`text-[10px] tracking-[0.35em] uppercase font-semibold ${row.gold ? "text-[#c9a84c]" : "text-[var(--c-ink-3)]"}`}>
@@ -319,10 +319,25 @@ export default function VehiclesPage() {
                           <ProtectedImage src="/icons/seat.png" alt="Pax" width={24} height={24} className={`invert dark:invert-0 ${row.gold ? "opacity-90 dark:opacity-70" : "opacity-40 dark:opacity-30"}`} />
                           <span className={`text-[22px] sm:text-[26px] font-semibold leading-none ${row.gold ? "text-[var(--c-ink)]" : "text-[var(--c-ink-3)]"}`}>{row.pax}</span>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <ProtectedImage src="/icons/suitcase.png" alt="Suitcases" width={24} height={24} className={`invert dark:invert-0 ${row.gold ? "opacity-90 dark:opacity-70" : "opacity-40 dark:opacity-30"}`} />
-                          <span className={`text-[22px] sm:text-[26px] font-semibold leading-none ${row.gold ? "text-[var(--c-ink)]" : "text-[var(--c-ink-3)]"}`}>{row.bag}</span>
-                        </div>
+                        {row.golf != null ? (
+                          /* Hiace: flip between suitcase and golf bag */
+                          <div className="flip-cell gap-2">
+                            <div className="face face-a flex items-center gap-2">
+                              <ProtectedImage src="/icons/suitcase.png" alt="" width={24} height={24} className={`invert dark:invert-0 ${row.gold ? "opacity-90 dark:opacity-70" : "opacity-40 dark:opacity-30"}`} />
+                              <span className={`text-[22px] sm:text-[26px] font-semibold leading-none ${row.gold ? "text-[var(--c-ink)]" : "text-[var(--c-ink-3)]"}`}>{row.bag}</span>
+                            </div>
+                            <div className="face face-b flex items-center gap-2">
+                              <ProtectedImage src="/icons/golfbag.png" alt="" width={24} height={24} className={`brightness-0 dark:brightness-0 dark:invert ${row.gold ? "opacity-90" : "opacity-40"}`} />
+                              <span className={`text-[22px] sm:text-[26px] font-semibold leading-none ${row.gold ? "text-[var(--c-ink)]" : "text-[var(--c-ink-3)]"}`}>{row.golf}</span>
+                            </div>
+                          </div>
+                        ) : (
+                          /* Alphard: static suitcase */
+                          <div className="flex items-center gap-2">
+                            <ProtectedImage src="/icons/suitcase.png" alt="" width={24} height={24} className={`invert dark:invert-0 ${row.gold ? "opacity-90 dark:opacity-70" : "opacity-40 dark:opacity-30"}`} />
+                            <span className={`text-[22px] sm:text-[26px] font-semibold leading-none ${row.gold ? "text-[var(--c-ink)]" : "text-[var(--c-ink-3)]"}`}>{row.bag}</span>
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>

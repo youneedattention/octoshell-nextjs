@@ -31,6 +31,30 @@ html.dark {
   --c-rule:  #2a2a2a;
 }
 
+/* ── Departure-board flip animation ─────────────────────────────────── */
+@keyframes flip-out {
+  0%   { transform: rotateX(0deg);   opacity: 1; }
+  45%  { transform: rotateX(-90deg); opacity: 0; }
+  100% { transform: rotateX(-90deg); opacity: 0; }
+}
+@keyframes flip-in {
+  0%   { transform: rotateX(90deg);  opacity: 0; }
+  55%  { transform: rotateX(90deg);  opacity: 0; }
+  100% { transform: rotateX(0deg);   opacity: 1; }
+}
+.flip-cell { position: relative; display: inline-flex; align-items: center; perspective: 300px; }
+.flip-cell .face {
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  backface-visibility: hidden;
+}
+.flip-cell .face-a { animation-name: flip-out; }
+.flip-cell .face-b {
+  position: absolute; inset: 0; display: flex; align-items: center;
+  animation-name: flip-in;
+}
+
 /* Smooth theme transition — exclude image transforms to avoid fighting hover-zoom */
 *:not(img):not(svg):not([class*="transition"]) {
   transition-property: background-color, border-color, color;
