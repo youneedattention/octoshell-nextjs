@@ -17,7 +17,7 @@ const SCHEMA = {
       "name": "Toyota Alphard",
       "brand": { "@type": "Brand", "name": "Toyota" },
       "vehicleSeatingCapacity": 6,
-      "description": "Luxury MPV. Perfect for airport transfers, business travel and private sightseeing tours in Japan. Up to 6 passengers. Standard config: 4 passengers + 4 large suitcases. Dimensions: 4,945mm × 1,850mm × 1,895mm.",
+      "description": "Luxury MPV. Perfect for airport transfers, business travel and private sightseeing tours in Japan. Up to 6 passengers. Standard config: 4 passengers + 4 large suitcases. Dimensions: 4,945mm × 1,850mm × 1,950mm.",
       "offers": {
         "@type": "Offer",
         "price": "20000",
@@ -123,7 +123,7 @@ const VEHICLES: VehicleData[] = [
       zh: "完美適用於機場接送、商務出行及日本私人觀光遊覽。",
     },
     img: "/alphard.webp",
-    dims: { l: "4,945 mm", w: "1,850 mm", h: "1,895 mm" },
+    dims: { l: "4,945 mm", w: "1,850 mm", h: "1,950 mm" },
     configs: [
       {
         label: { en: "Standard (4–6 passengers)", ja: "標準（4〜6名）", zh: "標準（4至6人）" },
