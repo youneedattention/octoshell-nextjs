@@ -281,8 +281,11 @@ export default function VehiclesPage() {
                       <p className="text-[var(--c-ink-2)] text-[13px] leading-[1.8]">{v.tagline[lang]}</p>
                     </div>
                     <div className="shrink-0 w-[140px] sm:w-[180px] h-[90px] sm:h-[110px] flex items-center justify-center">
-                      <Image src={v.img} alt={v.name} width={240} height={140}
-                        className="object-contain object-bottom w-full h-full" />
+                      <Image
+                        src={v.id === "alphard" ? "/alphard-top.png" : v.img}
+                        alt={v.name} width={240} height={140}
+                        className={`object-contain w-full h-full ${v.id === "alphard" ? "mix-blend-multiply dark:mix-blend-screen" : "object-bottom"}`}
+                      />
                     </div>
                   </div>
 
