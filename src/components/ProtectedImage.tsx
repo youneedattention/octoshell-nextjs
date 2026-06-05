@@ -1,7 +1,7 @@
 "use client";
 import Image, { type ImageProps } from "next/image";
 
-type Props = Omit<ImageProps, "draggable" | "onContextMenu"> & {
+type Props = ImageProps & {
   wrapperClassName?: string;
 };
 
