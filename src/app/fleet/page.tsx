@@ -291,12 +291,8 @@ export default function VehiclesPage() {
 
                   {/* Vehicle image — full width, dark bg */}
                   <div className="relative bg-[#111] mx-0 h-[160px] sm:h-[190px] flex items-center justify-center px-6">
-                    <Image
-                      src={v.id === "alphard" ? "/alphard-top.png" : v.img}
-                      alt={v.name}
-                      width={480} height={260}
-                      className={v.id === "alphard" ? "object-contain w-full h-full" : "object-contain w-full h-full"}
-                    />
+                    <Image src={v.img} alt={v.name} width={480} height={260}
+                      className="object-contain w-full h-full" />
                   </div>
 
                   {/* Specs grid */}
