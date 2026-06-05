@@ -280,12 +280,16 @@ export default function VehiclesPage() {
                       <p className="text-[10px] tracking-[0.35em] uppercase text-[#c9a84c]/70 font-medium mt-0.5 mb-4">{v.badge[lang]}</p>
                       <p className="text-[var(--c-ink-2)] text-[13px] leading-[1.8]">{v.tagline[lang]}</p>
                     </div>
-                    <div className="shrink-0 w-[140px] sm:w-[180px] h-[90px] sm:h-[110px] flex items-center justify-center">
+                    <div className="shrink-0 w-[140px] sm:w-[180px] h-[90px] sm:h-[110px] flex items-center justify-center relative select-none">
                       <Image
                         src={`/${v.id}-top-${lang === "ja" ? "jp" : lang === "zh" ? "cn" : "en"}.png`}
-                        alt={v.name} width={240} height={140}
-                        className="object-contain w-full h-full mix-blend-multiply dark:mix-blend-screen"
+                        alt="" width={240} height={140}
+                        draggable={false}
+                        onContextMenu={(e) => e.preventDefault()}
+                        className="object-contain w-full h-full mix-blend-multiply dark:mix-blend-screen pointer-events-none"
                       />
+                      {/* transparent shield — blocks right-click & drag on all browsers */}
+                      <div className="absolute inset-0" onContextMenu={(e) => e.preventDefault()} />
                     </div>
                   </div>
 
