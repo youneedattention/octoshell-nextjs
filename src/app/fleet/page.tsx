@@ -270,27 +270,36 @@ export default function VehiclesPage() {
                 ? { recPax: 4, recBag: 4, maxPax: 6, maxBag: 2 }
                 : { recPax: 8, recBag: 6, maxPax: 9, maxBag: 6 };
               return (
-                <div key={v.id} className="flex flex-col border border-[var(--c-rule)] hover:border-[#c9a84c]/30 transition-colors duration-300">
+                <div key={v.id} className="flex flex-col border border-[var(--c-rule)] hover:border-[#c9a84c]/30 transition-colors duration-300 overflow-hidden">
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/50 to-transparent" />
 
-                  {/* Top: text left, image right */}
-                  <div className="flex items-start gap-4 p-6 sm:p-8 flex-1">
-                    <div className="flex-1 min-w-0">
-                      <p className="text-[var(--c-ink)] text-[17px] sm:text-[19px] font-light tracking-[0.08em]">{v.name}</p>
-                      <p className="text-[10px] tracking-[0.35em] uppercase text-[#c9a84c]/70 font-medium mt-0.5 mb-4">{v.badge[lang]}</p>
-                      <p className="text-[var(--c-ink-2)] text-[13px] leading-[1.8]">{v.tagline[lang]}</p>
-                    </div>
-                    <div className="shrink-0 w-[140px] sm:w-[180px] h-[90px] sm:h-[110px] flex items-center justify-center relative select-none">
-                      <ProtectedImage
-                        src={`/${v.id}-top-${lang === "ja" ? "jp" : lang === "zh" ? "cn" : "en"}.png`}
-                        alt="" width={240} height={140}
-                        draggable={false}
-                        onContextMenu={(e) => e.preventDefault()}
-                        className="object-contain w-full h-full mix-blend-multiply dark:mix-blend-screen pointer-events-none"
-                      />
-                      {/* transparent shield — blocks right-click & drag on all browsers */}
-                      <div className="absolute inset-0" onContextMenu={(e) => e.preventDefault()} />
-                    </div>
+                  {/* Top-view image — full width */}
+                  <div className="w-full h-[180px] sm:h-[220px] flex items-center justify-center px-6 pt-6">
+                    <ProtectedImage
+                      src={`/${v.id}-top-${lang === "ja" ? "jp" : lang === "zh" ? "cn" : "en"}.png`}
+                      alt="" width={400} height={220}
+                      className="object-contain w-full h-full mix-blend-multiply dark:mix-blend-screen"
+                    />
+                  </div>
+
+                  {/* Name + badge */}
+                  <div className="px-6 sm:px-8 pt-4 pb-3">
+                    <p className="text-[var(--c-ink)] text-[17px] sm:text-[19px] font-light tracking-[0.08em]">{v.name}</p>
+                    <p className="text-[10px] tracking-[0.35em] uppercase text-[#c9a84c]/70 font-medium mt-0.5">{v.badge[lang]}</p>
+                  </div>
+
+                  {/* Dimensions */}
+                  <div className="grid grid-cols-3 gap-px mx-6 sm:mx-8 mb-4 border border-[var(--c-rule)]">
+                    {[
+                      { k: lang === "ja" ? "全長" : lang === "zh" ? "全長" : "Length", val: v.dims.l },
+                      { k: lang === "ja" ? "全幅" : lang === "zh" ? "全寬" : "Width",  val: v.dims.w },
+                      { k: lang === "ja" ? "全高" : lang === "zh" ? "全高" : "Height", val: v.dims.h },
+                    ].map((d, i) => (
+                      <div key={d.k} className={`flex flex-col items-center py-2.5 ${i < 2 ? "border-r border-[var(--c-rule)]" : ""}`}>
+                        <p className="text-[9px] tracking-[0.3em] uppercase text-[var(--c-ink-3)] mb-1">{d.k}</p>
+                        <p className="text-[12px] font-semibold text-[var(--c-ink)] tracking-tight">{d.val}</p>
+                      </div>
+                    ))}
                   </div>
 
                   {/* Divider */}
@@ -298,7 +307,7 @@ export default function VehiclesPage() {
 
                   {/* Capacity rows */}
                   <div className="px-6 sm:px-8 py-5 space-y-4">
-                    {/* Recommended — gold, primary */}
+                    {/* Recommended — gold */}
                     <div className="grid grid-cols-[4rem_1fr_1fr] items-center gap-4">
                       <span className="text-[10px] tracking-[0.35em] uppercase font-semibold text-[#c9a84c]">
                         {lang === "ja" ? "推奨" : lang === "zh" ? "推薦" : "REC."}
@@ -312,7 +321,7 @@ export default function VehiclesPage() {
                         <span className="text-[var(--c-ink)] text-[22px] sm:text-[26px] font-semibold leading-none">{cfg.recBag}</span>
                       </div>
                     </div>
-                    {/* Max — muted, secondary */}
+                    {/* Max — muted */}
                     <div className="grid grid-cols-[4rem_1fr_1fr] items-center gap-4">
                       <span className="text-[10px] tracking-[0.35em] uppercase font-semibold text-[var(--c-ink-3)]">
                         {lang === "ja" ? "最大" : lang === "zh" ? "最多" : "MAX"}
