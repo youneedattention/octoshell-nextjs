@@ -282,9 +282,9 @@ export default function VehiclesPage() {
                     </div>
                     <div className="shrink-0 w-[140px] sm:w-[180px] h-[90px] sm:h-[110px] flex items-center justify-center">
                       <Image
-                        src={v.id === "alphard" ? "/alphard-top.png" : v.img}
+                        src={`/${v.id}-top-${lang === "ja" ? "jp" : lang === "zh" ? "cn" : "en"}.png`}
                         alt={v.name} width={240} height={140}
-                        className={`object-contain w-full h-full ${v.id === "alphard" ? "mix-blend-multiply dark:mix-blend-screen" : "object-bottom"}`}
+                        className="object-contain w-full h-full mix-blend-multiply dark:mix-blend-screen"
                       />
                     </div>
                   </div>
