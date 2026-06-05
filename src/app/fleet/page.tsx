@@ -319,25 +319,30 @@ export default function VehiclesPage() {
                     </div>
                   </div>
 
-                  {/* Recommended config bar */}
-                  <div className="flex items-center gap-3 px-6 sm:px-8 py-3.5 bg-[#c9a84c]/[0.06] border-t border-[#c9a84c]/20">
-                    <span className="text-[9px] tracking-[0.4em] uppercase font-semibold text-[#c9a84c] shrink-0">
-                      {lang === "ja" ? "推奨" : lang === "zh" ? "推薦" : "REC."}
-                    </span>
-                    <div className="h-3 w-px bg-[#c9a84c]/20" />
-                    <div className="flex items-center gap-1 text-[var(--c-ink-2)] text-[12px]">
-                      <Image src="/icons/seat.png" alt="" width={13} height={13} className="opacity-70 invert dark:invert-0 dark:opacity-50" />
-                      <span className="font-semibold text-[var(--c-ink)]">{cfg.recPax}</span>
-                      <span className="text-[var(--c-ink-3)] ml-1 mr-3">
-                        {lang === "ja" ? "名" : lang === "zh" ? "人" : "pax"}
+                  {/* REC / MAX rows */}
+                  {[
+                    { key: "rec", label: lang === "ja" ? "推奨" : lang === "zh" ? "推薦" : "REC.", pax: cfg.recPax, bag: cfg.recBag, gold: true },
+                    { key: "max", label: lang === "ja" ? "最大" : lang === "zh" ? "最多" : "MAX", pax: cfg.maxPax, bag: cfg.maxBag, gold: false },
+                  ].map((row) => (
+                    <div key={row.key} className={`flex items-center gap-3 px-6 sm:px-8 py-3 border-t ${row.gold ? "bg-[#c9a84c]/[0.06] border-[#c9a84c]/20" : "border-[var(--c-rule)]"}`}>
+                      <span className={`text-[9px] tracking-[0.4em] uppercase font-semibold shrink-0 w-8 ${row.gold ? "text-[#c9a84c]" : "text-[var(--c-ink-3)]"}`}>
+                        {row.label}
                       </span>
-                      <Image src="/icons/suitcase.png" alt="" width={13} height={13} className="opacity-70 invert dark:invert-0 dark:opacity-50" />
-                      <span className="font-semibold text-[var(--c-ink)]">{cfg.recBag}</span>
-                      <span className="text-[var(--c-ink-3)] ml-1">
-                        {lang === "ja" ? "個" : lang === "zh" ? "件" : "bags"}
-                      </span>
+                      <div className={`h-3 w-px ${row.gold ? "bg-[#c9a84c]/20" : "bg-[var(--c-rule)]"}`} />
+                      <div className="flex items-center gap-1 text-[12px]">
+                        <Image src="/icons/seat.png" alt="" width={13} height={13} className={`invert dark:invert-0 ${row.gold ? "opacity-70 dark:opacity-50" : "opacity-30 dark:opacity-25"}`} />
+                        <span className={`font-semibold ${row.gold ? "text-[var(--c-ink)]" : "text-[var(--c-ink-3)]"}`}>{row.pax}</span>
+                        <span className="text-[var(--c-ink-3)] ml-1 mr-3">
+                          {lang === "ja" ? "名" : lang === "zh" ? "人" : "pax"}
+                        </span>
+                        <Image src="/icons/suitcase.png" alt="" width={13} height={13} className={`invert dark:invert-0 ${row.gold ? "opacity-70 dark:opacity-50" : "opacity-30 dark:opacity-25"}`} />
+                        <span className={`font-semibold ${row.gold ? "text-[var(--c-ink)]" : "text-[var(--c-ink-3)]"}`}>{row.bag}</span>
+                        <span className="text-[var(--c-ink-3)] ml-1">
+                          {lang === "ja" ? "個" : lang === "zh" ? "件" : "bags"}
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  ))}
 
                   {/* Book CTA */}
                   <div className="px-6 sm:px-8 py-5 border-t border-[var(--c-rule)]">
