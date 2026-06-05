@@ -293,33 +293,33 @@ export default function VehiclesPage() {
                   <div className="h-px bg-[var(--c-rule)] mx-6 sm:mx-8" />
 
                   {/* Capacity rows */}
-                  <div className="px-6 sm:px-8 py-4 space-y-2">
+                  <div className="px-6 sm:px-8 py-5 space-y-4">
                     {/* Recommended — gold, primary */}
-                    <div className="grid grid-cols-[3.5rem_1fr_1fr] items-center gap-3">
-                      <span className="text-[9px] tracking-[0.35em] uppercase font-semibold text-[#c9a84c]">
+                    <div className="grid grid-cols-[4rem_1fr_1fr] items-center gap-4">
+                      <span className="text-[10px] tracking-[0.35em] uppercase font-semibold text-[#c9a84c]">
                         {lang === "ja" ? "推奨" : lang === "zh" ? "推薦" : "REC."}
                       </span>
-                      <div className="flex items-center gap-1.5">
-                        <Image src="/icons/seat.png" alt="Pax" width={17} height={17} className="opacity-90 invert dark:invert-0 dark:opacity-70" />
-                        <span className="text-[var(--c-ink)] text-[14px] font-semibold">{cfg.recPax}</span>
+                      <div className="flex items-center gap-2">
+                        <Image src="/icons/seat.png" alt="Pax" width={24} height={24} className="opacity-90 invert dark:invert-0 dark:opacity-70" />
+                        <span className="text-[var(--c-ink)] text-[22px] sm:text-[26px] font-semibold leading-none">{cfg.recPax}</span>
                       </div>
-                      <div className="flex items-center gap-1.5">
-                        <Image src="/icons/suitcase.png" alt="Suitcases" width={17} height={17} className="opacity-90 invert dark:invert-0 dark:opacity-70" />
-                        <span className="text-[var(--c-ink)] text-[14px] font-semibold">{cfg.recBag}</span>
+                      <div className="flex items-center gap-2">
+                        <Image src="/icons/suitcase.png" alt="Suitcases" width={24} height={24} className="opacity-90 invert dark:invert-0 dark:opacity-70" />
+                        <span className="text-[var(--c-ink)] text-[22px] sm:text-[26px] font-semibold leading-none">{cfg.recBag}</span>
                       </div>
                     </div>
                     {/* Max — muted, secondary */}
-                    <div className="grid grid-cols-[3.5rem_1fr_1fr] items-center gap-3">
-                      <span className="text-[9px] tracking-[0.35em] uppercase font-semibold text-[var(--c-ink-3)]">
+                    <div className="grid grid-cols-[4rem_1fr_1fr] items-center gap-4">
+                      <span className="text-[10px] tracking-[0.35em] uppercase font-semibold text-[var(--c-ink-3)]">
                         {lang === "ja" ? "最大" : lang === "zh" ? "最多" : "MAX"}
                       </span>
-                      <div className="flex items-center gap-1.5">
-                        <Image src="/icons/seat.png" alt="Pax" width={17} height={17} className="opacity-40 invert dark:invert-0 dark:opacity-30" />
-                        <span className="text-[var(--c-ink-3)] text-[14px] font-semibold">{cfg.maxPax}</span>
+                      <div className="flex items-center gap-2">
+                        <Image src="/icons/seat.png" alt="Pax" width={24} height={24} className="opacity-40 invert dark:invert-0 dark:opacity-30" />
+                        <span className="text-[var(--c-ink-3)] text-[22px] sm:text-[26px] font-semibold leading-none">{cfg.maxPax}</span>
                       </div>
-                      <div className="flex items-center gap-1.5">
-                        <Image src="/icons/suitcase.png" alt="Suitcases" width={17} height={17} className="opacity-40 invert dark:invert-0 dark:opacity-30" />
-                        <span className="text-[var(--c-ink-3)] text-[14px] font-semibold">{cfg.maxBag}</span>
+                      <div className="flex items-center gap-2">
+                        <Image src="/icons/suitcase.png" alt="Suitcases" width={24} height={24} className="opacity-40 invert dark:invert-0 dark:opacity-30" />
+                        <span className="text-[var(--c-ink-3)] text-[22px] sm:text-[26px] font-semibold leading-none">{cfg.maxBag}</span>
                       </div>
                     </div>
                   </div>
