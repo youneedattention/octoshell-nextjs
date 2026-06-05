@@ -267,8 +267,8 @@ export default function VehiclesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {VEHICLES.map((v) => {
               const cfg = v.id === "alphard"
-                ? { recPax: 4, recBag: 4, maxPax: 6, maxBag: 2 }
-                : { recPax: 8, recBag: 6, maxPax: 9, maxBag: 6 };
+                ? { recPax: 4, recBag: 4, maxPax: 6, maxBag: 5 }
+                : { recPax: 7, recBag: 9, maxPax: 9, maxBag: 15 };
               return (
                 <div key={v.id} className="flex flex-col border border-[var(--c-rule)] hover:border-[#c9a84c]/30 transition-colors duration-300 overflow-hidden">
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/50 to-transparent" />
@@ -307,34 +307,24 @@ export default function VehiclesPage() {
 
                   {/* Capacity rows */}
                   <div className="px-6 sm:px-8 py-5 space-y-4">
-                    {/* Recommended — gold */}
-                    <div className="grid grid-cols-[4rem_1fr_1fr] items-center gap-4">
-                      <span className="text-[10px] tracking-[0.35em] uppercase font-semibold text-[#c9a84c]">
-                        {lang === "ja" ? "推奨" : lang === "zh" ? "推薦" : "REC."}
-                      </span>
-                      <div className="flex items-center gap-2">
-                        <ProtectedImage src="/icons/seat.png" alt="Pax" width={24} height={24} className="opacity-90 invert dark:invert-0 dark:opacity-70" />
-                        <span className="text-[var(--c-ink)] text-[22px] sm:text-[26px] font-semibold leading-none">{cfg.recPax}</span>
+                    {[
+                      { label: lang === "ja" ? "推奨" : lang === "zh" ? "推薦" : "REC.", pax: cfg.recPax, bag: cfg.recBag, gold: true },
+                      { label: lang === "ja" ? "最大" : lang === "zh" ? "最多" : "MAX", pax: cfg.maxPax, bag: cfg.maxBag, gold: false },
+                    ].map((row) => (
+                      <div key={row.label} className="grid grid-cols-[4rem_1fr_1fr] items-center gap-4">
+                        <span className={`text-[10px] tracking-[0.35em] uppercase font-semibold ${row.gold ? "text-[#c9a84c]" : "text-[var(--c-ink-3)]"}`}>
+                          {row.label}
+                        </span>
+                        <div className="flex items-center gap-2">
+                          <ProtectedImage src="/icons/seat.png" alt="Pax" width={24} height={24} className={`invert dark:invert-0 ${row.gold ? "opacity-90 dark:opacity-70" : "opacity-40 dark:opacity-30"}`} />
+                          <span className={`text-[22px] sm:text-[26px] font-semibold leading-none ${row.gold ? "text-[var(--c-ink)]" : "text-[var(--c-ink-3)]"}`}>{row.pax}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <ProtectedImage src="/icons/suitcase.png" alt="Suitcases" width={24} height={24} className={`invert dark:invert-0 ${row.gold ? "opacity-90 dark:opacity-70" : "opacity-40 dark:opacity-30"}`} />
+                          <span className={`text-[22px] sm:text-[26px] font-semibold leading-none ${row.gold ? "text-[var(--c-ink)]" : "text-[var(--c-ink-3)]"}`}>{row.bag}</span>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <ProtectedImage src="/icons/suitcase.png" alt="Suitcases" width={24} height={24} className="opacity-90 invert dark:invert-0 dark:opacity-70" />
-                        <span className="text-[var(--c-ink)] text-[22px] sm:text-[26px] font-semibold leading-none">{cfg.recBag}</span>
-                      </div>
-                    </div>
-                    {/* Max — muted */}
-                    <div className="grid grid-cols-[4rem_1fr_1fr] items-center gap-4">
-                      <span className="text-[10px] tracking-[0.35em] uppercase font-semibold text-[var(--c-ink-3)]">
-                        {lang === "ja" ? "最大" : lang === "zh" ? "最多" : "MAX"}
-                      </span>
-                      <div className="flex items-center gap-2">
-                        <ProtectedImage src="/icons/seat.png" alt="Pax" width={24} height={24} className="opacity-40 invert dark:invert-0 dark:opacity-30" />
-                        <span className="text-[var(--c-ink-3)] text-[22px] sm:text-[26px] font-semibold leading-none">{cfg.maxPax}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <ProtectedImage src="/icons/suitcase.png" alt="Suitcases" width={24} height={24} className="opacity-40 invert dark:invert-0 dark:opacity-30" />
-                        <span className="text-[var(--c-ink-3)] text-[22px] sm:text-[26px] font-semibold leading-none">{cfg.maxBag}</span>
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
               );
