@@ -1,0 +1,40 @@
+import type { Metadata } from "next";
+import { ALL_ROUTE_SLUGS, getRouteData } from "@/app/services/[route]/routeData";
+
+const BASE = "https://octoshell.jp";
+
+export function generateStaticParams() {
+  return ALL_ROUTE_SLUGS.map((route) => ({ route }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ route: string }>;
+}): Promise<Metadata> {
+  const { route } = await params;
+  const data = getRouteData(route);
+  if (!data) return { title: "Service | Octoshell Japan" };
+
+  return {
+    title: data.metaTitle + " | 繁體中文",
+    description: data.metaDesc,
+    alternates: {
+      canonical: `${BASE}/zh/services/${data.slug}`,
+      languages: {
+        en: `${BASE}/services/${data.slug}`,
+        "zh-TW": `${BASE}/zh/services/${data.slug}`,
+      },
+    },
+    openGraph: {
+      title: data.metaTitle,
+      description: data.metaDesc,
+      url: `${BASE}/zh/services/${data.slug}`,
+      locale: "zh_TW",
+    },
+  };
+}
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
+}

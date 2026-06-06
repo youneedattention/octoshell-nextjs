@@ -19,8 +19,14 @@ function detectLang(): Lang {
   return "en";
 }
 
-export function LangProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(detectLang);
+export function LangProvider({
+  children,
+  initialLang,
+}: {
+  children: ReactNode;
+  initialLang?: Lang;
+}) {
+  const [lang, setLangState] = useState<Lang>(() => initialLang ?? detectLang());
 
   function setLang(l: Lang) {
     localStorage.setItem("octoshell-lang", l);
