@@ -40,8 +40,8 @@ function FaqRow({ item, open, onToggle }: { item: FaqItem; open: boolean; onTogg
           </svg>
         </span>
       </button>
-      {/* Always in DOM for crawler */}
-      <div className={open ? "block" : "hidden"}>
+      {/* max-height transition — content always in DOM and visible to crawlers */}
+      <div className={`overflow-hidden transition-all duration-300 ease-in-out ${open ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"}`}>
         <p className="pb-6 text-[14px] sm:text-[15px] text-[var(--c-ink-2)] leading-relaxed tracking-[0.03em] pr-9 whitespace-pre-line">
           {item.a}
         </p>
