@@ -4,18 +4,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import SiteFooter from "@/components/SiteFooter";
 import { useLang } from "@/context/LangContext";
-import { FAQ_GROUPED, FAQ_FLAT_EN, type FaqItem } from "@/lib/faq";
-
-/* ── FAQPage JSON-LD schema ── */
-const FAQ_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": FAQ_FLAT_EN.map(({ q, a }) => ({
-    "@type": "Question",
-    "name": q,
-    "acceptedAnswer": { "@type": "Answer", "text": a },
-  })),
-};
+import { FAQ_GROUPED, type FaqItem } from "@/lib/faq";
 
 /* ── Strip leading emoji from group name ── */
 const stripEmoji = (s: string) => s.replace(/^[\p{Emoji}\s]+/u, "").trim();
@@ -88,8 +77,6 @@ export default function FaqPage() {
 
   return (
     <main className="min-h-screen bg-[#0c0c0c]">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }} />
-
       {/* ── Hero ── */}
       <div className="relative bg-[#0c0c0c] pt-[124px] sm:pt-[100px] pb-14 sm:pb-20 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 opacity-[0.025]"

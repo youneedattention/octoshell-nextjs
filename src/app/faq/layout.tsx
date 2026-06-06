@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FAQ_FLAT_EN } from "@/lib/faq";
 
 export const metadata: Metadata = {
   title: "FAQ — Japan Private Chauffeur Service | Octoshell Japan",
@@ -11,6 +12,24 @@ export const metadata: Metadata = {
   },
 };
 
+const FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": FAQ_FLAT_EN.map(({ q, a }) => ({
+    "@type": "Question",
+    "name": q,
+    "acceptedAnswer": { "@type": "Answer", "text": a },
+  })),
+};
+
 export default function FaqLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}
+      />
+      {children}
+    </>
+  );
 }
