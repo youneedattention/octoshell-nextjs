@@ -64,9 +64,9 @@ export default function FaqPage() {
   const ALL_LABEL = { en: "All Questions", ja: "すべての質問", zh: "全部問題" };
 
   const SLOGAN = {
-    en: { badge: "Help Centre", line1: "Have a question?", line2: "We have the answer.", sub: "Everything you need to know before your trip. If you can't find what you're looking for, we're one message away.", placeholder: "Search questions…" },
-    ja: { badge: "ヘルプセンター", line1: "ご質問はありますか？", line2: "必ず、答えがあります。", sub: "ご予約前にご確認いただける情報をまとめました。見つからない場合はお気軽にご連絡ください。", placeholder: "質問を検索…" },
-    zh: { badge: "幫助中心", line1: "有任何疑問？", line2: "答案，就在這裡。", sub: "行程前您需要了解的一切。找不到答案？我們隨時為您解答。", placeholder: "搜尋問題…" },
+    en: { badge: "Help Centre", line1: "Every question.", line2: "Precisely answered.", sub: "Before your journey begins, we want you to feel certain. Browse every detail below — or reach us directly.", placeholder: "Search questions…" },
+    ja: { badge: "ヘルプセンター", line1: "すべてのご質問に、", line2: "丁寧にお答えします。", sub: "旅が始まる前に、安心してご出発いただけるよう。以下からご確認ください。", placeholder: "質問を検索…" },
+    zh: { badge: "幫助中心", line1: "每一個問題，", line2: "都值得精確的回答。", sub: "出發前，我們希望您一切心中有數。請瀏覽以下內容，或直接與我們聯絡。", placeholder: "搜尋問題…" },
   };
 
   const handleGroupSelect = (g: number | "all") => {

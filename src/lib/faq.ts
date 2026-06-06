@@ -161,6 +161,11 @@ const EXTRA_ITEMS: { g: 0|1|2|3|4|5; q: Record<Lang,string>; a: Record<Lang,stri
   /* ── Booking & Cancellation ── */
   {
     g: 3,
+    q: { en: "How will I receive my booking confirmation?", ja: "予約確認はどのように受け取れますか？", zh: "預訂確認如何接收？" },
+    a: { en: "An email confirmation is sent immediately after booking, including your booking reference, pickup details, and vehicle type. We also provide WhatsApp updates before your journey — including your chauffeur's name, contact number, and a pickup reminder.", ja: "ご予約確定後、すぐに確認メールをお送りします。予約番号・お迎え場所・車種などの詳細が含まれます。また、出発前にWhatsAppにてお迎え当日のご案内もお届けします——乗務員のお名前・ご連絡先・出発前のリマインダーを含みます。", zh: "預訂確認後，確認電郵將立即發送，包含預訂編號、接送詳情及車型資訊。此外，行程前我們亦會透過WhatsApp為您提供更新——包括司機姓名、聯絡電話及出發前提醒。" },
+  },
+  {
+    g: 3,
     q: { en: "Can I request multiple stops?", ja: "複数の立ち寄り先を追加できますか？", zh: "可以安排多個停靠點嗎？" },
     a: { en: "Yes. Please list all stops in advance when booking. Additional charges may apply depending on routing.", ja: "はい。ご予約時に全ての立ち寄り先をご記入ください。ルートによっては追加料金が発生する場合があります。", zh: "可以。請在預訂時列明所有停靠地點。視乎路線，可能需要支付額外費用。" },
   },
