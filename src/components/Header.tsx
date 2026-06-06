@@ -11,10 +11,11 @@ import type { Lang } from "@/lib/translations";
 
 const LOGO = "/logo.png";
 
-const LANGS: { code: Lang; label: string }[] = [
-  { code: "en", label: "EN" },
-  { code: "ja", label: "日" },
-  { code: "zh", label: "中" },
+const LANGS: { code: Lang; label: string; full: string }[] = [
+  { code: "en", label: "EN", full: "English"  },
+  { code: "ja", label: "日", full: "日本語"   },
+  { code: "zh", label: "中", full: "繁體中文" },
+  // Add more languages here — e.g. { code: "ko", full: "한국어" }
 ];
 
 const SVC_ITEMS: { key: keyof typeof t; anchor: string; icon: React.ReactNode }[] = [
@@ -182,22 +183,49 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
           />
         </Link>
 
-        {/* ── DESKTOP LEFT: lang + theme + currency ────────────── */}
+        {/* ── DESKTOP LEFT: lang dropdown + theme + currency ─── */}
         <div className="hidden sm:flex items-center gap-1.5 shrink-0">
-          {LANGS.map(({ code, label }) => (
+
+          {/* Language dropdown — full name + chevron */}
+          <div ref={langRef} className="relative">
             <button
-              key={code}
-              onClick={() => setLang(code)}
-              aria-label={`Switch to ${label}`}
-              className={`w-9 h-9 rounded-full text-[11px] font-bold border transition-all duration-200
-                ${lang === code
-                  ? "bg-white text-black border-white shadow-[0_0_0_2px_rgba(255,255,255,0.25)]"
-                  : "bg-transparent text-white/80 border-white/40 hover:border-[#c9a84c] hover:bg-[#c9a84c]/10"
-                }`}
+              onClick={() => setLangOpen((o) => !o)}
+              aria-label="Select language"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full
+                         text-[12px] font-medium text-white/80 tracking-wide
+                         border border-white/25 hover:border-white/50
+                         transition-all duration-200 whitespace-nowrap"
             >
-              {label}
+              {LANGS.find((l) => l.code === lang)?.full ?? "English"}
+              <svg
+                className={`w-3 h-3 opacity-60 transition-transform duration-200 ${langOpen ? "rotate-180" : ""}`}
+                fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
+              </svg>
             </button>
-          ))}
+
+            {langOpen && (
+              <div className="absolute left-0 top-full mt-2 min-w-[140px]
+                              bg-[#1a1a1a]/98 backdrop-blur-xl rounded-2xl
+                              border border-white/[0.08] shadow-[0_16px_48px_rgba(0,0,0,0.7)]
+                              overflow-hidden z-50 py-1">
+                {LANGS.map(({ code, full }) => (
+                  <button
+                    key={code}
+                    onClick={() => { setLang(code); setLangOpen(false); }}
+                    className={`w-full text-left px-4 py-2.5 text-[13px] tracking-wide
+                                transition-colors duration-150
+                                ${lang === code
+                                  ? "text-white font-medium bg-white/10 rounded-xl mx-1 w-[calc(100%-8px)]"
+                                  : "text-white/55 hover:text-white/90 hover:bg-white/[0.04]"}`}
+                  >
+                    {full}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
 
           {/* Theme toggle */}
           <button
@@ -456,33 +484,37 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                 onClick={() => setLangOpen((o) => !o)}
                 aria-label="Select language"
                 onContextMenu={(e) => e.preventDefault()}
-                className={`w-[38px] h-[38px] rounded-full text-[11px] font-bold border transition-all duration-200
-                  flex items-center justify-center active:scale-110
-                  ${langOpen
-                    ? "bg-white text-black border-white"
-                    : "bg-transparent text-white/90 border-white/50 hover:border-[#c9a84c] hover:text-[#c9a84c]"
-                  }`}
+                className="flex items-center gap-1 px-2.5 py-1.5 rounded-full
+                           text-[11px] font-medium text-white/80 tracking-wide
+                           border border-white/25 active:scale-110
+                           transition-all duration-200"
               >
-                {lang === "en" ? "EN" : lang === "ja" ? "日" : "中"}
+                {LANGS.find((l) => l.code === lang)?.full ?? "English"}
+                <svg
+                  className={`w-2.5 h-2.5 opacity-60 transition-transform duration-200 ${langOpen ? "rotate-180" : ""}`}
+                  fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
+                </svg>
               </button>
 
               {langOpen && (
-                <div className="absolute right-0 top-full mt-1.5
-                                bg-[#0a0a0a]/96 backdrop-blur-xl
-                                border border-white/[0.09]
-                                shadow-[0_8px_32px_rgba(0,0,0,0.7)]
-                                overflow-hidden z-50 w-[64px]">
-                  <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
-                  {LANGS.map(({ code, label }) => (
+                <div className="absolute right-0 top-full mt-2 min-w-[130px]
+                                bg-[#1a1a1a]/98 backdrop-blur-xl rounded-2xl
+                                border border-white/[0.08]
+                                shadow-[0_16px_48px_rgba(0,0,0,0.7)]
+                                overflow-hidden z-50 py-1">
+                  {LANGS.map(({ code, full }) => (
                     <button
                       key={code}
                       onClick={() => { setLang(code); setLangOpen(false); }}
-                      className={`w-full py-2.5 text-[13px] font-bold tracking-wider transition-colors
-                        ${lang === code
-                          ? "text-[#c9a84c] bg-white/[0.04]"
-                          : "text-white/50 hover:text-[#c9a84c] hover:bg-white/[0.035]"}`}
+                      className={`w-full text-left px-4 py-2.5 text-[13px] tracking-wide
+                                  transition-colors duration-150
+                                  ${lang === code
+                                    ? "text-white font-medium bg-white/10 rounded-xl mx-1 w-[calc(100%-8px)]"
+                                    : "text-white/55 hover:text-white/90 hover:bg-white/[0.04]"}`}
                     >
-                      {label}
+                      {full}
                     </button>
                   ))}
                 </div>
