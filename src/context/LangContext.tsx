@@ -1,6 +1,6 @@
 "use client";
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import type { Lang, AppLang } from "@/lib/translations";
 import { VALID_LANGS, toContentLang } from "@/lib/translations";
 
@@ -23,21 +23,6 @@ function getLangFromPath(pathname: string): AppLang | null {
   return VALID_LANGS.includes(seg) ? seg : null;
 }
 
-function detectBrowserLang(): AppLang {
-  if (typeof window === "undefined") return "en";
-  const stored = localStorage.getItem("octoshell-lang") as AppLang | null;
-  if (stored && VALID_LANGS.includes(stored)) return stored;
-  const b = navigator.language.toLowerCase();
-  if (b.startsWith("ko")) return "ko";
-  if (b.startsWith("ja")) return "ja";
-  if (b.startsWith("zh")) return "zh";
-  if (b.startsWith("fr")) return "fr";
-  if (b.startsWith("de")) return "de";
-  if (b.startsWith("ar")) return "ar";
-  if (b.startsWith("th")) return "th";
-  return "en";
-}
-
 export function LangProvider({
   children,
   initialLang,
@@ -46,14 +31,13 @@ export function LangProvider({
   initialLang?: AppLang;
 }) {
   const pathname = usePathname();
-  const router = useRouter();
   const langFromPath = getLangFromPath(pathname);
 
   const [appLang, setAppLangState] = useState<AppLang>(
     initialLang ?? langFromPath ?? "en"
   );
 
-  /* Sync when URL path changes */
+  /* Sync when URL path changes (e.g. browser back/forward) */
   useEffect(() => {
     if (langFromPath && langFromPath !== appLang) {
       setAppLangState(langFromPath);
@@ -66,6 +50,7 @@ export function LangProvider({
     localStorage.setItem("octoshell-lang", l);
     setAppLangState(l);
 
+    /* Build the new path with lang prefix */
     const segments = pathname.split("/");
     const currentLang = getLangFromPath(pathname);
     if (currentLang) {
@@ -73,7 +58,12 @@ export function LangProvider({
     } else {
       segments.splice(1, 0, l);
     }
-    router.push(segments.join("/") || `/${l}`);
+    const newPath = segments.join("/") || `/${l}`;
+
+    /* Full page reload so middleware rewrite + server lang header work correctly */
+    if (typeof window !== "undefined") {
+      window.location.href = newPath;
+    }
   }
 
   const lang = toContentLang(appLang);
