@@ -76,6 +76,18 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
   const { lang, setLang } = useLang();
   const { theme, toggle: toggleTheme } = useTheme();
+
+  /* Switch language — navigates to /zh/* when selecting Traditional Chinese,
+     or back to /* when leaving it. Other languages stay client-side. */
+  function switchLang(code: Lang) {
+    setLang(code);
+    const isOnZh = pathname.startsWith("/zh");
+    if (code === "zh" && !isOnZh) {
+      window.location.href = `/zh${pathname}`;
+    } else if (code !== "zh" && isOnZh) {
+      window.location.href = pathname.replace(/^\/zh/, "") || "/";
+    }
+  }
   const { currency, setCurrency } = useCurrency();
   const [menuOpen,           setMenuOpen]           = useState(false);
   const [aboutDrop,          setAboutDrop]          = useState(false);
@@ -227,7 +239,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                 {LANGS.map(({ code, full }) => (
                   <button
                     key={code}
-                    onClick={() => { setLang(code); setDesktopLangOpen(false); }}
+                    onClick={() => { switchLang(code); setDesktopLangOpen(false); }}
                     className={`w-full text-left px-4 py-2.5 text-[13px] tracking-wide
                                 transition-colors duration-150
                                 ${lang === code
@@ -521,7 +533,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                   {LANGS.map(({ code, full }) => (
                     <button
                       key={code}
-                      onClick={() => { setLang(code); setLangOpen(false); }}
+                      onClick={() => { switchLang(code); setLangOpen(false); }}
                       className={`w-full text-left px-4 py-2.5 text-[13px] tracking-wide
                                   transition-colors duration-150
                                   ${lang === code
