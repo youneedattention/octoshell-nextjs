@@ -1,47 +1,34 @@
 "use client";
 import { createContext, useContext, useState, ReactNode } from "react";
-import type { Lang, AppLang } from "@/lib/translations";
-import { VALID_LANGS, toContentLang } from "@/lib/translations";
+import type { Lang } from "@/lib/translations";
 
 interface LangCtx {
-  appLang: AppLang;
   lang: Lang;
-  setLang: (l: AppLang) => void;
+  setLang: (l: Lang) => void;
 }
 
-const LangContext = createContext<LangCtx>({
-  appLang: "en",
-  lang: "en",
-  setLang: () => {},
-});
+const LangContext = createContext<LangCtx>({ lang: "en", setLang: () => {} });
 
-function detectLang(): AppLang {
+function detectLang(): Lang {
   if (typeof window === "undefined") return "en";
-  const stored = localStorage.getItem("octoshell-lang") as AppLang | null;
-  if (stored && VALID_LANGS.includes(stored)) return stored;
+  const stored = localStorage.getItem("octoshell-lang") as Lang | null;
+  if (stored === "en" || stored === "ja" || stored === "zh") return stored;
   const b = navigator.language.toLowerCase();
-  if (b.startsWith("ko")) return "ko";
   if (b.startsWith("ja")) return "ja";
   if (b.startsWith("zh")) return "zh";
-  if (b.startsWith("fr")) return "fr";
-  if (b.startsWith("de")) return "de";
-  if (b.startsWith("ar")) return "ar";
-  if (b.startsWith("th")) return "th";
   return "en";
 }
 
 export function LangProvider({ children }: { children: ReactNode }) {
-  const [appLang, setAppLangState] = useState<AppLang>(detectLang);
+  const [lang, setLangState] = useState<Lang>(detectLang);
 
-  function setLang(l: AppLang) {
+  function setLang(l: Lang) {
     localStorage.setItem("octoshell-lang", l);
-    setAppLangState(l);
+    setLangState(l);
   }
 
-  const lang = toContentLang(appLang);
-
   return (
-    <LangContext.Provider value={{ appLang, lang, setLang }}>
+    <LangContext.Provider value={{ lang, setLang }}>
       {children}
     </LangContext.Provider>
   );

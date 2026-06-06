@@ -7,19 +7,14 @@ import { useLang } from "@/context/LangContext";
 import { useTheme } from "@/context/ThemeContext";
 import { useCurrency, CURRENCIES } from "@/context/CurrencyContext";
 import { t } from "@/lib/translations";
-import type { Lang, AppLang } from "@/lib/translations";
+import type { Lang } from "@/lib/translations";
 
 const LOGO = "/logo.png";
 
-const LANGS: { code: AppLang; label: string; flag: string }[] = [
-  { code: "en", label: "EN", flag: "🇬🇧" },
-  { code: "ja", label: "日", flag: "🇯🇵" },
-  { code: "zh", label: "中", flag: "🇹🇼" },
-  { code: "ko", label: "한", flag: "🇰🇷" },
-  { code: "fr", label: "FR", flag: "🇫🇷" },
-  { code: "de", label: "DE", flag: "🇩🇪" },
-  { code: "ar", label: "ع",  flag: "🇸🇦" },
-  { code: "th", label: "ไทย", flag: "🇹🇭" },
+const LANGS: { code: Lang; label: string }[] = [
+  { code: "en", label: "EN" },
+  { code: "ja", label: "日" },
+  { code: "zh", label: "中" },
 ];
 
 const SVC_ITEMS: { key: keyof typeof t; anchor: string; icon: React.ReactNode }[] = [
@@ -78,7 +73,7 @@ function ThemeIcon({ theme }: { theme: string }) {
 export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50" }: { alwaysFrosted?: boolean; frostedBg?: string }) {
   const pathname = usePathname();
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
-  const { lang, appLang, setLang } = useLang();
+  const { lang, setLang } = useLang();
   const { theme, toggle: toggleTheme } = useTheme();
   const { currency, setCurrency } = useCurrency();
   const [menuOpen,           setMenuOpen]           = useState(false);
@@ -203,7 +198,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
             className={`relative text-[12px] lg:text-[13px] tracking-[0.12em]
                        hover:text-white transition-colors duration-200 whitespace-nowrap pb-0.5
                        ${pathname === "/" ? "text-white after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-[#c9a84c] after:rounded-full" : "text-white/75"}`}>
-            {t.nav_home[appLang]}
+            {t.nav_home[lang]}
           </Link>
 
           {/* SERVICES */}
@@ -215,7 +210,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                           ${pathname === "/services"
                             ? "text-white after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-[#c9a84c] after:rounded-full"
                             : servicesDrop ? "text-white" : "text-white/75"}`}>
-              {t.nav_services[appLang]}
+              {t.nav_services[lang]}
               <svg className={`w-2.5 h-2.5 transition-transform duration-200 opacity-50 ${servicesDrop ? "rotate-180" : ""}`}
                 fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
@@ -241,7 +236,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                                  ${idx % 2 === 0 ? "border-r border-white/[0.05]" : ""}
                                  ${idx < SVC_ITEMS.length - 2 ? "border-b border-white/[0.05]" : ""}`}>
                       {item.icon}
-                      {t[item.key][appLang]}
+                      {t[item.key][lang]}
                     </Link>
                   ))}
                 </div>
@@ -255,7 +250,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
             className={`relative text-[12px] lg:text-[13px] tracking-[0.12em]
                        hover:text-white transition-colors duration-200 whitespace-nowrap pb-0.5
                        ${pathname === "/fleet" ? "text-white after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-[#c9a84c] after:rounded-full" : "text-white/75"}`}>
-            {t.nav_fleet[appLang]}
+            {t.nav_fleet[lang]}
           </Link>
 
           {/* ABOUT */}
@@ -267,7 +262,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                           ${pathname === "/about"
                             ? "text-white after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-[#c9a84c] after:rounded-full"
                             : aboutDrop ? "text-white" : "text-white/75"}`}>
-              {t.nav_about[appLang]}
+              {t.nav_about[lang]}
               <svg className={`w-2.5 h-2.5 transition-transform duration-200 opacity-50 ${aboutDrop ? "rotate-180" : ""}`}
                 fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
@@ -289,7 +284,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                   <svg className="w-3.5 h-3.5 shrink-0 text-[#c9a84c]/50" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="9" /><path strokeLinecap="round" strokeLinejoin="round" d="M12 7v5l3 3" />
                   </svg>
-                  {t.nav_about_story[appLang]}
+                  {t.nav_about_story[lang]}
                 </Link>
                 <Link href="/about#contact" onClick={() => setAboutDrop(false)}
                   className="flex items-center gap-3 px-5 py-3.5 text-[10px] tracking-[0.25em] uppercase text-white/50
@@ -297,7 +292,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                   <svg className="w-3.5 h-3.5 shrink-0 text-[#c9a84c]/50" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
                   </svg>
-                  {t.nav_about_contact[appLang]}
+                  {t.nav_about_contact[lang]}
                 </Link>
               </div>
             )}
@@ -327,21 +322,15 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               <div className="absolute right-0 top-full mt-2
                               bg-[#0a0a0a]/96 backdrop-blur-xl
                               border border-white/[0.09] shadow-[0_12px_40px_rgba(0,0,0,0.6)]
-                              overflow-hidden z-50 w-[140px]">
+                              overflow-hidden z-50 w-[72px]">
                 <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
-                {LANGS.map(({ code, label, flag }) => (
+                {LANGS.map(({ code, label }) => (
                   <button key={code} onClick={() => { setLang(code); setLangOpen(false); }}
-                    className={`w-full flex items-center gap-2.5 px-3 py-2 transition-colors
-                      ${appLang === code
+                    className={`w-full py-2.5 text-[11px] font-bold tracking-widest transition-colors
+                      ${lang === code
                         ? "text-[#c9a84c] bg-white/[0.04]"
                         : "text-white/50 hover:text-[#c9a84c] hover:bg-white/[0.035]"}`}>
-                    <span className="text-[13px] leading-none">{flag}</span>
-                    <span className="text-[11px] font-bold tracking-widest">{label}</span>
-                    {appLang === code && (
-                      <svg className="w-2 h-2 ml-auto shrink-0 text-[#c9a84c]/60" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                      </svg>
-                    )}
+                    {label}
                   </button>
                 ))}
               </div>
@@ -403,9 +392,9 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                 {currency !== "JPY" && (
                   <div className="px-3.5 py-2.5 border-t border-white/[0.05]">
                     <p className="text-[11px] text-white/25 leading-relaxed">
-                      {appLang === "ja"
-        ? "※参考値。決済はJPY建て。外貨手数料あり"
-                        : appLang === "zh"
+                      {lang === "ja"
+                        ? "※参考値。決済はJPY建て。外貨手数料あり"
+                        : lang === "zh"
                         ? "※僅供參考。結算以JPY為準，外幣手續費另計"
                         : "* Reference only. Payment settled in JPY."}
                     </p>
@@ -422,7 +411,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                        text-[11px] lg:text-[12px] font-bold tracking-[0.18em]
                        px-5 lg:px-7 py-2 rounded-full
                        transition-all duration-200 whitespace-nowrap shadow-[0_4px_16px_rgba(201,168,76,0.35)]">
-            {appLang === "ja" ? "予約" : appLang === "zh" ? "預訂" : "Book Now"}
+            {lang === "ja" ? "予約" : lang === "zh" ? "預訂" : "Book Now"}
           </Link>
         </div>
 
@@ -454,7 +443,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                     : "bg-transparent text-white/90 border-white/50 hover:border-[#c9a84c] hover:text-[#c9a84c]"
                   }`}
               >
-                {LANGS.find(l => l.code === appLang)?.label ?? "EN"}
+                {lang === "en" ? "EN" : lang === "ja" ? "日" : "中"}
               </button>
 
               {langOpen && (
@@ -462,19 +451,18 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                                 bg-[#0a0a0a]/96 backdrop-blur-xl
                                 border border-white/[0.09]
                                 shadow-[0_8px_32px_rgba(0,0,0,0.7)]
-                                overflow-hidden z-50 w-[140px]">
+                                overflow-hidden z-50 w-[64px]">
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
-                  {LANGS.map(({ code, label, flag }) => (
+                  {LANGS.map(({ code, label }) => (
                     <button
                       key={code}
                       onClick={() => { setLang(code); setLangOpen(false); }}
-                      className={`w-full flex items-center gap-2.5 px-3 py-2.5 transition-colors
-                        ${appLang === code
+                      className={`w-full py-2.5 text-[13px] font-bold tracking-wider transition-colors
+                        ${lang === code
                           ? "text-[#c9a84c] bg-white/[0.04]"
                           : "text-white/50 hover:text-[#c9a84c] hover:bg-white/[0.035]"}`}
                     >
-                      <span className="text-[13px] leading-none">{flag}</span>
-                      <span className="text-[12px] font-bold tracking-wider">{label}</span>
+                      {label}
                     </button>
                   ))}
                 </div>
@@ -522,8 +510,8 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                   {currency !== "JPY" && (
                     <div className="px-2.5 py-2 border-t border-white/[0.05]">
                       <p className="text-[10px] text-white/25 leading-relaxed">
-                        {appLang === "ja" ? "※参考値。JPY建て決済"
-                          : appLang === "zh" ? "※僅供參考，JPY結算"
+                        {lang === "ja" ? "※参考値。JPY建て決済"
+                          : lang === "zh" ? "※僅供參考，JPY結算"
                           : "* Ref. only. Settled in JPY."}
                       </p>
                     </div>
@@ -559,7 +547,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
 
             <Link href="/" onClick={pathname === "/" ? (e) => { e.preventDefault(); closeAll(); scrollTop(); } : closeAll}
               className="text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors">
-              {t.nav_home[appLang]}
+              {t.nav_home[lang]}
             </Link>
 
             {/* SERVICES — expandable mobile */}
@@ -571,7 +559,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                 }}
                 className="flex items-center justify-between w-full text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors"
               >
-                <span>{t.nav_services[appLang]}</span>
+                <span>{t.nav_services[lang]}</span>
                 <svg className={`w-3.5 h-3.5 text-white/30 transition-transform duration-200 ${servicesMobileOpen ? "rotate-180" : ""}`}
                   fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
@@ -587,7 +575,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                       onClick={closeAll}
                       className="text-white/45 text-[14px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors"
                     >
-                      {t[item.key][appLang]}
+                      {t[item.key][lang]}
                     </Link>
                   ))}
                 </div>
@@ -597,7 +585,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
             {/* FLEET */}
             <Link href="/fleet" onClick={pathname === "/fleet" ? (e) => { e.preventDefault(); closeAll(); scrollTop(); } : closeAll}
               className="text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors">
-              {t.nav_fleet[appLang]}
+              {t.nav_fleet[lang]}
             </Link>
 
             {/* ABOUT — expandable */}
@@ -609,7 +597,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                 }}
                 className="flex items-center justify-between w-full text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors"
               >
-                <span>{t.nav_about[appLang]}</span>
+                <span>{t.nav_about[lang]}</span>
                 <svg className={`w-3.5 h-3.5 text-white/30 transition-transform duration-200 ${aboutMobileOpen ? "rotate-180" : ""}`}
                   fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
@@ -620,15 +608,15 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                 <div className="mt-3 ml-1 pl-4 border-l border-[#c9a84c]/25 flex flex-col gap-3">
                   <Link href="/about#story" onClick={closeAll}
                     className="text-white/45 text-[14px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors">
-                    {t.nav_about_story[appLang]}
+                    {t.nav_about_story[lang]}
                   </Link>
                   <Link href="/about#faq" onClick={closeAll}
                     className="text-white/45 text-[14px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors">
-                    {t.nav_about_faq[appLang]}
+                    {t.nav_about_faq[lang]}
                   </Link>
                   <Link href="/about#contact" onClick={closeAll}
                     className="text-white/45 text-[14px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors">
-                    {t.nav_about_contact[appLang]}
+                    {t.nav_about_contact[lang]}
                   </Link>
                 </div>
               )}
@@ -641,7 +629,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               onContextMenu={(e) => e.preventDefault()}
               className="mt-3 inline-flex justify-center bg-[#c9a84c] text-black text-[14px] font-bold tracking-[0.18em] px-6 py-2.5 rounded-full hover:bg-white transition-all duration-200
                          active:scale-110 active:bg-white active:shadow-[0_8px_36px_rgba(201,168,76,0.7)]">
-              {t.nav_book[appLang]}
+              {t.nav_book[lang]}
             </Link>
 
           </nav>

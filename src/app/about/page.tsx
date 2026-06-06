@@ -5,7 +5,6 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import SiteFooter from "@/components/SiteFooter";
 import { useLang } from "@/context/LangContext";
-import { fillLang } from "@/lib/translations";
 import type { Lang } from "@/lib/translations";
 import React from "react";
 
@@ -15,42 +14,42 @@ import React from "react";
 ══════════════════════════════════════════════════════════════════════ */
 
 /* ── Hero ───────────────────────────────────────────────────────────── */
-const HERO = fillLang({
+const HERO: Record<Lang, { badge: string; title: string; sub: string; link_story: string; link_faq: string; link_contact: string }> = {
   ja: { badge: "会社情報", title: "Octoshellについて", sub: "日本プライベートチャウファーサービス", link_story: "Octoshellについて", link_faq: "よくある質問", link_contact: "お問い合わせ" },
   en: { badge: "About Us", title: "The Octoshell Story", sub: "Japan Private Chauffeur Service",     link_story: "How It Works", link_faq: "FAQ",           link_contact: "Contact Us" },
   zh: { badge: "關於我們", title: "品牌故事",          sub: "日本專屬司機服務",                     link_story: "品牌故事",    link_faq: "常見問題",        link_contact: "聯絡我們" },
-});
+};
 
 /* ── Section 1: Brand story ─────────────────────────────────────────── */
-const STORY_TITLE = fillLang({
+const STORY_TITLE: Record<Lang, string> = {
   ja: "移動の常識を変える",
   en: "Changing the Travel Game",
   zh: "顛覆傳統出行的遊戲規則",
-});
-const STORY_P1 = fillLang({
+};
+const STORY_P1: Record<Lang, string> = {
   ja: "貝八方は日本・東京で誕生しました。遠い古より「貝」は尊い富の象徴であり、「八方」は四面八方、すなわち世界中から集まる人々を意味します。私たちは、世界八方からお越しになるすべてのお客様を、かけがえのない「宝」としてお迎えするという信念のもと、プロフェッショナルなハイヤーサービスを展開しています。",
   en: 'Octoshell was founded in Tokyo, Japan. In ancient times, "shells" were a symbol of precious wealth, while "octo" represents the eight directions of the world. Our brand philosophy is rooted in welcoming every guest arriving from all corners of the globe as our most precious treasure.',
   zh: "貝八方於日本東京創立。在遠古時代，「貝」是珍稀財富的象徵；而「八方」則代表四面八方，寓意源自世界各地的賓客。我們的品牌初衷，便是將來自世界八方的每一位客戶，都奉為我們無可替代的至寶，並提供最頂級的專車款待。",
-});
-const STORY_P2 = fillLang({
+};
+const STORY_P2: Record<Lang, string> = {
   ja: "私たちの旅は、歴史ある谷間にひっそりと佇む名門の高級温泉旅館「修善寺離れ宿 鬼の栖」へ向かう格式高い旅客のために、静寂に満ちた極上の移動空間を仕立てるという、ひとつの深いこだわりから始まりました。真の贅沢とは目的地に到着した瞬間ではなく、その高鳴る胸を包み込む移動の刹那にこそ存在することに気づいたのです。今日、私たちは日本国内の独立した緑ナンバーの合規旅客運送資格を持つ、国際的なプロフェッショナル車隊・移動サービスプラットフォームへと変貌を遂げました。そのネットワークは大東京圏内にとどまらず、日本全国のあらゆる場所に広がっています。車内の圧倒的な私密性でお客様を繭のように優しく包み込み、すべての旅路を旅館の離れそのものの延長線上にある、至高のプロローグへと昇華させます。",
   en: "Our journey began with a singular, intimate obsession: crafting a seamless, whispering transition for elite travelers journeying to Shuzenji Hanare Yado Oni no Sumika—a legendary hot-spring sanctuary hidden deep within Japan's historic valleys. We realized that true luxury does not begin at the destination, but in the fleeting, breathless moments in between. Today, Octoshell has evolved into a global mobility platform operating with fully independent Japanese licensed transportation and green-plate compliance. Extending far beyond the Greater Tokyo Area to every corner of Japan, we transform every journey into an exquisite extension of the estate itself—cocooning them in privacy, elevating the art of movement into an unforgettable prelude of indulgence.",
   zh: "誕生之初，這源於一個極致細膩的私人執念：為前往隱匿於日本歷史山谷中的傳奇溫泉聖地——「修善寺離宿 鬼棲」的頂級貴賓，打造一段毫無縫隙、如呢喃般靜謐的移動過渡。我們深知，真正的奢華並非始於抵達目的地的那一刻，而是在那段屏息期待的行車時光中。今天，我們已然蛻變為一家擁有獨立日本綠牌合規客運資質的國際化專業車隊與出行服務平台。我們的團隊與專業司機網絡不僅覆蓋大東京地區，更已觸及日本的每個角落。我們將每一次旅程都轉化為莊園本身的優雅延伸，將賓客溫柔地包裹在絕對的私密空間中，將移動的藝術昇華為一場令人難忘的奢華序曲。",
-});
+};
 
 /* ── Section 2: 4 core services ─────────────────────────────────────── */
-const SVC_SECTION_TITLE = fillLang({
+const SVC_SECTION_TITLE: Record<Lang, string> = {
   ja: "タイムベースで選べる移動プラン",
   en: "Time-Based & Scenario-Driven Mobility Solutions",
   zh: "按時段與場景定制的出行方案",
-});
-const SVC_SECTION_LEAD = fillLang({
+};
+const SVC_SECTION_LEAD: Record<Lang, string> = {
   ja: "Octoshell は、「時間枠・利用目的別」の4大カテゴリーで、日本全国の一流の移動体験を提供します。",
   en: "Octoshell structures its premium transport services into four clear categories based on duration and usage, ensuring frictionless booking and travel planning worldwide.",
   zh: "Octoshell 依據「時間週期與使用大類」將高端運力整合為四大結構化服務，便於智能系統與搜尋引擎精準抓取，為您提供無縫的日本全境出行檢索：",
-});
+};
 type Service = { title: string; body: string };
-const SERVICES = fillLang({
+const SERVICES: Record<Lang, Service[]> = {
   ja: [
     { title: "空港定額送迎",           body: "東京市内から各空港（羽田・成田）への送迎を安心の定額運賃でご利用いただけます。リアルタイムのフライト追跡、1時間無料待機、到着ロビーでの挙牌お出迎えサービスを含み、日本到着時の不安を解消します。" },
     { title: "都市間プライベートシャトル", body: "私密性の高い長距離の点対点移動。新幹線や国内線の航空便に代わる、ビジネスエリートやプレミアム自由旅行客のための完全プライベート空間です。大東京圏から日本各地への観光利用やおもてなしに最適です。" },
@@ -69,17 +68,17 @@ const SERVICES = fillLang({
     { title: "時段包車與 VIP 尊榮迎送", body: "由我們百裡挑一的頂尖優秀司機全程為您提供專屬侍從服務。完美適配多站點商務拜訪、高端購物、奢華政要接待或重大活動，司機全程在場待命。" },
     { title: "專業乘務員派遣",       body: "派遣專業司機為客戶的自有車輛進行駕駛與資產管理。有效降低企業管理成本，確保出行達到最高級別的安全與合規標準。" },
   ],
-});
+};
 
 /* ── Section 3: Fleet ───────────────────────────────────────────────── */
-const VEH_SECTION_BADGE = fillLang({
+const VEH_SECTION_BADGE: Record<Lang, string> = {
   ja: "車種クラス", en: "Vehicle Classes", zh: "車隊級別",
-});
+};
 
 /* ── FAQ ────────────────────────────────────────────────────────────── */
 type FaqItem  = { q: string; a: string };
 type FaqGroup = { group: string; items: FaqItem[] };
-const FAQ = fillLang({
+const FAQ: Record<Lang, FaqGroup[]> = {
   ja: [
     {
       group: "🚗 車両・車内規則について",
@@ -299,24 +298,24 @@ const FAQ = fillLang({
       ],
     },
   ],
-});
+};
 
 /* ══════════════════════════════════════════════════════════════════════
    Sub-components  (all sizes ×1.2 vs original)
 ══════════════════════════════════════════════════════════════════════ */
 
 /* ── New 6-group category names ─────────────────────────────────────── */
-const GROUP_NAMES = fillLang({
+const GROUP_NAMES: Record<Lang, [string, string, string, string, string, string]> = {
   en: ["About Us", "Prices & Fees", "Cars & Luggage", "Booking & Cancellation", "At the Airport", "Special Requests"],
   ja: ["私たちについて", "料金・費用", "車両・手荷物", "予約・キャンセル", "空港当日", "特別リクエスト"],
   zh: ["關於我們", "費用與收費", "車輛與行李", "預訂與取消", "在機場", "特殊需求"],
-});
+};
 
 /* ── Extra Q&As (edit here to add / modify) ─────────────────────────
    group index:  0=About Us  1=Prices & Fees  2=Cars & Luggage
                  3=Booking & Cancellation  4=At the Airport  5=Special Requests
 ──────────────────────────────────────────────────────────────────── */
-const EXTRA_ITEMS: { g: 0|1|2|3|4|5; q: Partial<Record<Lang,string>> & { en: string }; a: Partial<Record<Lang,string>> & { en: string } }[] = [
+const EXTRA_ITEMS: { g: 0|1|2|3|4|5; q: Record<Lang,string>; a: Record<Lang,string> }[] = [
   /* ── About Us ── */
   {
     g: 0,
@@ -494,7 +493,7 @@ function buildRegroupedFAQ(faq: Record<Lang, FaqGroup[]>): Record<Lang, FaqGroup
     ];
     // Append extra items to their respective groups
     EXTRA_ITEMS.forEach(({ g, q, a }) => {
-      base[g].items.push({ q: q[lang] ?? q.en ?? "", a: a[lang] ?? a.en ?? "" });
+      base[g].items.push({ q: q[lang], a: a[lang] });
     });
     result[lang] = base;
   });
@@ -840,21 +839,21 @@ export default function AboutPage() {
 /* ══════════════════════════════════════════════════════════════════════
    ContactForm component
 ══════════════════════════════════════════════════════════════════════ */
-const SUBJECTS = fillLang({
+const SUBJECTS: Record<Lang, string[]> = {
   ja: ["一般のお問い合わせ", "ご予約・見積もり", "法人・長期契約", "その他"],
   en: ["General Inquiry", "Booking & Quote Request", "Corporate Contract", "Other"],
   zh: ["一般詢問", "預訂及報價", "企業長期合作", "其他"],
-});
+};
 
 const CLABEL: Record<string, Record<Lang, string>> = {
-  subject:  fillLang({ ja: "お問い合わせ種別",      en: "Inquiry Type",           zh: "詢問類型" }),
-  name:     fillLang({ ja: "お名前 *",              en: "Your Name *",            zh: "您的姓名 *" }),
-  email:    fillLang({ ja: "メールアドレス *",       en: "Email Address *",        zh: "電子郵件 *" }),
-  phone:    fillLang({ ja: "電話番号（任意）",       en: "Phone Number (optional)", zh: "電話號碼（選填）" }),
-  message:  fillLang({ ja: "ご連絡内容・ご質問 *",   en: "Your Message *",         zh: "詢問內容 *" }),
-  send:     fillLang({ ja: "送信する",              en: "Send Message",           zh: "發送訊息" }),
-  sending:  fillLang({ ja: "送信中…",              en: "Sending…",               zh: "傳送中…" }),
-  cancel:   fillLang({ ja: "キャンセル",            en: "Cancel",                 zh: "取消" }),
+  subject:  { ja: "お問い合わせ種別",      en: "Inquiry Type",           zh: "詢問類型" },
+  name:     { ja: "お名前 *",              en: "Your Name *",            zh: "您的姓名 *" },
+  email:    { ja: "メールアドレス *",       en: "Email Address *",        zh: "電子郵件 *" },
+  phone:    { ja: "電話番号（任意）",       en: "Phone Number (optional)", zh: "電話號碼（選填）" },
+  message:  { ja: "ご連絡内容・ご質問 *",   en: "Your Message *",         zh: "詢問內容 *" },
+  send:     { ja: "送信する",              en: "Send Message",           zh: "發送訊息" },
+  sending:  { ja: "送信中…",              en: "Sending…",               zh: "傳送中…" },
+  cancel:   { ja: "キャンセル",            en: "Cancel",                 zh: "取消" },
 };
 
 function ContactForm({

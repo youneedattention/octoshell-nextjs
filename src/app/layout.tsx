@@ -6,7 +6,6 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import { CurrencyProvider } from "@/context/CurrencyContext";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { VALID_LANGS } from "@/lib/translations";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -63,7 +62,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    alternateLocale: ["ja_JP", "zh_TW", "ko_KR", "fr_FR", "de_DE", "ar_SA", "th_TH"],
+    alternateLocale: ["ja_JP", "zh_TW"],
     url: BASE,
     siteName: "Octoshell Japan",
     title: "Octoshell Japan | Private Chauffeur and Luxury Transfer Service",
@@ -137,7 +136,7 @@ const ORG_SCHEMA = {
         "telephone": "+81-47-382-5728",
         "email": "info@octoshell.jp",
         "contactType": "reservations",
-        "availableLanguage": ["English", "Japanese", "Chinese", "Korean", "French", "German", "Arabic", "Thai"],
+        "availableLanguage": ["English", "Japanese", "Chinese"],
         "hoursAvailable": {
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": [
@@ -272,7 +271,7 @@ const ORG_SCHEMA = {
       "name": "Octoshell Japan",
       "url": BASE,
       "description": "Japan private chauffeur service — luxury airport transfers, hourly hire, sightseeing, and more.",
-      "inLanguage": ["en", "ja", "zh-TW", "ko", "fr", "de", "ar", "th"],
+      "inLanguage": ["en", "ja", "zh-TW"],
       "publisher": { "@id": `${BASE}/#organization` },
       "potentialAction": {
         "@type": "SearchAction",
@@ -286,14 +285,6 @@ const ORG_SCHEMA = {
   ],
 };
 
-const LANG_TO_HREFLANG: Record<string, string> = {
-  en: "en", ja: "ja", zh: "zh-TW", ko: "ko", fr: "fr", de: "de", ar: "ar", th: "th",
-};
-
-const CONTENT_PAGES = [
-  "", "services", "fleet", "about", "faq", "book", "reviews", "law", "privacy",
-];
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${montserrat.variable} h-full`}>
@@ -302,18 +293,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_SCHEMA) }}
         />
-        {/* hreflang alternates — keeps SEO value without URL-prefix routing */}
-        {CONTENT_PAGES.flatMap((page) =>
-          VALID_LANGS.map((l) => (
-            <link
-              key={`${l}-${page}`}
-              rel="alternate"
-              hrefLang={LANG_TO_HREFLANG[l]}
-              href={`${BASE}${page ? `/${page}` : ""}`}
-            />
-          ))
-        )}
-        <link rel="alternate" hrefLang="x-default" href={BASE} />
       </head>
       <body className="min-h-full antialiased">
         <ThemeProvider>
