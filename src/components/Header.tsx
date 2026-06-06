@@ -203,7 +203,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
             className={`relative text-[12px] lg:text-[13px] tracking-[0.12em]
                        hover:text-white transition-colors duration-200 whitespace-nowrap pb-0.5
                        ${pathname === "/" ? "text-white after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-[#c9a84c] after:rounded-full" : "text-white/75"}`}>
-            {t.nav_home[lang]}
+            {t.nav_home[appLang]}
           </Link>
 
           {/* SERVICES */}
@@ -215,7 +215,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                           ${pathname === "/services"
                             ? "text-white after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-[#c9a84c] after:rounded-full"
                             : servicesDrop ? "text-white" : "text-white/75"}`}>
-              {t.nav_services[lang]}
+              {t.nav_services[appLang]}
               <svg className={`w-2.5 h-2.5 transition-transform duration-200 opacity-50 ${servicesDrop ? "rotate-180" : ""}`}
                 fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
@@ -241,7 +241,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                                  ${idx % 2 === 0 ? "border-r border-white/[0.05]" : ""}
                                  ${idx < SVC_ITEMS.length - 2 ? "border-b border-white/[0.05]" : ""}`}>
                       {item.icon}
-                      {t[item.key][lang]}
+                      {t[item.key][appLang]}
                     </Link>
                   ))}
                 </div>
@@ -255,7 +255,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
             className={`relative text-[12px] lg:text-[13px] tracking-[0.12em]
                        hover:text-white transition-colors duration-200 whitespace-nowrap pb-0.5
                        ${pathname === "/fleet" ? "text-white after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-[#c9a84c] after:rounded-full" : "text-white/75"}`}>
-            {t.nav_fleet[lang]}
+            {t.nav_fleet[appLang]}
           </Link>
 
           {/* ABOUT */}
@@ -267,7 +267,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                           ${pathname === "/about"
                             ? "text-white after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-[#c9a84c] after:rounded-full"
                             : aboutDrop ? "text-white" : "text-white/75"}`}>
-              {t.nav_about[lang]}
+              {t.nav_about[appLang]}
               <svg className={`w-2.5 h-2.5 transition-transform duration-200 opacity-50 ${aboutDrop ? "rotate-180" : ""}`}
                 fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
@@ -289,7 +289,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                   <svg className="w-3.5 h-3.5 shrink-0 text-[#c9a84c]/50" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="9" /><path strokeLinecap="round" strokeLinejoin="round" d="M12 7v5l3 3" />
                   </svg>
-                  {t.nav_about_story[lang]}
+                  {t.nav_about_story[appLang]}
                 </Link>
                 <Link href="/about#contact" onClick={() => setAboutDrop(false)}
                   className="flex items-center gap-3 px-5 py-3.5 text-[10px] tracking-[0.25em] uppercase text-white/50
@@ -297,7 +297,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                   <svg className="w-3.5 h-3.5 shrink-0 text-[#c9a84c]/50" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
                   </svg>
-                  {t.nav_about_contact[lang]}
+                  {t.nav_about_contact[appLang]}
                 </Link>
               </div>
             )}
@@ -337,7 +337,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                         : "text-white/50 hover:text-[#c9a84c] hover:bg-white/[0.035]"}`}>
                     <span className="text-[13px] leading-none">{flag}</span>
                     <span className="text-[11px] font-bold tracking-widest">{label}</span>
-                    {lang === code && (
+                    {appLang === code && (
                       <svg className="w-2 h-2 ml-auto shrink-0 text-[#c9a84c]/60" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                       </svg>
@@ -403,9 +403,9 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                 {currency !== "JPY" && (
                   <div className="px-3.5 py-2.5 border-t border-white/[0.05]">
                     <p className="text-[11px] text-white/25 leading-relaxed">
-                      {lang === "ja"
-                        ? "※参考値。決済はJPY建て。外貨手数料あり"
-                        : lang === "zh"
+                      {appLang === "ja"
+        ? "※参考値。決済はJPY建て。外貨手数料あり"
+                        : appLang === "zh"
                         ? "※僅供參考。結算以JPY為準，外幣手續費另計"
                         : "* Reference only. Payment settled in JPY."}
                     </p>
@@ -422,7 +422,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                        text-[11px] lg:text-[12px] font-bold tracking-[0.18em]
                        px-5 lg:px-7 py-2 rounded-full
                        transition-all duration-200 whitespace-nowrap shadow-[0_4px_16px_rgba(201,168,76,0.35)]">
-            {lang === "ja" ? "予約" : lang === "zh" ? "預訂" : "Book Now"}
+            {appLang === "ja" ? "予約" : appLang === "zh" ? "預訂" : "Book Now"}
           </Link>
         </div>
 
@@ -522,8 +522,8 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                   {currency !== "JPY" && (
                     <div className="px-2.5 py-2 border-t border-white/[0.05]">
                       <p className="text-[10px] text-white/25 leading-relaxed">
-                        {lang === "ja" ? "※参考値。JPY建て決済"
-                          : lang === "zh" ? "※僅供參考，JPY結算"
+                        {appLang === "ja" ? "※参考値。JPY建て決済"
+                          : appLang === "zh" ? "※僅供參考，JPY結算"
                           : "* Ref. only. Settled in JPY."}
                       </p>
                     </div>
@@ -559,7 +559,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
 
             <Link href="/" onClick={pathname === "/" ? (e) => { e.preventDefault(); closeAll(); scrollTop(); } : closeAll}
               className="text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors">
-              {t.nav_home[lang]}
+              {t.nav_home[appLang]}
             </Link>
 
             {/* SERVICES — expandable mobile */}
@@ -571,7 +571,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                 }}
                 className="flex items-center justify-between w-full text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors"
               >
-                <span>{t.nav_services[lang]}</span>
+                <span>{t.nav_services[appLang]}</span>
                 <svg className={`w-3.5 h-3.5 text-white/30 transition-transform duration-200 ${servicesMobileOpen ? "rotate-180" : ""}`}
                   fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
@@ -587,7 +587,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                       onClick={closeAll}
                       className="text-white/45 text-[14px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors"
                     >
-                      {t[item.key][lang]}
+                      {t[item.key][appLang]}
                     </Link>
                   ))}
                 </div>
@@ -597,7 +597,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
             {/* FLEET */}
             <Link href="/fleet" onClick={pathname === "/fleet" ? (e) => { e.preventDefault(); closeAll(); scrollTop(); } : closeAll}
               className="text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors">
-              {t.nav_fleet[lang]}
+              {t.nav_fleet[appLang]}
             </Link>
 
             {/* ABOUT — expandable */}
@@ -609,7 +609,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                 }}
                 className="flex items-center justify-between w-full text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors"
               >
-                <span>{t.nav_about[lang]}</span>
+                <span>{t.nav_about[appLang]}</span>
                 <svg className={`w-3.5 h-3.5 text-white/30 transition-transform duration-200 ${aboutMobileOpen ? "rotate-180" : ""}`}
                   fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
@@ -620,15 +620,15 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                 <div className="mt-3 ml-1 pl-4 border-l border-[#c9a84c]/25 flex flex-col gap-3">
                   <Link href="/about#story" onClick={closeAll}
                     className="text-white/45 text-[14px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors">
-                    {t.nav_about_story[lang]}
+                    {t.nav_about_story[appLang]}
                   </Link>
                   <Link href="/about#faq" onClick={closeAll}
                     className="text-white/45 text-[14px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors">
-                    {t.nav_about_faq[lang]}
+                    {t.nav_about_faq[appLang]}
                   </Link>
                   <Link href="/about#contact" onClick={closeAll}
                     className="text-white/45 text-[14px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors">
-                    {t.nav_about_contact[lang]}
+                    {t.nav_about_contact[appLang]}
                   </Link>
                 </div>
               )}
@@ -641,7 +641,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               onContextMenu={(e) => e.preventDefault()}
               className="mt-3 inline-flex justify-center bg-[#c9a84c] text-black text-[14px] font-bold tracking-[0.18em] px-6 py-2.5 rounded-full hover:bg-white transition-all duration-200
                          active:scale-110 active:bg-white active:shadow-[0_8px_36px_rgba(201,168,76,0.7)]">
-              {t.nav_book[lang]}
+              {t.nav_book[appLang]}
             </Link>
 
           </nav>
