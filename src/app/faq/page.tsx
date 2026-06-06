@@ -95,7 +95,7 @@ export default function FaqPage() {
         <div className="max-w-5xl mx-auto flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
 
           {/* ── Left: sticky category nav ── */}
-          <nav className="w-full lg:w-52 shrink-0 lg:sticky lg:top-28">
+          <nav className="w-full lg:w-56 shrink-0 lg:sticky lg:top-28">
 
             {/* Mobile: horizontal scrollable chips */}
             <div className="flex lg:hidden gap-2 overflow-x-auto pb-1 scrollbar-hide">
@@ -122,30 +122,69 @@ export default function FaqPage() {
             </div>
 
             {/* Desktop: vertical list */}
-            <div className="hidden lg:flex flex-col gap-1">
-              <p className="text-[9px] tracking-[0.4em] uppercase text-[var(--c-ink-3)] mb-3 ml-1">
+            <div className="hidden lg:flex flex-col">
+              {/* CATEGORIES label */}
+              <p className="text-[9px] tracking-[0.4em] uppercase text-[var(--c-ink-3)] mb-4 ml-4">
                 {lang === "ja" ? "カテゴリー" : lang === "zh" ? "分類" : "Categories"}
               </p>
+
+              {/* All questions */}
               <button
                 onClick={() => handleGroupSelect("all")}
-                className={`text-left text-[11px] tracking-[0.15em] uppercase px-3 py-2.5 border-l-2 transition-all
+                className={`group relative flex items-center justify-between pl-4 pr-3 py-3.5 text-left transition-all duration-200
                   ${activeGroup === "all"
-                    ? "border-[#c9a84c] text-[#c9a84c] bg-[#c9a84c]/[0.05]"
-                    : "border-transparent text-[var(--c-ink-3)] hover:text-[var(--c-ink)] hover:border-[var(--c-rule)]"}`}
+                    ? "text-[var(--c-ink)]"
+                    : "text-[var(--c-ink-3)] hover:text-[var(--c-ink)]"}`}
               >
-                {ALL_LABEL[lang]}
+                {/* gold left border + glow */}
+                <span className={`absolute left-0 top-0 bottom-0 w-[3px] rounded-full transition-all duration-200
+                  ${activeGroup === "all"
+                    ? "bg-[#c9a84c] shadow-[2px_0_12px_rgba(201,168,76,0.5)]"
+                    : "bg-transparent group-hover:bg-[#c9a84c]/30"}`} />
+                <span className={`text-[14px] font-light transition-colors duration-200
+                  ${activeGroup === "all" ? "text-[var(--c-ink)]" : ""}`}>
+                  {ALL_LABEL[lang]}
+                </span>
+                <span className={`text-[12px] font-light tabular-nums transition-colors duration-200
+                  ${activeGroup === "all" ? "text-[#c9a84c]/70" : "text-[var(--c-ink-4)]"}`}>
+                  {String(groups.reduce((s, g) => s + g.items.length, 0)).padStart(2, "0")}
+                </span>
               </button>
+
+              {/* Divider */}
+              <div className="h-px bg-[var(--c-rule)] mx-4 my-2" />
+
+              {/* Category items */}
               {groups.map((g, i) => (
                 <button key={i}
                   onClick={() => handleGroupSelect(i)}
-                  className={`text-left text-[11px] tracking-[0.15em] uppercase px-3 py-2.5 border-l-2 transition-all
+                  className={`group relative flex items-center justify-between pl-4 pr-3 py-3 text-left transition-all duration-200
                     ${activeGroup === i
-                      ? "border-[#c9a84c] text-[#c9a84c] bg-[#c9a84c]/[0.05]"
-                      : "border-transparent text-[var(--c-ink-3)] hover:text-[var(--c-ink)] hover:border-[var(--c-rule)]"}`}
+                      ? "text-[var(--c-ink)]"
+                      : "text-[var(--c-ink-3)] hover:text-[var(--c-ink)]"}`}
                 >
-                  {stripEmoji(g.group)}
+                  <span className={`absolute left-0 top-0 bottom-0 w-[3px] rounded-full transition-all duration-200
+                    ${activeGroup === i
+                      ? "bg-[#c9a84c] shadow-[2px_0_12px_rgba(201,168,76,0.5)]"
+                      : "bg-transparent group-hover:bg-[#c9a84c]/30"}`} />
+                  <span className="text-[14px] font-light">{stripEmoji(g.group)}</span>
+                  <span className={`text-[12px] font-light tabular-nums transition-colors duration-200
+                    ${activeGroup === i ? "text-[#c9a84c]/70" : "text-[var(--c-ink-4)]"}`}>
+                    {String(g.items.length).padStart(2, "0")}
+                  </span>
                 </button>
               ))}
+
+              {/* Direct contact */}
+              <div className="mt-8 ml-4 pt-6 border-t border-[var(--c-rule)]">
+                <p className="text-[9px] tracking-[0.4em] uppercase text-[var(--c-ink-3)] mb-3">
+                  {lang === "ja" ? "お問い合わせ" : lang === "zh" ? "直接聯絡" : "Direct Contact"}
+                </p>
+                <a href="mailto:info@octoshell.jp"
+                  className="text-[13px] text-[#c9a84c] hover:text-[#c9a84c]/70 transition-colors break-all">
+                  info@octoshell.jp
+                </a>
+              </div>
             </div>
           </nav>
 
