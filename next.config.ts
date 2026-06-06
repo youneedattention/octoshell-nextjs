@@ -22,8 +22,7 @@ const nextConfig: NextConfig = {
     return [
       { source: "/ja",               destination: "/", permanent: true },
       { source: "/ja/home",          destination: "/", permanent: true },
-      { source: "/zh",               destination: "/", permanent: true },
-      { source: "/zh/home",          destination: "/", permanent: true },
+      { source: "/zh/home",          destination: "/zh", permanent: true },
       { source: "/wp-admin/:path*",          destination: "/", permanent: true },
       { source: "/wp-content/:path*",        destination: "/", permanent: true },
       { source: "/wp-includes/:path*",       destination: "/", permanent: true },

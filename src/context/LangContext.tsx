@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import type { Lang } from "@/lib/translations";
 
 interface LangCtx {
@@ -7,12 +7,13 @@ interface LangCtx {
   setLang: (l: Lang) => void;
 }
 
+const VALID: Lang[] = ["en", "ja", "zh"];
+
 const LangContext = createContext<LangCtx>({ lang: "en", setLang: () => {} });
 
 function detectLang(): Lang {
-  if (typeof window === "undefined") return "en";
   const stored = localStorage.getItem("octoshell-lang") as Lang | null;
-  if (stored === "en" || stored === "ja" || stored === "zh") return stored;
+  if (stored && VALID.includes(stored)) return stored;
   const b = navigator.language.toLowerCase();
   if (b.startsWith("ja")) return "ja";
   if (b.startsWith("zh")) return "zh";
@@ -26,7 +27,17 @@ export function LangProvider({
   children: ReactNode;
   initialLang?: Lang;
 }) {
-  const [lang, setLangState] = useState<Lang>(() => initialLang ?? detectLang());
+  /* Always start with initialLang (for zh/ pages) or "en" so server and
+     client initial render match — avoids React hydration mismatch errors. */
+  const [lang, setLangState] = useState<Lang>(initialLang ?? "en");
+
+  /* After mount: read localStorage preference (client-only) */
+  useEffect(() => {
+    if (!initialLang) {
+      setLangState(detectLang());
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   function setLang(l: Lang) {
     localStorage.setItem("octoshell-lang", l);

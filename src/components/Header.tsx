@@ -83,7 +83,9 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
     setLang(code);
     const isOnZh = pathname.startsWith("/zh");
     if (code === "zh" && !isOnZh) {
-      window.location.href = `/zh${pathname}`;
+      // Strip trailing slash so /zh/ doesn't hit the [...slug] catch-all
+      const dest = `/zh${pathname}`.replace(/\/$/, "") || "/zh";
+      window.location.href = dest;
     } else if (code !== "zh" && isOnZh) {
       window.location.href = pathname.replace(/^\/zh/, "") || "/";
     }

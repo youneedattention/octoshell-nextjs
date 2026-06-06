@@ -13,6 +13,8 @@ export default function ZhFallback() {
   const pathname = usePathname();
 
   useEffect(() => {
+    // Guard: if somehow the zh root is matched, don't redirect
+    if (pathname === "/zh" || pathname === "/zh/") return;
     const enPath = pathname.replace(/^\/zh/, "") || "/";
     window.location.replace(enPath);
   }, [pathname]);
