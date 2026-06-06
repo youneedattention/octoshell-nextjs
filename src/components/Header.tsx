@@ -87,10 +87,12 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
   const svcDropTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const curRef       = useRef<HTMLDivElement>(null);
   const headerRef       = useRef<HTMLElement>(null);
+  const desktopLangRef  = useRef<HTMLDivElement>(null);
   const langRef         = useRef<HTMLDivElement>(null);
   const mobileCurRef    = useRef<HTMLDivElement>(null);
-  const [langOpen,      setLangOpen]         = useState(false);
-  const [mobileCurOpen, setMobileCurOpen]    = useState(false);
+  const [desktopLangOpen, setDesktopLangOpen] = useState(false);
+  const [langOpen,        setLangOpen]        = useState(false);
+  const [mobileCurOpen,   setMobileCurOpen]   = useState(false);
   const [scrolled,      setScrolled]         = useState(false);
 
   useEffect(() => {
@@ -111,6 +113,18 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, [currencyOpen]);
+
+  /* Close desktop lang dropdown on outside click */
+  useEffect(() => {
+    if (!desktopLangOpen) return;
+    const handler = (e: MouseEvent) => {
+      if (desktopLangRef.current && !desktopLangRef.current.contains(e.target as Node)) {
+        setDesktopLangOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [desktopLangOpen]);
 
   /* Close mobile lang dropdown on outside click */
   useEffect(() => {
@@ -187,9 +201,9 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
         <div className="hidden sm:flex items-center gap-1.5 shrink-0">
 
           {/* Language dropdown — full name + chevron */}
-          <div ref={langRef} className="relative">
+          <div ref={desktopLangRef} className="relative">
             <button
-              onClick={() => setLangOpen((o) => !o)}
+              onClick={() => setDesktopLangOpen((o) => !o)}
               aria-label="Select language"
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-full
                          text-[12px] font-medium text-white/80 tracking-wide
@@ -198,14 +212,14 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
             >
               {LANGS.find((l) => l.code === lang)?.full ?? "English"}
               <svg
-                className={`w-3 h-3 opacity-60 transition-transform duration-200 ${langOpen ? "rotate-180" : ""}`}
+                className={`w-3 h-3 opacity-60 transition-transform duration-200 ${desktopLangOpen ? "rotate-180" : ""}`}
                 fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
               </svg>
             </button>
 
-            {langOpen && (
+            {desktopLangOpen && (
               <div className="absolute left-0 top-full mt-2 min-w-[140px]
                               bg-[#1a1a1a]/98 backdrop-blur-xl rounded-2xl
                               border border-white/[0.08] shadow-[0_16px_48px_rgba(0,0,0,0.7)]
@@ -213,7 +227,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                 {LANGS.map(({ code, full }) => (
                   <button
                     key={code}
-                    onClick={() => { setLang(code); setLangOpen(false); }}
+                    onClick={() => { setLang(code); setDesktopLangOpen(false); }}
                     className={`w-full text-left px-4 py-2.5 text-[13px] tracking-wide
                                 transition-colors duration-150
                                 ${lang === code
