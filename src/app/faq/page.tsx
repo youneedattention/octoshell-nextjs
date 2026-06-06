@@ -55,38 +55,93 @@ function FaqRow({ item, open, onToggle }: { item: FaqItem; open: boolean; onTogg
 ══════════════════════════════════════════════════════════════════════ */
 export default function FaqPage() {
   const { lang } = useLang();
-  const [openKey, setOpenKey]       = useState<string | null>(null);
+  const [openKey, setOpenKey]         = useState<string | null>(null);
   const [activeGroup, setActiveGroup] = useState<number | "all">("all");
+  const [query, setQuery]             = useState("");
   const toggle = (key: string) => setOpenKey(prev => prev === key ? null : key);
   const groups = FAQ_GROUPED[lang];
 
   const ALL_LABEL = { en: "All Questions", ja: "すべての質問", zh: "全部問題" };
-  const HERO = {
-    en: { badge: "Help Centre",  title: "Frequently Asked Questions", sub: "Everything you need to know before your trip" },
-    ja: { badge: "ヘルプセンター", title: "よくある質問",              sub: "ご予約前にご確認いただける情報をまとめました" },
-    zh: { badge: "幫助中心",      title: "常見問題",                   sub: "行程前您需要了解的一切" },
+
+  const SLOGAN = {
+    en: { badge: "Help Centre", line1: "Have a question?", line2: "We have the answer.", sub: "Everything you need to know before your trip. If you can't find what you're looking for, we're one message away.", placeholder: "Search questions…" },
+    ja: { badge: "ヘルプセンター", line1: "ご質問はありますか？", line2: "必ず、答えがあります。", sub: "ご予約前にご確認いただける情報をまとめました。見つからない場合はお気軽にご連絡ください。", placeholder: "質問を検索…" },
+    zh: { badge: "幫助中心", line1: "有任何疑問？", line2: "答案，就在這裡。", sub: "行程前您需要了解的一切。找不到答案？我們隨時為您解答。", placeholder: "搜尋問題…" },
   };
 
   const handleGroupSelect = (g: number | "all") => {
     setActiveGroup(g);
     setOpenKey(null);
+    setQuery("");
   };
+
+  /* Search: flatten all items and filter */
+  const q = query.trim().toLowerCase();
+  const searchResults = q
+    ? groups.flatMap((g, gi) =>
+        g.items
+          .filter(item => item.q.toLowerCase().includes(q) || item.a.toLowerCase().includes(q))
+          .map((item, qi) => ({ item, key: `s-${gi}-${qi}` }))
+      )
+    : [];
+  const isSearching = q.length > 0;
 
   return (
     <main className="min-h-screen bg-[#0c0c0c]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }} />
 
       {/* ── Hero ── */}
-      <div className="relative bg-[#0c0c0c] pt-[124px] sm:pt-[100px] pb-10 sm:pb-14 overflow-hidden">
+      <div className="relative bg-[#0c0c0c] pt-[124px] sm:pt-[100px] pb-14 sm:pb-20 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 opacity-[0.025]"
           style={{ backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)", backgroundSize: "60px 60px" }} />
         <Header />
+
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
-          <p className="text-[#c9a84c] text-[11px] tracking-[0.45em] mb-2.5 uppercase">{HERO[lang].badge}</p>
-          <h1 className="text-white text-2xl sm:text-3xl lg:text-4xl font-light tracking-[0.12em] leading-tight">
-            {HERO[lang].title}
-          </h1>
-          <p className="mt-2 text-white/35 text-[12px] tracking-[0.28em] uppercase">{HERO[lang].sub}</p>
+          {/* Badge */}
+          <p className="text-[#c9a84c] text-[10px] tracking-[0.5em] uppercase mb-6">
+            {SLOGAN[lang].badge}
+          </p>
+
+          {/* Two-col: slogan left, description right */}
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-16 mb-10">
+            <div className="flex-1">
+              <h1 className="text-white/60 text-3xl sm:text-4xl lg:text-[3.2rem] font-light tracking-[-0.01em] leading-[1.15]">
+                {SLOGAN[lang].line1}
+              </h1>
+              <p className="text-[#c9a84c] text-3xl sm:text-4xl lg:text-[3.2rem] italic font-light tracking-[-0.01em] leading-[1.15]">
+                {SLOGAN[lang].line2}
+              </p>
+            </div>
+            <p className="lg:max-w-[320px] text-white/35 text-[13px] leading-[1.9] tracking-[0.02em] lg:text-right">
+              {SLOGAN[lang].sub}
+            </p>
+          </div>
+
+          {/* Search bar */}
+          <div className="relative max-w-xl">
+            <input
+              type="text"
+              value={query}
+              onChange={e => { setQuery(e.target.value); setOpenKey(null); }}
+              placeholder={SLOGAN[lang].placeholder}
+              className="w-full bg-transparent border border-white/15 text-white placeholder-white/25
+                         text-[13px] tracking-[0.05em] px-5 py-4 pr-12
+                         focus:outline-none focus:border-[#c9a84c]/50 transition-colors duration-200"
+            />
+            {query ? (
+              <button onClick={() => setQuery("")}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 hover:text-white/60 transition-colors">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+              </button>
+            ) : (
+              <svg className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/25 pointer-events-none"
+                fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0Z" />
+              </svg>
+            )}
+          </div>
         </div>
       </div>
 
@@ -189,33 +244,56 @@ export default function FaqPage() {
           </nav>
 
           {/* ── Right: questions ── */}
-          <div className="flex-1 min-w-0 space-y-12">
-            {groups.map((group, gi) => {
-              if (activeGroup !== "all" && activeGroup !== gi) return null;
-              return (
-                <div key={gi}>
-                  {/* Group header */}
-                  <div className="flex items-center gap-3 mb-6">
-                    <span className="w-5 h-px bg-[#c9a84c]" />
-                    <p className="text-[#c9a84c] text-[11px] tracking-[0.4em] uppercase font-semibold">
-                      {stripEmoji(group.group)}
-                    </p>
-                    <span className="text-[var(--c-ink-4)] text-[10px] tracking-widest">
-                      {group.items.length}
-                    </span>
-                  </div>
-                  {/* Questions */}
+          <div className="flex-1 min-w-0">
+            {isSearching ? (
+              /* Search results */
+              <div>
+                <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--c-ink-3)] mb-6">
+                  {searchResults.length > 0
+                    ? `${searchResults.length} ${lang === "ja" ? "件の結果" : lang === "zh" ? "個結果" : "result" + (searchResults.length > 1 ? "s" : "")}`
+                    : lang === "ja" ? "結果なし" : lang === "zh" ? "無結果" : "No results"}
+                </p>
+                {searchResults.length > 0 ? (
                   <div>
-                    {group.items.map((item, qi) => {
-                      const key = `${gi}-${qi}`;
-                      return (
-                        <FaqRow key={key} item={item} open={openKey === key} onToggle={() => toggle(key)} />
-                      );
-                    })}
+                    {searchResults.map(({ item, key }) => (
+                      <FaqRow key={key} item={item} open={openKey === key} onToggle={() => toggle(key)} />
+                    ))}
                   </div>
-                </div>
-              );
-            })}
+                ) : (
+                  <p className="text-[var(--c-ink-3)] text-[14px]">
+                    {lang === "ja" ? "別のキーワードでお試しください。" : lang === "zh" ? "請嘗試其他關鍵字。" : "Try a different keyword, or contact us directly."}
+                  </p>
+                )}
+              </div>
+            ) : (
+              /* Normal grouped view */
+              <div className="space-y-12">
+                {groups.map((group, gi) => {
+                  if (activeGroup !== "all" && activeGroup !== gi) return null;
+                  return (
+                    <div key={gi}>
+                      <div className="flex items-center gap-3 mb-6">
+                        <span className="w-5 h-px bg-[#c9a84c]" />
+                        <p className="text-[#c9a84c] text-[11px] tracking-[0.4em] uppercase font-semibold">
+                          {stripEmoji(group.group)}
+                        </p>
+                        <span className="text-[var(--c-ink-4)] text-[10px] tracking-widest">
+                          {group.items.length}
+                        </span>
+                      </div>
+                      <div>
+                        {group.items.map((item, qi) => {
+                          const key = `${gi}-${qi}`;
+                          return (
+                            <FaqRow key={key} item={item} open={openKey === key} onToggle={() => toggle(key)} />
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
 
         </div>
