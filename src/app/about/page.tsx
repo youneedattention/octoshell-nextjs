@@ -745,37 +745,41 @@ export default function AboutPage() {
 
           <SectionLabel label={lang === "ja" ? "よくある質問" : lang === "zh" ? "常見問題" : "FAQ"} />
 
-          {/* FAQ title: was text-2xl/3xl → text-3xl/4xl */}
-          <h2 className="text-[var(--c-ink)] text-3xl sm:text-4xl font-light tracking-[0.1em] mb-11 sm:mb-16">
+          <h2 className="text-[var(--c-ink)] text-3xl sm:text-4xl font-light tracking-[0.1em] mb-6">
             {lang === "ja" ? "よくあるご質問" : lang === "zh" ? "常見問題" : "Frequently Asked Questions"}
           </h2>
+          <p className="text-[var(--c-ink-2)] text-[15px] leading-relaxed mb-10">
+            {lang === "ja"
+              ? "料金・キャンセル・空港送迎・お支払い方法など、よくいただくご質問をまとめました。"
+              : lang === "zh"
+              ? "我們整理了關於費用、取消政策、機場接送及付款方式的常見問題。"
+              : "We've compiled answers to the most common questions about pricing, cancellation, airport transfers, and payment."}
+          </p>
 
-          <div className="space-y-11 sm:space-y-14">
-            {FAQ_GROUPED[lang].map((group) => (
-              <div key={group.group}>
-                {/* group heading: was [10px] → [12px]; line was w-3 → w-4 */}
-                <div className="flex items-center gap-3.5 mb-1">
-                  <span className="w-4 h-px bg-[#c9a84c]/50" />
-                  <p className="text-[#c9a84c]/70 text-[12px] tracking-[0.35em] uppercase font-semibold">
-                    {group.group}
-                  </p>
-                </div>
-                <div className="border-t border-[var(--c-rule)] mt-3">
-                  {group.items.map((item, idx) => {
-                    const key = `${group.group}-${idx}`;
-                    return (
-                      <FaqRow
-                        key={key}
-                        item={item}
-                        open={openKey === key}
-                        onToggle={() => toggle(key)}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
+          {/* Category preview chips */}
+          <div className="flex flex-wrap gap-2 mb-10">
+            {(lang === "ja"
+              ? ["私たちについて", "料金・費用", "車両・手荷物", "予約・キャンセル", "空港当日", "特別リクエスト"]
+              : lang === "zh"
+              ? ["關於我們", "費用與收費", "車輛與行李", "預訂與取消", "在機場", "特殊需求"]
+              : ["About Us", "Prices & Fees", "Cars & Luggage", "Booking & Cancellation", "At the Airport", "Special Requests"]
+            ).map((cat) => (
+              <span key={cat} className="text-[11px] tracking-[0.15em] px-3 py-1.5 border border-[#c9a84c]/25 text-[#c9a84c]/70 uppercase">
+                {cat}
+              </span>
             ))}
           </div>
+
+          <Link href="/faq"
+            className="group inline-flex items-center gap-3 bg-[#c9a84c] text-[#0c0c0c]
+                       text-[12px] font-black tracking-[0.3em] uppercase px-8 py-3.5
+                       hover:bg-white transition-all duration-200 shadow-[0_4px_20px_rgba(201,168,76,0.3)]
+                       active:scale-110 sm:active:scale-100 mb-14">
+            {lang === "ja" ? "すべてのFAQを見る" : lang === "zh" ? "查看所有常見問題" : "View All FAQs"}
+            <svg className="w-3 h-3 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+            </svg>
+          </Link>
 
           {/* ── Contact Us section ── */}
           <div id="contact" className="scroll-mt-24 mt-16 sm:mt-20 border border-[var(--c-rule)] p-9 sm:p-12 text-center">
