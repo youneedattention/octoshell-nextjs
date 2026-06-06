@@ -27,6 +27,7 @@ export async function GET() {
       changefreq:  "monthly",
     })),
     { loc: `${BASE}/fleet`, priority: "0.9", changefreq: "monthly" },
+    { loc: `${BASE}/faq`,   priority: "0.9", changefreq: "monthly" },
     { loc: `${BASE}/about`,   priority: "0.8", changefreq: "monthly" },
     { loc: `${BASE}/law`,     priority: "0.3", changefreq: "yearly"  },
     { loc: `${BASE}/privacy`, priority: "0.3", changefreq: "yearly"  },
