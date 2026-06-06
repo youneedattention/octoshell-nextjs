@@ -61,6 +61,19 @@ src/
 2. Create `src/app/[pagename]/layout.tsx` with page-specific `metadata`
 3. Add route to `src/app/sitemap.xml/route.ts`
 4. If new service: add JSON-LD Offer to `layout.tsx` ORG_SCHEMA
+5. **Create zh branch page** (mandatory):
+   ```tsx
+   // src/app/zh/[pagename]/page.tsx
+   export { default } from "@/app/[pagename]/page";
+   ```
+6. Add zh URL to sitemap with hreflang alternates (see existing pattern in `sitemap.xml/route.ts`)
+
+### Multilingual / zh Branch
+- All pages MUST have a `/zh/[pagename]` equivalent for Traditional Chinese SEO
+- The `zh/layout.tsx` provides `initialLang="zh"` — no extra code needed in zh page files
+- Clicking 繁體中文 in the language switcher navigates to `/zh/*` automatically
+- If a zh page is missing, `zh/[...slug]/page.tsx` catches it and redirects to English
+- Pattern for zh pages: thin re-export wrapper, one line only
 
 ### SEO
 - Every page needs its own `layout.tsx` with `export const metadata`
