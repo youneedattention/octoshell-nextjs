@@ -11,9 +11,15 @@ type Props = ImageProps & {
  * - alt="" by default so image search engines get no description
  */
 export default function ProtectedImage({ wrapperClassName = "", className = "", ...props }: Props) {
+  // When fill is used, the wrapper must be absolute+inset-0 to not break layout
+  const isFill = !!props.fill;
+  const wrapperBase = isFill
+    ? `absolute inset-0 select-none ${wrapperClassName}`
+    : `relative select-none ${wrapperClassName}`;
+
   return (
     <div
-      className={`relative select-none ${wrapperClassName}`}
+      className={wrapperBase}
       onContextMenu={(e) => e.preventDefault()}
     >
       <Image
