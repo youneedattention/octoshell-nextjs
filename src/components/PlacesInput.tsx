@@ -11,6 +11,7 @@
  */
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useLang } from "@/context/LangContext";
+import { fillLang } from '@/lib/translations';
 
 /* ── Tokens (public — safe to expose) ──────────────────────────────── */
 const MAPBOX = process.env.NEXT_PUBLIC_MAPBOX_TOKEN        ?? "";
@@ -120,11 +121,11 @@ async function reverseGeocode(lat: number, lng: number): Promise<string> {
 
 /* ── i18n strings ───────────────────────────────────────────────────── */
 type Lang = "en" | "ja" | "zh";
-const LOC_LABEL:   Record<Lang, string> = { en: "Use current location",  ja: "現在地を使用",           zh: "使用目前位置"   };
-const LOC_BUSY:    Record<Lang, string> = { en: "Locating…",             ja: "取得中…",               zh: "定位中…"       };
-const LOC_DENIED:  Record<Lang, string> = { en: "Location denied",       ja: "位置情報へのアクセスが拒否されました", zh: "位置存取被拒"   };
-const LOC_UNAVAIL: Record<Lang, string> = { en: "Location unavailable",  ja: "現在地を取得できません",  zh: "無法取得目前位置" };
-const SEARCHING:   Record<Lang, string> = { en: "Searching…",            ja: "検索中…",               zh: "搜尋中…"       };
+const LOC_LABEL = fillLang({ en: "Use current location",  ja: "現在地を使用",           zh: "使用目前位置"   });
+const LOC_BUSY = fillLang({ en: "Locating…",             ja: "取得中…",               zh: "定位中…"       });
+const LOC_DENIED = fillLang({ en: "Location denied",       ja: "位置情報へのアクセスが拒否されました", zh: "位置存取被拒"   });
+const LOC_UNAVAIL = fillLang({ en: "Location unavailable",  ja: "現在地を取得できません",  zh: "無法取得目前位置" });
+const SEARCHING = fillLang({ en: "Searching…",            ja: "検索中…",               zh: "搜尋中…"       });
 
 /* ── Props ──────────────────────────────────────────────────────────── */
 interface Props {

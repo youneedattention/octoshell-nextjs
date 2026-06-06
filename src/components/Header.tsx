@@ -7,14 +7,19 @@ import { useLang } from "@/context/LangContext";
 import { useTheme } from "@/context/ThemeContext";
 import { useCurrency, CURRENCIES } from "@/context/CurrencyContext";
 import { t } from "@/lib/translations";
-import type { Lang } from "@/lib/translations";
+import type { Lang, AppLang } from "@/lib/translations";
 
 const LOGO = "/logo.png";
 
-const LANGS: { code: Lang; label: string }[] = [
-  { code: "en", label: "EN" },
-  { code: "ja", label: "日" },
-  { code: "zh", label: "中" },
+const LANGS: { code: AppLang; label: string; flag: string }[] = [
+  { code: "en", label: "EN", flag: "🇬🇧" },
+  { code: "ja", label: "日", flag: "🇯🇵" },
+  { code: "zh", label: "中", flag: "🇹🇼" },
+  { code: "ko", label: "한", flag: "🇰🇷" },
+  { code: "fr", label: "FR", flag: "🇫🇷" },
+  { code: "de", label: "DE", flag: "🇩🇪" },
+  { code: "ar", label: "ع",  flag: "🇸🇦" },
+  { code: "th", label: "ไทย", flag: "🇹🇭" },
 ];
 
 const SVC_ITEMS: { key: keyof typeof t; anchor: string; icon: React.ReactNode }[] = [
@@ -73,7 +78,7 @@ function ThemeIcon({ theme }: { theme: string }) {
 export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50" }: { alwaysFrosted?: boolean; frostedBg?: string }) {
   const pathname = usePathname();
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
-  const { lang, setLang } = useLang();
+  const { lang, appLang, setLang } = useLang();
   const { theme, toggle: toggleTheme } = useTheme();
   const { currency, setCurrency } = useCurrency();
   const [menuOpen,           setMenuOpen]           = useState(false);
@@ -322,15 +327,21 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               <div className="absolute right-0 top-full mt-2
                               bg-[#0a0a0a]/96 backdrop-blur-xl
                               border border-white/[0.09] shadow-[0_12px_40px_rgba(0,0,0,0.6)]
-                              overflow-hidden z-50 w-[72px]">
+                              overflow-hidden z-50 w-[140px]">
                 <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
-                {LANGS.map(({ code, label }) => (
+                {LANGS.map(({ code, label, flag }) => (
                   <button key={code} onClick={() => { setLang(code); setLangOpen(false); }}
-                    className={`w-full py-2.5 text-[11px] font-bold tracking-widest transition-colors
-                      ${lang === code
+                    className={`w-full flex items-center gap-2.5 px-3 py-2 transition-colors
+                      ${appLang === code
                         ? "text-[#c9a84c] bg-white/[0.04]"
                         : "text-white/50 hover:text-[#c9a84c] hover:bg-white/[0.035]"}`}>
-                    {label}
+                    <span className="text-[13px] leading-none">{flag}</span>
+                    <span className="text-[11px] font-bold tracking-widest">{label}</span>
+                    {lang === code && (
+                      <svg className="w-2 h-2 ml-auto shrink-0 text-[#c9a84c]/60" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                      </svg>
+                    )}
                   </button>
                 ))}
               </div>
@@ -443,7 +454,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                     : "bg-transparent text-white/90 border-white/50 hover:border-[#c9a84c] hover:text-[#c9a84c]"
                   }`}
               >
-                {lang === "en" ? "EN" : lang === "ja" ? "日" : "中"}
+                {LANGS.find(l => l.code === appLang)?.label ?? "EN"}
               </button>
 
               {langOpen && (
@@ -451,18 +462,19 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                                 bg-[#0a0a0a]/96 backdrop-blur-xl
                                 border border-white/[0.09]
                                 shadow-[0_8px_32px_rgba(0,0,0,0.7)]
-                                overflow-hidden z-50 w-[64px]">
+                                overflow-hidden z-50 w-[140px]">
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
-                  {LANGS.map(({ code, label }) => (
+                  {LANGS.map(({ code, label, flag }) => (
                     <button
                       key={code}
                       onClick={() => { setLang(code); setLangOpen(false); }}
-                      className={`w-full py-2.5 text-[13px] font-bold tracking-wider transition-colors
-                        ${lang === code
+                      className={`w-full flex items-center gap-2.5 px-3 py-2.5 transition-colors
+                        ${appLang === code
                           ? "text-[#c9a84c] bg-white/[0.04]"
                           : "text-white/50 hover:text-[#c9a84c] hover:bg-white/[0.035]"}`}
                     >
-                      {label}
+                      <span className="text-[13px] leading-none">{flag}</span>
+                      <span className="text-[12px] font-bold tracking-wider">{label}</span>
                     </button>
                   ))}
                 </div>
