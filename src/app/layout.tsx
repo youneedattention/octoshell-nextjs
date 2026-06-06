@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import { headers } from "next/headers";
 import { RATING_VALUE_STR, REVIEW_COUNT } from "@/lib/reviews";
 import { LangProvider } from "@/context/LangContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { CurrencyProvider } from "@/context/CurrencyContext";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import type { AppLang } from "@/lib/translations";
 import { VALID_LANGS } from "@/lib/translations";
 import "./globals.css";
 
@@ -296,35 +294,31 @@ const CONTENT_PAGES = [
   "", "services", "fleet", "about", "faq", "book", "reviews", "law", "privacy",
 ];
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const headersList = await headers();
-  const lang = (headersList.get("x-lang") ?? "en") as AppLang;
-  const isRtl = lang === "ar";
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang={LANG_TO_HREFLANG[lang] ?? "en"} dir={isRtl ? "rtl" : "ltr"} className={`${montserrat.variable} h-full`}>
+    <html lang="en" className={`${montserrat.variable} h-full`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_SCHEMA) }}
         />
-        {/* hreflang alternates for all content pages */}
+        {/* hreflang alternates — keeps SEO value without URL-prefix routing */}
         {CONTENT_PAGES.flatMap((page) =>
           VALID_LANGS.map((l) => (
             <link
               key={`${l}-${page}`}
               rel="alternate"
               hrefLang={LANG_TO_HREFLANG[l]}
-              href={`${BASE}/${l}${page ? `/${page}` : ""}`}
+              href={`${BASE}${page ? `/${page}` : ""}`}
             />
           ))
         )}
-        <link rel="alternate" hrefLang="x-default" href={`${BASE}/en`} />
+        <link rel="alternate" hrefLang="x-default" href={BASE} />
       </head>
       <body className="min-h-full antialiased">
         <ThemeProvider>
           <CurrencyProvider>
-            <LangProvider initialLang={lang}>{children}</LangProvider>
+            <LangProvider>{children}</LangProvider>
           </CurrencyProvider>
         </ThemeProvider>
         <Analytics />
