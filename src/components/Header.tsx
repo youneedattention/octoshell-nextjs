@@ -408,6 +408,15 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               {t.nav_fleet[lang]}
             </Link>
 
+            {/* FAQ */}
+            <Link href={lp("/faq")}
+              onClick={pathname === lp("/faq") ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
+              className="text-white/80 text-[12px] lg:text-[13px] tracking-[0.22em]
+                         hover:text-[#c9a84c] transition-all duration-200 whitespace-nowrap
+                         pb-[3px] border-b border-transparent hover:border-[#c9a84c]/55">
+              {t.nav_faq[lang]}
+            </Link>
+
             {/* ABOUT */}
             <div className="relative" onMouseEnter={openDrop} onMouseLeave={closeDrop}>
               <Link href={lp("/about")}
@@ -444,19 +453,6 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                       <circle cx="12" cy="12" r="9" /><path strokeLinecap="round" strokeLinejoin="round" d="M12 7v5l3 3" />
                     </svg>
                     {t.nav_about_story[lang]}
-                  </Link>
-
-                  <Link href={lp("/about#faq")} onClick={() => setAboutDrop(false)}
-                    className="flex items-center gap-3 px-5 py-3.5
-                               text-[10px] tracking-[0.25em] uppercase text-white/50
-                               hover:text-[#c9a84c] hover:bg-white/[0.035] transition-all duration-150
-                               border-b border-white/[0.05]">
-                    <svg className="w-3.5 h-3.5 shrink-0 text-[#c9a84c]/50" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
-                      <circle cx="12" cy="12" r="9" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-                      <path strokeLinecap="round" d="M12 17h.01" />
-                    </svg>
-                    {t.nav_about_faq[lang]}
                   </Link>
 
                   <Link href={lp("/about#contact")} onClick={() => setAboutDrop(false)}
@@ -673,6 +669,12 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               {t.nav_fleet[lang]}
             </Link>
 
+            {/* FAQ */}
+            <Link href={lp("/faq")} onClick={pathname === lp("/faq") ? (e) => { e.preventDefault(); closeAll(); scrollTop(); } : closeAll}
+              className="text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors">
+              {t.nav_faq[lang]}
+            </Link>
+
             {/* ABOUT — expandable */}
             <div>
               <button
@@ -694,10 +696,6 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                   <Link href={lp("/about#story")} onClick={closeAll}
                     className="text-white/45 text-[14px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors">
                     {t.nav_about_story[lang]}
-                  </Link>
-                  <Link href={lp("/about#faq")} onClick={closeAll}
-                    className="text-white/45 text-[14px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors">
-                    {t.nav_about_faq[lang]}
                   </Link>
                   <Link href={lp("/about#contact")} onClick={closeAll}
                     className="text-white/45 text-[14px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors">
