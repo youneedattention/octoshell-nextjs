@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Header from "@/components/Header";
 import SiteFooter from "@/components/SiteFooter";
 import { useLang } from "@/context/LangContext";
@@ -44,6 +45,9 @@ function FaqRow({ item, open, onToggle }: { item: FaqItem; open: boolean; onTogg
 ══════════════════════════════════════════════════════════════════════ */
 export default function FaqPage() {
   const { lang } = useLang();
+  const pathname = usePathname();
+  const isZh = pathname.startsWith("/zh");
+  const lp = (path: string) => isZh ? `/zh${path}` : path;
   const [openKey, setOpenKey]         = useState<string | null>(null);
   const [activeGroup, setActiveGroup] = useState<number | "all">("all");
   const [query, setQuery]             = useState("");
@@ -294,13 +298,13 @@ export default function FaqPage() {
             {lang === "ja" ? "まだご質問がありますか？" : lang === "zh" ? "仍有疑問？" : "Still have a question?"}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/book"
+            <Link href={lp("/book")}
               className="inline-flex items-center gap-2.5 bg-[#c9a84c] text-[#0c0c0c]
                          text-[11px] font-black tracking-[0.3em] uppercase px-8 py-3.5
                          hover:bg-white transition-all duration-200 shadow-[0_4px_20px_rgba(201,168,76,0.3)]">
               {lang === "ja" ? "今すぐ予約" : lang === "zh" ? "立即預訂" : "Book Now"}
             </Link>
-            <Link href="/about#contact"
+            <Link href={lp("/about#contact")}
               className="text-white/35 text-[11px] tracking-[0.2em] uppercase hover:text-white/60 transition-colors">
               {lang === "ja" ? "お問い合わせ" : lang === "zh" ? "聯絡我們" : "Contact Us"}
             </Link>
