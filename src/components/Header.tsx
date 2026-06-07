@@ -523,18 +523,14 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                 onClick={() => setLangOpen((o) => !o)}
                 aria-label="Select language"
                 onContextMenu={(e) => e.preventDefault()}
-                className="flex items-center gap-1 px-2.5 py-1.5 rounded-full
-                           text-[11px] font-medium text-white/80 tracking-wide
-                           border border-white/25 active:scale-110
-                           transition-all duration-200"
+                className={`w-[38px] h-[38px] rounded-full text-[10px] font-bold border transition-all duration-200
+                  flex items-center justify-center tracking-wider active:scale-110
+                  ${langOpen
+                    ? "bg-white text-black border-white"
+                    : "bg-transparent text-white/90 border-white/50 hover:border-[#c9a84c] hover:text-[#c9a84c]"
+                  }`}
               >
-                {LANGS.find((l) => l.code === lang)?.full ?? "English"}
-                <svg
-                  className={`w-2.5 h-2.5 opacity-60 transition-transform duration-200 ${langOpen ? "rotate-180" : ""}`}
-                  fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
-                </svg>
+                {LANGS.find((l) => l.code === lang)?.label ?? "EN"}
               </button>
 
               {langOpen && (
