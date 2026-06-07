@@ -77,6 +77,10 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
   const { lang, setLang } = useLang();
   const { theme, toggle: toggleTheme } = useTheme();
 
+  /* Prefix path with /zh when we're in the zh branch */
+  const isZh = pathname.startsWith("/zh");
+  const lp = (path: string) => isZh ? `/zh${path}` : path;
+
   /* Switch language — navigates to /zh/* when selecting Traditional Chinese,
      or back to /* when leaving it. Other languages stay client-side. */
   function switchLang(code: Lang) {
@@ -198,7 +202,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                       py-2.5 sm:py-0 sm:h-[96px]">
 
         {/* ── MOBILE LEFT: large logo ───────────────────────────── */}
-        <Link href="/" draggable={false}
+        <Link href={lp("/")} draggable={false}
           className="sm:hidden shrink-0 transition-transform duration-200 active:scale-110"
           onContextMenu={(e) => e.preventDefault()}>
           <ProtectedImage
@@ -333,15 +337,15 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
 
         {/* ── DESKTOP CENTER: logo + nav (absolute) ────────────── */}
         <div className="hidden sm:flex flex-col items-center absolute left-1/2 -translate-x-1/2">
-          <Link href="/" onContextMenu={(e) => e.preventDefault()}>
+          <Link href={lp("/")} onContextMenu={(e) => e.preventDefault()}>
             <ProtectedImage src={LOGO} alt="Octoshell" width={75} height={75} draggable={false} className="object-contain drop-shadow-lg pointer-events-none select-none" />
           </Link>
 
           <nav className="flex items-center gap-8 lg:gap-12 mt-0.5">
 
             {/* HOME */}
-            <Link href="/"
-              onClick={pathname === "/" ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
+            <Link href={lp("/")}
+              onClick={pathname === lp("/") ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
               className="text-white/80 text-[12px] lg:text-[13px] tracking-[0.22em]
                          hover:text-[#c9a84c] transition-all duration-200 whitespace-nowrap
                          pb-[3px] border-b border-transparent hover:border-[#c9a84c]/55">
@@ -350,8 +354,8 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
 
             {/* SERVICES */}
             <div className="relative" onMouseEnter={openSvcDrop} onMouseLeave={closeSvcDrop}>
-              <Link href="/services"
-                onClick={pathname === "/services" ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
+              <Link href={lp("/services")}
+                onClick={pathname === lp("/services") ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
                 className={`flex items-center gap-1 text-[12px] lg:text-[13px] tracking-[0.22em]
                             hover:text-[#c9a84c] transition-all duration-200 whitespace-nowrap
                             pb-[3px] border-b border-transparent hover:border-[#c9a84c]/55
@@ -378,7 +382,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                     {SVC_ITEMS.map((item, idx) => (
                       <Link
                         key={item.anchor}
-                        href={`/services${item.anchor}`}
+                        href={lp(`/services${item.anchor}`)}
                         onClick={() => setServicesDrop(false)}
                         className={`flex items-center gap-3 px-4 py-3
                                    text-[10px] tracking-[0.22em] uppercase text-white/50
@@ -396,8 +400,8 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
             </div>
 
             {/* FLEET */}
-            <Link href="/fleet"
-              onClick={pathname === "/fleet" ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
+            <Link href={lp("/fleet")}
+              onClick={pathname === lp("/fleet") ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
               className="text-white/80 text-[12px] lg:text-[13px] tracking-[0.22em]
                          hover:text-[#c9a84c] transition-all duration-200 whitespace-nowrap
                          pb-[3px] border-b border-transparent hover:border-[#c9a84c]/55">
@@ -406,8 +410,8 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
 
             {/* ABOUT */}
             <div className="relative" onMouseEnter={openDrop} onMouseLeave={closeDrop}>
-              <Link href="/about"
-                onClick={pathname === "/about" ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
+              <Link href={lp("/about")}
+                onClick={pathname === lp("/about") ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
                 className={`flex items-center gap-1 text-[12px] lg:text-[13px] tracking-[0.22em]
                             hover:text-[#c9a84c] transition-all duration-200 whitespace-nowrap
                             pb-[3px] border-b border-transparent hover:border-[#c9a84c]/55
@@ -431,7 +435,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                 >
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
 
-                  <Link href="/about#story" onClick={() => setAboutDrop(false)}
+                  <Link href={lp("/about#story")} onClick={() => setAboutDrop(false)}
                     className="flex items-center gap-3 px-5 py-3.5
                                text-[10px] tracking-[0.25em] uppercase text-white/50
                                hover:text-[#c9a84c] hover:bg-white/[0.035] transition-all duration-150
@@ -442,7 +446,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                     {t.nav_about_story[lang]}
                   </Link>
 
-                  <Link href="/about#faq" onClick={() => setAboutDrop(false)}
+                  <Link href={lp("/about#faq")} onClick={() => setAboutDrop(false)}
                     className="flex items-center gap-3 px-5 py-3.5
                                text-[10px] tracking-[0.25em] uppercase text-white/50
                                hover:text-[#c9a84c] hover:bg-white/[0.035] transition-all duration-150
@@ -455,7 +459,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                     {t.nav_about_faq[lang]}
                   </Link>
 
-                  <Link href="/about#contact" onClick={() => setAboutDrop(false)}
+                  <Link href={lp("/about#contact")} onClick={() => setAboutDrop(false)}
                     className="flex items-center gap-3 px-5 py-3.5
                                text-[10px] tracking-[0.25em] uppercase text-white/50
                                hover:text-[#c9a84c] hover:bg-white/[0.035] transition-all duration-150">
@@ -475,8 +479,8 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
 
           {/* Desktop BOOK */}
-          <Link href="/book"
-            onClick={pathname === "/book" ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
+          <Link href={lp("/book")}
+            onClick={pathname === lp("/book") ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
             className="hidden sm:inline-flex items-center justify-center relative overflow-hidden group
                        border border-white/80 hover:border-[#c9a84c] text-white
                        text-[11px] lg:text-[12px] tracking-[0.18em]
@@ -626,7 +630,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
 
           <nav className="flex flex-col gap-4 px-6 pb-6 pt-2">
 
-            <Link href="/" onClick={pathname === "/" ? (e) => { e.preventDefault(); closeAll(); scrollTop(); } : closeAll}
+            <Link href={lp("/")} onClick={pathname === lp("/") ? (e) => { e.preventDefault(); closeAll(); scrollTop(); } : closeAll}
               className="text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors">
               {t.nav_home[lang]}
             </Link>
@@ -635,7 +639,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
             <div>
               <button
                 onClick={() => {
-                  if (pathname === "/services") { closeAll(); scrollTop(); }
+                  if (pathname === lp("/services")) { closeAll(); scrollTop(); }
                   else setServicesMobileOpen(o => !o);
                 }}
                 className="flex items-center justify-between w-full text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors"
@@ -652,7 +656,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                   {SVC_ITEMS.map((item) => (
                     <Link
                       key={item.anchor}
-                      href={`/services${item.anchor}`}
+                      href={lp(`/services${item.anchor}`)}
                       onClick={closeAll}
                       className="text-white/45 text-[14px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors"
                     >
@@ -664,7 +668,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
             </div>
 
             {/* FLEET */}
-            <Link href="/fleet" onClick={pathname === "/fleet" ? (e) => { e.preventDefault(); closeAll(); scrollTop(); } : closeAll}
+            <Link href={lp("/fleet")} onClick={pathname === lp("/fleet") ? (e) => { e.preventDefault(); closeAll(); scrollTop(); } : closeAll}
               className="text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors">
               {t.nav_fleet[lang]}
             </Link>
@@ -673,7 +677,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
             <div>
               <button
                 onClick={() => {
-                  if (pathname === "/about") { closeAll(); scrollTop(); }
+                  if (pathname === lp("/about")) { closeAll(); scrollTop(); }
                   else setAboutMobileOpen(o => !o);
                 }}
                 className="flex items-center justify-between w-full text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors"
@@ -687,15 +691,15 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
 
               {aboutMobileOpen && (
                 <div className="mt-3 ml-1 pl-4 border-l border-[#c9a84c]/25 flex flex-col gap-3">
-                  <Link href="/about#story" onClick={closeAll}
+                  <Link href={lp("/about#story")} onClick={closeAll}
                     className="text-white/45 text-[14px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors">
                     {t.nav_about_story[lang]}
                   </Link>
-                  <Link href="/about#faq" onClick={closeAll}
+                  <Link href={lp("/about#faq")} onClick={closeAll}
                     className="text-white/45 text-[14px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors">
                     {t.nav_about_faq[lang]}
                   </Link>
-                  <Link href="/about#contact" onClick={closeAll}
+                  <Link href={lp("/about#contact")} onClick={closeAll}
                     className="text-white/45 text-[14px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors">
                     {t.nav_about_contact[lang]}
                   </Link>
@@ -705,7 +709,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
 
 
             {/* BOOK */}
-            <Link href="/book" onClick={pathname === "/book" ? (e) => { e.preventDefault(); closeAll(); scrollTop(); } : closeAll}
+            <Link href={lp("/book")} onClick={pathname === lp("/book") ? (e) => { e.preventDefault(); closeAll(); scrollTop(); } : closeAll}
               draggable={false}
               onContextMenu={(e) => e.preventDefault()}
               className="mt-3 inline-flex justify-center bg-[#c9a84c] text-black text-[14px] font-bold tracking-[0.18em] px-6 py-2.5 rounded-full hover:bg-white transition-all duration-200
