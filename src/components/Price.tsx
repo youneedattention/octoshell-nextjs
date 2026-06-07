@@ -15,6 +15,7 @@ const NOTE: Record<Lang, string> = {
   en: "* Prices shown in [C] are approximate and for reference only. All payments are settled in Japanese Yen (JPY). If paying in a foreign currency, conversion fees may apply.",
   ja: "* [C]建ての表示価格は参考値です。最終的なお支払いは日本円（JPY）にてご請求いたします。外貨でのお支払いをご希望の場合、為替手数料が発生する場合がございます。",
   zh: "* 以上[C]換算金額僅供參考，最終結算以日元（JPY）計算。如以非日元貨幣付款，可能需要支付外幣換算手續費。",
+  ko: "* [C] 환산 금액은 참고용이며, 최종 결제는 일본 엔화（JPY）로 청구됩니다. 외화로 결제하시는 경우 환전 수수료가 발생할 수 있습니다.",
 };
 
 /**

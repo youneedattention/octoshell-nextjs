@@ -33,6 +33,15 @@ const UI = {
     showLess:     "收起",
     clear:        "清除",
   },
+  ko: {
+    section:      "고객 리뷰",
+    badge:        "최고 평점 서비스",
+    verified:     (n: number) => `${n}개의 인증된 리뷰`,
+    overall:      "전체 평점",
+    showMore:     "더 보기",
+    showLess:     "접기",
+    clear:        "초기화",
+  },
 };
 
 /* ── Trilingual modal content ───────────────────────────────────────── */
@@ -54,6 +63,12 @@ const HOW_CONTENT = {
     p1: "已驗證客戶的評價有助於旅行者在日本選擇合適的私人司機服務。評價預設按最新日期排序。",
     p2: "僅完成確認訂單的 Octoshell 客戶才會收到評價邀請，所有評價均與預訂記錄核實，以確保真實性。",
     p3: "獲得「頂級服務」標章需至少 5 則已驗證評價。評分為所有已驗證預訂的平均值，並持續更新。",
+  },
+  ko: {
+    title: "리뷰 안내",
+    p1: "인증된 고객의 리뷰는 일본에서 적합한 프라이빗 쇼퍼 서비스를 선택하는 데 도움을 줍니다. 기본적으로 최신순으로 정렬됩니다.",
+    p2: "예약이 확인·완료된 Octoshell 고객에게만 리뷰 작성 초대가 발송됩니다. 모든 리뷰는 예약 기록과 대조하여 진위를 검증합니다.",
+    p3: "「최고 평점 서비스」 배지를 받으려면 최소 5개의 인증된 리뷰가 필요합니다. 평점은 모든 인증된 예약의 평균값으로 산출되며 지속적으로 업데이트됩니다.",
   },
 };
 
@@ -92,11 +107,11 @@ const IconValue = () => (
 
 /* ── Data ───────────────────────────────────────────────────────────── */
 const RATINGS = [
-  { label: { en: "Cleanliness",     ja: "清潔さ",       zh: "整潔度"   }, score: 5.0, Icon: IconCleanliness },
-  { label: { en: "Punctuality",     ja: "時間厳守",     zh: "準時率"   }, score: 5.0, Icon: IconPunctuality },
-  { label: { en: "Hospitality",     ja: "おもてなし",   zh: "服務態度" }, score: 4.9, Icon: IconHospitality },
-  { label: { en: "Driving Comfort", ja: "乗り心地",     zh: "乘坐舒適" }, score: 4.9, Icon: IconDriving     },
-  { label: { en: "Value",           ja: "価格",         zh: "性價比"   }, score: 4.8, Icon: IconValue       },
+  { label: { en: "Cleanliness",     ja: "清潔さ",       zh: "整潔度",   ko: "청결도"   }, score: 5.0, Icon: IconCleanliness },
+  { label: { en: "Punctuality",     ja: "時間厳守",     zh: "準時率",   ko: "정시성"   }, score: 5.0, Icon: IconPunctuality },
+  { label: { en: "Hospitality",     ja: "おもてなし",   zh: "服務態度", ko: "서비스"   }, score: 4.9, Icon: IconHospitality },
+  { label: { en: "Driving Comfort", ja: "乗り心地",     zh: "乘坐舒適", ko: "승차감"   }, score: 4.9, Icon: IconDriving     },
+  { label: { en: "Value",           ja: "価格",         zh: "性價比",   ko: "가성비"   }, score: 4.8, Icon: IconValue       },
 ];
 
 /* ── Service type lookup (matches /services page IDs) ───────────────── */

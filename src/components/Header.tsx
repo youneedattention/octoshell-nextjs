@@ -15,7 +15,7 @@ const LANGS: { code: Lang; label: string; full: string }[] = [
   { code: "en", label: "EN", full: "English"  },
   { code: "ja", label: "日", full: "日本語"   },
   { code: "zh", label: "中", full: "繁體中文" },
-  // Add more languages here — e.g. { code: "ko", full: "한국어" }
+  { code: "ko", label: "한", full: "한국어"   },
 ];
 
 const SVC_ITEMS: { key: keyof typeof t; anchor: string; icon: React.ReactNode }[] = [
@@ -77,21 +77,26 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
   const { lang, setLang } = useLang();
   const { theme, toggle: toggleTheme } = useTheme();
 
-  /* Prefix path with /zh when we're in the zh branch */
-  const isZh = pathname.startsWith("/zh");
-  const lp = (path: string) => isZh ? `/zh${path}` : path;
+  /* Detect current lang prefix (/zh, /ja, /ko) */
+  const langPrefix = pathname.startsWith("/zh") ? "/zh"
+    : pathname.startsWith("/ja") ? "/ja"
+    : pathname.startsWith("/ko") ? "/ko"
+    : "";
+  const lp = (path: string) => `${langPrefix}${path}`;
 
-  /* Switch language — navigates to /zh/* when selecting Traditional Chinese,
-     or back to /* when leaving it. Other languages stay client-side. */
+  /* Switch language — navigates to /ja|/zh|/ko prefix routes */
   function switchLang(code: Lang) {
     setLang(code);
-    const isOnZh = pathname.startsWith("/zh");
-    if (code === "zh" && !isOnZh) {
-      // Strip trailing slash so /zh/ doesn't hit the [...slug] catch-all
-      const dest = `/zh${pathname}`.replace(/\/$/, "") || "/zh";
-      window.location.href = dest;
-    } else if (code !== "zh" && isOnZh) {
-      window.location.href = pathname.replace(/^\/zh/, "") || "/";
+    const currentPrefix = langPrefix; // "/zh", "/ja", "/ko", or ""
+    const basePath = currentPrefix ? pathname.replace(new RegExp(`^${currentPrefix}`), "") || "/" : pathname;
+    const PREFIXED: Lang[] = ["zh", "ja", "ko"];
+    if (PREFIXED.includes(code)) {
+      if (currentPrefix !== `/${code}`) {
+        const dest = `/${code}${basePath === "/" ? "" : basePath}` || `/${code}`;
+        window.location.href = dest;
+      }
+    } else if (currentPrefix) {
+      window.location.href = basePath || "/";
     }
   }
   const { currency, setCurrency } = useCurrency();

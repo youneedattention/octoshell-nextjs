@@ -55,19 +55,20 @@ const HERO: Record<Lang, { badge: string; title: string; sub: string }> = {
   ja: { badge: "サービス", title: "移動をデザインする",        sub: "日本プライベートハイヤーサービス" },
   en: { badge: "Services", title: "Journeys, by Design",     sub: "Japan Private Chauffeur Service" },
   zh: { badge: "服務",     title: "為您設計的每一段旅程",      sub: "日本專屬司機服務" },
+  ko: { badge: "서비스",   title: "여정을 디자인하다",          sub: "일본 프라이빗 쇼퍼 서비스" },
 };
 
 /* Anchor chips at top of page */
 const CHIPS: { id: string; label: Record<Lang, string> }[] = [
-  { id: "airport",     label: { ja: "空港送迎",    en: "Airport",       zh: "機場接送" } },
-  { id: "hourly",      label: { ja: "時間制貸切",  en: "By the Hour",   zh: "時段包車" } },
-  { id: "oneway",      label: { ja: "片道送迎",    en: "One Way",       zh: "單程穿梭" } },
-  { id: "photo",       label: { ja: "旅拍",        en: "Photo Tour",    zh: "旅拍" } },
-  { id: "events",      label: { ja: "MICE",        en: "Events & MICE", zh: "頂級盛會" } },
-  { id: "sightseeing", label: { ja: "観光",        en: "Sightseeing",   zh: "定制觀光" } },
-  { id: "golf",        label: { ja: "ゴルフ",      en: "Golf",          zh: "高爾夫" } },
-  { id: "outdoor",     label: { ja: "登山",        en: "Outdoor",       zh: "登山接送" } },
-  { id: "ceremony",    label: { ja: "冠婚葬祭",    en: "Ceremonial",    zh: "典禮" } },
+  { id: "airport",     label: { ja: "空港送迎",    en: "Airport",       zh: "機場接送",   ko: "공항 송영" } },
+  { id: "hourly",      label: { ja: "時間制貸切",  en: "By the Hour",   zh: "時段包車",   ko: "시간제 전세" } },
+  { id: "oneway",      label: { ja: "片道送迎",    en: "One Way",       zh: "單程穿梭",   ko: "편도 이동" } },
+  { id: "photo",       label: { ja: "旅拍",        en: "Photo Tour",    zh: "旅拍",       ko: "여행 촬영" } },
+  { id: "events",      label: { ja: "MICE",        en: "Events & MICE", zh: "頂級盛會",   ko: "MICE" } },
+  { id: "sightseeing", label: { ja: "観光",        en: "Sightseeing",   zh: "定制觀光",   ko: "관광" } },
+  { id: "golf",        label: { ja: "ゴルフ",      en: "Golf",          zh: "高爾夫",     ko: "골프" } },
+  { id: "outdoor",     label: { ja: "登山",        en: "Outdoor",       zh: "登山接送",   ko: "등산" } },
+  { id: "ceremony",    label: { ja: "冠婚葬祭",    en: "Ceremonial",    zh: "典禮",       ko: "의례·세레모니" } },
 ];
 
 type ServiceItem = {
@@ -84,99 +85,108 @@ type ServiceItem = {
 const SERVICES: ServiceItem[] = [
   {
     id: "airport", num: "01",
-    title: { ja: "空港定額送迎", en: "Airport Transfers", zh: "機場定額接送" },
+    title: { ja: "空港定額送迎", en: "Airport Transfers", zh: "機場定額接送", ko: "공항 정액 송영" },
     body: {
       ja: "東京市内と各空港の間を、最高峰の快適性とエレガンスで結ぶ完全定額の送迎サービスです。フライト追跡システムにより、遅延の際も正確にお迎えにあがります。到着ロビーでは、専属の運転手がお客様のお名前を掲げてお待ちし、お荷物のサポートから車内へのご案内までスマートにエスコートいたします。",
       en: "Begin your journey with absolute peace of mind. Our premium airport service connects Tokyo downtown with Haneda and Narita airports seamlessly. Featuring real-time flight tracking, your chauffeur will await you in the arrivals hall holding a personalized name board, ready to assist with luggage and escort you to your vehicle.",
       zh: "往返於東京市內與羽田、成田機場的高端定額送迎服務，為您的商旅或度假開啟優雅序幕。結合即時航班動態追蹤，專屬司機將在接機大廳手持您的專屬姓名牌溫馨迎候，貼心打理行李並引導您步入尊榮座艙。",
+      ko: "도쿄 시내와 각 공항을 최고의 안락함과 우아함으로 연결하는 완전 정액 송영 서비스입니다. 항공편 추적 시스템으로 지연 시에도 정확히 영접합니다. 도착 로비에서 전속 드라이버가 고객 이름판을 들고 대기하며, 수하물 지원부터 차량 안내까지 스마트하게 에스코트합니다.",
     },
     imgNote: "Uniformed chauffeur in formal dark suit, holding a printed personalized name board in a bright, modern arrivals hall at Haneda or Narita. Confident posture, natural light. Landscape 3:2 · min 1440×960px.",
     img: "/airport.webp",
   },
   {
     id: "hourly", num: "02",
-    title: { ja: "時間制貸切ハイヤー", en: "By the Hour", zh: "時段包車服務" },
+    title: { ja: "時間制貸切ハイヤー", en: "By the Hour", zh: "時段包車服務", ko: "시간제 전세 하이어" },
     body: {
       ja: "都内での数時間のショッピングから、終日にわたるビジネスミーティングまで、柔軟に対応する時間制の貸切サービスです。選びぬかれたトップドライバーがアテンドし、お客様のスケジュールに完全に同期した自由でシームレスな移動をお約束いたします。",
       en: "Whether for a few hours of bespoke shopping in Tokyo or a full day of corporate summits, our hourly hire service offers ultimate convenience and flexibility. A dedicated chauffeur remains completely synchronized with your schedule, providing a seamless mobile sanctuary.",
       zh: "無論是東京市內的數小時高端購物，還是全天候的商務視察，我們靈活的時段包車服務都能完美契合您的節奏。專屬司機全程待命，讓您的出行行程擁有絕對的掌控權與靈活性。",
+      ko: "도쿄 시내 몇 시간의 쇼핑부터 종일 비즈니스 미팅까지 유연하게 대응하는 시간제 전세 서비스입니다. 엄선된 최고의 드라이버가 동행하여 고객의 스케줄에 완전히 동기화된 자유롭고 원활한 이동을 보장합니다.",
     },
     imgNote: "Interior of a luxury Toyota Alphard: rich cream leather seats, soft ambient gold lighting, bokeh city lights through tinted rear window. Cinematic, intimate mood. Landscape 3:2 · min 1440×960px.",
     img: "/By_the_Hour.webp",
   },
   {
     id: "oneway", num: "03",
-    title: { ja: "片道ポイント送迎", en: "One Way", zh: "單程點對點穿梭" },
+    title: { ja: "片道ポイント送迎", en: "One Way", zh: "單程點對點穿梭", ko: "편도 포인트 이동" },
     body: {
       ja: "目的地から目的地への移動に特化した、明瞭で無駄のないプレミアムな片道送迎です。新幹線や国内線航空便に代わるプライベート空間として、移動中も誰にも邪魔されない極上の休息やビジネスアワーをお過ごしいただけます。",
       en: "A straightforward, premium point-to-point chauffeur service tailored for the contemporary traveler. Designed to serve as a luxurious alternative to regional flights or the Shinkansen, this single-journey service ensures you reach your next destination in absolute privacy and comfort.",
       zh: "簡單純粹的特定地點到特定地點單程尊享接送。作為替代區域內航空或新幹線的私密出行方案，我們為當代高端自由行賓客與商務精英提供無縫銜接的移動空間，在旅途中獨享靜謐與從容。",
+      ko: "목적지에서 목적지로의 이동에 특화된 간결하고 군더더기 없는 프리미엄 편도 송영입니다. 신칸센이나 국내선 항공편을 대체하는 프라이빗 공간으로, 이동 중에도 최고의 휴식과 업무 시간을 누리실 수 있습니다.",
     },
     imgNote: "Black Toyota Alphard on an empty expressway at blue-hour dusk, silhouette of Tokyo skyline or Mt Fuji in background. Long-exposure, cinematic look, sense of effortless speed. Landscape 3:2 · min 1440×960px.",
     img: "/oneway.webp",
   },
   {
     id: "photo", num: "04",
-    title: { ja: "ラグジュアリー旅拍（ロケーション撮影）ハイヤー", en: "Luxury Travel Photography Chauffeur", zh: "奢華旅拍與專屬外景接送" },
+    title: { ja: "ラグジュアリー旅拍（ロケーション撮影）ハイヤー", en: "Luxury Travel Photography Chauffeur", zh: "奢華旅拍與專屬外景接送", ko: "럭셔리 여행 촬영 쇼퍼 서비스" },
     body: {
       ja: "渋谷、浅草、東京タワー、そして熱気溢れる大黒PAや大東京近郊まで、煌めく地標を巡る極上のロケーション撮影に、あなただけの「動くプライベート控え室」を。和服や華やかな盛装に身を包んだまま、混雑した駅で狼狽えることも、街頭で白タクを待つ退屈な時間も、ここには存在しません。お客様が予約されたお気に入りのフォトグラファーを乗せ、最高峰のアルファードが贅沢な専属スタジオへと姿を変えます。徹底的にディープクリーニングされた密やかな車内は、お召し替え、メイク直し、重厚な機材の保管を完璧にサポートする官能的なまでに心地よい私密空間。息をのむような美しい瞬間を切り取る移動のすべてを、まるで映画の主役として甘美なスポットライトを浴びるかのような、至高のクルージング体験へと昇華させます。",
       en: "Embark on an exquisite photography journey across Tokyo's iconic landmarks—from the neon pulse of Shibuya and historic Asakusa to the breathless heights of Tokyo Tower and the raw allure of Daikoku PA. Forget the sheer exhaustion of navigating subways or waiting on frantic streets in your finest couture or traditional kimono; we introduce the concept of a whispering, mobile dressing room. Seamlessly partnering with your chosen photographer, our pristine Toyota Alphard becomes your private back-stage sanctuary. Inside this meticulously deep-cleaned cocoon, you are granted absolute privacy to change wardrobe, refresh your makeup, and secure heavy equipment away from the world's prying eyes. We transform a demanding photo shoot into a full-day, star-lit grand tour, where every movement feels like a seductive prelude to a cinematic masterpiece.",
       zh: "穿梭於澀谷的霓虹、淺草的古樸、東京鐵塔的絕美夜色，乃至大黑PA與大東京近郊的朝聖之旅，我們為您的珍貴旅拍打造一座「隨行移動化妝間」。免去身著華麗盛裝或精緻和服時擠地鐵的狼狽，更無需在街頭焦慮地等待未知車輛，我們的頂級豐田埃爾法將直接化身為您與攝影師的專屬私密行宮。在這座經過深層清潔、與世隔絕的靜謐車廂內，您可以極其優雅地更換華服、從容補妝、安放沉重的攝影器材。這不再是一場疲憊的外景拍攝，而是一次豪車隨行、獨享明星般矚目與尊寵的全天候奢華巡遊，讓鏡頭捕捉到的每一幀畫面，都散發著令人屏息的極致誘惑。",
+      ko: "시부야의 네온, 아사쿠사의 고풍, 도쿄 타워의 절경, 다이코쿠 PA와 대도쿄 근교까지 빛나는 명소를 순회하는 최고의 로케이션 촬영에 '이동하는 프라이빗 드레싱룸'을 제공합니다. 화려한 의상이나 기모노를 입은 채로 지하철에서 당황할 필요도, 거리에서 차를 기다릴 필요도 없습니다. 고객이 예약한 사진작가와 함께 최고급 Toyota Alphard가 전속 프라이빗 스튜디오로 탈바꿈합니다. 완벽하게 세정된 조용한 차내에서 의상 교체, 메이크업 수정, 촬영 장비 보관을 완벽하게 지원하는 최고의 프라이빗 공간을 경험하세요.",
     },
     imgNote: "Woman in elegant kimono or luxury couture seated inside a pristine Alphard cabin, golden bokeh city lights outside tinted window. Cinematic, intimate, editorial mood. Landscape 3:2 · min 1440×960px.",
     img: "/kimono.webp",
   },
   {
     id: "events", num: "05",
-    title: { ja: "エグゼクティブ・イベント ＆ 国際会議送迎", en: "Events & MICE", zh: "頂級盛會與大型活動" },
+    title: { ja: "エグゼクティブ・イベント ＆ 国際会議送迎", en: "Events & MICE", zh: "頂級盛會與大型活動", ko: "이벤트 & MICE 의전 송영" },
     body: {
       ja: "国際会議、大規模なエキシビション、ガラディナーからプライベートな式典まで、大東京圏のあらゆるイベント会場や主要ホテル、民泊施設と連動したカスタム送迎を展開いたします。複数台の高級ミニバンや大型ワンボックスカーを用いたシームレスな運行管理により、重要ゲストの格式高いグランドアライバルを演出します。",
       en: "Elevate your high-impact arrivals for international conferences, corporate exhibitions, and private galas across the Greater Tokyo Area. Partnering with premium hotels, luxury rentals, and event venues, we provide tailor-made fleet coordination with luxury vans to ensure flawless logistics for important guests.",
       zh: "專為大東京區域的奢華酒店、高端民宿及各類大型展會場地提供定制化包車解決方案。針對國際會議、商務展覽或私人晚宴，我們透過高標準的車隊調度管理，確保每位貴賓都能享受極具影響力的盛大登場。",
+      ko: "국제 회의, 대규모 전시회, 갈라 디너부터 프라이빗 행사까지 대도쿄권의 모든 이벤트 회장·주요 호텔·숙박 시설과 연계한 맞춤형 송영을 제공합니다. 복수의 고급 미니밴과 대형 밴을 활용한 원활한 운행 관리로 중요 귀빈의 격식 높은 그랜드 어라이벌을 연출합니다.",
     },
     imgNote: "Row of 3–4 black luxury minivans perfectly aligned at a grand Tokyo hotel entrance at night. Subtle warm entrance lighting, red-carpet suggestion, sense of organised prestige. Landscape 3:2 · min 1440×960px.",
     img: "/events-mice.webp",
   },
   {
     id: "sightseeing", num: "06",
-    title: { ja: "テーラーメイド観光ハイヤー", en: "Bespoke Sightseeing", zh: "深度定制觀光" },
+    title: { ja: "テーラーメイド観光ハイヤー", en: "Bespoke Sightseeing", zh: "深度定制觀光", ko: "맞춤형 관광 하이어" },
     body: {
       ja: "都内名所の巡回から、箱根・富士山周辺の老舗温泉旅館への長距離移動まで、日本の美を巡るプレミアムな観光コースをご案内いたします。国家資格を持つ通訳案内士の資格を有する乗務員によるアテンドも可能であり、国内外のゲストへ最高峰のおもてなしを提供します。",
       en: "Discover the essence of Japan, from curated Tokyo city tours to long-distance excursions to Mount Fuji and historic hot-spring inns in Hakone. Available with elite chauffeurs who have passed the National Interpreter Guide examination, we deliver unparalleled cultural hospitality for global travelers.",
       zh: "從東京市內的經典巡禮，到前往富士山、箱根頂級溫泉旅館的長途度假，我們的專業車隊將帶您深度領略日本之美。亦可為外籍貴賓指派通過日本國家口譯導遊考試的資深乘務員，提供頂級的跨文化款待。",
+      ko: "도쿄 시내 명소 순회부터 하코네·후지산 주변의 노포 온천 료칸까지의 장거리 이동까지, 일본의 아름다움을 순회하는 프리미엄 관광 코스를 안내합니다. 국가 자격 통역 안내사 자격 보유 드라이버 동행도 가능하여 국내외 귀빈에게 최고의 환대를 제공합니다.",
     },
     imgNote: "Black Alphard parked before a classic red torii gate or autumn-leaf mountain temple path, golden-hour light. Sense of discovery and serenity. No people needed — let the landscape speak. Landscape 3:2 · min 1440×960px.",
     img: "/Sightseeing.webp",
   },
   {
     id: "golf", num: "07",
-    title: { ja: "ゴルフ＆エグゼクティブ送迎", en: "Golf Transportation", zh: "尊榮高爾夫接送" },
+    title: { ja: "ゴルフ＆エグゼクティブ送迎", en: "Golf Transportation", zh: "尊榮高爾夫接送", ko: "골프 & 의전 송영" },
     body: {
       ja: "大東京圏近郊の名門ゴルフコースへの往復をストレスフリーに結ぶ、専用のハイエンドパッケージです。早朝の出発からプレー後のリフレッシュまで、大きなキャディバッグを余裕で積載できる車両で、至高のクラブライフをサポートします。",
       en: "Indulge in a seamless, premium golf excursion to elite courses around the Kanto region. Designed with ample space for golf bags and luggage, our service takes care of the driving from early morning departures to post-game returns, ensuring you remain focused on your game.",
       zh: "專為高爾夫愛好者量身打造的頂級球場往返接送方案。寬敞的專車空間可輕鬆容納多套高爾夫球具與大件行李，從清晨出發到揮桿後的疲憊返程，全程由專業司機為您的尊貴俱樂部生活保駕護航。",
+      ko: "대도쿄권 근교의 명문 골프 코스로의 왕복을 스트레스 없이 연결하는 전용 하이엔드 패키지입니다. 이른 아침 출발부터 라운드 후 귀환까지, 캐디백을 여유롭게 탑재할 수 있는 차량으로 최고의 클럽 라이프를 지원합니다.",
     },
     imgNote: "Chauffeur loading a premium golf bag into the open trunk of a black Toyota Hiace on a lush green fairway, early morning mist and sunrise light. Elegant and sporty. Landscape 3:2 · min 1440×960px.",
     img: "/GOLF.webp",
   },
   {
     id: "outdoor", num: "08",
-    title: { ja: "アウトドア ＆ プレミアム登山ハイヤー", en: "Outdoor & Premium Hiking Chauffeur", zh: "戶外極致與尊榮登山接送" },
+    title: { ja: "アウトドア ＆ プレミアム登山ハイヤー", en: "Outdoor & Premium Hiking Chauffeur", zh: "戶外極致與尊榮登山接送", ko: "야외 활동 & 프리미엄 등산 쇼퍼 서비스" },
     body: {
       ja: "日本の雄大な大自然や名峰へ挑むアクティブなゲストのための、特別な送迎プランです。登山口への快適なアクセスはもちろん、トレッキングギアや本格的な登山装備もゆとりを持って積載可能です。早朝や深夜の出発、下山後の温泉地への移動まで柔軟に対応し、プレミアムなアウトドア体験を安全かつ贅沢にサポートいたします。",
       en: "A dedicated transport solution designed for active guests exploring Japan's majestic landscapes and renowned mountain peaks. We provide seamless access to remote trailheads with ample space to securely store trekking gear and heavy mountaineering equipment. Catering to early morning departures, midnight schedules, or direct post-hike transfers to hot-spring resorts, we ensure a safe, luxurious, and completely stress-free outdoor adventure.",
       zh: "專為前往日本壯麗大自然與名峰發起挑戰的活躍賓客所設計的專屬出行方案。我們不僅提供前往各處登山口的舒適便捷接駁，寬敞的座艙更可輕鬆容納所有專業遠足裝備與重型登山行李。無論是清晨或深夜的整裝出發，還是下山後直接前往溫泉度假村放鬆，我們都將全程提供安全且奢華的保障，讓您的戶外探索旅程更顯尊貴。",
+      ko: "일본의 웅장한 대자연과 명봉에 도전하는 액티브한 고객을 위한 특별 송영 플랜입니다. 등산 입구까지의 편안한 접근은 물론, 트레킹 장비와 등산 용품도 여유롭게 탑재 가능합니다. 이른 아침 및 심야 출발, 하산 후 온천지로의 이동까지 유연하게 대응하여 안전하고 럭셔리한 야외 활동을 지원합니다.",
     },
     imgNote: "Black Toyota Hiace parked at a misty mountain trailhead at dawn in the Japanese Alps, lush green forest and peak silhouette in background. Sense of adventure and premium readiness. Landscape 3:2 · min 1440×960px.",
     img: "/HIKING.webp",
   },
   {
     id: "ceremony", num: "09",
-    title: { ja: "冠婚葬祭・セレモニー送迎", en: "Ceremonial Services", zh: "冠婚葬祭與典禮迎送" },
+    title: { ja: "冠婚葬祭・セレモニー送迎", en: "Ceremonial Services", zh: "冠婚葬祭與典禮迎送", ko: "관혼상제·세레모니 의전 송영" },
     body: {
       ja: "人生の特別な節目や、厳かなセレモニーにおける送迎を承ります。安全運行の徹底はもちろん、極めて細やかで品格ある接遇により、大切なご親族や人生の先輩への敬意を表したおもてなしをお約束いたします。",
       en: "We provide dignified, meticulous chauffeur services for weddings, funerals, and significant family milestones. Beyond impeccable safety, our chauffeurs deliver highly attentive etiquette to honor your guests on these important occasions.",
       zh: "在婚禮、葬禮等人生重要而莊嚴的時刻，我們以最高級別的安全運行與細緻入微的禮儀接待，為您款待生命中最重要的人物，用無可挑剔的品格彰顯家族與企業的體面。",
+      ko: "인생의 특별한 고비나 엄숙한 의식에서의 송영을 담당합니다. 철저한 안전 운행은 물론, 극도로 세심하고 품격 있는 응대로 소중한 가족·선배 어른께 경의를 표하는 환대를 약속합니다.",
     },
     imgNote: "Black Alphard with subtle white floral ornament or white ribbon, parked outside a traditional Japanese ceremonial hall or shrine gate. Soft diffused overcast light, dignified and quiet atmosphere. Landscape 3:2 · min 1440×960px.",
     img: "/ceremony.webp",
@@ -196,6 +206,10 @@ const CTA: Record<Lang, { btn: string; micro: string }> = {
   zh: {
     btn:   "尊享預訂 / 查詢空車",
     micro: "如需企業長期簽約、大宗活動用車或特殊行程定制，歡迎聯絡我們的奢華出行顧問，為您提供專屬的一對一合規方案評估。",
+  },
+  ko: {
+    btn:   "차량 예약 / 공차 확인",
+    micro: "법인 계약, 단체 의전, 맞춤 일정 계획은 전담 컨시어지가 24시간 체제로 대응합니다. 언제든지 문의하세요.",
   },
 };
 

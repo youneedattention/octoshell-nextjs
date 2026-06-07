@@ -75,26 +75,30 @@ const ROUTES: Record<RouteSlug, RouteData> = {
       "luxury transfer Narita Tokyo",
       "Narita airport limousine private",
     ],
-    badge: { en: "Airport Transfer", ja: "空港送迎", zh: "機場接送" },
+    badge: { en: "Airport Transfer", ja: "空港送迎", zh: "機場接送", ko: "공항 송영" },
     h1: {
       en: "Narita Airport Private Transfer",
       ja: "成田空港 プライベート送迎",
       zh: "成田機場私人接送服務",
+      ko: "나리타 공항 프라이빗 송영",
     },
     sub: {
       en: "Tokyo ↔ Narita · Flat Rate ¥25,000 · All-Inclusive",
       ja: "東京 ↔ 成田 · 定額 ¥25,000 · 全込み",
       zh: "東京 ↔ 成田 · 定額 ¥25,000 · 全包服務",
+      ko: "도쿄 ↔ 나리타 · 정액 ¥25,000 · 전액 포함",
     },
     price: {
       en: "From ¥25,000",
       ja: "¥25,000〜",
       zh: "¥25,000 起",
+      ko: "¥25,000~",
     },
     intro: {
       en: "Begin or end your Japan journey with absolute ease. Octoshell's Narita Airport private transfer service connects Tokyo city directly to Narita International Airport (NRT) at a guaranteed flat rate of ¥25,000 — no surge pricing, no hidden fees.",
       ja: "成田国際空港と東京市内を、¥25,000の完全定額でつなぐプレミアムな専用車サービスです。追加料金一切なし、メーターなし、完全プライベートの移動空間をお約束します。",
       zh: "成田國際機場（NRT）與東京市中心之間的頂級私人接送，定額¥25,000，全程包含高速費與停車費，讓您的旅程從落地一刻起便舒適如意。",
+      ko: "일본 여행의 시작과 끝을 완벽하게. Octoshell의 나리타 공항 프라이빗 송영 서비스는 도쿄 시내와 나리타 국제공항(NRT)을 보장 정액 ¥25,000으로 연결합니다—할증 없음, 숨겨진 요금 없음.",
     },
     body: {
       en: [
@@ -114,6 +118,12 @@ const ROUTES: Record<RouteSlug, RouteData> = {
         "我們的系統即時追蹤您的航班號碼。無論準點還是延誤兩小時，司機均自動調整待命時間。預計到達時刻起，我們額外提供一小時的免費等候服務，讓您從容地通關、領取行李，毫不慌張地踏出接機大廳，就能看到您的專屬司機靜靜等候。",
         "定額¥25,000已涵蓋所有東關東高速、灣岸路線、首都高通行費，以及機場停車費，絕無隱藏附加費。若需搭載更多乘客，豐田海獅（HiAce）可容納至多9名乘客加全部行李。法人客戶可申請預付發票，個人旅客支援信用卡或現金付款。",
         "無論您前往丸之內的商務中心、銀座的奢華酒店，還是繼續前往箱根或日光，Octoshell的成田接送都能讓您的日本之旅從第一步便充滿尊貴感。司機可按需求提供高速休息站停靠、靜音路線等個性化服務，一切在您落地前便已安排妥當。",
+      ],
+      ko: [
+        "나리타 국제공항은 도쿄 도심에서 약 60~75km 떨어져 있으며, 혼잡 시간대에는 편도 90분 이상 소요되기도 합니다. 나리타 특급과 버스는 정시 운행이지만 합승이 전제이며, 일반 택시는 심야 할증과 고속도로 요금이 추가됩니다. Octoshell은 완전히 다른 경험을 제공합니다—전용 Toyota Alphard가 고객만을 위해 예약되고, 드라이버가 실시간으로 항공편을 추적하며, 이름판을 들고 도착 로비에서 조용히 기다립니다.",
+        "항공편 번호로 실시간 추적합니다. 정시 착륙이든 2시간 지연이든 드라이버가 자동으로 조정합니다. 예정 도착 시각부터 1시간의 무료 대기 서비스가 포함되어 있어 입국심사와 수하물 수취를 여유롭게 하실 수 있습니다.",
+        "정액 ¥25,000에는 히가시-칸토 고속도로, 완간 루트, 수도고속도로 통행료 및 공항 주차비가 모두 포함되어 있습니다. 숨겨진 추가 요금은 절대 없습니다. 더 많은 인원을 위한 Toyota Hiace(최대 9인)도 이용 가능합니다.",
+        "마루노우치 비즈니스 센터, 긴자의 럭셔리 호텔, 하코네나 닛코로의 여정 등 어디를 향하든 Octoshell의 나리타 송영은 일본 여행의 첫걸음부터 품격을 더합니다.",
       ],
     },
     highlights: {
@@ -147,8 +157,18 @@ const ROUTES: Record<RouteSlug, RouteData> = {
         "絕無浮動加價",
         "嬰兒座椅免費提供",
       ],
+      ko: [
+        "정액 ¥25,000—고속도로 요금 및 주차비 전액 포함",
+        "실시간 항공편 추적—지연 시 자동 조정",
+        "예정 도착 후 1시간 무료 대기",
+        "도착 로비 이름판 미트 앤 그리트",
+        "Toyota Alphard (최대 6인) · HiAce (최대 9인)",
+        "영어 가능 드라이버",
+        "할증 요금 절대 없음",
+        "유아 카시트 무료 제공",
+      ],
     },
-    cta: { en: "Book Narita Transfer", ja: "成田空港送迎を予約", zh: "預訂成田機場接送" },
+    cta: { en: "Book Narita Transfer", ja: "成田空港送迎を予約", zh: "預訂成田機場接送", ko: "나리타 송영 예약" },
     heroImg: "/airport.webp",
     heroAlt: "Uniformed Octoshell chauffeur holding name board at Narita Airport arrivals hall",
     faqs: [
@@ -157,11 +177,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "How much does the Narita Airport private transfer cost?",
           ja: "成田空港の専用車送迎の料金はいくらですか？",
           zh: "成田機場私人接送的費用是多少？",
+          ko: "나리타 공항 프라이빗 송영 요금은 얼마인가요?",
         },
         a: {
           en: "The flat rate is ¥25,000 for a Toyota Alphard (up to 6 passengers) and approximately ¥28,000 for a Toyota Hiace (up to 9 passengers). All prices include highway tolls, parking fees, and meet-and-greet service — no hidden extras.",
           ja: "トヨタ・アルファード（最大6名）は¥25,000の定額です。トヨタ・ハイエース（最大9名）は約¥28,000となります。高速料金・駐車料金・ウェルカムボードサービスをすべて含んだオールインクルーシブ価格です。",
           zh: "豐田埃爾法（最多6名）定額¥25,000，豐田海獅（最多9名）約¥28,000。所有價格均涵蓋高速費、停車費及迎賓服務，無任何隱藏收費。",
+          ko: "Toyota Alphard(최대 6인) 정액 ¥25,000, Toyota Hiace(최대 9인) 약 ¥28,000입니다. 모든 요금에는 고속도로 요금, 주차비, 미트 앤 그리트 서비스가 포함—숨겨진 추가 요금 없음.",
         },
       },
       {
@@ -169,11 +191,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "What if my flight is delayed at Narita?",
           ja: "成田到着便が遅れた場合はどうなりますか？",
           zh: "如果在成田的航班延誤怎麼辦？",
+          ko: "나리타 도착 항공편이 지연될 경우 어떻게 되나요?",
         },
         a: {
           en: "We track your flight in real time. Your chauffeur automatically adjusts their arrival time and waits one complimentary hour beyond your scheduled landing time, at no extra charge.",
           ja: "フライトをリアルタイムで追跡しています。到着予定時刻から1時間の無料待機が含まれており、チャウファーは自動で対応します。追加料金は一切かかりません。",
           zh: "我們即時追蹤您的航班。司機會自動調整到達時間，並在您預計降落時間後額外免費等候1小時，無需支付任何額外費用。",
+          ko: "실시간으로 항공편을 추적합니다. 드라이버가 자동으로 도착 시간을 조정하고 예정 착륙 시간 이후 1시간의 무료 대기를 제공합니다. 추가 요금 없음.",
         },
       },
       {
@@ -181,11 +205,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "Does the price include highway tolls from Narita to Tokyo?",
           ja: "成田〜東京間の高速道路料金は含まれていますか？",
           zh: "從成田到東京的高速公路費用包含在內嗎？",
+          ko: "나리타~도쿄 고속도로 요금이 포함되어 있나요?",
         },
         a: {
           en: "Yes. The ¥25,000 flat rate covers all expressway tolls (Higashi-Kanto Expressway, Metropolitan Expressway, etc.), airport parking, and any standard route fees. No extra charges are added after pickup.",
           ja: "はい。¥25,000の定額には、東関東自動車道・首都高などの通行料、空港駐車場代がすべて含まれています。乗車後に追加料金は一切発生しません。",
           zh: "是的。¥25,000的定額費用涵蓋東關東高速及首都高等所有高速費用和機場停車費，上車後絕無額外收費。",
+          ko: "네. ¥25,000 정액에는 히가시-칸토 고속도로, 수도고속도로 등 모든 통행료와 공항 주차비가 포함됩니다. 픽업 후 추가 요금은 없습니다.",
         },
       },
       {
@@ -193,11 +219,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "Where will the chauffeur meet me at Narita?",
           ja: "成田空港でチャウファーとはどこで合流しますか？",
           zh: "在成田機場，司機會在哪裡接我？",
+          ko: "나리타 공항에서 드라이버가 어디서 영접하나요?",
         },
         a: {
           en: "Your chauffeur will wait in the arrivals hall of your terminal (T1, T2, or T3), holding a printed name board with your name. Terminal details are confirmed in your booking confirmation email.",
           ja: "ご搭乗のターミナル（第1・第2・第3）の到着ロビーにて、お客様のお名前を記したウェルカムボードを持ってお待ちしております。ターミナルはご予約確認メールにてご案内します。",
           zh: "司機將在您所在航廈（T1、T2或T3）的入境大廳等候，手持印有您姓名的迎賓牌。具體航廈資訊將在預訂確認郵件中說明。",
+          ko: "해당 터미널(T1, T2, 또는 T3)의 도착 로비에서 이름판을 들고 기다립니다. 터미널 상세 정보는 예약 확인 이메일에서 확인하실 수 있습니다.",
         },
       },
       {
@@ -205,11 +233,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "Can I book a round trip from Tokyo to Narita and back?",
           ja: "東京〜成田の往復予約はできますか？",
           zh: "可以預訂東京往返成田的來回服務嗎？",
+          ko: "도쿄-나리타 왕복 예약이 가능한가요?",
         },
         a: {
           en: "Yes. Round-trip bookings are available and can be requested in a single booking form. The return leg is priced at the same ¥25,000 flat rate.",
           ja: "はい。往復の予約は1回の予約フォームでお申し込みいただけます。帰路も同じ¥25,000の定額料金です。",
           zh: "可以。來回預訂可在同一個表單中申請，回程費用同為¥25,000定額。",
+          ko: "네. 왕복 예약은 하나의 예약 양식으로 가능합니다. 귀로도 동일한 정액 ¥25,000입니다.",
         },
       },
       {
@@ -217,11 +247,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "How far in advance should I book a Narita transfer?",
           ja: "成田空港の送迎は何日前に予約すべきですか？",
           zh: "成田機場接送需要提前多久預訂？",
+          ko: "나리타 송영은 얼마나 미리 예약해야 하나요?",
         },
         a: {
           en: "We recommend booking at least 24 hours in advance to guarantee vehicle availability. Last-minute requests (under 12 hours) are accommodated subject to availability — please [contact us directly](/book).",
           ja: "車両の確保のため、24時間前までのご予約をお勧めします。12時間未満の直前予約は空き状況次第で対応可能ですので、[お気軽にお問い合わせください](/book)。",
           zh: "建議至少提前24小時預訂以確保車輛供應。12小時內的臨時預訂視車輛空缺情況而定，請[直接聯繫我們](/book)確認。",
+          ko: "차량 확보를 위해 24시간 전까지 예약하실 것을 권장합니다. 12시간 이내의 당일 예약은 공차 상황에 따라 [직접 문의](/book)해 주세요.",
         },
       },
     ],
@@ -250,26 +282,30 @@ const ROUTES: Record<RouteSlug, RouteData> = {
       "luxury transfer Haneda Tokyo",
       "Haneda airport limousine private",
     ],
-    badge: { en: "Airport Transfer", ja: "空港送迎", zh: "機場接送" },
+    badge: { en: "Airport Transfer", ja: "空港送迎", zh: "機場接送", ko: "공항 송영" },
     h1: {
       en: "Haneda Airport Private Transfer",
       ja: "羽田空港 プライベート送迎",
       zh: "羽田機場私人接送服務",
+      ko: "하네다 공항 프라이빗 송영",
     },
     sub: {
       en: "Tokyo ↔ Haneda · Flat Rate ¥20,000 · All-Inclusive",
       ja: "東京 ↔ 羽田 · 定額 ¥20,000 · 全込み",
       zh: "東京 ↔ 羽田 · 定額 ¥20,000 · 全包服務",
+      ko: "도쿄 ↔ 하네다 · 정액 ¥20,000 · 전액 포함",
     },
     price: {
       en: "From ¥20,000",
       ja: "¥20,000〜",
       zh: "¥20,000 起",
+      ko: "¥20,000~",
     },
     intro: {
       en: "Haneda Airport sits just 15–20 km from central Tokyo, making it the capital's most convenient gateway. Octoshell's private Haneda transfer service brings the full luxury chauffeur experience to this short but premium journey — flat rate ¥20,000, all tolls included.",
       ja: "羽田空港は東京都心からわずか15〜20km。その利便性に、Octoshellのプレミアムな専用車サービスが加わります。¥20,000の完全定額で、高速・駐車料金込みの洗練された移動をお約束します。",
       zh: "羽田機場距東京市中心僅約15至20公里，是日本首都最便捷的航空門戶。Octoshell的私人接送服務為這段短程旅途注入奢華體驗，定額¥20,000，全包通行費。",
+      ko: "하네다 공항은 도쿄 도심에서 불과 15~20km 거리로 수도의 가장 편리한 관문입니다. Octoshell의 하네다 프라이빗 송영 서비스는 이 짧지만 프리미엄한 여정에 완전한 럭셔리 경험을 제공합니다—정액 ¥20,000, 통행료 전액 포함.",
     },
     body: {
       en: [
@@ -289,6 +325,12 @@ const ROUTES: Record<RouteSlug, RouteData> = {
         "¥20,000定額涵蓋東京市內任何地點至羽田任一航廈的全程往返。首都高灣岸線、海岸線的所有通行費均包含在內，機場停車費亦從不額外計收。您在預訂時看到的價格，就是您最終支付的價格，沒有任何隱藏費用。",
         "無論是清晨早班機、紅眼航班還是深夜出發，Octoshell全年無休、24小時運營。英語服務司機深受前往丸之內、霞關商務區的國際商旅人士青睞。前往澀谷、新宿或青山精品酒店的休閒旅客，也能免去拖著行李擠地鐵的狼狽，在靜謐舒適的專車中輕鬆到達目的地。",
         "攜帶大量行李的最多9名旅客可選擇豐田海獅（HiAce），費用略高。需要頻繁使用羽田機場接送的法人客戶，可洽詢每月統一開票的企業賬戶安排。",
+      ],
+      ko: [
+        "하네다 공항(HND)은 도쿄에서 도심과 가장 가까운 국제공항으로, 제3터미널이 국제선 전용입니다. 편리한 위치에도 불구하고 여러 터미널 간의 복잡한 이동, 긴 택시 대기, 앱 기반 차량의 할증 요금은 장거리 비행 후 불필요한 피로를 유발합니다. Octoshell이 이 모든 장벽을 없애드립니다.",
+        "정액 ¥20,000은 도쿄 내 어떤 주소에서든 하네다의 어느 터미널까지의 전 여정을 커버합니다. 수도고속도로 완간선 등 모든 통행료가 포함되며, 공항 주차비는 절대 추가되지 않습니다. 예약 시 보이는 금액이 최종 지불 금액입니다.",
+        "이른 아침 항공편, 심야 착륙, 늦은 밤 출발 등 Octoshell은 연중무휴 24시간 운영합니다. 영어 가능 드라이버가 마루노우치, 가스미가세키 비즈니스 구역으로 향하는 국제 비즈니스 여행자에게 특히 인기입니다.",
+        "대형 수하물을 가진 최대 9인은 Toyota Hiace를 선택할 수 있으며, 요금이 약간 더 높습니다. 하네다를 자주 이용하는 법인 고객은 월 단위 통합 청구의 기업 계정을 문의하실 수 있습니다.",
       ],
     },
     highlights: {
@@ -322,8 +364,18 @@ const ROUTES: Record<RouteSlug, RouteData> = {
         "英語服務司機",
         "嬰兒座椅免費提供",
       ],
+      ko: [
+        "정액 ¥20,000—고속도로 요금 및 주차비 전액 포함",
+        "도쿄에서 가장 가까운 공항—도심에서 15~20km",
+        "실시간 항공편 추적—지연 시 자동 조정",
+        "예정 도착 후 1시간 무료 대기",
+        "도착 로비 미트 앤 그리트—터미널 1, 2 또는 3",
+        "24/7 서비스—새벽·심야 할증 없음",
+        "영어 가능 드라이버",
+        "유아 카시트 무료 제공",
+      ],
     },
-    cta: { en: "Book Haneda Transfer", ja: "羽田空港送迎を予約", zh: "預訂羽田機場接送" },
+    cta: { en: "Book Haneda Transfer", ja: "羽田空港送迎を予約", zh: "預訂羽田機場接送", ko: "하네다 송영 예약" },
     heroImg: "/airport.webp",
     heroAlt: "Octoshell chauffeur meeting passengers at Haneda Airport Terminal 3 arrivals",
     faqs: [
@@ -332,11 +384,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "What is the flat rate for a Haneda Airport private transfer?",
           ja: "羽田空港の専用車送迎の定額料金はいくらですか？",
           zh: "羽田機場私人接送的定額費用是多少？",
+          ko: "하네다 공항 프라이빗 송영 정액 요금은 얼마인가요?",
         },
         a: {
           en: "¥20,000 for a Toyota Alphard (up to 6 passengers). Toyota Hiace (up to 9 passengers) is approximately ¥22,000. Both rates include all highway tolls, airport parking, and the complimentary name-board meet-and-greet service.",
           ja: "トヨタ・アルファード（最大6名）は¥20,000です。トヨタ・ハイエース（最大9名）は約¥22,000です。いずれも高速料金・駐車場代・ウェルカムボードサービスを含むオールインクルーシブ価格です。",
           zh: "豐田埃爾法（最多6名）¥20,000，豐田海獅（最多9名）約¥22,000。兩個價格均涵蓋所有高速費、停車費及姓名牌迎賓服務。",
+          ko: "Toyota Alphard(최대 6인) ¥20,000, Toyota Hiace(최대 9인) 약 ¥22,000입니다. 모두 고속도로 요금, 주차비, 무료 이름판 미트 앤 그리트 서비스가 포함됩니다.",
         },
       },
       {
@@ -344,11 +398,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "Which Haneda terminal will the driver meet me at?",
           ja: "羽田のどのターミナルで迎えてもらえますか？",
           zh: "司機會在羽田哪個航廈接我？",
+          ko: "하네다 어느 터미널에서 드라이버가 영접하나요?",
         },
         a: {
           en: "Your chauffeur meets you at the arrivals hall of your specific terminal — International Terminal 3, or Domestic Terminals 1 or 2. Your booking confirmation will specify the exact meeting point.",
           ja: "国際線第3ターミナルまたは国内線第1・第2ターミナルの到着ロビーにてお迎えします。詳細な待ち合わせ場所はご予約確認メールにてお知らせします。",
           zh: "司機將在您指定的航廈（國際線第3航廈或國內線第1、第2航廈）的入境大廳等候。具體接機地點將在預訂確認郵件中說明。",
+          ko: "국제선 제3터미널 또는 국내선 제1·2터미널의 도착 로비에서 영접합니다. 정확한 만남 장소는 예약 확인 이메일에서 확인하실 수 있습니다.",
         },
       },
       {
@@ -356,11 +412,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "Is Haneda or Narita better for central Tokyo hotels?",
           ja: "都心のホテルへのアクセスは羽田と成田どちらが便利ですか？",
           zh: "羽田還是成田更適合前往東京市中心酒店？",
+          ko: "도쿄 시내 호텔로는 하네다와 나리타 중 어느 쪽이 더 편리한가요?",
         },
         a: {
           en: "Haneda is significantly closer to central Tokyo (15–20 km vs 60–75 km for Narita), resulting in shorter transfer times and a lower flat rate of ¥20,000 vs ¥25,000 for the [Narita Airport transfer](/services/narita-airport-transfer). For city hotels, Haneda is almost always preferable.",
           ja: "羽田は都心から15〜20kmと、成田（60〜75km）と比べて大幅に近く、移動時間も短くなります。定額料金も¥20,000と[成田空港送迎](/services/narita-airport-transfer)の¥25,000より安く、都内ホテルへのアクセスには羽田をお勧めします。",
           zh: "羽田距東京市中心僅15至20公里，遠比成田（60至75公里）更近，接送時間更短，定額費用也更低（¥20,000對比[成田機場接送](/services/narita-airport-transfer)的¥25,000）。前往市中心酒店，羽田幾乎都是更優選擇。",
+          ko: "하네다는 도쿄 도심에서 15~20km로 나리타(60~75km)보다 훨씬 가깝고 이동 시간이 짧으며, 정액 요금도 ¥20,000으로 [나리타 공항 송영](/services/narita-airport-transfer)의 ¥25,000보다 저렴합니다. 시내 호텔의 경우 하네다가 거의 항상 더 적합합니다.",
         },
       },
       {
@@ -368,11 +426,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "Does Octoshell operate overnight for early or late Haneda flights?",
           ja: "羽田の早朝・深夜便にも対応していますか？",
           zh: "Octoshell有提供羽田早班或深夜航班的服務嗎？",
+          ko: "하네다의 이른 새벽·심야 항공편에도 대응하나요?",
         },
         a: {
           en: "Yes. Octoshell operates 24 hours, 7 days a week, 365 days a year. Early-morning and late-night Haneda flights are handled at the same flat rate — no overnight or unsociable-hours surcharge.",
           ja: "はい。Octoshellは年中無休・24時間対応です。早朝・深夜の羽田便も同じ定額料金で対応し、深夜割増は一切かかりません。",
           zh: "是的。Octoshell全年365天、24小時運營。早班和深夜羽田航班均按同一定額費用服務，無任何早班或深夜附加費。",
+          ko: "네. Octoshell은 연중무휴 24시간, 365일 운영합니다. 하네다의 이른 새벽·심야 항공편도 동일한 정액 요금으로 대응—심야 할증 없음.",
         },
       },
       {
@@ -380,11 +440,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "Can I get a receipt or invoice for my Haneda transfer?",
           ja: "羽田送迎のレシートや請求書を受け取ることはできますか？",
           zh: "我可以獲得羽田接送的收據或發票嗎？",
+          ko: "하네다 송영 영수증 또는 청구서를 받을 수 있나요?",
         },
         a: {
           en: "Yes. A receipt is provided after every transfer. Corporate clients requiring formal invoices for expense reporting can request invoicing at time of booking.",
           ja: "はい。ご乗車後に領収書を発行いたします。経費精算等に正式な請求書が必要な法人のお客様は、ご予約時にお申し付けください。",
           zh: "可以。每次接送後均可提供收據。需要正式發票用於報帳的企業客戶，請在預訂時提出申請。",
+          ko: "네. 모든 송영 후 영수증을 제공합니다. 경비 처리용 공식 청구서가 필요한 법인 고객은 예약 시 요청하실 수 있습니다.",
         },
       },
     ],
@@ -413,26 +475,30 @@ const ROUTES: Record<RouteSlug, RouteData> = {
       "Hakone hot spring resort transfer",
       "御殿場プレミアムアウトレット 送迎",
     ],
-    badge: { en: "Day Trip Transfer", ja: "送迎サービス", zh: "長途接送" },
+    badge: { en: "Day Trip Transfer", ja: "送迎サービス", zh: "長途接送", ko: "당일치기 송영" },
     h1: {
       en: "Tokyo to Hakone Private Transfer",
       ja: "東京 → 箱根 プライベート専用車",
       zh: "東京至箱根私人專車",
+      ko: "도쿄에서 하코네까지 프라이빗 전세차",
     },
     sub: {
       en: "Tokyo ↔ Hakone · Flat Rate ¥70,000 · All-Inclusive",
       ja: "東京 ↔ 箱根 · 定額 ¥70,000 · 全込み",
       zh: "東京 ↔ 箱根 · 定額 ¥70,000 · 全包",
+      ko: "도쿄 ↔ 하코네 · 정액 ¥70,000 · 전액 포함",
     },
     price: {
       en: "From ¥70,000",
       ja: "¥70,000〜",
       zh: "¥70,000 起",
+      ko: "¥70,000~",
     },
     intro: {
       en: "Hakone is Japan's most celebrated hot-spring and mountain destination — yet getting there on public transport means transfers, timed timetables, and crowds. Octoshell's private Tokyo-to-Hakone transfer takes you door-to-door in a luxury Toyota Alphard at a flat ¥70,000, highway and parking included.",
       ja: "日本を代表する温泉・山岳リゾート、箱根へのアクセスを、乗り換えなし・混雑なしの完全プライベートな専用車でお届けします。高速・駐車料金込みの¥70,000定額で、東京から箱根まで直接ドアツードアでご案内します。",
       zh: "箱根是日本最受歡迎的溫泉與山岳度假勝地。乘坐公共交通前往需要多次換乘，還要面對人群。Octoshell的私人專車服務讓您從東京直達箱根，定額¥70,000，全包高速費與停車費。",
+      ko: "하코네는 일본에서 가장 유명한 온천 및 산악 명소입니다. 대중교통으로는 환승과 시간표, 혼잡이 따릅니다. Octoshell의 도쿄-하코네 프라이빗 송영은 정액 ¥70,000으로 도어 투 도어 서비스를 제공합니다—고속도로 요금 및 주차비 포함.",
     },
     body: {
       en: [
@@ -452,6 +518,12 @@ const ROUTES: Record<RouteSlug, RouteData> = {
         "許多旅客會在旅途中順道前往御殿場高級名品城或小山町。Octoshell的行程完全靈活：可申請在名品城停留30分鐘、走蘆之湖景觀路線，或繞道大涌谷——只要總行程合理，均無額外收費。您的司機是您的專屬嚮導，而非按錶計費的計程車司機。",
         "¥70,000定額適用於東京市內大多數地點至箱根町、箱根湯本、強羅、仙石原或箱根露天博物館度假區內17個地區的全程接送。攜帶大件行李、和服箱或高爾夫球袋前往高級旅館的旅客，將特別受益於埃爾法寬敞的後備廂空間，以及司機在酒店門口的白手套貼心協助。",
         "箱根返回東京同樣適用¥70,000定額。希望一大早出發趕羽田或成田航班的旅客，Octoshell可提供無縫銜接服務——司機在您退房時等候，幫您裝好行李後直奔機場。一次預訂，全程無憂。",
+      ],
+      ko: [
+        "도쿄 도심에서 하코네까지 약 90km입니다. 도메이 고속도로와 오다와라-아쓰기 도로를 경유하면 약 90~120분이 소요됩니다. 프라이빗 전세차로는 이 시간이 온전히 고객의 것입니다—짐을 선반에 밀어 넣을 필요도, 오다와라 역에서 환승을 서두를 필요도 없습니다.",
+        "고텐바 프리미엄 아울렛이나 오야마 마을에 들르는 고객도 많습니다. Octoshell의 일정은 완전히 유연합니다. 아울렛 30분 정차, 아시 호수 경관 노선, 오와쿠다니 화산 계곡 우회—모두 총 여정이 합리적인 범위 내라면 추가 요금 없이 대응합니다.",
+        "정액 ¥70,000은 도쿄 도심 대부분의 지역에서 하코네 마치, 하코네 유모토, 고라, 센고쿠하라 등 하코네 17개 지구까지 적용됩니다. 대형 짐, 기모노 트렁크, 골프백을 가진 료칸 투숙객은 Alphard의 넓은 적재 공간과 드라이버의 화이트 글러브 지원을 특히 좋아하실 것입니다.",
+        "하코네에서 도쿄로의 귀로도 동일한 정액 ¥70,000이 적용됩니다. 이른 아침에 하네다·나리타 항공편을 잡아야 하는 고객에게는 원활한 연결 서비스를 제공합니다—드라이버가 체크아웃 시 대기하고, 짐을 싣고 공항으로 직행합니다.",
       ],
     },
     highlights: {
@@ -485,8 +557,18 @@ const ROUTES: Record<RouteSlug, RouteData> = {
         "回程同等定額",
         "英語服務司機",
       ],
+      ko: [
+        "정액 ¥70,000—도쿄 ↔ 하코네 도어 투 도어",
+        "고속도로 요금 및 주차비 전액 포함",
+        "선택 경유: 고텐바 프리미엄 아울렛, 아시 호수, 오와쿠다니",
+        "유연한 일정—시간표 없음, 환승 없음",
+        "Toyota Alphard(6인) 또는 Hiace(9인)",
+        "대형 짐을 가진 료칸 투숙객에게 완벽",
+        "귀로도 동일 정액 적용",
+        "영어 가능 드라이버",
+      ],
     },
-    cta: { en: "Book Tokyo–Hakone Transfer", ja: "東京→箱根を予約", zh: "預訂東京至箱根專車" },
+    cta: { en: "Book Tokyo–Hakone Transfer", ja: "東京→箱根を予約", zh: "預訂東京至箱根專車", ko: "도쿄→하코네 예약" },
     heroImg: "/Sightseeing.webp",
     heroAlt: "Black Toyota Alphard parked at a scenic Hakone mountain road with Mt Fuji in background",
     faqs: [
@@ -495,11 +577,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "How much is a private car from Tokyo to Hakone?",
           ja: "東京〜箱根間の専用車料金はいくらですか？",
           zh: "從東京到箱根的私人專車費用是多少？",
+          ko: "도쿄에서 하코네까지 전세차 요금은 얼마인가요?",
         },
         a: {
           en: "Octoshell charges a flat rate of ¥70,000 for the Tokyo to Hakone transfer in a Toyota Alphard (up to 6 passengers). All highway tolls and parking are included. A Toyota Hiace for larger groups is available at approximately 10–15% more.",
           ja: "トヨタ・アルファード（最大6名）で¥70,000の定額料金です。高速料金・駐車場代込みです。大人数には約10〜15%増のトヨタ・ハイエースもご用意しています。",
           zh: "豐田埃爾法（最多6名）¥70,000定額，包含所有高速費與停車費。大型團體可選豐田海獅，費用約高10至15%。",
+          ko: "Toyota Alphard(최대 6인) 정액 ¥70,000입니다. 고속도로 요금 및 주차비 전액 포함. 대그룹을 위한 Toyota Hiace는 약 10~15% 추가됩니다.",
         },
       },
       {
@@ -507,11 +591,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "How long does the Tokyo to Hakone drive take?",
           ja: "東京〜箱根間の所要時間はどのくらいですか？",
           zh: "從東京開車到箱根需要多長時間？",
+          ko: "도쿄에서 하코네까지 차로 얼마나 걸리나요?",
         },
         a: {
           en: "Approximately 90–120 minutes under normal traffic conditions via the Tomei Expressway and Odawara-Atsugi Road. Allow an extra 30 minutes during peak weekends or Golden Week.",
           ja: "東名高速・小田原厚木道路経由で通常約90〜120分です。週末のピーク時やゴールデンウィークは30分程度余裕を見てください。",
           zh: "正常路況下，走東名高速及小田原厚木道路約需90至120分鐘。週末高峰或黃金週請預留額外30分鐘。",
+          ko: "도메이 고속도로와 오다와라-아쓰기 도로를 경유하면 정상 교통 상황에서 약 90~120분입니다. 주말 피크나 골든위크에는 30분 추가로 여유를 두세요.",
         },
       },
       {
@@ -519,11 +605,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "Can I stop at Gotemba Premium Outlets on the way to Hakone?",
           ja: "箱根への途中で御殿場プレミアムアウトレットに立ち寄れますか？",
           zh: "去箱根途中可以在御殿場名品城停留嗎？",
+          ko: "하코네로 가는 길에 고텐바 프리미엄 아울렛에 들를 수 있나요?",
         },
         a: {
           en: "Yes. A stop at Gotemba Premium Outlets (approx. 30–60 minutes) can be included in the itinerary at no extra charge within the ¥70,000 flat rate, provided the total journey time remains reasonable.",
           ja: "はい。御殿場プレミアムアウトレットへの立ち寄り（約30〜60分）は¥70,000の定額内で対応可能です。全体の行程が著しく延長しない範囲での対応となります。",
           zh: "可以。在御殿場名品城停留約30至60分鐘，可在¥70,000定額範圍內安排，前提是總行程時間在合理範圍內。",
+          ko: "네. 고텐바 프리미엄 아울렛 정차(약 30~60분)는 총 여정 시간이 합리적인 범위 내라면 ¥70,000 정액 내에 추가 비용 없이 가능합니다.",
         },
       },
       {
@@ -531,11 +619,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "Is Octoshell's Hakone transfer better than the Romancecar train?",
           ja: "ロマンスカーよりOctoshellの箱根専用車の方が良いですか？",
           zh: "Octoshell的箱根接送比浪漫特快列車更好嗎？",
+          ko: "로만스카 열차보다 Octoshell 하코네 전세차가 더 좋은가요?",
         },
         a: {
           en: "For groups of 3 or more, heavy luggage, or ryokan stays requiring door-to-door service, a private chauffeur is significantly more convenient. The Romancecar is economical for solo or duo travel but requires transfers, timetables, and luggage handling on your own.",
           ja: "3名以上のご旅行、大荷物、旅館へのドアツードア送迎が必要な場合は専用車が圧倒的に便利です。ロマンスカーは1〜2名の移動には経済的ですが、乗り換え・時刻表への対応・手荷物管理が必要です。",
           zh: "對於3人以上的旅客、攜帶大量行李，或需要門到門服務前往旅館的旅客，私人專車遠比浪漫特快方便。浪漫特快對一兩名旅客較為划算，但需要換乘、遵守時刻表並自行搬運行李。",
+          ko: "3인 이상, 대형 짐, 또는 료칸 도어 투 도어 서비스가 필요한 경우 프라이빗 전세차가 훨씬 편리합니다. 로만스카는 1~2인에게는 경제적이지만 환승, 시간표, 직접 짐 운반이 필요합니다.",
         },
       },
       {
@@ -543,11 +633,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "Does the Hakone transfer include the return journey?",
           ja: "箱根送迎には帰路も含まれていますか？",
           zh: "箱根接送包含回程嗎？",
+          ko: "하코네 송영에 귀로가 포함되어 있나요?",
         },
         a: {
           en: "The ¥70,000 flat rate covers a single journey (one way). The return journey from Hakone to Tokyo is the same ¥70,000 and can be [booked separately](/book) or as a round trip.",
           ja: "¥70,000の定額は片道1回の料金です。箱根から東京への帰路も同じ¥70,000で、[個別または往復セット](/book)でご予約いただけます。",
           zh: "¥70,000定額為單程費用。從箱根返回東京的回程同為¥70,000，可[單獨預訂](/book)或與去程一起預訂來回。",
+          ko: "¥70,000 정액은 편도 1회 요금입니다. 하코네에서 도쿄로의 귀로도 동일한 ¥70,000으로 [개별 또는 왕복으로 예약](/book)하실 수 있습니다.",
         },
       },
     ],
@@ -576,26 +668,30 @@ const ROUTES: Record<RouteSlug, RouteData> = {
       "Kawaguchiko private transfer",
       "富士山 プライベートカー",
     ],
-    badge: { en: "Day Trip Transfer", ja: "送迎サービス", zh: "長途接送" },
+    badge: { en: "Day Trip Transfer", ja: "送迎サービス", zh: "長途接送", ko: "당일치기 송영" },
     h1: {
       en: "Tokyo to Mt Fuji Private Transfer",
       ja: "東京 → 富士山 プライベート専用車",
       zh: "東京至富士山私人專車",
+      ko: "도쿄에서 후지산까지 프라이빗 전세차",
     },
     sub: {
       en: "Tokyo ↔ Mt Fuji · Flat Rate ¥68,000 · All-Inclusive",
       ja: "東京 ↔ 富士山 · 定額 ¥68,000 · 全込み",
       zh: "東京 ↔ 富士山 · 定額 ¥68,000 · 全包",
+      ko: "도쿄 ↔ 후지산 · 정액 ¥68,000 · 전액 포함",
     },
     price: {
       en: "From ¥68,000",
       ja: "¥68,000〜",
       zh: "¥68,000 起",
+      ko: "¥68,000~",
     },
     intro: {
       en: "Mount Fuji is Japan's most iconic landmark — and visiting it on your own terms, by private chauffeur, is the most flexible and rewarding way to experience the mountain. Octoshell's flat-rate ¥68,000 Tokyo–Fuji transfer covers the full journey, door to door, with no hidden fees.",
       ja: "日本最大のシンボル、富士山へのアクセスを、乗り換えなし・完全プライベートの専用車でご案内します。¥68,000の定額料金には高速・駐車場代が含まれ、ドアツードアでご案内します。",
       zh: "富士山是日本最具代表性的地標，以私人專車前往是最靈活、最舒適的體驗方式。Octoshell提供¥68,000定額的東京至富士山全程接送，門到門服務，無任何隱藏費用。",
+      ko: "후지산은 일본의 가장 상징적인 랜드마크입니다. 프라이빗 전세차로 자신만의 방식으로 방문하는 것이 가장 유연하고 보람 있는 방법입니다. Octoshell의 정액 ¥68,000 도쿄-후지산 송영은 도어 투 도어로 전 여정을 커버합니다—숨겨진 요금 없음.",
     },
     body: {
       en: [
@@ -615,6 +711,12 @@ const ROUTES: Record<RouteSlug, RouteData> = {
         "計劃登吉田路線或須走路線的登山者，往往需要在清晨4時或更早從東京出發。Octoshell全天候服務，凌晨出發不附加任何費用。下山後，司機在您約定的五合目或登山口等候，載著疲憊的您和潮濕的裝備直接返回酒店或東京市區。",
         "非登山旅客可遊覽富士五湖地區（河口湖、西湖、山中湖），或結合御殿場高級名品城（距五合目約20分鐘）享受登山前後的購物樂趣。希望拍攝中雷塔富士日出倒影或本栖湖逆富士的攝影愛好者，可指定精確時間安排行程，無需任何妥協。",
         "¥68,000定額適用於東京任何出發地至富士山五合目、河口湖地區或御殿場的全程接送。東名高速通行費及富士山斯巴魯線費用均包含在內。攜帶登山裝備的大型團體可選擇豐田海獅，費用約高10至15%。",
+      ],
+      ko: [
+        "후지산은 도쿄 도심에서 서남쪽으로 약 100km 떨어져 있습니다. 도메이 고속도로를 경유한 후지 스바루라인 5합목, 또는 138번 국도를 경유한 가와구치코 노선은 프라이빗 전세차로 약 90~150분이 소요됩니다. 관광버스나 정기 열차와 달리 Octoshell 드라이버는 고정 시간표가 없고 오직 고객의 일정만을 따릅니다.",
+        "요시다 루트나 스바시리 루트로 등산하는 분들은 종종 새벽 4시 또는 그보다 일찍 출발해야 합니다. Octoshell은 24시간 서비스로 새벽 픽업도 할증 없이 가능합니다. 하산 후 드라이버가 약속한 5합목 또는 등산 입구에서 기다리며, 피로한 몸과 젖은 장비를 싣고 호텔이나 도쿄 시내로 직접 돌아갑니다.",
+        "등산하지 않는 관광객은 후지 5호 지역(가와구치코, 사이코, 야마나카코)을 즐기거나 고텐바 프리미엄 아울렛(5합목에서 약 20분)에서 쇼핑을 즐길 수 있습니다. 추레이토 탑에서의 일출 후지 반영이나 모토스 호수의 역후지 촬영을 원하는 사진가는 정확한 시간을 지정할 수 있습니다.",
+        "정액 ¥68,000은 도쿄 어디서든 후지산 5합목, 가와구치코 지역, 또는 고텐바까지 적용됩니다. 도메이 고속도로 통행료 및 후지 스바루라인 요금이 포함됩니다.",
       ],
     },
     highlights: {
@@ -648,8 +750,18 @@ const ROUTES: Record<RouteSlug, RouteData> = {
         "可按日出/日落安排攝影時間",
         "英語服務司機",
       ],
+      ko: [
+        "정액 ¥68,000—도쿄 ↔ 후지산 도어 투 도어",
+        "고속도로 요금 및 후지 스바루라인 요금 포함",
+        "24/7 서비스—등산객을 위한 새벽 출발, 할증 없음",
+        "유연한 일정: 5합목, 가와구치코, 고텐바, 5호",
+        "선택 경유: 고텐바 프리미엄 아울렛",
+        "등산 장비를 가진 그룹에 완벽",
+        "일출/일몰 최적화 촬영 타이밍",
+        "영어 가능 드라이버",
+      ],
     },
-    cta: { en: "Book Tokyo–Fuji Transfer", ja: "東京→富士山を予約", zh: "預訂東京至富士山專車" },
+    cta: { en: "Book Tokyo–Fuji Transfer", ja: "東京→富士山を予約", zh: "預訂東京至富士山專車", ko: "도쿄→후지산 예약" },
     heroImg: "/Sightseeing.webp",
     heroAlt: "Black Toyota Alphard on a mountain road with Mount Fuji visible in the background",
     faqs: [
@@ -658,11 +770,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "How much is a private car from Tokyo to Mount Fuji?",
           ja: "東京〜富士山間の専用車料金はいくらですか？",
           zh: "從東京到富士山的私人專車費用是多少？",
+          ko: "도쿄에서 후지산까지 전세차 요금은 얼마인가요?",
         },
         a: {
           en: "Octoshell charges a flat rate of ¥68,000 for a Toyota Alphard (up to 6 passengers). All highway tolls and Fuji Subaru Line fees are included. Toyota Hiace for larger groups is approximately 10–15% more.",
           ja: "トヨタ・アルファード（最大6名）で¥68,000の定額料金です。高速料金・富士スバルライン料金込みです。大人数にはトヨタ・ハイエースが約10〜15%増でご用意しています。",
           zh: "豐田埃爾法（最多6名）¥68,000定額，包含所有高速費及富士山斯巴魯線費用。大型團體可選豐田海獅，費用約高10至15%。",
+          ko: "Toyota Alphard(최대 6인) 정액 ¥68,000입니다. 고속도로 요금 및 후지 스바루라인 요금 포함. 대그룹을 위한 Toyota Hiace는 약 10~15% 추가됩니다.",
         },
       },
       {
@@ -670,11 +784,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "Can the chauffeur wait while I climb Fuji?",
           ja: "富士山登山中、チャウファーは待ってもらえますか？",
           zh: "我登富士山時司機會等待嗎？",
+          ko: "후지산 등산 중 드라이버가 기다려 주나요?",
         },
         a: {
           en: "Yes. For full-day climbing trips, the chauffeur can be engaged on an [hourly hire](/services/tokyo-by-the-hour) basis after the initial transfer. Please mention this when booking so we can prepare the appropriate vehicle and schedule.",
           ja: "はい。終日の登山の場合、最初の送迎後はチャウファーを[時間制チャーター](/services/tokyo-by-the-hour)でご利用いただけます。ご予約時にその旨をお伝えいただければ、適切な車両・スケジュールをご用意します。",
           zh: "可以。對於全天登山行程，初始接送後可按[小時包車](/services/tokyo-by-the-hour)方式讓司機繼續候命。預訂時請告知，以便我們安排適合的車輛和時間表。",
+          ko: "네. 종일 등산의 경우 초기 송영 후 [시간제 전세](/services/tokyo-by-the-hour)로 드라이버를 계속 활용할 수 있습니다. 예약 시 알려 주시면 적합한 차량과 일정을 준비합니다.",
         },
       },
       {
@@ -682,11 +798,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "Does the route include Kawaguchiko and the Fuji Five Lakes?",
           ja: "河口湖や富士五湖も含まれていますか？",
           zh: "路線包含河口湖和富士五湖嗎？",
+          ko: "가와구치코와 후지 5호가 포함되나요?",
         },
         a: {
           en: "Yes. The ¥68,000 flat rate covers the Tokyo–Kawaguchiko and Tokyo–Fuji 5th Station routes. Scenic detours through the Five Lakes area can be incorporated at no extra charge within a reasonable itinerary.",
           ja: "はい。¥68,000の定額は東京〜河口湖・東京〜五合目ルートを含みます。合理的な範囲内であれば、富士五湖エリアの観光ルートも追加料金なしで対応します。",
           zh: "是的。¥68,000定額涵蓋東京至河口湖及東京至五合目的路線。在合理行程範圍內，富士五湖地區的景觀繞道可免費加入行程。",
+          ko: "네. ¥68,000 정액은 도쿄-가와구치코 및 도쿄-5합목 노선을 포함합니다. 합리적인 일정 범위 내에서 5호 지역의 경관 우회도 추가 비용 없이 가능합니다.",
         },
       },
       {
@@ -694,11 +812,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "Is it possible to book an early morning Fuji departure from Tokyo?",
           ja: "東京からの早朝富士山出発は予約できますか？",
           zh: "可以預訂從東京早上出發去富士山嗎？",
+          ko: "도쿄에서 후지산 이른 새벽 출발 예약이 가능한가요?",
         },
         a: {
           en: "Yes. Octoshell operates 24 hours a day and can accommodate pickups as early as 3:00 or 4:00 AM for sunrise summit attempts. No surcharge applies for early-morning departures.",
           ja: "はい。Octoshellは24時間対応です。日の出登頂を目指す場合の午前3時・4時台のピックアップも割増なしで承ります。",
           zh: "可以。Octoshell 24小時運營，可安排早上3時或4時出發，滿足追日出登頂的需求，且不收取任何早班附加費。",
+          ko: "네. Octoshell은 24시간 운영하며 일출 정상 도전을 위해 새벽 3시, 4시 픽업도 가능합니다. 이른 새벽 출발에는 할증이 없습니다.",
         },
       },
     ],
@@ -727,26 +847,30 @@ const ROUTES: Record<RouteSlug, RouteData> = {
       "private driver golf Japan",
       "luxury golf chauffeur Tokyo",
     ],
-    badge: { en: "Golf Transfer", ja: "ゴルフ送迎", zh: "高爾夫接送" },
+    badge: { en: "Golf Transfer", ja: "ゴルフ送迎", zh: "高爾夫接送", ko: "골프 송영" },
     h1: {
       en: "Tokyo Golf Club Private Transfer",
       ja: "東京 ゴルフ場 プライベート送迎",
       zh: "東京高爾夫球場私人專車",
+      ko: "도쿄 골프 클럽 프라이빗 송영",
     },
     sub: {
       en: "Tokyo ↔ Kanto Golf Clubs · Flat Rate ¥50,000 · All-Inclusive",
       ja: "東京 ↔ 関東ゴルフ場 · 定額 ¥50,000 · 全込み",
       zh: "東京 ↔ 關東高爾夫球場 · 定額 ¥50,000 · 全包",
+      ko: "도쿄 ↔ 간토 골프 클럽 · 정액 ¥50,000 · 전액 포함",
     },
     price: {
       en: "From ¥50,000",
       ja: "¥50,000〜",
       zh: "¥50,000 起",
+      ko: "¥50,000~",
     },
     intro: {
       en: "Japan's premier golf courses are scattered across the Kanto region, often 60–120 minutes from Tokyo by car. Octoshell's dedicated golf transfer service connects you and your clubs to any Kanto golf course — flat rate ¥50,000, space for all bags guaranteed.",
       ja: "関東圏の名門ゴルフコースへ、クラブバッグを積み込んでストレスフリーに向かいましょう。¥50,000の定額料金で、東京から関東圏内のゴルフ場まで専用車でお届けします。",
       zh: "日本關東地區的頂級高爾夫球場遍佈各地，距東京車程約60至120分鐘。Octoshell的高爾夫專屬接送服務，讓您和所有球具輕鬆抵達任何關東球場，定額¥50,000，球袋空間有保障。",
+      ko: "일본의 최고급 골프 코스는 간토 지역 전체에 흩어져 있으며, 도쿄에서 차로 약 60~120분 거리입니다. Octoshell의 전용 골프 송영 서비스는 고객과 골프백을 어떤 간토 골프 코스로도 연결합니다—정액 ¥50,000, 모든 백 공간 보장.",
     },
     body: {
       en: [
@@ -766,6 +890,12 @@ const ROUTES: Record<RouteSlug, RouteData> = {
         "關東各高爾夫球場的早晨開球時間通常為早上6至7時。Octoshell全天候運營，清晨出發不附加任何費用。無論球場位於埼玉、千葉、神奈川還是茨城，司機均會提前規劃路線，準時到達。",
         "打完球後的回程同樣輕鬆順暢。在俱樂部享用餐食、泡個澡、慢慢回味今天的球局——請按您自己的節奏來。司機在指定停車區等候，球袋早已裝好，隨時準備以您的步調帶您回家。沒有計費表在滴答作響，沒有不耐烦的按喇叭，只有屬於這個下午的靜謐尊貴。",
         "¥50,000定額適用於東京至大多數100公里範圍內的關東高爾夫球場。球袋、推車及裝備箱均為標準服務，無任何尺寸附加費。四人以上或需要海獅9座艙位的團體，費用略有增加。",
+      ],
+      ko: [
+        "일본의 골프 문화는 시간 엄수, 철저한 준비, 코스에 대한 경의에 깊이 뿌리를 두고 있습니다. 명문 클럽에 택시나 일반 렌터카로 도착하면 그 품격이 떨어집니다. Octoshell의 골프 전용 드라이버 서비스는 호텔 문을 나서는 순간부터 클럽 생활을 연출합니다.",
+        "간토의 골프 코스는 오전 6~7시 출발이 일반적입니다. Octoshell은 24시간 운영하며 이른 아침 출발에도 할증이 없습니다. 사이타마, 치바, 가나가와, 이바라키 어느 코스든 드라이버가 미리 경로를 확인하고 시간에 맞게 도착합니다.",
+        "라운드 후의 귀로도 원활합니다. 클럽하우스에서 식사, 목욕, 여운을 즐기세요. 드라이버가 지정 주차 구역에서 골프백을 이미 싣고 기다리고 있습니다. 미터기도, 서두르는 경적도 없는 조용하고 품격 있는 귀로를 제공합니다.",
+        "정액 ¥50,000은 도쿄에서 100km 반경 내 대부분의 간토 골프 코스에 적용됩니다. 골프백, 푸시카트, 장비 케이스는 표준 서비스로 크기 할증 없음. 4인 이상 또는 Hiace 9인 좌석이 필요한 그룹은 약간의 추가 요금이 발생합니다.",
       ],
     },
     highlights: {
@@ -799,8 +929,18 @@ const ROUTES: Record<RouteSlug, RouteData> = {
         "全年365天，24小時服務",
         "英語服務司機",
       ],
+      ko: [
+        "정액 ¥50,000—도쿄 ↔ 간토 골프 클럽",
+        "복수 골프백 및 푸시카트 충분한 공간",
+        "이른 아침 티타임 출발—할증 없음",
+        "고속도로 요금 및 주차비 포함",
+        "라운드 후 드라이버가 짐 적재 및 귀로 대기",
+        "Toyota Alphard(6인) 또는 Hiace(9인)",
+        "연중무휴 24시간",
+        "영어 가능 드라이버",
+      ],
     },
-    cta: { en: "Book Golf Transfer", ja: "ゴルフ送迎を予約", zh: "預訂高爾夫接送" },
+    cta: { en: "Book Golf Transfer", ja: "ゴルフ送迎を予約", zh: "預訂高爾夫接送", ko: "골프 송영 예약" },
     heroImg: "/GOLF.webp",
     heroAlt: "Chauffeur loading premium golf bags into Toyota Alphard at a Kanto golf club",
     faqs: [
@@ -809,11 +949,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "How much is a private golf transfer from Tokyo?",
           ja: "東京からゴルフ場への専用車料金はいくらですか？",
           zh: "從東京前往高爾夫球場的私人接送費用是多少？",
+          ko: "도쿄에서 골프 코스까지 전세차 요금은 얼마인가요?",
         },
         a: {
           en: "The flat rate is ¥50,000 for a Toyota Alphard (up to 6 passengers with golf bags). All highway tolls and parking are included. A Toyota Hiace for larger groups is available at a slightly higher rate.",
           ja: "トヨタ・アルファード（最大6名・ゴルフバッグ込み）で¥50,000の定額料金です。高速料金・駐車場代込みです。",
           zh: "豐田埃爾法（最多6名含球袋）¥50,000定額，包含所有高速費與停車費。",
+          ko: "Toyota Alphard(최대 6인, 골프백 포함) 정액 ¥50,000입니다. 고속도로 요금 및 주차비 포함. 대그룹을 위한 Toyota Hiace는 약간 더 높습니다.",
         },
       },
       {
@@ -821,11 +963,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "Can the chauffeur accommodate multiple golf bags?",
           ja: "複数のゴルフバッグも積めますか？",
           zh: "司機能裝載多套高爾夫球袋嗎？",
+          ko: "여러 개의 골프백을 실을 수 있나요?",
         },
         a: {
           en: "Yes. The Toyota Alphard's rear cargo area comfortably fits up to 4 large golf bags alongside passenger luggage. For 4+ bags, the Toyota Hiace provides additional cargo space.",
           ja: "はい。トヨタ・アルファードのラゲッジスペースには大型キャディバッグ4本まで積み込めます。4本以上はトヨタ・ハイエースをご利用ください。",
           zh: "可以。豐田埃爾法後備廂可輕鬆容納最多4個大型高爾夫球袋連同乘客行李。4袋以上建議選擇豐田海獅，提供更多裝載空間。",
+          ko: "네. Toyota Alphard의 후방 적재 공간은 승객 수하물과 함께 대형 골프백 최대 4개를 수납합니다. 4개 이상은 Toyota Hiace가 추가 공간을 제공합니다.",
         },
       },
       {
@@ -833,11 +977,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "Which golf clubs in Kanto does Octoshell serve?",
           ja: "関東のどのゴルフ場に対応していますか？",
           zh: "Octoshell服務關東哪些高爾夫球場？",
+          ko: "간토의 어느 골프 클럽에 대응하나요?",
         },
         a: {
           en: "We serve all golf courses within the Greater Tokyo / Kanto region, including courses in Saitama, Chiba, Kanagawa, Ibaraki, Tochigi, and Gunma. If your club is within 120 km of Tokyo, we can get you there.",
           ja: "埼玉・千葉・神奈川・茨城・栃木・群馬を含む関東圏全域のゴルフ場に対応しています。東京から120km圏内であれば基本的に対応可能です。",
           zh: "我們服務大東京/關東地區所有高爾夫球場，包括埼玉、千葉、神奈川、茨城、栃木和群馬的球場。距東京120公里範圍內的球場均可服務。",
+          ko: "사이타마, 치바, 가나가와, 이바라키, 도치기, 군마 등 대도쿄/간토 지역의 모든 골프 코스에 대응합니다. 도쿄에서 120km 이내라면 기본적으로 대응 가능합니다.",
         },
       },
       {
@@ -845,11 +991,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "Can I book a golf transfer for an early morning tee time?",
           ja: "早朝のティータイムに合わせた送迎を予約できますか？",
           zh: "可以預訂配合早晨開球時間的接送嗎？",
+          ko: "이른 아침 티타임에 맞춘 송영을 예약할 수 있나요?",
         },
         a: {
           en: "Yes. Octoshell operates 24/7 with no surcharge for early-morning or late-night departures. Simply [specify your tee time when booking](/book) and we will work backwards to calculate the optimal pickup time from your hotel.",
           ja: "はい。年中無休・24時間対応で、早朝・深夜の出発でも割増なしです。[ご予約時](/book)にティータイムをお知らせいただければ、最適なピックアップ時刻を逆算してご案内します。",
           zh: "可以。Octoshell全天候運營，早晨或深夜出發均不附加費用。[預訂時](/book)請告知您的開球時間，我們將計算最合適的接送時間。",
+          ko: "네. Octoshell은 24/7 운영하며 이른 아침이나 심야 출발에도 할증이 없습니다. [예약 시 티타임을 지정](/book)해 주시면 호텔에서의 최적 픽업 시간을 역산해 드립니다.",
         },
       },
     ],
@@ -878,26 +1026,30 @@ const ROUTES: Record<RouteSlug, RouteData> = {
       "corporate chauffeur hire Tokyo",
       "Tokyo business chauffeur hourly",
     ],
-    badge: { en: "Hourly Hire", ja: "時間制貸切", zh: "時段包車" },
+    badge: { en: "Hourly Hire", ja: "時間制貸切", zh: "時段包車", ko: "시간제 전세" },
     h1: {
       en: "Tokyo Hourly Chauffeur Hire",
       ja: "東京 時間制 貸切ハイヤー",
       zh: "東京時段包車服務",
+      ko: "도쿄 시간제 전세 하이어",
     },
     sub: {
       en: "Tokyo City · 10 Hours ¥43,000 · All-Inclusive",
       ja: "東京市内 · 10時間 ¥43,000 · 全込み",
       zh: "東京市內 · 10小時 ¥43,000 · 全包",
+      ko: "도쿄 시내 · 10시간 ¥43,000 · 전액 포함",
     },
     price: {
       en: "From ¥43,000",
       ja: "¥43,000〜",
       zh: "¥43,000 起",
+      ko: "¥43,000~",
     },
     intro: {
       en: "When your Tokyo schedule demands complete flexibility — multiple stops, last-minute changes, or a full day of business — Octoshell's hourly hire service provides a dedicated Toyota Alphard and chauffeur for your exclusive use. 10 hours from ¥43,000, all tolls included.",
       ja: "複数の訪問先、直前のスケジュール変更、終日ビジネス対応——Octoshellの時間制貸切サービスは、専属のアルファードとチャウファーを丸ごとお客様専用にします。10時間¥43,000、高速込みです。",
       zh: "當您的東京行程需要完全的靈活性——多個停靠點、臨時行程變更，或全天商務出行——Octoshell的時段包車服務為您提供專屬的豐田埃爾法和司機。10小時¥43,000，含通行費。",
+      ko: "도쿄 일정이 완전한 유연성을 요구할 때—복수 경유지, 당일 변경, 또는 종일 비즈니스—Octoshell의 시간제 전세 서비스는 전속 Toyota Alphard와 드라이버를 고객 전용으로 제공합니다. 10시간 ¥43,000, 통행료 포함.",
     },
     body: {
       en: [
@@ -917,6 +1069,12 @@ const ROUTES: Record<RouteSlug, RouteData> = {
         "Octoshell的10小時東京包車服務，讓一輛專屬車輛和一名司機從早到晚只為您服務。您的行程就是唯一的日程。前往丸之內拜訪客戶，前往六本木Hills出席簡報，再赴銀座晚宴——車輛始終候在外面，司機隨時待命，您的物品全程安全置於車內。無需重新叫車、無需等待、無需在東京高峰時段與計程車較勁。",
         "¥43,000費率涵蓋東京都內10小時專屬服務，包含標準路線所有高速費。超出10小時的部分，按預訂時商定的時薪比例計費。如有半日需求，也提供更短時段的套餐，預訂時請說明所需時長即可。",
         "法人客戶常用於投資者路演、部門拜訪或高管搬遷。休閒旅客則發現其非常適合橫跨銀座、原宿和澀谷的奢華購物日——購買的物品可安全存放在車輛寬敞的後備廂中，整輛車成為全天候的私人移動據點。",
+      ],
+      ko: [
+        "도쿄는 거리의 도시입니다. 신주쿠와 오다이바, 마루노우치와 아키하바라, 롯폰기와 아사쿠사—각 구간이 택시로 편도 20~40분이며, 매번 할증 요금과 다음 차를 찾는 번거로움이 따릅니다. 여러 구를 넘나드는 비즈니스 약속이나 갤러리·백화점·레스토랑을 순회하는 빽빽한 관광 일정에는 시간제 전세가 모든 불편을 한 번에 해결합니다.",
+        "Octoshell의 10시간 도쿄 전세 서비스는 단 한 명의 드라이버와 차량이 아침부터 저녁까지 고객만을 위해 움직입니다. 마루노우치의 고객사 방문, 롯폰기 힐스의 브리핑, 긴자의 저녁 식사—차량은 항상 밖에 대기 중이고, 드라이버는 언제든 응대 가능하며, 짐은 종일 차 안에 안전하게 보관됩니다.",
+        "¥43,000 요금은 도쿄 도내 10시간 전속 서비스와 표준 노선 고속도로 요금 전부를 포함합니다. 10시간 초과분은 예약 시 합의된 시간당 요금으로 청구됩니다. 반일 이용 등 단기 패키지도 제공되니 예약 시 희망 시간을 알려 주세요.",
+        "법인 고객은 투자자 로드쇼, 성청 방문, 임원 이동 등 다양한 목적으로 이용합니다. 관광 고객에게는 긴자·하라주쿠·시부야를 아우르는 럭셔리 쇼핑 데이에 최적이며, 구매품을 차량의 넓은 적재 공간에 안전하게 보관하면서 차를 하루의 프라이빗 모바일 기지로 활용할 수 있습니다.",
       ],
     },
     highlights: {
@@ -950,8 +1108,18 @@ const ROUTES: Record<RouteSlug, RouteData> = {
         "半日套餐亦可預訂",
         "英語服務司機",
       ],
+      ko: [
+        "10시간 전속 드라이버 서비스 ¥43,000~",
+        "완전 유연—고객의 일정에 완전 동기화",
+        "도쿄 내 복수 경유지 추가 요금 없음",
+        "표준 노선 고속도로 요금 포함",
+        "종일 전용 차량 및 드라이버 대기",
+        "비즈니스 로드쇼, 쇼핑, 관광에 최적",
+        "반일 패키지도 이용 가능",
+        "영어 가능 드라이버",
+      ],
     },
-    cta: { en: "Book Hourly Hire Tokyo", ja: "時間制貸切を予約", zh: "預訂東京時段包車" },
+    cta: { en: "Book Hourly Hire Tokyo", ja: "時間制貸切を予約", zh: "預訂東京時段包車", ko: "도쿄 시간제 전세 예약" },
     heroImg: "/By_the_Hour.webp",
     heroAlt: "Luxury Toyota Alphard interior with gold ambient lighting and Tokyo city lights outside",
     faqs: [
@@ -960,11 +1128,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "How much is a 10-hour chauffeur hire in Tokyo?",
           ja: "東京での10時間のハイヤー料金はいくらですか？",
           zh: "東京10小時包車的費用是多少？",
+          ko: "도쿄에서 10시간 하이어 요금은 얼마인가요?",
         },
         a: {
           en: "Octoshell's 10-hour Tokyo city hire is ¥43,000, inclusive of standard highway tolls. This provides a dedicated Toyota Alphard and chauffeur from pickup to the end of the 10-hour block.",
           ja: "Octoshellの東京市内10時間貸切は¥43,000です（通常ルートの高速料金込み）。ピックアップから10時間の間、アルファードとチャウファーが専属でご対応します。",
           zh: "Octoshell的東京10小時包車費用為¥43,000，含標準路線高速費。從接送開始至10小時結束，豐田埃爾法和司機全程專屬為您服務。",
+          ko: "Octoshell의 도쿄 시내 10시간 전세는 ¥43,000입니다(표준 노선 고속도로 요금 포함). 픽업부터 10시간 블록 종료까지 Toyota Alphard와 드라이버가 전속으로 대응합니다.",
         },
       },
       {
@@ -972,11 +1142,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "Can I make multiple stops across Tokyo during the hire?",
           ja: "貸切中に都内の複数箇所に立ち寄れますか？",
           zh: "包車期間可以在東京多個地點停留嗎？",
+          ko: "전세 중 도쿄 내 여러 곳에 들를 수 있나요?",
         },
         a: {
           en: "Yes. Multiple stops across Tokyo — hotels, offices, restaurants, shops — are included in the flat hire rate. There is no per-stop charge or additional mileage fee.",
           ja: "はい。ホテル・オフィス・レストラン・ショッピングなど都内複数箇所への立ち寄りは定額料金に含まれます。停車ごとの追加料金や走行距離による加算はありません。",
           zh: "可以。東京市內多個停靠點（酒店、辦公室、餐廳、商店）均包含在定額包車費用內，無任何按站或里程附加費。",
+          ko: "네. 도쿄 내 복수 경유지(호텔, 사무실, 레스토랑, 쇼핑)는 정액 전세 요금에 포함됩니다. 경유지당 추가 요금이나 주행 거리 추가는 없습니다.",
         },
       },
       {
@@ -984,11 +1156,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "What happens if I need the car for more than 10 hours?",
           ja: "10時間を超えた場合はどうなりますか？",
           zh: "如果需要超過10小時怎麼辦？",
+          ko: "10시간을 초과할 경우 어떻게 되나요?",
         },
         a: {
           en: "Overtime beyond the 10-hour block is billed at an agreed hourly rate, confirmed upfront at time of booking. We will also inform you proactively if you are approaching the 10-hour limit during the day.",
           ja: "10時間超の追加分は、ご予約時に合意した時間単価で加算されます。当日10時間に近づいた際にもご連絡いたします。",
           zh: "超出10小時的部分，按預訂時商定的時薪計費。當天接近10小時上限時，我們也會主動提醒您。",
+          ko: "10시간 블록을 초과하는 연장분은 예약 시 사전 합의된 시간당 요금으로 청구됩니다. 당일 10시간 한도에 근접하면 미리 알려드립니다.",
         },
       },
       {
@@ -996,11 +1170,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "Is the hourly hire suitable for corporate business meetings in Tokyo?",
           ja: "東京での法人ビジネスミーティングへの時間制貸切は適していますか？",
           zh: "時段包車適合東京的企業商務會議嗎？",
+          ko: "시간제 전세가 도쿄 법인 비즈니스 미팅에 적합한가요?",
         },
         a: {
           en: "Yes. Many of our corporate clients use the hourly hire for investor roadshows, client meetings across multiple Tokyo business districts (Marunouchi, Roppongi, Shibuya), and ministerial or government office visits. [Invoicing and account billing](/book) are available.",
           ja: "はい。法人のお客様には、投資家ロードショー、複数のビジネス地区（丸の内・六本木・渋谷）での商談、省庁・官公庁訪問などにご利用いただいています。[インボイス・法人アカウント請求](/book)にも対応しています。",
           zh: "非常適合。我們許多企業客戶使用時段包車服務進行投資者路演、跨多個東京商業區（丸之內、六本木、澀谷）的客戶拜訪，以及省廳或政府辦公室訪問。支持[開具發票及法人賬戶結算](/book)。",
+          ko: "네. 많은 법인 고객이 투자자 로드쇼, 도쿄 여러 비즈니스 구역(마루노우치, 롯폰기, 시부야)에 걸친 고객 미팅, 성청·관공서 방문 등에 시간제 전세를 이용합니다. [청구서 및 법인 계정 결산](/book)에도 대응합니다.",
         },
       },
       {
@@ -1008,11 +1184,13 @@ const ROUTES: Record<RouteSlug, RouteData> = {
           en: "Can I use the hourly hire for a shopping day in Ginza or Shibuya?",
           ja: "銀座や渋谷のショッピングデーに時間制貸切を使えますか？",
           zh: "可以用時段包車做銀座或澀谷的購物日嗎？",
+          ko: "긴자나 시부야 쇼핑 데이에 시간제 전세를 이용할 수 있나요?",
         },
         a: {
           en: "Absolutely. The hourly hire is ideal for luxury shopping days — your purchases are stored securely in the vehicle, you can move between stores without carrying bags, and the chauffeur can suggest optimal routes between Ginza, Harajuku, and Shibuya.",
           ja: "もちろんです。高級ショッピングデーには最適なサービスです。購入品は車内に安全に保管でき、袋を持ち歩く必要なく店舗を移動できます。銀座・原宿・渋谷間の最適ルートもチャウファーがご案内します。",
           zh: "當然可以。時段包車非常適合奢華購物日——您的購物袋安全置於車內，無需拎著大包小包在各店間移動，司機還能為您規劃銀座、原宿和澀谷之間的最佳路線。",
+          ko: "물론입니다. 시간제 전세는 럭셔리 쇼핑 데이에 최적입니다. 구매품은 차량 내에 안전하게 보관되고, 가방을 들고 다닐 필요 없이 매장 간 이동이 가능하며, 드라이버가 긴자, 하라주쿠, 시부야 간 최적 경로를 안내합니다.",
         },
       },
     ],

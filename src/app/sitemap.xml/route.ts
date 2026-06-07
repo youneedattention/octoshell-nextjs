@@ -43,31 +43,38 @@ export async function GET() {
   const now = new Date().toISOString();
   const entries: string[] = [];
 
-  /* ── Core content pages with zh alternates ── */
+  /* ── Core content pages with ja / zh / ko alternates ── */
   for (const { path, priority, changefreq } of CONTENT_PATHS) {
-    entries.push(urlEntry(`${BASE}${path}`, priority, changefreq, now, [
-      { hreflang: "en",     href: `${BASE}${path}` },
-      { hreflang: "zh-TW",  href: `${BASE}/zh${path}` },
+    const alts = [
+      { hreflang: "en",        href: `${BASE}${path}` },
+      { hreflang: "ja",        href: `${BASE}/ja${path}` },
+      { hreflang: "zh-TW",     href: `${BASE}/zh${path}` },
+      { hreflang: "ko",        href: `${BASE}/ko${path}` },
       { hreflang: "x-default", href: `${BASE}${path}` },
-    ]));
-    entries.push(urlEntry(`${BASE}/zh${path}`, priority, changefreq, now, [
-      { hreflang: "en",     href: `${BASE}${path}` },
-      { hreflang: "zh-TW",  href: `${BASE}/zh${path}` },
-      { hreflang: "x-default", href: `${BASE}${path}` },
-    ]));
+    ];
+    entries.push(urlEntry(`${BASE}${path}`,     priority, changefreq, now, alts));
+    entries.push(urlEntry(`${BASE}/ja${path}`,  priority, changefreq, now, alts));
+    entries.push(urlEntry(`${BASE}/zh${path}`,  priority, changefreq, now, alts));
+    entries.push(urlEntry(`${BASE}/ko${path}`,  priority, changefreq, now, alts));
   }
 
-  /* ── Service landing pages with zh alternates ── */
+  /* ── Service landing pages with ja / zh / ko alternates ── */
   for (const route of LANDING_ROUTES) {
     const en  = `${BASE}/services/${route}`;
+    const jap = `${BASE}/ja/services/${route}`;
     const zhp = `${BASE}/zh/services/${route}`;
+    const kop = `${BASE}/ko/services/${route}`;
     const alts = [
       { hreflang: "en",        href: en  },
+      { hreflang: "ja",        href: jap },
       { hreflang: "zh-TW",     href: zhp },
+      { hreflang: "ko",        href: kop },
       { hreflang: "x-default", href: en  },
     ];
     entries.push(urlEntry(en,  "0.9", "monthly", now, alts));
+    entries.push(urlEntry(jap, "0.9", "monthly", now, alts));
     entries.push(urlEntry(zhp, "0.9", "monthly", now, alts));
+    entries.push(urlEntry(kop, "0.9", "monthly", now, alts));
   }
 
   /* ── tokyoairporttransfer.com ── */

@@ -51,52 +51,52 @@ const SCHEMA = {
 ══════════════════════════════════════════════════════════════════════ */
 type Copy = Record<Lang, string>;
 
-const HERO_BADGE: Copy = { en: "OUR FLEET", ja: "車種ラインナップ", zh: "車隊介紹" };
-const HERO_H1: Copy    = { en: "Two Vehicles.\nEvery Trip Covered.", ja: "2車種で\nあらゆる旅に対応。", zh: "兩款車型\n覆蓋所有行程。" };
-const HERO_SUB: Copy   = { en: "Toyota Alphard · Toyota Hiace — Licensed Green-Plate Fleet", ja: "トヨタ アルファード · トヨタ ハイエース — 合法緑ナンバー車両", zh: "豐田埃爾法 · 豐田海獅 — 合規綠牌車隊" };
-const BOOK_BTN: Copy   = { en: "Book This Vehicle", ja: "この車両を予約", zh: "預訂此車" };
+const HERO_BADGE: Copy = { en: "OUR FLEET", ja: "車種ラインナップ", zh: "車隊介紹", ko: "차량 라인업" };
+const HERO_H1: Copy    = { en: "Two Vehicles.\nEvery Trip Covered.", ja: "2車種で\nあらゆる旅に対応。", zh: "兩款車型\n覆蓋所有行程。", ko: "두 가지 차종으로\n모든 여정을 커버합니다." };
+const HERO_SUB: Copy   = { en: "Toyota Alphard · Toyota Hiace — Licensed Green-Plate Fleet", ja: "トヨタ アルファード · トヨタ ハイエース — 合法緑ナンバー車両", zh: "豐田埃爾法 · 豐田海獅 — 合規綠牌車隊", ko: "Toyota Alphard · Toyota Hiace — 합규 녹색 번호판 차대" };
+const BOOK_BTN: Copy   = { en: "Book This Vehicle", ja: "この車両を予約", zh: "預訂此車", ko: "이 차량 예약" };
 
 /* ── Comparison table ── */
 const CMP_HEADS: Copy[] = [
-  { en: "", ja: "", zh: "" },
-  { en: "ALPHARD", ja: "アルファード", zh: "埃爾法" },
-  { en: "HIACE", ja: "ハイエース", zh: "海獅" },
+  { en: "", ja: "", zh: "", ko: "" },
+  { en: "ALPHARD", ja: "アルファード", zh: "埃爾法", ko: "알파드" },
+  { en: "HIACE", ja: "ハイエース", zh: "海獅", ko: "하이에이스" },
 ];
 const CMP_ROWS: { label: Copy; a: Copy; h: Copy }[] = [
   {
-    label: { en: "Max passengers", ja: "最大乗車人数", zh: "最多乘客" },
-    a: { en: "6", ja: "6名", zh: "6人" },
-    h: { en: "9", ja: "9名", zh: "9人" },
+    label: { en: "Max passengers", ja: "最大乗車人数", zh: "最多乘客", ko: "최대 탑승 인원" },
+    a: { en: "6", ja: "6名", zh: "6人", ko: "6인" },
+    h: { en: "9", ja: "9名", zh: "9人", ko: "9인" },
   },
   {
-    label: { en: "Suitcases (4–6 pax)", ja: "スーツケース（4〜6名）", zh: "行李箱（4至6人）" },
-    a: { en: "5 large", ja: "大型5個", zh: "5件大型" },
-    h: { en: "9 large", ja: "大型9個", zh: "9件大型" },
+    label: { en: "Suitcases (4–6 pax)", ja: "スーツケース（4〜6名）", zh: "行李箱（4至6人）", ko: "수트케이스 (4~6인)" },
+    a: { en: "5 large", ja: "大型5個", zh: "5件大型", ko: "대형 5개" },
+    h: { en: "9 large", ja: "大型9個", zh: "9件大型", ko: "대형 9개" },
   },
   {
-    label: { en: "Suitcases (1–3 pax)", ja: "スーツケース（1〜3名）", zh: "行李箱（1至3人）" },
-    a: { en: "up to 10 large", ja: "大型10個まで", zh: "最多10件大型" },
-    h: { en: "up to 15 large", ja: "大型15個まで", zh: "最多15件大型" },
+    label: { en: "Suitcases (1–3 pax)", ja: "スーツケース（1〜3名）", zh: "行李箱（1至3人）", ko: "수트케이스 (1~3인)" },
+    a: { en: "up to 10 large", ja: "大型10個まで", zh: "最多10件大型", ko: "대형 최대 10개" },
+    h: { en: "up to 15 large", ja: "大型15個まで", zh: "最多15件大型", ko: "대형 최대 15개" },
   },
   {
-    label: { en: "Golf bags", ja: "ゴルフバッグ", zh: "高爾夫球袋" },
-    a: { en: "2–3", ja: "2〜3本", zh: "2至3個" },
-    h: { en: "4–6", ja: "4〜6本", zh: "4至6個" },
+    label: { en: "Golf bags", ja: "ゴルフバッグ", zh: "高爾夫球袋", ko: "골프백" },
+    a: { en: "2–3", ja: "2〜3本", zh: "2至3個", ko: "2~3개" },
+    h: { en: "4–6", ja: "4〜6本", zh: "4至6個", ko: "4~6개" },
   },
   {
-    label: { en: "Stroller / wheelchair", ja: "ベビーカー / 車椅子", zh: "嬰兒車 / 輪椅" },
-    a: { en: "1 (folded)", ja: "1台（折畳）", zh: "1架（折疊）" },
-    h: { en: "1–2", ja: "1〜2台", zh: "1至2架" },
+    label: { en: "Stroller / wheelchair", ja: "ベビーカー / 車椅子", zh: "嬰兒車 / 輪椅", ko: "유모차 / 휠체어" },
+    a: { en: "1 (folded)", ja: "1台（折畳）", zh: "1架（折疊）", ko: "1대 (접이식)" },
+    h: { en: "1–2", ja: "1〜2台", zh: "1至2架", ko: "1~2대" },
   },
   {
-    label: { en: "Child seat (ISOFIX)", ja: "チャイルドシート（ISOFIX）", zh: "兒童座椅（ISOFIX）" },
-    a: { en: "Free on request", ja: "無料（要申請）", zh: "免費（需提前申請）" },
-    h: { en: "Free on request", ja: "無料（要申請）", zh: "免費（需提前申請）" },
+    label: { en: "Child seat (ISOFIX)", ja: "チャイルドシート（ISOFIX）", zh: "兒童座椅（ISOFIX）", ko: "유아 카시트 (ISOFIX)" },
+    a: { en: "Free on request", ja: "無料（要申請）", zh: "免費（需提前申請）", ko: "무료 (요청 시)" },
+    h: { en: "Free on request", ja: "無料（要申請）", zh: "免費（需提前申請）", ko: "무료 (요청 시)" },
   },
   {
-    label: { en: "Airport transfer from", ja: "空港送迎料金〜", zh: "機場接送起價" },
-    a: { en: "¥20,000", ja: "¥20,000〜", zh: "¥20,000起" },
-    h: { en: "¥22,000", ja: "¥22,000〜", zh: "¥22,000起" },
+    label: { en: "Airport transfer from", ja: "空港送迎料金〜", zh: "機場接送起價", ko: "공항 송영 시작 요금" },
+    a: { en: "¥20,000", ja: "¥20,000〜", zh: "¥20,000起", ko: "¥20,000~" },
+    h: { en: "¥22,000", ja: "¥22,000〜", zh: "¥22,000起", ko: "¥22,000~" },
   },
 ];
 
@@ -117,60 +117,62 @@ const VEHICLES: VehicleData[] = [
   {
     id: "alphard",
     name: "Toyota Alphard",
-    badge: { en: "Luxury MPV", ja: "ラグジュアリーMPV", zh: "豪華MPV" },
+    badge: { en: "Luxury MPV", ja: "ラグジュアリーMPV", zh: "豪華MPV", ko: "럭셔리 MPV" },
     tagline: {
       en: "Perfect for airport transfers, business travel and private sightseeing tours in Japan.",
       ja: "空港送迎、ビジネス出張、プライベート観光に最適です。",
       zh: "完美適用於機場接送、商務出行及日本私人觀光遊覽。",
+      ko: "공항 송영, 비즈니스 출장, 일본 프라이빗 관광에 완벽합니다.",
     },
     img: "/alphard.webp",
     dims: { l: "4,945 mm", w: "1,850 mm", h: "1,950 mm" },
     configs: [
       {
-        label: { en: "Standard (4–6 passengers)", ja: "標準（4〜6名）", zh: "標準（4至6人）" },
-        bags:  { en: "5 large suitcases", ja: "大型スーツケース5個", zh: "5件大型行李箱" },
+        label: { en: "Standard (4–6 passengers)", ja: "標準（4〜6名）", zh: "標準（4至6人）", ko: "표준 (4~6인)" },
+        bags:  { en: "5 large suitcases", ja: "大型スーツケース5個", zh: "5件大型行李箱", ko: "대형 수트케이스 5개" },
       },
       {
-        label: { en: "Light (1–3 passengers)", ja: "少人数（1〜3名）", zh: "輕裝（1至3人）" },
-        bags:  { en: "up to 10 large suitcases", ja: "大型スーツケース最大10個", zh: "最多10件大型行李箱" },
-        note:  { en: "Ideal for heavy luggage or shopping trips", ja: "大荷物・ショッピング旅行に最適", zh: "適合大量行李或購物行程" },
+        label: { en: "Light (1–3 passengers)", ja: "少人数（1〜3名）", zh: "輕裝（1至3人）", ko: "소인수 (1~3인)" },
+        bags:  { en: "up to 10 large suitcases", ja: "大型スーツケース最大10個", zh: "最多10件大型行李箱", ko: "대형 수트케이스 최대 10개" },
+        note:  { en: "Ideal for heavy luggage or shopping trips", ja: "大荷物・ショッピング旅行に最適", zh: "適合大量行李或購物行程", ko: "대형 짐이나 쇼핑 여행에 최적" },
       },
     ],
     best_for: [
-      { en: "Airport transfers", ja: "空港送迎", zh: "機場接送" },
-      { en: "VIP & corporate clients", ja: "VIP・法人のお客様", zh: "VIP及企業客戶" },
-      { en: "Couples & small families", ja: "カップル・小家族", zh: "情侶及小家庭" },
-      { en: "Luxury sightseeing", ja: "高級観光", zh: "豪華觀光" },
+      { en: "Airport transfers", ja: "空港送迎", zh: "機場接送", ko: "공항 송영" },
+      { en: "VIP & corporate clients", ja: "VIP・法人のお客様", zh: "VIP及企業客戶", ko: "VIP 및 법인 고객" },
+      { en: "Couples & small families", ja: "カップル・小家族", zh: "情侶及小家庭", ko: "커플 및 소가족" },
+      { en: "Luxury sightseeing", ja: "高級観光", zh: "豪華觀光", ko: "럭셔리 관광" },
     ],
     book_slug: "alphard",
   },
   {
     id: "hiace",
     name: "Toyota Hiace",
-    badge: { en: "Premium Van", ja: "プレミアムバン", zh: "優質廂型車" },
+    badge: { en: "Premium Van", ja: "プレミアムバン", zh: "優質廂型車", ko: "프리미엄 밴" },
     tagline: {
       en: "Ideal for families, small groups and corporate transportation.",
       ja: "ファミリー、小グループ、法人輸送に最適です。",
       zh: "適合家庭出行、小型團體及企業接送。",
+      ko: "가족, 소그룹, 법인 이동에 이상적입니다.",
     },
     img: "/hiace.webp",
     dims: { l: "5,380 mm", w: "1,880 mm", h: "2,285 mm" },
     configs: [
       {
-        label: { en: "Standard (7–9 passengers)", ja: "標準（7〜9名）", zh: "標準（7至9人）" },
-        bags:  { en: "9 large suitcases", ja: "大型スーツケース9個", zh: "9件大型行李箱" },
+        label: { en: "Standard (7–9 passengers)", ja: "標準（7〜9名）", zh: "標準（7至9人）", ko: "표준 (7~9인)" },
+        bags:  { en: "9 large suitcases", ja: "大型スーツケース9個", zh: "9件大型行李箱", ko: "대형 수트케이스 9개" },
       },
       {
-        label: { en: "Light (1–6 passengers)", ja: "少人数（1〜6名）", zh: "輕裝（1至6人）" },
-        bags:  { en: "up to 15 large suitcases", ja: "大型スーツケース最大15個", zh: "最多15件大型行李箱" },
-        note:  { en: "Also fits ski bags, golf bags, strollers, or wheelchairs", ja: "スキーバッグ・ゴルフバッグ・ベビーカー・車椅子も積載可", zh: "亦可放置滑雪袋、高爾夫球袋、嬰兒車或輪椅" },
+        label: { en: "Light (1–6 passengers)", ja: "少人数（1〜6名）", zh: "輕裝（1至6人）", ko: "소인수 (1~6인)" },
+        bags:  { en: "up to 15 large suitcases", ja: "大型スーツケース最大15個", zh: "最多15件大型行李箱", ko: "대형 수트케이스 최대 15개" },
+        note:  { en: "Also fits ski bags, golf bags, strollers, or wheelchairs", ja: "スキーバッグ・ゴルフバッグ・ベビーカー・車椅子も積載可", zh: "亦可放置滑雪袋、高爾夫球袋、嬰兒車或輪椅", ko: "스키백, 골프백, 유모차, 휠체어도 탑재 가능" },
       },
     ],
     best_for: [
-      { en: "Large groups & families", ja: "大家族・大人数グループ", zh: "大家庭及大型團體" },
-      { en: "Golf & ski tours", ja: "ゴルフ・スキーツアー", zh: "高爾夫及滑雪之旅" },
-      { en: "Hiking & outdoor trips", ja: "登山・アウトドア", zh: "登山及戶外活動" },
-      { en: "Events & MICE", ja: "イベント・MICE", zh: "活動及會議" },
+      { en: "Large groups & families", ja: "大家族・大人数グループ", zh: "大家庭及大型團體", ko: "대가족 및 대그룹" },
+      { en: "Golf & ski tours", ja: "ゴルフ・スキーツアー", zh: "高爾夫及滑雪之旅", ko: "골프 및 스키 투어" },
+      { en: "Hiking & outdoor trips", ja: "登山・アウトドア", zh: "登山及戶外活動", ko: "등산 및 야외 활동" },
+      { en: "Events & MICE", ja: "イベント・MICE", zh: "活動及會議", ko: "이벤트 및 MICE" },
     ],
     book_slug: "hiace",
   },
@@ -179,16 +181,16 @@ const VEHICLES: VehicleData[] = [
 /* ── FAQ ── */
 const FAQS: { q: Copy; a: Copy }[] = [
   {
-    q: { en: "Can I mix different luggage types — suitcases, golf bags, and a stroller?", ja: "スーツケース・ゴルフバッグ・ベビーカーなど、異なる荷物を一緒に積めますか？", zh: "可以混放行李箱、高爾夫球袋和嬰兒車嗎？" },
-    a: { en: "Yes. Just tell us what you're bringing when you book. We'll confirm the vehicle can fit everything before confirming.", ja: "はい。ご予約時に持ち込む荷物をすべてお知らせください。すべて積載できる車両を確認した上で予約を確定いたします。", zh: "可以。預訂時請告訴我們您帶的所有物品，我們確認車輛可以容納後才會確認預訂。" },
+    q: { en: "Can I mix different luggage types — suitcases, golf bags, and a stroller?", ja: "スーツケース・ゴルフバッグ・ベビーカーなど、異なる荷物を一緒に積めますか？", zh: "可以混放行李箱、高爾夫球袋和嬰兒車嗎？", ko: "수트케이스, 골프백, 유모차 등 다양한 짐을 함께 실을 수 있나요?" },
+    a: { en: "Yes. Just tell us what you're bringing when you book. We'll confirm the vehicle can fit everything before confirming.", ja: "はい。ご予約時に持ち込む荷物をすべてお知らせください。すべて積載できる車両を確認した上で予約を確定いたします。", zh: "可以。預訂時請告訴我們您帶的所有物品，我們確認車輛可以容納後才會確認預訂。", ko: "네. 예약 시 가져올 짐을 모두 알려 주세요. 모두 탑재 가능한 차량을 확인한 후 예약을 확정합니다." },
   },
   {
-    q: { en: "Which vehicle is right for my group?", ja: "どの車両が私のグループに合っていますか？", zh: "哪款車型適合我的團體？" },
-    a: { en: "4 or fewer passengers with standard luggage → Alphard. 5 or more passengers, oversized bags, or golf/ski equipment → Hiace. Unsure? Tell us your group size and luggage and we'll recommend.", ja: "標準的な荷物で4名以下 → アルファード。5名以上、大型荷物、ゴルフ・スキー機材あり → ハイエース。迷われている場合は、グループ人数と荷物をお知らせください。", zh: "4人以下且行李標準 → 埃爾法。5人以上、或有超大行李、高爾夫/滑雪器材 → 海獅。不確定？告訴我們人數和行李，我們為您推薦。" },
+    q: { en: "Which vehicle is right for my group?", ja: "どの車両が私のグループに合っていますか？", zh: "哪款車型適合我的團體？", ko: "저희 그룹에는 어떤 차량이 적합한가요?" },
+    a: { en: "4 or fewer passengers with standard luggage → Alphard. 5 or more passengers, oversized bags, or golf/ski equipment → Hiace. Unsure? Tell us your group size and luggage and we'll recommend.", ja: "標準的な荷物で4名以下 → アルファード。5名以上、大型荷物、ゴルフ・スキー機材あり → ハイエース。迷われている場合は、グループ人数と荷物をお知らせください。", zh: "4人以下且行李標準 → 埃爾法。5人以上、或有超大行李、高爾夫/滑雪器材 → 海獅。不確定？告訴我們人數和行李，我們為您推薦。", ko: "표준 짐의 4인 이하 → Alphard. 5인 이상, 대형 짐, 골프/스키 장비 → Hiace. 잘 모르시겠으면 인원수와 짐을 알려 주시면 추천해 드립니다." },
   },
   {
-    q: { en: "Are both vehicles non-smoking?", ja: "両車両とも禁煙ですか？", zh: "兩款車型都禁煙嗎？" },
-    a: { en: "Yes. Both vehicles are strictly non-smoking, including e-cigarettes.", ja: "はい。電子タバコを含め、両車両とも完全禁煙です。", zh: "是的。兩款車型均嚴格禁煙，包括電子煙。" },
+    q: { en: "Are both vehicles non-smoking?", ja: "両車両とも禁煙ですか？", zh: "兩款車型都禁煙嗎？", ko: "두 차량 모두 금연인가요?" },
+    a: { en: "Yes. Both vehicles are strictly non-smoking, including e-cigarettes.", ja: "はい。電子タバコを含め、両車両とも完全禁煙です。", zh: "是的。兩款車型均嚴格禁煙，包括電子煙。", ko: "네. 전자담배를 포함하여 두 차량 모두 완전 금연입니다." },
   },
 ];
 
