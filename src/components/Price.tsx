@@ -16,6 +16,9 @@ const NOTE: Record<Lang, string> = {
   ja: "* [C]建ての表示価格は参考値です。最終的なお支払いは日本円（JPY）にてご請求いたします。外貨でのお支払いをご希望の場合、為替手数料が発生する場合がございます。",
   zh: "* 以上[C]換算金額僅供參考，最終結算以日元（JPY）計算。如以非日元貨幣付款，可能需要支付外幣換算手續費。",
   ko: "* [C] 환산 금액은 참고용이며, 최종 결제는 일본 엔화（JPY）로 청구됩니다. 외화로 결제하시는 경우 환전 수수료가 발생할 수 있습니다.",
+  "zh-cn": "* 以上[C]换算金额仅供参考，最终结算以日元（JPY）计算。如以非日元货币付款，可能需要支付外币换算手续费。",
+  th: "* ราคาที่แสดงเป็น [C] เป็นราคาโดยประมาณสำหรับอ้างอิงเท่านั้น การชำระเงินทั้งหมดเป็นสกุลเงินเยนญี่ปุ่น (JPY) หากชำระด้วยสกุลเงินต่างประเทศ อาจมีค่าธรรมเนียมการแปลงสกุลเงิน",
+  fr: "* Les prix affichés en [C] sont approximatifs et fournis à titre indicatif uniquement. Tous les paiements sont réglés en yen japonais (JPY). Des frais de conversion peuvent s'appliquer en cas de paiement en devise étrangère.",
 };
 
 /**

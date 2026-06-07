@@ -24,18 +24,27 @@ const PAGE_BADGE: Record<Lang, string> = {
   ja: "個人情報",
   zh: "隱私權",
   ko: "개인정보",
+  "zh-cn": "隐私政策",
+  th: "นโยบายความเป็นส่วนตัว",
+  fr: "POLITIQUE DE CONFIDENTIALITÉ",
 };
 const PAGE_TITLE: Record<Lang, string> = {
   en: "Privacy Policy",
   ja: "プライバシーポリシー（個人情報保護方針）",
   zh: "隱私權保護政策",
   ko: "개인정보 보호 방침",
+  "zh-cn": "隐私权保护政策",
+  th: "นโยบายความเป็นส่วนตัว",
+  fr: "Politique de confidentialité",
 };
 const PAGE_UPDATED: Record<Lang, string> = {
   en: "Last updated: October 2024",
   ja: "最終更新：2024年10月",
   zh: "最後更新：2024年10月",
   ko: "최종 업데이트: 2024년 10월",
+  "zh-cn": "最后更新：2024年10月",
+  th: "อัปเดตล่าสุด: ตุลาคม 2024",
+  fr: "Dernière mise à jour : octobre 2024",
 };
 
 /* ══════════════════════════════════════════════════════════════════════
@@ -46,11 +55,56 @@ const INTRO: Record<Lang, string> = {
   en: "Octoshell Co., Ltd. (hereinafter referred to as \"the Company\") defines and manages personal information as follows to ensure the privacy and confidentiality of our users.",
   zh: "貝八方株式會社（以下簡稱「本公司」）在透過網路提供高級專屬包車預訂業務及向用戶提供客製化資訊的過程中，深知客戶個人隱私之重要性，並將嚴格妥善管理與保護個人資料。",
   ko: "貝八方 주식회사(이하 '당사')는 인터넷을 통한 하이어 예약 업무의 완수 및 고객에게 최적화된 정보 제공에 있어, 개인정보의 중요성을 깊이 인식하고 이를 적절히 관리·보호하기 위해 노력합니다.",
+  "zh-cn": "Octoshell Co., Ltd. (hereinafter referred to as \"the Company\") defines and manages personal information as follows to ensure the privacy and confidentiality of our users.",
+  th: "Octoshell Co., Ltd. (hereinafter referred to as \"the Company\") defines and manages personal information as follows to ensure the privacy and confidentiality of our users.",
+  fr: "Octoshell Co., Ltd. (hereinafter referred to as \"the Company\") defines and manages personal information as follows to ensure the privacy and confidentiality of our users.",
 };
 
 /* ══════════════════════════════════════════════════════════════════════
    Section data — all three languages
 ══════════════════════════════════════════════════════════════════════ */
+const SECTIONS_EN: PSection[] = [
+    {
+      heading: "Definition of Personal Information",
+      blocks: [
+        { type: "text", value: "Personal information refers to any form of information pertaining to the individual involved. It is identified by the name, address, e-mail address, access records, other descriptions, numbers, and signs given to the individual, as well as images or voice that a person has. This also includes information that is not identifiable by itself but can be easily identified by cross-checking with other data." },
+      ],
+    },
+    {
+      heading: "Range of Use of Personal Information",
+      blocks: [
+        { type: "text", value: "Our purposes for collecting and processing personal information are:" },
+        { type: "list", items: [
+          "For the Company, our partners, and our cooperative companies to accomplish the online \"Hired car reservation\" business through the Internet.",
+          "For the user to view customized and tailored information displayed on our website.",
+          "For the Company to deliver the best information and updates based on the contents of the individual's registration.",
+        ]},
+      ],
+    },
+    {
+      heading: "Disclosing of Personal Information to Third Parties",
+      blocks: [
+        { type: "text", value: "As a rule, we will not disclose a user's personal information without the prior consent of the person involved. All personal data will be kept strictly private to the Company, the managing body of this website, our partners, and our cooperative enterprises who have entered into a non-disclosure agreement with the Company." },
+        { type: "text", value: "A part of the site management and the transportation/travel business may be consigned to enterprises or individuals who have executed a business contract, including a non-disclosure agreement, with the Company." },
+        { type: "note", label: "【However, personal information may be disclosed under the following exceptional situations】", body: "The information, registration content, and profile given by the user can be notified to a third party concerned, the police, or related organizations when the Company believes that the user's actions cause disadvantage or harm to a third party. Moreover, when the information, registration contents, and profile given by the user are requested by a court, the public prosecutor's office, the police, the bar association, the consumer affairs bureau, or other official and quasi-official bodies, the Company can disclose the information in compliance with the request. The Company also reserves the right to disclose such information to protect the rights and property of the Company." },
+        { type: "text", value: "The Company may disclose anonymized statistical information about our users to explain our services to potential cooperative partners, advertisers, and other third parties, or for other lawful purposes." },
+      ],
+    },
+    {
+      heading: "Measures Against Unauthorized Computer Access",
+      blocks: [
+        { type: "text", value: "To address and prevent unauthorized computer access, loss, destruction, alteration, or leakage of personal data, the Company implements robust organizational and technical security countermeasures and safety management controls." },
+      ],
+    },
+    {
+      heading: "Privacy Safeguards and User Responsibility Over the Internet",
+      blocks: [
+        { type: "text", value: "Please note that there is a possibility that personal information you voluntarily disclose online may be collected and used by other internet users. If personal information is disclosed in a public space on the Internet that everyone has access to, you might receive unsolicited messages based on the information posted there." },
+        { type: "text", value: "Users must transmit information at their own risk. Moreover, external enterprises that collect data through this website or provide independent services, rewards, or sales incentives have their own regulations regarding private information. The Company cannot assume any obligation or responsibility for rules and activities independent of our website." },
+      ],
+    },
+];
+
 const SECTIONS: Record<Lang, PSection[]> = {
 
   /* ─── JAPANESE ──────────────────────────────────────────────────── */
@@ -97,47 +151,7 @@ const SECTIONS: Record<Lang, PSection[]> = {
   ],
 
   /* ─── ENGLISH ───────────────────────────────────────────────────── */
-  en: [
-    {
-      heading: "Definition of Personal Information",
-      blocks: [
-        { type: "text", value: "Personal information refers to any form of information pertaining to the individual involved. It is identified by the name, address, e-mail address, access records, other descriptions, numbers, and signs given to the individual, as well as images or voice that a person has. This also includes information that is not identifiable by itself but can be easily identified by cross-checking with other data." },
-      ],
-    },
-    {
-      heading: "Range of Use of Personal Information",
-      blocks: [
-        { type: "text", value: "Our purposes for collecting and processing personal information are:" },
-        { type: "list", items: [
-          "For the Company, our partners, and our cooperative companies to accomplish the online \"Hired car reservation\" business through the Internet.",
-          "For the user to view customized and tailored information displayed on our website.",
-          "For the Company to deliver the best information and updates based on the contents of the individual's registration.",
-        ]},
-      ],
-    },
-    {
-      heading: "Disclosing of Personal Information to Third Parties",
-      blocks: [
-        { type: "text", value: "As a rule, we will not disclose a user's personal information without the prior consent of the person involved. All personal data will be kept strictly private to the Company, the managing body of this website, our partners, and our cooperative enterprises who have entered into a non-disclosure agreement with the Company." },
-        { type: "text", value: "A part of the site management and the transportation/travel business may be consigned to enterprises or individuals who have executed a business contract, including a non-disclosure agreement, with the Company." },
-        { type: "note", label: "【However, personal information may be disclosed under the following exceptional situations】", body: "The information, registration content, and profile given by the user can be notified to a third party concerned, the police, or related organizations when the Company believes that the user's actions cause disadvantage or harm to a third party. Moreover, when the information, registration contents, and profile given by the user are requested by a court, the public prosecutor's office, the police, the bar association, the consumer affairs bureau, or other official and quasi-official bodies, the Company can disclose the information in compliance with the request. The Company also reserves the right to disclose such information to protect the rights and property of the Company." },
-        { type: "text", value: "The Company may disclose anonymized statistical information about our users to explain our services to potential cooperative partners, advertisers, and other third parties, or for other lawful purposes." },
-      ],
-    },
-    {
-      heading: "Measures Against Unauthorized Computer Access",
-      blocks: [
-        { type: "text", value: "To address and prevent unauthorized computer access, loss, destruction, alteration, or leakage of personal data, the Company implements robust organizational and technical security countermeasures and safety management controls." },
-      ],
-    },
-    {
-      heading: "Privacy Safeguards and User Responsibility Over the Internet",
-      blocks: [
-        { type: "text", value: "Please note that there is a possibility that personal information you voluntarily disclose online may be collected and used by other internet users. If personal information is disclosed in a public space on the Internet that everyone has access to, you might receive unsolicited messages based on the information posted there." },
-        { type: "text", value: "Users must transmit information at their own risk. Moreover, external enterprises that collect data through this website or provide independent services, rewards, or sales incentives have their own regulations regarding private information. The Company cannot assume any obligation or responsibility for rules and activities independent of our website." },
-      ],
-    },
-  ],
+  en: SECTIONS_EN,
 
   /* ─── TRADITIONAL CHINESE ───────────────────────────────────────── */
   zh: [
@@ -224,6 +238,11 @@ const SECTIONS: Record<Lang, PSection[]> = {
       ],
     },
   ],
+
+  /* ─── SIMPLIFIED CHINESE / THAI / FRENCH (fallback to EN) ──────── */
+  "zh-cn": SECTIONS_EN,
+  th: SECTIONS_EN,
+  fr: SECTIONS_EN,
 };
 
 /* ══════════════════════════════════════════════════════════════════════

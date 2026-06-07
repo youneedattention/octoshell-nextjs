@@ -54,13 +54,16 @@ export default function FaqPage() {
   const toggle = (key: string) => setOpenKey(prev => prev === key ? null : key);
   const groups = FAQ_GROUPED[lang];
 
-  const ALL_LABEL = { en: "All Questions", ja: "すべての質問", zh: "全部問題", ko: "모든 질문" };
+  const ALL_LABEL = { en: "All Questions", ja: "すべての質問", zh: "全部問題", ko: "모든 질문", "zh-cn": "全部问题", th: "คำถามทั้งหมด", fr: "Toutes les questions" };
 
   const SLOGAN = {
     en: { badge: "Help Centre", line1: "Every question.", line2: "Precisely answered.", sub: "Before your journey begins, we want you to feel certain. Browse every detail below — or reach us directly.", placeholder: "Search questions…" },
     ja: { badge: "ヘルプセンター", line1: "すべてのご質問に、", line2: "丁寧にお答えします。", sub: "旅が始まる前に、安心してご出発いただけるよう。以下からご確認ください。", placeholder: "質問を検索…" },
     zh: { badge: "幫助中心", line1: "每一個問題，", line2: "都值得精確的回答。", sub: "出發前，我們希望您一切心中有數。請瀏覽以下內容，或直接與我們聯絡。", placeholder: "搜尋問題…" },
     ko: { badge: "고객 지원", line1: "모든 질문에", line2: "정확하게 답합니다.", sub: "여정이 시작되기 전, 모든 것을 확신할 수 있도록. 아래 내용을 확인하시거나 직접 문의해 주세요.", placeholder: "질문 검색…" },
+    "zh-cn": { badge: "帮助中心", line1: "每一个问题，", line2: "都值得精确的回答。", sub: "出发前，我们希望您一切心中有数。请浏览以下内容，或直接与我们联系。", placeholder: "搜索问题…" },
+    th: { badge: "ศูนย์ช่วยเหลือ", line1: "ทุกคำถาม", line2: "ตอบอย่างแม่นยำ", sub: "ก่อนเริ่มต้นการเดินทาง เราต้องการให้คุณมั่นใจ ดูรายละเอียดด้านล่างหรือติดต่อเราโดยตรง", placeholder: "ค้นหาคำถาม…" },
+    fr: { badge: "Centre d'aide", line1: "Chaque question.", line2: "Précisément répondue.", sub: "Avant votre voyage, nous voulons que vous soyez certain. Parcourez tous les détails ci-dessous ou contactez-nous directement.", placeholder: "Rechercher des questions…" },
   };
 
   const handleGroupSelect = (g: number | "all") => {

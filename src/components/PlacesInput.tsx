@@ -119,12 +119,12 @@ async function reverseGeocode(lat: number, lng: number): Promise<string> {
 }
 
 /* ── i18n strings ───────────────────────────────────────────────────── */
-type Lang = "en" | "ja" | "zh" | "ko";
-const LOC_LABEL:   Record<Lang, string> = { en: "Use current location",  ja: "現在地を使用",           zh: "使用目前位置",   ko: "현재 위치 사용"        };
-const LOC_BUSY:    Record<Lang, string> = { en: "Locating…",             ja: "取得中…",               zh: "定位中…",       ko: "위치 확인 중…"        };
-const LOC_DENIED:  Record<Lang, string> = { en: "Location denied",       ja: "位置情報へのアクセスが拒否されました", zh: "位置存取被拒", ko: "위치 접근 거부됨"  };
-const LOC_UNAVAIL: Record<Lang, string> = { en: "Location unavailable",  ja: "現在地を取得できません",  zh: "無法取得目前位置", ko: "위치를 가져올 수 없음" };
-const SEARCHING:   Record<Lang, string> = { en: "Searching…",            ja: "検索中…",               zh: "搜尋中…",       ko: "검색 중…"             };
+type Lang = "en" | "ja" | "zh" | "ko" | "zh-cn" | "th" | "fr";
+const LOC_LABEL:   Record<Lang, string> = { en: "Use current location",  ja: "現在地を使用",           zh: "使用目前位置",   ko: "현재 위치 사용",        "zh-cn": "使用当前位置",   th: "ใช้ตำแหน่งปัจจุบัน",         fr: "Utiliser ma position"        };
+const LOC_BUSY:    Record<Lang, string> = { en: "Locating…",             ja: "取得中…",               zh: "定位中…",       ko: "위치 확인 중…",        "zh-cn": "定位中…",        th: "กำลังระบุตำแหน่ง…",          fr: "Localisation…"               };
+const LOC_DENIED:  Record<Lang, string> = { en: "Location denied",       ja: "位置情報へのアクセスが拒否されました", zh: "位置存取被拒", ko: "위치 접근 거부됨",  "zh-cn": "位置访问被拒",   th: "ถูกปฏิเสธการเข้าถึงตำแหน่ง", fr: "Accès refusé"                };
+const LOC_UNAVAIL: Record<Lang, string> = { en: "Location unavailable",  ja: "現在地を取得できません",  zh: "無法取得目前位置", ko: "위치를 가져올 수 없음", "zh-cn": "无法获取当前位置", th: "ไม่สามารถระบุตำแหน่งได้",    fr: "Position indisponible"       };
+const SEARCHING:   Record<Lang, string> = { en: "Searching…",            ja: "検索中…",               zh: "搜尋中…",       ko: "검색 중…",             "zh-cn": "搜索中…",        th: "กำลังค้นหา…",                fr: "Recherche…"                  };
 
 /* ── Props ──────────────────────────────────────────────────────────── */
 interface Props {

@@ -7,7 +7,7 @@ interface LangCtx {
   setLang: (l: Lang) => void;
 }
 
-const VALID: Lang[] = ["en", "ja", "zh", "ko"];
+const VALID: Lang[] = ["en", "ja", "zh", "ko", "zh-cn", "th", "fr"];
 
 const LangContext = createContext<LangCtx>({ lang: "en", setLang: () => {} });
 
@@ -16,8 +16,11 @@ function detectLang(): Lang {
   if (stored && VALID.includes(stored)) return stored;
   const b = navigator.language.toLowerCase();
   if (b.startsWith("ja")) return "ja";
+  if (b === "zh-cn" || b === "zh-hans") return "zh-cn";
   if (b.startsWith("zh")) return "zh";
   if (b.startsWith("ko")) return "ko";
+  if (b.startsWith("th")) return "th";
+  if (b.startsWith("fr")) return "fr";
   return "en";
 }
 

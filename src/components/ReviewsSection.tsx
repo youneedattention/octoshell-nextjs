@@ -42,6 +42,33 @@ const UI = {
     showLess:     "접기",
     clear:        "초기화",
   },
+  "zh-cn": {
+    section:      "客户评价",
+    badge:        "顶级服务",
+    verified:     (n: number) => `${n} 条已验证评价`,
+    overall:      "综合评分",
+    showMore:     "显示更多",
+    showLess:     "收起",
+    clear:        "清除",
+  },
+  th: {
+    section:      "รีวิวจากลูกค้า",
+    badge:        "บริการระดับดีเยี่ยม",
+    verified:     (n: number) => `${n} รีวิวที่ยืนยันแล้ว`,
+    overall:      "คะแนนรวม",
+    showMore:     "แสดงเพิ่มเติม",
+    showLess:     "ย่อลง",
+    clear:        "ล้าง",
+  },
+  fr: {
+    section:      "Avis clients",
+    badge:        "Service haut de gamme",
+    verified:     (n: number) => `${n} avis vérifiés`,
+    overall:      "Note générale",
+    showMore:     "Voir plus",
+    showLess:     "Réduire",
+    clear:        "Effacer",
+  },
 };
 
 /* ── Trilingual modal content ───────────────────────────────────────── */
@@ -69,6 +96,24 @@ const HOW_CONTENT = {
     p1: "인증된 고객의 리뷰는 일본에서 적합한 프라이빗 쇼퍼 서비스를 선택하는 데 도움을 줍니다. 기본적으로 최신순으로 정렬됩니다.",
     p2: "예약이 확인·완료된 Octoshell 고객에게만 리뷰 작성 초대가 발송됩니다. 모든 리뷰는 예약 기록과 대조하여 진위를 검증합니다.",
     p3: "「최고 평점 서비스」 배지를 받으려면 최소 5개의 인증된 리뷰가 필요합니다. 평점은 모든 인증된 예약의 평균값으로 산출되며 지속적으로 업데이트됩니다.",
+  },
+  "zh-cn": {
+    title: "评价说明",
+    p1: "已验证客户的评价有助于旅行者在日本选择合适的私人司机服务。评价默认按最新日期排序。",
+    p2: "仅完成确认订单的 Octoshell 客户才会收到评价邀请，所有评价均与预订记录核实，以确保真实性。",
+    p3: "获得「顶级服务」标章需至少 5 条已验证评价。评分为所有已验证预订的平均值，并持续更新。",
+  },
+  th: {
+    title: "วิธีการทำงานของรีวิว",
+    p1: "รีวิวจากลูกค้าที่ยืนยันแล้วช่วยให้นักเดินทางเลือกบริการรถส่วนตัวพร้อมคนขับที่เหมาะสมสำหรับการเดินทางในญี่ปุ่น โดยค่าเริ่มต้นรีวิวจะเรียงตามวันที่ล่าสุด",
+    p2: "เฉพาะลูกค้าที่ยืนยันและเสร็จสิ้นการจองกับ Octoshell เท่านั้นที่จะได้รับคำเชิญให้เขียนรีวิว ทุกรีวิวได้รับการตรวจสอบกับบันทึกการจองเพื่อรับรองความถูกต้อง",
+    p3: "เหรียญ Top Rated Service ต้องมีรีวิวที่ยืนยันแล้วอย่างน้อย 5 รายการ คะแนนคำนวณจากค่าเฉลี่ยของการจองที่ยืนยันแล้วทั้งหมด และอัปเดตอย่างต่อเนื่อง",
+  },
+  fr: {
+    title: "Fonctionnement des avis",
+    p1: "Les avis de clients vérifiés aident les voyageurs à choisir le bon service de chauffeur privé pour leur séjour au Japon. Par défaut, les avis sont triés par date de publication.",
+    p2: "Seuls les clients ayant effectué une réservation confirmée et complétée chez Octoshell sont invités à laisser un avis. Toutes les soumissions sont vérifiées par rapport aux dossiers de réservation pour garantir leur authenticité.",
+    p3: "Le badge Top Rated Service requiert un minimum de 5 avis vérifiés. Les notes sont calculées comme une moyenne de toutes les réservations vérifiées et sont mises à jour en continu.",
   },
 };
 
@@ -107,40 +152,40 @@ const IconValue = () => (
 
 /* ── Data ───────────────────────────────────────────────────────────── */
 const RATINGS = [
-  { label: { en: "Cleanliness",     ja: "清潔さ",       zh: "整潔度",   ko: "청결도"   }, score: 5.0, Icon: IconCleanliness },
-  { label: { en: "Punctuality",     ja: "時間厳守",     zh: "準時率",   ko: "정시성"   }, score: 5.0, Icon: IconPunctuality },
-  { label: { en: "Hospitality",     ja: "おもてなし",   zh: "服務態度", ko: "서비스"   }, score: 4.9, Icon: IconHospitality },
-  { label: { en: "Driving Comfort", ja: "乗り心地",     zh: "乘坐舒適", ko: "승차감"   }, score: 4.9, Icon: IconDriving     },
-  { label: { en: "Value",           ja: "価格",         zh: "性價比",   ko: "가성비"   }, score: 4.8, Icon: IconValue       },
+  { label: { en: "Cleanliness",     ja: "清潔さ",       zh: "整潔度",   ko: "청결도",   "zh-cn": "整洁度",   th: "ความสะอาด",     fr: "Propreté"        }, score: 5.0, Icon: IconCleanliness },
+  { label: { en: "Punctuality",     ja: "時間厳守",     zh: "準時率",   ko: "정시성",   "zh-cn": "准时率",   th: "ตรงต่อเวลา",    fr: "Ponctualité"     }, score: 5.0, Icon: IconPunctuality },
+  { label: { en: "Hospitality",     ja: "おもてなし",   zh: "服務態度", ko: "서비스",   "zh-cn": "服务态度", th: "การต้อนรับ",     fr: "Hospitalité"     }, score: 4.9, Icon: IconHospitality },
+  { label: { en: "Driving Comfort", ja: "乗り心地",     zh: "乘坐舒適", ko: "승차감",   "zh-cn": "乘坐舒适", th: "ความสะดวกสบาย", fr: "Confort de conduite" }, score: 4.9, Icon: IconDriving     },
+  { label: { en: "Value",           ja: "価格",         zh: "性價比",   ko: "가성비",   "zh-cn": "性价比",   th: "คุ้มค่า",       fr: "Rapport qualité/prix" }, score: 4.8, Icon: IconValue       },
 ];
 
 /* ── Service type lookup (matches /services page IDs) ───────────────── */
 const SERVICE_TYPES: Record<string, Record<string, string>> = {
-  airport:     { en: "Airport Transfer",    ja: "空港送迎",          zh: "機場接送"   },
-  hourly:      { en: "By the Hour",         ja: "時間制貸切",        zh: "時段包車"   },
-  oneway:      { en: "One Way",             ja: "片道送迎",          zh: "單程穿梭"   },
-  photo:       { en: "Photo Tour",          ja: "旅拍",              zh: "旅拍接送"   },
-  events:      { en: "Events & MICE",       ja: "MICE",              zh: "頂級盛會"   },
-  sightseeing: { en: "Bespoke Sightseeing", ja: "テーラーメイド観光", zh: "定制觀光"  },
-  golf:        { en: "Golf Transfer",       ja: "ゴルフ送迎",        zh: "高爾夫接送" },
-  outdoor:     { en: "Outdoor",             ja: "アウトドア送迎",    zh: "戶外接送"   },
-  ceremony:    { en: "Ceremonial",          ja: "冠婚葬祭",          zh: "典禮接送"   },
-  port:        { en: "Port Transfer",       ja: "港湾送迎",          zh: "港口接送"   },
+  airport:     { en: "Airport Transfer",    ja: "空港送迎",          zh: "機場接送",   "zh-cn": "机场接送",   th: "รับส่งสนามบิน",       fr: "Transfert aéroport"   },
+  hourly:      { en: "By the Hour",         ja: "時間制貸切",        zh: "時段包車",   "zh-cn": "按时包车",   th: "เช่าเหมาพร้อมคนขับ",  fr: "Location à l'heure"   },
+  oneway:      { en: "One Way",             ja: "片道送迎",          zh: "單程穿梭",   "zh-cn": "单程接送",   th: "เที่ยวเดียว",          fr: "Trajet simple"        },
+  photo:       { en: "Photo Tour",          ja: "旅拍",              zh: "旅拍接送",   "zh-cn": "旅拍接送",   th: "ทัวร์ถ่ายภาพ",        fr: "Tour photo"           },
+  events:      { en: "Events & MICE",       ja: "MICE",              zh: "頂級盛會",   "zh-cn": "顶级盛会",   th: "งานอีเวนต์และ MICE",   fr: "Événements & MICE"    },
+  sightseeing: { en: "Bespoke Sightseeing", ja: "テーラーメイド観光", zh: "定制觀光",  "zh-cn": "定制观光",   th: "ทัวร์ชมสถานที่",       fr: "Circuit touristique"  },
+  golf:        { en: "Golf Transfer",       ja: "ゴルフ送迎",        zh: "高爾夫接送", "zh-cn": "高尔夫接送", th: "รับส่งกอล์ฟ",          fr: "Transfert golf"       },
+  outdoor:     { en: "Outdoor",             ja: "アウトドア送迎",    zh: "戶外接送",   "zh-cn": "户外接送",   th: "กิจกรรมกลางแจ้ง",     fr: "Plein air"            },
+  ceremony:    { en: "Ceremonial",          ja: "冠婚葬祭",          zh: "典禮接送",   "zh-cn": "典礼接送",   th: "งานพิธี",              fr: "Cérémonie"            },
+  port:        { en: "Port Transfer",       ja: "港湾送迎",          zh: "港口接送",   "zh-cn": "港口接送",   th: "รับส่งท่าเรือ",        fr: "Transfert port"       },
 };
 
 const MONTH: Record<string, Record<string, string>> = {
-  "01": { en: "Jan", ja: "1月",  zh: "1月"  },
-  "02": { en: "Feb", ja: "2月",  zh: "2月"  },
-  "03": { en: "Mar", ja: "3月",  zh: "3月"  },
-  "04": { en: "Apr", ja: "4月",  zh: "4月"  },
-  "05": { en: "May", ja: "5月",  zh: "5月"  },
-  "06": { en: "Jun", ja: "6月",  zh: "6月"  },
-  "07": { en: "Jul", ja: "7月",  zh: "7月"  },
-  "08": { en: "Aug", ja: "8月",  zh: "8月"  },
-  "09": { en: "Sep", ja: "9月",  zh: "9月"  },
-  "10": { en: "Oct", ja: "10月", zh: "10月" },
-  "11": { en: "Nov", ja: "11月", zh: "11月" },
-  "12": { en: "Dec", ja: "12月", zh: "12月" },
+  "01": { en: "Jan", ja: "1月",  zh: "1月",  "zh-cn": "1月",  th: "ม.ค.",  fr: "Jan" },
+  "02": { en: "Feb", ja: "2月",  zh: "2月",  "zh-cn": "2月",  th: "ก.พ.",  fr: "Fév" },
+  "03": { en: "Mar", ja: "3月",  zh: "3月",  "zh-cn": "3月",  th: "มี.ค.", fr: "Mar" },
+  "04": { en: "Apr", ja: "4月",  zh: "4月",  "zh-cn": "4月",  th: "เม.ย.", fr: "Avr" },
+  "05": { en: "May", ja: "5月",  zh: "5月",  "zh-cn": "5月",  th: "พ.ค.",  fr: "Mai" },
+  "06": { en: "Jun", ja: "6月",  zh: "6月",  "zh-cn": "6月",  th: "มิ.ย.", fr: "Juin" },
+  "07": { en: "Jul", ja: "7月",  zh: "7月",  "zh-cn": "7月",  th: "ก.ค.",  fr: "Juil" },
+  "08": { en: "Aug", ja: "8月",  zh: "8月",  "zh-cn": "8月",  th: "ส.ค.",  fr: "Août" },
+  "09": { en: "Sep", ja: "9月",  zh: "9月",  "zh-cn": "9月",  th: "ก.ย.",  fr: "Sep" },
+  "10": { en: "Oct", ja: "10月", zh: "10月", "zh-cn": "10月", th: "ต.ค.",  fr: "Oct" },
+  "11": { en: "Nov", ja: "11月", zh: "11月", "zh-cn": "11月", th: "พ.ย.",  fr: "Nov" },
+  "12": { en: "Dec", ja: "12月", zh: "12月", "zh-cn": "12月", th: "ธ.ค.",  fr: "Déc" },
 };
 
 function fmtDate(iso: string, lang: string): string {

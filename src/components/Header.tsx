@@ -12,10 +12,13 @@ import type { Lang } from "@/lib/translations";
 const LOGO = "/logo.png";
 
 const LANGS: { code: Lang; label: string; full: string }[] = [
-  { code: "en", label: "EN", full: "English"  },
-  { code: "ja", label: "日", full: "日本語"   },
-  { code: "zh", label: "中", full: "繁體中文" },
-  { code: "ko", label: "한", full: "한국어"   },
+  { code: "en",    label: "EN", full: "English"   },
+  { code: "ja",    label: "日", full: "日本語"    },
+  { code: "zh",    label: "繁", full: "繁體中文"  },
+  { code: "zh-cn", label: "简", full: "简体中文"  },
+  { code: "ko",    label: "한", full: "한국어"    },
+  { code: "th",    label: "ไท", full: "ภาษาไทย"  },
+  { code: "fr",    label: "FR", full: "Français"  },
 ];
 
 const SVC_ITEMS: { key: keyof typeof t; anchor: string; icon: React.ReactNode }[] = [
@@ -77,25 +80,28 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
   const { lang, setLang } = useLang();
   const { theme, toggle: toggleTheme } = useTheme();
 
-  /* Detect current lang prefix (/zh, /ja, /ko) */
-  const langPrefix = pathname.startsWith("/zh") ? "/zh"
+  /* Detect current lang prefix */
+  const PREFIXED_LANGS: Lang[] = ["zh-cn", "zh", "ja", "ko", "th", "fr"];
+  const langPrefix = pathname.startsWith("/zh-cn") ? "/zh-cn"
+    : pathname.startsWith("/zh") ? "/zh"
     : pathname.startsWith("/ja") ? "/ja"
     : pathname.startsWith("/ko") ? "/ko"
+    : pathname.startsWith("/th") ? "/th"
+    : pathname.startsWith("/fr") ? "/fr"
     : "";
   const lp = (path: string) => `${langPrefix}${path}`;
 
-  /* Switch language — navigates to /ja|/zh|/ko prefix routes */
+  /* Switch language — navigates to prefixed routes */
   function switchLang(code: Lang) {
     setLang(code);
-    const currentPrefix = langPrefix; // "/zh", "/ja", "/ko", or ""
-    const basePath = currentPrefix ? pathname.replace(new RegExp(`^${currentPrefix}`), "") || "/" : pathname;
-    const PREFIXED: Lang[] = ["zh", "ja", "ko"];
-    if (PREFIXED.includes(code)) {
-      if (currentPrefix !== `/${code}`) {
-        const dest = `/${code}${basePath === "/" ? "" : basePath}` || `/${code}`;
+    const basePath = langPrefix ? pathname.replace(new RegExp(`^${langPrefix}`), "") || "/" : pathname;
+    if (PREFIXED_LANGS.includes(code)) {
+      const prefix = code === "zh-cn" ? "/zh-cn" : `/${code}`;
+      if (langPrefix !== prefix) {
+        const dest = `${prefix}${basePath === "/" ? "" : basePath}` || prefix;
         window.location.href = dest;
       }
-    } else if (currentPrefix) {
+    } else if (langPrefix) {
       window.location.href = basePath || "/";
     }
   }

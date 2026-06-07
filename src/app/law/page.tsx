@@ -26,17 +26,109 @@ const PAGE_TITLE: Record<Lang, string> = {
   ja: "特定商取引法に基づく表記",
   zh: "特定商業交易法公示",
   ko: "특정 상거래법에 관한 표기",
+  "zh-cn": "特定商业交易法公示",
+  th: "กฎหมายธุรกรรมพาณิชย์เฉพาะ",
+  fr: "Loi sur les transactions commerciales spécifiées",
 };
 const PAGE_UPDATED: Record<Lang, string> = {
   en: "Last updated: October 2024",
   ja: "最終更新：2024年10月",
   zh: "最後更新：2024年10月",
   ko: "최종 업데이트: 2024년 10월",
+  "zh-cn": "最后更新：2024年10月",
+  th: "อัปเดตล่าสุด: ตุลาคม 2024",
+  fr: "Dernière mise à jour : octobre 2024",
 };
 
 /* ══════════════════════════════════════════════════════════════════════
    Section data — all three languages
 ══════════════════════════════════════════════════════════════════════ */
+const SECTIONS_EN: Section[] = [
+    {
+      label: "Distributor",
+      blocks: [{ type: "text", value: "Octoshell Co., Ltd." }],
+    },
+    {
+      label: "Legal Representative",
+      blocks: [{ type: "text", value: "Representative Director: Lei-Lei Ran" }],
+    },
+    {
+      label: "Operations Manager",
+      blocks: [{ type: "text", value: "Tracy Chen" }],
+    },
+    {
+      label: "Location",
+      blocks: [{ type: "text", value: "103 Matsudo Dai-Hachi Mansion, 618-1 Kamihongo, Matsudo-shi, Chiba, 271-0064, Japan" }],
+    },
+    {
+      label: "Contact Information",
+      blocks: [{ type: "dl", pairs: [
+        ["Phone Number",  "+81 47-382-5728"],
+        ["Support Hours", "10:00 - 17:00 (Seven days a week)"],
+        ["Email Address", "info@octoshell.jp"],
+        ["Website URL",   "https://octoshell.jp"],
+      ]}],
+    },
+    {
+      label: "Services Offered",
+      blocks: [{ type: "text", value: "Provision of chartered executive chauffeur services (Premium Private Transport)." }],
+    },
+    {
+      label: "Sales Price",
+      blocks: [
+        { type: "text", value: "Prices are displayed on individual service quotes, estimate screens, or booking pages (inclusive of consumption tax)." },
+        { type: "note", value: "Our initial quotes are all-inclusive, encompassing all standard toll fees, highway fees, deadhead tolls, parking fees, and chauffeur overnight accommodation expenses (for long-distance/overnight trips)." },
+      ],
+    },
+    {
+      label: "Additional Fees Required",
+      blocks: [{ type: "dl", pairs: [
+        ["Spontaneous Amendment Fees",  "Additional fees for newly incurred highway tolls, parking fees, deadhead tolls, chauffeur accommodation expenses, and hourly extension surcharges will only apply if a passenger spontaneously requests a change of route, additional stopovers, or an extension of service time after the journey has commenced."],
+        ["Transaction/Data Surcharges", "Internet connection and data fees incurred while browsing our website or utilizing online booking/payment services."],
+        ["Bank Fees",                   "Transfer fees associated with payments made via bank wire (Furikomi)."],
+      ]}],
+    },
+    {
+      label: "Payment Methods",
+      blocks: [{ type: "list", items: [
+        "Credit Card (Visa, Mastercard, American Express, JCB, Diners Club, Discover) via our secure online system.",
+        "Bank Transfer (Upfront Payment)",
+        "Cash Payment (Settled upon drop-off)",
+      ]}],
+    },
+    {
+      label: "Timing of Payment",
+      blocks: [{ type: "dl", pairs: [
+        ["Credit Card",   "Charged immediately upon booking confirmation, or via a pre-authorized secure billing link sent in advance."],
+        ["Bank Transfer", "Upfront payment required by the day before the service (or by an individually designated due date)."],
+        ["Cash",          "Paid directly to the chauffeur upon completion of the service (drop-off)."],
+      ]}],
+    },
+    {
+      label: "Service Delivery Time",
+      blocks: [{ type: "text", value: "Vehicles will be dispatched to the designated location at the date and time specified in your booking confirmation or final travel itinerary." }],
+    },
+    {
+      label: "Cancellations and Refunds",
+      blocks: [
+        { type: "text", value: "Due to the nature of our services, refunds or route changes are not permitted once a vehicle has been dispatched. Cancellations are subject to the following cancellation fees:" },
+        { type: "list", items: [
+          "Up to 48 hours before pickup: Free of charge (100% Refund)",
+          "Between 24 to 48 hours before pickup: 50% of the total estimated quote",
+          "Within 24 hours or No-Show: 100% of the total estimated quote",
+        ]},
+        { type: "note", value: "Cancellation fees are waived if your flight is officially canceled by the airline, provided you notify our office immediately." },
+      ],
+    },
+    {
+      label: "Official Licenses & Registrations",
+      blocks: [{ type: "dl-stacked", pairs: [
+        ["Chartered Executive Chauffeur Service License", "KAN-JI-RYO-NI No. 1248 (Approved by Kanto Transport Bureau)"],
+        ["Official Tariff and Fare Approval",            "KAN-JI-RYO-NI No. 388 / Amendment Notice KAN-JI-RYO-NI No. 773"],
+      ]}],
+    },
+];
+
 const SECTIONS: Record<Lang, Section[]> = {
 
   /* ─── JAPANESE ──────────────────────────────────────────────────── */
@@ -127,91 +219,7 @@ const SECTIONS: Record<Lang, Section[]> = {
   ],
 
   /* ─── ENGLISH ───────────────────────────────────────────────────── */
-  en: [
-    {
-      label: "Distributor",
-      blocks: [{ type: "text", value: "Octoshell Co., Ltd." }],
-    },
-    {
-      label: "Legal Representative",
-      blocks: [{ type: "text", value: "Representative Director: Lei-Lei Ran" }],
-    },
-    {
-      label: "Operations Manager",
-      blocks: [{ type: "text", value: "Tracy Chen" }],
-    },
-    {
-      label: "Location",
-      blocks: [{ type: "text", value: "103 Matsudo Dai-Hachi Mansion, 618-1 Kamihongo, Matsudo-shi, Chiba, 271-0064, Japan" }],
-    },
-    {
-      label: "Contact Information",
-      blocks: [{ type: "dl", pairs: [
-        ["Phone Number",  "+81 47-382-5728"],
-        ["Support Hours", "10:00 - 17:00 (Seven days a week)"],
-        ["Email Address", "info@octoshell.jp"],
-        ["Website URL",   "https://octoshell.jp"],
-      ]}],
-    },
-    {
-      label: "Services Offered",
-      blocks: [{ type: "text", value: "Provision of chartered executive chauffeur services (Premium Private Transport)." }],
-    },
-    {
-      label: "Sales Price",
-      blocks: [
-        { type: "text", value: "Prices are displayed on individual service quotes, estimate screens, or booking pages (inclusive of consumption tax)." },
-        { type: "note", value: "Our initial quotes are all-inclusive, encompassing all standard toll fees, highway fees, deadhead tolls, parking fees, and chauffeur overnight accommodation expenses (for long-distance/overnight trips)." },
-      ],
-    },
-    {
-      label: "Additional Fees Required",
-      blocks: [{ type: "dl", pairs: [
-        ["Spontaneous Amendment Fees",  "Additional fees for newly incurred highway tolls, parking fees, deadhead tolls, chauffeur accommodation expenses, and hourly extension surcharges will only apply if a passenger spontaneously requests a change of route, additional stopovers, or an extension of service time after the journey has commenced."],
-        ["Transaction/Data Surcharges", "Internet connection and data fees incurred while browsing our website or utilizing online booking/payment services."],
-        ["Bank Fees",                   "Transfer fees associated with payments made via bank wire (Furikomi)."],
-      ]}],
-    },
-    {
-      label: "Payment Methods",
-      blocks: [{ type: "list", items: [
-        "Credit Card (Visa, Mastercard, American Express, JCB, Diners Club, Discover) via our secure online system.",
-        "Bank Transfer (Upfront Payment)",
-        "Cash Payment (Settled upon drop-off)",
-      ]}],
-    },
-    {
-      label: "Timing of Payment",
-      blocks: [{ type: "dl", pairs: [
-        ["Credit Card",   "Charged immediately upon booking confirmation, or via a pre-authorized secure billing link sent in advance."],
-        ["Bank Transfer", "Upfront payment required by the day before the service (or by an individually designated due date)."],
-        ["Cash",          "Paid directly to the chauffeur upon completion of the service (drop-off)."],
-      ]}],
-    },
-    {
-      label: "Service Delivery Time",
-      blocks: [{ type: "text", value: "Vehicles will be dispatched to the designated location at the date and time specified in your booking confirmation or final travel itinerary." }],
-    },
-    {
-      label: "Cancellations and Refunds",
-      blocks: [
-        { type: "text", value: "Due to the nature of our services, refunds or route changes are not permitted once a vehicle has been dispatched. Cancellations are subject to the following cancellation fees:" },
-        { type: "list", items: [
-          "Up to 48 hours before pickup: Free of charge (100% Refund)",
-          "Between 24 to 48 hours before pickup: 50% of the total estimated quote",
-          "Within 24 hours or No-Show: 100% of the total estimated quote",
-        ]},
-        { type: "note", value: "Cancellation fees are waived if your flight is officially canceled by the airline, provided you notify our office immediately." },
-      ],
-    },
-    {
-      label: "Official Licenses & Registrations",
-      blocks: [{ type: "dl-stacked", pairs: [
-        ["Chartered Executive Chauffeur Service License", "KAN-JI-RYO-NI No. 1248 (Approved by Kanto Transport Bureau)"],
-        ["Official Tariff and Fare Approval",            "KAN-JI-RYO-NI No. 388 / Amendment Notice KAN-JI-RYO-NI No. 773"],
-      ]}],
-    },
-  ],
+  en: SECTIONS_EN,
 
   /* ─── TRADITIONAL CHINESE ───────────────────────────────────────── */
   zh: [
@@ -386,6 +394,11 @@ const SECTIONS: Record<Lang, Section[]> = {
       ]}],
     },
   ],
+
+  /* ─── SIMPLIFIED CHINESE / THAI / FRENCH (fallback to EN) ──────── */
+  "zh-cn": SECTIONS_EN,
+  th: SECTIONS_EN,
+  fr: SECTIONS_EN,
 };
 
 /* ══════════════════════════════════════════════════════════════════════

@@ -19,6 +19,9 @@ const HERO: Record<Lang, { badge: string; title: string; sub: string; link_story
   en: { badge: "About Us", title: "The Octoshell Story", sub: "Japan Private Chauffeur Service",     link_story: "How It Works", link_faq: "FAQ",           link_contact: "Contact Us" },
   zh: { badge: "關於我們", title: "品牌故事",          sub: "日本專屬司機服務",                     link_story: "品牌故事",    link_faq: "常見問題",        link_contact: "聯絡我們" },
   ko: { badge: "회사 소개", title: "Octoshell 스토리", sub: "일본 프라이빗 쇼퍼 서비스",            link_story: "브랜드 스토리", link_faq: "자주 묻는 질문", link_contact: "문의하기" },
+  "zh-cn": { badge: "关于我们", title: "品牌故事",     sub: "日本专属司机服务",                     link_story: "品牌故事",    link_faq: "常见问题",        link_contact: "联系我们" },
+  th: { badge: "เกี่ยวกับเรา", title: "เรื่องราวของ Octoshell", sub: "บริการรถส่วนตัวพร้อมคนขับในญี่ปุ่น", link_story: "เรื่องราวแบรนด์", link_faq: "คำถามที่พบบ่อย", link_contact: "ติดต่อเรา" },
+  fr: { badge: "À propos", title: "L'histoire d'Octoshell", sub: "Service de chauffeur privé au Japon", link_story: "Notre histoire", link_faq: "FAQ",         link_contact: "Nous contacter" },
 };
 
 /* ── Section 1: Brand story ─────────────────────────────────────────── */
@@ -27,18 +30,27 @@ const STORY_TITLE: Record<Lang, string> = {
   en: "Changing the Travel Game",
   zh: "顛覆傳統出行的遊戲規則",
   ko: "이동의 상식을 바꾸다",
+  "zh-cn": "颠覆传统出行的游戏规则",
+  th: "เปลี่ยนโฉมการเดินทาง",
+  fr: "Redéfinir l'art du voyage",
 };
 const STORY_P1: Record<Lang, string> = {
   ja: "貝八方は日本・東京で誕生しました。遠い古より「貝」は尊い富の象徴であり、「八方」は四面八方、すなわち世界中から集まる人々を意味します。私たちは、世界八方からお越しになるすべてのお客様を、かけがえのない「宝」としてお迎えするという信念のもと、プロフェッショナルなハイヤーサービスを展開しています。",
   en: 'Octoshell was founded in Tokyo, Japan. In ancient times, "shells" were a symbol of precious wealth, while "octo" represents the eight directions of the world. Our brand philosophy is rooted in welcoming every guest arriving from all corners of the globe as our most precious treasure.',
   zh: "貝八方於日本東京創立。在遠古時代，「貝」是珍稀財富的象徵；而「八方」則代表四面八方，寓意源自世界各地的賓客。我們的品牌初衷，便是將來自世界八方的每一位客戶，都奉為我們無可替代的至寶，並提供最頂級的專車款待。",
   ko: "Octoshell은 일본 도쿄에서 탄생했습니다. 먼 옛날부터 '조개(貝)'는 귀한 부의 상징이었으며, '팔방(八方)'은 세계 사방팔방에서 모여드는 사람들을 의미합니다. 우리는 세계 각지에서 방문하시는 모든 고객을 더없이 소중한 '보물'로 맞이한다는 신념 아래, 전문적인 하이어(고급 전용차) 서비스를 제공하고 있습니다.",
+  "zh-cn": "贝八方于日本东京创立。在远古时代，「贝」是珍稀财富的象征；而「八方」则代表四面八方，寓意源自世界各地的宾客。我们的品牌初衷，便是将来自世界八方的每一位客户，都奉为我们无可替代的至宝，并提供最顶级的专车款待。",
+  th: "Octoshell ก่อตั้งขึ้นในกรุงโตเกียว ประเทศญี่ปุ่น ในสมัยโบราณ \"เปลือกหอย\" เป็นสัญลักษณ์ของความมั่งคั่ง ส่วน \"octo\" หมายถึงแปดทิศทางของโลก ปรัชญาของแบรนด์เราคือการต้อนรับทุกแขกจากทั่วทุกมุมโลกในฐานะสมบัติล้ำค่าที่สุดของเรา",
+  fr: "Octoshell a été fondé à Tokyo, au Japon. Dans l'Antiquité, les « coquillages » symbolisaient la richesse précieuse, tandis qu'« octo » représente les huit directions du monde. Notre philosophie de marque est fondée sur l'accueil de chaque hôte venu des quatre coins du globe comme notre trésor le plus précieux.",
 };
 const STORY_P2: Record<Lang, string> = {
   ja: "私たちの旅は、歴史ある谷間にひっそりと佇む名門の高級温泉旅館「修善寺離れ宿 鬼の栖」へ向かう格式高い旅客のために、静寂に満ちた極上の移動空間を仕立てるという、ひとつの深いこだわりから始まりました。真の贅沢とは目的地に到着した瞬間ではなく、その高鳴る胸を包み込む移動の刹那にこそ存在することに気づいたのです。今日、私たちは日本国内の独立した緑ナンバーの合規旅客運送資格を持つ、国際的なプロフェッショナル車隊・移動サービスプラットフォームへと変貌を遂げました。そのネットワークは大東京圏内にとどまらず、日本全国のあらゆる場所に広がっています。車内の圧倒的な私密性でお客様を繭のように優しく包み込み、すべての旅路を旅館の離れそのものの延長線上にある、至高のプロローグへと昇華させます。",
   en: "Our journey began with a singular, intimate obsession: crafting a seamless, whispering transition for elite travelers journeying to Shuzenji Hanare Yado Oni no Sumika—a legendary hot-spring sanctuary hidden deep within Japan's historic valleys. We realized that true luxury does not begin at the destination, but in the fleeting, breathless moments in between. Today, Octoshell has evolved into a global mobility platform operating with fully independent Japanese licensed transportation and green-plate compliance. Extending far beyond the Greater Tokyo Area to every corner of Japan, we transform every journey into an exquisite extension of the estate itself—cocooning them in privacy, elevating the art of movement into an unforgettable prelude of indulgence.",
   zh: "誕生之初，這源於一個極致細膩的私人執念：為前往隱匿於日本歷史山谷中的傳奇溫泉聖地——「修善寺離宿 鬼棲」的頂級貴賓，打造一段毫無縫隙、如呢喃般靜謐的移動過渡。我們深知，真正的奢華並非始於抵達目的地的那一刻，而是在那段屏息期待的行車時光中。今天，我們已然蛻變為一家擁有獨立日本綠牌合規客運資質的國際化專業車隊與出行服務平台。我們的團隊與專業司機網絡不僅覆蓋大東京地區，更已觸及日本的每個角落。我們將每一次旅程都轉化為莊園本身的優雅延伸，將賓客溫柔地包裹在絕對的私密空間中，將移動的藝術昇華為一場令人難忘的奢華序曲。",
   ko: "우리의 여정은 하나의 깊은 집념에서 시작되었습니다. 바로 일본의 유서 깊은 산간 계곡에 숨겨진 전설적인 온천 료칸 '슈젠지 하나레야도 오니노스미카'를 향하는 최상류층 여행객을 위해, 고요하고 완벽한 이동 공간을 만드는 것이었습니다. 진정한 럭셔리는 목적지에 도착하는 순간이 아니라, 그 설레는 이동의 찰나에 존재한다는 것을 깨달았습니다. 오늘날 Octoshell은 일본 독립 녹색 번호판 합규 여객운송 자격을 보유한 국제적 전문 차량 플랫폼으로 성장했습니다. 대도쿄권을 넘어 일본 전국 방방곡곡으로 네트워크를 확장하며, 모든 여정을 고급 료칸의 별채 그 자체로 이어지는 최고의 프롤로그로 승화시킵니다.",
+  "zh-cn": "诞生之初，这源于一个极致细腻的私人执念：为前往隐匿于日本历史山谷中的传奇温泉圣地——「修善寺离宿 鬼栖」的顶级贵宾，打造一段毫无缝隙、如呢喃般静谧的移动过渡。我们深知，真正的奢华并非始于抵达目的地的那一刻，而是在那段屏息期待的行车时光中。今天，我们已然蜕变为一家拥有独立日本绿牌合规客运资质的国际化专业车队与出行服务平台。我们的团队与专业司机网络不仅覆盖大东京地区，更已触及日本的每个角落。我们将每一次旅程都转化为庄园本身的优雅延伸，将宾客温柔地包裹在绝对的私密空间中，将移动的艺术升华为一场令人难忘的奢华序曲。",
+  th: "การเดินทางของเราเริ่มต้นจากความหลงใหลอันลึกซึ้ง: การสร้างช่วงเปลี่ยนผ่านที่ราบรื่นสำหรับนักเดินทางชั้นนำที่มุ่งหน้าสู่ Shuzenji Hanare Yado Oni no Sumika ซึ่งเป็นสถานที่พักผ่อนออนเซ็นในตำนานที่ซ่อนตัวอยู่ในหุบเขาประวัติศาสตร์ของญี่ปุ่น เราตระหนักว่าความหรูหราที่แท้จริงไม่ได้เริ่มต้นที่จุดหมายปลายทาง แต่อยู่ในช่วงเวลาอันแสนสั้นระหว่างทาง วันนี้ Octoshell ได้พัฒนาเป็นแพลตฟอร์มการเดินทางระดับโลกที่ดำเนินงานด้วยใบอนุญาตขนส่งผู้โดยสารญี่ปุ่นอย่างเป็นทางการ ครอบคลุมทั่วทั้งญี่ปุ่นเพื่อมอบประสบการณ์การเดินทางที่ยอดเยี่ยมให้แก่แขกทุกท่าน",
+  fr: "Notre aventure a débuté par une obsession singulière et intime : concevoir une transition fluide et feutrée pour les voyageurs d'élite se rendant au Shuzenji Hanare Yado Oni no Sumika — un sanctuaire thermal légendaire niché au cœur des vallées historiques du Japon. Nous avons compris que le vrai luxe ne commence pas à la destination, mais dans ces instants fugaces et suspendus entre les deux. Aujourd'hui, Octoshell s'est transformé en une plateforme de mobilité mondiale opérant avec une licence de transport japonaise indépendante en plaque verte. Bien au-delà du Grand Tokyo, nous couvrons chaque recoin du Japon, transformant chaque trajet en un prolongement raffiné du domaine lui-même.",
 };
 
 /* ── Section 2: 4 core services ─────────────────────────────────────── */
@@ -47,12 +59,18 @@ const SVC_SECTION_TITLE: Record<Lang, string> = {
   en: "Time-Based & Scenario-Driven Mobility Solutions",
   zh: "按時段與場景定制的出行方案",
   ko: "시간 및 상황별 맞춤 이동 솔루션",
+  "zh-cn": "按时段与场景定制的出行方案",
+  th: "โซลูชันการเดินทางตามเวลาและสถานการณ์",
+  fr: "Solutions de mobilité par durée et par scénario",
 };
 const SVC_SECTION_LEAD: Record<Lang, string> = {
   ja: "Octoshell は、「時間枠・利用目的別」の4大カテゴリーで、日本全国の一流の移動体験を提供します。",
   en: "Octoshell structures its premium transport services into four clear categories based on duration and usage, ensuring frictionless booking and travel planning worldwide.",
   zh: "Octoshell 依據「時間週期與使用大類」將高端運力整合為四大結構化服務，便於智能系統與搜尋引擎精準抓取，為您提供無縫的日本全境出行檢索：",
   ko: "Octoshell은 이용 시간 및 목적에 따라 프리미엄 운송 서비스를 4가지 카테고리로 구성하여, 전 세계 어디서나 편리한 예약과 여행 계획을 지원합니다.",
+  "zh-cn": "Octoshell 依据「时间周期与使用大类」将高端运力整合为四大结构化服务，为您提供无缝的日本全境出行检索：",
+  th: "Octoshell จัดบริการขนส่งระดับพรีเมียมออกเป็นสี่หมวดหมู่ที่ชัดเจนตามระยะเวลาและการใช้งาน เพื่อให้การจองและวางแผนการเดินทางทั่วโลกเป็นไปอย่างราบรื่น",
+  fr: "Octoshell structure ses services de transport premium en quatre catégories claires selon la durée et l'usage, garantissant une réservation et une planification de voyage sans friction partout dans le monde.",
 };
 type Service = { title: string; body: string };
 const SERVICES: Record<Lang, Service[]> = {
@@ -80,11 +98,30 @@ const SERVICES: Record<Lang, Service[]> = {
     { title: "시간제 전세 하이어 & VIP 의전", body: "엄선된 최고의 드라이버가 동행합니다. 복수 거점 비즈니스 방문, 고급 쇼핑, VIP 영접 등 시간 단위로 드라이버가 종일 대기하며 최고 품질의 서비스를 제공합니다." },
     { title: "전문 운전기사 파견",    body: "고객 소유 차량의 운전 및 관리를 전문 드라이버가 대행합니다. 차량 관리 부담을 줄이고 최고 수준의 안전 운행을 보장합니다." },
   ],
+  "zh-cn": [
+    { title: "机场定额接送",         body: "提供东京市内往返各大机场（羽田/成田）的固定费率接送服务。包含即时航班动态追踪、1小时免费等待以及接机大厅专属举牌迎宾，解除您抵日首站的一切焦虑。" },
+    { title: "城际定制穿梭与观光",   body: "私密、长途的高端点对点行程，专为商务款待或深度度假设计。完美替代日本新干线或区域内航空，专为极重隐私的商务精英与高端自由行宾客打造，由大东京地区出发，直达日本境内任何目的地。" },
+    { title: "时段包车与 VIP 尊荣迎送", body: "由我们百里挑一的顶尖优秀司机全程为您提供专属侍从服务。完美适配多站点商务拜访、高端购物、奢华政要接待或重大活动，司机全程在场待命。" },
+    { title: "专业乘务员派遣",       body: "派遣专业司机为客户的自有车辆进行驾驶与资产管理。有效降低企业管理成本，确保出行达到最高级别的安全与合规标准。" },
+  ],
+  th: [
+    { title: "รับส่งสนามบินราคาคงที่",         body: "บริการรับส่งราคาคงที่ระหว่างกรุงโตเกียวกับสนามบินหลัก (ฮาเนดะ/นาริตะ) พร้อมติดตามเที่ยวบินแบบเรียลไทม์ รอฟรี 1 ชั่วโมง และบริการรับพร้อมป้ายชื่อที่ล็อบบี้ผู้โดยสารขาเข้า" },
+    { title: "รถรับส่งระหว่างเมืองแบบส่วนตัว", body: "การเดินทางระยะไกลแบบส่วนตัวสำหรับธุรกิจหรือท่องเที่ยว ทดแทนรถไฟชินคันเซ็นหรือเที่ยวบินในประเทศด้วยพื้นที่ส่วนตัวสมบูรณ์แบบ จากเขตมหานครโตเกียวสู่ทุกจุดหมายทั่วญี่ปุ่น" },
+    { title: "เช่าเหมาคันและบริการ VIP",       body: "บริการโดยคนขับชั้นยอดที่คัดเลือกมาอย่างพิถีพิถัน เหมาะสำหรับการนัดประชุมหลายจุด ช้อปปิ้งระดับหรูหรา หรือการต้อนรับผู้บริหาร VIP พร้อมคนขับรอให้บริการตลอดวัน" },
+    { title: "การส่งคนขับมืออาชีพ",             body: "บริการส่งคนขับมืออาชีพเพื่อขับขี่และดูแลรถยนต์ของลูกค้า ลดภาระการจัดการและรับประกันความปลอดภัยสูงสุดในการเดินทาง" },
+  ],
+  fr: [
+    { title: "Transferts aéroport à tarif fixe",  body: "Service de transfert à tarif forfaitaire entre le centre de Tokyo et les aéroports (Haneda/Narita). Comprend le suivi de vol en temps réel, 1 heure d'attente gratuite et un service d'accueil personnalisé à l'arrivée." },
+    { title: "Navette longue distance ville à ville", body: "Trajets longue distance privés et point à point, conçus pour les voyages d'affaires ou de loisirs haut de gamme. Remplace le Shinkansen ou les vols régionaux, offrant une intimité totale depuis le Grand Tokyo vers toute destination au Japon." },
+    { title: "Location à l'heure & VIP",           body: "Accompagné par nos chauffeurs d'élite soigneusement sélectionnés. Idéal pour les réunions multi-sites, les emplettes de luxe ou le transport de personnalités VIP. Le chauffeur reste disponible toute la journée selon votre agenda." },
+    { title: "Mise à disposition de chauffeur",    body: "Nos chauffeurs professionnels prennent en charge la conduite et la gestion de vos propres véhicules, garantissant une sécurité et une conformité irréprochables." },
+  ],
 };
 
 /* ── Section 3: Fleet ───────────────────────────────────────────────── */
 const VEH_SECTION_BADGE: Record<Lang, string> = {
   ja: "車種クラス", en: "Vehicle Classes", zh: "車隊級別", ko: "차량 클래스",
+  "zh-cn": "车队级别", th: "ประเภทรถยนต์", fr: "Classes de véhicules",
 };
 
 /* ── FAQ ────────────────────────────────────────────────────────────── */
@@ -383,6 +420,99 @@ const FAQ: Record<Lang, FaqGroup[]> = {
       ],
     },
   ],
+  "zh-cn": [
+    {
+      group: "🚗 车辆及车内守则",
+      items: [
+        { q: "预订后会派发什么样的车辆？", a: "本公司专注于高端礼宾包车服务，旗下车队仅由豪华商务车「丰田埃尔法（最大载客5人）」及大容量商旅车「丰田海狮（最大载客9人）」组成。我们不提供普通轿车车型。" },
+        { q: "车内可以吸烟或饮食吗？", a: "专属车厢内全面禁烟（包括电子烟）。为了保证乘车舒适度，车内仅允许饮用瓶装水或带盖饮料，并允许食用无刺激性气味的轻食点心。" },
+        { q: "可以携带宠物一同乘车吗？", a: "可以。为了保障行车安全，携带宠物乘车时请务必提前将其放入宠物航空箱或便携笼内。若未携带合规宠物笼，司机有权拒绝其上车，敬请谅解。" },
+        { q: "团队行程中，车辆可以帮我们单独将行李运送到酒店吗？", a: "可以，这正是我们高尔夫球团和徒步登山团的核心特色服务。我们可以先将您送至高尔夫球场或登山起点，随后由专属车辆将您的行李先行送往您今晚入住的酒店并办理寄存，让您全程轻松出行。" },
+        { q: "司机会穿着正式、配戴领带吗？", a: "是的，我们的司机始终穿着正式的西装并配戴领带，保持最高标准的专业仪表。" },
+        { q: "司机会保护乘客的隐私和保密性吗？", a: "是的。保护您的隐私和机密是我们的重中之重。我们的司机遵循最严格的保密标准，确保您的私密对话和行程信息在任何时候都绝对安全。" },
+        { q: "可以在车内给手机充电吗？", a: "可以。我们的车辆均配有充电接口，并免费提供兼容苹果和安卓设备的车载充电线。" },
+      ],
+    },
+    {
+      group: "💴 费用与支付相关",
+      items: [
+        { q: "司机接机等待会产生超时费吗？（如航班延误）", a: "担当司机会主动追踪您的航班动态，并根据航班实际落地时间灵活调整接机时间。若在航班实际着陆后，等待时间超过90分钟，将按每30分钟为单位收取超时等待费（不足30分钟按30分钟计）：\n丰田埃尔法： 每30分钟加收 2,500 日元（含税）\n丰田海狮： 每30分钟加收 3,000 日元（含税）" },
+        { q: "万一乘客在行程中临时需要修改路线或增加用车时间怎么办？", a: "请立即与司机沟通，司机会马上与调度中心取得联系并确认追加费用。因乘客临时变更路线或超时而全新产生的高速公路费、收费道路费、回送通行费、停车场费、司机住宿费以及时间延长溢价费用，将据实累加至您的最终账单中。" },
+        { q: "过路费、停车费、燃油费及所有相关费用都包含在报价内吗？", a: "是的。一个价格包含一切——过路费、停车费、燃油费及司机住宿费（跨夜行程）。无任何隐藏收费。唯一可能产生追加费用的情况，是行程开始后您要求更改路线。" },
+        { q: "儿童安全座椅和机场举牌接机怎么收费？", a: "完全免费（0日元）。我们免费提供儿童安全座椅/婴儿座椅，并免费提供到达大厅举牌接机服务。为了便利提前调度，请在预订时尽早向客服提出申请。" },
+        { q: "支付方式是什么？可以在车内直接付款给司机吗？", a: "我们支持车内现金结账，也可以在行程前绑定信用卡，行程结束后通过我们的线上支付系统（蓝条支付）自动完成扣款。如企业法人客户确无信用卡，可申请提前进行银行转账。" },
+        { q: "行程结束后是否有发票或收据？", a: "有。使用信用卡支付的客户，在行程结束扣款完成后，系统会自动将合规的电子收据（格式为PDF电子领收书）发送至您注册的电子邮箱。使用现金结账的客户，我们将根据您的需求，在行程结束后提供电子收据或请款单。" },
+      ],
+    },
+    {
+      group: "❌ 取消政策",
+      items: [
+        { q: "取消订单如何收费？", a: "订单取消政策严格遵循日本《特定商业交易法》公示条款执行：\n用车时间前 48 小时以上取消： 免费（全额退款）\n用车时间前 24 至 48 小时内取消： 收取预计行程总额的 50%\n用车时间前 24 小时内取消或无故未到： 收取预计行程总额的 100%\n注：如因台风、航班突发欠航等不可抗力导致无法出行，在您提供航司凭证并及时通知我们的前提下，将免收取消手续费。" },
+      ],
+    },
+  ],
+  th: [
+    {
+      group: "🚗 รถยนต์และกฎภายในรถ",
+      items: [
+        { q: "จะได้รับรถประเภทใดหลังการจอง?", a: "เราให้บริการรถยนต์สองรุ่นเท่านั้น ได้แก่ Toyota Alphard (รับได้สูงสุด 5 ท่าน) และ Toyota Hiace (รับได้สูงสุด 9 ท่าน) เราไม่มีบริการรถเก๋งทั่วไป" },
+        { q: "สามารถสูบบุหรี่หรือรับประทานอาหารในรถได้หรือไม่?", a: "ห้ามสูบบุหรี่ทุกชนิด (รวมถึงบุหรี่ไฟฟ้า) อนุญาตให้ดื่มน้ำในขวดปิดฝาและรับประทานของว่างเบาๆ ที่ไม่มีกลิ่นรุนแรง" },
+        { q: "สามารถพาสัตว์เลี้ยงมาด้วยได้หรือไม่?", a: "ได้ กรุณานำสัตว์เลี้ยงใส่กรงหรือกระเป๋าพาหนะที่เหมาะสมตลอดการเดินทาง หากไม่มีกรงที่เหมาะสม คนขับอาจปฏิเสธการให้บริการ" },
+        { q: "คุณสามารถขนสัมภาระไปส่งที่โรงแรมโดยที่ไม่มีผู้โดยสารได้หรือไม่?", a: "ได้ เราสามารถส่งคุณที่สนามกอล์ฟหรือทางเดินป่า จากนั้นนำสัมภาระ (กระเป๋าสนามกอล์ฟ เป้สะพายหลังขนาดใหญ่) ไปส่งล่วงหน้าที่โรงแรมที่คุณพัก อย่างไรก็ตาม เราไม่รับบริการขนส่งสินค้าโดยปราศจากผู้โดยสาร" },
+        { q: "คนขับจะสวมสูทและเนคไทหรือไม่?", a: "ใช่ คนขับของเราสวมสูทและเนคไทอย่างเป็นทางการทุกครั้งเพื่อให้บริการระดับสูงสุด" },
+        { q: "คนขับจะรักษาความเป็นส่วนตัวของผู้โดยสารหรือไม่?", a: "ใช่ การรักษาความเป็นส่วนตัวและข้อมูลลับของคุณคือสิ่งที่เราให้ความสำคัญสูงสุด คนขับของเราปฏิบัติตามมาตรฐานการรักษาความลับอย่างเคร่งครัด" },
+        { q: "สามารถชาร์จโทรศัพท์ในรถได้หรือไม่?", a: "ได้ รถทุกคันมีช่องชาร์จ USB และสายชาร์จสำหรับ iPhone และ Android ให้บริการฟรี" },
+      ],
+    },
+    {
+      group: "💴 ค่าบริการและการชำระเงิน",
+      items: [
+        { q: "มีค่าบริการรอคิวสำหรับเที่ยวบินล่าช้าหรือไม่?", a: "คนขับจะติดตามสถานะเที่ยวบินของคุณแบบเรียลไทม์และปรับเวลารับตามการลงจอดจริง หากรอเกิน 90 นาทีหลังการลงจอดจริง จะมีค่าบริการรอพิเศษทุก 30 นาที:\nAlphard: 2,500 เยน/30 นาที\nHiace: 3,000 เยน/30 นาที" },
+        { q: "จะทำอย่างไรหากต้องการเปลี่ยนเส้นทางหรือขยายเวลาระหว่างการเดินทาง?", a: "กรุณาแจ้งคนขับทันที คนขับจะติดต่อศูนย์จัดส่งเพื่อยืนยันค่าใช้จ่ายเพิ่มเติม ค่าทางด่วน ค่าจอดรถ ค่าที่พักคนขับ และค่าบริการเพิ่มเติมจะถูกรวมในใบแจ้งหนี้สุดท้าย" },
+        { q: "ค่าทางด่วน ค่าจอดรถ ค่าน้ำมัน รวมอยู่ในราคาแล้วหรือไม่?", a: "ใช่ ราคาเดียวครอบคลุมทุกอย่าง — ค่าทางด่วน ค่าจอดรถ ค่าน้ำมัน และค่าที่พักคนขับ (สำหรับทริปค้างคืน) ไม่มีค่าใช้จ่ายแอบแฝง" },
+        { q: "ที่นั่งสำหรับเด็กและบริการรับพร้อมป้ายชื่อที่สนามบินมีค่าใช้จ่ายเพิ่มเติมหรือไม่?", a: "ไม่มีค่าใช้จ่าย (ฟรี) ทั้งหมด กรุณาแจ้งล่วงหน้าเมื่อจองเพื่อให้เราเตรียมการได้" },
+        { q: "วิธีชำระเงินมีอะไรบ้าง? สามารถชำระในรถได้หรือไม่?", a: "รับชำระเงินสดในรถ หรือลงทะเบียนบัตรเครดิตล่วงหน้าสำหรับการชำระอัตโนมัติผ่านระบบ Stripe หลังการเดินทาง ลูกค้าองค์กรสามารถขอโอนเงินล่วงหน้าได้" },
+        { q: "จะได้รับใบเสร็จหรือไม่?", a: "ใช่ ลูกค้าที่ชำระด้วยบัตรเครดิตจะได้รับใบเสร็จอิเล็กทรอนิกส์ส่งไปยังอีเมลที่ลงทะเบียนโดยอัตโนมัติ ลูกค้าที่ชำระเป็นเงินสดสามารถขอใบเสร็จได้ตามต้องการ" },
+      ],
+    },
+    {
+      group: "❌ นโยบายการยกเลิก",
+      items: [
+        { q: "นโยบายการยกเลิกเป็นอย่างไร?", a: "การยกเลิกหลังยืนยันการจองมีค่าธรรมเนียมดังนี้:\nยกเลิกก่อน 48 ชั่วโมง: ฟรี (คืนเงินเต็มจำนวน)\nยกเลิก 24-48 ชั่วโมงก่อนรับ: 50% ของราคาประเมิน\nยกเลิกภายใน 24 ชั่วโมงหรือไม่มาตามนัด: 100% ของราคาประเมิน\nหมายเหตุ: ยกเว้นค่าธรรมเนียมหากเที่ยวบินถูกยกเลิกโดยสายการบิน โดยต้องแจ้งให้เราทราบทันที" },
+      ],
+    },
+  ],
+  fr: [
+    {
+      group: "🚗 Véhicules et règles à bord",
+      items: [
+        { q: "Quel type de véhicule sera déployé?", a: "Toyota Alphard (jusqu'à 5 passagers) ou Toyota Hiace (jusqu'à 9 passagers). Pas de berlines standard." },
+        { q: "Peut-on fumer ou manger dans le véhicule?", a: "Interdiction de fumer (y compris les cigarettes électroniques). Les boissons en bouteille fermée sont autorisées. Les collations légères sans odeur forte sont acceptées." },
+        { q: "Puis-je voyager avec mon animal de compagnie?", a: "Oui, les animaux sont acceptés mais doivent rester dans un transporteur/caisse sécurisé tout au long du trajet. Les passagers sans transporteur approprié peuvent se voir refuser l'embarquement." },
+        { q: "Pouvez-vous transporter nos bagages séparément pendant notre circuit?", a: "Oui. Nous vous déposons à votre activité (golf, randonnée, etc.) et livrons vos bagages à l'hôtel avant votre arrivée. Remarque: nous ne pouvons transporter que les bagages des passagers réservés." },
+        { q: "Mon chauffeur portera-t-il un costume et une cravate?", a: "Oui. Chaque chauffeur porte un costume formel et une cravate pour chaque trajet." },
+        { q: "Les chauffeurs préservent-ils la confidentialité des conversations?", a: "Oui. Tout ce qui est dit dans la voiture reste dans la voiture. Nos chauffeurs ne partagent jamais les informations des passagers." },
+        { q: "Puis-je charger mon téléphone dans le véhicule?", a: "Oui. Des ports USB sont disponibles, et des câbles de charge gratuits pour iPhone et Android sont fournis." },
+      ],
+    },
+    {
+      group: "💴 Tarifs et paiements",
+      items: [
+        { q: "Des frais d'attente sont-ils facturés (ex. retards de vol)?", a: "Les 90 premières minutes après l'atterrissage sont gratuites. Ensuite: Alphard ¥2,500 / Hiace ¥3,000 par 30 minutes. Les retards de vol sont toujours gratuits." },
+        { q: "Puis-je modifier l'itinéraire ou prolonger le trajet en cours de route?", a: "Informez votre chauffeur immédiatement — des frais supplémentaires s'appliqueront et les modifications le jour même ne sont pas toujours possibles." },
+        { q: "Les péages, parking, carburant sont-ils inclus?", a: "Oui. Un prix unique couvre tout — péages, parking, carburant et hébergement du chauffeur si nécessaire. Aucun frais caché. Des modifications d'itinéraire après le départ peuvent engendrer des coûts." },
+        { q: "Les sièges enfant et l'accueil à l'aéroport sont-ils en supplément?", a: "Les deux sont gratuits. Veuillez les demander lors de la réservation." },
+        { q: "Comment puis-je payer?", a: "Trois options: espèces dans la voiture, carte bancaire (débitée automatiquement après le trajet via Stripe), ou virement bancaire pour les clients professionnels." },
+        { q: "Recevrai-je un reçu?", a: "Oui. Carte bancaire: reçu PDF envoyé automatiquement par e-mail. Espèces: reçu disponible sur demande." },
+      ],
+    },
+    {
+      group: "❌ Politique d'annulation",
+      items: [
+        { q: "Quelle est votre politique d'annulation?", a: "Jusqu'à 48h avant la prise en charge: Gratuit (remboursement intégral)\nEntre 24h et 48h avant: 50% du devis\nMoins de 24h ou non-présentation: 100% du devis\nRemarque: les frais sont annulés si votre vol est officiellement annulé par la compagnie aérienne, sous réserve de nous en informer immédiatement." },
+      ],
+    },
+  ],
 };
 
 /* ══════════════════════════════════════════════════════════════════════
@@ -395,6 +525,9 @@ const GROUP_NAMES: Record<Lang, [string, string, string, string, string, string]
   ja: ["私たちについて", "料金・費用", "車両・手荷物", "予約・キャンセル", "空港当日", "特別リクエスト"],
   zh: ["關於我們", "費用與收費", "車輛與行李", "預訂與取消", "在機場", "特殊需求"],
   ko: ["회사 소개", "요금 및 비용", "차량 및 수하물", "예약 및 취소", "공항 당일", "특별 요청"],
+  "zh-cn": ["关于我们", "费用与收费", "车辆与行李", "预订与取消", "在机场", "特殊需求"],
+  th: ["เกี่ยวกับเรา", "ราคาและค่าธรรมเนียม", "รถและสัมภาระ", "การจองและการยกเลิก", "ที่สนามบิน", "คำขอพิเศษ"],
+  fr: ["À propos", "Tarifs & Frais", "Véhicules & Bagages", "Réservation & Annulation", "À l'aéroport", "Demandes spéciales"],
 };
 
 /* ── Extra Q&As (edit here to add / modify) ─────────────────────────
@@ -405,183 +538,234 @@ const EXTRA_ITEMS: { g: 0|1|2|3|4|5; q: Record<Lang,string>; a: Record<Lang,stri
   /* ── About Us ── */
   {
     g: 0,
-    q: { en: "Do your drivers speak English?", ja: "乗務員は英語を話せますか？", zh: "司機會說英語嗎？", ko: "드라이버가 영어를 할 수 있나요?" },
+    q: { en: "Do your drivers speak English?", ja: "乗務員は英語を話せますか？", zh: "司機會說英語嗎？", ko: "드라이버가 영어를 할 수 있나요?", "zh-cn": "司机会说英语吗？", th: "คนขับพูดภาษาอังกฤษได้หรือไม่?", fr: "Vos chauffeurs parlent-ils anglais?" },
     a: {
       en: "Yes. All bookings are fully supported in English. Our drivers have working English for day-to-day communication. For complex conversations we use translation tools to assist.",
       ja: "はい。すべての予約は英語で対応しております。乗務員は日常会話程度の英語を使用できます。複雑なご要望の際は翻訳ツールを活用してサポートいたします。",
       zh: "是的。我們全程提供英文預訂支援。司機具備日常英語溝通能力，如有複雜需求，亦會借助翻譯工具協助。",
       ko: "네. 모든 예약은 영어로 완전 지원됩니다. 드라이버는 일상적인 의사소통 수준의 영어를 구사합니다. 복잡한 요구 사항의 경우 번역 도구를 활용하여 지원합니다.",
+      "zh-cn": "是的。我们全程提供英文预订支援。司机具备日常英语沟通能力，如有复杂需求，亦会借助翻译工具协助。",
+      th: "ใช่ การจองทั้งหมดรองรับภาษาอังกฤษอย่างเต็มรูปแบบ คนขับสื่อสารภาษาอังกฤษสำหรับการสื่อสารประจำวันได้ สำหรับการสนทนาที่ซับซ้อน เราใช้เครื่องมือแปลภาษาช่วย",
+      fr: "Oui. Toutes les réservations sont entièrement prises en charge en anglais. Nos chauffeurs maîtrisent l'anglais courant. Pour les conversations complexes, nous utilisons des outils de traduction.",
     },
   },
   {
     g: 0,
-    q: { en: "Do you operate 24/7?", ja: "24時間対応していますか？", zh: "是否24小時服務？", ko: "24시간 운영하나요?" },
+    q: { en: "Do you operate 24/7?", ja: "24時間対応していますか？", zh: "是否24小時服務？", ko: "24시간 운영하나요?", "zh-cn": "是否24小时服务？", th: "ให้บริการตลอด 24 ชั่วโมงหรือไม่?", fr: "Opérez-vous 24h/24?" },
     a: {
       en: "Yes. We operate around the clock with no late-night or early-morning surcharge. All prices are the same regardless of departure time.",
       ja: "はい。24時間365日対応しており、深夜・早朝の割増料金は一切ございません。出発時間に関わらず料金は同一です。",
       zh: "是的。我們全年無休、24小時服務，深夜及清晨均無附加費用，價格不因時段而改變。",
       ko: "네. 연중무휴 24시간 운영하며 심야·새벽 할증 요금은 없습니다. 출발 시간에 관계없이 요금은 동일합니다.",
+      "zh-cn": "是的。我们全年无休、24小时服务，深夜及清晨均无附加费用，价格不因时段而改变。",
+      th: "ใช่ เราให้บริการตลอด 24 ชั่วโมง โดยไม่มีค่าบริการเพิ่มเติมสำหรับช่วงดึกหรือเช้าตรู่ ราคาเท่ากันไม่ว่าจะเดินทางเวลาใด",
+      fr: "Oui. Nous opérons 24h/24, 7j/7, sans supplément de nuit ou de matin. Les tarifs sont identiques quelle que soit l'heure de départ.",
     },
   },
   /* ── Cars & Luggage ── */
   {
     g: 2,
-    q: { en: "How much luggage can I bring?", ja: "荷物はどのくらい積めますか？", zh: "可以帶多少行李？", ko: "짐은 얼마나 실을 수 있나요?" },
+    q: { en: "How much luggage can I bring?", ja: "荷物はどのくらい積めますか？", zh: "可以帶多少行李？", ko: "짐은 얼마나 실을 수 있나요?", "zh-cn": "可以带多少行李？", th: "สามารถนำสัมภาระมาได้เท่าไร?", fr: "Combien de bagages puis-je apporter?" },
     a: {
       en: "Alphard: up to 4 passengers and 4 large suitcases. Hiace: up to 9 passengers and 6+ large suitcases. Please declare your exact luggage count when booking. Oversized items — golf bags, strollers, ski equipment — must be mentioned in advance.",
       ja: "アルファード：最大4名様・大型スーツケース4個。ハイエース：最大9名様・大型スーツケース6個以上。ご予約時に荷物の数を必ずお知らせください。ゴルフバッグ・ベビーカー・スキー用品などの大型荷物は必ず事前にお申し出ください。",
       zh: "埃爾法：最多4人及4件大型行李箱。海獅：最多9人及6件以上大型行李箱。預訂時請告知確切行李數量。高爾夫球包、嬰兒車、滑雪器材等特大行李必須提前說明。",
       ko: "Alphard: 최대 4인 및 대형 수트케이스 4개. Hiace: 최대 9인 및 대형 수트케이스 6개 이상. 예약 시 정확한 수하물 수를 알려 주세요. 골프백, 유모차, 스키 장비 등 대형 짐은 반드시 사전에 알려 주셔야 합니다.",
+      "zh-cn": "埃尔法：最多4人及4件大型行李箱。海狮：最多9人及6件以上大型行李箱。预订时请告知确切行李数量。高尔夫球包、婴儿车、滑雪器材等特大行李必须提前说明。",
+      th: "Alphard: รับได้สูงสุด 4 ท่านและกระเป๋าเดินทางขนาดใหญ่ 4 ใบ Hiace: รับได้สูงสุด 9 ท่านและกระเป๋าขนาดใหญ่ 6+ ใบ กรุณาระบุจำนวนสัมภาระที่แน่นอนเมื่อจอง สิ่งของขนาดใหญ่พิเศษต้องแจ้งล่วงหน้า",
+      fr: "Alphard: jusqu'à 4 passagers et 4 grandes valises. Hiace: jusqu'à 9 passagers et 6+ grandes valises. Veuillez déclarer le nombre exact de bagages lors de la réservation. Les articles surdimensionnés doivent être mentionnés à l'avance.",
     },
   },
   {
     g: 2,
-    q: { en: "Do you accommodate wheelchair users?", ja: "車椅子の方も利用できますか？", zh: "可以乘坐輪椅嗎？", ko: "휠체어 이용자도 탑승할 수 있나요?" },
+    q: { en: "Do you accommodate wheelchair users?", ja: "車椅子の方も利用できますか？", zh: "可以乘坐輪椅嗎？", ko: "휠체어 이용자도 탑승할 수 있나요?", "zh-cn": "可以乘坐轮椅吗？", th: "รองรับผู้ใช้รถเข็นหรือไม่?", fr: "Acceptez-vous les utilisateurs de fauteuil roulant?" },
     a: {
       en: "Yes. Please notify us at booking with the wheelchair type (foldable / electric / dimensions) so we can assign a suitable vehicle.",
       ja: "はい。ご予約の際に車椅子の種類（折りたたみ式・電動式・サイズ）をお知らせいただければ、適切な車両をご用意いたします。",
       zh: "可以。預訂時請告知輪椅類型（折疊式／電動式／尺寸），以便我們安排合適的車輛。",
       ko: "네. 예약 시 휠체어 유형(접이식/전동식/크기)을 알려 주시면 적합한 차량을 배정해 드립니다.",
+      "zh-cn": "可以。预订时请告知轮椅类型（折叠式／电动式／尺寸），以便我们安排合适的车辆。",
+      th: "ได้ กรุณาแจ้งประเภทรถเข็น (พับได้/ไฟฟ้า/ขนาด) เมื่อจอง เพื่อให้เราจัดรถที่เหมาะสม",
+      fr: "Oui. Veuillez nous informer lors de la réservation du type de fauteuil roulant (pliant / électrique / dimensions) afin que nous puissions attribuer un véhicule adapté.",
     },
   },
   /* ── Booking & Cancellation ── */
   {
     g: 3,
-    q: { en: "Can I request multiple stops?", ja: "複数の立ち寄り先を追加できますか？", zh: "可以安排多個停靠點嗎？", ko: "여러 경유지를 추가할 수 있나요?" },
+    q: { en: "Can I request multiple stops?", ja: "複数の立ち寄り先を追加できますか？", zh: "可以安排多個停靠點嗎？", ko: "여러 경유지를 추가할 수 있나요?", "zh-cn": "可以安排多个停靠点吗？", th: "สามารถขอหยุดหลายจุดได้หรือไม่?", fr: "Puis-je demander plusieurs arrêts?" },
     a: {
       en: "Yes. Please list all stops in advance when booking. Additional charges may apply depending on routing.",
       ja: "はい。ご予約時に全ての立ち寄り先をご記入ください。ルートによっては追加料金が発生する場合があります。",
       zh: "可以。請在預訂時列明所有停靠地點。視乎路線，可能需要支付額外費用。",
       ko: "네. 예약 시 모든 경유지를 미리 기재해 주세요. 경로에 따라 추가 요금이 발생할 수 있습니다.",
+      "zh-cn": "可以。请在预订时列明所有停靠地点。视乎路线，可能需要支付额外费用。",
+      th: "ได้ กรุณาระบุจุดหยุดทั้งหมดล่วงหน้าเมื่อจอง อาจมีค่าใช้จ่ายเพิ่มเติมขึ้นอยู่กับเส้นทาง",
+      fr: "Oui. Veuillez lister tous les arrêts à l'avance lors de la réservation. Des frais supplémentaires peuvent s'appliquer selon l'itinéraire.",
     },
   },
   {
     g: 3,
-    q: { en: "Do you offer hourly charter?", ja: "時間制貸切はできますか？", zh: "可以按小時包車嗎？", ko: "시간제 전세 서비스가 있나요?" },
+    q: { en: "Do you offer hourly charter?", ja: "時間制貸切はできますか？", zh: "可以按小時包車嗎？", ko: "시간제 전세 서비스가 있나요?", "zh-cn": "可以按小时包车吗？", th: "มีบริการเช่าเหมาคันเป็นชั่วโมงหรือไม่?", fr: "Proposez-vous la location à l'heure?" },
     a: {
       en: "Yes. Minimum 4 hours. Ideal for shopping, corporate meetings, and sightseeing. Book in advance — same-day bookings are not guaranteed.",
       ja: "はい。最低4時間からご利用いただけます。ショッピング・企業訪問・観光に最適です。事前予約推奨。当日ご予約はご対応できない場合があります。",
       zh: "是的。最少4小時起。適合購物、商務拜訪及觀光。建議提前預訂，當天預約未必有車。",
       ko: "네. 최소 4시간부터 이용 가능합니다. 쇼핑, 기업 방문, 관광에 최적입니다. 사전 예약 권장—당일 예약은 보장되지 않을 수 있습니다.",
+      "zh-cn": "是的。最少4小时起。适合购物、商务拜访及观光。建议提前预订，当天预约未必有车。",
+      th: "ได้ ขั้นต่ำ 4 ชั่วโมง เหมาะสำหรับการช้อปปิ้ง ประชุมธุรกิจ และชมสถานที่ท่องเที่ยว แนะนำจองล่วงหน้า",
+      fr: "Oui. Minimum 4 heures. Idéal pour le shopping, les réunions d'affaires et les visites touristiques. Réservation à l'avance recommandée.",
     },
   },
   /* ── At the Airport ── */
   {
     g: 4,
-    q: { en: "Where exactly will the driver meet me?", ja: "空港でどこで待っていてもらえますか？", zh: "司機在機場哪裡等候？", ko: "공항에서 드라이버가 어디서 기다리나요?" },
+    q: { en: "Where exactly will the driver meet me?", ja: "空港でどこで待っていてもらえますか？", zh: "司機在機場哪裡等候？", ko: "공항에서 드라이버가 어디서 기다리나요?", "zh-cn": "司机在机场哪里等候？", th: "คนขับจะรับฉันที่ไหนในสนามบิน?", fr: "Où exactement le chauffeur m'attendra-t-il?" },
     a: {
       en: "In the arrivals hall, after customs and baggage claim. Your chauffeur will be holding a name board with your name. Please do not exit the terminal before finding your driver.",
       ja: "到着ロビー（入国審査・手荷物受け取り後）にてお待ちしております。乗務員がお客様のお名前を掲げたネームプレートをお持ちしております。ドライバーを見つける前に建物の外へ出ないようご注意ください。",
       zh: "在到達大廳（通關及取行李後）等候。司機將手持寫有您姓名的接機牌。請在找到司機前勿離開航站樓。",
       ko: "입국심사와 수하물 수취 후 도착 로비에서 기다립니다. 드라이버가 고객 이름이 적힌 이름판을 들고 있습니다. 드라이버를 찾기 전에 터미널 밖으로 나가지 마세요.",
+      "zh-cn": "在到达大厅（通关及取行李后）等候。司机将手持写有您姓名的接机牌。请在找到司机前勿离开航站楼。",
+      th: "ที่ล็อบบี้ผู้โดยสารขาเข้า หลังผ่านพิธีการศุลกากรและรับสัมภาระแล้ว คนขับจะถือป้ายชื่อของคุณ กรุณาอย่าออกจากอาคารผู้โดยสารก่อนพบคนขับ",
+      fr: "Dans le hall des arrivées, après le contrôle douanier et la récupération des bagages. Votre chauffeur tiendra un panneau avec votre nom. Ne sortez pas du terminal avant de trouver votre chauffeur.",
     },
   },
   {
     g: 4,
-    q: { en: "How long does it take from Narita Airport to Tokyo?", ja: "成田空港から東京市内まで何分かかりますか？", zh: "從成田機場到東京市區需要多久？", ko: "나리타 공항에서 도쿄 시내까지 얼마나 걸리나요?" },
+    q: { en: "How long does it take from Narita Airport to Tokyo?", ja: "成田空港から東京市内まで何分かかりますか？", zh: "從成田機場到東京市區需要多久？", ko: "나리타 공항에서 도쿄 시내까지 얼마나 걸리나요?", "zh-cn": "从成田机场到东京市区需要多久？", th: "ใช้เวลานานเท่าไรจากสนามบินนาริตะถึงโตเกียว?", fr: "Combien de temps faut-il de l'aéroport de Narita à Tokyo?" },
     a: {
       en: "Typically 50–70 minutes. Allow up to 90 minutes during peak hours or if there is an accident on the expressway.",
       ja: "通常50〜70分程度です。ラッシュアワー時や高速道路での事故発生時は、最大90分ほどお見込みください。",
       zh: "通常約50至70分鐘。尖峰時段或高速公路發生事故時，請預留最多90分鐘。",
       ko: "보통 50~70분입니다. 러시아워나 고속도로 사고 발생 시 최대 90분까지 소요될 수 있습니다.",
+      "zh-cn": "通常约50至70分钟。尖峰时段或高速公路发生事故时，请预留最多90分钟。",
+      th: "โดยทั่วไปประมาณ 50–70 นาที ในช่วงชั่วโมงเร่งด่วนหรือมีอุบัติเหตุบนทางด่วน ควรเผื่อเวลาถึง 90 นาที",
+      fr: "En général 50 à 70 minutes. Prévoyez jusqu'à 90 minutes aux heures de pointe ou en cas d'accident sur l'autoroute.",
     },
   },
   {
     g: 4,
-    q: { en: "How long does it take from Haneda Airport to Tokyo?", ja: "羽田空港から東京市内まで何分かかりますか？", zh: "從羽田機場到東京市區需要多久？", ko: "하네다 공항에서 도쿄 시내까지 얼마나 걸리나요?" },
+    q: { en: "How long does it take from Haneda Airport to Tokyo?", ja: "羽田空港から東京市内まで何分かかりますか？", zh: "從羽田機場到東京市區需要多久？", ko: "하네다 공항에서 도쿄 시내까지 얼마나 걸리나요?", "zh-cn": "从羽田机场到东京市区需要多久？", th: "ใช้เวลานานเท่าไรจากสนามบินฮาเนดะถึงโตเกียว?", fr: "Combien de temps faut-il de l'aéroport de Haneda à Tokyo?" },
     a: {
       en: "Typically 30–45 minutes. Allow up to 60 minutes during heavy traffic.",
       ja: "通常30〜45分程度です。交通渋滞時は最大60分ほどお見込みください。",
       zh: "通常約30至45分鐘。交通繁忙時請預留最多60分鐘。",
       ko: "보통 30~45분입니다. 교통 혼잡 시 최대 60분까지 소요될 수 있습니다.",
+      "zh-cn": "通常约30至45分钟。交通繁忙时请预留最多60分钟。",
+      th: "โดยทั่วไปประมาณ 30–45 นาที ในช่วงการจราจรหนาแน่นควรเผื่อเวลาถึง 60 นาที",
+      fr: "En général 30 à 45 minutes. Prévoyez jusqu'à 60 minutes en cas de trafic dense.",
     },
   },
   {
     g: 4,
-    q: { en: "How long will the driver wait after landing?", ja: "着陸後どのくらい待ってもらえますか？", zh: "落地後司機會等多久？", ko: "착륙 후 드라이버는 얼마나 기다려 주나요?" },
+    q: { en: "How long will the driver wait after landing?", ja: "着陸後どのくらい待ってもらえますか？", zh: "落地後司機會等多久？", ko: "착륙 후 드라이버는 얼마나 기다려 주나요?", "zh-cn": "落地后司机会等多久？", th: "คนขับจะรอนานเท่าไรหลังลงจอด?", fr: "Combien de temps le chauffeur attendra-t-il après l'atterrissage?" },
     a: {
       en: "Your chauffeur waits in the arrivals hall until you appear. We track your flight in real time, so they know exactly when you land. You have 90 minutes after touchdown to clear customs and collect your bags — take your time.",
       ja: "乗務員は到着ロビーでお客様が現れるまでお待ちしております。フライトをリアルタイムで追跡しているため、着陸時間は把握済みです。通関・手荷物受け取りには着陸後90分間ゆっくりお使いください。",
       zh: "司機在到達大廳等您出現。我們即時追蹤您的航班，因此完全掌握您的落地時間。落地後有90分鐘讓您完成通關及取行李，請從容不迫。",
       ko: "드라이버는 도착 로비에서 고객이 나타날 때까지 기다립니다. 실시간으로 항공편을 추적하므로 착륙 시간을 정확히 파악합니다. 착륙 후 90분간 입국심사와 수하물 수취를 여유롭게 하실 수 있습니다.",
+      "zh-cn": "司机在到达大厅等您出现。我们即时追踪您的航班，因此完全掌握您的落地时间。落地后有90分钟让您完成通关及取行李，请从容不迫。",
+      th: "คนขับรอในล็อบบี้ผู้โดยสารขาเข้าจนกว่าคุณจะออกมา เราติดตามเที่ยวบินแบบเรียลไทม์ คุณมีเวลา 90 นาทีหลังลงจอดเพื่อผ่านพิธีการศุลกากรและรับสัมภาระ",
+      fr: "Votre chauffeur attend dans le hall des arrivées jusqu'à votre apparition. Nous suivons votre vol en temps réel. Vous disposez de 90 minutes après l'atterrissage pour passer la douane et récupérer vos bagages.",
     },
   },
   {
     g: 4,
-    q: { en: "Should I exchange my JR Pass at the airport?", ja: "JRパスは空港で交換すべきですか？", zh: "我應該在機場兌換JR Pass嗎？", ko: "JR Pass는 공항에서 교환해야 하나요?" },
+    q: { en: "Should I exchange my JR Pass at the airport?", ja: "JRパスは空港で交換すべきですか？", zh: "我應該在機場兌換JR Pass嗎？", ko: "JR Pass는 공항에서 교환해야 하나요?", "zh-cn": "我应该在机场兑换JR Pass吗？", th: "ควรแลก JR Pass ที่สนามบินหรือไม่?", fr: "Dois-je échanger mon JR Pass à l'aéroport?" },
     a: {
       en: "We recommend exchanging at major Tokyo stations (Tokyo, Shinjuku, Shibuya) where queues are minimal. Airport counters can have 1–2 hour waits. Your driver can take you to a station counter after drop-off if needed.",
       ja: "東京・新宿・渋谷など都内の主要駅での交換をお勧めします。空港のカウンターは1〜2時間待ちになる場合があります。ご希望であれば、お送りの後に駅のカウンターへご案内することも可能です。",
       zh: "建議在東京、新宿、澀谷等主要車站兌換，等候時間極短。機場兌換窗口可能需排隊1至2小時。若有需要，司機可在送達後帶您前往車站窗口。",
       ko: "도쿄, 신주쿠, 시부야 등 주요 역에서 교환하실 것을 권장합니다. 대기 시간이 매우 짧습니다. 공항 창구는 1~2시간 대기가 생길 수 있습니다. 필요하시면 드라이버가 하차 후 역 창구로 안내해 드립니다.",
+      "zh-cn": "建议在东京、新宿、涩谷等主要车站兑换，等候时间极短。机场兑换窗口可能需排队1至2小时。若有需要，司机可在送达后带您前往车站窗口。",
+      th: "เราแนะนำให้แลกที่สถานีหลักในโตเกียว (โตเกียว ชินจูกุ ชิบูยะ) ซึ่งมีคิวน้อยกว่า ช่องบริการที่สนามบินอาจรอนาน 1–2 ชั่วโมง คนขับสามารถพาคุณไปช่องบริการที่สถานีได้หากต้องการ",
+      fr: "Nous recommandons d'échanger dans les grandes gares de Tokyo (Tokyo, Shinjuku, Shibuya) où les files sont minimes. Les comptoirs aéroport peuvent avoir 1 à 2 heures d'attente.",
     },
   },
   /* ── Special Requests ── */
   {
     g: 5,
-    q: { en: "Do you pick up from hotels, private residences, or Airbnb?", ja: "ホテルや個人宅・Airbnbへの送迎はできますか？", zh: "可以從酒店、民宅或Airbnb接送嗎？", ko: "호텔, 개인 주택, Airbnb에서 픽업해 주시나요?" },
+    q: { en: "Do you pick up from hotels, private residences, or Airbnb?", ja: "ホテルや個人宅・Airbnbへの送迎はできますか？", zh: "可以從酒店、民宅或Airbnb接送嗎？", ko: "호텔, 개인 주택, Airbnb에서 픽업해 주시나요?", "zh-cn": "可以从酒店、民宅或Airbnb接送吗？", th: "รับจากโรงแรม บ้านพักส่วนตัว หรือ Airbnb ได้หรือไม่?", fr: "Prenez-vous en charge depuis les hôtels, résidences privées ou Airbnb?" },
     a: {
       en: "Yes. We pick up from any address in Tokyo and surrounding areas — hotels, private homes, Airbnb, offices, or any location you specify.",
       ja: "はい。東京都内および近郊であれば、ホテル・個人宅・Airbnb・オフィス等、ご指定のいかなる場所からでも対応いたします。",
       zh: "是的。東京市內及周邊地區任何地址均可，包括酒店、私人住宅、Airbnb、辦公室等您指定的地點。",
       ko: "네. 도쿄 시내 및 근교라면 호텔, 개인 주택, Airbnb, 사무실 등 고객이 지정하는 어떤 장소에서도 픽업합니다.",
+      "zh-cn": "是的。东京市内及周边地区任何地址均可，包括酒店、私人住宅、Airbnb、办公室等您指定的地点。",
+      th: "ใช่ เราสามารถรับจากที่อยู่ใดก็ได้ในโตเกียวและพื้นที่โดยรอบ ไม่ว่าจะเป็นโรงแรม บ้านส่วนตัว Airbnb สำนักงาน หรือสถานที่ที่คุณระบุ",
+      fr: "Oui. Nous prenons en charge depuis n'importe quelle adresse à Tokyo et dans les environs — hôtels, résidences privées, Airbnb, bureaux ou tout lieu que vous spécifiez.",
     },
   },
   {
     g: 5,
-    q: { en: "Do you serve Yokohama cruise terminals?", ja: "横浜のクルーズターミナルも対応していますか？", zh: "可以接送橫濱郵輪碼頭嗎？", ko: "요코하마 크루즈 터미널도 운행하나요?" },
+    q: { en: "Do you serve Yokohama cruise terminals?", ja: "横浜のクルーズターミナルも対応していますか？", zh: "可以接送橫濱郵輪碼頭嗎？", ko: "요코하마 크루즈 터미널도 운행하나요?", "zh-cn": "可以接送横滨邮轮码头吗？", th: "ให้บริการที่ท่าเรือสำราญโยโกฮาม่าหรือไม่?", fr: "Desservez-vous les terminaux de croisière de Yokohama?" },
     a: {
       en: "Yes. We serve Osanbashi Pier and Daikoku Pier. Please include your vessel name and arrival/departure time when booking.",
       ja: "はい。大さん橋ふ頭および大黒ふ頭に対応しております。ご予約の際は船名と入出港時間をお知らせください。",
       zh: "是的。我們服務大棧橋碼頭及大黑碼頭。預訂時請提供船名及到港/離港時間。",
       ko: "네. 오산바시 부두와 다이코쿠 부두에 대응합니다. 예약 시 선박명과 입출항 시간을 알려 주세요.",
+      "zh-cn": "是的。我们服务大栈桥码头及大黑码头。预订时请提供船名及到港/离港时间。",
+      th: "ใช่ เราให้บริการที่ท่าเรือโอซันบาชิและท่าเรือไดโคกุ กรุณาระบุชื่อเรือและเวลาเข้า/ออกท่าเมื่อจอง",
+      fr: "Oui. Nous desservons le quai Osanbashi et le quai Daikoku. Veuillez inclure le nom du navire et l'heure d'arrivée/départ lors de la réservation.",
     },
   },
   {
     g: 5,
-    q: { en: "Do you go to Tokyo Disney Resort?", ja: "東京ディズニーリゾートへの送迎はできますか？", zh: "可以接送東京迪士尼樂園嗎？", ko: "도쿄 디즈니 리조트까지 운행하나요?" },
+    q: { en: "Do you go to Tokyo Disney Resort?", ja: "東京ディズニーリゾートへの送迎はできますか？", zh: "可以接送東京迪士尼樂園嗎？", ko: "도쿄 디즈니 리조트까지 운행하나요?", "zh-cn": "可以接送东京迪士尼乐园吗？", th: "ไปส่งที่ Tokyo Disney Resort ได้หรือไม่?", fr: "Allez-vous à Tokyo Disney Resort?" },
     a: {
       en: "Yes. Both Tokyo Disneyland and Tokyo DisneySea entrances.",
       ja: "はい。東京ディズニーランド・東京ディズニーシーの両入口に対応しております。",
       zh: "是的。東京迪士尼樂園及東京迪士尼海洋均可接送。",
       ko: "네. 도쿄 디즈니랜드와 도쿄 디즈니씨 양쪽 입구 모두 운행합니다.",
+      "zh-cn": "是的。东京迪士尼乐园及东京迪士尼海洋均可接送。",
+      th: "ใช่ ทั้งทางเข้า Tokyo Disneyland และ Tokyo DisneySea",
+      fr: "Oui. Les deux entrées de Tokyo Disneyland et de Tokyo DisneySea.",
     },
   },
   {
     g: 5,
-    q: { en: "Do you provide long-distance transfers across Japan?", ja: "日本全国への長距離送迎はできますか？", zh: "可以提供日本全國長途接送嗎？", ko: "일본 전국 장거리 이동 서비스가 있나요?" },
+    q: { en: "Do you provide long-distance transfers across Japan?", ja: "日本全国への長距離送迎はできますか？", zh: "可以提供日本全國長途接送嗎？", ko: "일본 전국 장거리 이동 서비스가 있나요?", "zh-cn": "可以提供日本全国长途接送吗？", th: "มีบริการรับส่งระยะไกลทั่วญี่ปุ่นหรือไม่?", fr: "Effectuez-vous des transferts longue distance à travers le Japon?" },
     a: {
       en: "Yes. We operate across Japan — Mt. Fuji, Hakone, Nikko, Karuizawa, ski resorts in Nagano and Niigata, and beyond. Contact us for a quote on any destination.",
       ja: "はい。富士山・箱根・日光・軽井沢・長野や新潟のスキーリゾートなど、日本全国に対応しております。ご希望の目的地へのお見積もりはお気軽にお問い合わせください。",
       zh: "是的。我們覆蓋全日本，包括富士山、箱根、日光、輕井澤、長野及新潟滑雪勝地等。任何目的地均可詢價。",
       ko: "네. 후지산, 하코네, 닛코, 가루이자와, 나가노·니가타 스키 리조트 등 일본 전국에 대응합니다. 원하시는 목적지 견적은 문의 주세요.",
+      "zh-cn": "是的。我们覆盖全日本，包括富士山、箱根、日光、轻井泽、长野及新泻滑雪胜地等。任何目的地均可询价。",
+      th: "ใช่ เราให้บริการทั่วญี่ปุ่น ไม่ว่าจะเป็นภูเขาไฟฟูจิ ฮาโกเน นิกโก คารุอิซาว่า รีสอร์ตสกีในนากาโนและนีงาตะ ติดต่อเราเพื่อรับใบเสนอราคา",
+      fr: "Oui. Nous opérons partout au Japon — Mt. Fuji, Hakone, Nikko, Karuizawa, stations de ski à Nagano et Niigata, et bien plus. Contactez-nous pour un devis.",
     },
   },
   {
     g: 5,
-    q: { en: "What if I leave something in the car?", ja: "車内に忘れ物をした場合は？", zh: "如果在車上遺留物品怎麼辦？", ko: "차 안에 물건을 두고 내렸을 경우 어떻게 하나요?" },
+    q: { en: "What if I leave something in the car?", ja: "車内に忘れ物をした場合は？", zh: "如果在車上遺留物品怎麼辦？", ko: "차 안에 물건을 두고 내렸을 경우 어떻게 하나요?", "zh-cn": "如果在车上遗留物品怎么办？", th: "ถ้าลืมของในรถจะทำอย่างไร?", fr: "Que faire si j'oublie quelque chose dans la voiture?" },
     a: {
       en: "Contact us immediately at info@octoshell.jp. If the item is found, we will arrange return delivery. Shipping costs are at the client's expense.",
       ja: "速やかにinfo@octoshell.jpまでご連絡ください。お忘れ物が見つかり次第、ご返送の手配をいたします。送料はお客様のご負担となります。",
       zh: "請立即聯絡 info@octoshell.jp。若找到遺失物，我們將為您安排寄回。郵寄費用由客人承擔。",
       ko: "즉시 info@octoshell.jp로 연락해 주세요. 분실물이 발견되면 반송 수속을 진행합니다. 배송비는 고객 부담입니다.",
+      "zh-cn": "请立即联系 info@octoshell.jp。若找到遗失物，我们将为您安排寄回。邮寄费用由客人承担。",
+      th: "ติดต่อเราทันทีที่ info@octoshell.jp หากพบสิ่งของ เราจะจัดการส่งคืนให้คุณ ค่าจัดส่งเป็นค่าใช้จ่ายของลูกค้า",
+      fr: "Contactez-nous immédiatement à info@octoshell.jp. Si l'objet est retrouvé, nous organiserons la livraison de retour. Les frais d'expédition sont à la charge du client.",
     },
   },
   {
     g: 1,
-    q: { en: "Is tipping required?", ja: "チップは必要ですか？", zh: "需要給小費嗎？", ko: "팁이 필요한가요?" },
+    q: { en: "Is tipping required?", ja: "チップは必要ですか？", zh: "需要給小費嗎？", ko: "팁이 필요한가요?", "zh-cn": "需要给小费吗？", th: "ต้องให้ทิปหรือไม่?", fr: "Le pourboire est-il obligatoire?" },
     a: {
       en: "No. Tipping is not customary in Japan and is never expected by our chauffeurs. A kind word or an online review is the best way to show your appreciation.",
       ja: "不要です。チップは日本では一般的な慣習ではなく、乗務員が期待することもございません。温かいお言葉やオンラインレビューが最大の励みになります。",
       zh: "不需要。日本沒有給小費的習慣，我們的司機也從不期待。若您滿意服務，留下評價或一句好評是最好的回饋。",
       ko: "아니요. 일본에서는 팁 문화가 없으며 드라이버도 기대하지 않습니다. 따뜻한 한마디나 온라인 리뷰가 최고의 감사 표현입니다.",
+      "zh-cn": "不需要。日本没有给小费的习惯，我们的司机也从不期待。若您满意服务，留下评价或一句好评是最好的回馈。",
+      th: "ไม่จำเป็น การให้ทิปไม่ใช่ธรรมเนียมในญี่ปุ่นและคนขับของเราไม่ได้คาดหวัง คำขอบคุณหรือรีวิวออนไลน์คือวิธีแสดงความขอบคุณที่ดีที่สุด",
+      fr: "Non. Le pourboire n'est pas une coutume au Japon et n'est jamais attendu par nos chauffeurs. Un mot aimable ou un avis en ligne est la meilleure façon de montrer votre appréciation.",
     },
   },
 ];
 
 function buildRegroupedFAQ(faq: Record<Lang, FaqGroup[]>): Record<Lang, FaqGroup[]> {
   const result = {} as Record<Lang, FaqGroup[]>;
-  (["en", "ja", "zh", "ko"] as Lang[]).forEach((lang) => {
+  (["en", "ja", "zh", "ko", "zh-cn", "th", "fr"] as Lang[]).forEach((lang) => {
     const veh = faq[lang][0].items;
     const pay = faq[lang][1].items;
     const can = faq[lang][2].items;
@@ -947,17 +1131,20 @@ const SUBJECTS: Record<Lang, string[]> = {
   en: ["General Inquiry", "Booking & Quote Request", "Corporate Contract", "Other"],
   zh: ["一般詢問", "預訂及報價", "企業長期合作", "其他"],
   ko: ["일반 문의", "예약 및 견적 요청", "법인 계약", "기타"],
+  "zh-cn": ["一般询问", "预订及报价", "企业长期合作", "其他"],
+  th: ["สอบถามทั่วไป", "จองและขอใบเสนอราคา", "สัญญาองค์กร", "อื่นๆ"],
+  fr: ["Renseignement général", "Réservation & Demande de devis", "Contrat entreprise", "Autre"],
 };
 
 const CLABEL: Record<string, Record<Lang, string>> = {
-  subject:  { ja: "お問い合わせ種別",      en: "Inquiry Type",           zh: "詢問類型",      ko: "문의 유형" },
-  name:     { ja: "お名前 *",              en: "Your Name *",            zh: "您的姓名 *",    ko: "성함 *" },
-  email:    { ja: "メールアドレス *",       en: "Email Address *",        zh: "電子郵件 *",    ko: "이메일 주소 *" },
-  phone:    { ja: "電話番号（任意）",       en: "Phone Number (optional)", zh: "電話號碼（選填）", ko: "전화번호 (선택)" },
-  message:  { ja: "ご連絡内容・ご質問 *",   en: "Your Message *",         zh: "詢問內容 *",    ko: "문의 내용 *" },
-  send:     { ja: "送信する",              en: "Send Message",           zh: "發送訊息",      ko: "보내기" },
-  sending:  { ja: "送信中…",              en: "Sending…",               zh: "傳送中…",       ko: "전송 중…" },
-  cancel:   { ja: "キャンセル",            en: "Cancel",                 zh: "取消",          ko: "취소" },
+  subject:  { ja: "お問い合わせ種別",      en: "Inquiry Type",           zh: "詢問類型",      ko: "문의 유형",      "zh-cn": "询问类型",      th: "ประเภทการสอบถาม",   fr: "Type de demande" },
+  name:     { ja: "お名前 *",              en: "Your Name *",            zh: "您的姓名 *",    ko: "성함 *",         "zh-cn": "您的姓名 *",    th: "ชื่อของคุณ *",       fr: "Votre nom *" },
+  email:    { ja: "メールアドレス *",       en: "Email Address *",        zh: "電子郵件 *",    ko: "이메일 주소 *",  "zh-cn": "电子邮件 *",    th: "อีเมล *",            fr: "Adresse e-mail *" },
+  phone:    { ja: "電話番号（任意）",       en: "Phone Number (optional)", zh: "電話號碼（選填）", ko: "전화번호 (선택)", "zh-cn": "电话号码（选填）", th: "หมายเลขโทรศัพท์ (ไม่บังคับ)", fr: "Téléphone (facultatif)" },
+  message:  { ja: "ご連絡内容・ご質問 *",   en: "Your Message *",         zh: "詢問內容 *",    ko: "문의 내용 *",    "zh-cn": "询问内容 *",    th: "ข้อความของคุณ *",   fr: "Votre message *" },
+  send:     { ja: "送信する",              en: "Send Message",           zh: "發送訊息",      ko: "보내기",         "zh-cn": "发送信息",      th: "ส่งข้อความ",         fr: "Envoyer" },
+  sending:  { ja: "送信中…",              en: "Sending…",               zh: "傳送中…",       ko: "전송 중…",       "zh-cn": "发送中…",       th: "กำลังส่ง…",         fr: "Envoi en cours…" },
+  cancel:   { ja: "キャンセル",            en: "Cancel",                 zh: "取消",          ko: "취소",           "zh-cn": "取消",          th: "ยกเลิก",             fr: "Annuler" },
 };
 
 function ContactForm({
