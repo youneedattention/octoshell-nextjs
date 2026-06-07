@@ -19,6 +19,7 @@ export const t: Record<string, T> = {
   nav_svc_9:  { en: "Photo Tour",           ja: "旅拍ハイヤー",          zh: "旅拍接送" },
   nav_svc_10: { en: "Outdoor",              ja: "アウトドア送迎",        zh: "戶外接送" },
   nav_fleet:       { en: "Fleet",        ja: "車種",            zh: "車型" },
+  nav_faq:         { en: "FAQ",          ja: "よくある質問",    zh: "常見問題" },
   nav_about:       { en: "About",        ja: "会社情報",        zh: "關於" },
   nav_about_story: { en: "How It Works", ja: "Octoshellについて", zh: "品牌故事" },
   nav_about_faq:     { en: "FAQ",          ja: "よくある質問",      zh: "常見問題" },
