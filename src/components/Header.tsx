@@ -341,7 +341,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
             <ProtectedImage src={LOGO} alt="Octoshell" width={75} height={75} draggable={false} className="object-contain drop-shadow-lg pointer-events-none select-none" />
           </Link>
 
-          <nav className="flex items-center gap-5 lg:gap-9 mt-0.5">
+          <nav className="flex items-center gap-8 lg:gap-12 mt-0.5">
 
             {/* HOME */}
             <Link href={lp("/")}
