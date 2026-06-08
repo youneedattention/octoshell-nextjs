@@ -642,10 +642,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
             {/* SERVICES — expandable mobile */}
             <div>
               <button
-                onClick={() => {
-                  if (pathname === lp("/services")) { closeAll(); scrollTop(); }
-                  else setServicesMobileOpen(o => !o);
-                }}
+                onClick={() => setServicesMobileOpen(o => !o)}
                 className="flex items-center justify-between w-full text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors"
               >
                 <span>{t.nav_services[lang]}</span>
@@ -686,10 +683,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
             {/* ABOUT — expandable */}
             <div>
               <button
-                onClick={() => {
-                  if (pathname === lp("/about")) { closeAll(); scrollTop(); }
-                  else setAboutMobileOpen(o => !o);
-                }}
+                onClick={() => setAboutMobileOpen(o => !o)}
                 className="flex items-center justify-between w-full text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors"
               >
                 <span>{t.nav_about[lang]}</span>
