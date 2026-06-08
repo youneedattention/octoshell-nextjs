@@ -366,8 +366,8 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
 
             {/* SERVICES */}
             <div className="relative" onMouseEnter={openSvcDrop} onMouseLeave={closeSvcDrop}>
-              <Link href={lp("/services")}
-                onClick={pathname === lp("/services") ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
+              <button
+                onClick={() => { openSvcDrop(); if (pathname !== lp("/services")) router.push(lp("/services"), { scroll: false }); }}
                 className={`flex items-center gap-1 text-[12px] lg:text-[13px] tracking-[0.22em]
                             hover:text-[#c9a84c] transition-all duration-200 whitespace-nowrap
                             pb-[3px] border-b border-transparent hover:border-[#c9a84c]/55
@@ -378,7 +378,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                   fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
                 </svg>
-              </Link>
+              </button>
 
               {servicesDrop && (
                 <div
