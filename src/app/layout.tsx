@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import { CurrencyProvider } from "@/context/CurrencyContext";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import ScrollRestorer from "@/components/ScrollRestorer";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -295,6 +296,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="min-h-full antialiased">
+        <ScrollRestorer />
         <ThemeProvider>
           <CurrencyProvider>
             <LangProvider>{children}</LangProvider>
