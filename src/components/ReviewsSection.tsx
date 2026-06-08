@@ -269,9 +269,14 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
                 {STAR_DIST.map(({ stars, count }) => (
                   <div key={stars} className="flex items-center gap-2">
                     <span style={{ fontSize: 10, fontWeight: 400, lineHeight: "12px", color: "var(--c-ink)" }} className="w-6 shrink-0 text-right">{stars}</span>
-                    <div style={{ width: 91, height: 4, borderRadius: 2, background: "#DDDDDD", overflow: "hidden" }}>
+                    <div style={{ width: 91, height: 4, borderRadius: 2, background: "rgba(255,255,255,0.12)", overflow: "hidden" }}>
                       <div
-                        style={{ height: "100%", background: "#222222", borderRadius: 2, width: total ? `${(count / total) * 100}%` : "0%" }}
+                        style={{
+                          height: "100%",
+                          borderRadius: 2,
+                          width: total ? `${(count / total) * 100}%` : "0%",
+                          background: stars === 5 ? "#ffffff" : "rgba(255,255,255,0.35)",
+                        }}
                       />
                     </div>
                   </div>
