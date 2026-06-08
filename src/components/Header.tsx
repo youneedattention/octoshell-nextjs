@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import ProtectedImage from "@/components/ProtectedImage";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useLang } from "@/context/LangContext";
 import { useTheme } from "@/context/ThemeContext";
 import { useCurrency, CURRENCIES } from "@/context/CurrencyContext";
@@ -76,6 +76,7 @@ function ThemeIcon({ theme }: { theme: string }) {
 
 export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50" }: { alwaysFrosted?: boolean; frostedBg?: string }) {
   const pathname = usePathname();
+  const router   = useRouter();
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
   const { lang, setLang } = useLang();
   const { theme, toggle: toggleTheme } = useTheme();
@@ -91,7 +92,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
     : "";
   const lp = (path: string) => `${langPrefix}${path}`;
 
-  /* Switch language — navigates to prefixed routes */
+  /* Switch language — navigates to prefixed routes, preserving scroll position */
   function switchLang(code: Lang) {
     setLang(code);
     const basePath = langPrefix ? pathname.replace(new RegExp(`^${langPrefix}`), "") || "/" : pathname;
@@ -99,10 +100,10 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
       const prefix = code === "zh-cn" ? "/zh-cn" : `/${code}`;
       if (langPrefix !== prefix) {
         const dest = `${prefix}${basePath === "/" ? "" : basePath}` || prefix;
-        window.location.href = dest;
+        router.push(dest, { scroll: false });
       }
     } else if (langPrefix) {
-      window.location.href = basePath || "/";
+      router.push(basePath || "/", { scroll: false });
     }
   }
   const { currency, setCurrency } = useCurrency();
