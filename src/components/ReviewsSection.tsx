@@ -2,6 +2,7 @@
 import { useState } from "react";
 import ProtectedImage from "@/components/ProtectedImage";
 import { useLang } from "@/context/LangContext";
+import { useTheme } from "@/context/ThemeContext";
 import { REVIEWS, RATING_VALUE_STR } from "@/lib/reviews";
 
 /* ── UI strings ────────────────────────────────────────────────────── */
@@ -226,6 +227,9 @@ function Avatar({ name }: { name: string }) {
 /* ── Main ───────────────────────────────────────────────────────────── */
 export default function ReviewsSection({ showViewAll = false }: { showViewAll?: boolean }) {
   const { lang } = useLang();
+  const { theme } = useTheme();
+  const barFill5  = theme === "dark" ? "#ffffff" : "#c9a84c";
+  const barFillLo = theme === "dark" ? "rgba(255,255,255,0.35)" : "rgba(201,168,76,0.35)";
   const [activeTag, setActiveTag] = useState<string | null>(null);
   const [expanded,  setExpanded]  = useState<Set<number>>(new Set());
   const [howOpen,   setHowOpen]   = useState(false);
@@ -269,13 +273,13 @@ export default function ReviewsSection({ showViewAll = false }: { showViewAll?: 
                 {STAR_DIST.map(({ stars, count }) => (
                   <div key={stars} className="flex items-center gap-2">
                     <span style={{ fontSize: 10, fontWeight: 400, lineHeight: "12px", color: "var(--c-ink)" }} className="w-6 shrink-0 text-right">{stars}</span>
-                    <div style={{ width: 91, height: 4, borderRadius: 2, background: "rgba(255,255,255,0.12)", overflow: "hidden" }}>
+                    <div style={{ width: 91, height: 4, borderRadius: 2, background: theme === "dark" ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.08)", overflow: "hidden" }}>
                       <div
                         style={{
                           height: "100%",
                           borderRadius: 2,
                           width: total ? `${(count / total) * 100}%` : "0%",
-                          background: stars === 5 ? "#ffffff" : "rgba(255,255,255,0.35)",
+                          background: stars === 5 ? barFill5 : barFillLo,
                         }}
                       />
                     </div>
