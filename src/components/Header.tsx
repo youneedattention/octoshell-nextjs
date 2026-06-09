@@ -364,7 +364,16 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               {t.nav_home[lang]}
             </Link>
 
-            {/* SERVICES */}
+            {/* AIRPORT TRANSFER */}
+            <Link href={lp("/airport")}
+              onClick={pathname === lp("/airport") ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
+              className="text-white/80 text-[12px] lg:text-[13px] tracking-[0.22em]
+                         hover:text-[#c9a84c] transition-all duration-200 whitespace-nowrap
+                         pb-[3px] border-b border-transparent hover:border-[#c9a84c]/55">
+              {t.nav_airport_transfer[lang]}
+            </Link>
+
+            {/* CHAUFFEUR dropdown */}
             <div className="relative" onMouseEnter={openSvcDrop} onMouseLeave={closeSvcDrop}>
               <button
                 onClick={() => { openSvcDrop(); if (pathname !== lp("/services")) router.push(lp("/services"), { scroll: false }); }}
@@ -372,7 +381,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                             hover:text-[#c9a84c] transition-all duration-200 whitespace-nowrap
                             pb-[3px] border-b border-transparent hover:border-[#c9a84c]/55
                             ${servicesDrop ? "text-[#c9a84c] border-[#c9a84c]/55" : "text-white/80"}`}>
-                {t.nav_services[lang]}
+                {t.nav_chauffeur[lang]}
                 <svg
                   className={`w-2.5 h-2.5 transition-all duration-200 ${servicesDrop ? "rotate-180 opacity-70" : "opacity-40"}`}
                   fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
@@ -382,7 +391,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
 
               {servicesDrop && (
                 <div
-                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3.5 w-[420px]
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3.5 w-[340px]
                              bg-[#0a0a0a]/96 backdrop-blur-xl
                              border border-white/[0.09] shadow-[0_12px_40px_rgba(0,0,0,0.6)]
                              overflow-hidden"
@@ -390,23 +399,27 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                   onMouseLeave={closeSvcDrop}
                 >
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
-                  <div className="grid grid-cols-2 p-1">
-                    {SVC_ITEMS.map((item, idx) => (
-                      <Link
-                        key={item.anchor}
-                        href={lp(`/services${item.anchor}`)}
-                        onClick={() => setServicesDrop(false)}
-                        className={`flex items-center gap-3 px-4 py-3
-                                   text-[10px] tracking-[0.22em] uppercase text-white/50
-                                   hover:text-[#c9a84c] hover:bg-white/[0.035] transition-all duration-150
-                                   ${idx % 2 === 0 ? "border-r border-white/[0.05]" : ""}
-                                   ${idx < SVC_ITEMS.length - 2 ? "border-b border-white/[0.05]" : ""}`}
-                      >
-                        {item.icon}
+                  {[
+                    { key: "nav_city_transfer",  sub: "nav_city_transfer_sub",  href: lp("/services/tokyo-by-the-hour") },
+                    { key: "nav_city_charter",   sub: "nav_city_charter_sub",   href: lp("/services/tokyo-by-the-hour") },
+                    { key: "nav_day_tours",      sub: "nav_day_tours_sub",      href: lp("/services/tokyo-to-hakone") },
+                  ].map((item, idx, arr) => (
+                    <Link
+                      key={item.key}
+                      href={item.href}
+                      onClick={() => setServicesDrop(false)}
+                      className={`flex flex-col px-5 py-3.5
+                                 hover:bg-white/[0.035] transition-all duration-150
+                                 ${idx < arr.length - 1 ? "border-b border-white/[0.05]" : ""}`}
+                    >
+                      <span className="text-[11px] tracking-[0.2em] uppercase text-white/70 hover:text-[#c9a84c]">
                         {t[item.key][lang]}
-                      </Link>
-                    ))}
-                  </div>
+                      </span>
+                      <span className="text-[10px] tracking-[0.1em] text-white/30 mt-0.5">
+                        {t[item.sub][lang]}
+                      </span>
+                    </Link>
+                  ))}
                 </div>
               )}
             </div>
@@ -639,13 +652,19 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               {t.nav_home[lang]}
             </Link>
 
-            {/* SERVICES — expandable mobile */}
+            {/* AIRPORT TRANSFER — mobile direct link */}
+            <Link href={lp("/airport")} onClick={closeAll}
+              className="text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors">
+              {t.nav_airport_transfer[lang]}
+            </Link>
+
+            {/* CHAUFFEUR — expandable mobile */}
             <div>
               <button
                 onClick={() => setServicesMobileOpen(o => !o)}
                 className="flex items-center justify-between w-full text-white/80 text-[17px] tracking-[0.2em] hover:text-white transition-colors"
               >
-                <span>{t.nav_services[lang]}</span>
+                <span>{t.nav_chauffeur[lang]}</span>
                 <svg className={`w-3.5 h-3.5 text-white/30 transition-transform duration-200 ${servicesMobileOpen ? "rotate-180" : ""}`}
                   fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
@@ -653,15 +672,19 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               </button>
 
               {servicesMobileOpen && (
-                <div className="mt-3 ml-1 pl-4 border-l border-[#c9a84c]/25 flex flex-col gap-3">
-                  {SVC_ITEMS.map((item) => (
-                    <Link
-                      key={item.anchor}
-                      href={lp(`/services${item.anchor}`)}
-                      onClick={closeAll}
-                      className="text-white/45 text-[14px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors"
-                    >
-                      {t[item.key][lang]}
+                <div className="mt-3 ml-1 pl-4 border-l border-[#c9a84c]/25 flex flex-col gap-4">
+                  {[
+                    { key: "nav_city_transfer", sub: "nav_city_transfer_sub", href: lp("/services/tokyo-by-the-hour") },
+                    { key: "nav_city_charter",  sub: "nav_city_charter_sub",  href: lp("/services/tokyo-by-the-hour") },
+                    { key: "nav_day_tours",     sub: "nav_day_tours_sub",     href: lp("/services/tokyo-to-hakone") },
+                  ].map((item) => (
+                    <Link key={item.key} href={item.href} onClick={closeAll} className="flex flex-col gap-0.5">
+                      <span className="text-white/70 text-[14px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors">
+                        {t[item.key][lang]}
+                      </span>
+                      <span className="text-white/30 text-[11px] tracking-[0.1em]">
+                        {t[item.sub][lang]}
+                      </span>
                     </Link>
                   ))}
                 </div>
