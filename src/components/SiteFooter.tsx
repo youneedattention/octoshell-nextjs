@@ -26,7 +26,7 @@ const COLUMNS: Column[] = [
       { labelKey: "nav_about",     href: "/about" },
       { labelKey: "nav_chauffeur", href: "/services" },
       { labelKey: "nav_fleet",     href: "/fleet" },
-      { labelKey: "nav_faq",       href: "/about#faq" },
+      { labelKey: "nav_faq",       href: "/faq" },
     ],
   },
   {
