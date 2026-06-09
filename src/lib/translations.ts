@@ -125,6 +125,20 @@ export const t: Record<string, T> = {
   footer_privacy: { en: "Privacy",       ja: "プライバシーポリシー",   zh: "隱私政策",    ko: "개인정보처리방침",   "zh-cn": "隐私政策",    th: "ความเป็นส่วนตัว", fr: "Confidentialité" },
   footer_law:     { en: "Legal Notice",  ja: "特定商取引法に基づく表記", zh: "法定事項記載", ko: "법적 고지",          "zh-cn": "法定事项记载", th: "ข้อกำหนดทางกฎหมาย", fr: "Mentions légales" },
 
+  /* ── Footer columns ──────────────────────────────── */
+  footer_col_company:   { en: "Company",             ja: "会社情報",          zh: "關於我們",    ko: "회사",              "zh-cn": "关于我们",    th: "บริษัท",            fr: "Entreprise" },
+  footer_col_top_trips: { en: "Top Trips",           ja: "人気ルート",         zh: "熱門路線",    ko: "인기 루트",          "zh-cn": "热门路线",    th: "เส้นทางยอดนิยม",   fr: "Trajets populaires" },
+  footer_col_connect:   { en: "Web app & WhatsApp",  ja: "予約・お問い合わせ", zh: "預訂與聯絡",  ko: "예약 및 문의",        "zh-cn": "预订与联系",  th: "จองและติดต่อ",     fr: "App & WhatsApp" },
+  footer_reviews:       { en: "Reviews",             ja: "お客様の声",         zh: "客戶評價",    ko: "리뷰",               "zh-cn": "客户评价",    th: "รีวิว",             fr: "Avis clients" },
+  footer_trip_haneda:   { en: "Haneda Airport",      ja: "羽田空港送迎",       zh: "羽田機場接送", ko: "하네다 공항 송영",    "zh-cn": "羽田机场接送", th: "สนามบินฮาเนดะ",    fr: "Aéroport Haneda" },
+  footer_trip_narita:   { en: "Narita Airport",      ja: "成田空港送迎",       zh: "成田機場接送", ko: "나리타 공항 송영",    "zh-cn": "成田机场接送", th: "สนามบินนาริตะ",    fr: "Aéroport Narita" },
+  footer_trip_hakone:   { en: "Tokyo → Hakone",      ja: "東京 → 箱根",        zh: "東京 → 箱根",  ko: "도쿄 → 하코네",      "zh-cn": "东京 → 箱根",  th: "โตเกียว → ฮาโกเน", fr: "Tokyo → Hakone" },
+  footer_trip_fuji:     { en: "Tokyo → Mt. Fuji",    ja: "東京 → 富士山",      zh: "東京 → 富士山", ko: "도쿄 → 후지산",      "zh-cn": "东京 → 富士山", th: "โตเกียว → ภูฟูจิ", fr: "Tokyo → Fuji" },
+  footer_trip_golf:     { en: "Golf Transfer",       ja: "ゴルフ送迎",          zh: "高爾夫接送",  ko: "골프 송영",           "zh-cn": "高尔夫接送",  th: "รับส่งกอล์ฟ",      fr: "Transport golf" },
+  footer_trip_hourly:   { en: "By the Hour",         ja: "時間制貸切",          zh: "按時包車",    ko: "시간제 전세",          "zh-cn": "按时包车",    th: "เช่าเป็นชั่วโมง",  fr: "À l'heure" },
+  footer_webapp:        { en: "Book Online",         ja: "オンライン予約",      zh: "線上預訂",    ko: "온라인 예약",          "zh-cn": "线上预订",    th: "จองออนไลน์",       fr: "Réserver en ligne" },
+  footer_whatsapp:      { en: "WhatsApp Us",         ja: "WhatsApp で連絡",    zh: "WhatsApp 聯絡", ko: "WhatsApp 문의",      "zh-cn": "WhatsApp 联系", th: "ติดต่อ WhatsApp",  fr: "Nous contacter" },
+
   /* ── Book page ──────────────────────────────── */
   book_badge:       { en: "RESERVATIONS", ja: "ご予約", zh: "預訂", ko: "예약", "zh-cn": "预订", th: "จองรถ", fr: "RÉSERVATIONS" },
   book_title:       { en: "Where Would You Like To Go?", ja: "どこへお越しですか？", zh: "您想去哪裡？", ko: "어디로 가시겠습니까?", "zh-cn": "您想去哪里？", th: "คุณต้องการไปที่ไหน?", fr: "Où souhaitez-vous aller ?" },
