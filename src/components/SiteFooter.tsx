@@ -22,10 +22,11 @@ const COLUMNS: Column[] = [
   {
     titleKey: "footer_col_company",
     items: [
-      { labelKey: "nav_about",      href: "/about" },
-      { labelKey: "footer_reviews", href: "/reviews" },
-      { labelKey: "footer_privacy", href: "/privacy" },
-      { labelKey: "footer_law",     href: "/law" },
+      { labelKey: "nav_home",      href: "/" },
+      { labelKey: "nav_about",     href: "/about" },
+      { labelKey: "nav_chauffeur", href: "/services" },
+      { labelKey: "nav_fleet",     href: "/fleet" },
+      { labelKey: "nav_faq",       href: "/about#faq" },
     ],
   },
   {
