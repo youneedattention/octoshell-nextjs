@@ -16,7 +16,7 @@ export const t: Record<string, T> = {
   nav_city_transfer_sub:  { en: "Point-to-point within Tokyo", ja: "都内の目的地へ送迎", zh: "東京市區點對點", ko: "도쿄 내 목적지 이동", "zh-cn": "东京市区点对点", th: "จุดต่อจุดในโตเกียว", fr: "Point à point Tokyo" },
   nav_city_charter:       { en: "Tokyo City Charter",    ja: "東京都内包車",       zh: "東京市區包車", ko: "도쿄 시내 전세", "zh-cn": "东京市区包车", th: "เช่าเหมาในโตเกียว", fr: "Location Tokyo" },
   nav_city_charter_sub:   { en: "Hourly hire, full flexibility", ja: "時間制・自由な移動", zh: "按時包車，彈性自由", ko: "시간제, 자유로운 이동", "zh-cn": "按时包车，灵活自由", th: "เช่าเป็นชั่วโมง", fr: "Location à l'heure" },
-  nav_day_tours:          { en: "Day & Multi-Day Tours", ja: "都外1日・複数日ツアー", zh: "都外一日/多日遊", ko: "당일·다일 투어", "zh-cn": "都外一日/多日游", th: "ทัวร์วันเดียว/หลายวัน", fr: "Excursions journée+" },
+  nav_day_tours:          { en: "Day Trips from Tokyo", ja: "東京都外1日・複数日ツアー", zh: "東京都外一日/多日遊", ko: "당일·다일 투어", "zh-cn": "东京都外一日/多日游", th: "ทัวร์วันเดียว/หลายวันจากโตเกียว", fr: "Excursions depuis Tokyo" },
   nav_day_tours_sub:      { en: "Hakone, Fuji, Nikko & beyond", ja: "箱根・富士山・日光など", zh: "箱根、富士山、日光等", ko: "하코네·후지산·닛코 등", "zh-cn": "箱根、富士山、日光等", th: "ฮาโกเน ฟูจิ นิกโก และอื่นๆ", fr: "Hakone, Fuji, Nikko…" },
 
   nav_svc_1:  { en: "By the Hour",          ja: "時間制貸切ハイヤー",    zh: "時段包車服務",   ko: "시간제 전세",   "zh-cn": "时段包车服务",   th: "เช่าเหมาชั่วโมง",        fr: "À l'heure" },
