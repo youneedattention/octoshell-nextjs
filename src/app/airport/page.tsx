@@ -450,6 +450,48 @@ export default function AirportPage() {
         </div>
       </section>
 
+
+      {/* ══ EDITORIAL DESCRIPTION ══════════════════════════════════ */}
+      <section className="bg-[#0a0a0a] py-16 sm:py-22 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="h-px bg-gradient-to-r from-[#c9a84c]/20 via-[#c9a84c]/50 to-transparent mb-10 sm:mb-14" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div>
+              <SectionLabel label={lang === 'ja' ? '01 — サービス' : lang === 'zh' ? '01 — 服務' : '01 — Service'} />
+              <h2 className="text-white text-2xl sm:text-3xl lg:text-[2rem] font-light tracking-[0.08em] leading-snug mb-5">
+                {lang === 'ja' ? '空港定額送迎' : lang === 'zh' ? '機場定額接送' : lang === 'zh-cn' ? '机场定额接送' : lang === 'th' ? 'รับส่งสนามบินราคาคงที่' : lang === 'fr' ? 'Transferts Aéroport Forfaitaires' : 'Airport Transfers'}
+              </h2>
+              <p className="text-white/60 text-[15px] sm:text-[16px] leading-[1.9] tracking-[0.03em] mb-8">
+                {lang === 'ja'
+                  ? '東京市内と各空港の間を、最高峰の快適性とエレガンスで結ぶ完全定額の送迎サービスです。フライト追跡システムにより、遅延の際も正確にお迎えにあがります。到着ロビーでは、専属の運転手がお客様のお名前を掲げてお待ちし、お荷物のサポートから車内へのご案内までスマートにエスコートいたします。'
+                  : lang === 'zh'
+                  ? '往返於東京市內與羽田、成田機場的高端定額送迎服務，為您的商旅或度假開啟優雅序幕。結合即時航班動態追蹤，專屬司機將在接機大廳手持您的專屬姓名牌溫馨迎候，貼心打理行李並引導您步入尊榮座艙。'
+                  : lang === 'zh-cn'
+                  ? '往返于东京市内与羽田、成田机场的高端定额送迎服务，为您的商旅或度假开启优雅序幕。结合即时航班动态追踪，专属司机将在接机大厅手持您的专属姓名牌温馨迎候，贴心打理行李并引导您步入尊荣座舱。'
+                  : lang === 'ko'
+                  ? '도쿄 시내와 각 공항을 최고의 안락함과 우아함으로 연결하는 완전 정액 송영 서비스입니다. 항공편 추적 시스템으로 지연 시에도 정확히 영접합니다. 도착 로비에서 전속 드라이버가 고객 이름판을 들고 대기하며, 수하물 지원부터 차량 안내까지 스마트하게 에스코트합니다.'
+                  : lang === 'th'
+                  ? 'เริ่มต้นการเดินทางด้วยความสงบใจอย่างสมบูรณ์ บริการสนามบินระดับพรีเมียมของเราเชื่อมต่อใจกลางโตเกียวกับสนามบินฮาเนดะและนาริตะอย่างราบรื่น พร้อมติดตามเที่ยวบินแบบเรียลไทม์ คนขับจะรอคุณในล็อบบี้ขาเข้าพร้อมป้ายชื่อส่วนตัว'
+                  : lang === 'fr'
+                  ? "Commencez votre voyage l'esprit totalement tranquille. Notre service aéroport premium relie le centre de Tokyo aux aéroports de Haneda et Narita en toute fluidité. Avec suivi de vol en temps réel, votre chauffeur vous attend dans le hall d'arrivée avec un panneau nominatif, prêt à vous assister."
+                  : 'Begin your journey with absolute peace of mind. Our premium airport service connects Tokyo downtown with Haneda and Narita airports seamlessly. Featuring real-time flight tracking, your chauffeur will await you in the arrivals hall holding a personalized name board, ready to assist with luggage and escort you to your vehicle.'
+                }
+              </p>
+              <Link href="/book" draggable={false} onContextMenu={(e) => e.preventDefault()}
+                className="group inline-flex items-center gap-2.5 bg-[#c9a84c] text-[#0c0c0c] text-[12px] tracking-[0.3em] font-black px-7 py-3 sm:py-3.5 transition-all duration-200 hover:bg-white shadow-[0_4px_20px_rgba(201,168,76,0.35)] hover:shadow-[0_4px_28px_rgba(201,168,76,0.5)] active:scale-110 active:bg-white sm:active:scale-100">
+                {lang === 'ja' ? 'このサービスを予約' : lang === 'zh' ? '預訂此服務' : 'Book This Service'}
+                <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
+              </Link>
+            </div>
+            <div className="relative aspect-[3/2] overflow-hidden group">
+              <ProtectedImage src="/airport.webp" alt="Airport Transfer Tokyo" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ══ AI FACT PARAGRAPH ════════════════════════════════════════ */}
       <section className="bg-[#0c0c0c] py-12 sm:py-16 px-4 sm:px-6 border-b border-white/[0.06]">
         <div className="max-w-4xl mx-auto">
