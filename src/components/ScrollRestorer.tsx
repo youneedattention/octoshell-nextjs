@@ -6,6 +6,11 @@ export default function ScrollRestorer() {
   const pathname = usePathname();
   const isPopRef = useRef(false);
 
+  // Disable browser's native scroll restoration so we control it
+  useEffect(() => {
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  }, []);
+
   // Detect back/forward button
   useEffect(() => {
     const onPop = () => { isPopRef.current = true; };
@@ -27,12 +32,11 @@ export default function ScrollRestorer() {
           });
         });
       }
-    } else {
-      // Fresh navigation: scroll to top
-      window.scrollTo(0, 0);
     }
+    // Fresh navigation / language switch: let Next.js handle scroll
+    // (Link scrolls to top by default; router.push({ scroll: false }) preserves position)
 
-    // Save scroll position continuously for this route
+    // Continuously save scroll position for this route
     const handler = () => sessionStorage.setItem(key, String(window.scrollY));
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
