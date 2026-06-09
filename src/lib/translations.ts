@@ -128,7 +128,7 @@ export const t: Record<string, T> = {
   /* ── Footer columns ──────────────────────────────── */
   footer_col_company:   { en: "Company",             ja: "会社情報",          zh: "關於我們",    ko: "회사",              "zh-cn": "关于我们",    th: "บริษัท",            fr: "Entreprise" },
   footer_col_top_trips: { en: "Top Trips",           ja: "人気ルート",         zh: "熱門路線",    ko: "인기 루트",          "zh-cn": "热门路线",    th: "เส้นทางยอดนิยม",   fr: "Trajets populaires" },
-  footer_col_connect:   { en: "Web app & WhatsApp",  ja: "予約・お問い合わせ", zh: "預訂與聯絡",  ko: "예약 및 문의",        "zh-cn": "预订与联系",  th: "จองและติดต่อ",     fr: "App & WhatsApp" },
+  footer_col_connect:   { en: "Book Now",             ja: "今すぐ予約",         zh: "立即預訂",    ko: "지금 예약",           "zh-cn": "立即预订",    th: "จองเลย",           fr: "Réserver" },
   footer_reviews:       { en: "Reviews",             ja: "お客様の声",         zh: "客戶評價",    ko: "리뷰",               "zh-cn": "客户评价",    th: "รีวิว",             fr: "Avis clients" },
   footer_trip_haneda:   { en: "Haneda Airport",      ja: "羽田空港送迎",       zh: "羽田機場接送", ko: "하네다 공항 송영",    "zh-cn": "羽田机场接送", th: "สนามบินฮาเนดะ",    fr: "Aéroport Haneda" },
   footer_trip_narita:   { en: "Narita Airport",      ja: "成田空港送迎",       zh: "成田機場接送", ko: "나리타 공항 송영",    "zh-cn": "成田机场接送", th: "สนามบินนาริตะ",    fr: "Aéroport Narita" },
