@@ -23,8 +23,7 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      { source: "/ja",               destination: "/", permanent: true },
-      { source: "/ja/home",          destination: "/", permanent: true },
+      { source: "/ja/home",          destination: "/ja", permanent: true },
       { source: "/zh/home",          destination: "/zh", permanent: true },
       { source: "/wp-admin/:path*",          destination: "/", permanent: true },
       { source: "/wp-content/:path*",        destination: "/", permanent: true },
