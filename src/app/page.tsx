@@ -4,6 +4,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Price, { CurrencyNote } from "@/components/Price";
 import ReviewsSection from "@/components/ReviewsSection";
+import SiteFooter from "@/components/SiteFooter";
 import { useLang } from "@/context/LangContext";
 import { t } from "@/lib/translations";
 
@@ -118,44 +119,7 @@ export default function Home() {
 
       <ReviewsSection showViewAll />
 
-      {/* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲 FOOTER 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲 */}
-      <footer className="bg-[#0a0a0a] pt-10 sm:pt-12 pb-7 sm:pb-8 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pb-7 border-b border-white/10">
-            <ProtectedImage src={LOGO} alt="Octoshell" width={50} height={50} className="object-contain" />
-            <nav className="flex flex-wrap justify-center gap-8 sm:gap-10">
-              {(["nav_home", "nav_services", "nav_about"] as const).map((key) => {
-                const href = key === "nav_home" ? "/" : key === "nav_services" ? "/#services" : "/#about";
-                return (
-                  <Link key={key} href={href}
-                    className="text-white/60 text-[11px] tracking-[0.2em] hover:text-white transition-colors">
-                    {t[key][lang]}
-                  </Link>
-                );
-              })}
-            </nav>
-          </div>
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-5">
-            <p className="text-white/30 text-[11px] text-center sm:text-left">
-              {t.copyright[lang]}
-            </p>
-            <div className="flex flex-wrap justify-center sm:justify-end gap-5">
-              <Link href="#"
-                className="text-white/30 text-[11px] hover:text-white/60 transition-colors">
-                {t.footer_terms[lang]}
-              </Link>
-              <Link href="/privacy"
-                className="text-white/30 text-[11px] hover:text-white/60 transition-colors">
-                {t.footer_privacy[lang]}
-              </Link>
-              <Link href="/law"
-                className="text-white/30 text-[11px] hover:text-white/60 transition-colors">
-                {t.footer_law[lang]}
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }
