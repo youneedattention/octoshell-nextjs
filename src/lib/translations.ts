@@ -138,6 +138,9 @@ export const t: Record<string, T> = {
   footer_trip_hourly:   { en: "By the Hour",         ja: "時間制貸切",          zh: "按時包車",    ko: "시간제 전세",          "zh-cn": "按时包车",    th: "เช่าเป็นชั่วโมง",  fr: "À l'heure" },
   footer_webapp:        { en: "Book Online",         ja: "オンライン予約",      zh: "線上預訂",    ko: "온라인 예약",          "zh-cn": "线上预订",    th: "จองออนไลน์",       fr: "Réserver en ligne" },
   footer_whatsapp:      { en: "WhatsApp Us",         ja: "WhatsApp で連絡",    zh: "WhatsApp 聯絡", ko: "WhatsApp 문의",      "zh-cn": "WhatsApp 联系", th: "ติดต่อ WhatsApp",  fr: "Nous contacter" },
+  footer_whatsapp_sub:  { en: "Typically replies in minutes", ja: "通常数分以内に返信", zh: "通常數分鐘內回覆", ko: "보통 몇 분 내 답변", "zh-cn": "通常数分钟内回复", th: "ตอบกลับภายในไม่กี่นาที", fr: "Répond en quelques minutes" },
+  footer_webapp_sub:    { en: "Available 24 / 7",   ja: "24時間対応",          zh: "全天候服務",    ko: "24시간 운영",         "zh-cn": "全天候服务",  th: "บริการตลอด 24 ชั่วโมง", fr: "Disponible 24h/24" },
+  footer_email:         { en: "Email Us",            ja: "メールで連絡",        zh: "電郵聯絡",      ko: "이메일 문의",         "zh-cn": "邮件联系",    th: "ส่งอีเมล",          fr: "Nous écrire" },
 
   /* ── Book page ──────────────────────────────── */
   book_badge:       { en: "RESERVATIONS", ja: "ご予約", zh: "預訂", ko: "예약", "zh-cn": "预订", th: "จองรถ", fr: "RÉSERVATIONS" },

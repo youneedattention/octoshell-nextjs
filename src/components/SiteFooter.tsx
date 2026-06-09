@@ -9,6 +9,7 @@ import type { Lang } from "@/lib/translations";
 const LOGO = "/logo.png";
 const WHATSAPP_URL = "https://wa.me/19716665151";
 const WHATSAPP_NUMBER = "+1 971 666 5151";
+const EMAIL = "info@octoshell.jp";
 
 /* ── Column definitions ─────────────────────────────────────────────
    To add a new column: insert a new object into COLUMNS anywhere
@@ -40,9 +41,7 @@ const COLUMNS: Column[] = [
   },
   {
     titleKey: "footer_col_connect",
-    items: [
-      { labelKey: "footer_webapp", href: "/book" },
-    ],
+    items: [],
   },
 ];
 
@@ -92,28 +91,78 @@ export default function SiteFooter() {
                     <ColLink item={item} lang={lang} lp={lp} />
                   </li>
                 ))}
-                {/* WhatsApp card — only in the connect column */}
+                {/* Book Now button + WhatsApp + Email — connect column only */}
                 {col.titleKey === "footer_col_connect" && (
-                  <li className="mt-1">
-                    <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"
-                      className="group inline-flex items-center gap-3 hover:opacity-80 transition-opacity">
-                      {/* WhatsApp icon */}
-                      <span className="flex-shrink-0 w-[25px] h-[25px] rounded-full bg-[#c9a84c] flex items-center justify-center">
-                        <svg viewBox="0 0 24 24" className="w-[14px] h-[14px] fill-white">
-                          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-                          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.528 5.855L.057 23.882l6.198-1.44A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 01-4.988-1.363l-.358-.212-3.68.855.924-3.562-.233-.375A9.79 9.79 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
-                        </svg>
-                      </span>
-                      <span className="flex flex-col">
-                        <span className="text-white text-[13px] font-semibold leading-tight">
-                          {t.footer_whatsapp[lang]}
+                  <>
+                    {/* Book Online button */}
+                    <li className="-mt-1">
+                      <Link href={lp("/book")}
+                        className="group inline-flex flex-col w-full border border-[#c9a84c]/50 hover:border-[#c9a84c] hover:bg-[#c9a84c]/5 transition-all duration-200 px-4 py-3 gap-0.5">
+                        <span className="flex items-center justify-between">
+                          <span className="text-white text-[13px] font-semibold tracking-[0.04em]">
+                            {t.footer_webapp[lang]}
+                          </span>
+                          <svg className="w-3 h-3 text-[#c9a84c] transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                          </svg>
                         </span>
-                        <span className="text-white/45 text-[12px] tracking-[0.04em]">
-                          {WHATSAPP_NUMBER}
+                        <span className="text-white/40 text-[11px] tracking-[0.04em]">
+                          {t.footer_webapp_sub[lang]}
                         </span>
-                      </span>
-                    </a>
-                  </li>
+                      </Link>
+                    </li>
+
+                    {/* divider */}
+                    <li className="my-1">
+                      <div className="h-px bg-white/[0.07]" />
+                    </li>
+
+                    {/* WhatsApp */}
+                    <li>
+                      <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"
+                        className="group inline-flex items-center gap-3 hover:opacity-80 transition-opacity">
+                        <span className="flex-shrink-0 w-[25px] h-[25px] rounded-full bg-[#c9a84c] flex items-center justify-center">
+                          <svg viewBox="0 0 24 24" className="w-[14px] h-[14px] fill-white">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.528 5.855L.057 23.882l6.198-1.44A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 01-4.988-1.363l-.358-.212-3.68.855.924-3.562-.233-.375A9.79 9.79 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+                          </svg>
+                        </span>
+                        <span className="flex flex-col">
+                          <span className="text-white text-[13px] font-semibold leading-tight">
+                            {t.footer_whatsapp[lang]}
+                          </span>
+                          <span className="text-white/45 text-[11px] tracking-[0.04em]">
+                            {t.footer_whatsapp_sub[lang]}
+                          </span>
+                        </span>
+                      </a>
+                    </li>
+
+                    {/* divider */}
+                    <li className="my-1">
+                      <div className="h-px bg-white/[0.07]" />
+                    </li>
+
+                    {/* Email */}
+                    <li>
+                      <a href={`mailto:${EMAIL}`}
+                        className="group inline-flex items-center gap-3 hover:opacity-80 transition-opacity">
+                        <span className="flex-shrink-0 w-[25px] h-[25px] rounded-full bg-white/10 flex items-center justify-center">
+                          <svg viewBox="0 0 24 24" className="w-[13px] h-[13px]" fill="none" stroke="white" strokeWidth={1.8}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                          </svg>
+                        </span>
+                        <span className="flex flex-col">
+                          <span className="text-white text-[13px] font-semibold leading-tight">
+                            {t.footer_email[lang]}
+                          </span>
+                          <span className="text-white/45 text-[11px] tracking-[0.04em]">
+                            {EMAIL}
+                          </span>
+                        </span>
+                      </a>
+                    </li>
+                  </>
                 )}
               </ul>
             </div>
