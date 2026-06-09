@@ -63,7 +63,6 @@ const HERO: Record<Lang, { badge: string; title: string; sub: string }> = {
 
 /* Anchor chips at top of page */
 const CHIPS: { id: string; label: Record<Lang, string> }[] = [
-  { id: "airport",     label: { ja: "空港送迎",    en: "Airport",       zh: "機場接送",   ko: "공항 송영",     "zh-cn": "机场接送",   th: "สนามบิน",            fr: "Aéroport" } },
   { id: "hourly",      label: { ja: "時間制貸切",  en: "By the Hour",   zh: "時段包車",   ko: "시간제 전세",   "zh-cn": "按时包车",   th: "เช่าเป็นชั่วโมง",    fr: "À l'heure" } },
   { id: "oneway",      label: { ja: "片道送迎",    en: "One Way",       zh: "單程穿梭",   ko: "편도 이동",     "zh-cn": "单程接送",   th: "เที่ยวเดียว",         fr: "Aller simple" } },
   { id: "photo",       label: { ja: "旅拍",        en: "Photo Tour",    zh: "旅拍",       ko: "여행 촬영",     "zh-cn": "旅拍",       th: "ทัวร์ถ่ายภาพ",       fr: "Tour photo" } },
@@ -86,21 +85,6 @@ type ServiceItem = {
 };
 
 const SERVICES: ServiceItem[] = [
-  {
-    id: "airport", num: "01",
-    title: { ja: "空港定額送迎", en: "Airport Transfers", zh: "機場定額接送", ko: "공항 정액 송영", "zh-cn": "机场定额接送", th: "รับส่งสนามบินราคาคงที่", fr: "Transferts Aéroport Forfaitaires" },
-    body: {
-      ja: "東京市内と各空港の間を、最高峰の快適性とエレガンスで結ぶ完全定額の送迎サービスです。フライト追跡システムにより、遅延の際も正確にお迎えにあがります。到着ロビーでは、専属の運転手がお客様のお名前を掲げてお待ちし、お荷物のサポートから車内へのご案内までスマートにエスコートいたします。",
-      en: "Begin your journey with absolute peace of mind. Our premium airport service connects Tokyo downtown with Haneda and Narita airports seamlessly. Featuring real-time flight tracking, your chauffeur will await you in the arrivals hall holding a personalized name board, ready to assist with luggage and escort you to your vehicle.",
-      zh: "往返於東京市內與羽田、成田機場的高端定額送迎服務，為您的商旅或度假開啟優雅序幕。結合即時航班動態追蹤，專屬司機將在接機大廳手持您的專屬姓名牌溫馨迎候，貼心打理行李並引導您步入尊榮座艙。",
-      ko: "도쿄 시내와 각 공항을 최고의 안락함과 우아함으로 연결하는 완전 정액 송영 서비스입니다. 항공편 추적 시스템으로 지연 시에도 정확히 영접합니다. 도착 로비에서 전속 드라이버가 고객 이름판을 들고 대기하며, 수하물 지원부터 차량 안내까지 스마트하게 에스코트합니다.",
-      "zh-cn": "往返于东京市内与羽田、成田机场的高端定额送迎服务，为您的商旅或度假开启优雅序幕。结合即时航班动态追踪，专属司机将在接机大厅手持您的专属姓名牌温馨迎候，贴心打理行李并引导您步入尊荣座舱。",
-      th: "เริ่มต้นการเดินทางด้วยความสงบใจอย่างสมบูรณ์ บริการสนามบินระดับพรีเมียมของเราเชื่อมต่อใจกลางโตเกียวกับสนามบินฮาเนดะและนาริตะอย่างราบรื่น พร้อมติดตามเที่ยวบินแบบเรียลไทม์ คนขับจะรอคุณในล็อบบี้ขาเข้าพร้อมป้ายชื่อส่วนตัว",
-      fr: "Commencez votre voyage l'esprit totalement tranquille. Notre service aéroport premium relie le centre de Tokyo aux aéroports de Haneda et Narita en toute fluidité. Avec suivi de vol en temps réel, votre chauffeur vous attend dans le hall d'arrivée avec un panneau nominatif, prêt à vous assister.",
-    },
-    imgNote: "Uniformed chauffeur in formal dark suit, holding a printed personalized name board in a bright, modern arrivals hall at Haneda or Narita. Confident posture, natural light. Landscape 3:2 · min 1440×960px.",
-    img: "/airport.webp",
-  },
   {
     id: "hourly", num: "02",
     title: { ja: "時間制貸切ハイヤー", en: "By the Hour", zh: "時段包車服務", ko: "시간제 전세 하이어", "zh-cn": "时段包车服务", th: "เช่าเหมาพร้อมคนขับเป็นชั่วโมง", fr: "Location à l'Heure" },
