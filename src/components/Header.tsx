@@ -400,9 +400,9 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                 >
                   <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
                   {[
-                    { key: "nav_city_transfer",  sub: "nav_city_transfer_sub",  href: lp("/services/tokyo-by-the-hour") },
-                    { key: "nav_city_charter",   sub: "nav_city_charter_sub",   href: lp("/services/tokyo-by-the-hour") },
-                    { key: "nav_day_tours",      sub: "nav_day_tours_sub",      href: lp("/services/tokyo-to-hakone") },
+                    { key: "nav_city_transfer",  sub: "nav_city_transfer_sub",  href: lp("/services") },
+                    { key: "nav_city_charter",   sub: "nav_city_charter_sub",   href: lp("/services") },
+                    { key: "nav_day_tours",      sub: "nav_day_tours_sub",      href: lp("/services") },
                   ].map((item, idx, arr) => (
                     <Link
                       key={item.key}
@@ -674,9 +674,9 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               {servicesMobileOpen && (
                 <div className="mt-3 ml-1 pl-4 border-l border-[#c9a84c]/25 flex flex-col gap-4">
                   {[
-                    { key: "nav_city_transfer", sub: "nav_city_transfer_sub", href: lp("/services/tokyo-by-the-hour") },
-                    { key: "nav_city_charter",  sub: "nav_city_charter_sub",  href: lp("/services/tokyo-by-the-hour") },
-                    { key: "nav_day_tours",     sub: "nav_day_tours_sub",     href: lp("/services/tokyo-to-hakone") },
+                    { key: "nav_city_transfer", sub: "nav_city_transfer_sub", href: lp("/services") },
+                    { key: "nav_city_charter",  sub: "nav_city_charter_sub",  href: lp("/services") },
+                    { key: "nav_day_tours",     sub: "nav_day_tours_sub",     href: lp("/services") },
                   ].map((item) => (
                     <Link key={item.key} href={item.href} onClick={closeAll} className="flex flex-col gap-0.5">
                       <span className="text-white/70 text-[14px] tracking-[0.22em] hover:text-[#c9a84c] transition-colors">
