@@ -60,8 +60,14 @@ function ColLink({ item, lang, lp }: { item: NavItem; lang: Lang; lp: (p: string
 export default function SiteFooter() {
   const { lang } = useLang();
   const pathname  = usePathname();
-  const isZh = pathname.startsWith("/zh");
-  const lp = (path: string) => isZh ? `/zh${path}` : path;
+  const langPrefix = pathname.startsWith("/zh-cn") ? "/zh-cn"
+    : pathname.startsWith("/zh") ? "/zh"
+    : pathname.startsWith("/ja") ? "/ja"
+    : pathname.startsWith("/ko") ? "/ko"
+    : pathname.startsWith("/th") ? "/th"
+    : pathname.startsWith("/fr") ? "/fr"
+    : "";
+  const lp = (path: string) => `${langPrefix}${path}`;
 
   return (
     <footer className="bg-[#0a0a0a] border-t border-white/[0.07]">
