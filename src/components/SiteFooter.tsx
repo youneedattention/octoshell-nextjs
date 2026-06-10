@@ -79,7 +79,7 @@ export default function SiteFooter() {
           {/* Logo — always first */}
           <div className="col-span-2 sm:col-span-1 flex sm:flex-col items-center sm:items-start gap-4">
             <Link href={lp("/")}>
-              <ProtectedImage src={LOGO} alt="Octoshell" width={95} height={95} className="object-contain sm:w-[75px] sm:h-[75px]" />
+              <ProtectedImage src={LOGO} alt="Octoshell" width={95} height={95} className="object-contain sm:w-[90px] sm:h-[90px]" />
             </Link>
             <p className="text-white/25 text-[11px] leading-relaxed tracking-[0.06em] hidden sm:block max-w-[140px]">
               Japan Private<br />Chauffeur Service
