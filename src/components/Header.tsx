@@ -119,6 +119,8 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
 
   const dropTimer    = useRef<ReturnType<typeof setTimeout> | null>(null);
   const svcDropTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const langTimer    = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const curTimer     = useRef<ReturnType<typeof setTimeout> | null>(null);
   const headerRef    = useRef<HTMLElement>(null);
   const langRef      = useRef<HTMLDivElement>(null);
   const curRef       = useRef<HTMLDivElement>(null);
@@ -175,6 +177,10 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
   const closeDrop   = () => { dropTimer.current    = setTimeout(() => setAboutDrop(false),    200); };
   const openSvcDrop = () => { if (svcDropTimer.current) clearTimeout(svcDropTimer.current); setServicesDrop(true); };
   const closeSvcDrop= () => { svcDropTimer.current = setTimeout(() => setServicesDrop(false), 200); };
+  const openLang    = () => { if (langTimer.current)    clearTimeout(langTimer.current);    setLangOpen(true);     };
+  const closeLang   = () => { langTimer.current    = setTimeout(() => setLangOpen(false),    150); };
+  const openCur     = () => { if (curTimer.current)     clearTimeout(curTimer.current);     setCurrencyOpen(true); };
+  const closeCur    = () => { curTimer.current     = setTimeout(() => setCurrencyOpen(false), 150); };
   const closeAll    = () => { setMenuOpen(false); setAboutMobileOpen(false); setServicesMobileOpen(false); };
 
   return (
@@ -191,7 +197,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                         border-b border-transparent">
 
           {/* Language */}
-          <div ref={langRef} className="relative" onMouseEnter={() => setLangOpen(true)} onMouseLeave={() => setLangOpen(false)}>
+          <div ref={langRef} className="relative" onMouseEnter={openLang} onMouseLeave={closeLang}>
             <button aria-label="Select language"
               className="flex items-center gap-1.5 text-[11px] text-white/80 hover:text-white/90
                          tracking-[0.12em] uppercase transition-colors duration-150">
@@ -205,7 +211,8 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               <div className="absolute right-0 top-full mt-1.5 min-w-[150px]
                               bg-[#1a1a1a]/98 backdrop-blur-xl rounded-2xl
                               border border-white/[0.08] shadow-[0_16px_48px_rgba(0,0,0,0.7)]
-                              overflow-hidden z-50 py-1">
+                              overflow-hidden z-50 py-1"
+                onMouseEnter={openLang} onMouseLeave={closeLang}>
                 {LANGS.map(({ code, full }) => (
                   <button key={code} onClick={() => { switchLang(code); setLangOpen(false); }}
                     className={`w-full text-left px-4 py-2.5 text-[13px] tracking-wide transition-colors duration-150
@@ -222,7 +229,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
           <span className="text-white/20 text-[10px] select-none">|</span>
 
           {/* Currency */}
-          <div ref={curRef} className="relative" onMouseEnter={() => setCurrencyOpen(true)} onMouseLeave={() => setCurrencyOpen(false)}>
+          <div ref={curRef} className="relative" onMouseEnter={openCur} onMouseLeave={closeCur}>
             <button aria-label="Select currency"
               className={`flex items-center gap-1.5 text-[11px] tracking-[0.12em] transition-colors duration-150
                           ${currencyOpen ? "text-[#c9a84c]" : "text-white/80 hover:text-white/90"}`}>
@@ -236,7 +243,8 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               <div className="absolute right-0 top-full mt-1.5 w-[216px]
                               bg-[#0a0a0a]/96 backdrop-blur-xl
                               border border-white/[0.09] shadow-[0_12px_40px_rgba(0,0,0,0.6)]
-                              overflow-hidden z-50">
+                              overflow-hidden z-50"
+                onMouseEnter={openCur} onMouseLeave={closeCur}>
                 <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
                 {CURRENCIES.map((c) => (
                   <button key={c.code} onClick={() => { setCurrency(c.code); setCurrencyOpen(false); }}
