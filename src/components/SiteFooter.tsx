@@ -169,7 +169,7 @@ export default function SiteFooter() {
                           <span className="text-white/70 group-hover:text-[#c9a84c] group-active:text-[#c9a84c] text-[13px] font-semibold leading-tight transition-colors duration-200">
                             {t.footer_email[lang]}
                           </span>
-                          <ObfuscatedEmail className="text-white/30 hover:text-[#c9a84c]/60 text-[11px] tracking-[0.04em] transition-colors duration-200" />
+                          <span className="text-white/30 text-[11px] tracking-[0.04em]">{t.footer_email_sub[lang]}</span>
                         </span>
                       </span>
                     </li>

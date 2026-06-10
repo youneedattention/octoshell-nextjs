@@ -149,6 +149,7 @@ export const t: Record<string, T> = {
   footer_whatsapp_sub:  { en: "Typically replies in minutes", ja: "通常数分以内に返信", zh: "通常數分鐘內回覆", ko: "보통 몇 분 내 답변", "zh-cn": "通常数分钟内回复", th: "ตอบกลับภายในไม่กี่นาที", fr: "Répond en quelques minutes" },
   footer_webapp_sub:    { en: "Available 24 / 7",   ja: "24時間対応",          zh: "全天候服務",    ko: "24시간 운영",         "zh-cn": "全天候服务",  th: "บริการตลอด 24 ชั่วโมง", fr: "Disponible 24h/24" },
   footer_email:         { en: "Email Us",            ja: "メールで連絡",        zh: "電郵聯絡",      ko: "이메일 문의",         "zh-cn": "邮件联系",    th: "ส่งอีเมล",          fr: "Nous écrire" },
+  footer_email_sub:     { en: "Enquiries & Bespoke Journeys", ja: "お問い合わせ・カスタムツアー", zh: "查詢與定制旅程", ko: "문의 및 맞춤 여정", "zh-cn": "查询与定制行程", th: "สอบถามและทริปพิเศษ", fr: "Demandes & Voyages sur mesure" },
 
   /* ── Book page ──────────────────────────────── */
   book_badge:       { en: "RESERVATIONS", ja: "ご予約", zh: "預訂", ko: "예약", "zh-cn": "预订", th: "จองรถ", fr: "RÉSERVATIONS" },
