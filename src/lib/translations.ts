@@ -136,7 +136,7 @@ export const t: Record<string, T> = {
   footer_trip_fuji:     { en: "Tokyo → Mt. Fuji",    ja: "東京 → 富士山",      zh: "東京 → 富士山", ko: "도쿄 → 후지산",      "zh-cn": "东京 → 富士山", th: "โตเกียว → ภูฟูจิ", fr: "Tokyo → Fuji" },
   footer_trip_golf:     { en: "Golf Transfer",       ja: "ゴルフ送迎",          zh: "高爾夫接送",  ko: "골프 송영",           "zh-cn": "高尔夫接送",  th: "รับส่งกอล์ฟ",      fr: "Transport golf" },
   footer_trip_hourly:   { en: "By the Hour",         ja: "時間制貸切",          zh: "按時包車",    ko: "시간제 전세",          "zh-cn": "按时包车",    th: "เช่าเป็นชั่วโมง",  fr: "À l'heure" },
-  footer_webapp:        { en: "Book Online",         ja: "オンライン予約",      zh: "線上預訂",    ko: "온라인 예약",          "zh-cn": "线上预订",    th: "จองออนไลน์",       fr: "Réserver en ligne" },
+  footer_webapp:        { en: "Reserve Online",      ja: "オンライン予約",      zh: "線上預訂",    ko: "온라인 예약",          "zh-cn": "线上预订",    th: "จองออนไลน์",       fr: "Réserver en ligne" },
   footer_whatsapp:      { en: "WhatsApp Us",         ja: "WhatsApp で連絡",    zh: "WhatsApp 聯絡", ko: "WhatsApp 문의",      "zh-cn": "WhatsApp 联系", th: "ติดต่อ WhatsApp",  fr: "Nous contacter" },
   footer_whatsapp_sub:  { en: "Typically replies in minutes", ja: "通常数分以内に返信", zh: "通常數分鐘內回覆", ko: "보통 몇 분 내 답변", "zh-cn": "通常数分钟内回复", th: "ตอบกลับภายในไม่กี่นาที", fr: "Répond en quelques minutes" },
   footer_webapp_sub:    { en: "Available 24 / 7",   ja: "24時間対応",          zh: "全天候服務",    ko: "24시간 운영",         "zh-cn": "全天候服务",  th: "บริการตลอด 24 ชั่วโมง", fr: "Disponible 24h/24" },
