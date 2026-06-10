@@ -310,12 +310,9 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
           </button>
         </div>
 
-        {/* ── DESKTOP: Split Nav [left | LOGO | right] + BOOK far right ── */}
-        <div className="hidden sm:flex items-center h-[76px]">
-
-          {/* Split nav — fills all space except BOOK button */}
-          <div className="flex-1 grid items-center h-full"
-               style={{ gridTemplateColumns: "1fr auto 1fr" }}>
+        {/* ── DESKTOP: Split Nav [left | LOGO | right+BOOK] ── */}
+        <div className="hidden sm:grid h-[76px] w-full"
+             style={{ gridTemplateColumns: "1fr auto 1fr" }}>
 
             {/* LEFT nav — right-aligned */}
             <div className="flex items-center justify-end gap-6 lg:gap-8 pr-8 lg:pr-10">
@@ -388,8 +385,8 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               </Link>
             </div>
 
-            {/* RIGHT nav — left-aligned */}
-            <div className="flex items-center gap-6 lg:gap-8 pl-8 lg:pl-10">
+            {/* RIGHT nav — left-aligned, BOOK at far right */}
+            <div className="flex items-center gap-6 lg:gap-8 pl-8 lg:pl-10 pr-10 lg:pr-14">
 
               <Link href={lp("/fleet")}
                 onClick={pathname === lp("/fleet") ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
@@ -448,28 +445,23 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                 )}
               </div>
 
+              {/* BOOK — pushed to far right of right column */}
+              <Link href={lp("/book")} onClick={pathname === lp("/book") ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
+                className="ml-auto inline-flex items-center justify-center relative overflow-hidden group
+                           border border-white/80 hover:border-[#c9a84c] text-white
+                           text-[11px] lg:text-[12px] tracking-[0.18em]
+                           px-6 lg:px-8 py-2.5 rounded-full
+                           hover:bg-[#c9a84c] hover:text-black transition-all duration-200 whitespace-nowrap">
+                <span className="transition-all duration-200 group-hover:opacity-0 group-hover:-translate-y-2 inline-block">
+                  {t.nav_book[lang]}
+                </span>
+                <span className="absolute transition-all duration-200 opacity-0 translate-y-2
+                                 group-hover:opacity-100 group-hover:translate-y-0 font-bold tracking-[0.2em]">
+                  {lang === "ja" ? "今すぐ予約" : lang === "zh" ? "立即預訂" : "Book Now"}
+                </span>
+              </Link>
+
             </div>
-          </div>{/* end split-nav grid */}
-
-          {/* BOOK button — far right */}
-          <div className="shrink-0 pr-10 lg:pr-14">
-            <Link href={lp("/book")}
-              onClick={pathname === lp("/book") ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
-              className="inline-flex items-center justify-center relative overflow-hidden group
-                         border border-white/80 hover:border-[#c9a84c] text-white
-                         text-[11px] lg:text-[12px] tracking-[0.18em]
-                         px-6 lg:px-8 py-2.5 rounded-full
-                         hover:bg-[#c9a84c] hover:text-black transition-all duration-200 whitespace-nowrap">
-              <span className="transition-all duration-200 group-hover:opacity-0 group-hover:-translate-y-2 inline-block">
-                {t.nav_book[lang]}
-              </span>
-              <span className="absolute transition-all duration-200 opacity-0 translate-y-2
-                               group-hover:opacity-100 group-hover:translate-y-0 font-bold tracking-[0.2em]">
-                {lang === "ja" ? "今すぐ予約" : lang === "zh" ? "立即預訂" : "Book Now"}
-              </span>
-            </Link>
-          </div>
-
         </div>
       </div>
 
