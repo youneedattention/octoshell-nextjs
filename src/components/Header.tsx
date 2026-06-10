@@ -183,7 +183,8 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
       {/* ══════════════════════════════════════════════════════════════
           ANNOUNCEMENT BAR
       ══════════════════════════════════════════════════════════════ */}
-      <div className="backdrop-blur-xl bg-black/50 border-b border-white/[0.07]">
+      <div className={`overflow-hidden transition-all duration-300 backdrop-blur-xl bg-black/50 border-b border-white/[0.07]
+                      ${scrolled ? "max-h-0 opacity-0" : "max-h-9 opacity-100"}`}>
         <div className="flex items-center justify-between px-5 sm:px-12 lg:px-20 h-9">
 
           {/* Center: announcement text (empty — future use) */}
