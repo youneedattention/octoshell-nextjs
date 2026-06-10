@@ -243,7 +243,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               <div className="absolute right-0 top-full mt-1.5 w-[216px]
                               bg-[#0a0a0a]/96 backdrop-blur-xl
                               border border-white/[0.09] shadow-[0_12px_40px_rgba(0,0,0,0.6)]
-                              overflow-hidden z-50"
+                              overflow-hidden z-[200]"
                 onMouseEnter={openCur} onMouseLeave={closeCur}>
                 <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
                 {CURRENCIES.map((c) => (
