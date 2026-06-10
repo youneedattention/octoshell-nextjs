@@ -322,8 +322,8 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
         <div className="hidden sm:grid h-[100px] w-full"
              style={{ gridTemplateColumns: "1fr auto 1fr" }}>
 
-            {/* LEFT nav — evenly spaced */}
-            <div className="flex items-center justify-around px-4 lg:px-6">
+            {/* LEFT nav — right-aligned */}
+            <div className="flex items-center justify-end gap-6 lg:gap-8 pr-8 lg:pr-10">
 
               <Link href={lp("/")}
                 onClick={pathname === lp("/") ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
@@ -393,9 +393,8 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               </Link>
             </div>
 
-            {/* RIGHT nav — evenly spaced, BOOK at far right */}
-            <div className="flex items-center px-4 lg:px-6 pr-10 lg:pr-14">
-              <div className="flex-1 flex items-center justify-around">
+            {/* RIGHT nav — left-aligned, BOOK at far right */}
+            <div className="flex items-center gap-6 lg:gap-8 pl-8 lg:pl-10 pr-10 lg:pr-14">
 
               <Link href={lp("/fleet")}
                 onClick={pathname === lp("/fleet") ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
@@ -453,11 +452,10 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                   </div>
                 )}
               </div>
-              </div>{/* end justify-around wrapper */}
 
               {/* BOOK — pushed to far right of right column */}
               <Link href={lp("/book")} onClick={pathname === lp("/book") ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
-                className="ml-4 inline-flex items-center justify-center relative overflow-hidden group
+                className="ml-auto inline-flex items-center justify-center relative overflow-hidden group
                            border border-white/80 hover:border-[#c9a84c] text-white
                            text-[11px] lg:text-[12px] tracking-[0.18em]
                            px-6 lg:px-8 py-2.5 rounded-full
