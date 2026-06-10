@@ -189,12 +189,12 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
       {/* ══════════════════════════════════════════════════════════════
           LAYER 1 — UTILITY BAR (desktop only)
       ══════════════════════════════════════════════════════════════ */}
-      <div className={`hidden sm:block transition-all duration-300
+      <div className={`hidden sm:block transition-all duration-300 overflow-visible
         ${scrolled || alwaysFrosted
           ? `backdrop-blur-xl ${frostedBg}`
           : "bg-transparent"}`}>
         <div className="flex items-center justify-end gap-4 px-10 lg:px-14 h-9
-                        border-b border-transparent">
+                        border-b border-transparent overflow-visible">
 
           {/* Language */}
           <div ref={langRef} className="relative" onMouseEnter={openLang} onMouseLeave={closeLang}>
