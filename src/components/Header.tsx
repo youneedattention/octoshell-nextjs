@@ -183,7 +183,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
       {/* ══════════════════════════════════════════════════════════════
           ANNOUNCEMENT BAR
       ══════════════════════════════════════════════════════════════ */}
-      <div className="bg-gradient-to-r from-[#0a0a0a] via-[#1a1408] to-[#0a0a0a] border-b border-[#c9a84c]/30">
+      <div className="bg-gradient-to-r from-[#0d0d0d] via-[#2c1f05] to-[#0d0d0d] border-b border-[#c9a84c]/40">
         <div className="flex items-center justify-between px-5 sm:px-12 lg:px-20 h-9">
 
           {/* Center: announcement text (empty — future use) */}
