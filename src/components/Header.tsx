@@ -91,16 +91,17 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
   const lp = (path: string) => `${langPrefix}${path}`;
 
   function switchLang(code: Lang) {
+    if (lang === code) return;
     setLang(code);
     const basePath = langPrefix ? pathname.replace(new RegExp(`^${langPrefix}`), "") || "/" : pathname;
     if (PREFIXED_LANGS.includes(code)) {
       const prefix = code === "zh-cn" ? "/zh-cn" : `/${code}`;
       if (langPrefix !== prefix) {
         const dest = `${prefix}${basePath === "/" ? "" : basePath}` || prefix;
-        router.push(dest, { scroll: false });
+        router.replace(dest, { scroll: false });
       }
     } else if (langPrefix) {
-      router.push(basePath || "/", { scroll: false });
+      router.replace(basePath || "/", { scroll: false });
     }
   }
 
