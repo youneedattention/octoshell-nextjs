@@ -189,12 +189,12 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
       {/* ══════════════════════════════════════════════════════════════
           LAYER 1 — UTILITY BAR (desktop only)
       ══════════════════════════════════════════════════════════════ */}
-      <div className={`hidden sm:block transition-all duration-300 overflow-visible
-        ${scrolled || alwaysFrosted
-          ? `backdrop-blur-xl ${frostedBg}`
-          : "bg-transparent"}`}>
-        <div className="flex items-center justify-end gap-4 px-10 lg:px-14 h-9
-                        border-b border-transparent overflow-visible">
+      <div className="hidden sm:block relative h-9">
+        {/* backdrop layer — isolated so it doesn't create a stacking context for children */}
+        <div aria-hidden className={`absolute inset-0 transition-all duration-300
+          ${scrolled || alwaysFrosted ? `backdrop-blur-xl ${frostedBg}` : "bg-transparent"}`} />
+        <div className="relative flex items-center justify-end gap-4 px-10 lg:px-14 h-9
+                        border-b border-transparent">
 
           {/* Language */}
           <div ref={langRef} className="relative" onMouseEnter={openLang} onMouseLeave={closeLang}>
@@ -289,7 +289,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
           </button>
 
         </div>
-      </div>
+      </div>{/* end utility bar */}
 
       {/* ══════════════════════════════════════════════════════════════
           LAYER 2 — MAIN NAV
