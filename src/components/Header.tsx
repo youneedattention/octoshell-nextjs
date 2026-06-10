@@ -188,11 +188,11 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
           ? `backdrop-blur-xl ${frostedBg} border-b border-white/[0.07]`
           : "bg-transparent border-b border-transparent"}`}>
 
-        <div className="flex items-center justify-between
-                        px-5 sm:px-12 lg:px-20
+        <div className="flex items-center
+                        px-5 sm:px-0
                         py-2.5 sm:py-0 sm:h-[84px]">
 
-          {/* ── MOBILE LEFT: logo ─────────────────────────────── */}
+          {/* ── MOBILE: logo left ─────────────────────────────── */}
           <Link href={lp("/")} draggable={false}
             className="sm:hidden shrink-0 transition-transform duration-200 active:scale-110"
             onContextMenu={(e) => e.preventDefault()}>
@@ -200,14 +200,21 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               className="object-contain drop-shadow-lg pointer-events-none select-none" />
           </Link>
 
-          {/* ── DESKTOP CENTER: logo + nav (absolute) ─────────── */}
-          <div className="hidden sm:flex flex-col items-center absolute left-1/2 -translate-x-1/2">
-            <Link href={lp("/")} onContextMenu={(e) => e.preventDefault()}>
-              <ProtectedImage src={LOGO} alt="Octoshell" width={75} height={75} draggable={false}
+          {/* ── DESKTOP: golden-ratio spacer → logo → nav ─────── */}
+          <div className="hidden sm:flex items-center flex-1 min-w-0">
+
+            {/* Golden ratio spacer (~8% of viewport) */}
+            <div className="w-[7vw] lg:w-[8vw] shrink-0" />
+
+            {/* LOGO */}
+            <Link href={lp("/")} draggable={false} onContextMenu={(e) => e.preventDefault()}
+              className="shrink-0 transition-transform duration-200 hover:scale-105">
+              <ProtectedImage src={LOGO} alt="Octoshell" width={68} height={68} draggable={false}
                 className="object-contain drop-shadow-lg pointer-events-none select-none" />
             </Link>
 
-            <nav className="flex items-center gap-6 lg:gap-8 mt-0.5">
+            {/* NAV LINKS */}
+            <nav className="flex items-center gap-6 lg:gap-8 ml-8 lg:ml-10">
 
               <Link href={lp("/")}
                 onClick={pathname === lp("/") ? (e) => { e.preventDefault(); scrollTop(); } : undefined}
@@ -240,7 +247,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                   </svg>
                 </button>
                 {servicesDrop && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3.5 w-[340px]
+                  <div className="absolute top-full left-0 mt-3.5 w-[340px]
                                   bg-[#0a0a0a]/96 backdrop-blur-xl
                                   border border-white/[0.09] shadow-[0_12px_40px_rgba(0,0,0,0.6)]
                                   overflow-hidden"
@@ -297,7 +304,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                   </svg>
                 </Link>
                 {aboutDrop && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3.5 w-52
+                  <div className="absolute top-full left-0 mt-3.5 w-52
                                   bg-[#0a0a0a]/96 backdrop-blur-xl
                                   border border-white/[0.09] shadow-[0_12px_40px_rgba(0,0,0,0.6)]
                                   overflow-hidden"
@@ -327,7 +334,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
           </div>
 
           {/* ── RIGHT: Lang · Currency · Theme · Book | Mobile: hamburger ── */}
-          <div className="flex items-center gap-4 shrink-0 ml-auto">
+          <div className="flex items-center gap-4 shrink-0 ml-auto sm:pr-8 lg:pr-12">
 
             {/* Desktop: Language */}
             <div ref={langRef} className="relative hidden sm:block">
