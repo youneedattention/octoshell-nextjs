@@ -10,10 +10,15 @@ interface Props {
 }
 
 export default function ObfuscatedEmail({ className, showAddress = true, customContent }: Props) {
-  const email = PARTS.join("");
+  const handleClick = () => {
+    window.location.href = `mailto:${PARTS.join("")}`;
+  };
   return (
-    <a href={`mailto:${email}`} className={className}>
-      {customContent ?? (showAddress ? email : "Email us")}
-    </a>
+    <span role="link" tabIndex={0} onClick={handleClick}
+      onKeyDown={(e) => e.key === "Enter" && handleClick()}
+      style={{ cursor: "pointer" }}
+      className={className}>
+      {customContent ?? (showAddress ? PARTS.join("") : "Email us")}
+    </span>
   );
 }
