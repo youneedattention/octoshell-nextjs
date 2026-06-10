@@ -38,9 +38,17 @@ export const t: Record<string, T> = {
   nav_book:     { en: "BOOK / Reserve", ja: "BOOK / 予約", zh: "BOOK / 預約", ko: "BOOK / 예약", "zh-cn": "BOOK / 预约", th: "จอง / สำรอง", fr: "BOOK / Réserver" },
 
   /* ── Hero ───────────────────────────────────── */
-  hero_title1:  { en: "OCTOSHELL JAPAN", ja: "OCTOSHELL JAPAN", zh: "OCTOSHELL JAPAN", ko: "OCTOSHELL JAPAN", "zh-cn": "OCTOSHELL JAPAN", th: "OCTOSHELL JAPAN", fr: "OCTOSHELL JAPAN" },
-  hero_title2:  { en: "CHAUFFEUR SERVICE", ja: "チャウファーサービス", zh: "專屬司機服務", ko: "쇼퍼 서비스", "zh-cn": "专属司机服务", th: "บริการรถพร้อมคนขับ", fr: "SERVICE CHAUFFEUR" },
-  hero_sub:     { en: "Lay back and enjoy your trip", ja: "ゆったりと旅をお楽しみください", zh: "放鬆身心，盡享旅途", ko: "편안하게 여행을 즐기세요", "zh-cn": "放松身心，尽享旅途", th: "ผ่อนคลายและเพลิดเพลินกับการเดินทาง", fr: "Détendez-vous et profitez de votre voyage" },
+  hero_title1:  { en: "Tokyo Airport Transfers &", ja: "東京空港送迎＆", zh: "東京機場接送與", ko: "도쿄 공항 이동 &", "zh-cn": "东京机场接送与", th: "รับส่งสนามบินโตเกียว &", fr: "Transferts Aéroport Tokyo &" },
+  hero_title2:  { en: "Private Chauffeur Service", ja: "プライベートチャウファーサービス", zh: "專屬私人司機服務", ko: "프라이빗 쇼퍼 서비스", "zh-cn": "专属私人司机服务", th: "บริการรถส่วนตัวพร้อมคนขับ", fr: "Service Chauffeur Privé" },
+  hero_sub:     {
+    en: "Narita Airport Transfers • Haneda Airport Transfers • Toyota Alphard Luxury Transfers • Toyota Hiace Group Transfers • Tokyo Disney Resort Transfers • Mt Fuji Private Tours",
+    ja: "成田空港送迎 • 羽田空港送迎 • アルファード貸切 • ハイエースグループ送迎 • 東京ディズニーリゾート送迎 • 富士山プライベートツアー",
+    zh: "成田機場接送 • 羽田機場接送 • Alphard豪華包車 • Hiace團體接送 • 東京迪士尼接送 • 富士山私人遊覽",
+    ko: "나리타공항 이동 • 하네다공항 이동 • 알파드 럭셔리 이동 • 하이에이스 단체 이동 • 도쿄 디즈니리조트 이동 • 후지산 프라이빗 투어",
+    "zh-cn": "成田机场接送 • 羽田机场接送 • Alphard豪华包车 • Hiace团体接送 • 东京迪士尼接送 • 富士山私人游览",
+    th: "รับส่งสนามบินนาริตะ • รับส่งสนามบินฮาเนดะ • รถ Alphard หรูหรา • รถ Hiace กรุ๊ปทัวร์ • รับส่งโตเกียวดิสนีย์รีสอร์ท • ทัวร์ส่วนตัวภูเขาไฟฟูจิ",
+    fr: "Transferts Aéroport Narita • Transferts Aéroport Haneda • Transferts Luxe Toyota Alphard • Transferts Groupe Toyota Hiace • Transferts Tokyo Disney Resort • Tours Privés Mont Fuji",
+  },
 
   /* ── Prices ─────────────────────────────────── */
   prices_title: { en: "PRICES",    ja: "料金",     zh: "價格",  ko: "요금",    "zh-cn": "价格",   th: "ราคา",         fr: "TARIFS" },
