@@ -24,6 +24,9 @@ function detectLang(): Lang {
   return "en";
 }
 
+// Root provider's setState — allows nested providers to sync back on navigation
+let _rootSetLang: ((l: Lang) => void) | null = null;
+
 export function LangProvider({
   children,
   initialLang,
@@ -31,14 +34,14 @@ export function LangProvider({
   children: ReactNode;
   initialLang?: Lang;
 }) {
-  /* Always start with initialLang (for zh/ pages) or "en" so server and
-     client initial render match — avoids React hydration mismatch errors. */
   const [lang, setLangState] = useState<Lang>(initialLang ?? "en");
+  const isRoot = !initialLang;
 
-  /* After mount: read localStorage preference (client-only) */
   useEffect(() => {
-    if (!initialLang) {
+    if (isRoot) {
+      _rootSetLang = setLangState;
       setLangState(detectLang());
+      return () => { _rootSetLang = null; };
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -46,6 +49,11 @@ export function LangProvider({
   function setLang(l: Lang) {
     localStorage.setItem("octoshell-lang", l);
     setLangState(l);
+    // When called from a nested provider (language route), also update the
+    // root provider so navigating back to an unprefixed route shows correctly
+    if (!isRoot && _rootSetLang) {
+      _rootSetLang(l);
+    }
   }
 
   return (
