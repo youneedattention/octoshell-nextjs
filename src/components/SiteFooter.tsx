@@ -126,7 +126,7 @@ export default function SiteFooter() {
 
                     {/* WhatsApp */}
                     <li>
-                      <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"
+                      <a href="#" onClick={(e) => { e.preventDefault(); window.open(WHATSAPP_URL, "_blank", "noopener,noreferrer"); }}
                         className="group inline-flex items-center gap-3 transition-opacity">
                         <span className="flex-shrink-0 w-[25px] h-[25px] rounded-full bg-white/10 group-hover:bg-[#c9a84c] group-active:bg-[#c9a84c] flex items-center justify-center transition-colors duration-200">
                           <svg viewBox="0 0 24 24" className="w-[14px] h-[14px] fill-white/50 group-hover:fill-white group-active:fill-white transition-colors duration-200">
