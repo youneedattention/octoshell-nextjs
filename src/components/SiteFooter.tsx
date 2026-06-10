@@ -156,22 +156,27 @@ export default function SiteFooter() {
 
                     {/* Email */}
                     <li>
-                      <span className="group inline-flex items-center gap-3">
-                        <span className="flex-shrink-0 w-[25px] h-[25px] rounded-full bg-white/10 group-hover:bg-[#c9a84c] group-active:bg-[#c9a84c] flex items-center justify-center transition-colors duration-200">
-                          <svg viewBox="0 0 24 24" className="w-[13px] h-[13px]" fill="none" stroke="currentColor" strokeWidth={1.8}
-                            style={{ color: "rgba(255,255,255,0.5)" }}
-                            onMouseEnter={e => (e.currentTarget.style.color = "white")}
-                            onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.5)")}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                          </svg>
-                        </span>
-                        <span className="flex flex-col">
-                          <span className="text-white/70 group-hover:text-[#c9a84c] group-active:text-[#c9a84c] text-[13px] font-semibold leading-tight transition-colors duration-200">
-                            {t.footer_email[lang]}
-                          </span>
-                          <span className="text-white/30 text-[11px] tracking-[0.04em]">{t.footer_email_sub[lang]}</span>
-                        </span>
-                      </span>
+                      <ObfuscatedEmail
+                        className="group inline-flex items-center gap-3"
+                        showAddress={false}
+                        customContent={
+                          <>
+                            <span className="flex-shrink-0 w-[25px] h-[25px] rounded-full bg-white/10 group-hover:bg-[#c9a84c] group-active:bg-[#c9a84c] flex items-center justify-center transition-colors duration-200">
+                              <svg viewBox="0 0 24 24" className="w-[13px] h-[13px] text-white/50 group-hover:text-white group-active:text-white transition-colors duration-200" fill="none" stroke="currentColor" strokeWidth={1.8}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                              </svg>
+                            </span>
+                            <span className="flex flex-col">
+                              <span className="text-white/70 group-hover:text-[#c9a84c] group-active:text-[#c9a84c] text-[13px] font-semibold leading-tight transition-colors duration-200">
+                                {t.footer_email[lang]}
+                              </span>
+                              <span className="text-white/30 group-hover:text-[#c9a84c]/60 group-active:text-[#c9a84c]/60 text-[11px] tracking-[0.04em] transition-colors duration-200">
+                                {t.footer_email_sub[lang]}
+                              </span>
+                            </span>
+                          </>
+                        }
+                      />
                     </li>
                   </>
                 )}
