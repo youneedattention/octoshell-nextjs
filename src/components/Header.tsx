@@ -188,7 +188,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
           ? `backdrop-blur-xl ${frostedBg}`
           : "bg-transparent"}`}>
         <div className="flex items-center justify-end gap-4 px-10 lg:px-14 h-9
-                        border-b border-white/[0.06]">
+                        border-b border-transparent">
 
           {/* Language */}
           <div ref={langRef} className="relative">
