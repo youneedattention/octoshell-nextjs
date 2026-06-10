@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import SiteFooter from "@/components/SiteFooter";
 import { useLang } from "@/context/LangContext";
 import { FAQ_GROUPED, type FaqItem } from "@/lib/faq";
+import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 
 /* ── Strip leading emoji from group name ── */
 const stripEmoji = (s: string) => s.replace(/^[\p{Emoji}\s]+/u, "").trim();
@@ -230,10 +231,7 @@ export default function FaqPage() {
                 <p className="text-[9px] tracking-[0.4em] uppercase text-[var(--c-ink-3)] mb-3">
                   {lang === "ja" ? "お問い合わせ" : lang === "zh" ? "直接聯絡" : "Direct Contact"}
                 </p>
-                <a href="mailto:info@octoshell.jp"
-                  className="text-[13px] text-[#c9a84c] hover:text-[#c9a84c]/70 transition-colors break-all">
-                  info@octoshell.jp
-                </a>
+                <ObfuscatedEmail className="text-[13px] text-[#c9a84c] hover:text-[#c9a84c]/70 transition-colors break-all" />
               </div>
             </div>
           </nav>

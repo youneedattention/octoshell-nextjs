@@ -1,6 +1,7 @@
 "use client";
 import ProtectedImage from "@/components/ProtectedImage";
 import Link from "next/link";
+import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 import { usePathname } from "next/navigation";
 import { useLang } from "@/context/LangContext";
 import { t } from "@/lib/translations";
@@ -155,8 +156,7 @@ export default function SiteFooter() {
 
                     {/* Email */}
                     <li>
-                      <a href={`mailto:${EMAIL}`}
-                        className="group inline-flex items-center gap-3">
+                      <span className="group inline-flex items-center gap-3">
                         <span className="flex-shrink-0 w-[25px] h-[25px] rounded-full bg-white/10 group-hover:bg-[#c9a84c] group-active:bg-[#c9a84c] flex items-center justify-center transition-colors duration-200">
                           <svg viewBox="0 0 24 24" className="w-[13px] h-[13px]" fill="none" stroke="currentColor" strokeWidth={1.8}
                             style={{ color: "rgba(255,255,255,0.5)" }}
@@ -169,11 +169,9 @@ export default function SiteFooter() {
                           <span className="text-white/70 group-hover:text-[#c9a84c] group-active:text-[#c9a84c] text-[13px] font-semibold leading-tight transition-colors duration-200">
                             {t.footer_email[lang]}
                           </span>
-                          <span className="text-white/30 group-hover:text-[#c9a84c]/60 group-active:text-[#c9a84c]/60 text-[11px] tracking-[0.04em] transition-colors duration-200">
-                            {EMAIL}
-                          </span>
+                          <ObfuscatedEmail className="text-white/30 hover:text-[#c9a84c]/60 text-[11px] tracking-[0.04em] transition-colors duration-200" />
                         </span>
-                      </a>
+                      </span>
                     </li>
                   </>
                 )}

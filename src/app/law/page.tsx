@@ -2,6 +2,7 @@
 import Header from "@/components/Header";
 import SiteFooter from "@/components/SiteFooter";
 import Link from "next/link";
+import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 import { useLang } from "@/context/LangContext";
 import { t } from "@/lib/translations";
 import type { Lang } from "@/lib/translations";
@@ -438,7 +439,7 @@ function BlockContent({ block }: { block: CB }) {
                 </dt>
               )}
               <dd className={`text-[13px] text-[var(--c-ink)] leading-[1.85] ${!term ? "col-span-full" : ""}`}>
-                {def}
+                {def === "info@octoshell.jp" ? <ObfuscatedEmail /> : def}
               </dd>
             </div>
           ))}
