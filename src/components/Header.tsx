@@ -211,7 +211,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               <div className="absolute right-0 top-full mt-1.5 min-w-[150px]
                               bg-[#1a1a1a]/98 backdrop-blur-xl rounded-2xl
                               border border-white/[0.08] shadow-[0_16px_48px_rgba(0,0,0,0.7)]
-                              overflow-hidden z-50 py-1"
+                              overflow-hidden z-[200] py-1"
                 onMouseEnter={openLang} onMouseLeave={closeLang}>
                 {LANGS.map(({ code, full }) => (
                   <button key={code} onClick={() => { switchLang(code); setLangOpen(false); }}
