@@ -183,7 +183,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
       {/* ══════════════════════════════════════════════════════════════
           ANNOUNCEMENT BAR
       ══════════════════════════════════════════════════════════════ */}
-      <div className="bg-gradient-to-r from-[#0d0d0d] via-[#2c1f05] to-[#0d0d0d] border-b border-[#c9a84c]/40">
+      <div className="backdrop-blur-xl bg-black/50 border-b border-white/[0.07]">
         <div className="flex items-center justify-between px-5 sm:px-12 lg:px-20 h-9">
 
           {/* Center: announcement text (empty — future use) */}
@@ -199,7 +199,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               <button
                 onClick={() => setLangOpen((o) => !o)}
                 aria-label="Select language"
-                className="flex items-center gap-1 text-[11px] text-white/50 hover:text-white/90 tracking-[0.08em] transition-colors duration-150"
+                className="flex items-center gap-1 text-[11px] text-white/90 hover:text-white tracking-[0.08em] transition-colors duration-150"
               >
                 {LANGS.find((l) => l.code === lang)?.label ?? "EN"}
                 <svg className={`w-2.5 h-2.5 opacity-50 transition-transform duration-150 ${langOpen ? "rotate-180" : ""}`}
@@ -226,7 +226,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               )}
             </div>
 
-            <span className="text-white/20 text-[10px] select-none">|</span>
+            <span className="text-white/30 text-[10px] select-none">|</span>
 
             {/* Currency */}
             <div ref={curRef} className="relative">
@@ -234,7 +234,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                 onClick={() => setCurrencyOpen((o) => !o)}
                 aria-label="Select currency"
                 className={`flex items-center gap-1 text-[11px] tracking-[0.08em] transition-colors duration-150
-                            ${currencyOpen ? "text-[#c9a84c]" : "text-white/50 hover:text-white/90"}`}
+                            ${currencyOpen ? "text-[#c9a84c]" : "text-white/90 hover:text-white"}`}
               >
                 {currency}
                 <svg className={`w-2.5 h-2.5 opacity-50 transition-transform duration-150 ${currencyOpen ? "rotate-180" : ""}`}
@@ -283,13 +283,13 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               )}
             </div>
 
-            <span className="text-white/20 text-[10px] select-none">|</span>
+            <span className="text-white/30 text-[10px] select-none">|</span>
 
             {/* Theme toggle */}
             <button
               onClick={toggleTheme}
               aria-label="Toggle light / dark theme"
-              className="text-white/50 hover:text-white/90 flex items-center transition-colors duration-150"
+              className="text-white/90 hover:text-white flex items-center transition-colors duration-150"
             >
               <ThemeIcon theme={theme} />
             </button>
