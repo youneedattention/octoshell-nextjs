@@ -181,124 +181,6 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
     <header ref={headerRef} className="fixed top-0 inset-x-0 z-50">
 
       {/* ══════════════════════════════════════════════════════════════
-          ANNOUNCEMENT BAR
-      ══════════════════════════════════════════════════════════════ */}
-      <div className="backdrop-blur-xl bg-black/50 border-b border-white/[0.07]">
-        <div className="flex items-center justify-between px-5 sm:px-12 lg:px-20 h-9">
-
-          {/* Center: announcement text (empty — future use) */}
-          <div className="flex-1 flex items-center justify-center">
-            {/* announcement text goes here */}
-          </div>
-
-          {/* Right: Language · Currency · Theme */}
-          <div className="flex items-center gap-3">
-
-            {/* Language */}
-            <div ref={langRef} className="relative">
-              <button
-                onClick={() => setLangOpen((o) => !o)}
-                aria-label="Select language"
-                className="flex items-center gap-1 text-[11px] text-white/90 hover:text-white tracking-[0.08em] transition-colors duration-150"
-              >
-                {LANGS.find((l) => l.code === lang)?.label ?? "EN"}
-                <svg className={`w-2.5 h-2.5 opacity-50 transition-transform duration-150 ${langOpen ? "rotate-180" : ""}`}
-                  fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
-                </svg>
-              </button>
-              {langOpen && (
-                <div className="absolute right-0 top-full mt-1.5 min-w-[140px]
-                                bg-[#1a1a1a]/98 backdrop-blur-xl rounded-2xl
-                                border border-white/[0.08] shadow-[0_16px_48px_rgba(0,0,0,0.7)]
-                                overflow-hidden z-50 py-1">
-                  {LANGS.map(({ code, full }) => (
-                    <button key={code}
-                      onClick={() => { switchLang(code); setLangOpen(false); }}
-                      className={`w-full text-left px-4 py-2.5 text-[13px] tracking-wide transition-colors duration-150
-                                  ${lang === code
-                                    ? "text-white font-medium bg-white/10 rounded-xl mx-1 w-[calc(100%-8px)]"
-                                    : "text-white/55 hover:text-white/90 hover:bg-white/[0.04]"}`}>
-                      {full}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <span className="text-white/30 text-[10px] select-none">|</span>
-
-            {/* Currency */}
-            <div ref={curRef} className="relative">
-              <button
-                onClick={() => setCurrencyOpen((o) => !o)}
-                aria-label="Select currency"
-                className={`flex items-center gap-1 text-[11px] tracking-[0.08em] transition-colors duration-150
-                            ${currencyOpen ? "text-[#c9a84c]" : "text-white/90 hover:text-white"}`}
-              >
-                {currency}
-                <svg className={`w-2.5 h-2.5 opacity-50 transition-transform duration-150 ${currencyOpen ? "rotate-180" : ""}`}
-                  fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
-                </svg>
-              </button>
-              {currencyOpen && (
-                <div className="absolute right-0 top-full mt-1.5 w-[216px]
-                                bg-[#0a0a0a]/96 backdrop-blur-xl
-                                border border-white/[0.09] shadow-[0_12px_40px_rgba(0,0,0,0.6)]
-                                overflow-hidden z-50">
-                  <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
-                  {CURRENCIES.map((c) => (
-                    <button key={c.code}
-                      onClick={() => { setCurrency(c.code); setCurrencyOpen(false); }}
-                      className={`group w-full flex items-center px-4 py-2.5 transition-colors duration-200
-                                  ${currency === c.code ? "bg-white/[0.04]" : "hover:bg-white/[0.025]"}`}>
-                      <div className="flex items-center gap-3 transition-transform duration-200 origin-left group-hover:scale-[1.06]">
-                        <span className={`text-[10px] font-bold tracking-[0.18em] w-8 shrink-0 transition-colors duration-200
-                                          group-hover:text-[#c9a84c] ${currency === c.code ? "text-[#c9a84c]" : "text-white/55"}`}>
-                          {c.code}
-                        </span>
-                        <span className={`text-[10px] tracking-[0.06em] transition-colors duration-200
-                                          group-hover:text-[#c9a84c]/60 ${currency === c.code ? "text-white/45" : "text-white/22"}`}>
-                          {c.name}
-                        </span>
-                      </div>
-                      {currency === c.code && (
-                        <svg className="w-2.5 h-2.5 ml-auto shrink-0 text-[#c9a84c]/60" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                        </svg>
-                      )}
-                    </button>
-                  ))}
-                  {currency !== "JPY" && (
-                    <div className="px-3.5 py-2.5 border-t border-white/[0.05]">
-                      <p className="text-[11px] text-white/25 leading-relaxed">
-                        {lang === "ja" ? "※参考値。決済はJPY建て。外貨手数料あり"
-                          : lang === "zh" ? "※僅供參考。結算以JPY為準，外幣手續費另計"
-                          : "* Reference only. Payment settled in JPY."}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-
-            <span className="text-white/30 text-[10px] select-none">|</span>
-
-            {/* Theme toggle */}
-            <button
-              onClick={toggleTheme}
-              aria-label="Toggle light / dark theme"
-              className="text-white/90 hover:text-white flex items-center transition-colors duration-150"
-            >
-              <ThemeIcon theme={theme} />
-            </button>
-
-          </div>
-        </div>
-      </div>
-
-      {/* ══════════════════════════════════════════════════════════════
           MAIN NAV ROW
       ══════════════════════════════════════════════════════════════ */}
       <div className={`transition-all duration-300
@@ -444,8 +326,104 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
             </nav>
           </div>
 
-          {/* ── RIGHT: Desktop Book | Mobile: hamburger ────────── */}
-          <div className="flex items-center gap-3 shrink-0">
+          {/* ── RIGHT: Lang · Currency · Theme · Book | Mobile: hamburger ── */}
+          <div className="flex items-center gap-4 shrink-0">
+
+            {/* Desktop: Language */}
+            <div ref={langRef} className="relative hidden sm:block">
+              <button
+                onClick={() => setLangOpen((o) => !o)}
+                aria-label="Select language"
+                className="flex items-center gap-1.5 text-[11px] text-white/70 hover:text-white/95 tracking-[0.1em] uppercase transition-colors duration-150"
+              >
+                {LANGS.find((l) => l.code === lang)?.full ?? "English"}
+                <svg className={`w-2.5 h-2.5 opacity-40 transition-transform duration-150 ${langOpen ? "rotate-180" : ""}`}
+                  fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              {langOpen && (
+                <div className="absolute right-0 top-full mt-2 min-w-[150px]
+                                bg-[#1a1a1a]/98 backdrop-blur-xl rounded-2xl
+                                border border-white/[0.08] shadow-[0_16px_48px_rgba(0,0,0,0.7)]
+                                overflow-hidden z-50 py-1">
+                  {LANGS.map(({ code, full }) => (
+                    <button key={code}
+                      onClick={() => { switchLang(code); setLangOpen(false); }}
+                      className={`w-full text-left px-4 py-2.5 text-[13px] tracking-wide transition-colors duration-150
+                                  ${lang === code
+                                    ? "text-white font-medium bg-white/10 rounded-xl mx-1 w-[calc(100%-8px)]"
+                                    : "text-white/55 hover:text-white/90 hover:bg-white/[0.04]"}`}>
+                      {full}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Desktop: Currency */}
+            <div ref={curRef} className="relative hidden sm:block">
+              <button
+                onClick={() => setCurrencyOpen((o) => !o)}
+                aria-label="Select currency"
+                className={`flex items-center gap-1.5 text-[11px] tracking-[0.1em] transition-colors duration-150
+                            ${currencyOpen ? "text-[#c9a84c]" : "text-white/70 hover:text-white/95"}`}
+              >
+                {currency}
+                <svg className={`w-2.5 h-2.5 opacity-40 transition-transform duration-150 ${currencyOpen ? "rotate-180" : ""}`}
+                  fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              {currencyOpen && (
+                <div className="absolute right-0 top-full mt-2 w-[216px]
+                                bg-[#0a0a0a]/96 backdrop-blur-xl
+                                border border-white/[0.09] shadow-[0_12px_40px_rgba(0,0,0,0.6)]
+                                overflow-hidden z-50">
+                  <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
+                  {CURRENCIES.map((c) => (
+                    <button key={c.code}
+                      onClick={() => { setCurrency(c.code); setCurrencyOpen(false); }}
+                      className={`group w-full flex items-center px-4 py-2.5 transition-colors duration-200
+                                  ${currency === c.code ? "bg-white/[0.04]" : "hover:bg-white/[0.025]"}`}>
+                      <div className="flex items-center gap-3 transition-transform duration-200 origin-left group-hover:scale-[1.06]">
+                        <span className={`text-[10px] font-bold tracking-[0.18em] w-8 shrink-0 transition-colors duration-200
+                                          group-hover:text-[#c9a84c] ${currency === c.code ? "text-[#c9a84c]" : "text-white/55"}`}>
+                          {c.code}
+                        </span>
+                        <span className={`text-[10px] tracking-[0.06em] transition-colors duration-200
+                                          group-hover:text-[#c9a84c]/60 ${currency === c.code ? "text-white/45" : "text-white/22"}`}>
+                          {c.name}
+                        </span>
+                      </div>
+                      {currency === c.code && (
+                        <svg className="w-2.5 h-2.5 ml-auto shrink-0 text-[#c9a84c]/60" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                      )}
+                    </button>
+                  ))}
+                  {currency !== "JPY" && (
+                    <div className="px-3.5 py-2.5 border-t border-white/[0.05]">
+                      <p className="text-[11px] text-white/25 leading-relaxed">
+                        {lang === "ja" ? "※参考値。決済はJPY建て。外貨手数料あり"
+                          : lang === "zh" ? "※僅供參考。結算以JPY為準，外幣手續費另計"
+                          : "* Reference only. Payment settled in JPY."}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* Desktop: Theme toggle */}
+            <button
+              onClick={toggleTheme}
+              aria-label="Toggle light / dark theme"
+              className="hidden sm:flex text-white/60 hover:text-white/95 items-center transition-colors duration-150"
+            >
+              <ThemeIcon theme={theme} />
+            </button>
 
             {/* Desktop BOOK */}
             <Link href={lp("/book")}
