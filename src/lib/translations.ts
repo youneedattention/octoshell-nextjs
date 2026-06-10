@@ -11,7 +11,7 @@ export const t: Record<string, T> = {
   nav_airport_transfer: { en: "Airport Transfer", ja: "空港送迎", zh: "機場接送", ko: "공항 이동", "zh-cn": "机场接送", th: "รับส่งสนามบิน", fr: "Transfert Aéroport" },
 
   /* Chauffeur dropdown */
-  nav_chauffeur:          { en: "Chauffeur",             ja: "チャウファー",       zh: "專屬司機",     ko: "쇼퍼 서비스",   "zh-cn": "专属司机",     th: "รถพร้อมคนขับ",   fr: "Chauffeur" },
+  nav_chauffeur:          { en: "Chauffeur",             ja: "ハイヤーサービス",   zh: "包車服務",     ko: "전세 차량",     "zh-cn": "专车服务",     th: "รถเช่าพร้อมคนขับ", fr: "Chauffeur" },
   nav_city_transfer:      { en: "Tokyo City Transfer",   ja: "東京都内送迎",       zh: "東京市區接送", ko: "도쿄 시내 이동", "zh-cn": "东京市区接送", th: "รับส่งในโตเกียว", fr: "Transfert Tokyo" },
   nav_city_transfer_sub:  { en: "Point-to-point within Tokyo", ja: "都内の目的地へ送迎", zh: "東京市區點對點", ko: "도쿄 내 목적지 이동", "zh-cn": "东京市区点对点", th: "จุดต่อจุดในโตเกียว", fr: "Point à point Tokyo" },
   nav_city_charter:       { en: "Tokyo City Charter",    ja: "東京都内包車",       zh: "東京市區包車", ko: "도쿄 시내 전세", "zh-cn": "东京市区包车", th: "เช่าเหมาในโตเกียว", fr: "Location Tokyo" },
