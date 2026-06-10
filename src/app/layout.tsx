@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Japan's premier private chauffeur service. Luxury airport transfers from Narita (¥25,000) & Haneda (¥20,000), hourly hire, bespoke sightseeing, golf, MICE events, and ceremonial transportation. Licensed Toyota Alphard & Hiace fleet serving Greater Tokyo and all of Japan.",
+    "Japan's premier private chauffeur. Narita & Haneda airport transfers, hourly hire, golf and sightseeing tours. Toyota Alphard fleet across Tokyo and Japan.",
 
   keywords: [
     "Japan private chauffeur",
