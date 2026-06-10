@@ -327,7 +327,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
           </div>
 
           {/* ── RIGHT: Lang · Currency · Theme · Book | Mobile: hamburger ── */}
-          <div className="flex items-center gap-4 shrink-0">
+          <div className="flex items-center gap-4 shrink-0 ml-auto">
 
             {/* Desktop: Language */}
             <div ref={langRef} className="relative hidden sm:block">
