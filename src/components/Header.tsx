@@ -191,8 +191,8 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                         border-b border-transparent">
 
           {/* Language */}
-          <div ref={langRef} className="relative">
-            <button onClick={() => setLangOpen((o) => !o)} aria-label="Select language"
+          <div ref={langRef} className="relative" onMouseEnter={() => setLangOpen(true)} onMouseLeave={() => setLangOpen(false)}>
+            <button aria-label="Select language"
               className="flex items-center gap-1.5 text-[11px] text-white/80 hover:text-white/90
                          tracking-[0.12em] uppercase transition-colors duration-150">
               {LANGS.find((l) => l.code === lang)?.full ?? "English"}
@@ -222,8 +222,8 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
           <span className="text-white/20 text-[10px] select-none">|</span>
 
           {/* Currency */}
-          <div ref={curRef} className="relative">
-            <button onClick={() => setCurrencyOpen((o) => !o)} aria-label="Select currency"
+          <div ref={curRef} className="relative" onMouseEnter={() => setCurrencyOpen(true)} onMouseLeave={() => setCurrencyOpen(false)}>
+            <button aria-label="Select currency"
               className={`flex items-center gap-1.5 text-[11px] tracking-[0.12em] transition-colors duration-150
                           ${currencyOpen ? "text-[#c9a84c]" : "text-white/80 hover:text-white/90"}`}>
               {currency}
