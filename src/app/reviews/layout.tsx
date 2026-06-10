@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { REVIEWS, RATING_VALUE_STR, REVIEW_COUNT } from "@/lib/reviews";
 
 const BASE = "https://octoshell.jp";
 
@@ -20,29 +21,24 @@ const REVIEW_SCHEMA = {
   "@type": "LocalBusiness",
   "@id": `${BASE}/#localbusiness`,
   "name": "Octoshell Co., Ltd.",
-  "review": [
-    {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": "J. K." },
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "reviewBody": "Ryu san was a very nice driver. Well-dressed and polite, and drove very smoothly.",
-      "datePublished": "2025-05",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": RATING_VALUE_STR,
+    "reviewCount": String(REVIEW_COUNT),
+    "bestRating": "5",
+    "worstRating": "1",
+  },
+  "review": REVIEWS.map((r) => ({
+    "@type": "Review",
+    "author": { "@type": "Person", "name": r.name },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": String(r.rating ?? 5),
+      "bestRating": "5",
     },
-    {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": "Michael Smith" },
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "reviewBody": "Mr. Wang was also very courteous and cooperative. It was a great help throughout the day.",
-      "datePublished": "2025-04",
-    },
-    {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": "Evelyn" },
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "reviewBody": "Driver Du-san is so wonderful. He responded to every request. I was very happy to work with him.",
-      "datePublished": "2025-03",
-    },
-  ],
+    "reviewBody": r.text,
+    "datePublished": r.dateISO,
+  })),
 };
 
 export default function ReviewsLayout({ children }: { children: React.ReactNode }) {
