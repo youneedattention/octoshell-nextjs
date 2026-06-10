@@ -191,42 +191,8 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
             {/* announcement text goes here */}
           </div>
 
-          {/* Right: Language · Currency · Theme */}
+          {/* Right: Currency · Theme */}
           <div className="flex items-center gap-3">
-
-            {/* Language */}
-            <div ref={langRef} className="relative">
-              <button
-                onClick={() => setLangOpen((o) => !o)}
-                aria-label="Select language"
-                className="flex items-center gap-1 text-[11px] text-white/90 hover:text-white tracking-[0.08em] transition-colors duration-150"
-              >
-                {LANGS.find((l) => l.code === lang)?.label ?? "EN"}
-                <svg className={`w-2.5 h-2.5 opacity-50 transition-transform duration-150 ${langOpen ? "rotate-180" : ""}`}
-                  fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
-                </svg>
-              </button>
-              {langOpen && (
-                <div className="absolute right-0 top-full mt-1.5 min-w-[140px]
-                                bg-[#1a1a1a]/98 backdrop-blur-xl rounded-2xl
-                                border border-white/[0.08] shadow-[0_16px_48px_rgba(0,0,0,0.7)]
-                                overflow-hidden z-50 py-1">
-                  {LANGS.map(({ code, full }) => (
-                    <button key={code}
-                      onClick={() => { switchLang(code); setLangOpen(false); }}
-                      className={`w-full text-left px-4 py-2.5 text-[13px] tracking-wide transition-colors duration-150
-                                  ${lang === code
-                                    ? "text-white font-medium bg-white/10 rounded-xl mx-1 w-[calc(100%-8px)]"
-                                    : "text-white/55 hover:text-white/90 hover:bg-white/[0.04]"}`}>
-                      {full}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <span className="text-white/30 text-[10px] select-none">|</span>
 
             {/* Currency */}
             <div ref={curRef} className="relative">
@@ -444,8 +410,40 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
             </nav>
           </div>
 
-          {/* ── RIGHT: Desktop Book | Mobile: hamburger ────────── */}
+          {/* ── RIGHT: Desktop Lang + Book | Mobile: hamburger ────────── */}
           <div className="flex items-center gap-3 shrink-0">
+
+            {/* Desktop Language selector */}
+            <div ref={langRef} className="relative hidden sm:block">
+              <button
+                onClick={() => setLangOpen((o) => !o)}
+                aria-label="Select language"
+                className="flex items-center gap-1 text-[11px] text-white/70 hover:text-white tracking-[0.1em] transition-colors duration-150"
+              >
+                {LANGS.find((l) => l.code === lang)?.label ?? "EN"}
+                <svg className={`w-2.5 h-2.5 opacity-40 transition-transform duration-150 ${langOpen ? "rotate-180" : ""}`}
+                  fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              {langOpen && (
+                <div className="absolute right-0 top-full mt-2 min-w-[140px]
+                                bg-[#1a1a1a]/98 backdrop-blur-xl rounded-2xl
+                                border border-white/[0.08] shadow-[0_16px_48px_rgba(0,0,0,0.7)]
+                                overflow-hidden z-50 py-1">
+                  {LANGS.map(({ code, full }) => (
+                    <button key={code}
+                      onClick={() => { switchLang(code); setLangOpen(false); }}
+                      className={`w-full text-left px-4 py-2.5 text-[13px] tracking-wide transition-colors duration-150
+                                  ${lang === code
+                                    ? "text-white font-medium bg-white/10 rounded-xl mx-1 w-[calc(100%-8px)]"
+                                    : "text-white/55 hover:text-white/90 hover:bg-white/[0.04]"}`}>
+                      {full}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {/* Desktop BOOK */}
             <Link href={lp("/book")}
