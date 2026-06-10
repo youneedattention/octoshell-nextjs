@@ -229,7 +229,7 @@ export default function FaqPage() {
 
               {/* Book Now block */}
               <div className="mt-8 ml-4 pt-6 border-t border-[var(--c-rule)]">
-                <p className="text-white/90 text-[11px] tracking-[0.3em] uppercase font-semibold mb-4">
+                <p className="text-[9px] tracking-[0.4em] uppercase text-[var(--c-ink-3)] mb-4">
                   {t.footer_col_connect[lang]}
                 </p>
                 <ul className="flex flex-col gap-2.5">
