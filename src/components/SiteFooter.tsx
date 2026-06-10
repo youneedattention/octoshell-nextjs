@@ -73,7 +73,7 @@ export default function SiteFooter() {
     <footer className="bg-[#0a0a0a] border-t border-white/[0.07]">
 
       {/* ── Main columns ─────────────────────────────────────────── */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-12 sm:pt-16 pb-10 sm:pb-12">
+      <div className="max-w-5xl mx-auto px-5 sm:px-6 pt-12 sm:pt-16 pb-10 sm:pb-12">
         <div className="grid grid-cols-2 sm:grid-cols-[auto_1fr_1fr_1fr] gap-x-8 gap-y-10 sm:gap-x-12">
 
           {/* Logo — always first */}
@@ -186,7 +186,7 @@ export default function SiteFooter() {
 
       {/* ── Bottom bar ───────────────────────────────────────────── */}
       <div className="border-t border-white/[0.06]">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="max-w-5xl mx-auto px-5 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-white/25 text-[12px] tracking-[0.04em]">
             © {new Date().getFullYear()} Octoshell Co., Ltd. All rights reserved.
           </p>
