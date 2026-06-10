@@ -311,7 +311,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
         </div>
 
         {/* ── DESKTOP: Split Nav [left | LOGO | right+BOOK] ── */}
-        <div className="hidden sm:grid h-[76px] w-full"
+        <div className="hidden sm:grid h-[100px] w-full"
              style={{ gridTemplateColumns: "1fr auto 1fr" }}>
 
             {/* LEFT nav — right-aligned */}
