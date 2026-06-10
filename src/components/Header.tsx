@@ -300,73 +300,68 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
           : "bg-transparent border-b border-transparent"}`}>
 
         {/* ── MOBILE row ── */}
-        <div className="flex items-center justify-between px-5 py-2.5 sm:hidden">
+        <div className="flex items-center justify-between px-4 py-2 sm:hidden">
+
+          {/* Logo — compact */}
           <Link href={lp("/")} draggable={false}
             className="shrink-0 transition-transform duration-200 active:scale-110"
             onContextMenu={(e) => e.preventDefault()}>
-            <ProtectedImage src={LOGO} alt="Octoshell" width={95} height={95} draggable={false}
+            <ProtectedImage src={LOGO} alt="Octoshell" width={52} height={52} draggable={false}
               className="object-contain drop-shadow-lg pointer-events-none select-none" />
           </Link>
 
-          {/* Right: hamburger → EN → JPY → theme, all vertical */}
-          <div className="flex flex-col items-center gap-2">
-            <button onClick={() => setMenuOpen(!menuOpen)}
-              className="text-white touch-manipulation p-1 transition-transform duration-150 active:scale-110"
-              aria-label="Toggle menu" onContextMenu={(e) => e.preventDefault()}>
-              <svg className="w-[30px] h-[30px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {menuOpen
-                  ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
-                  : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />}
-              </svg>
-            </button>
+          {/* Right: EN · JPY · theme · hamburger */}
+          <div className="flex items-center gap-2">
 
-              <div ref={mobileLangRef} className="relative">
-                <button onClick={() => setMobileLangOpen((o) => !o)}
-                  className={`w-8 h-8 rounded-full border text-[10px] font-bold tracking-wide flex items-center justify-center transition-all duration-200
-                              ${mobileLangOpen ? "border-white text-white bg-white/10" : "border-white/30 text-white/60 hover:border-white/60"}`}>
-                  {LANGS.find((l) => l.code === lang)?.label ?? "EN"}
-                </button>
-                {mobileLangOpen && (
-                  <div className="absolute right-0 top-full mt-1.5 min-w-[140px] bg-[#1a1a1a]/98 backdrop-blur-xl rounded-2xl
-                                  border border-white/[0.08] shadow-[0_16px_48px_rgba(0,0,0,0.7)] overflow-hidden z-[200] py-1">
-                    {LANGS.map(({ code, full }) => (
-                      <button key={code} onClick={() => { switchLang(code); setMobileLangOpen(false); }}
-                        className={`w-full text-left px-4 py-2.5 text-[13px] tracking-wide transition-colors duration-150
-                                    ${lang === code ? "text-white font-medium bg-white/10 rounded-xl mx-1 w-[calc(100%-8px)]" : "text-white/55 hover:text-white/90 hover:bg-white/[0.04]"}`}>
-                        {full}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
+            {/* Language */}
+            <div ref={mobileLangRef} className="relative">
+              <button onClick={() => setMobileLangOpen((o) => !o)}
+                className={`w-8 h-8 rounded-full border text-[10px] font-bold tracking-wide flex items-center justify-center transition-all duration-200
+                            ${mobileLangOpen ? "border-white text-white bg-white/10" : "border-white/30 text-white/60"}`}>
+                {LANGS.find((l) => l.code === lang)?.label ?? "EN"}
+              </button>
+              {mobileLangOpen && (
+                <div className="absolute right-0 top-full mt-2 min-w-[150px] bg-[#1a1a1a]/98 backdrop-blur-xl rounded-2xl
+                                border border-white/[0.08] shadow-[0_16px_48px_rgba(0,0,0,0.7)] overflow-hidden z-[200] py-1">
+                  {LANGS.map(({ code, full }) => (
+                    <button key={code} onClick={() => { switchLang(code); setMobileLangOpen(false); }}
+                      className={`w-full text-left px-4 py-2.5 text-[13px] tracking-wide transition-colors duration-150
+                                  ${lang === code ? "text-white font-medium bg-white/10 rounded-xl mx-1 w-[calc(100%-8px)]" : "text-white/55 hover:text-white/90 hover:bg-white/[0.04]"}`}>
+                      {full}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
 
-              <div ref={mobileCurRef} className="relative">
-                <button onClick={() => setMobileCurOpen((o) => !o)}
-                  className={`w-8 h-8 rounded-full border text-[9px] font-bold tracking-widest flex items-center justify-center transition-all duration-200
-                              ${mobileCurOpen ? "border-[#c9a84c] text-[#c9a84c]" : "border-white/30 text-white/60 hover:border-[#c9a84c]/60"}`}>
-                  {currency.slice(0, 3)}
-                </button>
-                {mobileCurOpen && (
-                  <div className="absolute right-0 top-full mt-1.5 bg-[#0a0a0a]/96 backdrop-blur-xl
-                                  border border-white/[0.09] shadow-[0_8px_32px_rgba(0,0,0,0.7)] overflow-hidden z-[200] w-[200px]">
-                    <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
-                    {CURRENCIES.map((c) => (
-                      <button key={c.code} onClick={() => { setCurrency(c.code); setMobileCurOpen(false); }}
-                        className={`w-full flex items-center gap-2.5 px-3.5 py-2.5 transition-colors
-                                    ${currency === c.code ? "text-[#c9a84c] bg-white/[0.04]" : "text-white/50 hover:text-[#c9a84c] hover:bg-white/[0.035]"}`}>
-                        <span className="text-[13px] leading-none">{c.flag}</span>
-                        <span className="text-[10px] font-bold tracking-[0.18em] w-7 shrink-0">{c.code}</span>
-                        <span className={`text-[10px] tracking-[0.06em] ${currency === c.code ? "text-[#c9a84c]/70" : "text-white/25"}`}>{c.name}</span>
-                      </button>
-                    ))}
-                    {currency !== "JPY" && (
-                      <div className="px-2.5 py-2 border-t border-white/[0.05]">
-                        <p className="text-[10px] text-white/25 leading-relaxed">* Ref. only. Settled in JPY.</p>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
+            {/* Currency */}
+            <div ref={mobileCurRef} className="relative">
+              <button onClick={() => setMobileCurOpen((o) => !o)}
+                className={`w-8 h-8 rounded-full border text-[9px] font-bold tracking-widest flex items-center justify-center transition-all duration-200
+                            ${mobileCurOpen ? "border-[#c9a84c] text-[#c9a84c]" : "border-white/30 text-white/60"}`}>
+                {currency.slice(0, 3)}
+              </button>
+              {mobileCurOpen && (
+                <div className="absolute right-0 top-full mt-2 bg-[#0a0a0a]/96 backdrop-blur-xl
+                                border border-white/[0.09] shadow-[0_8px_32px_rgba(0,0,0,0.7)] overflow-hidden z-[200] w-[200px]">
+                  <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
+                  {CURRENCIES.map((c) => (
+                    <button key={c.code} onClick={() => { setCurrency(c.code); setMobileCurOpen(false); }}
+                      className={`w-full flex items-center gap-2.5 px-3.5 py-2.5 transition-colors
+                                  ${currency === c.code ? "text-[#c9a84c] bg-white/[0.04]" : "text-white/50 hover:text-[#c9a84c] hover:bg-white/[0.035]"}`}>
+                      <span className="text-[13px] leading-none">{c.flag}</span>
+                      <span className="text-[10px] font-bold tracking-[0.18em] w-7 shrink-0">{c.code}</span>
+                      <span className={`text-[10px] tracking-[0.06em] ${currency === c.code ? "text-[#c9a84c]/70" : "text-white/25"}`}>{c.name}</span>
+                    </button>
+                  ))}
+                  {currency !== "JPY" && (
+                    <div className="px-2.5 py-2 border-t border-white/[0.05]">
+                      <p className="text-[10px] text-white/25 leading-relaxed">* Ref. only. Settled in JPY.</p>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
 
             {/* Theme */}
             <button onClick={toggleTheme} aria-label="Toggle theme"
@@ -374,6 +369,18 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                          hover:border-[#c9a84c] hover:text-[#c9a84c] flex items-center justify-center transition-all duration-200">
               <ThemeIcon theme={theme} />
             </button>
+
+            {/* Hamburger */}
+            <button onClick={() => setMenuOpen(!menuOpen)}
+              className="w-8 h-8 flex items-center justify-center text-white touch-manipulation transition-transform duration-150 active:scale-110"
+              aria-label="Toggle menu" onContextMenu={(e) => e.preventDefault()}>
+              <svg className="w-[22px] h-[22px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {menuOpen
+                  ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M6 18L18 6M6 6l12 12" />
+                  : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4 6h16M4 12h16M4 18h16" />}
+              </svg>
+            </button>
+
           </div>
         </div>
 
