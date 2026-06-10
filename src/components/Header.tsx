@@ -308,8 +308,8 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               className="object-contain drop-shadow-lg pointer-events-none select-none" />
           </Link>
 
-          {/* Right: hamburger + lang/currency circles below */}
-          <div className="flex flex-col items-end gap-1.5">
+          {/* Right: hamburger → EN → JPY → theme, all vertical */}
+          <div className="flex flex-col items-center gap-2">
             <button onClick={() => setMenuOpen(!menuOpen)}
               className="text-white touch-manipulation p-1 transition-transform duration-150 active:scale-110"
               aria-label="Toggle menu" onContextMenu={(e) => e.preventDefault()}>
@@ -320,8 +320,6 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
               </svg>
             </button>
 
-            {/* Lang + Currency circles */}
-            <div className="flex items-center gap-1.5">
               <div ref={mobileLangRef} className="relative">
                 <button onClick={() => setMobileLangOpen((o) => !o)}
                   className={`w-8 h-8 rounded-full border text-[10px] font-bold tracking-wide flex items-center justify-center transition-all duration-200
@@ -369,7 +367,13 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
                   </div>
                 )}
               </div>
-            </div>
+
+            {/* Theme */}
+            <button onClick={toggleTheme} aria-label="Toggle theme"
+              className="w-8 h-8 rounded-full border border-white/30 text-white/60
+                         hover:border-[#c9a84c] hover:text-[#c9a84c] flex items-center justify-center transition-all duration-200">
+              <ThemeIcon theme={theme} />
+            </button>
           </div>
         </div>
 
