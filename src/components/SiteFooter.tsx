@@ -101,20 +101,23 @@ export default function SiteFooter() {
                 {/* Book Now button + WhatsApp + Email — connect column only */}
                 {col.titleKey === "footer_col_connect" && (
                   <>
-                    {/* Book Online button */}
-                    <li className="-mt-1">
+                    {/* Book Online */}
+                    <li>
                       <Link href={lp("/book")}
-                        className="group inline-flex flex-col w-full border border-white/20 hover:border-[#c9a84c] active:border-[#c9a84c] hover:bg-[#c9a84c]/5 active:bg-[#c9a84c]/5 transition-all duration-200 px-4 py-3 gap-0.5">
-                        <span className="flex items-center justify-between">
-                          <span className="text-white/70 group-hover:text-[#c9a84c] group-active:text-[#c9a84c] text-[13px] font-semibold tracking-[0.04em] transition-colors duration-200">
-                            {t.footer_webapp[lang]}
-                          </span>
-                          <svg className="w-3 h-3 text-white/30 group-hover:text-[#c9a84c] group-active:text-[#c9a84c] transition-all duration-200 group-hover:translate-x-0.5 group-active:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                        className="group inline-flex items-center gap-3">
+                        <span className="flex-shrink-0 w-[25px] h-[25px] rounded-full bg-white/10 group-hover:bg-[#c9a84c] group-active:bg-[#c9a84c] flex items-center justify-center transition-colors duration-200">
+                          <svg viewBox="0 0 24 24" className="w-[13px] h-[13px] text-white/50 group-hover:text-white group-active:text-white transition-colors duration-200" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" />
+                            <path d="M16 2v4M8 2v4M3 10h18" />
                           </svg>
                         </span>
-                        <span className="text-white/30 group-hover:text-[#c9a84c]/60 group-active:text-[#c9a84c]/60 text-[11px] tracking-[0.04em] transition-colors duration-200">
-                          {t.footer_webapp_sub[lang]}
+                        <span className="flex flex-col">
+                          <span className="text-white/70 group-hover:text-[#c9a84c] group-active:text-[#c9a84c] text-[13px] font-semibold leading-tight transition-colors duration-200">
+                            {t.footer_webapp[lang]}
+                          </span>
+                          <span className="text-white/30 group-hover:text-[#c9a84c]/60 group-active:text-[#c9a84c]/60 text-[11px] tracking-[0.04em] transition-colors duration-200">
+                            {t.footer_webapp_sub[lang]}
+                          </span>
                         </span>
                       </Link>
                     </li>
