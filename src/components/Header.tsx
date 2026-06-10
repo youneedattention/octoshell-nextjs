@@ -380,7 +380,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
             <div className="flex items-center justify-center px-6 lg:px-10">
               <Link href={lp("/")} draggable={false} onContextMenu={(e) => e.preventDefault()}
                 className="transition-transform duration-200 hover:scale-105">
-                <ProtectedImage src={LOGO} alt="Octoshell" width={90} height={90} draggable={false}
+                <ProtectedImage src={LOGO} alt="Octoshell" width={100} height={100} draggable={false}
                   className="object-contain drop-shadow-lg pointer-events-none select-none" />
               </Link>
             </div>
