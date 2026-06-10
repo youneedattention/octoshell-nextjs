@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Japan's premier private chauffeur. Narita & Haneda airport transfers, hourly hire, golf and sightseeing tours. Toyota Alphard fleet across Tokyo and Japan.",
+    "Rated 4.9/5 by verified clients. Japan's private chauffeur — airport transfers, hourly hire and tours. Toyota Alphard (5 pax) & Hiace (9 pax).",
 
   icons: {
     icon: [
