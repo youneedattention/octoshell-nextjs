@@ -536,7 +536,8 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
           MOBILE DRAWER
       ══════════════════════════════════════════════════════════════ */}
       {menuOpen && (
-        <div className="sm:hidden bg-black/75 backdrop-blur-xl border-t border-white/[0.07]">
+        <div className="sm:hidden bg-black/80 backdrop-blur-2xl border-t border-white/[0.07]"
+          style={{ animation: "slideDown 0.22s ease-out both" }}>
 
           <nav className="flex flex-col gap-4 px-6 pb-6 pt-5">
 
