@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nav Layout Preview</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0a; font-family: -apple-system, "Helvetica Neue", sans-serif; color: white; }
+
+  .section { padding: 48px 0 64px; border-bottom: 1px solid #1a1a1a; }
+  .section:last-child { border-bottom: none; }
+
+  .label {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: #555;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .label span { color: #c9a84c; font-weight: 600; }
+
+  /* ─── HERO BG STRIP ─── */
+  .nav-wrap {
+    position: relative;
+    margin: 0 40px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.7);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(160deg, #1a1006 0%, #0d0d0d 60%, #050505 100%);
+    z-index: 0;
+  }
+  .hero-bg::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* shared nav styles */
+  nav { position: relative; z-index: 1; display: flex; align-items: center; }
+  .logo-img {
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; letter-spacing: 0.2em; color: #c9a84c; opacity: 0.9;
+    flex-shrink: 0;
+  }
+  .logo-img svg { display: block; }
+
+  .nav-link {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(255,255,255,0.75); white-space: nowrap; cursor: pointer;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    transition: all .2s;
+    text-decoration: none;
+  }
+  .nav-link:hover { color: #c9a84c; border-bottom-color: rgba(201,168,76,0.5); }
+
+  .book-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(255,255,255,0.75); border-radius: 999px;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: white; padding: 7px 20px; cursor: pointer; white-space: nowrap;
+    transition: all .2s; background: transparent;
+  }
+  .book-btn:hover { background: #c9a84c; border-color: #c9a84c; color: black; }
+
+  .ctrl {
+    font-size: 10px; letter-spacing: 0.1em; color: rgba(255,255,255,0.55);
+    display: flex; align-items: center; gap: 3px; cursor: pointer;
+    text-transform: uppercase;
+  }
+  .ctrl svg { opacity: 0.4; }
+  .ctrl:hover { color: rgba(255,255,255,0.9); }
+
+  .divider { width: 1px; height: 12px; background: rgba(255,255,255,0.15); }
+
+  /* ──────────────────────────────────────────
+     OPTION A — Split Nav
+  ────────────────────────────────────────── */
+  .nav-a {
+    height: 80px;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+  .nav-a .left-links { display: flex; align-items: center; gap: 28px; justify-content: flex-end; padding-right: 40px; }
+  .nav-a .center-logo { display: flex; align-items: center; justify-content: center; }
+  .nav-a .right-side { display: flex; align-items: center; justify-content: flex-start; padding-left: 40px; gap: 24px; }
+  .nav-a .right-links { display: flex; align-items: center; gap: 28px; }
+  .nav-a .right-ctrls { display: flex; align-items: center; gap: 12px; margin-left: auto; }
+
+  /* ──────────────────────────────────────────
+     OPTION B — Large Logo Left + Right Nav
+  ────────────────────────────────────────── */
+  .nav-b {
+    height: 80px;
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+  .nav-b .logo-block { flex-shrink: 0; margin-right: 48px; }
+  .nav-b .links { display: flex; align-items: center; gap: 28px; }
+  .nav-b .ctrls { display: flex; align-items: center; gap: 12px; margin-left: auto; }
+
+  /* ──────────────────────────────────────────
+     OPTION C — Golden Ratio (~38% from left)
+  ────────────────────────────────────────── */
+  .nav-c {
+    height: 80px;
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+  }
+  .nav-c .spacer { width: 8%; flex-shrink: 0; }
+  .nav-c .logo-block { flex-shrink: 0; margin-right: 44px; }
+  .nav-c .links { display: flex; align-items: center; gap: 28px; }
+  .nav-c .ctrls { display: flex; align-items: center; gap: 12px; margin-left: auto; }
+
+  /* ── logo SVG ── */
+  .octoshell-logo {
+    height: 52px; width: auto;
+    filter: drop-shadow(0 2px 8px rgba(201,168,76,0.2));
+  }
+
+  /* ── gold accent line at bottom of nav ── */
+  .gold-line {
+    position: relative; z-index: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.25) 30%, rgba(201,168,76,0.25) 70%, transparent 100%);
+  }
+
+  /* ── tags ── */
+  .badge {
+    display: inline-block;
+    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: #c9a84c; border: 1px solid rgba(201,168,76,0.35);
+    padding: 2px 8px; border-radius: 999px; margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  /* ── frosted glass line ── */
+  .frost-border {
+    position: relative; z-index: 1;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     OPTION A — SPLIT NAV
+═══════════════════════════════════════ -->
+<div class="section">
+  <p class="label"><span>A</span> &nbsp;·&nbsp; Split Nav &nbsp;·&nbsp; 奢侈品标配 &nbsp;·&nbsp; Chanel / Four Seasons 风格</p>
+  <div class="nav-wrap">
+    <div class="hero-bg"></div>
+    <div class="frost-border">
+      <div class="nav-a">
+        <!-- Left nav links -->
+        <div class="left-links">
+          <a class="nav-link">Home</a>
+          <a class="nav-link">Airport</a>
+          <a class="nav-link">Chauffeur</a>
+        </div>
+        <!-- Center LOGO -->
+        <div class="center-logo">
+          <img src="/logo.png" class="octoshell-logo" alt="Octoshell" onerror="this.replaceWith(createFallbackLogo())" />
+        </div>
+        <!-- Right: nav + ctrls -->
+        <div class="right-side">
+          <div class="right-links">
+            <a class="nav-link">Fleet</a>
+            <a class="nav-link">FAQ</a>
+            <a class="nav-link">About</a>
+          </div>
+          <div class="right-ctrls">
+            <div class="divider"></div>
+            <span class="ctrl">EN <svg width="8" height="8" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span>
+            <span class="ctrl">JPY <svg width="8" height="8" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span>
+            <div class="divider"></div>
+            <button class="book-btn">Book</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gold-line"></div>
+    <!-- hero content hint -->
+    <div style="position:relative;z-index:1;height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;opacity:0.18;">
+      <div style="width:260px;height:10px;border-radius:4px;background:rgba(255,255,255,0.3)"></div>
+      <div style="width:160px;height:6px;border-radius:4px;background:rgba(201,168,76,0.4)"></div>
+      <div style="width:80px;height:24px;border-radius:999px;border:1px solid rgba(255,255,255,0.3);margin-top:8px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     OPTION B — LARGE LOGO LEFT + RIGHT NAV
+═══════════════════════════════════════ -->
+<div class="section">
+  <p class="label"><span>B</span> &nbsp;·&nbsp; Logo Left · Right Nav &nbsp;·&nbsp; Porsche / Tesla 风格</p>
+  <div class="nav-wrap">
+    <div class="hero-bg"></div>
+    <div class="frost-border">
+      <div class="nav-b">
+        <div class="logo-block">
+          <img src="/logo.png" class="octoshell-logo" alt="Octoshell" />
+        </div>
+        <div class="links">
+          <a class="nav-link">Home</a>
+          <a class="nav-link">Airport</a>
+          <a class="nav-link">Chauffeur</a>
+          <a class="nav-link">Fleet</a>
+          <a class="nav-link">FAQ</a>
+          <a class="nav-link">About</a>
+        </div>
+        <div class="ctrls">
+          <span class="ctrl">English <svg width="8" height="8" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span>
+          <div class="divider"></div>
+          <span class="ctrl">JPY <svg width="8" height="8" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span>
+          <div class="divider"></div>
+          <svg width="13" height="13" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.8" viewBox="0 0 24 24" style="cursor:pointer"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <div class="divider"></div>
+          <button class="book-btn">Book</button>
+        </div>
+      </div>
+    </div>
+    <div class="gold-line"></div>
+    <div style="position:relative;z-index:1;height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;opacity:0.18;">
+      <div style="width:260px;height:10px;border-radius:4px;background:rgba(255,255,255,0.3)"></div>
+      <div style="width:160px;height:6px;border-radius:4px;background:rgba(201,168,76,0.4)"></div>
+      <div style="width:80px;height:24px;border-radius:999px;border:1px solid rgba(255,255,255,0.3);margin-top:8px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     OPTION C — GOLDEN RATIO
+═══════════════════════════════════════ -->
+<div class="section">
+  <p class="label"><span>C</span> &nbsp;·&nbsp; Golden Ratio（38% 位置） &nbsp;·&nbsp; 精致·非对称·现代高端</p>
+  <div class="nav-wrap">
+    <div class="hero-bg"></div>
+    <div class="frost-border">
+      <div class="nav-c">
+        <div class="spacer"></div>
+        <div class="logo-block">
+          <img src="/logo.png" class="octoshell-logo" alt="Octoshell" />
+        </div>
+        <div class="links">
+          <a class="nav-link">Home</a>
+          <a class="nav-link">Airport</a>
+          <a class="nav-link">Chauffeur</a>
+          <a class="nav-link">Fleet</a>
+          <a class="nav-link">FAQ</a>
+          <a class="nav-link">About</a>
+        </div>
+        <div class="ctrls">
+          <span class="ctrl">English <svg width="8" height="8" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span>
+          <div class="divider"></div>
+          <span class="ctrl">JPY <svg width="8" height="8" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span>
+          <div class="divider"></div>
+          <svg width="13" height="13" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.8" viewBox="0 0 24 24" style="cursor:pointer"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <div class="divider"></div>
+          <button class="book-btn">Book</button>
+        </div>
+      </div>
+    </div>
+    <div class="gold-line"></div>
+    <div style="position:relative;z-index:1;height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;opacity:0.18;">
+      <div style="width:260px;height:10px;border-radius:4px;background:rgba(255,255,255,0.3)"></div>
+      <div style="width:160px;height:6px;border-radius:4px;background:rgba(201,168,76,0.4)"></div>
+      <div style="width:80px;height:24px;border-radius:999px;border:1px solid rgba(255,255,255,0.3);margin-top:8px"></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
