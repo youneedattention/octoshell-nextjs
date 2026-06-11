@@ -38,6 +38,9 @@ const nextConfig: NextConfig = {
       { source: "/feed/:path*",              destination: "/", permanent: true },
       { source: "/:path*\\.php",             destination: "/", permanent: true },
       { source: "/vehicles",          destination: "/fleet", permanent: true },
+      { source: "/services/airport",  destination: "/services/narita-airport-transfer", permanent: true },
+      { source: "/ja",                destination: "/", permanent: true },
+      { source: "/ja/:path*",         destination: "/:path*", permanent: true },
     ];
   },
 };
