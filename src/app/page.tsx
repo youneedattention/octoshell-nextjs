@@ -10,7 +10,7 @@ import { t } from "@/lib/translations";
 
 /* 鈹€鈹€ Asset URLs 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
 const LOGO    = "/logo.png";
-const HERO_BG = "https://octoshell.jp/wp-content/uploads/2024/10/Home2.png";
+const HERO_BG = "/hero.png";
 const ALPHARD = "/alphard.webp";
 const HIACE   = "/hiace.webp";
 const SVC1    = "https://octoshell.jp/wp-content/uploads/2024/09/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240910002336-1024x679.jpg";
