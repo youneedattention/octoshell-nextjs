@@ -64,7 +64,7 @@ export default function Home() {
       {/* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲 HERO 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲 */}
       <section className="relative h-[100svh] min-h-[560px]">
         <ProtectedImage src={HERO_BG} alt="Octoshell Japan Chauffeur Service" fill
-          className="object-cover object-[left_center] sm:object-center" priority />
+          className="object-cover object-center" priority />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/75 sm:from-black/55 sm:via-black/20 sm:to-black/65" />
 
         <Header />
