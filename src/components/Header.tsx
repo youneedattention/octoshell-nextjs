@@ -306,7 +306,7 @@ export default function Header({ alwaysFrosted = false, frostedBg = "bg-black/50
           <Link href={lp("/")} draggable={false}
             className="shrink-0 transition-transform duration-200 active:scale-110"
             onContextMenu={(e) => e.preventDefault()}>
-            <ProtectedImage src={LOGO} alt="Octoshell" width={52} height={52} draggable={false}
+            <ProtectedImage src={LOGO} alt="Octoshell" width={70} height={70} draggable={false}
               className="object-contain drop-shadow-lg pointer-events-none select-none" />
           </Link>
 
